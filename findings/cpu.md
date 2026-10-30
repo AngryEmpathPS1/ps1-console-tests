@@ -13,7 +13,7 @@ The R3000A as the PlayStation uses it: loads, stores and the write queue, the in
 
 ## Do models differ?
 
-**CPU-1. In the CPU, bus, cache, refresh and GTE programs the models print the same numbers.** Of 83 programs in this area that ran on more than one model, 34 printed identical output (ignoring the BIOS banner lines) in every run on every model, both 5501 units included, 10 to 31 runs each: for example line-fill2, seq-miss2, miss-grid, cold-branch, fix-shadow 1-3, io-pairs, io-shadow, sw-ioread 2-4, hold-read, st-land, t2-path, icache-tagmatch, unc-entry, gte-irgb, gte-sqr-align, gte-hold, cpu-loop-tick 1-4. Another 29 were identical in at least 90% of runs, the odd run being the second 5501 unit or an early session and differing by hundredths in refresh-dependent rows. The other 20 print 100-pass totals that move in the last digit with the refresh. The one model difference found is CPU loads during a GPU DMA on the SCPH-1001 (CPU-43). Programs whose result depends on the video or DMA phase (timer sync, DMA timing) vary run to run on every model.
+**CPU-1. In the CPU, bus, cache, refresh and GTE programs the models print the same numbers.** Of 83 programs in this area that ran on more than one model, 34 printed identical output (ignoring the BIOS banner lines) in every run on every model, both 5501 units included, 10 to 31 runs each: for example line-fill2, seq-miss2, miss-grid, cold-branch, fix-shadow 1-3, io-pairs, io-shadow, sw-ioread 2-4, hold-read, st-land, t2-path, icache-tagmatch, unc-entry, gte-irgb, gte-sqr-align, gte-hold, cpu-loop-tick 1-4. Another 26 to 29 were identical in at least 90% of runs, the odd run being the second 5501 unit or an early session and differing by hundredths in refresh-dependent rows. The other 20 print 100-pass totals that move in the last digit with the refresh. The one model difference found is CPU loads during a GPU DMA on the SCPH-1001 (CPU-43). Programs whose result depends on the video or DMA phase (timer sync, DMA timing) vary run to run on every model.
 Evidence: the programs named in the findings below; all seven models; 10-31 runs each.
 
 ## Loads and the load shadow
@@ -23,7 +23,7 @@ Evidence: the programs named in the findings below; all seven models; 10-31 runs
 | first reader of the loaded register (instruction number after the load; 1 is the delay slot) | cost above a nop |
 |---|---|
 | 2 | 6.0 (6.02-6.13) |
-| 3 | 6.0 (6.02-6.11) |
+| 3 | 6.0 (6.07-6.11) |
 | 4 | 5.1-5.3 |
 | 5 | 4.0 (4.00-4.15) |
 | 6 | 3.0 (3.01-3.12) |
@@ -43,7 +43,7 @@ Into the same register (k = 0-3): 9.15, 9.10, 9.21, 8.27. The second load from a
 Evidence: load-pairs (PAIRS, SAMEREG, FARPAGE, SCRATCH); all seven models; 40 runs, rows within 0.1 of each other.
 
 **CPU-4. A RAM load behind a RAM store waits for the store to leave the write queue. There is no forwarding, and it makes no difference whether the load reads the stored word.** `sw; k nops; lw` of the same word, k = 0-8: 7.40, 6.38, 5.07, 4.26, 3.31, 2.29, 2.28, 2.09, 2.14 above the same number of nops. A load of a different word at k = 0 costs 7.27 against 7.19 for the same word (SCPH-1001). In store-cost's loop `sw; lw` of the same word, of a word far away, and with a nop between all cost about 10.2.
-Evidence: load-pairs (STORELOAD), load-use (DRAIN), store-cost (WRITE BUFFER); all seven models; 40, 31 and 32 runs.
+Evidence: load-pairs (STORELOAD), load-use (DRAIN), store-cost (WRITE BUFFER); all seven models; 40, 31 and 31 runs.
 
 **CPU-5. A store behind a RAM load waits for the load's bus access. It is not hidden in the load's shadow.** With `lw t1` followed by a store of another register at instruction p behind it (the load alone costs 1.97):
 
@@ -61,14 +61,14 @@ Evidence: cpu-loop-tick3; SCPH-1001, 5501 (both units), 7501, 7502, 9001; 10 run
 
 ## Multiply, divide and partial-word accesses
 
-**CPU-7. `mult`/`multu` followed by `mflo` costs 6, 9 or 13 extra cycles by the size of the first operand; `div`/`divu` always 36.** For `multu rs, rt` the extra cycles are 6 for rs below 800h, 9 for 800h-FFFFFh and 13 above. rt does not matter (`multu 3, FFFFFFFFh` is 6, `multu FFFFFFFFh, 0` is 13). For `mult` the same limits apply to the magnitude: rs from -800h to 7FFh is 6, -100000h to -801h and 800h to FFFFFh is 9, anything else 13. Every `div`/`divu` case printed 36, including division by zero, FFFFFFFFh/1 and 80000000h/-1. The test's "latency" column is the extra plus 1 (7, 10, 14, 37). Agrees with psx-spx.
+**CPU-7. `mult`/`multu` followed by `mflo` costs 6, 9 or 13 extra cycles by the size of the first operand; `div`/`divu` always 36.** For `multu rs, rt` the extra cycles are 6 for rs below 800h, 9 for 800h-FFFFFh and 13 above. rt does not matter (`multu 3, FFFFFFFFh` is 6, `multu FFFFFFFFh, 0` is 13). For `mult` the same limits apply to the magnitude: rs from -800h to 7FFh is 6, -100000h to -801h and 800h to FFFFFh is 9, anything else 13. Every `div`/`divu` case printed 36, including division by zero, FFFFFFFFh/1 and 80000000h/-1. The test's "latency" column is the extra plus 1 (7, 10, 14, 37). Agrees with psx-spx (the newer text; nocash's and the stable signed ranges are off by one at FFFFF801h and FFF00001h).
 Evidence: cpu-extras; all seven models, both 5501 units; 31 runs, identical in every run.
 
 **CPU-8. `mflo`/`mfhi` one cycle before the result is ready does not wait. A second multiply or divide replaces the running one without waiting. `mtlo`/`mthi` abort the wait.** With K nops between a multiply and `mflo`, the extra cost falls 1 per nop and then steps from 2 straight to 0. `multu 3,3`: 5.99, 4.99, 3.99, 2.98, 1.99, 0.00 (K = 0-5). A medium multiply (rs = 1234h) reaches 0.00 at K = 8. `divu` 35.99 down to 1.99 at K = 34 and 0.00 from K = 35. A multiply or divide that nothing reads costs nothing (one in six instructions: 0.00). Started while another is running, a multiply or divide takes over. `multu slow; multu fast; mflo` costs the fast one's 5.99 and reads the fast result, `divu; multu; mflo` costs 5.99, and `mult slow; div; mflo` costs 36.03. `multu; mtlo x; mflo` costs 0.00 and reads x (`mthi`/`mfhi` the same). The other half is left with a partial value: after `mult slow; mtlo`, HI reads 43C3C3C3h where the product's high half is 1FE3A76Ah. psx-spx describes the same.
 Evidence: cpu-extras (SWEEPS, IN FLIGHT), muldiv-overlap; all seven models, both 5501 units; 31 and 16 runs.
 
 **CPU-9. `swl`/`swr`/`lwl`/`lwr` cost the same as `sw`/`lw`: no read-modify-write shows in the timing.** Above a nop: `sw` 1.01-1.03, `swl` and `swr` at any byte offset 1.01-1.13, `sb` 1.01-1.13, `sh` 1.01-1.03. Loads from RAM: `lw` 5.05-5.10, `lwl`/`lwr` 5.04-5.16. To the SPU a word store, `swr +0` and `swl +3` of the same word all cost 10.39-10.44. To Expansion 2 all three cost 57.92.
-Evidence: store-cost; all seven models, both 5501 units; 32 runs.
+Evidence: store-cost; all seven models, both 5501 units; 31 runs.
 
 **CPU-10. `lwc2` from RAM is a load with no shadow.** Eight `lwc2` from RAM back to back cost 6.15 above a nop each (`lw`: 5.02). From the scratchpad both cost 0.00. One `lwc2` followed by K = 0-6 independent ALU instructions costs 6.12, 6.07, 6.10, 6.09, 6.09, 6.05, 6.08 (no shadow), where `lw` falls 4.86, 5.38, 4.37, 3.61, 2.78, 2.08, 2.09.
 Evidence: cpu-extras; all seven models, both 5501 units; 31 runs.
@@ -81,7 +81,7 @@ Evidence: line-fill (31 runs), line-fill2 (21), seq-miss2 (21), load-fill (16); 
 **CPU-12. A taken branch in a line that is still being fetched waits for the rest of the line.** In a cold line entered by `jal`, a taken branch at word 0 raises the miss cost from 5 to 8, at word 1 to 7, and at words 2 and 3 leaves it 5. Entered by a fall-through the figures are the same (8, 7, 5, 5). With a second cold line first, 13, 12, 10, 10. `beq`, `bnez`, `j`, `jr` and `jr ra` behave alike.
 Evidence: miss-grid, cold-branch; all seven models; 21 runs each, identical.
 
-**CPU-13. In cold code a RAM load costs 4.15 above a nop at every word of its line, an on-die register load costs nothing, and a store costs 5.66.** Warm, the same RAM load costs 2.00. One load per 16 instructions in 8 KB of cold code: RAM at word 0-3 4.14-4.18; I_STAT 0.00 at words 0, 2 and 3 and 1.09 at word 1. Other shapes, per unit:
+**CPU-13. In cold code a RAM load costs 4.15 above a nop at every word of its line, an on-die register load costs nothing at words 0, 2 and 3 with no reader behind it, and a store costs 5.66 (5.48 on unit 2).** Warm, the same RAM load costs 2.00. One load per 16 instructions in 8 KB of cold code: RAM at word 0-3 4.14-4.18; I_STAT 0.00 at words 0, 2 and 3 and 1.09 at word 1. Other shapes, per unit:
 
 | shape | cost |
 |---|---|
@@ -110,7 +110,7 @@ Evidence: load-fill (16 runs), load-fill2 (21); all seven models; load-fill2 ide
 With load scheduling off a warm RAM load costs 6.19 above a nop instead of 2.00, and every nop after it adds a cycle (`lw; k nops`: 12, 13, 14, 15, 16, 19 for k = 0, 1, 2, 3, 4, 7, against 10, 12, 12, 12, 12, 14). The flat 4.15 of CPU-13 is therefore the load overlap, not a property of the line fill. Disagreement: the newer psx-spx says a RAM load followed by four nops costs "about 2 more" with LDSCH off. The measurement is 4 more (12 against 16, and 2.00 against 6.19 in the warm loop). Streaming off was measured in cold cached code only, so psx-spx's statement about uncached fetch was not tested. pcsx-redux's cache probe warns that RDPRI, NOPAD, BGNT and LDSCH must be preserved; clearing LDSCH from uncached code here caused no hang.
 Evidence: biu-sched; SCPH-5501 unit 2 only; 2 runs, identical. Open: one unit; RDPRI, NOPAD, BGNT and INTP were not touched.
 
-**CPU-15. Clearing RAM_SIZE bit 7 (1F801060h) takes 2 to 3 cycles off each cold RAM access.** The register as the BIOS leaves it is 00E00B88h; bit 7 clear is 00E00B08h:
+**CPU-15. Clearing RAM_SIZE bit 7 (1F801060h) takes 1.3 to 2.9 cycles off a cold RAM access: 2.3 off a load at words 0, 2 and 3, 1.3 at word 1, 2.9 off a store, and 3.2 off a load plus a store together.** The register as the BIOS leaves it is 00E00B88h; bit 7 clear is 00E00B08h:
 
 | cold-code row | bit 7 set | bit 7 clear |
 |---|---|---|
@@ -139,7 +139,7 @@ Evidence: wb-page, wb-page2, wb-drain; all seven models; 21, 21 and 16 runs, ide
 | stores alternating between two blocks 1 KB apart | 13 | 13 | 19 | 19 | 25 |
 | stores alternating between pages 4 KB apart | 13 | 13 | 19 | 19 | 25 |
 
-A Timer 1 read behaves like the GPUSTAT read. The read goes ahead unless a queued store is within its own 64 bytes. After stores to A, B and A+4, a RAM read at A+4, +8, +12, +16 or +32 waits for A+4 (28 cycles); from A+64 up to A+1020 it goes first (18). At B, B+4 and B+8 it waits (24); from B+64 it goes first (18). A read of another 2 KB, 4 KB, 8 KB or 16 KB away also goes first (18). This is the CPU core's read-priority switch (RDPRI, bit 13 of FFFE0130h, set by the BIOS); the switch itself was not toggled.
+A Timer 1 read behaves like the GPUSTAT read. The read goes ahead unless a queued store is within its own 64 bytes. After stores to A, B and A+4, a RAM read at A+4, +8, +12, +16 or +32 waits for A+4 (28 cycles); from A+64 up to A+1020 it goes first (18). At B, B+4 and B+8 it waits (24); from B+64 it goes first (18). A read of another 2 KB, 4 KB, 8 KB or 16 KB away also goes first (18). This may be the CPU core's read-priority switch (RDPRI, bit 13 of FFFE0130h, set by the BIOS); it was not toggled here, and the newer psx-spx reports that toggling it changes none of this.
 Evidence: ram-store-io4 to io7; all seven models, both 5501 units; 12-22 runs each, identical but for refresh draws in the fastest-of-16 column.
 
 **CPU-19. A read of an on-die register behind queued RAM stores samples late, as if it waited until the queue had all but its last 2 cycles left. The CPU runs on unless it needs the value.** Two Timer 2 reads with one RAM store between them, N nops after the store: 8, 8, 8, 9, 10, 11, 12, 13, 14 for N = 0-8 (4, 6, 6, 6, 7, 8, 9, 10, 11 with no store). Three stores between: 12 (one store adds 4, each further store of the burst 2). A store to an I/O register (Timer 1's target) between: 6. In sw-ioread a store before a JOY_STAT read costs the CPU nothing if no instruction reads the value (16, 17, 18, 19 for 0-3 nops, as without the store). A reader 1-3 nops on pays 2 more behind a RAM store (21, 22, 22 against 19, 20, 20) and 1 more behind a store to a timer register (20, 21, 21).
@@ -149,14 +149,14 @@ Evidence: counter-bracket (39 runs), sw-ioread (31 runs); all seven models.
 Evidence: cpu-loop-tick5, 6, 7; SCPH-5501 (both units), SCPH-9001; 5 runs each, identical.
 
 **CPU-21. Stores to GP0 retire at 2 cycles each after the first few, and a timer write takes effect a couple of cycles after the store.** n stores of a NOP word to GP0, n = 0, 1, 2, 3, 4, 6, 8, 12, 16: 4, 6, 6, 8, 8, 10, 14, 22, 30 cycles between two Timer 2 reads. A store of 0 to Timer 2's counter (or its mode), N nops and a read of the counter reads 0, 0, 1, 2, 3, 4, 5, 6, 7 for N = 0-8 in cached code. From uncached code it reads 4, 10, 16, 22, 28, 34, 40, 46, 52, six cycles per fetch.
-Evidence: gp0-store (all seven models, 8 runs, identical), counter-store (all seven models, 31 runs).
+Evidence: gp0-store (all seven models, 13 runs, the n-store rows identical in all 13), counter-store (all seven models, 31 runs).
 
 ## DRAM refresh
 
 **CPU-22. The DRAM refresh falls due every 256 cycles and holds the RAM bus for 5. A RAM read that meets it waits up to 6.** Sweeping a lone RAM read across the 256-cycle grid, its cost is flat except for one six-step ramp, +6, +5, +4, +3, +2, +1 (21 20 19 18 17 16 over a rest value of 15). A read of RAM_SIZE (1F801060h, the DRAM controller's register) ramps the same way. A polling loop shows the period: `lhu I_STAT; lhu T2; 12 nops; sll; or; sw` takes 25 cycles a turn, and 203 turns in 4096 cost 28 and 203 cost 34, alternating 259 and 253 cycles apart (512 for two refreshes). Agrees with psx-spx's 256-cycle refresh and the zero refresh-period field in the BIOS's RAM_SIZE value.
 Evidence: refresh-io (31 runs), refresh-io3 (21), spu-read-trace (43); all seven models; identical apart from the printed phase.
 
-**CPU-23. An on-die register read on an idle bus never waits for a refresh. Behind a RAM store or RAM read it inherits their delay.** I_STAT alone: 13 at all 72 phases swept. I_STAT behind a store: 14 at rest, 23 at one phase, then 19, 18, 17, 16, 15. Behind a `lw`: 19 at rest and 25 down to 20. An SPU register read behind a store: 29 at rest, 38, then 34-30. RAM read alone: 15 at rest and 21 down to 16. RAM read behind a store: 18 at rest (CPU-24). RAM_SIZE alone: 13 at rest, 19 down to 14.
+**CPU-23. An I_STAT read on an idle bus never waits for a refresh. Behind a RAM store or RAM read it inherits their delay. Only I_STAT was swept; RAM_SIZE, also on-die, does wait.** I_STAT alone: 13 at all 72 phases swept. I_STAT behind a store: 14 at rest, 23 at one phase, then 19, 18, 17, 16, 15. Behind a `lw`: 19 at rest and 25 down to 20. An SPU register read behind a store: 29 at rest, 38, then 34-30. RAM read alone: 15 at rest and 21 down to 16. RAM read behind a store: 18 at rest (CPU-24). RAM_SIZE alone: 13 at rest, 19 down to 14.
 Evidence: refresh-io, refresh-io2, refresh-io3; all seven models, both 5501 units; 31, 21 and 21 runs.
 
 **CPU-24. What a refresh costs a RAM store depends on where the refresh falls due inside the store's own bus transaction.** d is the number of cycles after the store's first bus cycle at which the refresh falls due, and L the burst length in cycles (6 for one word, 8 for two, 12 for four):
@@ -169,7 +169,7 @@ Evidence: refresh-io, refresh-io2, refresh-io3; all seven models, both 5501 unit
 | d = L - 3 to L | the burst finishes, then the refresh: +5 to a RAM read behind, +0 to an on-die read |
 | d = L + 1 | +6 |
 
-Sweeping `sw A; lw A` (16 at rest) from d = 7 down to d = -5 gives 22, 21, 21, 21, 21, 26, 22, 21, 20, 19, 18, 17, 16. A two-word burst (18 at rest, d = 9 down to -5): 24 23 23 23 23 28 27 28 24 23 22 21 20 19 18. A four-word burst (22 at rest): 28 27 27 27 27 32 31 32 31 32 31 32 28 27 26 25 24 23 22. Stores to two and four different pages show the +10 at each store, 6 phases apart. In a stream of new-row stores a refresh therefore costs about 10.5 cycles, not 5 (two pages per turn: 12.50 a turn where the bus's own work is 12; four pages 24.98).
+Sweeping `sw A; lw A` (16 at rest) from d = 7 down to d = -5 gives 22, 21, 21, 21, 21, 26, 22, 21, 20, 19, 18, 17, 16. A two-word burst (18 at rest, d = 9 down to -5): 24 23 23 23 23 28 27 28 24 23 22 21 20 19 18. A four-word burst (22 at rest): 28 27 27 27 27 32 31 32 31 32 31 32 28 27 26 25 24 23 22. Stores to two and four different pages show the +10 at each store, 6 phases apart. In a stream of new-row stores a refresh therefore costs about 10 cycles, not 5 (two pages per turn: 12.50 a turn where the bus's own work is 12; four pages 24.98).
 Evidence: refresh-store (SCPH-5501 unit 1 three runs, unit 2 one run, SCPH-9001 two runs, identical), cpu-loop-tick8 (SCPH-5501 both units, SCPH-9001); the table also reproduces refresh-io2 (all seven models, 21 runs) and refresh-store2 to 7 (SCPH-5501 unit 2, 3 runs each).
 
 **CPU-25. A refresh can make two stores cheaper.** `sw A; 2 nops; sw A+4; lw A+4` (same row) costs 22 at rest. At the six phases after the refresh it costs 24, 23, 22, 21, 20, 19, so the pair finishes 3 cycles under rest. The refresh delays the first word, and the second store then joins its burst. `sw; nop; sw; lw` (18 at rest) shows the same ramp without the dip. An SPUSTAT read after a store with 0-3 nops costs 28 at rest (29 at 3 nops), 38 at the top phase, then 34 33 32 31 30 29.
@@ -214,20 +214,20 @@ Evidence: spu-read-grid (15 runs), spu-read-trace (43); all seven models.
 | 12 | 13.79 | 30.79 | 64.79 |
 
 SPU 1F801DAAh with COM0 in use: COM0 5 17.98, 18.04, 38.04; COM0 3 17.85, 18.04, 35.85; COM0 12 23.79, 23.98, 50.79. At the kernel's settings (COM_DELAY 00031125h, CD_DELAY 00020843h) the CD register costs 8.04, 14.04, 26.04.
-Evidence: mem-delay; all seven models; 32 runs, within 0.1.
+Evidence: mem-delay; all seven models; 31 runs (29 for the SPU rows), within 0.1.
 
 **CPU-31. A BIOS ROM byte load alone costs 1.9 above a nop, two together cost 9, and a nop between them makes it dearer.** `lbu` from BFC00100h alone 1.83-1.89. `lbu; lbu` 8.91-8.99, with one nop between 9.79-9.88, two 8.94, three 7.82-7.86, four 6.86-6.92. A RAM store right behind a ROM load waits for the access: `lbu; sb` of another register 6.92-6.97, of the loaded register 7.86-7.94.
 Evidence: slow-b2b; all seven models, both 5501 units; 31 runs.
 
 **CPU-32. A 32-bit read of a 16-bit on-die register shows bus residue in its upper half.** `lw` of I_MASK in cached code after a RAM load of C3C35A00h reads C3C3xxxx, and a scratchpad load, or no load at all, leaves it unchanged. After a store to I_MASK itself it shows 8001 (an earlier word) rather than the stored A5A5. After a store to Timer 2's target the 5A5A data shows through the KUSEG and KSEG1 addresses. In uncached code every cell reads 2400h, the opcode fetched two instructions after the read.
-Evidence: imask-upper (31 runs), bus-latch (16); all seven models. Open: the Timer 2 store row differs between the first sessions and later runs when read through the KSEG0 address, so it is not stated as fact.
+Evidence: imask-upper (31 runs), bus-latch (16); all seven models. Open: the Timer 2 store row at the KSEG0 address reads 5A5A in 12 runs (5 of the first 6 runs, six SCPH-5000 runs, unit 2) and 8001 in the other 19, so it is not stated as fact.
 
 ## Uncached code
 
 **CPU-33. Every uncached instruction fetch from RAM costs about 6 cycles.** 2048 nops through KSEG1 take 12580 cycles (6.14 each). The same block cold in the cache takes 4716 and warm 2066.
 Evidence: load-fill; all seven models, both 5501 units; 16 runs, 12580 in every run.
 
-**CPU-34. In uncached code a lone RAM load adds 4.3 cycles, a lone store 5.5, and neighbouring accesses combine.** Above nops, one per 16-instruction unit: load 4.28, store 5.48, two stores back to back 7.42 (one burst), load then store right behind 10.42, four loads back to back 19.61, eight 40.05, sixteen 81.84 (about 5.1 above a nop each). Phase-resolved costs of a 24-instruction block with no refresh (24 nops = 160): load 164, store 165, two stores 167, three stores 172, two stores a nop apart 170, load then store 170, load, nop, store 169, two loads then a store 179, store then load 169; a taken branch after a store changes nothing (165). A refresh falling due as an uncached store starts costs 10 (two back-to-back stores: 10, 9, 10), as in CPU-24.
+**CPU-34. In uncached code a lone RAM load adds 4.3 cycles, a lone store 5.5, and neighbouring accesses combine.** Above nops, one per 16-instruction unit: load 4.28, store 5.48, two stores back to back 7.42 (one burst), load then store right behind 10.42, four loads back to back 19.61, eight 40.05, sixteen 81.84 (about 5.1 above a nop each). Phase-resolved costs of a 24-instruction block with no refresh (24 nops = 160): load 164, store 165, two stores 167, three stores 172, two stores a nop apart 170, load then store 170, load, nop, store 169, two loads then a store 175 (179 when a refresh falls inside the block), store then load 169; a taken branch after a store changes nothing (165). A refresh falling due as an uncached store starts costs 10 (two back-to-back stores: 10, 9, 10), as in CPU-24.
 Evidence: unc-load (17 runs, all seven models, identical), unc-store-phase (SCPH-9001 two runs, SCPH-5501 unit 2 one run, identical).
 
 **CPU-35. In uncached code two Timer 2 reads are 8 cycles apart with nothing between, and each nop adds 6.** `lhu T2; N nops; lhu T2` from KSEG1: 8, 12, 18, 24, 30, 36, 42, 48, 54 for N = 0-8 (cached: 4, 6, 6, 6, 7, 8, 9, 10, 11). With a RAM store between: 20, 26, 32, 38, 48, 50, 62, 62, 68 uncached (some cells carry a refresh) and 8, 8, 8, 9, 10, 11, 12, 13, 14 cached.
@@ -243,10 +243,10 @@ Evidence: counter-bracket; all seven models; 39 runs, the commonest rows identic
 | cached, line in the cache | 1 (+2) | 1 (+2) | 1 (+2) | 1 (+2) |
 | cached, the line being filled | 1 (+2) | 0 (+1) | 3 (+4) | 2 (+3) |
 
-The rows were taken for a `lw` past the BIOS window, a `lbu` and an `sh` in gaps of the I/O region, and a `lw`/`sw` at 08000000h. All behave alike apart from one warm row (`lw` at 08000000h, word 0) that alternates between +2 and +5. nocash's DIAG source notes the same 1-3 instruction lag.
-Evidence: bios-window; all seven models; 31 runs, these rows identical in 28.
+The rows were taken for a `lw` past the BIOS window, a `lbu` and an `sh` in gaps of the I/O region, and a `lw`/`sw` at 08000000h. All behave alike apart from two warm rows of `lw` at 08000000h. Word 0 reads +5 (CAUSE 2000001Ch) in 18 of the 31 runs and +2 in the other 13. Word 2 reads +9 (all eight ori/xori done, CAUSE 0000001Ch) in the 7 latest runs (six SCPH-5000 runs and the second 5501) and +2 in the other 24. nocash's DIAG source notes the same 1-3 instruction lag.
+Evidence: bios-window; all seven models; 31 runs; the exception table is identical in 18 (24 if the word-0 warm row is ignored).
 
-**CPU-37. After a bus error CAUSE.CE (bits 29-28) holds bits 27-26 of the opcode of the instruction in hand, not a coprocessor number.** The test's sequence alternates `ori` and `xori`. CE reads 1 after an `ori` and 2 after an `xori` (CAUSE 1000001Ch and 2000001Ch), and 0 after a nop. Disagreement: psx-spx says CE keeps its previous value on exceptions other than Coprocessor Unusable.
+**CPU-37. After a bus error CAUSE.CE (bits 29-28) holds bits 27-26 of the opcode of the instruction in hand, not a coprocessor number.** The test's sequence alternates `ori` and `xori`. CE reads 1 after an `ori` and 2 after an `xori` (CAUSE 1000001Ch and 2000001Ch), and 0 after a nop. nocash's text says CE is opcode bits 26-27, which is this finding. Disagreement: the newer psx-spx says CE keeps its previous value on exceptions other than Coprocessor Unusable.
 Evidence: bios-window; all seven models; 31 runs.
 
 **CPU-38. The BIOS ROM region follows the size field of 1F801010h: a window of 2^N bytes, mirroring the chip if larger, a bus error past it.** With the 512 KB chip:
@@ -273,7 +273,7 @@ Evidence: dma-rates; all seven models, both 5501 units; 48 runs, rows within 10 
 **CPU-41. While a 128x128 block-mode GPU upload (8192 words in blocks of 16) runs, CPU stores to RAM slow it by about 10%, and the CPU's RAM loads run 2.7 times slower.** The transfer takes 14,011-14,179 cycles with the CPU polling CHCR, 14,140-14,307 with the CPU running 64 ALU operations per iteration, 15,532-15,624 with 64 word stores per iteration, and 15,365-15,474 with `lw`/`lw`/`sw` steps. A `lw`/`lw`/`sw` step costs 60.0 cycles (60.01-60.44) during the transfer against 22.27 with no DMA.
 Evidence: dma-contention; SCPH-5000, 5501 (both units), 7001, 7501, 7502, 9001; 43 runs.
 
-**CPU-42. Two block-mode transfers started together do not share the bus; the faster runs to completion first, and the priority fields had no visible effect.** A 2048-word GPU upload (DMA2) and a 2048-word SPU write (DMA4), both started at once, in four priority settings (equal either way, DMA2 high, DMA4 high): DMA2 finished at 3,944-4,688 cycles with DMA4 at 4 of 128 blocks, then DMA4 finished at 140,888-163,008. An OTC clear (DMA6, 16,384 entries) started after DMA4 finished at about 17,550 with DMA4 at 2 of 128 blocks.
+**CPU-42. Two block-mode transfers started together each get blocks as their device asks for them, and the priority fields had no visible effect.** A 2048-word GPU upload (DMA2) and a 2048-word SPU write (DMA4), started back to back in four priority settings (equal either way, DMA2 high, DMA4 high): DMA2 finished at 3,944-4,688 cycles, by when DMA4, which alone runs at about 1,090 cycles a block, had moved 4 of its 128 blocks; DMA4 then finished at 140,888-163,008. An OTC clear (DMA6, 16,384 entries) started after DMA4 finished at about 17,550 with DMA4 at 2 of 128 blocks.
 Evidence: concurrent-dma; all seven models, both 5501 units; 49 runs.
 
 **CPU-43. The SCPH-1001 differs: CPU loads run faster during the GPU upload, and the upload is slower.** A `lw`/`lw`/`sw` step costs 52.5 cycles during the transfer (60.0 on the others) and the transfer takes 16,811-16,824 cycles under that load (15.4k elsewhere). The polling, ALU-loop and store cases agree with the other models (14,046, 14,155-14,158, 15,521-15,571). The 1001 has the older GPU; the cause was not isolated.
@@ -284,7 +284,7 @@ Evidence: dma-contention; SCPH-1001 only; 6 runs.
 **CPU-44. Timer 2's divide-by-8 prescaler runs free: writing the counter or mode does not restart it.** Of 32 counter writes at pseudo-random phases, the number reading 1 or more after K nops rises as a ramp, not a step. For K = 0-8 the median over 50 runs is 9, 2, 13, 13, 25, 23, 29, 32, 32 (ranges 2-9, 2-6, 9-15, 9-18, 23-30, 20-28, 28-32, 32, 32). For a MODE write it is 0, 3, 5, 13, 19, 21, 19, 29, 32 (ranges 0, 1-5, 3-6, 10-15, 12-19, 19-26, 11-25, 27-31, 32). A divider restarted by the write would read 0 until its first tick and then 32 at once.
 Evidence: timer-sync (PRESCALER); SCPH-1001, 5501, 7001, 7501, 7502, 9001 (the 5000 was not run); 50 runs.
 
-**CPU-45. Counting the dot clock against the system clock gives 6.71 MHz on NTSC-board consoles and 6.65 MHz on the PAL SCPH-7502, whatever the display mode flag says.** Timer 0 on the dot clock (320-wide), over a 1011-cycle delay loop: 199-201 counts on SCPH-1001, 5000, 5501, 7001, 7501 and 9001; 198-199 on the SCPH-7502 with the mode forced to NTSC. Over 5011 cycles: 991-992 and 982-983. These fit 53.693 MHz / 8 and 53.203 MHz / 8. Timer 2 on system clock/8 counts 126-127 in 1011 cycles and 626-627 in 5011. The ps1-tests author's own PAL console read 198/199 for the first, in his repository.
+**CPU-45. Counting the dot clock against the system clock gives 6.71 MHz on NTSC-board consoles and 6.65 MHz on the PAL SCPH-7502, with the mode forced to NTSC on all of them.** Timer 0 on the dot clock (320-wide), over a 1011-cycle delay loop: 199-201 counts on SCPH-1001, 5000, 5501, 7001, 7501 and 9001; 198-199 on the SCPH-7502 with the mode forced to NTSC. Over 5011 cycles: 991-992 and 982-983. These fit 53.693 MHz / 8 and 53.203 MHz / 8. Timer 2 on system clock/8 counts 126-127 in 1011 cycles and 626-627 in 5011. The ps1-tests author's own console read 198/199 for the first, in his repository; its log starts "Detected NTSC system", so it is the count, not the mode flag, that puts it on the PAL crystal.
 Evidence: timers (ps1-tests); all seven models; 48 runs.
 
 ## GTE
@@ -322,4 +322,4 @@ Evidence: cpu-extras; all seven models, both 5501 units; 31 runs.
 - **Open: KSEG1 data accesses and the write queue.** The newer psx-spx says any KSEG1 access flushes the whole queue first. These programs run their data accesses through KSEG0 and test uncached code only, so this is untested.
 - **Open: gte-hold** (does a write that follows a running command reach it when the next instruction has to wait?) prints different answers on the cold and warm passes of the same cached code; uncached it is stable (the write is never seen). No result is stated.
 - **Open: ordinary GTE registers.** The newer psx-spx lists a late-write delay for ordinary registers (`mtc2` then `mfc2`); only IRGB, IR1-3, ORGB and LZCS were measured.
-- **Open: RDPRI, NOPAD, BGNT and INTP** (FFFE0130h) and the RAM_SIZE refresh-period and hold-off fields were not toggled.
+- **Open: RDPRI, NOPAD, BGNT and INTP** (FFFE0130h) and the RAM_SIZE refresh-period and hold-off fields were not toggled here. The newer psx-spx reports results for RDPRI.

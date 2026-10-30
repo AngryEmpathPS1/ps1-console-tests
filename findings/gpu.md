@@ -13,10 +13,10 @@ What the GPU, the video output and the MDEC do on real PlayStations, read from t
 
 ## The two GPUs
 
-**1. GP1(10h) index 07h tells the two apart.** It returns 00000002h on every model except the SCPH-1001, where GPUREAD keeps its previous value (no answer). Open: other early boards (PU-7, early PU-8) were not available; whether they match the SCPH-1001 is not measured.
+**1. GP1(10h) index 07h tells the two apart.** It returns 00000002h on every model except the SCPH-1001, where GPUREAD keeps its previous value (no answer). The model number alone does not decide it: psx-spx's dev text lists an SCPH-1001 with the new GPU, and this one has the old. Open: other early boards (PU-7, early PU-8) were not available; whether they match this SCPH-1001 is not measured.
 Evidence: machine-id (70 logs, all seven models), gpu-version (all seven models).
 
-**2. Register-visible differences.** Identical within each GPU type across all logs (only GPUSTAT bit 31 at entry, a beam position, and the 7502's PAL bit differ).
+**2. Register-visible differences.** Identical within each GPU type across all logs, apart from the drawing-speed rows and one row on the SCPH-1001: the X-flip rectangle reads 31 31 0 0 0 ... in five of its six logs and 31 31 0 31 31 31 0 31 ... in the first. Otherwise only GPUSTAT bit 31 at entry, a beam position (one SCPH-5000 log) and the 7502's PAL bit differ.
 
 | Probe | SCPH-1001 | Every other model |
 |---|---|---|
@@ -47,10 +47,10 @@ Evidence: gpu-version; 1001 (6), others (37). Old-GPU DMA rows also in gpu-dmabs
 | 5000 | 2,152.52-2,152.53 | not run | |
 | 7502, NTSC mode | 2,172.3 (frame / 263) | 571,317.65 (one run) | 59.28 Hz |
 
-The 7001, 7501 and 9001 repeat to the hundredth in every run, consistent with a video clock derived from the CPU oscillator by a fixed ratio: 3,412.5 video ticks (the NTSC standard, 227.5 subcarrier periods x 15) in 2,152.5 cycles is 65/41 ticks per cycle. The 5501, 1001 and 5000 sit about 10-25 ppm away and differ between units and runs, as two separate crystals do.
+The frame length of the 7001, 7501 and 9001 repeats to the hundredth in every run, consistent with a video clock derived from the CPU oscillator by a fixed ratio: 3,412.5 video ticks (the NTSC standard, 227.5 subcarrier periods x 15) in 2,152.5 cycles is 65/41 ticks per cycle. The 5501, 1001 and 5000 sit about 10-25 ppm away and differ between units and runs, as two separate crystals do.
 Evidence: line-split, 1001 (6), 5000 (7), 5501 (9), 7001 (6), 7501 (10), 7502 (1), 9001 (10); pal-line, 1001 (6), 5501 (7), 7001 (6), 7501 (8), 7502 (1), 9001 (8).
 
-**4. Every NTSC line is the same length; there is no 3412/3413 alternation.** Where a run averages something other than a whole half cycle (5501, 5000, 1001, one 9001 run), the per-line means alternate by at most 2.3 hundredths of a cycle. Where it averages exactly 2,152.50 the probe, which counts whole cycles, sees lines of 2,152 and 2,153 alternately and reads +-0.51 cycle. A 3412/3413-tick toggle would read +-0.32 in every run.
+**4. Every NTSC line is the same length; there is no 3412/3413 alternation.** Where a run averages something other than a whole half cycle (5501, 5000, 1001, and the 7001/7501/9001 runs at 2,152.45-2,152.49) the per-line means alternate by at most 2.3 hundredths of a cycle, except one SCPH-7501 run (2,152.49) at 6.8. Where a run averages exactly 2,152.50 the probe, which counts whole cycles, sees lines of 2,152 and 2,153 alternately and reads +-0.51 cycle (19 of 20 such logs; one SCPH-7501 log reads +-0.03). A 3412/3413-tick toggle would read +-0.32 in every run.
 Evidence: line-split (logs as finding 3).
 
 **5. PAL mode.** The PAL/NTSC frame ratio is 1.191290-1.191293 on all 36 pal-line logs, i.e. 3,405-tick PAL lines (314 lines) against 3,412.5-tick NTSC lines (263 lines). What changes between models is the clock.
@@ -62,13 +62,13 @@ Evidence: line-split (logs as finding 3).
 | 1001 | 674,416.0-674,417.0 | 50.22 Hz | 2,147.8 |
 | 7502 | 680,605.45 (one run) | 49.76 Hz | 2,167.5 |
 
-An NTSC-region console in PAL mode therefore runs at 50.22 Hz, not 49.76 Hz: it has no PAL crystal and uses the NTSC one. The 7502 uses one video clock for both modes: 3,405 x 314 ticks in 680,605.45 cycles and 3,412.5 x 263 in 571,317.65 are 1.57091 ticks per cycle to 1 ppm (432/275). Open: one 7502 unit, one run.
+An NTSC-region console in PAL mode therefore runs at 50.22 Hz, not 49.76 Hz: which fits it having no PAL crystal and using the NTSC one. The 7502 uses one video clock for both modes: 3,405 x 314 ticks in 680,605.45 cycles and 3,412.5 x 263 in 571,317.65 are 1.57091 ticks per cycle to 1 ppm (432/275). Open: one 7502 unit, one run.
 Evidence: pal-line (logs as finding 3); line-split on the 7502 booted in PAL mode read 2,167.52 cycles per line (1 run).
 
 **6. 480i frames are two fields of different length.** Fields alternate 263 and 262 lines in NTSC (SCPH-7501 frame-pair mean 565,030.9 cycles; fields about 566,1xx and 563,9xx) and 313 and 312 in PAL (7501 in PAL: mean 671,178.3; fields about 672,2xx and 670,1xx).
 Evidence: pal-line; 1001 (6), 5501 (7), 7001 (6), 7501 (8), 7502 (1), 9001 (8).
 
-**7. SCPH-5000: PAL mode stops the video clock; drawing carries on.** In PAL mode, at every width, Timer 1 does not step (0 in 3,000 polls against 18 in NTSC), no VBlank arrives in 1.5 million polls (about 40 frames), and "lines a frame" reads 0; GPUSTAT bit 20 is set. A 64x64 fill still finishes (50 polls against 47 in NTSC), GP0(E1h) still executes and GP1(10h) index 07h still answers. psx-spx's PAL/NTSC modification note says boards may have the unused oscillator's pad grounded. Open: one SCPH-5000; the second unit was not tested, and `pal-dots` froze this console twice with no log.
+**7. SCPH-5000: PAL mode stops the video clock; drawing carries on.** In PAL mode, at every width, Timer 1 does not step (0 in 3,000 polls against 18 in NTSC), no VBlank arrives in 1.5 million polls (about 29 NTSC frames: an NTSC VBlank took 51,461 polls in the same run), and "lines a frame" reads 0; GPUSTAT bit 20 is set. A 64x64 fill still finishes (50 polls against 47 in NTSC), GP0(E1h) still executes and GP1(10h) index 07h still answers. psx-spx's PAL/NTSC modification note says boards may have the unused oscillator's pad grounded. Open: one SCPH-5000; the second unit was not tested, and `pal-dots` froze this console twice with no log.
 Evidence: pal-probe, pal-probe2; 5000 (1 each).
 
 **8. Timer 0 dots per line.** Averaged over 64 lines, identical on all models:
@@ -81,7 +81,7 @@ Evidence: pal-probe, pal-probe2; 5000 (1 each).
 Each is the line's ticks divided by the dot divider (10, 8, 7, 5, 4) rounded down, from a restart on every line, except PAL 320: 3,405 / 8 = 425.6 reads 426. Agrees with psx-spx (nocash's DIAG reading for PAL 320: 426). Single lines swing by up to 4 dots with the polling loop; use totals.
 Evidence: pal-dots; 1001 (6), 5501 (9), 7001 (6), 7501 (10), 7502 (1), 9001 (10).
 
-**9. GPUSTAT bit 31.** In 240-line mode it flips every scanline and equals (display VRAM Y + line) & 1; the sense reverses with the parity of Y. In vertical blanking it is Y's low bit (0 for even Y, 1 for odd, in all 4 Y values tested). In 480i it alternates each frame and equals bit 13 for odd Y and its inverse for even Y (on the old GPU bit 13 stays 0 and bit 31 alternates the same way). Timer 1's hblank step leads the flip by 5.8% of a line in the first sessions (5501, 7501, 9001) and 8.7% in every later session on all models; the 7502 shows the complement.
+**9. GPUSTAT bit 31.** In 240-line mode it flips every scanline and equals (display VRAM Y + line) & 1; the sense reverses with the parity of Y. In vertical blanking it is Y's low bit (0 for even Y, 1 for odd, in all 4 Y values tested): psx-spx says it is always zero there, in all three texts. In 480i it alternates each frame and equals bit 13 for odd Y and its inverse for even Y (on the old GPU bit 13 stays 0 and bit 31 alternates the same way). Timer 1's hblank step leads the flip by 5.8% of a line in the first sessions (5501, 7501, 9001) and 8.7% in every later session on all models; the 7502 shows the complement.
 Evidence: gpustat31; 1001 (6), 5000 (7), 5501 (9), 7001 (6), 7501 (10), 7502 (1), 9001 (10).
 
 ## GPUSTAT and command timing
@@ -100,7 +100,7 @@ Evidence: gpustat31; 1001 (6), 5000 (7), 5501 (9), 7001 (6), 7501 (10), 7502 (1)
 The 7502's one run reads 208 for the rectangle and 192 for the textured one.
 Evidence: gpu-cmd-ready; 1001 (1), 5000 (6), 5501 (7), 7001 (6), 7501 (4), 7502 (1), 9001 (4).
 
-**11. A polygon holds bit 28 clear until its set-up is done, and the set-up time is a formula of the first edge.** For a flat triangle, bit 28 returns after 24 + max(2, floor(log2 |dx0|)) + floor(log2 |dy0|) cycles, where (dx0, dy0) is vertex 1 minus vertex 0 as sent (log2 of 0 counted as 0). It is exact on all 1,134 triangle rows of `gpu-shape-time5` (42 shapes x 27 logs, all seven models, fastest and slowest of eight starts alike). Examples: legs of 4, 8, 16, 32, 64 with the first edge along X: 26, 27, 28, 29, 30; a 320x16 triangle whose first edge runs (320,0) to (0,16): 36; (0,0) to (0,16): 30. The same value is read on the SCPH-1001, so set-up belongs to the command front end, not the pixel engine. Gouraud, textured and gouraud-textured triangles add a base and a term in the first interpolated attribute's differences:
+**11. A polygon holds bit 28 clear until its set-up is done, and the set-up time is a formula of the first edge.** For a flat triangle, bit 28 returns after 24 + max(2, floor(log2 |dx0|)) + floor(log2 |dy0|) cycles, where (dx0, dy0) is vertex 1 minus vertex 0 as sent (log2 of 0 counted as 0). It is exact on all 1,134 triangle rows of `gpu-shape-time5` (42 shapes x 27 logs, all seven models, fastest and slowest of eight starts alike). Examples: legs of 4, 8, 16, 32, 64 with the first edge along X: 26, 27, 28, 29, 30; a 320x16 triangle whose first edge runs (320,0) to (0,16): 36; (0,0) to (0,16): 30. The 42 shapes hold 29 first-edge vectors, so floor and nearest log2 are not told apart. The same value is read on the SCPH-1001, which suggests set-up belongs to the command front end, not the pixel engine. Gouraud, textured and gouraud-textured triangles add a base and a term in the first interpolated attribute's differences:
 
 | Kind (16x16 triangle) | Bit 28 |
 |---|---|
@@ -121,12 +121,12 @@ Evidence: gpu-a0-ready; 1001 (6), 5000 (6), 5501 (9), 7001 (6), 7501 (10), 7502 
 
 **13. GPUSTAT.27 after GP0(C0h) rises later for a bigger copy.** First k with bit 27 set after the size word:
 
-| Copy | 2x1 | 4x1 | 8x1 | 16x1 | 32 words or more | 2x2 |
+| Copy | 2x1 | 4x1 | 8x1 | 16x1 | 32x1 or larger (16 words or more) | 2x2 |
 |---|---|---|---|---|---|---|
 | New GPU | 20 (20-22) | 21 (21-22) | 23 | 27 | 32 | 25 |
-| SCPH-1001 | 16 | 18 | 22 | 31 | 32 (33 once) | 24 |
+| SCPH-1001 | 16 | 18 | 22 | 31 | 32 (33 at 64x1 in both logs) | 24 |
 
-That is about one extra cycle per word fetched past the first, up to 12 words, and 4 more for a second row, on the new GPU (two cycles a word on the old); the starting X (0, 8, 14) changes nothing by more than 1. The rise is a fixed time after the GPU takes the size word: with GP0(01h), C0h, position and size back to back it comes at k = 20, without the GP0(01h) at 19, and at 17 when the four stores are spaced by RAM loads or NOPs. Open: inside the set run the bit occasionally reads clear again at scattered k.
+That is about one extra cycle per word fetched past the first, up to 12 words, and 4 more for a second row, on the new GPU (two cycles a word on the old); the starting X (0, 8, 14) changes nothing by more than 1. The rise is a fixed time after the GPU takes the size word: with GP0(01h), C0h, position and size back to back it comes at k = 20, without the GP0(01h) at 19, and at 17 when the four stores are spaced by RAM loads, 4 NOPs or 13 NOPs (18 in 4 of 32 logs at 13); with 8 NOPs it reads 10-11 in all 32 new-GPU logs, which the test source puts down to the binary's instruction-cache layout. Open: inside the set run the bit occasionally reads clear again at scattered k.
 Evidence: gpu-c0-size; 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (4), 7502 (1), 9001 (4). gpu-c0-gaps; 1001 (6), 5000 (6), 5501 (7), 7001 (6), 7501 (6), 7502 (1), 9001 (6).
 
 **14. A GPUREAD before the transfer is ready seems to take nothing.** Reading GPUREAD a few cycles after a 2x1 GP0(C0h) leaves the transfer open: bit 27 reads set with bits 26 and 28 clear (GPUSTAT 0802220Ah) at every k from 0 to 63, and the commands that follow wait behind it. This is inferred from the pattern of the logs (the early read's value was not printed). Open.
@@ -135,12 +135,12 @@ Evidence: gpu-c0-ready; 1001 (1), 5000 (7), 5501 (7), 7001 (6), 7501 (6), 7502 (
 **15. What GP1(10h) leaves in GPUREAD, new GPU.** An unused index (00h, 06h, 0Fh) keeps the whole previous word; 02h-04h keep bits 20-31 of the previous word (FFFFFFFFh becomes FFF12345h), 05h keeps bits 22-31 (9234D678h becomes 92022923h); 07h replaces the word (2); 08h replaces it with 0. On the SCPH-1001 08h and 07h leave the word alone. Byte-identical on all 33 new-GPU logs. Agrees with nocash's DIAG; amidog's psxtest_gpu model (an unused index keeps only bit 31) does not fit.
 Evidence: gpuinfo-latch; 1001 (1), 5000 (7), 5501 (7), 7001 (6), 7501 (6), 7502 (1), 9001 (6).
 
-**16. GP1(01h) stops a drawing part-way.** Written N cycles after a primitive's last word, it halts the draw where it is: pixels already written stay and the rest is never drawn. A 256x256 fill cut at N = 1,024 / 4,096 / 8,192 leaves about 12,400 / 46,000 / 65,536 pixels (rows 0..48 / 0..180 / all); a 256x256 rectangle at N = 16,384 / 32,768 about 32,200 / 61,100; a flat triangle with legs of 256 (32,640 pixels) at N = 16,384 leaves 30,426 (rows 0..188); a gouraud one at N = 32,768 leaves 31,942 (rows 0..218). Counts vary by a few percent between consoles (SCPH-1001 fill at 4,096: 44,800 in six runs). Right after the reset GPUSTAT bits 26/27/28 read 001 if a draw was cut and 101 if it had finished; bit 26 returns 16-80 cycles later.
+**16. GP1(01h) stops a drawing part-way.** Written N cycles after a primitive's last word, it halts the draw where it is: pixels already written stay and the rest is never drawn. A 256x256 fill cut at N = 1,024 / 4,096 / 8,192 leaves about 12,400 / 46,000 / 65,536 pixels (rows 0..48 / 0..180 / all); a 256x256 rectangle at N = 16,384 / 32,768 about 32,200 / 61,100; a flat triangle with legs of 256 (32,640 pixels) at N = 16,384 leaves 30,426 (rows 0..188); a gouraud one at N = 32,768 leaves 31,942 (rows 0..218). Counts vary by up to about 8% between consoles (fill at N = 1,024: 11,136-12,864 on the new GPU; SCPH-1001 fill at 4,096: 44,800 in six runs). On the new GPU, right after the reset GPUSTAT bits 26/27/28 read 001 if a draw was cut (1,548 of 1,548 rows) and 101 if it had finished (688 of 688); the SCPH-1001 reads 101 either way (216 of 216 cut draws). Bit 26 returns 16-128 cycles later (99% within 16-80).
 Evidence: gpu-abort; 1001 (6), 5000 (7), 5501 (9), 7001 (6), 7501 (10), 7502 (1), 9001 (10).
 
 ## GP0 FIFO and DMA
 
-**17. The CPU is not stalled by a full GP0 FIFO; the words are lost.** 128 words (64 one-pixel dots) written as fast as the CPU can store them take 352-368 cycles regardless of the GPU. Behind a 320x240 fill or a 256x128 VRAM copy only 9 of 64 dots are drawn (18 words survive, consistent with psx-spx's 16-word FIFO plus a command in flight). To an idle GPU 46-48 of 64 survive. Written one at a time with GPUSTAT bit 26 checked, all 64 are drawn on every console. Agrees with psx-spx ("GPU FIFO / Overrun"); PeterLemon's GPU tests, which send about 1,000 unpaced words behind a fill, expect every word to be drawn.
+**17. The CPU is not stalled by a full GP0 FIFO; the words are lost.** 128 words (64 one-pixel dots) written as fast as the CPU can store them take 352-368 cycles behind a busy GPU (a 320x240 fill or a 256x128 copy, every console) and 856-864 cycles to an idle one; written one at a time with bit 26 checked they take 3,184-3,272 (1001: 2,672). Behind a 320x240 fill or a 256x128 VRAM copy only 9 of 64 dots are drawn (18 words survive, consistent with psx-spx's 16-word FIFO plus a command in flight). To an idle GPU 46-48 of 64 survive. Written one at a time with GPUSTAT bit 26 checked, all 64 are drawn on every console. Agrees with psx-spx ("GPU FIFO / Overrun"); PeterLemon's GPU tests, which send about 1,000 unpaced words behind a fill, expect every word to be drawn.
 Evidence: fifo-burst; 1001 (1), 5000 (7), 5501 (4), 7001 (6), 7501 (6), 7502 (1), 9001 (6).
 
 **18. GP0(03h) slows later drawing on the new GPU only.** With GP0(03h) = 0300000vh written before a flat 3x128 rectangle, the rectangle takes 724 (v = 0), 654, 745, 832, 961, 1,090, 1,223, 1,382, 1,482, 1,616, 1,744, 1,871, 1,994, 2,166, 2,255, 2,382 cycles (v = 15), about 125 more per unit from v = 2; a 64x64 rectangle takes 2,296 at v = 0 and 3,421 at v = 15. On the SCPH-1001 the same rectangles take 956-1,014 and 2,551-2,605 at every v. Agrees with psx-spx (3x128 about 4x slower at 0Fh; measured 3.3-3.6x). Open: the mechanism; psx-spx's 512x128 case was not run.
@@ -152,10 +152,10 @@ Evidence: gpu-version TIMING rows; 1001 (6), 5000 (7), 5501 (7), 7001 (6), 7501 
 |---|---|---|---|---|---|
 | Upload, new GPU | 10,120-10,129 | 7,244-7,262 | 5,818-5,822 | 4,927-4,942 (7502: 5,175) | |
 | Upload, SCPH-1001 | 10,293-10,300 | 7,380-7,402 | 6,038 | 5,240 | |
-| Download (VRAM to RAM), new GPU | | 8,830-8,887 | | | 4,519-4,685 |
-| Download, SCPH-1001 | | 12,376-12,696 | | | 4,823-4,961 |
+| Download (VRAM to RAM), new GPU | | 8,829-8,887 | | | 4,519-4,729 |
+| Download, SCPH-1001 | | 12,376-13,029 | | | 4,823-4,961 |
 
-An upload is about 1 cycle per word plus 12-13.5 cycles per block; a download with 16-word blocks pays about 18.5 per block. Block shape (512x16, 256x32, 128x64, 64x128) does not matter. The old GPU downloads 16-word blocks about 1.4x slower and uploads as fast as the new one (within 3%).
+An upload is about 1 cycle per word plus 12-13.5 cycles per block; a download with 16-word blocks pays about 18.5 per block. Block shape does not matter on the new GPU (16-word downloads 8,829-8,887); on the SCPH-1001 16-word downloads rise with row count: 12,376 (512x16), 12,473-12,511 (256x32), 12,670-12,696 (128x64), 13,016-13,029 (64x128). The old GPU downloads 16-word blocks about 1.4x slower, and uploads within 2% of the new GPU at 8- and 16-word blocks, 3.7% slower at 32 (6,038 against 5,818-5,822) and about 6% slower at 64 (5,240 against 4,927-4,942).
 Evidence: gpu-dmabs2; 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (2), 7502 (1), 9001 (2).
 
 **20. Cost of one primitive inside a DMA2 linked list** (cycles per primitive, slope between 16 and 32 in the list):
@@ -173,16 +173,16 @@ Evidence: gpu-dmabs2; 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (2), 7502 (1)
 | Flat line 16 / gouraud line 16 | 35.0 / 97.5 | 34.6 / 97.5 |
 
 A stream of small flat triangles is bounded by set-up plus packet delivery, not drawing: legs 8 costs 42.4 in a list while a lone one takes 78 to finish.
-Evidence: gpu-dmastream; 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (2), 7502 (1), 9001 (2); the six new-GPU models agree to 1 cycle.
+Evidence: gpu-dmastream; 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (2), 7502 (1), 9001 (2); the six new-GPU models agree to about 1 cycle on nine of the twelve rows (semi flat triangle 180.0-181.7, sprite 7Dh 173.3-174.4, semi rectangle 7Ah 297.8-300.1).
 
 ## Drawing cost
 
-**21. Pixel rates and row costs of triangles.** After set-up a flat triangle is drawn at about 0.5 cycle per pixel and a shaded one at about 1.0, with about 1.9 cycles per row and about 11-13 fixed (a fit that reproduces the four sizes within 5 cycles): right triangles with legs 8 / 16 / 32 / 64 take 51 / 115 / 339 / 1,171 (flat) and 63 / 179 / 603 / 2,219 (shaded) cycles after set-up. Semi-transparent flat triangles take 1.55x a flat one (legs 16: 221-229 against 143; legs 64: 1,866-1,891 against 1,201).
+**21. Pixel rates and row costs of triangles, new GPU.** After set-up a flat triangle is drawn at about 0.5 cycle per pixel and a shaded one at about 1.0, with about 1.9 cycles per row and about 11-13 fixed (a fit that reproduces the four sizes within 5 cycles): right triangles with legs 8 / 16 / 32 / 64 take 51 / 115 / 339 / 1,171 (flat) and 63 / 179 / 603 / 2,219 (shaded) cycles after set-up. Semi-transparent flat triangles take 1.55x a flat one (legs 16: 221-229 against 143; legs 64: 1,866-1,891 against 1,201).
 Evidence: gpu-shape-time3; models as finding 11.
 
 **22. A sloped left edge costs time, a sloped right edge does not.** A triangle is drawn outward from its leftmost vertex and each row starts from the previous row's left edge, so the pixels the left edge moves are paid for. The up/down drawing direction costs nothing.
 
-| Triangle (same pixel count) | 320x16 | 64x64 |
+| Triangle (same pixel count), new GPU | 320x16 | 64x64 |
 |---|---|---|
 | TL (0,0),(W,0),(0,H): slope on the right | 1,438 | 1,201 |
 | TR (0,0),(W,0),(W,H): slope on the left | 1,588 | 1,259 |
@@ -210,22 +210,22 @@ Evidence: gpu-shape-time; 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (2), 7502
 
 | Primitive | New GPU | Per pixel | SCPH-1001 | Old / new |
 |---|---|---|---|---|
-| Fill | 6,061-6,073 | 0.09 | 6,109 | 1.01 |
+| Fill | 6,061-6,073 (one SCPH-5000 log 5,565) | 0.09 | 6,109 | 1.01 |
 | Flat rectangle | 33,890 | 0.52 | 35,067 | 1.03 |
 | Semi rectangle | 54,490-54,538 | 0.83 | 101,879 | 1.87 |
 | VRAM copy | 88,248-88,299 | 1.35 | 106,593 | 1.21 |
 | 15-bit sprite, non-zero texels | 198,392 | 3.03 | 250,342 | 1.26 |
 | 15-bit sprite, 0000h texels | 175,447-175,581 | 2.68 | not run | |
 
-Right triangles with legs of 128 (blanking) tell the same story: flat 4,415 against 4,976; gouraud 8,685 against 9,350; semi flat 6,709 against 13,462; semi gouraud 8,746 against 26,193; 15-bit textured 1:1 27,500 against 36,418; 4-bit 12,805 against 14,894; 15-bit minified 64x64 over a 256-texel span 19,598 against 29,410. Disagrees with psx-spx's remark that old GPUs run at about 60% of the new GPU's speed: the ratios run from 1.0 to 3.0 by primitive; pixels cost the same, and rows, semi-transparency and texture fills cost more.
+Right triangles with legs of 128 (blanking) tell the same story: flat 4,415 against 4,976; gouraud 8,685 against 9,350; semi flat 6,709 against 13,462; semi gouraud 8,746 against 26,193; 15-bit textured 1:1 27,500 against 36,418; 4-bit 12,805 against 14,894; 15-bit minified 64x64 over a 256-texel span 19,598 against 29,410. Disagrees with nocash's remark that old GPUs run at about 60% of the new GPU's speed (the newer psx-spx table does not repeat it): the ratios run from 1.0 to 3.0 by primitive; pixels cost the same, and rows, semi-transparency and texture fills cost more.
 Evidence: gpu-scanout (display-off rows), 1001 (3), 5000 (7), 5501 (7), 7001 (6), 7501 (8), 9001 (5); gpu-shape-time17, 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (2), 9001 (6).
 
-**25. Quads draw as two triangles with the second set-up hidden.** A flat 16x16 quad finishes after 248 cycles against 143 + 148 = 291 for its two lone halves; a 64x64 one after 2,391 against 2,433; 320x16 2,825 against 2,871. A flat quad's bit 28 returns at 132 (16x16) and 1,190 (64x64): about 11 cycles before the first half finishes. The saving is 30-45 cycles for flat quads.
+**25. Quads draw as two triangles with the second set-up hidden.** A flat 16x16 quad finishes after 248 cycles against 143 + 148 = 291 for its two lone halves; a 64x64 one after 2,391 against 2,433; 320x16 2,825 against 2,871. A flat quad's bit 28 returns at 132 (16x16) and 1,190 (64x64): about 11 cycles before the first half finishes. The saving is 31-46 cycles for flat quads.
 Evidence: gpu-shape-time3, -time5; models as finding 11.
 
 ## Scan-out
 
-**26. The old GPU's drawing ignores the display; the new GPU's does not, by mode and repeatably.** Fastest of four, 256x256 primitives drawn into the displayed area (SCPH-7501, first session; the other new-GPU models agree to within about 50 cycles for the same VRAM state):
+**26. The old GPU's drawing ignores the display; the new GPU's does not, by mode and repeatably.** Fastest of four, 256x256 primitives drawn into the displayed area (SCPH-7501, first session; the other new-GPU models agree to within about 100 cycles for the same VRAM state (12 of 20 cells within 60; largest difference 173, semi rectangle at 640x480i 24-bit; the 7501's own three first-session logs differ by up to 129 on the 320x240 fill)):
 
 | Primitive | Display off | 320x240 15-bit | 640x480i 15-bit | 640x480i 24-bit |
 |---|---|---|---|---|
@@ -256,10 +256,10 @@ Evidence: gpu-scanout; 1001 (3), 5000 (7), 5501 (7), 7001 (6), 7501 (8), 9001 (5
 | 15-bit minified | 19,598 | +8.6% | 0.0% |
 | Flat 256x64 / gouraud 256x64 | 4,345 / 8,621 | +6.2% / +1.0% | +0.1% / +0.1% |
 
-Identical on SCPH-5000, 5501, 7001, 7501 and 9001 to 1-3 cycles.
+On SCPH-5000, 5501, 7001, 7501 and 9001 the extra agrees to within 0.3 percentage points and the blanking cycles to within 7 cycles for flat, gouraud and semi draws and 13-33 cycles for the textured ones (4-bit 12,784-12,817).
 Evidence: gpu-shape-time17; 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (2), 9001 (6).
 
-**28. Both GPUs are held when a draw spans a display-line start; the amount differs.** Over the fastest-to-slowest spread of every `gpu-shape-time` shape (eight start points an eighth of a line apart): draws under 150 cycles show no spread (99% of rows); draws over 270 cycles on the new GPU show a median spread of 15-25 cycles (90th percentile 24-39; rare maxima up to 87); on the old GPU 40-42 cycles with a 90th percentile of 42-48. This appears in the vertical blanking too. Shapes of wide rows often show much less than the full amount.
+**28. Both GPUs are held when a draw spans a display-line start; the amount differs.** Over the fastest-to-slowest spread of every `gpu-shape-time` shape (eight start points an eighth of a line apart): draws under 150 cycles show no spread (98.7% of 1,867 new-GPU rows, 77% of 276 old-GPU rows); draws over 270 cycles on the new GPU show a median spread of 15-25 cycles (90th percentile 24-39; rare maxima up to 87); on the old GPU 40-42 cycles with a 90th percentile of 42-48. This appears in the vertical blanking too. Shapes of wide rows often show much less than the full amount.
 Evidence: all `gpu-shape-time` programs; about 15,500 shape rows on the new GPU (5501, 7501, 9001), 3,300 on the old (1001).
 
 **29. The line-start fetch holds a draw by about 93-99 cycles on the new GPU.** A probe that pays every burst whole, started at 300 consecutive points 2 cycles apart across the fetch, is delayed at most by: vertical 1x64 line 94, semi rectangle 16x16 99, fill 16x16 93, 16-pixel copy 48-50. Same in 320x240 and 512x240 15-bit modes. The old GPU's worst delay for the same four is 38-42, the line hold alone.
@@ -268,7 +268,7 @@ Evidence: gpu-shape-time74; 1001 (1), 5000 (1), 5501 (2), 7501 (2), 7502 (1), 90
 **30. Copies pay by width and mode.** The extra a copy pays in the display over the blanking (percent): 16 wide 7.2 at 512x240 and 6.9 at 320x240; 256 wide 5.5 and 0.8; 512 wide 5.1 and 0.6. On the old GPU 4% at 16 wide (the line hold) and 0-1.3% above.
 Evidence: gpu-copy3; 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (2), 9001 (6).
 
-**31. Short-draw timings in the display vary from session to session, and VRAM contents change how much.** Copies and textured draws started at 32 points across one line differ between sessions of the same console at the same start. The mean spread (max - min over runs, per start point) at 320x240 falls from 37.7 to 3.0 cycles for a 64x64 copy and from 3.3 to 0.0 for a 15-bit 16x16 sprite when VRAM is filled first (6 runs against 4); a 256x32 copy 53.3 to 33.2; at 512x240 the effect is smaller (25.3 to 18.6, 40.3 to 37.8). Open: what the discrete session state is (the GPU clock's phase against the CPU's is suspected). Every shape's mean over runs stays within a few cycles.
+**31. Short-draw timings in the display vary from session to session, and VRAM contents change how much.** Copies and textured draws started at 32 points across one line differ between sessions of the same console at the same start. The mean spread (max - min over runs, per start point) at 320x240 falls from 37.7 to 3.0 cycles for a 64x64 copy and from 3.3 to 0.0 for a 15-bit 16x16 sprite when VRAM is filled first (6 runs against 4); a 256x32 copy 53.3 to 33.2; at 512x240 the effect is smaller (25.3 to 18.6, 40.3 to 37.8). Taking every 4 of the 6 runs, to compare like with like, gives 31.9 (25.7-36.0) for the 320x240 64x64 copy against 3.0, and 2.5 (1.2-3.3) for the 16x16 sprite against 0.0; for the 256x32 copy (40.7, range 16.9-51.5, against 33.2) and at 512x240 (22.3 against 18.6; 36.8 against 37.8) the difference lies inside the spread, so only the first two support a VRAM effect. Open: what the discrete session state is (the GPU clock's phase against the CPU's is suspected). A shape's mean over runs moves by a median of 2.6 cycles between runs; the 256x32 copy moves by 38.6 (320x240) and 30.4 (512x240), the 64x64 copy by 18.8.
 Evidence: gpu-shape-time68 (SCPH-7501, 6 runs), gpu-shape-time68c (SCPH-7501, 4 runs, VRAM filled first).
 
 ## Copies and fills
@@ -297,7 +297,7 @@ Evidence: gpu-shape-time73, gpu-shape-time27; 1001 (3 and 2).
 The new GPU's extra is about 0.2455 cycle per pixel from 64 wide, and rows add (16x16: +112 = 16 x 7; 128x8: +232; 256x8: +512). The old GPU pays exactly one cycle per pixel (16x16: +256; longer copies add the line hold as well). Agrees with psx-spx's old-GPU figures (1.5 plain, 2.5 masked per pixel); disagrees with its new-GPU masked-copy figure.
 Evidence: gpu-shape-time73; 1001 (3), 7501 (3), 5501 (2), 9001 (1), 5000 (1), 7502 (1).
 
-**35. Fills.** About 14-16 pixels per cycle plus 5-6 cycles per row (16 wide) and a small fixed cost: 112 (16x16), 52 (64x4), 400 (16x64), 592 (64x64) on the new GPU; 138 / 54 / 522 / 714 on the old GPU, which pays about 2 more cycles per row. Large fills, polled: 256x256 5,981-6,073 (both GPUs), 1008x16 1,230-1,361, 16x256 1,775-1,819. A fill is also touched by the picture (finding 26: 5,563-6,646 by mode on the new GPU, flat on the old).
+**35. Fills.** About 14-16 pixels per cycle plus 5-6 cycles per row (16 wide) and a small fixed cost: 112 (16x16), 52 (64x4), 400 (16x64), 592 (64x64) on the new GPU; 138 / 54 / 522 / 714 on the old GPU, which pays about 2 more cycles per row. Large fills, polled: 256x256 5,981-6,109 (both GPUs), 1008x16 1,230-1,361, 16x256 1,775-1,819 (SCPH-1001 2,183-2,257). A fill is also touched by the picture (finding 26: 5,563-6,646 by mode on the new GPU, flat on the old).
 Evidence: gpu-shape-time, gpu-cost-sweep; models as finding 23.
 
 ## Lines
@@ -309,7 +309,7 @@ Evidence: gpu-shape-time, gpu-cost-sweep; models as finding 23.
 | New GPU | 68 | 83 | 91 | 95 | 98 | 107 | 116 | 124 | 141 | 168 | 173 |
 | SCPH-1001 | 56 | 73 | 82 | 86 | 89 | 104 | 128 | 152 | 200 | 242 | 248 |
 
-A level line is about 34 + 1 cycle per pixel on the new GPU (4 / 32 / 128 / 255 pixels: 33 / 68 / 162 / 288). A tilted line is about 24 + 2 per pixel + 2 per row (fit); the direction of drawing does not matter ((32,8) (32,-8) (-32,8) (-32,-8): 107 / 108 / 108 / 107); a line at 45 degrees or steeper costs by its length alone ((8,32), (16,32), (24,32), (32,32): all 173). Agrees with psx-spx's line table (about 2 cycles per pixel and per row off the horizontal).
+A level line is about 34 + 1 cycle per pixel on the new GPU (4 / 32 / 128 / 255 pixels: 33 / 68 / 162 / 288). A tilted line is about 24 + 2 per pixel + 2 per row (a loose fit: it reads 150-152 against 168-173 at dy 31-32); the direction of drawing does not matter ((32,8) (32,-8) (-32,8) (-32,-8): 107 / 108 / 108 / 107); a line at 45 degrees or steeper costs by its length alone ((8,32), (16,32), (24,32), (32,32): all 173). Agrees with psx-spx's line table (about 2 cycles per pixel and per row off the horizontal).
 Evidence: gpu-shape-time11; 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (2), 7502 (1), 9001 (2). The six new-GPU models agree to the cycle in all 25 logs.
 
 **37. Line set-up.** Bit 28 returns 17 cycles after a flat line's last word on every model, and 79 after a gouraud line's; the gouraud line then draws as a flat one (32,8: 169 against 107, a difference of 62 = 79 - 17). A semi line adds almost nothing on the new GPU (+4) and about 2 cycles per pixel on the old (32,8: 170 against 104).
@@ -337,22 +337,22 @@ Evidence: gpu-semi-shape; models as finding 39.
 
 ## MDEC
 
-**41. Decode throughput is 512 cycles per 8x8 block.** 320 macroblocks fed by DMA0 and drained by DMA1 in 32-word blocks take 983,5xx cycles: 3,073 per macroblock at both 15 and 24 bpp (24 bpp moves 1.5x the output words, so the output transfer is hidden under the next decode), and 513 per block in 8-bit mono, for flat and for dense mono data alike. Agrees with mednafen's "about 512" a block; DuckStation's 448 is too fast.
+**41. Decode throughput is 512 cycles per 8x8 block.** 320 macroblocks fed by DMA0 and drained by DMA1 in 32-word blocks take 983,5xx cycles: 3,073 per macroblock at both 15 and 24 bpp (24 bpp moves 1.5x the output words, so the output transfer is hidden under the next decode), and 513 per block in 8-bit mono, for flat and for dense mono data alike. One SCPH-5501 log (the first day) hung on the DC-only mono run (status A204013F). All three psx-spx texts call MDEC decode time unknown. Agrees with mednafen's "about 512" a block; DuckStation's 448 is too fast.
 Evidence: mdec-time; 1001 (1), 5000 (7), 5501 (4), 7001 (6), 7501 (6), 7502 (1), 9001 (6).
 
-**42. A decode command of 8000h words or more never finishes.** A dense command of 61,440 (F000h) words stops with status A6007FFFh (15 bpp) or A4007FFFh (24 bpp): the data-in request drops after 7000h words (the count behaves as 15 bits), 8000h words stay unsent on DMA0, and the command waits for ever. The same on every model. Counts up to 10,240 words finished.
+**42. A decode command of F000h words never finishes.** A dense command of 61,440 (F000h) words stops with status A6007FFFh (15 bpp) or A4007FFFh (24 bpp): the data-in request drops after 7000h words (the count behaves as 15 bits), 8000h words stay unsent on DMA0, and the command waits for ever. The same on every model. Counts up to 10,240 words finished; nothing between 10,240 and 61,440 was run, so the 8000h limit is inferred.
 Evidence: mdec-time; models as finding 41.
 
-**43. DMA0 into the MDEC starts 75 cycles after the CHCR write, and the MDEC reset is instant.** A 32-word table transfer finishes 75 cycles after the CHCR write in 1,016 of 1,236 completed transfers (75-85 in all but one that took 39), at every delay from 1 cycle to 4,096 after the reset. Open: in 24 of 30 logs (the sessions started through the locked-start runner) the first case, the request-enable write straight after the reset, left status 60000000h and DMA0 busy until the 2 ms limit; the other 1,236 transfers finished.
+**43. DMA0 into the MDEC finishes a 32-word table 75 cycles after the CHCR write, and the MDEC reset is instant.** A 32-word table transfer finishes 75 cycles after the CHCR write in 1,016 of 1,236 completed transfers (75-85 in all but one that took 39), at every delay from 1 cycle to 4,096 after the reset. Open: in 24 of 30 logs (the sessions started through the locked-start runner; the other 6 are the first two days, so the runner and the date cannot be told apart) the first case, the request-enable write straight after the reset, left status 60000000h and DMA0 busy until the 2 ms limit; the other 1,236 transfers finished.
 Evidence: mdec-reset; 1001 (1), 5000 (6), 5501 (4), 7001 (6), 7501 (6), 7502 (1), 9001 (6).
 
 **44. The YUV to RGB stage, exactly.** With signed Y, Cb, Cr in -128..127 from the IDCT, the output is reproduced in every cell of the flat-block sweep (5,120 R, 5,120 B and 18,432 G cells per depth, 56 sweeps per log, 16 logs on all seven models) by:
 
 - R term = 359 x Cr; B term = 454 x Cb; G term = (-88 x Cb with its low 5 bits cleared) + (-183 x Cr with its low 3 bits cleared);
-- S = 256 x Y + term, wrapped to a 17-bit signed range (an overflow beyond +-128.0 wraps instead of saturating: Y = 127 with Cr = 92 gives 0, Y = -128 with Cr = -92 gives 255), then limited to -128..127.996;
+- S = 256 x Y + term, wrapped to a 17-bit signed range (a sum beyond ±256.0 wraps instead of saturating; between ±128.0 and ±256.0 it saturates: Y = +64 with Cb = +108 gives 255.5 and reads 255. Y = 127 with Cr = 92 gives 0, Y = -128 with Cr = -92 gives 255), then limited to -128..127.996;
 - output = S + 128 x 256, then rounded once to the output precision: add 80h and shift right 8 for 24 bpp; add 400h and shift right 11 for 15 bpp (5 bits); clamp.
 
-Taking each step away, on one log (SCPH-7501): without the two cleared-bit masks 325 of 18,432 G cells (24 bpp) and 46 (15 bpp) are wrong; truncating instead of rounding the sum gets 3,559 of 5,120 R cells right; saturating instead of wrapping gets 4,828 R and 4,521 B cells right. The cleared-bit masks are the ones DuckStation uses.
+Taking each step away, on one log (SCPH-7501): without the two cleared-bit masks 325 of 18,432 G cells (24 bpp) and 46 (15 bpp) are wrong; truncating instead of rounding the sum gets 3,559 of 5,120 R cells right; saturating instead of wrapping gets 4,828 R and 4,521 B cells right. The cleared-bit masks are the ones DuckStation uses. An independent reimplementation from this text alone scored 917,504 of 917,504 cells. The sweep's Y takes five values (-128, -64, 0, +64, +127) and both chroma are non-zero together only at Y = 0, so this is exact on that grid, not tested for arbitrary YCbCr.
 Evidence: mdec-color with each console's own mdec-idct flat-byte table; 1001 (1), 5000 (1), 5501 (3), 7001 (2), 7501 (4), 7502 (1), 9001 (4).
 
 **45. The IDCT and dequantiser give byte-identical blocks on every console.** DC-only blocks at q_scale 0 and 1 (every DC from -512 to 511) and 72 single-AC blocks (positions 1, 2, 9, 63; DC -100, 0, 37; levels -300, -51, -7, 7, 51, 300) were identical in all 48 logs. At q_scale 0 the flat byte for DC >= 0 is exactly 80h + floor((DC + 1) / 4), clamped at FFh (checked for all 512 values); below zero the steps are 3, 4 or 5 DC values wide in an irregular order (00h for 2 values, 01h for 5, 02h for 3, 03h for 4, 04h for 5, 05h for 3, ...; run lengths over the whole range: 3 x32, 4 x189, 5 x34, 2 x1), so the first IDCT pass truncates rather than rounds. Open: the full IDCT arithmetic is not given here.
@@ -361,7 +361,7 @@ Evidence: mdec-idct; 1001 (6), 5000 (6), 5501 (9), 7001 (6), 7501 (10), 7502 (1)
 **46. A zero quantiser entry contributes nothing.** With q_scale 1 and luma quantiser entry 5 set to 0, a block with a level of 100 at position 5 decodes to the DC alone (flat 71h); with the normal entry (19) it decodes to 9881614A4A618198 per row. Agrees with psx-spx; mednafen's "level x 2" does not.
 Evidence: mdec-idct (QZERO); models as finding 45.
 
-**47. After a command that ends at its end code the MDEC keeps producing blocks.** A one-block 8-bit command [0340 FE00] sent without padding returned 32 words (two blocks) in 3 logs (5501 x1, 7501 x2, first session) and 96 words (six blocks) in the other 27, all models; the extra words are not zero (80857F88h 857C8073h ...) and differ by session. The same block padded with FE00h to 32 words returned exactly 16 words (one block) in every log. Open: the source of the extra blocks (stale input-buffer contents are suspected); games that feed the MDEC in padded 32-word blocks never meet it.
+**47. After a command that ends at its end code the MDEC keeps producing blocks.** A one-block 8-bit command [0340 FE00] sent without padding returned 32 words (two blocks) in 3 logs (5501 x1, 7501 x2, first session) and 96 words (six blocks) in the other 27, all models; the extra words are not zero (80857F88h 857C8073h ... in those first three logs; CBCBCBCBh, 80808080h or 7E7E7F7Fh ... in the rest). The same block padded with FE00h to 32 words returned exactly 16 words (one block) in every log. Open: the source of the extra blocks (stale input-buffer contents are suspected); games that feed the MDEC in padded 32-word blocks never meet it.
 Evidence: mdec-mono-out; 1001 (1), 5000 (6), 5501 (4), 7001 (6), 7501 (6), 7502 (1), 9001 (6).
 
 ## Open

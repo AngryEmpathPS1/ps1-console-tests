@@ -1,6 +1,6 @@
 # PS1 console tests
 
-Timing and behaviour tests for the original PlayStation, and what they read on real consoles.
+Timing and behaviour tests for the original PlayStation, and what they read on real consoles. This is still being actively worked on and updated: more tests, consoles and findings are on the way.
 
 - **`consoles/`**: the logs, one folder per console, then one per session. Each console has a page saying what it reported about itself.
 - **`hwtests/`**: the test programs, each a folder with its source, beside a ready-to-run PS-EXE in `hwtests/build/`.
@@ -44,7 +44,7 @@ Don't take the findings on trust. Each one names the tests and consoles behind i
 
 ## Standing on
 
-None of this happens without other people's work: [psx-spx](https://psx-spx.consoledev.net/) and nocash's no$psx documentation, [ps1-tests](https://github.com/JaCzekanski/ps1-tests) by Jakub Czekański, [PSn00bSDK](https://github.com/Lameguy64/PSn00bSDK) by Lameguy64, [Unirom](https://github.com/JonathanDotCel/unirom8_bootdisc_and_firmware_for_ps1) by JonathanDotCel, PeterLemon's and amidog's test programs, and the source of DuckStation, PCSX-Redux, mednafen and the MiSTer PSX core. Where a finding is someone else's measurement, it says whose.
+None of this happens without other people's work: [psx-spx](https://psx-spx.consoledev.net/) and nocash's no$psx documentation, [ps1-tests](https://github.com/JaCzekanski/ps1-tests) by Jakub Czekański, [PSn00bSDK](https://github.com/Lameguy64/PSn00bSDK) by Lameguy64, [Unirom](https://github.com/JonathanDotCel/unirom8_bootdisc_and_firmware_for_ps1) by JonathanDotCel, PeterLemon's and amidog's test programs, the hardware tests of [PCSX-Redux](https://github.com/grumpycoders/pcsx-redux) (its nugget suite, whose questions several tests here ask again, named in their headers), and the source of DuckStation, PCSX-Redux, mednafen and the MiSTer PSX core, read to decide what to measure. Where a finding is someone else's measurement, it says whose.
 
 ## Licences
 
