@@ -1,0 +1,44 @@
+
+cpu/load-fill4
+Stores and loads at each word of a cold line (8 KB, every line a fill). Digits: the word of the unit (0-3 the
+first line); S store, L RAM load, I I_STAT load, U a reader. Timer 2, fastest..slowest of four.
+There are no assertions - compare against your emulator.
+
+  NOPS             4716..4720    above the nops      0  ->  0.00 a unit
+  S0               5444..5484    above the nops    728  ->  5.69 a unit
+  S1               5441..5483    above the nops    725  ->  5.66 a unit
+  S2               5445..5494    above the nops    729  ->  5.70 a unit
+  S3               5431..5478    above the nops    715  ->  5.59 a unit
+  S0 S1            5653..5658    above the nops    937  ->  7.32 a unit
+  S2 S3            5652..5656    above the nops    936  ->  7.31 a unit
+  S0 n S2          5647..5652    above the nops    931  ->  7.27 a unit
+  S3 S4            5944..5958    above the nops   1228  ->  9.59 a unit
+  S0 S1 S2         5906..5910    above the nops   1190  ->  9.30 a unit
+  S EVERY LINE     7367..7372    above the nops   2651  ->  20.71 a unit
+  SS EVERY LINE    8398..8411    above the nops   3682  ->  28.77 a unit
+  L0 S1            6167..6180    above the nops   1451  ->  11.34 a unit
+  L0 n n S3        5906..5913    above the nops   1190  ->  9.30 a unit
+  S0 L1            5905..5932    above the nops   1189  ->  9.29 a unit
+  S0 n n L3        5904..5906    above the nops   1188  ->  9.28 a unit
+  S0 L4            5905..5906    above the nops   1189  ->  9.29 a unit
+  S3 L4            5906..5912    above the nops   1190  ->  9.30 a unit
+  L0 n L2          6168..6179    above the nops   1452  ->  11.34 a unit
+  L0 n n L3        5773..5779    above the nops   1057  ->  8.26 a unit
+  L3 L4            6027..6029    above the nops   1311  ->  10.24 a unit
+  L1 n U3          5495..5509    above the nops    779  ->  6.09 a unit
+  L2 n U4          5885..5892    above the nops   1169  ->  9.13 a unit
+  L3 n U5          5759..5763    above the nops   1043  ->  8.15 a unit
+  L0 n n U3        5628..5636    above the nops    912  ->  7.13 a unit
+  I1               4853..4858    above the nops    137  ->  1.07 a unit
+  I0 I1            5209..5221    above the nops    493  ->  3.85 a unit
+  I1 I2            5078..5085    above the nops    362  ->  2.83 a unit
+  I2 I3            5349..5357    above the nops    633  ->  4.95 a unit
+  I0 n I2          5209..5219    above the nops    493  ->  3.85 a unit
+  I0 n n I3        4716..4720    above the nops      0  ->  0.00 a unit
+  I3 I4            5208..5219    above the nops    492  ->  3.84 a unit
+  I0 L1            5626..5631    above the nops    910  ->  7.11 a unit
+  L0 I1            5631..5634    above the nops    915  ->  7.15 a unit
+  S0 I1            5441..5483    above the nops    725  ->  5.66 a unit
+  I0 S1            5799..5814    above the nops   1083  ->  8.46 a unit
+
+Done.

@@ -1,0 +1,42 @@
+
+gpu/gpu-shape-time43
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+flat Q 1x16             146..146      126..126  
+flat Q 2x2               63..63        50..50   
+flat Q 4x16             239..275      142..142  
+flat Q 8x8              159..159       95..95   
+flat Q 16x4             113..113       76..76   
+flat Q 16x16            352..388      192..223  
+gour Q 1x16             355..355      334..334  
+gour Q 2x2              344..344      331..331  
+gour Q 4x16             439..479      334..334  
+gour Q 8x8              411..412      335..335  
+gour Q 16x4             387..389      336..336  
+gour Q 16x16            619..653      402..404  
+tex4 Q 1x16             250..271      229..258  
+tex4 Q 2x2              235..235      222..222  
+tex4 Q 4x16             358..384      253..281  
+tex4 Q 8x8              304..305      228..239  
+tex4 Q 16x4             282..282      231..231  
+tex4 Q 16x16            569..610      353..383  
+tex15 Q 1x16            250..286      229..262  
+tex15 Q 2x2             235..235      222..222  
+tex15 Q 4x16            358..393      253..289  
+tex15 Q 8x8             304..320      228..232  
+tex15 Q 16x4            282..282      231..231  
+tex15 Q 16x16           569..605      353..379  
+gtex4 Q 1x16            529..529      508..508  
+gtex4 Q 2x2             518..518      505..505  
+gtex4 Q 4x16            613..651      508..508  
+gtex4 Q 8x8             585..601      509..509  
+gtex4 Q 16x4            561..562      510..510  
+gtex4 Q 16x16           728..769      512..532  
+gour Q 2x16 r3=r1       396..396      327..327  
+gour Q 2x16 r3+255      403..405      334..334  
+gour Q 2x16 r1+255      405..421      336..336  
+gour Q v2(0,1) 2x16     398..398      330..330  
+
+gpu/gpu-shape-time43: Done.

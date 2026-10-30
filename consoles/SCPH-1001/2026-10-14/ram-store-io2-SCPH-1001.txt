@@ -1,0 +1,64 @@
+
+cpu/ram-store-io2
+lhu T2; n stores (S one 1 KB block, P alternating two); [k nops]; a read (T none, G GPUSTAT, O RAM elsewhere,
+M RAM in the first store's block); lhu T2 - cycles, fastest..slowest of 16. No assertions.
+
+A 80012C00 B 80012800 C 80012400
+  TS1         7..8   
+  TS2         9..11  
+  TS3        11..11  
+  TS4        13..23  
+  TS5        15..15  
+  TS6        17..17  
+  TP1         7..12  
+  TP2         7..9   
+  TP3         7..17  
+  TP4        12..13  
+  TP5        13..18  
+  TP6        19..25  
+  GS1        11..11  
+  GS2        13..15  
+  GS3        15..25  
+  GS4        17..26  
+  GS5        19..21  
+  GS6        21..31  
+  GP1        11..17  
+  GP2        13..13  
+  GP3        13..13  
+  GP4        19..19  
+  GP5        19..24  
+  GP6        25..35  
+  OS1        16..16  
+  OS2        18..27  
+  OS3        20..20  
+  OS4        22..22  
+  OS5        24..24  
+  OS6        26..36  
+  OP1        16..16  
+  OP2        18..24  
+  OP3        18..18  
+  OP4        24..30  
+  OP5        24..25  
+  OP6        30..36  
+  MS1        16..21  
+  MS2        18..19  
+  MS3        20..30  
+  MS4        22..28  
+  MS5        24..29  
+  MS6        26..31  
+  MP1        16..16  
+  MP2        18..18  
+  MP3        28..33  
+  MP4        30..35  
+  MP5        40..45  
+  MP6        42..52  
+  TS4k8      16..16  
+  TP4k8      18..24  
+  GS4k8      20..20  
+  GP4k8      25..30  
+  OS4k8      22..22  
+  OP4k8      30..35  
+  MS4k8      22..32  
+  MP4k8      30..35  
+
+cpu/ram-store-io2: Done.

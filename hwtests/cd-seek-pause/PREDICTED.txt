@@ -1,0 +1,84 @@
+cd-seek-pause - PREDICTED before its first console run (2026-10-18), as the SCPH-7001 under the runner, X-Files Disc 1.
+v0.377.127 answers a Pause inside a SeekL with INT5 (refused) and then the seek's INT2 at its own time ("52"); v0.377.128
+(any command taken while a seek runs takes its INT2 away, cd-seek-cmd) answers INT5 and nothing more ("5"); the drive's
+own program the same as v0.377.128 - but 2M into the short seek it ends the seek as the Pause comes (232: INT2 at 2.03M,
+then the Pause taken).
+
+r127:
+29:01 -> 50:00, the command 0.2M into the seek:
+  none      2  INT2 27.28
+  Pause     52  INT2 27.26
+  Getstat   32  INT2 27.27
+  Pause     52  INT2 27.28
+  none      2  INT2 27.28
+29:01 -> 50:00, the command 2M into the seek:
+  none      2  INT2 27.27
+  Pause     52  INT2 27.27
+  Getstat   32  INT2 27.27
+  Pause     52  INT2 27.28
+  none      2  INT2 27.26
+29:01 -> +6, the command 0.2M into the seek:
+  none      2  INT2 2.67
+  Pause     52  INT2 2.67
+  Getstat   32  INT2 2.66
+  Pause     52  INT2 2.66
+  none      2  INT2 2.67
+29:01 -> +6, the command 2M into the seek:
+  none      2  INT2 2.66
+  Pause     52  INT2 2.67
+  Getstat   32  INT2 2.67
+  Pause     52  INT2 2.67
+  none      2  INT2 2.67
+
+r128:
+29:01 -> 50:00, the command 0.2M into the seek:
+  none      2  INT2 27.26
+  Pause     5  INT2 -
+  Getstat   3  INT2 -
+  Pause     5  INT2 -
+  none      2  INT2 27.27
+29:01 -> 50:00, the command 2M into the seek:
+  none      2  INT2 27.27
+  Pause     5  INT2 -
+  Getstat   3  INT2 -
+  Pause     5  INT2 -
+  none      2  INT2 27.27
+29:01 -> +6, the command 0.2M into the seek:
+  none      2  INT2 2.67
+  Pause     5  INT2 -
+  Getstat   3  INT2 -
+  Pause     5  INT2 -
+  none      2  INT2 2.66
+29:01 -> +6, the command 2M into the seek:
+  none      2  INT2 2.66
+  Pause     5  INT2 -
+  Getstat   3  INT2 -
+  Pause     5  INT2 -
+  none      2  INT2 2.67
+
+lle:
+29:01 -> 50:00, the command 0.2M into the seek:
+  none      2  INT2 26.73
+  Pause     5  INT2 -
+  Getstat   3  INT2 -
+  Pause     5  INT2 -
+  none      2  INT2 25.23
+29:01 -> 50:00, the command 2M into the seek:
+  none      2  INT2 24.63
+  Pause     5  INT2 -
+  Getstat   3  INT2 -
+  Pause     5  INT2 -
+  none      2  INT2 28.62
+29:01 -> +6, the command 0.2M into the seek:
+  none      2  INT2 2.20
+  Pause     5  INT2 -
+  Getstat   3  INT2 -
+  Pause     5  INT2 -
+  none      2  INT2 2.66
+29:01 -> +6, the command 2M into the seek:
+  none      2  INT2 2.65
+  Pause     232  INT2 2.03
+  Getstat   3  INT2 -
+  Pause     232  INT2 2.03
+  none      2  INT2 2.65
+

@@ -1,0 +1,25 @@
+
+spu/spu-phase3
+Voice 1's onset in its capture ring, KON 96 cycles after SPUSTAT bit 11 falls (8 or 9: spu-latch's two classes),
+after the transfer control held at 0 (or another value) for a time, four times each. No assertions.
+
+at the start: onset 8
+  0 x850     9   8   9   8
+  0 x875     9   8   9   8
+  0 x900     9   8   9   8
+  0 x925     9   8   9   8
+  0 x950     9   8   9   8
+  0 x975     9   8   9   8
+  0 x1000    9   8   9   8
+  0 x1025    9   8   9   8
+  0 x1050    9   8   9   8
+  0 x1075    9   8   9   8
+  0 x1100    9   8   9   8
+  0 x1125    9   8   9   8
+  0 x1150    8   9   9   9
+  0 x1175    9   9   9   9
+  0 x1200    9   9   9   9
+  0 x1225    9   9   9   9
+  0 x1250    9   9   9   9
+
+spu/spu-phase3: Done.

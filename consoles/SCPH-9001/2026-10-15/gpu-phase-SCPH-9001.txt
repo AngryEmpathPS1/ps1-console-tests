@@ -1,0 +1,51 @@
+
+gpu/gpu-phase
+A flat and a semi 256x32 rectangle started D cycles after Timer 1 (hblanks since VBlank) reaches line 100;
+cycles to GPUSTAT bits 28+26, fastest..slowest of four (one a frame). No assertions.
+
+  D    0   flat  4226..4571    semi  6216..6260
+  D   50   flat  4228..4269    semi  6213..6254
+  D  100   flat  4230..4278    semi  6258..6270
+  D  150   flat  4228..4277    semi  6256..6271
+  D  200   flat  4230..4270    semi  6259..6263
+  D  250   flat  4230..4273    semi  6260..6267
+  D  300   flat  4227..4270    semi  6259..6266
+  D  350   flat  4227..4270    semi  6256..6267
+  D  400   flat  4232..4274    semi  6256..6263
+  D  450   flat  4230..4274    semi  6256..6264
+  D  500   flat  4227..4278    semi  6256..6264
+  D  550   flat  4266..4278    semi  6257..6266
+  D  600   flat  4226..4278    semi  6255..6264
+  D  650   flat  4229..4272    semi  6258..6267
+  D  700   flat  4230..4269    semi  6257..6266
+  D  750   flat  4272..4275    semi  6252..6266
+  D  800   flat  4227..4272    semi  6260..6264
+  D  850   flat  4230..4274    semi  6260..6263
+  D  900   flat  4233..4274    semi  6257..6264
+  D  950   flat  4229..4271    semi  6257..6264
+  D 1000   flat  4227..4266    semi  6257..6263
+  D 1050   flat  4230..4271    semi  6260..6266
+  D 1100   flat  4227..4272    semi  6260..6267
+  D 1150   flat  4232..4272    semi  6257..6264
+  D 1200   flat  4229..4269    semi  6258..6267
+  D 1250   flat  4230..4275    semi  6260..6261
+  D 1300   flat  4230..4272    semi  6261..6264
+  D 1350   flat  4229..4278    semi  6258..6261
+  D 1400   flat  4230..4232    semi  6258..6267
+  D 1450   flat  4226..4272    semi  6258..6266
+  D 1500   flat  4229..4272    semi  6258..6267
+  D 1550   flat  4232..4275    semi  6260..6263
+  D 1600   flat  4230..4278    semi  6260..6263
+  D 1650   flat  4227..4275    semi  6260..6264
+  D 1700   flat  4230..4272    semi  6260..6266
+  D 1750   flat  4229..4272    semi  6258..6267
+  D 1800   flat  4230..4274    semi  6258..6264
+  D 1850   flat  4230..4275    semi  6258..6266
+  D 1900   flat  4230..4269    semi  6258..6261
+  D 1950   flat  4226..4277    semi  6258..6264
+  D 2000   flat  4227..4230    semi  6213..6261
+  D 2050   flat  4227..4230    semi  6216..6261
+  D 2100   flat  4230..4275    semi  6216..6219
+  D 2150   flat  4230..4272    semi  6216..6261
+
+gpu/gpu-phase: Done.

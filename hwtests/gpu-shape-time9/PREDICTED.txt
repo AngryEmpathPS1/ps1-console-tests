@@ -1,0 +1,37 @@
+Written 2026-10-14 04:23:37 (scratch/gst9_predict.txt's time), before the first SCPH-9001 run's log (04:25:48).
+
+gpu-shape-time9 - bit 28 predicted BEFORE the console run (2026-10-14 04:35), from the law fitted on gpu-shape-time7/8:
+  flat FS = 24 + max(2, lg|dx0|) + lg|dy0|;  gouraud FS + 129 + Cr;  textured FS + 85 + Cu;  gouraud-textured FS + 217 + Cr
+  Cr = max(2, lg|r1-r0|) + bitlen|r2-r0|  (red only),  Cu = the same of U (the texture word's low byte)
+
+shape             predicted   core v104   reasoning
+tex u2 255          123         116       FS 28 + 85 + 2 + bitlen 255 (8)
+tex u2 1            116         116       28 + 85 + 2 + 1
+tex v only          115         116       V costs nothing: 28 + 85 + 2
+tex u12 255         128         116       28 + 85 + 7 + 8
+tex u 255->0        120         116       du1 -255 -> 7, du2 0
+tex4 u12 255        128         116       depth changes nothing
+tex4 u2 255         123         116
+tex vert u1 15      118         120       FS 30 (first edge along Y) + 85 + 3
+gtex u1 255         247         254       U unseen on gouraud-textured (gst7: u/v 1/15/255 all 258)
+gtex u2 255         247         254
+gtex u0             247         254
+gtex R2 u12         255         254       28 + 217 + 2 + 8
+gtex raw R1         252 / 247   254       252 if the raw command still sets up its colours
+gour 320 R1         168         173       FS 32 + 129 + 7
+gour BR R1          168         173       FS 32 + 129 + 7
+gour R1 -1          159         169       lg 1 = 0 -> 2
+gour R2 +1          160         169       2 + bitlen 1
+gour 80 FF 00       171         169       lg 127 = 6, bitlen 128 = 8
+gour semi R12       172         169       semi changes no set-up
+gquad same          335?        345       the core's less the alike triangle's 10; the fourth colour:
+gquad R3            335?        345       not in the first half's set-up (if bit 28 waits only for the first half)
+gquad R1            340?        345       + 5
+tquad u3 255        ?           391
+tquad same          ?           292
+gline same          79           79
+gline R 255         79 / 84      79       84 if a line's colour delta costs as a polygon's dR1
+gline G 255         79           79
+line flat           17           17
+flat TL             28           28
+gour TL             159         169

@@ -1,0 +1,30 @@
+
+gpu/gpu-batch3
+Rectangles by command and size, alone and after a long primitive, and in batches; fastest of 3 runs x 8 start
+points in the blanking, cycles from the first word to bits 28+26. No assertions.
+
+alone A:  flat 64x64 2273  fill 64x64 653
+
+B            alone  after flat 64x64  after fill 64x64   (after - T(A))
+78h 16x16      227     2449    176      822    169
+60h 16x16      247     2471    198      800    147
+70h 8x8        131     2357     84      732     79
+60h 8x8        154     2336     63      710     57
+68h 1x1         86     2281      8      687     34
+60h 1x1        109     2291     18      665     12
+60h 32x32      694     2879    606     1217    564
+60h 64x16      649     2834    561     1205    552
+60h 16x64      739     2927    654     1298    645
+60h 64x64     2273     4470   2197     2834   2181
+7Dh 16x16      248     2471    198      800    147
+65h 16x16      267     2449    176      823    170
+
+batch          N=1      2      4      8
+78h 16         274    446    816   1495
+60h 16         298    490    829   1519
+70h 8          184    262    418    730
+60h 8          208    310    514    922
+60h 32         713   1307   2506   4871
+60h 64        2328   4515   8923  17705
+
+gpu/gpu-batch3: Done.

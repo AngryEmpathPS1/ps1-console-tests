@@ -1,0 +1,19 @@
+
+gpu/gpu-dmastream4
+N primitives in a DMA2 linked list, timed from the CHCR write to DMA done and bits 28+26; fastest of 3 runs x 8
+start points in the blanking. No assertions.
+
+kind              N=1      8     32   (32-8)/24 x10
+row 4             124    405   1474      445
+row 8             124    406   1495      453
+row 16            124    430   1579      478
+row 32            124    449   1593      476
+row 64            178    491   1644      480
+col 4             124    454   1602      478
+col 8             178    566   1934      570
+diag 4            124    447   1602      481
+gour row 4        240   1575   6063     1870
+gour row 16       288   1589   6142     1897
+gour row 64       342   1654   6235     1908
+
+gpu/gpu-dmastream4: Done.

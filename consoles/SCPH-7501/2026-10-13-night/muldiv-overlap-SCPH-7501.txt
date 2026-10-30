@@ -1,0 +1,35 @@
+
+cpu/muldiv-overlap
+Per-iteration cost above a loop of nops in the same slots, 100 iterations.
+There are no assertions - compare against your emulator.
+
+ALONE (one every six instructions, nothing reading HI or LO):
+  mult slow                     639 -    646 =      0 over 100  ->  0.00 cycles
+  mult fast                     636 -    646 =      0 over 100  ->  0.00 cycles
+  div                           639 -    646 =      0 over 100  ->  0.00 cycles
+
+CONTROL (MFLO right behind):
+  div; mflo                    4336 -    744 =   3592 over 100  ->  35.92 cycles
+  mult slow; mflo              2037 -    744 =   1293 over 100  ->  12.93 cycles
+  mult fast; mflo              1336 -    744 =    592 over 100  ->  5.92 cycles
+
+OVERLAP (the second right behind the first, then MFLO):
+  div; mult fast; mflo         1444 -    841 =    603 over 100  ->  6.03 cycles
+  mult slow; div; mflo         4444 -    841 =   3603 over 100  ->  36.03 cycles
+  mult slow; mult fast; mflo   1444 -    841 =    603 over 100  ->  6.03 cycles
+  div; div; mflo               4444 -    841 =   3603 over 100  ->  36.03 cycles
+  mult slow; mtlo; mflo         844 -    841 =      3 over 100  ->  0.03 cycles
+  mult slow; mtlo; mfhi         844 -    841 =      3 over 100  ->  0.03 cycles
+  div; mthi; mflo               839 -    841 =      0 over 100  ->  0.00 cycles
+
+RESULTS (each sequence once; t6 = 5A5A5A5Ah, t5 = 3, t7 = 12345678h):
+  div                        HI 00000000  LO 1e1e1e1e
+  mult fast                  HI 00000000  LO 00000009
+  mult slow                  HI 1fe3a76a  LO ef2b67a4
+  div; mult fast             HI 00000000  LO 00000009
+  mult slow; div             HI 00000000  LO 1e1e1e1e
+  mult slow; mult fast       HI 00000000  LO 00000009
+  mult slow; mtlo            HI 43c3c3c3  LO 12345678
+  div; mtlo                  HI 00000000  LO 12345678
+
+Done.

@@ -1,0 +1,73 @@
+TYPE : 6 free button or flying-V form
+
+PS-X Control PAD Driver  Ver 3.0
+
+sio/multitap-modes
+A Multitap in port 1, one digital pad in slot B, driven by hand. No assertions.
+
+(a) 02 42 01 00 00: slot B, requesting full mode (5 bytes):
+  ff 41 5a | ff ff 
+  /ACK: 1697 1719 1747 1495 -
+(a) full 1 (35 bytes):
+  ff 80 5a | ff ff ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | ff ff ff ff ff ff ff ff | ff ff ff ff ff ff ff ff 
+  /ACK: 2559 1271 1271 1777 1495 1719 1243 1271 1271 1271 1271 1271 1271 1271 1271 1271 1271 1273
+        1271 1271 1271 1271 1271 1243 1271 1271 1271 1271 1271 1271 1272 1271 1271 1271 -
+(a) full 2 (35 bytes):
+  ff 80 5a | ff ff ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | ff ff ff ff ff ff ff ff | ff ff ff ff ff ff ff ff 
+  /ACK: 2559 1273 1271 1719 1747 1495 1271 1271 1271 1275 1271 1271 1271 1271 1271 1273 1271 1271
+        1271 1271 1271 1271 1271 1271 1271 1271 1271 1271 1271 1271 1271 1271 1271 1271 -
+(a) full 3, REQ 0 (35 bytes):
+  ff 80 5a | ff ff ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | ff ff ff ff ff ff ff ff | ff ff ff ff ff ff ff ff 
+  /ACK: 2699 1243 1271 1663 1495 1719 1327 1271 1271 1243 1276 1271 1271 1271 1271 1243 1271 1271
+        1271 1271 1271 1271 1243 1273 1271 1271 1271 1271 1243 1243 1271 1271 1271 1271 -
+(b) 01 42 01 00 00: slot A (empty), requesting (1 bytes):
+  ff 
+  /ACK: -
+(b) a full transfer after it (full mode only if that request was taken) (1 bytes):
+  ff 
+  /ACK: -
+(b) 02 42 01 00 00: slot B, requesting (5 bytes):
+  ff 41 5a | ff ff 
+  /ACK: 1719 1803 1523 1719 -
+(b) full, ADDRESSED TO SLOT B (02 42 01 ...) (35 bytes):
+  ff 80 5a | ff ff ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | ff ff ff ff ff ff ff ff | ff ff ff ff ff ff ff ff 
+  /ACK: 2699 1243 1271 1663 1495 1719 1215 1272 1271 1271 1271 1271 1271 1243 1271 1271 1271 1271
+        1271 1271 1271 1271 1299 1271 1271 1271 1271 1271 1271 1271 1271 1271 1273 1271 -
+(b) full, REQ 0 (35 bytes):
+  ff 80 5a | ff ff ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | ff ff ff ff ff ff ff ff | ff ff ff ff ff ff ff ff 
+  /ACK: 2559 1271 1271 1719 1747 1495 1271 1271 1271 1271 1271 1274 1271 1271 1271 1271 1243 1271
+        1271 1271 1271 1271 1271 1271 1273 1271 1271 1271 1271 1271 1271 1271 1271 1271 -
+(c) 02 42 01 00 00 (5 bytes):
+  ff 41 5a | ff ff 
+  /ACK: 1523 1803 1747 1495 -
+(c) full with 00h slot commands (35 bytes):
+  ff 80 5a | ff ff ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | ff ff ff ff ff ff ff ff | ff ff ff ff ff ff ff ff 
+  /ACK: 2699 1271 1271 1607 1775 1719 1271 1274 1271 1271 1271 1271 1271 1271 1271 1271 1271 1271
+        1271 1243 1277 1271 1271 1271 1271 1271 1274 1271 1271 1271 1271 1271 1271 1271 -
+(c) full after it (4 bytes):
+  ff 80 5a | ff 
+  /ACK: 2559 1271 1271 -
+(c) full again, REQ 0 (35 bytes):
+  ff 80 5a | ff ff ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | ff ff ff ff ff ff ff ff | ff ff ff ff ff ff ff ff 
+  /ACK: 2699 1271 1271 1608 1747 1497 1243 1243 1271 1271 1271 1271 1271 1271 1271 1271 1271 1271
+        1271 1243 1271 1271 1271 1271 1243 1271 1271 1277 1271 1271 1271 1271 1243 1271 -
+
+(d) press CROSS on the slot-B pad, eight times, a second or so apart
+  press 1: passthrough saw it at transfer 916, full at 917 (full - passthrough = 1)
+
+  press 2: passthrough saw it at transfer 2000, full at 1999 (full - passthrough = -1)
+
+  press 3: passthrough saw it at transfer 2160, full at 2161 (full - passthrough = 1)
+
+  press 4: passthrough saw it at transfer 2362, full at 2361 (full - passthrough = -1)
+
+  press 5: passthrough saw it at transfer 2676, full at 2675 (full - passthrough = -1)
+
+  press 6: passthrough saw it at transfer 3058, full at 3059 (full - passthrough = 1)
+
+  press 7: passthrough saw it at transfer 3446, full at 3447 (full - passthrough = 1)
+
+  press 8: passthrough saw it at transfer 3940, full at 3941 (full - passthrough = 1)
+
+
+sio/multitap-modes: Done.

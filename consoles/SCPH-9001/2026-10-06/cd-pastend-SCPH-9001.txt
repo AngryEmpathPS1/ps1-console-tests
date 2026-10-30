@@ -1,0 +1,27 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-pastend
+disc: 1 tracks, lead-out at 57:59 (260925 sectors)
+SeekL past the end 60:29:00: INT3 02, then INT2 02 after 0.930 s
+  Nop at once: INT3 02
+  GetlocL: INT3 60 28 73 02 00 00 20 00
+  GetlocP: INT3 aa 01 02 29 50 60 29 00
+  Nop at 0.100 s: 02
+SeekP past the end 60:29:00: INT3 02, then INT2 02 after 0.799 s
+  Nop at once: INT3 02
+  GetlocL: INT5 03 80
+  GetlocP: INT3 aa 01 02 29 40 60 28 65
+  Nop at 0.100 s: 02
+SeekL lead-out+0:30 58:29:00: INT3 02, then INT2 02 after 0.871 s
+SeekL lead-out+1:30 59:29:00: INT3 02, then INT2 02 after 0.952 s
+SeekL lead-out+2:30 60:29:00: INT3 02, then INT2 02 after 0.926 s
+SeekL lead-out+3:30 61:29:00: INT3 02, then INT2 02 after 1.054 s
+SeekL lead-out+4:30 62:29:00: INT3 02, then INT2 02 after 1.047 s
+no second track: the onto-audio case needs a disc with one
+
+
+06h,10h: what lies past the written area reflected. 04h,10h: the head
+lost its focus there (the drive's own program, tools/cddrive.js).
+
+Done.

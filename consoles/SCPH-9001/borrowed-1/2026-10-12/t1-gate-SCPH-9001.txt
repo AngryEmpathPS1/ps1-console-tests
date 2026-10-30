@@ -1,0 +1,22 @@
+
+timer/t1-gate
+Timer 1 (system clock, sync mode 1) through the v-blank: DROPs (value before -> after) and HOLDs, cycles from the polled IRQ. No assertions.
+
+frame  0:  DROP 7628..7684 ffdf->0017  DROP 49466..49522 a34d->002a
+frame  1:  DROP 7671..7727 fff1->0029  DROP 49455..49511 a329->0005
+frame  2:  DROP 7601..7657 ffd0->0008  DROP 49441..49502 a340->0022
+frame  3:  DROP 7613..7679 ffe3->0025  DROP 49460..49516 a35a->0036
+frame  4:  DROP 7613..7669 ffe1->0019  DROP 49450..49506 a34e->002b
+frame  5:  DROP 7612..7668 ffdb->0013  DROP 49452..49508 a34b->0027
+frame  6:  DROP 7608..7673 ffcf->0010  DROP 49457..49513 a348->0025
+frame  7:  DROP 7613..7669 ffcf->0007  DROP 49450..49506 a33c->0018
+frame  8:  DROP 7612..7668 ffc8->0000  DROP 49452..49508 a338->0015
+frame  9:  DROP 7673..7729 fffe->0036  DROP 49457..49513 a336->0012
+frame 10:  DROP 7669..7725 fff4->002c  DROP 49450..49506 a329->0006
+frame 11:  DROP 7668..7724 ffee->0026  DROP 49453..49509 a327->0003
+frame 12:  DROP 7600..7656 ffcd->0005  DROP 49437..49493 a33a->0017
+frame 13:  DROP 7657..7713 ffff->0037  DROP 49441..49497 a337->0013
+frame 14:  DROP 7627..7683 ffdb->0013  DROP 49468..49524 a34c->0029
+frame 15:  DROP 7622..7678 ffdb->0013  DROP 49459..49515 a348->0024
+
+timer/t1-gate: Done.

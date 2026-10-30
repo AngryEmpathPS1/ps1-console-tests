@@ -1,0 +1,18 @@
+cpu/cpu-loop-tick4
+RAM stores just before a Timer 2 read, by kind, count and distance. No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  SW-0         8.19       8.13
+  SW-1         8.19       8.15
+  SW-2         9.10       9.06
+  SW-3        10.06      10.02
+  SH-0         8.15       8.13
+  SWSH-0       9.20       9.17
+  SWSH-1       9.24       9.21
+  SWSH-2      10.14      10.11
+  SWSW-0       9.21       9.17
+  SWSH-0+L    17.13      17.09
+  NONE+L      12.25      12.21
+
+cpu/cpu-loop-tick4: Done.
+

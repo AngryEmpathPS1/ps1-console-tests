@@ -1,0 +1,17 @@
+
+cpu/hold-read
+A Timer 2 read behind a store held in a streaming line (Timer 2 cycles, fastest..slowest of 16; cold / warm).
+There are no assertions - compare against your emulator.
+
+  N-1  no store (a nop) at word 0, Timer 2 read at word 1  cold  10..10   warm   5..5    miss 5
+  N-3  no store (a nop) at word 0, Timer 2 read at word 3  cold  12..12   warm   7..7    miss 5
+  T0-1 Timer 0 target at word 0, Timer 2 read at word 1    cold  11..11   warm   6..6    miss 5
+  T0-3 Timer 0 target at word 0, Timer 2 read at word 3    cold  12..16   warm   7..7    miss 5
+  T1-1 Timer 1 target at word 0, Timer 2 read at word 1    cold  11..11   warm   6..6    miss 5
+  T1-3 Timer 1 target at word 0, Timer 2 read at word 3    cold  12..12   warm   7..7    miss 5
+  IM-1 I_MASK, its own value at word 0, Timer 2 read at word 1 cold  11..11   warm   6..6    miss 5
+  IM-3 I_MASK, its own value at word 0, Timer 2 read at word 3 cold  12..12   warm   7..7    miss 5
+  DP-1 DPCR, its own value at word 0, Timer 2 read at word 1 cold  11..12   warm   6..6    miss 5
+  DP-3 DPCR, its own value at word 0, Timer 2 read at word 3 cold  12..13   warm   7..7    miss 5
+
+Done.

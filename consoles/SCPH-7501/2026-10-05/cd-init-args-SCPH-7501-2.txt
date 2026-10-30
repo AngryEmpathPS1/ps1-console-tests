@@ -1,0 +1,32 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-init-args
+A Nop right after an Init refused for its four parameters (nugget cdlInitWithArgs), and where the slow
+maintenance cycles fall after an Init. Cycles from each write to its interrupt; histogram in 16,384-cycle
+steps (the last 180,224+). No assertions.
+
+RANDOM PHASE (the refused Init: INT5 256 of 256, its second byte 20h 256 of 256):
+  Init refused, to INT5    min   27072  avg   48678  max  209272  over 3.5 ms   7 of 256  | 0 72 109 30 18 9 11 3 0 1 1 2
+  then Nop, to INT3        min   29384  avg   44003  max  148464  over 3.5 ms   3 of 256  | 0 111 98 15 4 18 6 3 0 1 0 0
+CONTROL:
+  Nop alone                min   18384  avg   39626  max  201504  over 3.5 ms   5 of 256  | 0 153 48 24 14 5 6 1 1 1 0 3
+AFTER A COMPLETED INIT (64 tries):
+  Init refused, to INT5    min   30520  avg   38049  max   59496  over 3.5 ms   0 of 64  | 0 24 28 12 0 0 0 0 0 0 0 0
+  then Nop, to INT3        min   29864  avg   45882  max   56592  over 3.5 ms   0 of 64  | 0 12 40 12 0 0 0 0 0 0 0 0
+SLOW CYCLES AFTER AN INIT (Nops back to back for ~250 ms; those over 100,000 cycles, at their write's time
+after the Init's INT2):
+  Init 0: 804888(204680) 2380464(101768) 4643888(147512) 5291992(128712) 6189376(101760) 8460744(102744)
+  Init 1: 370856(147072) 1014640(129920) 1915112(101816) 3290256(101712) 4190352(106752) 4645112(200784) 5286632(115808) 8012600(103152)
+  Init 2: 335664(147896) 998232(116192) 4624880(202472)
+
+  Init 3: 341560(200800) 1031208(115744) 1911456(104064) 2819344(101768) 4627472(200784) 5300024(125416) 5745568(107576) 8011680(101704) 8451232(102696)
+  Init 4: 358872(200304) 1006168(115880) 3727960(101720) 4637600(147512) 5285464(125864) 6183856(100056)
+
+  Init 5: 366736(202472) 2390488(107576) 3734456(100024) 4665984(147528) 5327464(115704)
+  Init 6: 347832(202936) 1024056(128984) 4633192(147520) 5298648(115752) 5728200(101760) 6655928(100080) 7992632(105232)
+
+  Init 7: 360296(200288) 1031696(125400) 2833880(102912) 3729016(101824) 4640552(147512)
+
+
+Done.

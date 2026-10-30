@@ -1,0 +1,78 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+sio/pad-config
+A DualShock's replies, byte for byte, port 1. Needs a DualShock and a person to press ANALOG when asked.
+
+PACKETS (the bytes sent, then the bytes answered; | after the pad's last byte):
+  42h poll               01 42 00 00 00 00 00 00 00
+                         ff 41 5a ff ff|ee ee ee ee
+  45h outside config     01 45 00 00 00 00 00 00 00
+                         ff 41|ee ee ee ee ee ee ee
+  43h 01 into config     01 43 00 01 00 00 00 00 00
+                         ff 41 5a ff ff|ee ee ee ee
+  45h status             01 45 00 00 00 00 00 00 00
+                         ff f3 5a 01 02 00 02 01 00
+  46h 00                 01 46 00 00 00 00 00 00 00
+                         ff f3 5a 00 00 01 02 00 0a
+  46h 01                 01 46 00 01 00 00 00 00 00
+                         ff f3 5a 00 00 01 01 01 14
+  47h 00                 01 47 00 00 00 00 00 00 00
+                         ff f3 5a 00 00 02 00 01 00
+  4Ch 00                 01 4c 00 00 00 00 00 00 00
+                         ff f3 5a 00 00 00 04 00 00
+  4Ch 01                 01 4c 00 01 00 00 00 00 00
+                         ff f3 5a 00 00 00 07 00 00
+  44h 01 00 analog       01 44 00 01 00 00 00 00 00
+                         ff f3 5a 00 00 00 00 00 00
+  45h status             01 45 00 00 00 00 00 00 00
+                         ff f3 5a 01 02 01 02 01 00
+  4Dh motors             01 4d 00 00 01 ff ff ff ff
+                         ff f3 5a ff ff ff ff ff ff
+  4Dh motors again       01 4d 00 00 01 ff ff ff ff
+                         ff f3 5a 00 01 ff ff ff ff
+  43h 00 out of config   01 43 00 00 00 00 00 00 00
+                         ff f3 5a 00 00 00 00 00 00
+  42h poll, analog       01 42 00 00 00 00 00 00 00
+                         ff 73 5a fb ff 76 7d 6f 7b
+
+A: press ANALOG once now (out of config mode; 5 s):
+    at    1 ms: ff 73 5a fb ff 78 7d 71 7b
+    at   18 ms: ff 73 5a fb ff 76 7d 6f 7b
+    at   36 ms: ff 73 5a fb ff 78 7d 71 7b
+    at   70 ms: ff 73 5a fb ff 76 7f 74 7b
+    at  105 ms: ff 73 5a fb ff 78 81 73 7b
+    at  122 ms: ff 73 5a fb ff 76 7d 71 7b
+    at  208 ms: ff 73 5a fb ff 78 7d 71 7b
+    at  226 ms: ff 73 5a fb ff 76 7d 71 7b
+    at  346 ms: ff 73 5a fb ff 78 7d 71 7b
+    at  364 ms: ff 73 5a fb ff 76 7d 71 7b
+    at  433 ms: ff 73 5a fb ff 78 7d 71 7b
+    at  450 ms: ff 73 5a fb ff 76 7f 71 7b
+  (done)
+B: press ANALOG once now (inside config mode, 45h polled; 5 s):
+    at    1 ms: ff f3 5a 01 02 01 02 01 00
+    at 2646 ms: ff f3 00 01 02 00 02 01 00
+  (done)
+  43h 00 out of config   01 43 00 00 00 00 00 00 00
+                         ff f3 00 00 00 00 00 00 00
+  44h 01 03 analog, locked 01 44 00 01 03 00 00 00 00
+                         ff f3 5a 00 00 00 00 00 00
+  43h 00 out of config   01 43 00 00 00 00 00 00 00
+                         ff f3 5a 00 00 00 00 00 00
+C: press ANALOG once now (analog mode locked; 5 s):
+    at    1 ms: ff 73 5a fb ff 8d 7f 71 7b
+    at   18 ms: ff 73 5a fb ff 8f 7f 74 7b
+    at   70 ms: ff 73 5a fb ff 8b 7f 71 7b
+    at   87 ms: ff 73 5a fb ff 8f 7f 71 7b
+    at  139 ms: ff 73 5a fb ff 91 7d 71 7b
+    at  157 ms: ff 73 5a fb ff 8f 7d 71 7b
+    at  294 ms: ff 73 5a fb ff 8d 7d 6f 7b
+    at  312 ms: ff 73 5a fb ff 8f 7f 71 7d
+    at  398 ms: ff 73 5a fb ff 8d 7f 71 7b
+    at  415 ms: ff 73 5a fb ff 8f 7f 71 7b
+    at  450 ms: ff 73 5a fb ff 92 7f 73 7b
+    at  467 ms: ff 73 5a fb ff 8f 7f 71 7b
+  (done)
+
+sio/pad-config: Done.

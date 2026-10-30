@@ -1,0 +1,44 @@
+sio1-mismatch - PREDICTED before its first console run (2026-10-19), this emulator under hwtests/run.js --loopback-auto.
+The two receivers this emulator has had disagree on R2 (the receiver twice as fast: the 8251A's 66h then E6h from the
+next falling edge, the old per-frame model 66h alone) and R4 (four times slower: FFh against FEh). RM (BAUD rewritten
+inside the frame) reads 55h under both - a console reading otherwise follows the new rate mid-frame. RB's queued bytes
+take the new BAUD at their own start (the transmitter's rate per byte), so the burst arrives whole under both.
+
+v0.377.136-137 (the 8251A receiver):
+THE PLUG: seen by its lines
+  R1   BAUD 0024 -> 0024 at +205  : 55   PE 0 OE 0 FE 0
+  R2   BAUD 0024 -> 0012 at +206  : 66 e6   PE 0 OE 0 FE 1
+  R2b  BAUD 0024 -> 0012 at +477  : 66 e6   PE 0 OE 0 FE 1
+  RM   BAUD 0024 -> 0012 at +1567 : 55   PE 0 OE 0 FE 0
+  R4   BAUD 0012 -> 0048 at +164  : ff   PE 0 OE 0 FE 0
+  R4b  BAUD 0012 -> 0048 at +163  : fe   PE 0 OE 0 FE 0
+  RB   BAUD 0002 -> 0048 at +157  : 49 0b ff c4   PE 0 OE 0 FE 0
+  R1   BAUD 0024 -> 0024 at +199  : 55   PE 0 OE 0 FE 0
+  R2   BAUD 0024 -> 0012 at +199  : 66 e6   PE 0 OE 0 FE 1
+  R2b  BAUD 0024 -> 0012 at +478  : 66 e6   PE 0 OE 0 FE 1
+  RM   BAUD 0024 -> 0012 at +1565 : 55   PE 0 OE 0 FE 0
+  R4   BAUD 0012 -> 0048 at +163  : ff   PE 0 OE 0 FE 0
+  R4b  BAUD 0012 -> 0048 at +157  : fe   PE 0 OE 0 FE 0
+  RB   BAUD 0002 -> 0048 at +163  : 49 0b ff c4   PE 0 OE 0 FE 0
+
+v0.377.135 (each frame computed when the sender began it):
+THE PLUG: seen by its lines
+  R1   BAUD 0024 -> 0024 at +205  : 55   PE 0 OE 0 FE 0
+  R2   BAUD 0024 -> 0012 at +206  : 66   PE 0 OE 0 FE 1
+  R2b  BAUD 0024 -> 0012 at +478  : 66   PE 0 OE 0 FE 1
+  RM   BAUD 0024 -> 0012 at +1567 : 55   PE 0 OE 0 FE 0
+  R4   BAUD 0012 -> 0048 at +164  : fe   PE 0 OE 0 FE 0
+  R4b  BAUD 0012 -> 0048 at +163  : fe   PE 0 OE 0 FE 0
+  RB   BAUD 0002 -> 0048 at +157  : 49 0b ff c4   PE 0 OE 0 FE 0
+  R1   BAUD 0024 -> 0024 at +199  : 55   PE 0 OE 0 FE 0
+  R2   BAUD 0024 -> 0012 at +199  : 66   PE 0 OE 0 FE 1
+  R2b  BAUD 0024 -> 0012 at +477  : 66   PE 0 OE 0 FE 1
+  RM   BAUD 0024 -> 0012 at +1577 : 55   PE 0 OE 0 FE 0
+  R4   BAUD 0012 -> 0048 at +157  : fe   PE 0 OE 0 FE 0
+  R4b  BAUD 0012 -> 0048 at +162  : fe   PE 0 OE 0 FE 0
+  RB   BAUD 0002 -> 0048 at +157  : 49 0b ff c4   PE 0 OE 0 FE 0
+
+THE CONSOLE (2026-10-19, the SCPH-7501, two passes alike; console-logs/2026-10-19-SCPH-7501/sio1-mismatch-SCPH-7501.txt):
+every row the byte as written - R1 / R2 / R2b / RM / R4b 55, R4 02, RB 49 0b ff c4 - and no PE / OE / FE. Neither
+prediction: the transmitter and the receiver run off ONE baud generator (psx-spx: SIO_BAUD reloads "the" baudrate timer),
+so a loopback never sees two rates. v0.377.142 (SerialPort.rebaud) reads every row as the console does.

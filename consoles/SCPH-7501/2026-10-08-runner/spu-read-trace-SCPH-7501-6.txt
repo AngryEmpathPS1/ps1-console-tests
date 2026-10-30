@@ -1,0 +1,31 @@
+
+spu/spu-read-trace
+Every read of an SPU register timestamped (Timer 2, the system clock): the read-to-read intervals, and the long
+ones' spacing and phase in the sample (768 cycles). No assertions - compare against your emulator.
+
+SPUSTAT k=0 (8192 reads over 254185 cycles): intervals 31x7942 32x247 34x1 45x1
+  long (> 33): 2; spacing 220
+  phase mod 768 from the bit-11 change: 52 272
+  bit 11 rose at read 5700: read 5699 at 176858, read 5700 at 176889 (cycles from the trace's start), intervals around it 31 31 31 31 31 31 31
+SPUSTAT k=12 (8192 reads over 327662 cycles): intervals 40x8189 41x1 61x1
+  long (> 42): 1
+  phase mod 768 from the bit-11 change: 79
+  bit 11 rose at read 447: read 446 at 17862, read 447 at 17902 (cycles from the trace's start), intervals around it 40 40 40 40 40 40 40
+SPUSTAT k=24 (8192 reads over 426523 cycles): intervals 52x8051 55x1 56x138 88x1
+  long (> 54): 140; spacing 627 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072
+  phase mod 768 from the bit-11 change: 137 764 764 764 764 764 764 764 764 764 764 764 764 764 764 764 764 764 764 764 764 764 764 764
+  bit 11 fell at read 1965: read 1964 at 102299, read 1965 at 102351 (cycles from the trace's start), intervals around it 52 52 52 52 52 52 52
+SPUCNT k=0 (4096 reads over 127081 cycles): intervals 31x3970 32x123 36x1 39x1
+  long (> 33): 2; spacing 470
+  phase mod 768 from the first long one: 0 470
+VOL0 k=0 (4096 reads over 127076 cycles): intervals 31x3970 32x124 38x1
+  long (> 33): 1
+  phase mod 768 from the first long one: 0
+I_STAT k=0 (4096 reads over 65525 cycles): intervals 16x4094 21x1
+  long (> 18): 1
+  phase mod 768 from the first long one: 0
+I_STAT k=12 (4096 reads over 104840 cycles): intervals 25x3687 28x203 29x1 34x203 50x1
+  long (> 27): 408; spacing 679 259 253 259 253 259 253 259 253 259 253 259 253 259 253 259
+  phase mod 768 from the first long one: 0 679 170 423 682 167 426 679 170 423 682 167 426 679 170 423 682 167 426 679 170 423 682 167
+
+Done.

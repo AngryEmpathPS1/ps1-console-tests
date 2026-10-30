@@ -1,0 +1,28 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+spu/spu-xfer
+SPUSTAT around sound-RAM transfers: busy time, request bits by mode, transfer types.
+There are no assertions - compare against your emulator.
+
+BUSY (manual write: the mode applied / bit 10 clear, cycles after the SPUCNT write)
+  N= 1  applied   656  SPUSTAT then 0010  bit 10 clear    112 later  | mode 1 kept: SPUSTAT 0010, clear after     56
+  N= 2  applied   704  SPUSTAT then 0010  bit 10 clear     64 later  | mode 1 kept: SPUSTAT 0010, clear after     64
+  N= 4  applied   640  SPUSTAT then 0010  bit 10 clear     56 later  | mode 1 kept: SPUSTAT 0010, clear after     64
+  N= 8  applied   648  SPUSTAT then 0010  bit 10 clear     64 later  | mode 1 kept: SPUSTAT 0010, clear after     56
+  N=16  applied   632  SPUSTAT then 0410  bit 10 clear    616 later  | mode 1 kept: SPUSTAT 0010, clear after     56
+  N=32  applied   424  SPUSTAT then 0410  bit 10 clear   1440 later  | mode 1 kept: SPUSTAT 0010, clear after     64
+REQUEST (Stop -> mode, SPUSTAT read back to back; each change with its cycle)
+  mode 2 (DMA write): start 0800  120:0000  31696:02a0
+  mode 3 (DMA read): start 0000  128:0830  31688:09b0
+TYPES (1F801DACh = type << 1; 1111h..8888h written by hand over EEEEh, read back by DMA4)
+  type 0: 8888 eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee
+  type 1: 8888 eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee
+  type 2: 1111 2222 3333 4444 5555 6666 7777 8888 eeee eeee eeee eeee
+  type 3: 1111 3333 5555 7777 eeee eeee eeee eeee eeee eeee eeee eeee
+  type 4: 4444 8888 eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee
+  type 5: 7777 eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee
+  type 6: 8888 eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee
+  type 7: 8888 eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee
+
+Done.

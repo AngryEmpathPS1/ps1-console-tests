@@ -1,0 +1,15 @@
+gpu-shape-time51 - PREDICTED before its first console run (2026-10-16): v0.377.119 as the SCPH-9001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0). Rectangles, sprites, fills and polygons at the
+bursts' places (GPU_SCAN_RECT / GPU_SCAN_POS: the line-start fetch 123 ticks at Fpos 3362.5), the semi rectangle's line
+stall (GPU_RECTS3), lines an average a line. What would settle what: the fetch's start and end as each kind sees it at
+10-cycle steps - one event or two (the fetch and the GPU's own line start), and how far past this core's end the
+console's tail runs (gpu-shape-time46's start 0: 21-83 there, 0-8 here).
+
+bit 26's D in the blanking, then at 201,800 + 10 j cycles after VBlank's IRQ less the blanking's, j = 0..47
+rect 16x16     183 : 0 0 0 0 0 0 0 0 0 0 0 0 0 5 5 21 51 36 68 70 70 70 70 70 70 70 70 70 70 72 44 41 41 41 3 0 3 0 0 0 0 0 0 0 0 0 0 0
+semi 16x16     321 : 8 105 105 106 106 106 107 107 107 107 107 107 107 107 107 107 107 107 107 107 107 107 107 107 107 107 107 100 70 86 86 64 57 47 4 0 0 0 0 0 0 0 0 0 0 0 0 0
+fill 16x16     116 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 11 18 26 14 27 60 60 61 57 76 76 51 51 50 21 21 21 10 0 0 0 0 0 0 0 0 0 0 0 0 0
+flat 16        143 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 17 17 31 36 46 46 59 68 68 74 74 74 6 6 60 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr4 16x16     187 : 0 0 0 0 0 0 0 0 0 0 0 0 1 0 33 36 41 55 56 67 69 70 70 70 70 67 66 67 64 36 38 22 30 30 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 64 down   316 : 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28
+

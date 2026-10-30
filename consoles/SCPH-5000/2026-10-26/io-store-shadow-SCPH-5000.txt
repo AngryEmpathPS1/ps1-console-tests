@@ -1,0 +1,25 @@
+
+cpu/io-store-shadow
+A store in an on-die load's shadow (cached; Timer 2 cycles, fastest..slowest of 16 over the refresh).
+F p: lhu T2; sh T1_TARGET at p; nops; lhu T2 at 9 - the total.
+G p: lhu T2 MODE; sh 0,T2 at p; nops; lhu T2 at 9 - the count read (p 0: no load).
+H p: lhu T2; sw RAM at p; nops; lhu T2 at 17 - the total.
+There are no assertions - compare against your emulator.
+
+  F0     11..11  
+  F1     12..12  
+  F2     13..13  
+  F3     12..12  
+  F4     11..11  
+  G0      6..6   
+  G1      6..6   
+  G2      5..5   
+  G3      4..4   
+  G4      3..3   
+  H0     19..19  
+  H1     20..20  
+  H2     21..21  
+  H3     20..20  
+  H4     19..19  
+
+Done.

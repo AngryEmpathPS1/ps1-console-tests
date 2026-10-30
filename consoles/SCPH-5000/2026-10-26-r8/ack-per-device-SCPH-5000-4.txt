@@ -1,0 +1,42 @@
+
+sio/ack-per-device
+/ACK after each byte, per device and port: cycles from the byte's write (Timer 2 at the system clock).
+There are no assertions - compare against your emulator.
+
+port 1, controller (01 42 00 00 00):
+  byte  1  01h -> ffh  RX +1404..1468  /ACK +1574..1808 (16 of 16)  pulse  79..105
+  byte  2  42h -> 41h  RX +1334..1474  /ACK +1556..1852 (16 of 16)  pulse  79..105
+  byte  3  00h -> 5ah  RX +1369..1474  /ACK +1487..1748 (16 of 16)  pulse  79..105
+  byte  4  00h -> ffh  RX +1369..1439  /ACK +1461..1730 (16 of 16)  pulse  79..105
+  byte  5  00h -> ffh  RX +1334..1444  no /ACK (16 of 16)
+port 1, memory card (81 52 ..., frame 0):
+  byte  1  81h -> ffh  RX +1405..1492  /ACK +1369..1413 (16 of 16)  pulse  71.. 79
+  byte  2  52h -> 00h  RX +1405..1475  /ACK +1369..1439 (16 of 16)  pulse  67..116
+  byte  3  00h -> 5ah  RX +1370..1440  /ACK +1334..1439 (16 of 16)  pulse  67..102
+  byte  4  00h -> 5dh  RX +1405..1440  /ACK +1369..1439 (16 of 16)  pulse  67..102
+  byte  5  00h -> 00h  RX +1404..1442  /ACK +1369..1439 (16 of 16)  pulse  67..102
+  byte  6  00h -> 00h  RX +1405..1442  /ACK +1369..1439 (16 of 16)  pulse  67..102
+  byte  7  00h -> 5ch  RX +1405..1445  /ACK +1369..1439 (16 of 16)  pulse  67..102
+  byte  8  00h -> 5dh  RX +1405..1475  /ACK +1369..1439 (16 of 16)  pulse  67..102
+  byte  9  00h -> 00h  RX +1404..1441  /ACK +1503..1557 (16 of 16)  pulse  79..105
+  byte 10  00h -> 00h  RX +1405..1481  /ACK +1369..1445 (16 of 16)  pulse  67..102
+  byte 11  00h -> 4dh  RX +1405..1445  /ACK +1369..1439 (16 of 16)  pulse  67..102
+  byte 12  00h -> 43h  RX +1405..1475  /ACK +1369..1439 (16 of 16)  pulse  67..102
+port 2, controller (01 42 00 00 00):
+  byte  1  01h -> 00h  RX +1390..1406  /ACK +1696..1732 (16 of 16)  pulse  79..105
+  byte  2  42h -> 00h  RX +1334..1480  /ACK +1643..1780 (16 of 16)  pulse  79..105
+  byte  3  00h -> 00h  RX +1369..1474  /ACK +1669..1774 (16 of 16)  pulse  79..105
+  byte  4  00h -> ffh  RX +1439..1439  /ACK + 249..1765 (16 of 16)  pulse  36..105
+  byte  5  00h -> ffh  RX +1439..1439  /ACK + 144.. 179 (15 of 16)  pulse  36.. 71
+port 2, memory card (81 52 ..., frame 0):
+  byte  1  81h -> ffh  RX +1404..1412  /ACK +1600..1626 (16 of 16)  pulse  27.. 53
+  byte  2  52h -> 08h  RX +1369..1474  /ACK +1591..1696 (16 of 16)  pulse  27.. 53
+  byte  3  00h -> 5ah  RX +1334..1439  /ACK +1426..1531 (16 of 16)  pulse  27.. 53
+  byte  4  00h -> 5dh  RX +1369..1474  /ACK +1404..1509 (16 of 16)  pulse  53.. 58
+  byte  5  00h -> 00h  RX +1334..1404  /ACK +1426..1487 (16 of 16)  pulse  27.. 53
+  byte  6  00h -> 00h  RX +1334..1474  /ACK +1487..1592 (16 of 16)  pulse  27.. 53
+  byte  7  00h -> 5ch  RX +1404..1474  no /ACK (16 of 16)
+
+resolution: one pass of the polling loop, at most 37 cycles
+
+sio/ack-per-device: Done.

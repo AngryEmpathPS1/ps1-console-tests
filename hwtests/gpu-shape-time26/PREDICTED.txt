@@ -1,0 +1,6 @@
+gpu-shape-time26 - written down BEFORE any console ran it (2026-10-15 small hours).
+
+This core (v0.377.111) as the SCPH-1001: scratch/gst26_1001v111.txt. From gpu-scanout2's poll-timed rows on the 1001 (a
+flat 256x32 ~22 under this core in every mode, a copy 128x32 ~65 over): expected, the flat 256x32 here ~4,386 + 22 and
+the copy 128x32 ~6,667 - 65; whether the rectangle's miss grows with width (a per-pair rate a hair low: ~0.003 cycle a
+pixel at 8,192 pixels) or with rows (32 x ~0.7), and the copy's with width or rows, the rows of sizes here decide.

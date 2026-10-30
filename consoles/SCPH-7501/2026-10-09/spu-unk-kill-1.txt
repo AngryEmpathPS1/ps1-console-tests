@@ -1,0 +1,10 @@
+
+spu/spu-unk-kill
+Which undocumented SPU register stops voice 1's capture? spu-curvol's writes one at a time. No assertions.
+
+  found: 1DA0 ac00  1DBC c84d b8d2  1E60 96c6 5862 ... 1E7E de6f  1E80 ffff
+  before anything              off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBCh (read 0000 ffff 5a5a a5a5) off   0  on   0 of 512 nonzero  ENVX 7fff  DEAD
+  stopped at the first DEAD line above
+
+spu/spu-unk-kill: Done.

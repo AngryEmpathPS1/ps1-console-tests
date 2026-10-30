@@ -1,0 +1,96 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+gpu/gpu-cost-sweep
+Each primitive written to GP0 by the CPU, then GPUSTAT polled: when bit 28 and bit 26 read set,
+cycles from the first word, fastest..slowest of four. No assertions.
+
+FILL (02h):
+    16x16      3 words   bit 28     140..152      bit 26      236..300
+    64x64      3 words   bit 28     140..157      bit 26      732..824
+   256x256     3 words   bit 28     140..157      bit 26     5979..6068
+  1008x16      3 words   bit 28     140..161      bit 26     1226..1298
+    16x256     3 words   bit 28     140..161      bit 26     1721..1841
+COPY (80h), from (0,0) to (0,256):
+    16x16      4 words   bit 28     108..152      bit 26      744..770
+    64x64      4 words   bit 28     108..139      bit 26     6362..6395
+   256x256     4 words   bit 28     108..135      bit 26    84638..85002
+  1024x16      4 words   bit 28     108..135      bit 26    21304..21443
+RECTANGLE (60h flat, 62h semi-transparent, 64h textured):
+  flat   1x1      3 words   bit 28     140..157      bit 26      140..157
+  flat  16x16     3 words   bit 28     140..157      bit 26      281..298
+  flat  64x64     3 words   bit 28     140..157      bit 26     2405..2449
+  flat 256x256    3 words   bit 28     140..161      bit 26    35227..35336
+  semi  64x64     3 words   bit 28     140..157      bit 26     3823..3857
+  semi 256x256    3 words   bit 28     140..157      bit 26    53381..53456
+  mask check  64x64     3 words   bit 28     140..160      bit 26     3535..3578
+  mask check 256x256    3 words   bit 28     140..157      bit 26    53378..53467
+  textured  4-bit  16x16     4 words   bit 28     108..135      bit 26      294..438
+  textured  4-bit  64x64     4 words   bit 28     108..137      bit 26     2420..5001
+  textured  4-bit 256x256    4 words   bit 28     108..135      bit 26    76240..78860
+  textured  8-bit  16x16     4 words   bit 28     108..389      bit 26      294..909
+  textured  8-bit  64x64     4 words   bit 28     108..145      bit 26     7542..7932
+  textured  8-bit 256x256    4 words   bit 28     108..135      bit 26   120242..123320
+  textured 15-bit  16x16     4 words   bit 28     108..135      bit 26      294..1028
+  textured 15-bit  64x64     4 words   bit 28     108..140      bit 26    10969..11636
+  textured 15-bit 256x256    4 words   bit 28     108..135      bit 26   174673..177932
+LINE (40h flat, 50h gouraud):
+  across  16    3 words   bit 28     140..161      bit 26      140..212
+  down    16    3 words   bit 28     140..157      bit 26      194..241
+  diagonal  16    3 words   bit 28     140..157      bit 26      191..287
+  across  64    3 words   bit 28     140..157      bit 26      191..236
+  down    64    3 words   bit 28     140..157      bit 26      416..478
+  diagonal  64    3 words   bit 28     140..157      bit 26      433..511
+  across 256    3 words   bit 28     140..163      bit 26      394..423
+  down   256    3 words   bit 28     140..162      bit 26     1322..1454
+  diagonal 256    3 words   bit 28     140..162      bit 26     1277..1325
+  gouraud across 256    4 words   bit 28     198..204      bit 26      480..528
+TRIANGLE (legs L; 20h flat, 30h gouraud, 24h textured, 34h gouraud-textured, 22h semi):
+  flat          L   8    4 words   bit 28     159..256      bit 26      210..256
+  gouraud       L   8    6 words   bit 28     331..334      bit 26      382..429
+  semi          L   8    4 words   bit 28     159..211      bit 26      255..262
+  textured  4-bit L   8    7 words   bit 28     297..304      bit 26      348..445
+  textured  8-bit L   8    7 words   bit 28     297..303      bit 26      348..442
+  textured 15-bit L   8    7 words   bit 28     297..300      bit 26      348..438
+  gouraud-textured 15-bit L   8    9 words   bit 28     421..468      bit 26      517..570
+  flat          L  32    4 words   bit 28     159..206      bit 26      489..528
+  gouraud       L  32    6 words   bit 28     330..337      bit 26      922..969
+  semi          L  32    4 words   bit 28     159..206      bit 26      759..799
+  textured  4-bit L  32    7 words   bit 28     297..344      bit 26      888..1343
+  textured  8-bit L  32    7 words   bit 28     297..306      bit 26      889..1623
+  textured 15-bit L  32    7 words   bit 28     297..306      bit 26      847..1485
+  gouraud-textured 15-bit L  32    9 words   bit 28     469..473      bit 26     1015..1069
+  flat          L 128    4 words   bit 28     159..167      bit 26     4722..4776
+  gouraud       L 128    6 words   bit 28     330..336      bit 26     8919..8972
+  semi          L 128    4 words   bit 28     159..210      bit 26     7304..7443
+  textured  4-bit L 128    7 words   bit 28     297..356      bit 26    13495..14501
+  textured  8-bit L 128    7 words   bit 28     297..354      bit 26    19544..19562
+  textured 15-bit L 128    7 words   bit 28     303..349      bit 26    27146..28048
+  gouraud-textured 15-bit L 128    9 words   bit 28     469..473      bit 26    28076..28172
+  flat          L 256    4 words   bit 28     159..211      bit 26    18010..18058
+  gouraud       L 256    6 words   bit 28     330..337      bit 26    33764..34084
+  semi          L 256    4 words   bit 28     159..211      bit 26    27363..27460
+  textured  4-bit L 256    7 words   bit 28     297..349      bit 26    54877..55065
+  textured  8-bit L 256    7 words   bit 28     297..344      bit 26    74531..75660
+  textured 15-bit L 256    7 words   bit 28     297..349      bit 26   110314..111125
+  gouraud-textured 15-bit L 256    9 words   bit 28     426..472      bit 26   108220..111246
+QUAD (28h flat, 2Ch textured, 3Ch gouraud-textured):
+  flat  64    5 words   bit 28    1330..1424     bit 26     2605..2652
+  textured  4-bit  64    9 words   bit 28    2533..4075     bit 26     4751..7331
+  textured  8-bit  64    9 words   bit 28    4993..5322     bit 26     9834..10205
+  textured 15-bit  64    9 words   bit 28    6857..7535     bit 26    13502..14228
+  gouraud-textured 15-bit  64   12 words   bit 28    7237..7327     bit 26    13522..13707
+  flat 256    5 words   bit 28   17936..18082    bit 26    35880..35977
+  textured  4-bit 256    9 words   bit 28   54952..54956    bit 26   111519..111792
+  textured  8-bit 256    9 words   bit 28   73582..75548    bit 26   151558..153521
+  textured 15-bit 256    9 words   bit 28  109295..111069   bit 26   218530..221618
+  gouraud-textured 15-bit 256   12 words   bit 28  108185..111253   bit 26   218693..221891
+TEXTURE SCALE (textured quads):
+   4-bit  64 px, 256 texels (minified)    9 words   bit 28    7621..7770     bit 26    14916..15050
+   4-bit 256 px,  64 texels (magnified)    9 words   bit 28   34746..35853    bit 26    70215..72411
+   8-bit  64 px, 256 texels (minified)    9 words   bit 28   12229..12287    bit 26    24208..24257
+   8-bit 256 px,  64 texels (magnified)    9 words   bit 28   36285..37191    bit 26    74058..74738
+  15-bit  64 px, 256 texels (minified)    9 words   bit 28   19487..20642    bit 26    38209..40479
+  15-bit 256 px,  64 texels (magnified)    9 words   bit 28   45741..47513    bit 26    93675..95363
+
+gpu/gpu-cost-sweep: Done.

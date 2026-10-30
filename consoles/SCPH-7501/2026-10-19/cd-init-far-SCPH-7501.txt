@@ -1,0 +1,33 @@
+
+cdrom/cd-init-far
+Init from a stopped disc (S: SeekL, Stop, 1 s) and a turning one (T: SeekL) at each place, in then out.
+Cycles from Init's write (1 ms = 33,869), the stats, and GetlocP's sector after. No assertions.
+
+00:02 S  Init INT3     95856 (00)  INT2   66194488 (02)  then GetlocP -2
+00:02 T  Init INT3     69856 (02)  INT2    3642600 (02)  then GetlocP -2
+10:00 S  Init INT3    102832 (00)  INT2   76428016 (02)  then GetlocP -3
+10:00 T  Init INT3     69928 (02)  INT2   14476928 (02)  then GetlocP -2
+20:00 S  Init INT3     98928 (00)  INT2   74659472 (02)  then GetlocP -2
+20:00 T  Init INT3     79528 (02)  INT2   17369712 (02)  then GetlocP -1
+30:00 S  Init INT3     95456 (00)  INT2   75301232 (02)  then GetlocP -2
+30:00 T  Init INT3     90656 (02)  INT2   22323360 (02)  then GetlocP -1
+40:00 S  Init INT3    110768 (00)  INT2   80689688 (02)  then GetlocP -3
+40:00 T  Init INT3     81720 (02)  INT2   28834960 (02)  then GetlocP -2
+50:00 S  Init INT3    107272 (00)  INT2   80709008 (02)  then GetlocP -3
+50:00 T  Init INT3     79584 (02)  INT2   30177312 (02)  then GetlocP -1
+50:00 S  Init INT3    101224 (00)  INT2   72541432 (02)  then GetlocP -2
+50:00 T  Init INT3     69864 (02)  INT2   30199808 (02)  then GetlocP -1
+40:00 S  Init INT3     95360 (00)  INT2   73156776 (02)  then GetlocP -1
+40:00 T  Init INT3     84016 (02)  INT2   24988432 (02)  then GetlocP -1
+30:00 S  Init INT3    107824 (00)  INT2   76051424 (02)  then GetlocP -1
+30:00 T  Init INT3     91152 (02)  INT2   22238608 (02)  then GetlocP -2
+20:00 S  Init INT3    101000 (00)  INT2   76544296 (02)  then GetlocP -2
+20:00 T  Init INT3     85232 (02)  INT2   17411240 (02)  then GetlocP -1
+10:00 S  Init INT3     99088 (00)  INT2   73805448 (02)  then GetlocP -1
+10:00 T  Init INT3     69864 (02)  INT2   15344000 (02)  then GetlocP -1
+00:02 S  Init INT3    103320 (00)  INT2   64951448 (02)  then GetlocP -2
+00:02 T  Init INT3     69928 (02)  INT2    3663488 (02)  then GetlocP -2
+
+waits that ran out: 0
+
+cdrom/cd-init-far: Done.

@@ -1,0 +1,46 @@
+gpu-shape-time26 on the SCPH-9001 - PREDICTED before its first run there (2026-10-15): this core, v0.377.113 (451d141), as the
+SCPH-9001 under the runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0) - the NEW GPU's
+model. This program ran on the SCPH-1001 (old GPU) first; its PREDICTED.txt is that run's.
+
+
+gpu/gpu-shape-time26
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+flat 64x1                57..57         9..10   
+flat 64x8               296..296        9..9    
+flat 64x32             1115..1115       9..10   
+flat 128x1               89..89         9..9    
+flat 128x8              553..553        9..9    
+flat 128x32            2144..2144       9..9    
+flat 192x1              121..121        9..10   
+flat 192x8              810..810        9..9    
+flat 192x32            3172..3172       9..10   
+flat 256x1              153..153        9..9    
+flat 256x8             1067..1067       9..10   
+flat 256x32            4201..4201       9..9    
+flat 320x1              186..186        9..10   
+flat 320x8             1325..1325       9..9    
+flat 320x32            5230..5230       9..10   
+flat 512x1              282..282        9..9    
+flat 512x8             2096..2096       9..10   
+flat 512x32            8316..8316       9..9    
+copy 16x1                33..33         3..3    
+copy 16x8               300..300        3..3    
+copy 16x32             1216..1216       3..3    
+copy 32x1                54..54         3..3    
+copy 32x8               469..469        3..3    
+copy 32x32             1892..1892       3..3    
+copy 64x1                86..86         3..3    
+copy 64x8               729..729        3..3    
+copy 64x32             2931..2931       3..3    
+copy 128x1              156..156        3..3    
+copy 128x8             1285..1285       3..3    
+copy 128x32            5156..5156       3..3    
+copy 256x1              322..322        3..3    
+copy 256x8             2613..2613       3..3    
+copy 256x32           10470..10470      3..3    
+copy 128x64           10317..10317      3..3    
+
+gpu/gpu-shape-time26: Done.

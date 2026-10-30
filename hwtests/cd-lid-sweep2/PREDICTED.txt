@@ -1,0 +1,39 @@
+cd-lid-sweep2 - PREDICTED before its first console run (2026-10-23): the SCPH-7501's own program (SC430940) on v0.377.170's
+servo as the SCPH-7501 (hwtests/run.js --disc --lid: the runner opens the lid a second after OPEN and shuts it 1.5 s after SHUT).
+cd-lid-sweep x3 on the 7501 (2026-10-23): 49h = 39h for 2.0 s without a bias step, against one 16-sample group here. Here the
+sample 102h is a constant FFh (the servo answers CX(812000) on this chip with the Q's CRC bit: the readback is unmodelled),
+so the sum 100h counts down a step a sample. What would settle it: the console's 102h through the sweep - the quality
+figure itself - and 230h / 46h at each group's end (which branch keeps it measuring).
+
+before: [49h] 71 [48h] 78 [1cfh] fa [102h] 00 [100h] 00 [107h] 00 [106h] 00 [230h] 00 [46h] 0d [105h] 00
+OPEN THE LID now, and leave it open until asked to shut it.
+SHUT THE LID now, with the same disc in.
+after the shut, every change (time: [address] value; -1 no answer, -2.. another interrupt):
+  +0.001 s [49h] 33  +0.002 s [48h] 64  +0.003 s [1cfh] 0  +0.004 s [102h] 255
+  +0.005 s [100h] 255  +0.007 s [107h] 255  +0.008 s [106h] 255  +0.009 s [230h] 0
+  +0.010 s [46h] 13  +0.011 s [105h] 0  +1.628 s [106h] 0  +1.641 s [49h] 25
+  +1.647 s [100h] 0  +1.654 s [46h] 12  +2.001 s [49h] 57  +2.008 s [100h] 254
+  +2.010 s [107h] 3  +2.011 s [106h] 1  +2.013 s [230h] 255  +2.028 s [100h] 247
+  +2.029 s [107h] 9  +2.031 s [106h] 3  +2.047 s [100h] 241  +2.049 s [107h] 15
+  +2.051 s [106h] 5  +2.069 s [100h] 234  +2.070 s [107h] 22  +2.072 s [106h] 6
+  +2.090 s [100h] 228  +2.091 s [107h] 28  +2.093 s [106h] 8  +2.108 s [100h] 222
+  +2.109 s [107h] 34  +2.111 s [106h] 9  +2.128 s [100h] 216  +2.130 s [107h] 41
+  +2.131 s [106h] 11  +2.148 s [100h] 209  +2.149 s [107h] 47  +2.151 s [106h] 13
+  +2.167 s [100h] 203  +2.169 s [107h] 53  +2.171 s [106h] 14  +2.190 s [100h] 0
+  +2.191 s [107h] 0  +2.193 s [106h] 0  +2.203 s [48h] 40  +2.204 s [1cfh] 244
+  +2.208 s [100h] 251  +2.210 s [107h] 6  +2.211 s [106h] 1  +2.229 s [100h] 244
+  +2.230 s [107h] 12  +2.232 s [106h] 3  +2.248 s [100h] 238  +2.250 s [107h] 18
+  +2.252 s [106h] 4  +2.268 s [100h] 232  +2.270 s [107h] 25  +2.271 s [106h] 6
+  +2.287 s [100h] 226  +2.289 s [107h] 30  +2.291 s [106h] 7  +2.308 s [100h] 219
+  +2.309 s [107h] 37  +2.311 s [106h] 9  +2.327 s [100h] 213  +2.329 s [107h] 43
+  +2.331 s [106h] 11  +2.349 s [100h] 206  +2.350 s [107h] 50  +2.352 s [106h] 12
+  +2.367 s [100h] 201  +2.370 s [107h] 56  +2.371 s [106h] 14  +2.388 s [100h] 194
+  +2.389 s [107h] 62  +2.391 s [106h] 15  +2.401 s [49h] 41  +2.403 s [48h] 120
+  +2.405 s [1cfh] 250  +2.408 s [100h] 252  +2.410 s [107h] 4  +2.411 s [106h] 0
+  +2.422 s [49h] 49  +2.429 s [100h] 255  +2.430 s [107h] 255  +2.431 s [106h] 255
+  +2.432 s [230h] 0  +2.438 s [105h] 255
+90 changes; [49h] bit 3 (the sweep, on the servo) from +1.641 s to +2.422 s
+GetlocP answered a position at +4.220 s
+the door's own INT5 seen 1 time(s)
+Done.
+

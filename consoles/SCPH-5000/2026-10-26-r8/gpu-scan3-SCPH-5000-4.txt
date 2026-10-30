@@ -1,0 +1,57 @@
+
+gpu/gpu-scan3
+Each primitive in the vertical blanking (20,000 cycles after the VBlank IRQ) and on active lines (200,000), by
+display mode: fastest of four each, and the active lines' toll in tenths of a percent. No assertions.
+
+  256x240         flat rect 256x32     blank   4272  active   4496  toll 52
+  256x240         semi rect 256x32     blank   6303  active   6711  toll 64
+  256x240         fill 256x32          blank    748  active    837  toll 118
+  256x240         copy 128x32          blank   5282  active   5510  toll 43
+  256x240         flat triangle        blank   2347  active   2440  toll 39
+  256x240         gouraud triangle     blank   4606  active   4694  toll 19
+  256x240         sprite 4-bit 64x64   blank   2302  active   2440  toll 59
+  256x240         sprite 8-bit 64x64   blank   7405  active   7766  toll 48
+  256x240         sprite 15-bit 64x64  blank  11923  active  12514  toll 49
+  256x240         textured tri 15-bit  blank  14076  active  14664  toll 41
+  320x240         flat rect 256x32     blank   4271  active   4541  toll 63
+  320x240         semi rect 256x32     blank   6303  active   6846  toll 86
+  320x240         fill 256x32          blank    751  active    835  toll 111
+  320x240         copy 128x32          blank   5281  active   5507  toll 42
+  320x240         flat triangle        blank   2356  active   2482  toll 53
+  320x240         gouraud triangle     blank   4606  active   4662  toll 12
+  320x240         sprite 4-bit 64x64   blank   2302  active   2435  toll 57
+  320x240         sprite 8-bit 64x64   blank   7405  active   7861  toll 61
+  320x240         sprite 15-bit 64x64  blank  11923  active  12694  toll 64
+  320x240         textured tri 15-bit  blank  14073  active  14888  toll 57
+  512x240         flat rect 256x32     blank   4272  active   4590  toll 74
+  512x240         semi rect 256x32     blank   6303  active   6936  toll 100
+  512x240         fill 256x32          blank    753  active    840  toll 115
+  512x240         copy 128x32          blank   5282  active   5554  toll 51
+  512x240         flat triangle        blank   2348  active   2485  toll 58
+  512x240         gouraud triangle     blank   4604  active   4665  toll 13
+  512x240         sprite 4-bit 64x64   blank   2302  active   2483  toll 78
+  512x240         sprite 8-bit 64x64   blank   7406  active   7993  toll 79
+  512x240         sprite 15-bit 64x64  blank  11923  active  12917  toll 83
+  512x240         textured tri 15-bit  blank  14076  active  15111  toll 73
+  640x240         flat rect 256x32     blank   4269  active   4632  toll 85
+  640x240         semi rect 256x32     blank   6306  active   7026  toll 114
+  640x240         fill 256x32          blank    751  active    882  toll 174
+  640x240         copy 128x32          blank   5284  active   5476  toll 36
+  640x240         flat triangle        blank   2347  active   2530  toll 77
+  640x240         gouraud triangle     blank   4606  active   4699  toll 20
+  640x240         sprite 4-bit 64x64   blank   2300  active   2485  toll 80
+  640x240         sprite 8-bit 64x64   blank   7406  active   8128  toll 97
+  640x240         sprite 15-bit 64x64  blank  11923  active  13190  toll 106
+  640x240         textured tri 15-bit  blank  14073  active  15389  toll 93
+  640x480i 24-bit flat rect 256x32     blank   4269  active   4725  toll 106
+  640x480i 24-bit semi rect 256x32     blank   6303  active   7479  toll 186
+  640x480i 24-bit fill 256x32          blank    748  active    885  toll 183
+  640x480i 24-bit copy 128x32          blank   5281  active   5824  toll 102
+  640x480i 24-bit flat triangle        blank   2345  active   2584  toll 101
+  640x480i 24-bit gouraud triangle     blank   4607  active   4694  toll 18
+  640x480i 24-bit sprite 4-bit 64x64   blank   2303  active   2539  toll 102
+  640x480i 24-bit sprite 8-bit 64x64   blank   7405  active   8539  toll 153
+  640x480i 24-bit sprite 15-bit 64x64  blank  11923  active  13868  toll 163
+  640x480i 24-bit textured tri 15-bit  blank  14073  active  16152  toll 147
+
+gpu/gpu-scan3: Done.

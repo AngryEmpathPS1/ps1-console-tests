@@ -1,0 +1,23 @@
+cd-lid-sweep - PREDICTED before its first console run (2026-10-19), the SCPH-7501's own program (SC430940) on v0.377.146's
+servo as the SCPH-7501 (hwtests/run.js --lid: the runner opens the lid a second after OPEN and shuts it 1.5 s after SHUT).
+The console's cd-lid on the 7501 answered a position ~6.4-6.6 s after the shut; the program here at 3.79 s. If the
+console's [49h] bit 3 runs ~2.9 s longer than here, the gap is the focus-bias sweep (its quality figure); if the
+sweep is as short as here, the time is in a later phase (the sled run, the 500 ms wait, the gain loop, the TOC).
+
+before: [49h] 71 [48h] 78 [6Bh] 01 [1CDh] 00 [1CFh] fa [100h] 00
+OPEN THE LID now, and leave it open until asked to shut it.
+SHUT THE LID now, with the same disc in.
+after the shut, every change (time: [address] value; -1 no answer, -2.. another interrupt):
+  +0.001 s [49h] 33  +0.002 s [48h] 64  +0.003 s [6bh] 0  +0.004 s [1cdh] 1
+  +0.005 s [1cfh] 0  +0.006 s [100h] 255  +1.541 s [49h] 25  +1.549 s [100h] 0
+  +1.861 s [49h] 57  +1.868 s [100h] 251  +1.890 s [100h] 243  +1.908 s [100h] 236
+  +1.930 s [100h] 228  +1.949 s [100h] 221  +1.970 s [100h] 213  +1.989 s [100h] 206
+  +2.010 s [100h] 198  +2.022 s [48h] 40  +2.027 s [1cfh] 244  +2.028 s [100h] 252
+  +2.050 s [100h] 244  +2.068 s [100h] 237  +2.090 s [100h] 229  +2.109 s [100h] 222
+  +2.130 s [100h] 214  +2.149 s [100h] 207  +2.170 s [100h] 199  +2.188 s [1cfh] 250
+  +2.189 s [100h] 0  +2.201 s [49h] 161  +2.202 s [48h] 120  +2.212 s [100h] 255
+
+32 changes; [49h] bit 3 (the sweep, on the servo) from +1.541 s to +2.201 s
+GetlocP answered a position at +3.793 s
+the door's own INT5 seen 1 time(s)
+Done.

@@ -1,0 +1,24 @@
+gpu-shape-time46 - PREDICTED for the SCPH-1001 before its first run there (2026-10-16): v0.377.121 as the SCPH-1001
+under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000 --tol=0).
+The OLD GPU keeps its own model (GPU_OLD*): none of v0.377.119-121's new-GPU pieces (the quad's second set-up, empty
+triangles, the semi sprite / textured / shaded laws, the scan-out's bursts by place) apply to it. What it settles: the
+same questions as PREDICTED.txt, on the old GPU - each piece the old GPU's too, or the new GPU's alone.
+
+bit 26's D in the blanking, then at 200,000 + 67 j cycles after VBlank's IRQ less the blanking's, j = 0..31
+rect 16x16     234 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 41 41 41
+rect 64x16     619 : 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 41 41 41 41 41 41 41 41 41
+rect 128x4     291 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 41 41 41 41
+rect 256x8    1084 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 34 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41
+rect 256x64   8762 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 41 41
+semi 16x16     490 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 41 41 41 41 41 41 41
+semi 64x16    1682 : -41 -41 -41 -41 -41 -41 -41 -41 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+semi 256x8    3170 : 19 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41
+semi 256x32  12730 : -41 -41 -41 -41 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr15 16x16    234 : 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 41 41 41
+spr15 64x16   3940 : -41 -41 -41 -41 -41 -41 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr4 64x16     619 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 41 41 41 41 41 41 41 41 41
+semi spr15 64  4963 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 41 41 41 41 41 41 41 41 41 41
+fill 16x16     140 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 39 41
+fill 64x16     188 : 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 41 41
+fill 256x32    745 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 39 41 41 41 41 41 41 41 41 41 41
+

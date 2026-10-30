@@ -1,0 +1,17 @@
+
+gpu/c0-cold2
+Datel's StoreImage check: the copy's size (cold, size store at word 0) and a warm cache (2x1, each word).
+How many reads saw bit 27 (ready to send) already set. There are no assertions - compare against your emulator.
+
+COLD, size store at word 0:
+  2x1        15/16
+  64x2        0/16
+  1024x2      0/16
+  1024x512    0/8
+WARM, 2x1, the second of two:
+  word 0      0/16
+  word 1      0/16
+  word 2      0/16
+  word 3      0/16
+
+Done.

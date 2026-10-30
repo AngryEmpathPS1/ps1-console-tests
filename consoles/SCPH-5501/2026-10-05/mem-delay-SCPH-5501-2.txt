@@ -1,0 +1,31 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cpu/mem-delay
+Access time to CDROM and SPU under each COM_DELAY / Use-COM0 combination
+games actually write. Baseline-subtracted, 100 iterations, cycles per access.
+There are no assertions - compare against your emulator.
+
+  as the kernel left them: COM_DELAY=00001325 CD_DELAY=00020943 SPU_DELAY=200931e1
+
+  baseline loop: 419 cycles for 100 iterations
+
+CDROM_STAT (1F801800h)             8bit   16bit   32bit
+  CD=20843 COM=31125           8.04   14.04   26.04  
+  CD=20843 COM=01323           7.85   13.85   25.85  
+  CD=20843 COM=01325           7.85   13.85   25.85  
+  CD=20843 COM=0132c           7.85   13.85   25.85  
+  CD=20943 COM=31125 [COM0]    7.85   17.85   37.85  
+  CD=20943 COM=01323 [COM0]    7.85   15.85   31.85  
+  CD=20943 COM=01325 [COM0]    7.85   17.85   37.85  
+  CD=20943 COM=0132c [COM0]   13.79   30.79   64.79  
+
+SPU (1F801DAAh)                    8bit   16bit   32bit
+  SPU=200931e1 COM=31125 [COM0]   17.98   18.04   38.04  
+  SPU=200931e1 COM=01323 [COM0]   17.85   18.04   35.85  
+  SPU=200931e1 COM=01325 [COM0]   17.85   18.04   37.85  
+  SPU=200931e1 COM=0132c [COM0]   23.79   23.98   50.79  
+
+  restored: COM_DELAY=00001325 CD_DELAY=00020943 SPU_DELAY=200931e1
+
+Done.

@@ -1,0 +1,41 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cpu/load-use
+Per-iteration cost above a loop of nops in the same slots, 100 iterations.
+There are no assertions - compare against your emulator.
+
+READER: lw t1 + 7 slots, `addu t5,t1,t1` in slot p (above 8 nops)
+  no reader          1555 -   1353 =    202 over 100  ->  2.02 cycles
+  reader p=2         1955 -   1353 =    602 over 100  ->  6.02 cycles
+  reader p=3         1964 -   1353 =    611 over 100  ->  6.11 cycles
+  reader p=4         1872 -   1353 =    519 over 100  ->  5.19 cycles
+  reader p=5         1768 -   1353 =    415 over 100  ->  4.15 cycles
+  reader p=6         1659 -   1353 =    306 over 100  ->  3.06 cycles
+  reader p=7         1572 -   1353 =    219 over 100  ->  2.19 cycles
+
+SHADOW: lw + s independent nops (above 1 + s nops)
+  s=0                 955 -    638 =    317 over 100  ->  3.17 cycles
+  s=1                 958 -    744 =    214 over 100  ->  2.14 cycles
+  s=2                1055 -    844 =    211 over 100  ->  2.11 cycles
+  s=3                1161 -    943 =    218 over 100  ->  2.18 cycles
+  s=4                1253 -   1048 =    205 over 100  ->  2.05 cycles
+  s=5                1350 -   1149 =    201 over 100  ->  2.01 cycles
+  s=6                1451 -   1256 =    195 over 100  ->  1.95 cycles
+  s=7                1556 -   1353 =    203 over 100  ->  2.03 cycles
+
+PAIRS: two loads (above the same count of nops)
+  lw;lw              1466 -    744 =    722 over 100  ->  7.22 cycles
+  lw;nop;lw          1671 -    844 =    827 over 100  ->  8.27 cycles
+  lw;2nop;lw         1674 -    943 =    731 over 100  ->  7.31 cycles
+
+DRAIN: sw then lw of the same word, d nops apart (above d + 2 nops)
+  sw;lw same         1459 -    744 =    715 over 100  ->  7.15 cycles
+  sw;1;lw same       1475 -    844 =    631 over 100  ->  6.31 cycles
+  sw;2;lw same       1479 -    943 =    536 over 100  ->  5.36 cycles
+  sw;3;lw same       1477 -   1048 =    429 over 100  ->  4.29 cycles
+  sw;4;lw same       1483 -   1149 =    334 over 100  ->  3.34 cycles
+  sw;5;lw same       1477 -   1256 =    221 over 100  ->  2.21 cycles
+  sw;lw other        1468 -    744 =    724 over 100  ->  7.24 cycles
+
+Done.

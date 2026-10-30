@@ -1,0 +1,129 @@
+cd-seek-cmd - PREDICTED before its first console run (2026-10-18): two machines as the SCPH-7001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --disc=xfiles), on the build before the last edit (that edit only put the line
+breaks after the block headers, which printed a literal ${NL}).
+
+v0.377.127's HLE: every command gets its INT3 and the SeekL its INT2 at the seek's own time - nothing cancels it (GetID's
+"322": its own INT2 at once, then the seek's).
+
+The drive's own program (SC430934): EVERY command sent while the seek runs takes the SeekL's INT2 away - its INT3 (GetlocL
+INT5, GetID INT3 then INT5) and nothing more in 2 s - except 2M into the short seek, where half the commands find the seek
+finishing (an INT2 at 2.03M, before the command's INT3: the program ends the seek early as a command comes, the head on
+the target) and half do not. cd-seek-path's GetlocP already showed the console doing what the program does.
+
+v0.377.127 HLE:
+29:01 -> 50:00, the command 0.2M into the seek:
+  none      2  INT2 27.26
+  Getstat   32  INT2 27.27
+  Setloc    32  INT2 27.27
+  Mute      32  INT2 27.28
+  Demute    32  INT2 27.28
+  Setmode   32  INT2 27.28
+  Setfilter 32  INT2 27.28
+  GetlocL   52  INT2 27.27
+  GetlocP   32  INT2 27.28
+  GetTN     32  INT2 27.26
+  GetTD     32  INT2 27.27
+  Test20    32  INT2 27.26
+  GetID     322  INT2 0.28
+29:01 -> 50:00, the command 2M into the seek:
+  none      2  INT2 27.26
+  Getstat   32  INT2 27.28
+  Setloc    32  INT2 27.27
+  Mute      32  INT2 27.28
+  Demute    32  INT2 27.27
+  Setmode   32  INT2 27.28
+  Setfilter 32  INT2 27.28
+  GetlocL   52  INT2 27.28
+  GetlocP   32  INT2 27.27
+  GetTN     32  INT2 27.27
+  GetTD     32  INT2 27.27
+  Test20    32  INT2 27.26
+  GetID     322  INT2 2.07
+29:01 -> +6, the command 0.2M into the seek:
+  none      2  INT2 2.67
+  Getstat   32  INT2 2.67
+  Setloc    32  INT2 2.67
+  Mute      32  INT2 2.67
+  Demute    32  INT2 2.67
+  Setmode   32  INT2 2.67
+  Setfilter 32  INT2 2.65
+  GetlocL   52  INT2 2.67
+  GetlocP   32  INT2 2.66
+  GetTN     32  INT2 2.67
+  GetTD     32  INT2 2.67
+  Test20    32  INT2 2.67
+  GetID     322  INT2 0.27
+29:01 -> +6, the command 2M into the seek:
+  none      2  INT2 2.65
+  Getstat   32  INT2 2.67
+  Setloc    32  INT2 2.66
+  Mute      32  INT2 2.67
+  Demute    32  INT2 2.67
+  Setmode   32  INT2 2.67
+  Setfilter 32  INT2 2.67
+  GetlocL   52  INT2 2.65
+  GetlocP   32  INT2 2.66
+  GetTN     32  INT2 2.66
+  GetTD     32  INT2 2.67
+  Test20    32  INT2 2.66
+  GetID     322  INT2 2.07
+waits that ran out: 0
+
+The drive's own program (SC430934):
+29:01 -> 50:00, the command 0.2M into the seek:
+  none      2  INT2 26.75
+  Getstat   3  INT2 -
+  Setloc    3  INT2 -
+  Mute      3  INT2 -
+  Demute    3  INT2 -
+  Setmode   3  INT2 -
+  Setfilter 3  INT2 -
+  GetlocL   5  INT2 -
+  GetlocP   3  INT2 -
+  GetTN     3  INT2 -
+  GetTD     3  INT2 -
+  Test20    3  INT2 -
+  GetID     35  INT2 -
+29:01 -> 50:00, the command 2M into the seek:
+  none      2  INT2 28.33
+  Getstat   3  INT2 -
+  Setloc    3  INT2 -
+  Mute      3  INT2 -
+  Demute    3  INT2 -
+  Setmode   3  INT2 -
+  Setfilter 3  INT2 -
+  GetlocL   5  INT2 -
+  GetlocP   3  INT2 -
+  GetTN     3  INT2 -
+  GetTD     3  INT2 -
+  Test20    3  INT2 -
+  GetID     35  INT2 -
+29:01 -> +6, the command 0.2M into the seek:
+  none      2  INT2 2.65
+  Getstat   3  INT2 -
+  Setloc    3  INT2 -
+  Mute      3  INT2 -
+  Demute    3  INT2 -
+  Setmode   3  INT2 -
+  Setfilter 3  INT2 -
+  GetlocL   5  INT2 -
+  GetlocP   3  INT2 -
+  GetTN     3  INT2 -
+  GetTD     3  INT2 -
+  Test20    3  INT2 -
+  GetID     35  INT2 -
+29:01 -> +6, the command 2M into the seek:
+  none      2  INT2 2.66
+  Getstat   23  INT2 2.03
+  Setloc    3  INT2 -
+  Mute      23  INT2 2.03
+  Demute    3  INT2 -
+  Setmode   23  INT2 2.03
+  Setfilter 3  INT2 -
+  GetlocL   23  INT2 2.05
+  GetlocP   3  INT2 -
+  GetTN     23  INT2 2.03
+  GetTD     3  INT2 -
+  Test20    23  INT2 2.03
+  GetID     35  INT2 -
+waits that ran out: 0

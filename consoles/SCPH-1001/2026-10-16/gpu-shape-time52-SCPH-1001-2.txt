@@ -1,0 +1,32 @@
+
+gpu/gpu-shape-time52
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+semi par 4 s0          1630..1669    1033..1072 
+semi par 4 s16         1626..1667     931..968  
+semi par 4 s64         1643..1684    1033..1074 
+semi par 4 s256        1689..1731    1033..1074 
+semi par 16 s0         4037..4079    2191..2229 
+semi par 16 s16        4033..4081    2031..2072 
+semi par 16 s64        4037..4081    2189..2229 
+semi par 16 s256       4049..4090    2192..2228 
+semi par 64 s0        13472..13517   6919..6961 
+semi par 64 s16       13469..13506   6916..6961 
+semi par 64 s64       13474..13506   6920..6959 
+semi par 64 s256      13471..13514   6920..6961 
+opaq par 4 s0          1118..1159     713..754  
+opaq par 4 s16         1115..1154     658..695  
+opaq par 4 s64         1131..1171     713..751  
+opaq par 4 s256        1177..1217     713..751  
+opaq par 16 s0         1948..1989    1099..1140 
+opaq par 16 s16        1950..1991    1039..1080 
+opaq par 16 s64        1949..1990    1099..1140 
+opaq par 16 s256       1959..2000    1099..1140 
+opaq par 64 s0         5119..5158    2674..2714 
+opaq par 64 s16        5114..5159    2673..2715 
+opaq par 64 s64        5110..5159    2674..2719 
+opaq par 64 s256       5113..5159    2678..2717 
+
+gpu/gpu-shape-time52: Done.

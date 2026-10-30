@@ -1,0 +1,74 @@
+
+cdrom/cd-init
+Init's two responses from each state the drive can be in. Needs a disc. No assertions.
+
+Cycles at the system clock (1 ms = 33,869). INT3 from the command write, INT2 from the INT3.
+FIRST (after the boot):
+  Init       INT3    62700 (02)   INT2    599287 after it (02)
+BACK TO BACK:
+  Init       INT3    81921 (02)   INT2   4221634 after it (02)
+  Init       INT3    69684 (02)   INT2   4196970 after it (02)
+  Init       INT3    69693 (02)   INT2   4210520 after it (02)
+  Init       INT3    69694 (02)   INT2   4210794 after it (02)
+  Init       INT3    69698 (02)   INT2   4201728 after it (02)
+  Init       INT3    69743 (02)   INT2   4203008 after it (02)
+  Init       INT3    69756 (02)   INT2   4211115 after it (02)
+  Init       INT3    63881 (02)   INT2   4209346 after it (02)
+  Init       INT3    69707 (02)   INT2   4208225 after it (02)
+  Init       INT3    63877 (02)   INT2   4210199 after it (02)
+  Init       INT3    69695 (02)   INT2   4209994 after it (02)
+  Init       INT3    63824 (02)   INT2   4203652 after it (02)
+SETTLED (1 s idle before each):
+  Init       INT3    60974 (02)   INT2    281891 after it (02)
+  Init       INT3    65799 (02)   INT2    262206 after it (02)
+  Init       INT3    78330 (02)   INT2    270318 after it (02)
+  Init       INT3    66757 (02)   INT2    282368 after it (02)
+  Init       INT3    62873 (02)   INT2    266152 after it (02)
+  Init       INT3    61806 (02)   INT2    288865 after it (02)
+STOPPED (Stop at single speed, Stop again, 2 s idle, then Init):
+  Stop       INT3    44979 (02)   INT2  12019447 after it (00)
+  Stop again INT3    53960 (00)   INT2      8421 after it (00)
+  Init       INT3    98584 (00)   INT2  69542753 after it (02)
+  Stop       INT3    44678 (02)   INT2  12843520 after it (00)
+  Stop again INT3    54497 (00)   INT2      7989 after it (00)
+  Init       INT3    95667 (00)   INT2  65527967 after it (02)
+  Stop       INT3    38814 (02)   INT2  12396530 after it (00)
+  Stop again INT3    54082 (00)   INT2      8416 after it (00)
+  Init       INT3   100838 (00)   INT2  65553034 after it (02)
+STOPPED AT DOUBLE SPEED (Setmode A0h, 1 s, Stop, 2 s idle, then Init):
+  Stop       INT3    56464 (02)   INT2  23050602 after it (00)
+  Init       INT3   104171 (00)   INT2  70136615 after it (02)
+  Stop       INT3    50828 (02)   INT2  22922872 after it (00)
+  Init       INT3   104675 (00)   INT2  66326360 after it (02)
+MOTORON (Stop, 2 s idle, MotorOn):
+  MotorOn    INT3    78666 (00)   INT2  74034617 after it (02)
+  MotorOn    INT3    78231 (00)   INT2  66686923 after it (02)
+READING (Setloc 00:02:16, ReadN, 8 sectors, then Init):
+  (the 8th INT1: flag 1, stat 22)
+  Init       INT3    80767 (22)   INT2   5116307 after it (02)
+  (the 8th INT1: flag 1, stat 22)
+  Init       INT3    81226 (22)   INT2   5101136 after it (02)
+  (the 8th INT1: flag 1, stat 22)
+  Init       INT3    80794 (22)   INT2   5108494 after it (02)
+STOP MID-READ (psx-spx: its first response 'already with bit5 cleared'):
+  Stop       INT3    58391 (02)   INT2  12740952 after it (00)
+  Stop       INT3    58346 (02)   INT2  12472465 after it (00)
+HELD (Init's INT3 left 500 ms unacknowledged):
+  Init       INT3    69698 (02)   another flag while held: no   INT2 12686 after the acknowledge
+  Init       INT3   144780 (02)   another flag while held: no   INT2 11990 after the acknowledge
+  Init       INT3    63866 (02)   another flag while held: no   INT2 13327 after the acknowledge
+STOP THEN INIT (Stop mid-read, GetTN 133 ms later, Init at its INT3; every interrupt, from the Stop's write):
+  GetTN written at 4504883, Init at 4529539
+    INT3     59578 (02)
+    INT3   4529206 (02)
+    INT3   4610129 (02)
+    INT2  80622549 (02)
+    (4 interrupts; is there an INT2 between the Stop's INT3 and the GetTN's?)
+  GetTN written at 4504824, Init at 4542535
+    INT3     56300 (02)
+    INT3   4542250 (02)
+    INT3   4613485 (02)
+    INT2  77705272 (02)
+    (4 interrupts; is there an INT2 between the Stop's INT3 and the GetTN's?)
+
+cdrom/cd-init: Done.

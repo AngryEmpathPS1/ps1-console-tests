@@ -1,0 +1,78 @@
+gpu-shape-time28 - PREDICTED before its first console run (2026-10-15): this core, v0.377.113 (451d141), as the SCPH-9001
+under the runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0). This core has neither effect the
+program asks about, so its numbers are smooth through both; what the 9001's gpu-shape-time18/19/22/23 say instead:
+  A/B/C  if the surcharge is SLOPE ONE: TR 64x64 ~+55 over a line through TR 62/63 and 65/66 x 64, TR W x W ~+0.6-0.9 a
+         row at every size (8 to 128), TR 31/33 x 32 and 127/129 x 128 not; slope 2 (64 x 32) and 1/2 (32 x 64) as their
+         neighbours. If it is ANY INTEGER slope, the 64x32 and 32x64 rows jump too.
+  D      semi TR 64x64 jumps as flat does (semi TR 16x16 233 against TL 221); gouraud does not (its walk is charged anyway).
+  E      flat: the order whose rows WIDEN as drawn is cheaper (TL o2, BL o1: drawn bottom-up / top-down) by ~3-7 at
+         16x16, less at 64x64; gouraud the other way (+3..+5).
+
+
+gpu/gpu-shape-time28
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+flat TR 60x64          1157..1157      29..29   
+flat TL 60x64          1161..1161      29..29   
+flat TR 62x64          1190..1190      29..29   
+flat TL 62x64          1194..1194      29..29   
+flat TR 63x64          1207..1207      29..29   
+flat TL 63x64          1211..1211      29..29   
+flat TR 64x64          1242..1242      30..30   
+flat TL 64x64          1212..1212      30..30   
+flat TR 65x64          1243..1243      30..30   
+flat TL 65x64          1242..1242      30..30   
+flat TR 66x64          1260..1260      30..30   
+flat TL 66x64          1258..1258      30..30   
+flat TR 68x64          1294..1294      30..30   
+flat TL 68x64          1290..1290      30..30   
+flat TR 8x8              79..79        27..27   
+flat TR 24x24           251..251       28..28   
+flat TR 32x32           386..386       29..29   
+flat TR 48x48           749..749       29..29   
+flat TR 96x96          2611..2611      30..30   
+flat TR 128x128        4495..4495      31..31   
+flat TR 31x32           366..366       28..28   
+flat TR 33x32           387..387       29..29   
+flat TR 127x128        4427..4427      30..30   
+flat TR 129x128        4496..4496      31..31   
+flat TR 63x32           648..648       29..29   
+flat TR 64x32           664..664       30..30   
+flat TR 65x32           665..665       30..30   
+flat TR 31x64           671..671       28..28   
+flat TR 32x64           699..699       29..29   
+flat TR 33x64           708..708       29..29   
+semi TR 63x64          1816..1816      29..29   
+semi TR 64x64          1868..1868      30..30   
+semi TR 65x64          1869..1869      30..30   
+gour TR 63x64          2385..2385     170..170  
+gour TR 64x64          2452..2452     171..171  
+gour TR 65x64          2454..2454     171..171  
+flat TL 16x16 o1        144..144       28..28   
+flat TL 16x16 o2        146..146       30..30   
+flat BL 16x16 o1        137..137       30..30   
+flat BL 16x16 o2        139..139       32..32   
+flat TL 32x32 o1        372..372       29..29   
+flat TL 32x32 o2        374..374       31..31   
+flat BL 32x32 o1        356..356       31..31   
+flat BL 32x32 o2        359..359       34..34   
+flat TL 64x64 o1       1212..1212      30..30   
+flat TL 64x64 o2       1214..1214      32..32   
+flat BL 64x64 o1       1180..1180      32..32   
+flat BL 64x64 o2       1184..1184      36..36   
+flat TL 16x64 o1        456..456       28..28   
+flat TL 16x64 o2        460..460       32..32   
+flat BL 16x64 o1        450..450       32..32   
+flat BL 16x64 o2        452..452       34..34   
+flat TL 64x16 o1        346..346       30..30   
+flat TL 64x16 o2        346..346       30..30   
+flat BL 64x16 o1        312..312       30..30   
+flat BL 64x16 o2        316..316       34..34   
+gour TL 32x32 o1        773..773      170..170  
+gour TL 32x32 o2        775..775      172..172  
+gour TL 16x64 o1        855..855      169..169  
+gour TL 16x64 o2        859..859      173..173  
+
+gpu/gpu-shape-time28: Done.

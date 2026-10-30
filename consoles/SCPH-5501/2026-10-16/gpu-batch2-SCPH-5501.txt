@@ -1,0 +1,32 @@
+
+gpu/gpu-batch2
+Pairs of primitives, the second's words while the first draws; fastest of 3 runs x 8 start points in the
+blanking, cycles from the first word to bits 28+26. No assertions.
+
+alone A:  flat 64x64 2275  semi 64x64 3504  fill 64x64 655  flat tri 128 2344  flat 2x64x32 2288
+alone B:  flat 16 226  semi 16 403  sprite15 246  sprite4 246  tri 16 269  fill 16 201  copy 16 719  line 16 156
+
+A then B, B fed on bit 28: T(A;B)
+A \ B          flat 16  semi 16 sprite15  sprite4   tri 16  fill 16  copy 16  line 16
+flat 64x64        2449     2584     2479     2477     2382     2387     2916     2342
+semi 64x64        3681     3807     3698     3698     3639     3611     4137     3605
+fill 64x64         824      964      806      806      748      759     1292      717
+flat tri 128      2517     2660     2539     2541     2466     2451     2981     2409
+flat 2x64x32      2469     2606     2465     2463     2403     2401     2918     2356
+
+B's cost after A, T(A;B) - T(A)
+A \ B          flat 16  semi 16 sprite15  sprite4   tri 16  fill 16  copy 16  line 16
+flat 64x64         174      309      204      202      107      112      641       67
+semi 64x64         177      303      194      194      135      107      633      101
+fill 64x64         169      309      151      151       93      104      637       62
+flat tri 128       173      316      195      197      122      107      637       65
+flat 2x64x32       181      318      177      175      115      113      630       68
+
+B's words at T(A) + delta: T
+delta                   -600  -400  -300  -200  -150  -100   -75   -50   -25     0    25    50   100   200
+flat 64x64 + flat 16    2447  2452  2460  2463  2446  2445  2452  2483  2523  2528  2554  2585  2647  2740
+flat 64x64 + semi 16    2584  2588  2596  2599  2579  2587  2587  2620  2658  2663  2689  2720  2782  2875
+flat 64x64 + sprite15   2464  2447  2447  2441  2458  2454  2475  2506  2546  2550  2577  2608  2670  2763
+semi 64x64 + flat 16    3687  3673  3681  3673  3698  3677  3681  3707  3735  3771  3802  3833  3864  3957
+
+gpu/gpu-batch2: Done.

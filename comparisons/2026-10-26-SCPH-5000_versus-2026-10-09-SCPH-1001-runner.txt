@@ -1,0 +1,1282 @@
+SUMMARY (lines the two consoles print alike / lines):
+  ack-per-device           17/41    17 same, 11 numbers differ, 3 differ in form, 10 only here, median 0.4%, largest 13.7%
+  bios-window             127/139   127 same, 12 numbers differ, median 0.1%, largest 0.1%
+  clut-cost                13/21    13 same, 8 numbers differ, median 4.4%, largest 112.5%
+  code-in-io-safe          22/24    22 same, 2 numbers differ
+  concurrent-dma           11/22    11 same, 11 numbers differ, median 0.4%, largest 12.5%
+  counter-bracket          14/14    THE SAME
+  counter-store            17/17    THE SAME
+  cpu-extras               70/71    70 same, 1 numbers differ, median 50.0%, largest 50.0%
+  dma-contention           12/21    12 same, 9 numbers differ, median 2.9%, largest 39.8%
+  dma-rates                37/49    37 same, 12 numbers differ, median 1.3%, largest 31.3%
+  draw-area                26/26    THE SAME
+  fifo-burst               11/15    11 same, 4 numbers differ, median 16.1%, largest 25.5%
+  fill-gap                 26/26    THE SAME
+  gpu-a0-size              14/14    THE SAME
+  gpu-abort                29/70    29 same, 35 numbers differ, 6 differ in form, median 25.0%, largest 10000.0%
+  gpu-c0-ready              3/67    3 same, 64 numbers differ, median 0.0%, largest 994.8%
+  gpu-cost-sweep           14/93    14 same, 79 numbers differ, median 12.8%, largest 103.6%
+  gpu-tex-opaque            9/53    9 same, 44 numbers differ, median 18.5%, largest 130.6%
+  gpu-version              27/72    27 same, 45 numbers differ, median 15.6%, largest 4001399950.0%
+  gpuinfo-latch            28/33    28 same, 5 numbers differ, median 617283800.0%, largest 617283800.0%
+  gpustat31                 9/18    9 same, 9 numbers differ, median 0.0%, largest 100.0%
+  gte-hold                 23/23    THE SAME
+  gte-irgb                 32/32    THE SAME
+  gte-latch-cached         34/34    THE SAME
+  icache-tagmatch          14/14    THE SAME
+  imask-upper              24/24    THE SAME
+  io-shadow                51/51    THE SAME
+  line-fill                14/14    THE SAME
+  line-split                9/58    9 same, 37 numbers differ, 12 differ in form, median 180.0%, largest 1500.0%
+  load-fill                26/26    THE SAME
+  load-use                 38/38    THE SAME
+  machine-id                7/13    7 same, 4 numbers differ, 2 differ in form, median 50.0%, largest 50.0%
+  mdec-padding             10/10    THE SAME
+  mdec-round              112/112   THE SAME
+  mdec-step24            2202/2202  THE SAME
+  mdec-time                19/19    THE SAME
+  mem-delay                28/28    THE SAME
+  muldiv-overlap           34/34    THE SAME
+  semi-cost                 9/21    9 same, 12 numbers differ, median 30.4%, largest 91.6%
+  slow-b2b                 20/20    THE SAME
+  spu-fifo                  7/14    7 same, 7 numbers differ, median 3.7%, largest 25.0%
+  spu-health               11/15    11 same, 3 numbers differ, 1 differ in form, median 5.8%, largest 99.4%
+  spu-irq                  15/20    15 same, 5 numbers differ, median 9.9%, largest 82.0%
+  spu-lead                 10/18    10 same, 8 numbers differ, median 1.6%, largest 16.7%
+  spu-path                  9/11    9 same, 2 numbers differ, median 5.0%, largest 5.0%
+  spu-read-grid           114/114   THE SAME
+  spu-read-trace           12/30    12 same, 9 numbers differ, 9 differ in form, median 34.0%, largest 939.3%
+  spu-xfer                 15/25    15 same, 8 numbers differ, 2 differ in form, median 96.4%, largest 8000.0%
+  store-chain              25/25    THE SAME
+  store-cost               45/45    THE SAME
+  store-shadow             31/31    THE SAME
+  t1-edges                  9/68    9 same, 59 numbers differ, median 0.0%, largest 6.4%
+  t1-gate                   5/21    5 same, 8 numbers differ, 2 differ in form, 6 only here, 6 only on the console, median 0.1%, largest 163.6%
+  t1-hres                   5/13    5 same, 8 numbers differ, median 0.5%, largest 570.5%
+  t1-hsweep                 5/14    5 same, 9 numbers differ, median 0.2%, largest 0.8%
+  t1-line                   6/19    6 same, 13 numbers differ, median 0.0%, largest 0.2%
+  t1-ticks                  6/36    6 same, 29 numbers differ, 1 differ in form, median 0.0%, largest 3.8%
+  t1-toggle                 5/25    5 same, 16 numbers differ, 4 differ in form, median 3.9%, largest 571.3%
+  vblank-edge              29/29    THE SAME
+  wb-drain                 14/14    THE SAME
+  wr-stream                18/18    THE SAME
+
+2026-10-26-SCPH-5000 against 2026-10-09-SCPH-1001-runner: 61 programs in both, 117 only in 2026-10-26-SCPH-5000, 75 only in 2026-10-09-SCPH-1001-runner
+
+== ack-per-device   (ack-per-device-SCPH-5000.txt / ack-per-device-SCPH-1001-2.txt)
+  numbers differ (11):
+    2026-10-26-SCPH-5000           byte  3  00h -> 5ah  RX +1334..1478  /ACK +1487..1752 (16 of 16)  pulse  79..105
+    2026-10-09-SCPH-1001-runner    byte  3  00h -> 5ah  RX +1334..1474  /ACK +1496..1748 (16 of 16)  pulse  79..105      -4 (-0.3%)  +9 (+0.6%)  -4 (-0.2%)
+    2026-10-26-SCPH-5000           byte  3  00h -> 5ah  RX +1370..1440  /ACK +1334..1439 (16 of 16)  pulse  67..102
+    2026-10-09-SCPH-1001-runner    byte  3  00h -> 5ah  RX +1405..1445  /ACK +1369..1440 (16 of 16)  pulse  67..116      +35 (+2.6%)  +5 (+0.3%)  +35 (+2.6%)  +1 (+0.1%)  +14 (+13.7%)
+    2026-10-26-SCPH-5000           byte  4  00h -> 5dh  RX +1405..1445  /ACK +1369..1445 (16 of 16)  pulse  67..102
+    2026-10-09-SCPH-1001-runner    byte  4  00h -> 5dh  RX +1370..1475  /ACK +1334..1439 (16 of 16)  pulse  67..102      -35 (-2.5%)  +30 (+2.1%)  -35 (-2.6%)  -6 (-0.4%)
+    2026-10-26-SCPH-5000           byte  5  00h -> 00h  RX +1405..1443  /ACK +1369..1439 (16 of 16)  pulse  67..102
+    2026-10-09-SCPH-1001-runner    byte  5  00h -> 00h  RX +1404..1440  /ACK +1404..1439 (16 of 16)  pulse  67..102      -1 (-0.1%)  -3 (-0.2%)  +35 (+2.6%)
+    2026-10-26-SCPH-5000           byte  6  00h -> 00h  RX +1405..1441  /ACK +1369..1441 (16 of 16)  pulse  67..102
+    2026-10-09-SCPH-1001-runner    byte  6  00h -> 00h  RX +1405..1480  /ACK +1369..1444 (16 of 16)  pulse  67..102      +39 (+2.7%)  +3 (+0.2%)
+    2026-10-26-SCPH-5000           byte  7  00h -> 5ch  RX +1404..1443  /ACK +1369..1439 (16 of 16)  pulse  67..102
+    2026-10-09-SCPH-1001-runner    byte  7  00h -> 5ch  RX +1404..1445  /ACK +1369..1439 (16 of 16)  pulse  67..102      +2 (+0.1%)
+    2026-10-26-SCPH-5000           byte  8  00h -> 5dh  RX +1404..1475  /ACK +1369..1439 (16 of 16)  pulse  67..102
+    2026-10-09-SCPH-1001-runner    byte  8  00h -> 5dh  RX +1405..1475  /ACK +1369..1439 (16 of 16)  pulse  67..102      +1 (+0.1%)
+    2026-10-26-SCPH-5000           byte  9  00h -> 00h  RX +1404..1442  /ACK +1470..1534 (16 of 16)  pulse  79.. 84
+    2026-10-09-SCPH-1001-runner    byte  9  00h -> 00h  RX +1404..1445  /ACK +1501..1557 (16 of 16)  pulse  79.. 84      +3 (+0.2%)  +31 (+2.1%)  +23 (+1.5%)
+    2026-10-26-SCPH-5000           byte 10  00h -> 00h  RX +1334..1480  /ACK +1334..1444 (16 of 16)  pulse  67..102
+    2026-10-09-SCPH-1001-runner    byte 10  00h -> 00h  RX +1405..1475  /ACK +1369..1439 (16 of 16)  pulse  67..102      +71 (+5.3%)  -5 (-0.3%)  +35 (+2.6%)  -5 (-0.3%)
+    2026-10-26-SCPH-5000           byte 11  00h -> 4dh  RX +1404..1445  /ACK +1369..1439 (16 of 16)  pulse  67..102
+    2026-10-09-SCPH-1001-runner    byte 11  00h -> 4dh  RX +1405..1475  /ACK +1369..1439 (16 of 16)  pulse  67..102      +1 (+0.1%)  +30 (+2.1%)
+    2026-10-26-SCPH-5000           byte 12  00h -> 43h  RX +1405..1475  /ACK +1369..1445 (16 of 16)  pulse  67..102
+    2026-10-09-SCPH-1001-runner    byte 12  00h -> 43h  RX +1405..1475  /ACK +1369..1441 (16 of 16)  pulse  67..102      -4 (-0.3%)
+  differ in form (3):
+    2026-10-26-SCPH-5000           byte  2  52h -> 00h  RX +1405..1475  /ACK +1369..1439 (16 of 16)  pulse  67..116
+    2026-10-09-SCPH-1001-runner    byte  2  52h -> 00h  RX +1405..1479  /ACK +1369..1443 (16 of 16)  pulse  67.. 71
+    2026-10-26-SCPH-5000           byte  1  01h -> 00h  RX +1386..1406  /ACK +1692..1732 (16 of 16)  pulse  79..105
+    2026-10-09-SCPH-1001-runner    byte  1  01h -> ffh  RX +1386..1406  no /ACK (16 of 16)
+    2026-10-26-SCPH-5000           byte  1  81h -> ffh  RX +1404..1418  /ACK +1574..1640 (16 of 16)  pulse  27.. 53
+    2026-10-09-SCPH-1001-runner    byte  1  81h -> ffh  RX +1404..1412  no /ACK (16 of 16)
+  only 2026-10-26-SCPH-5000 (10):
+      byte  2  42h -> 00h  RX +1334..1474  /ACK +1660..1774 (16 of 16)  pulse  79..105
+      byte  3  00h -> 00h  RX +1369..1474  /ACK +1669..1774 (16 of 16)  pulse  79..105
+      byte  4  00h -> ffh  RX +1439..1439  /ACK + 389..1765 (16 of 16)  pulse  36..105
+      byte  5  00h -> ffh  RX +1439..1439  /ACK + 109.. 179 (15 of 16)  pulse  36.. 71
+      byte  2  52h -> 08h  RX +1369..1439  /ACK +1591..1687 (16 of 16)  pulse  27.. 53
+      byte  3  00h -> 5ah  RX +1334..1474  /ACK +1404..1566 (16 of 16)  pulse  27.. 58
+      byte  4  00h -> 5dh  RX +1334..1439  /ACK +1404..1531 (16 of 16)  pulse  27.. 58
+      byte  5  00h -> 00h  RX +1369..1439  /ACK +1461..1600 (16 of 16)  pulse  27.. 53
+      byte  6  00h -> 00h  RX +1369..1474  /ACK +1487..1618 (16 of 16)  pulse  27.. 53
+      byte  7  00h -> 5ch  RX +1404..1479  no /ACK (16 of 16)
+
+== bios-window   (bios-window-SCPH-5000.txt / bios-window-SCPH-1001.txt)
+  numbers differ (12):
+    2026-10-26-SCPH-5000           bfc3fffc  10000004    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc3fffc  310900ff    32 cycles      10000004->310900ff
+    2026-10-26-SCPH-5000           bfc3fffc  10000004    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc3fffc  310900ff    32 cycles      10000004->310900ff
+    2026-10-26-SCPH-5000           bfc40000  ac2d1a44    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc40000  3c0d8008    32 cycles      ac2d1a44->3c0d8008
+    2026-10-26-SCPH-5000           bfc3fffc  10000004    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc3fffc  310900ff    32 cycles      10000004->310900ff
+    2026-10-26-SCPH-5000           bfc40000  ac2d1a44    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc40000  3c0d8008    32 cycles      ac2d1a44->3c0d8008
+    2026-10-26-SCPH-5000           bfc80100  19951204  = ROM +00100, a mirror    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc80100  19940922  = ROM +00100, a mirror    32 cycles      -10282 (-0.1%)
+    2026-10-26-SCPH-5000           bfc3fffc  10000004    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc3fffc  310900ff    32 cycles      10000004->310900ff
+    2026-10-26-SCPH-5000           bfc40000  ac2d1a44    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc40000  3c0d8008    32 cycles      ac2d1a44->3c0d8008
+    2026-10-26-SCPH-5000           bfc80100  19951204  = ROM +00100, a mirror    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc80100  19940922  = ROM +00100, a mirror    32 cycles      -10282 (-0.1%)
+    2026-10-26-SCPH-5000           bfc3fffc  10000004    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc3fffc  310900ff    32 cycles      10000004->310900ff
+    2026-10-26-SCPH-5000           bfc40000  ac2d1a44    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc40000  3c0d8008    32 cycles      ac2d1a44->3c0d8008
+    2026-10-26-SCPH-5000           bfc80100  19951204  = ROM +00100, a mirror    32 cycles
+    2026-10-09-SCPH-1001-runner    bfc80100  19940922  = ROM +00100, a mirror    32 cycles      -10282 (-0.1%)
+
+== clut-cost   (clut-cost-SCPH-5000.txt / clut-cost-SCPH-1001-2.txt)
+  numbers differ (8):
+    2026-10-26-SCPH-5000           4bit   same   25912   alternating   25976   diff      64  ->  0.50 cycles/sprite
+    2026-10-09-SCPH-1001-runner    4bit   same   25912   alternating   25904   diff      -8  ->  -0.06 cycles/sprite      -72 (-0.3%)  -72 (-112.5%)  -0.56 (-112.0%)
+    2026-10-26-SCPH-5000           8bit   same   25776   alternating   58032   diff   32256  ->  252.00 cycles/sprite
+    2026-10-09-SCPH-1001-runner    8bit   same   25768   alternating   56608   diff   30840  ->  240.93 cycles/sprite      -8 (-0.0%)  -1424 (-2.5%)  -1416 (-4.4%)  -11.07 (-4.4%)
+    2026-10-26-SCPH-5000           4bit   same   25760   alternating   26032   diff     272  ->  2.12 cycles/sprite
+    2026-10-09-SCPH-1001-runner    4bit   same   25784   alternating   25928   diff     144  ->  1.12 cycles/sprite      +24 (+0.1%)  -104 (-0.4%)  -128 (-47.1%)  -1 (-47.2%)
+    2026-10-26-SCPH-5000           8bit   same   25776   alternating   58128   diff   32352  ->  252.75 cycles/sprite
+    2026-10-09-SCPH-1001-runner    8bit   same   25768   alternating   56528   diff   30760  ->  240.31 cycles/sprite      -8 (-0.0%)  -1600 (-2.8%)  -1592 (-4.9%)  -12.44 (-4.9%)
+    2026-10-26-SCPH-5000           4bit   same   27696   alternating   30608   diff    2912  ->  22.75 cycles/sprite
+    2026-10-09-SCPH-1001-runner    4bit   same   29520   alternating   30808   diff    1288  ->  10.06 cycles/sprite      +1824 (+6.6%)  +200 (+0.7%)  -1624 (-55.8%)  -12.69 (-55.8%)
+    2026-10-26-SCPH-5000           8bit   same   27728   alternating   61072   diff   33344  ->  260.50 cycles/sprite
+    2026-10-09-SCPH-1001-runner    8bit   same   29616   alternating   62512   diff   32896  ->  257.00 cycles/sprite      +1888 (+6.8%)  +1440 (+2.4%)  -448 (-1.3%)  -3.50 (-1.3%)
+    2026-10-26-SCPH-5000           4bit   same   27816   alternating   30432   diff    2616  ->  20.43 cycles/sprite
+    2026-10-09-SCPH-1001-runner    4bit   same   29520   alternating   30648   diff    1128  ->  8.81 cycles/sprite      +1704 (+6.1%)  +216 (+0.7%)  -1488 (-56.9%)  -11.62 (-56.9%)
+    2026-10-26-SCPH-5000           8bit   same   27712   alternating   61048   diff   33336  ->  260.43 cycles/sprite
+    2026-10-09-SCPH-1001-runner    8bit   same   29488   alternating   62512   diff   33024  ->  258.00 cycles/sprite      +1776 (+6.4%)  +1464 (+2.4%)  -312 (-0.9%)  -2.43 (-0.9%)
+
+== code-in-io-safe   (code-in-io-safe-SCPH-5000.txt / code-in-io-safe-SCPH-1001-2.txt)
+  numbers differ (2):
+    2026-10-26-SCPH-5000             #0 cause  6 EPC 1f800000 BadVaddr 541d2d1d ra 800105c8
+    2026-10-09-SCPH-1001-runner      #0 cause  6 EPC 1f800000 BadVaddr 801fff99 ra 800105c8      541d2d1d->801fff99
+    2026-10-26-SCPH-5000             #0 cause  6 EPC 1f801828 BadVaddr 541d2d1d ra 800103d8  (ra moved: a jal fetched)
+    2026-10-09-SCPH-1001-runner      #0 cause  6 EPC 1f801828 BadVaddr 801fff99 ra 800103d8  (ra moved: a jal fetched)      541d2d1d->801fff99
+
+== concurrent-dma   (concurrent-dma-SCPH-5000.txt / concurrent-dma-SCPH-1001-2.txt)
+  numbers differ (11):
+    2026-10-26-SCPH-5000           EQ 2>4  DMA2 done   4000 with DMA4 at   4/128 blocks;  DMA4 done 141096 with DMA2 at 128/128
+    2026-10-09-SCPH-1001-runner    EQ 2>4  DMA2 done   4088 with DMA4 at   4/128 blocks;  DMA4 done 141112 with DMA2 at 128/128      +88 (+2.2%)  +16 (+0.0%)
+    2026-10-26-SCPH-5000                   first moves 288 / 288, last 3944 / 141096 cycles; moving samples: DMA2 alone 21, DMA4 alone 124, both 4; lead changes 1
+    2026-10-09-SCPH-1001-runner            first moves 304 / 304, last 4032 / 140984 cycles; moving samples: DMA2 alone 22, DMA4 alone 124, both 4; lead changes 1      +16 (+5.6%)  +16 (+5.6%)  +88 (+2.2%)  -112 (-0.1%)  +1 (+4.8%)
+    2026-10-26-SCPH-5000           EQ 4>2  DMA2 done   4040 with DMA4 at   4/128 blocks;  DMA4 done 140904 with DMA2 at 128/128
+    2026-10-09-SCPH-1001-runner    EQ 4>2  DMA2 done   4056 with DMA4 at   4/128 blocks;  DMA4 done 140936 with DMA2 at 128/128      +16 (+0.4%)  +32 (+0.0%)
+    2026-10-26-SCPH-5000                   first moves 176 / 176, last 3984 / 140904 cycles; moving samples: DMA2 alone 23, DMA4 alone 124, both 4; lead changes 1
+    2026-10-09-SCPH-1001-runner            first moves 176 / 176, last 4000 / 140808 cycles; moving samples: DMA2 alone 24, DMA4 alone 124, both 4; lead changes 1      +16 (+0.4%)  -96 (-0.1%)  +1 (+4.3%)
+    2026-10-26-SCPH-5000           2 HIGH  DMA2 done   4000 with DMA4 at   4/128 blocks;  DMA4 done 140984 with DMA2 at 128/128
+    2026-10-09-SCPH-1001-runner    2 HIGH  DMA2 done   3984 with DMA4 at   4/128 blocks;  DMA4 done 141104 with DMA2 at 128/128      -16 (-0.4%)  +120 (+0.1%)
+    2026-10-26-SCPH-5000                   first moves 152 / 152, last 3944 / 140984 cycles; moving samples: DMA2 alone 22, DMA4 alone 124, both 4; lead changes 1
+    2026-10-09-SCPH-1001-runner            first moves 160 / 160, last 3984 / 141104 cycles; moving samples: DMA2 alone 23, DMA4 alone 124, both 4; lead changes 1      +8 (+5.3%)  +8 (+5.3%)  +40 (+1.0%)  +120 (+0.1%)  +1 (+4.5%)
+    2026-10-26-SCPH-5000           4 HIGH  DMA2 done   3960 with DMA4 at   4/128 blocks;  DMA4 done 140944 with DMA2 at 128/128
+    2026-10-09-SCPH-1001-runner    4 HIGH  DMA2 done   4088 with DMA4 at   4/128 blocks;  DMA4 done 140984 with DMA2 at 128/128      +128 (+3.2%)  +40 (+0.0%)
+    2026-10-26-SCPH-5000                   first moves 128 / 128, last 3960 / 140824 cycles; moving samples: DMA2 alone 23, DMA4 alone 124, both 4; lead changes 1
+    2026-10-09-SCPH-1001-runner            first moves 144 / 144, last 4032 / 140984 cycles; moving samples: DMA2 alone 24, DMA4 alone 124, both 4; lead changes 1      +16 (+12.5%)  +16 (+12.5%)  +72 (+1.8%)  +160 (+0.1%)  +1 (+4.3%)
+    2026-10-26-SCPH-5000           EQ      OTC done  17584 with DMA4 at   2/128 blocks;  DMA4 done 157472
+    2026-10-09-SCPH-1001-runner    EQ      OTC done  17592 with DMA4 at   2/128 blocks;  DMA4 done 157432      +8 (+0.0%)  -40 (-0.0%)
+    2026-10-26-SCPH-5000           6 HIGH  OTC done  17536 with DMA4 at   2/128 blocks;  DMA4 done 157264
+    2026-10-09-SCPH-1001-runner    6 HIGH  OTC done  17536 with DMA4 at   2/128 blocks;  DMA4 done 157272      +8 (+0.0%)
+    2026-10-26-SCPH-5000           4 HIGH  OTC done  17544 with DMA4 at   2/128 blocks;  DMA4 done 157264
+    2026-10-09-SCPH-1001-runner    4 HIGH  OTC done  17560 with DMA4 at   2/128 blocks;  DMA4 done 157296      +16 (+0.1%)  +32 (+0.0%)
+
+== cpu-extras   (cpu-extras-SCPH-5000.txt / cpu-extras-SCPH-1001.txt)
+  numbers differ (1):
+    2026-10-26-SCPH-5000         PRID (cop0 r15): 00000002
+    2026-10-09-SCPH-1001-runner  PRID (cop0 r15): 00000001      -1 (-50.0%)
+
+== dma-contention   (dma-contention-SCPH-5000.txt / dma-contention-SCPH-1001-2.txt)
+  numbers differ (9):
+    2026-10-26-SCPH-5000           SPIN     14103 cycles   (CPU polls CHCR, touches no RAM - what dma/chopping does)
+    2026-10-09-SCPH-1001-runner    SPIN     14046 cycles   (CPU polls CHCR, touches no RAM - what dma/chopping does)      -57 (-0.4%)
+    2026-10-26-SCPH-5000           REGS     14284 cycles       51 iterations   (CPU busy, 64 ALU ops per iteration)
+    2026-10-09-SCPH-1001-runner    REGS     14155 cycles       50 iterations   (CPU busy, 64 ALU ops per iteration)      -129 (-0.9%)  -1 (-2.0%)
+    2026-10-26-SCPH-5000           STORES   15587 cycles       18 iterations   (CPU busy, 64 word stores per iteration)
+    2026-10-09-SCPH-1001-runner    STORES   15521 cycles       17 iterations   (CPU busy, 64 word stores per iteration)      -66 (-0.4%)  -1 (-5.6%)
+    2026-10-26-SCPH-5000           LOADS    15393 cycles        4 iterations   (CPU busy, 64 lw/lw/sw steps per iteration)
+    2026-10-09-SCPH-1001-runner    LOADS    16824 cycles        5 iterations   (CPU busy, 64 lw/lw/sw steps per iteration)      +1431 (+9.3%)  +1 (+25.0%)
+    2026-10-26-SCPH-5000           LOADS step during DMA:  60.12 cycles  (256 steps)
+    2026-10-09-SCPH-1001-runner    LOADS step during DMA:  52.57 cycles  (320 steps)      -7.55 (-12.6%)  +64 (+25.0%)
+    2026-10-26-SCPH-5000           LOADS step with NO DMA: 22.27 cycles  (4096 steps, 91219 cycles)
+    2026-10-09-SCPH-1001-runner    LOADS step with NO DMA: 22.27 cycles  (4096 steps, 91222 cycles)      +3 (+0.0%)
+    2026-10-26-SCPH-5000           STORES did 35% of the iterations REGS did.
+    2026-10-09-SCPH-1001-runner    STORES did 34% of the iterations REGS did.      -1 (-2.9%)
+    2026-10-26-SCPH-5000           transfer time, STORES vs SPIN: +1484 cycles
+    2026-10-09-SCPH-1001-runner    transfer time, STORES vs SPIN: +1475 cycles      -9 (-0.6%)
+    2026-10-26-SCPH-5000           transfer time, REGS   vs SPIN: +181 cycles
+    2026-10-09-SCPH-1001-runner    transfer time, REGS   vs SPIN: +109 cycles      -72 (-39.8%)
+
+== dma-rates   (dma-rates-SCPH-5000.txt / dma-rates-SCPH-1001-2.txt)
+  numbers differ (12):
+    2026-10-26-SCPH-5000             1 blocks (  16 words)   first read idle at     92   total      92   turns     0
+    2026-10-09-SCPH-1001-runner      1 blocks (  16 words)   first read idle at     95   total      95   turns     0      +3 (+3.3%)  +3 (+3.3%)
+    2026-10-26-SCPH-5000             per word 5.75
+    2026-10-09-SCPH-1001-runner      per word 5.93      +0.18 (+3.1%)
+    2026-10-26-SCPH-5000             4 blocks (  64 words)   first read BUSY at     91   total    3376   turns    86
+    2026-10-09-SCPH-1001-runner      4 blocks (  64 words)   first read BUSY at     91   total    3373   turns    86      -3 (-0.1%)
+    2026-10-26-SCPH-5000             per word 52.75
+    2026-10-09-SCPH-1001-runner      per word 52.70      -0.05 (-0.1%)
+    2026-10-26-SCPH-5000            16 blocks ( 256 words)   first read BUSY at     94   total   16582   turns   431
+    2026-10-09-SCPH-1001-runner     16 blocks ( 256 words)   first read BUSY at     92   total   16582   turns   431      -2 (-2.1%)
+    2026-10-26-SCPH-5000            64 blocks (1024 words)   first read BUSY at     91   total   70012   turns  1828
+    2026-10-09-SCPH-1001-runner     64 blocks (1024 words)   first read BUSY at     95   total   70042   turns  1829      +4 (+4.4%)  +30 (+0.0%)  +1 (+0.1%)
+    2026-10-26-SCPH-5000             per word 68.37
+    2026-10-09-SCPH-1001-runner      per word 68.40      +0.03 (+0.0%)
+    2026-10-26-SCPH-5000           SPIN                       first read BUSY at     32   total   14528   turns   512
+    2026-10-09-SCPH-1001-runner    SPIN                       first read BUSY at     42   total   14724   turns   523      +10 (+31.3%)  +196 (+1.3%)  +11 (+2.1%)
+    2026-10-26-SCPH-5000           16 ALU ops a turn          first read BUSY at     36   total   14329   turns   278
+    2026-10-09-SCPH-1001-runner    16 ALU ops a turn          first read BUSY at     36   total   14354   turns   280      +25 (+0.2%)  +2 (+0.7%)
+    2026-10-26-SCPH-5000           16 RAM loads a turn        first read BUSY at    370   total   14267   turns    31
+    2026-10-09-SCPH-1001-runner    16 RAM loads a turn        first read BUSY at    447   total   14149   turns    31      +77 (+20.8%)  -118 (-0.8%)
+    2026-10-26-SCPH-5000           16 ROM loads a turn        first read BUSY at    740   total   23512   turns    30
+    2026-10-09-SCPH-1001-runner    16 ROM loads a turn        first read BUSY at    728   total   23414   turns    30      -12 (-1.6%)  -98 (-0.4%)
+    2026-10-26-SCPH-5000           a turn with no DMA: ALU 35.94, RAM 132.68, ROM 450.95 cycles
+    2026-10-09-SCPH-1001-runner    a turn with no DMA: ALU 35.94, RAM 132.66, ROM 450.95 cycles      -0.02 (-0.0%)
+
+== fifo-burst   (fifo-burst-SCPH-5000.txt / fifo-burst-SCPH-1001.txt)
+  numbers differ (4):
+    2026-10-26-SCPH-5000           PACED burst   3192 cycles, to idle    3224 cycles, dots 64/64
+    2026-10-09-SCPH-1001-runner    PACED burst   2672 cycles, to idle    2704 cycles, dots 64/64      -520 (-16.3%)  -520 (-16.1%)
+    2026-10-26-SCPH-5000           IDLE  burst    856 cycles, to idle     896 cycles, dots 48/64  missing 0003fc00 03fc0000
+    2026-10-09-SCPH-1001-runner    IDLE  burst    856 cycles, to idle     896 cycles, dots 47/64  missing 0001fe00 01ff0000      -1 (-2.1%)  0003fc00->0001fe00  03fc0000->01ff0000
+    2026-10-26-SCPH-5000           FILL  burst    352 cycles, to idle    6792 cycles, dots  9/64  missing 00ffffff fffffffe
+    2026-10-09-SCPH-1001-runner    FILL  burst    352 cycles, to idle    6880 cycles, dots  9/64  missing 00ffffff fffffffe      +88 (+1.3%)
+    2026-10-26-SCPH-5000           COPY  burst    352 cycles, to idle   42664 cycles, dots  9/64  missing 00ffffff fffffffe
+    2026-10-09-SCPH-1001-runner    COPY  burst    352 cycles, to idle   53528 cycles, dots  9/64  missing 00ffffff fffffffe      +10864 (+25.5%)
+
+== gpu-abort   (gpu-abort-SCPH-5000.txt / gpu-abort-SCPH-1001-2.txt)
+  numbers differ (35):
+    2026-10-26-SCPH-5000           FILL N      0 | px   256  rows   0..  0 (  1 whole) | after reset 001, ready +40
+    2026-10-09-SCPH-1001-runner    FILL N      0 | px   256  rows   0..  0 (  1 whole) | after reset 101, ready +40      +100 (+10000.0%)
+    2026-10-26-SCPH-5000           FILL N     64 | px  1040  rows   0..  4 (  4 whole)  first part-row   4:  16 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    FILL N     64 | px   816  rows   0..  3 (  3 whole)  first part-row   3:  48 px | after reset 101, ready +24      -224 (-21.5%)  -1 (-25.0%)  -1 (-25.0%)  -1 (-25.0%)  +32 (+200.0%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           FILL N    256 | px  3024  rows   0.. 11 ( 11 whole)  first part-row  11: 208 px | after reset 001, ready +56
+    2026-10-09-SCPH-1001-runner    FILL N    256 | px  2960  rows   0.. 11 ( 11 whole)  first part-row  11: 144 px | after reset 101, ready +24      -64 (-2.1%)  -64 (-30.8%)  +100 (+10000.0%)  -32 (-57.1%)
+    2026-10-26-SCPH-5000           FILL N    512 | px  6208  rows   0.. 24 ( 24 whole)  first part-row  24:  64 px | after reset 001, ready +56
+    2026-10-09-SCPH-1001-runner    FILL N    512 | px  5728  rows   0.. 22 ( 22 whole)  first part-row  22:  96 px | after reset 101, ready +16      -480 (-7.7%)  -2 (-8.3%)  -2 (-8.3%)  -2 (-8.3%)  +32 (+50.0%)  +100 (+10000.0%)  -40 (-71.4%)
+    2026-10-26-SCPH-5000           FILL N   1024 | px 11904  rows   0.. 46 ( 46 whole)  first part-row  46: 128 px | after reset 001, ready +56
+    2026-10-09-SCPH-1001-runner    FILL N   1024 | px 11424  rows   0.. 44 ( 44 whole)  first part-row  44: 160 px | after reset 101, ready +24      -480 (-4.0%)  -2 (-4.3%)  -2 (-4.3%)  -2 (-4.3%)  +32 (+25.0%)  +100 (+10000.0%)  -32 (-57.1%)
+    2026-10-26-SCPH-5000           FILL N   2048 | px 23216  rows   0.. 90 ( 90 whole)  first part-row  90: 176 px | after reset 001, ready +48
+    2026-10-09-SCPH-1001-runner    FILL N   2048 | px 22416  rows   0.. 87 ( 87 whole)  first part-row  87: 144 px | after reset 101, ready +16      -800 (-3.4%)  -3 (-3.3%)  -3 (-3.3%)  -3 (-3.3%)  -32 (-18.2%)  +100 (+10000.0%)  -32 (-66.7%)
+    2026-10-26-SCPH-5000           RECT N      0 | px     6  rows   0..  0 (  0 whole)  first part-row   0:   6 px | after reset 001, ready +16
+    2026-10-09-SCPH-1001-runner    RECT N      0 | px     6  rows   0..  0 (  0 whole)  first part-row   0:   6 px | after reset 101, ready +16      +100 (+10000.0%)
+    2026-10-26-SCPH-5000           RECT N     64 | px   146  rows   0..  0 (  0 whole)  first part-row   0: 146 px | after reset 001, ready +16
+    2026-10-09-SCPH-1001-runner    RECT N     64 | px   126  rows   0..  0 (  0 whole)  first part-row   0: 126 px | after reset 101, ready +24      -20 (-13.7%)  -20 (-13.7%)  +100 (+10000.0%)  +8 (+50.0%)
+    2026-10-26-SCPH-5000           RECT N    512 | px   980  rows   0..  3 (  3 whole)  first part-row   3: 212 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    RECT N    512 | px   990  rows   0..  3 (  3 whole)  first part-row   3: 222 px | after reset 101, ready +16      +10 (+1.0%)  +10 (+4.7%)  +100 (+10000.0%)  -16 (-50.0%)
+    2026-10-26-SCPH-5000           RECT N   1024 | px  1966  rows   0..  7 (  7 whole)  first part-row   7: 174 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    RECT N   1024 | px  1910  rows   0..  7 (  7 whole)  first part-row   7: 118 px | after reset 101, ready +24      -56 (-2.8%)  -56 (-32.2%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           RECT N   2048 | px  3834  rows   0.. 14 ( 14 whole)  first part-row  14: 250 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    RECT N   2048 | px  3844  rows   0.. 15 ( 15 whole)  first part-row  15:   4 px | after reset 101, ready +24      +10 (+0.3%)  +1 (+7.1%)  +1 (+7.1%)  +1 (+7.1%)  -246 (-98.4%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           RECT N   4096 | px  7632  rows   0.. 29 ( 29 whole)  first part-row  29: 208 px | after reset 001, ready +24
+    2026-10-09-SCPH-1001-runner    RECT N   4096 | px  7674  rows   0.. 29 ( 29 whole)  first part-row  29: 250 px | after reset 101, ready +24      +42 (+0.6%)  +42 (+20.2%)  +100 (+10000.0%)
+    2026-10-26-SCPH-5000           RECT N  16384 | px 30596  rows   0..119 (119 whole)  first part-row 119: 132 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    RECT N  16384 | px 30752  rows   0..120 (120 whole)  first part-row 120:  32 px | after reset 101, ready +24      +156 (+0.5%)  +1 (+0.8%)  +1 (+0.8%)  +1 (+0.8%)  -100 (-75.8%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           RECT N 131072 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +24
+    2026-10-09-SCPH-1001-runner    RECT N 131072 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +16      -8 (-33.3%)
+    2026-10-26-SCPH-5000           RECT N 400000 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +24
+    2026-10-09-SCPH-1001-runner    RECT N 400000 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +16      -8 (-33.3%)
+    2026-10-26-SCPH-5000           TRI  N     64 | px   102  rows   0..  0 (  0 whole)  first part-row   0: 102 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    TRI  N     64 | px    82  rows   0..  0 (  0 whole)  first part-row   0:  82 px | after reset 101, ready +24      -20 (-19.6%)  -20 (-19.6%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           TRI  N    128 | px   222  rows   0..  0 (  0 whole)  first part-row   0: 222 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    TRI  N    128 | px   222  rows   0..  0 (  0 whole)  first part-row   0: 222 px | after reset 101, ready +16      +100 (+10000.0%)  -16 (-50.0%)
+    2026-10-26-SCPH-5000           TRI  N    256 | px   449  rows   0..  1 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +48
+    2026-10-09-SCPH-1001-runner    TRI  N    256 | px   389  rows   0..  1 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24      -60 (-13.4%)  +100 (+10000.0%)  -24 (-50.0%)
+    2026-10-26-SCPH-5000           TRI  N    512 | px   972  rows   0..  3 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +24
+    2026-10-09-SCPH-1001-runner    TRI  N    512 | px   866  rows   0..  3 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24      -106 (-10.9%)  +100 (+10000.0%)
+    2026-10-26-SCPH-5000           TRI  N   1024 | px  1940  rows   0..  7 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +24
+    2026-10-09-SCPH-1001-runner    TRI  N   1024 | px  1870  rows   0..  7 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +16      -70 (-3.6%)  +100 (+10000.0%)  -8 (-33.3%)
+    2026-10-26-SCPH-5000           TRI  N   2048 | px  3910  rows   0.. 15 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    TRI  N   2048 | px  3808  rows   0.. 15 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24      -102 (-2.6%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           TRI  N   4096 | px  7636  rows   0.. 31 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    TRI  N   4096 | px  7642  rows   0.. 31 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +16      +6 (+0.1%)  +100 (+10000.0%)  -16 (-50.0%)
+    2026-10-26-SCPH-5000           TRI  N   8192 | px 15236  rows   0.. 68 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +24
+    2026-10-09-SCPH-1001-runner    TRI  N   8192 | px 15249  rows   0.. 68 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24      +13 (+0.1%)  +100 (+10000.0%)
+    2026-10-26-SCPH-5000           TRI  N  16384 | px 30439  rows   0..189 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    TRI  N  16384 | px 30009  rows   0..182 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24      -430 (-1.4%)  -7 (-3.7%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           TRI  N  32768 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24
+    2026-10-09-SCPH-1001-runner    TRI  N  32768 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +16      -8 (-33.3%)
+    2026-10-26-SCPH-5000           TRI  N  65536 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24
+    2026-10-09-SCPH-1001-runner    TRI  N  65536 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +16      -8 (-33.3%)
+    2026-10-26-SCPH-5000           TRI  N 131072 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24
+    2026-10-09-SCPH-1001-runner    TRI  N 131072 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +16      -8 (-33.3%)
+    2026-10-26-SCPH-5000           GTRI N    256 | px    97  rows   0..  0 (  0 whole)  first part-row   0:  97 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    GTRI N    256 | px    87  rows   0..  0 (  0 whole)  first part-row   0:  87 px | after reset 101, ready +24      -10 (-10.3%)  -10 (-10.3%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           GTRI N    512 | px   345  rows   0..  1 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    GTRI N    512 | px   351  rows   0..  1 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24      +6 (+1.7%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           GTRI N   1024 | px   861  rows   0..  3 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    GTRI N   1024 | px   847  rows   0..  3 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24      -14 (-1.6%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           GTRI N   2048 | px  1852  rows   0..  7 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    GTRI N   2048 | px  1804  rows   0..  7 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24      -48 (-2.6%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           GTRI N   4096 | px  3880  rows   0.. 15 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    GTRI N   4096 | px  3755  rows   0.. 15 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24      -125 (-3.2%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           GTRI N   8192 | px  7901  rows   0.. 33 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    GTRI N   8192 | px  7671  rows   0.. 32 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +16      -230 (-2.9%)  -1 (-3.0%)  +100 (+10000.0%)  -16 (-50.0%)
+    2026-10-26-SCPH-5000           GTRI N  16384 | px 16081  rows   0.. 73 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    GTRI N  16384 | px 15499  rows   0.. 70 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24      -582 (-3.6%)  -3 (-4.1%)  +100 (+10000.0%)  -8 (-25.0%)
+    2026-10-26-SCPH-5000           GTRI N  32768 | px 31914  rows   0..217 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    GTRI N  32768 | px 30822  rows   0..195 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +16      -1092 (-3.4%)  -22 (-10.1%)  +100 (+10000.0%)  -16 (-50.0%)
+  differ in form (6):
+    2026-10-26-SCPH-5000           FILL N    128 | px  1904  rows   0..  7 (  7 whole)  first part-row   7: 112 px | after reset 001, ready +48
+    2026-10-09-SCPH-1001-runner    FILL N    128 | px  1536  rows   0..  5 (  6 whole) | after reset 101, ready +24
+    2026-10-26-SCPH-5000           FILL N   4096 | px 46448  rows   0..181 (181 whole)  first part-row 181: 112 px | after reset 001, ready +96
+    2026-10-09-SCPH-1001-runner    FILL N   4096 | px 44800  rows   0..174 (175 whole) | after reset 101, ready +24
+    2026-10-26-SCPH-5000           RECT N    128 | px   262  rows   0..  1 (  1 whole)  first part-row   1:   6 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    RECT N    128 | px   256  rows   0..  0 (  1 whole) | after reset 101, ready +16
+    2026-10-26-SCPH-5000           RECT N    256 | px   478  rows   0..  1 (  1 whole)  first part-row   1: 222 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    RECT N    256 | px   512  rows   0..  1 (  2 whole) | after reset 101, ready +24
+    2026-10-26-SCPH-5000           RECT N   8192 | px 15262  rows   0.. 59 ( 59 whole)  first part-row  59: 158 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    RECT N   8192 | px 15360  rows   0.. 59 ( 60 whole) | after reset 101, ready +24
+    2026-10-26-SCPH-5000           RECT N  32768 | px 61152  rows   0..238 (238 whole)  first part-row 238: 224 px | after reset 001, ready +32
+    2026-10-09-SCPH-1001-runner    RECT N  32768 | px 61440  rows   0..239 (240 whole) | after reset 101, ready +24
+
+== gpu-c0-ready   (gpu-c0-ready-SCPH-5000.txt / gpu-c0-ready-SCPH-1001.txt)
+  numbers differ (64):
+    2026-10-26-SCPH-5000         k= 0  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k= 0  GPUSTAT 88040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k= 1  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k= 1  GPUSTAT 88040000  bit 27 1   after the read 0      +79998000 (+994.8%)
+    2026-10-26-SCPH-5000         k= 2  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k= 2  GPUSTAT 88040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k= 3  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k= 3  GPUSTAT 88040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k= 4  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k= 4  GPUSTAT 88040000  bit 27 1   after the read 0      +79998000 (+994.8%)
+    2026-10-26-SCPH-5000         k= 5  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k= 5  GPUSTAT 08040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k= 6  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k= 6  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k= 7  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k= 7  GPUSTAT 08040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k= 8  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k= 8  GPUSTAT 08040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k= 9  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k= 9  GPUSTAT 08040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=10  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=10  GPUSTAT 08040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=11  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=11  GPUSTAT 08040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=12  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=12  GPUSTAT 08040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=13  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=13  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=14  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=14  GPUSTAT 88040000  bit 27 1   after the read 0      +79998000 (+994.8%)
+    2026-10-26-SCPH-5000         k=15  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=15  GPUSTAT 08040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=16  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=16  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=17  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=17  GPUSTAT 88040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=18  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=18  GPUSTAT 88040000  bit 27 1   after the read 0      +79998000 (+994.8%)
+    2026-10-26-SCPH-5000         k=19  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=19  GPUSTAT 88040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=20  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=20  GPUSTAT 88040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=21  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=21  GPUSTAT 88040000  bit 27 1   after the read 0      +79998000 (+994.8%)
+    2026-10-26-SCPH-5000         k=22  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=22  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=23  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=23  GPUSTAT 88040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=24  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=24  GPUSTAT 88040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=25  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=25  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=26  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=26  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=27  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=27  GPUSTAT 88040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=28  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=28  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=29  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=29  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=30  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=30  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=31  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=31  GPUSTAT 08040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=32  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=32  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=33  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=33  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=34  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=34  GPUSTAT 88040000  bit 27 1   after the read 0      +79998000 (+994.8%)
+    2026-10-26-SCPH-5000         k=35  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=35  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=36  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=36  GPUSTAT 08040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         k=37  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=37  GPUSTAT 88040000  bit 27 1   after the read 0      +79998000 (+994.8%)
+    2026-10-26-SCPH-5000         k=38  GPUSTAT 88042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=38  GPUSTAT 08040000  bit 27 1   after the read 0      -80002000 (-90.9%)
+    2026-10-26-SCPH-5000         k=39  GPUSTAT 08042000  bit 27 1   after the read 0
+    2026-10-09-SCPH-1001-runner  k=39  GPUSTAT 08040000  bit 27 1   after the read 0      -2000 (-0.0%)
+    ... 24 more (--all)
+
+== gpu-cost-sweep   (gpu-cost-sweep-SCPH-5000.txt / gpu-cost-sweep-SCPH-1001-2.txt)
+  numbers differ (79):
+    2026-10-26-SCPH-5000             16x16      3 words   bit 28     140..151      bit 26      236..255
+    2026-10-09-SCPH-1001-runner      16x16      3 words   bit 28     140..151      bit 26      236..300      +45 (+17.6%)
+    2026-10-26-SCPH-5000             64x64      3 words   bit 28     140..147      bit 26      689..761
+    2026-10-09-SCPH-1001-runner      64x64      3 words   bit 28     140..147      bit 26      821..869      +132 (+19.2%)  +108 (+14.2%)
+    2026-10-26-SCPH-5000            256x256     3 words   bit 28     140..147      bit 26     6110..6182
+    2026-10-09-SCPH-1001-runner     256x256     3 words   bit 28     140..152      bit 26     6065..6184      +5 (+3.4%)  -45 (-0.7%)  +2 (+0.0%)
+    2026-10-26-SCPH-5000           1008x16      3 words   bit 28     140..152      bit 26     1310..1409
+    2026-10-09-SCPH-1001-runner    1008x16      3 words   bit 28     140..147      bit 26     1229..1273      -5 (-3.3%)  -81 (-6.2%)  -136 (-9.7%)
+    2026-10-26-SCPH-5000             16x256     3 words   bit 28     140..147      bit 26     1771..1868
+    2026-10-09-SCPH-1001-runner      16x256     3 words   bit 28     140..147      bit 26     2183..2257      +412 (+23.3%)  +389 (+20.8%)
+    2026-10-26-SCPH-5000             16x16      4 words   bit 28     108..157      bit 26      789..812
+    2026-10-09-SCPH-1001-runner      16x16      4 words   bit 28     108..156      bit 26      663..727      -1 (-0.6%)  -126 (-16.0%)  -85 (-10.5%)
+    2026-10-26-SCPH-5000             64x64      4 words   bit 28     108..108      bit 26     6345..6440
+    2026-10-09-SCPH-1001-runner      64x64      4 words   bit 28     108..114      bit 26     7071..7122      +6 (+5.6%)  +726 (+11.4%)  +682 (+10.6%)
+    2026-10-26-SCPH-5000            256x256     4 words   bit 28     108..114      bit 26    87672..88304
+    2026-10-09-SCPH-1001-runner     256x256     4 words   bit 28     108..115      bit 26   106596..106649      +1 (+0.9%)  +18924 (+21.6%)  +18345 (+20.8%)
+    2026-10-26-SCPH-5000           1024x16      4 words   bit 28     108..108      bit 26    22341..22434
+    2026-10-09-SCPH-1001-runner    1024x16      4 words   bit 28     108..110      bit 26    26815..26861      +2 (+1.9%)  +4474 (+20.0%)  +4427 (+19.7%)
+    2026-10-26-SCPH-5000           flat  16x16     3 words   bit 28     140..147      bit 26      284..326
+    2026-10-09-SCPH-1001-runner    flat  16x16     3 words   bit 28     140..147      bit 26      326..361      +42 (+14.8%)  +35 (+10.7%)
+    2026-10-26-SCPH-5000           flat  64x64     3 words   bit 28     140..152      bit 26     2450..2495
+    2026-10-09-SCPH-1001-runner    flat  64x64     3 words   bit 28     140..147      bit 26     2588..2629      -5 (-3.3%)  +138 (+5.6%)  +134 (+5.4%)
+    2026-10-26-SCPH-5000           flat 256x256    3 words   bit 28     140..153      bit 26    35659..35735
+    2026-10-09-SCPH-1001-runner    flat 256x256    3 words   bit 28     140..147      bit 26    35069..35115      -6 (-3.9%)  -590 (-1.7%)  -620 (-1.7%)
+    2026-10-26-SCPH-5000           semi  64x64     3 words   bit 28     140..149      bit 26     3860..3899
+    2026-10-09-SCPH-1001-runner    semi  64x64     3 words   bit 28     140..147      bit 26     6782..6820      -2 (-1.3%)  +2922 (+75.7%)  +2921 (+74.9%)
+    2026-10-26-SCPH-5000           semi 256x256    3 words   bit 28     140..152      bit 26    54443..54577
+    2026-10-09-SCPH-1001-runner    semi 256x256    3 words   bit 28     140..153      bit 26   101884..101963      +1 (+0.7%)  +47441 (+87.1%)  +47386 (+86.8%)
+    2026-10-26-SCPH-5000           mask check  64x64     3 words   bit 28     140..152      bit 26     3897..3970
+    2026-10-09-SCPH-1001-runner    mask check  64x64     3 words   bit 28     140..152      bit 26     6743..6862      +2846 (+73.0%)  +2892 (+72.8%)
+    2026-10-26-SCPH-5000           mask check 256x256    3 words   bit 28     140..148      bit 26    50049..54540
+    2026-10-09-SCPH-1001-runner    mask check 256x256    3 words   bit 28     140..147      bit 26   101882..101954      -1 (-0.7%)  +51833 (+103.6%)  +47414 (+86.9%)
+    2026-10-26-SCPH-5000           textured  4-bit  16x16     4 words   bit 28     108..156      bit 26      294..485
+    2026-10-09-SCPH-1001-runner    textured  4-bit  16x16     4 words   bit 28     108..156      bit 26      339..530      +45 (+15.3%)  +45 (+9.3%)
+    2026-10-26-SCPH-5000           textured  4-bit  64x64     4 words   bit 28     108..109      bit 26     2463..5039
+    2026-10-09-SCPH-1001-runner    textured  4-bit  64x64     4 words   bit 28     108..114      bit 26     2601..5535      +5 (+4.6%)  +138 (+5.6%)  +496 (+9.8%)
+    2026-10-26-SCPH-5000           textured  4-bit 256x256    4 words   bit 28     108..110      bit 26    75152..79988
+    2026-10-09-SCPH-1001-runner    textured  4-bit 256x256    4 words   bit 28     108..113      bit 26    84911..88031      +3 (+2.7%)  +9759 (+13.0%)  +8043 (+10.1%)
+    2026-10-26-SCPH-5000           textured  8-bit  16x16     4 words   bit 28     108..396      bit 26      294..897
+    2026-10-09-SCPH-1001-runner    textured  8-bit  16x16     4 words   bit 28     108..396      bit 26      342..987      +48 (+16.3%)  +90 (+10.0%)
+    2026-10-26-SCPH-5000           textured  8-bit  64x64     4 words   bit 28     108..108      bit 26     7659..8058
+    2026-10-09-SCPH-1001-runner    textured  8-bit  64x64     4 words   bit 28     108..108      bit 26     8697..9064      +1038 (+13.6%)  +1006 (+12.5%)
+    2026-10-26-SCPH-5000           textured  8-bit 256x256    4 words   bit 28     108..109      bit 26   123446..125210
+    2026-10-09-SCPH-1001-runner    textured  8-bit 256x256    4 words   bit 28     108..114      bit 26   142329..142379      +5 (+4.6%)  +18883 (+15.3%)  +17169 (+13.7%)
+    2026-10-26-SCPH-5000           textured 15-bit  16x16     4 words   bit 28     108..108      bit 26      294..972
+    2026-10-09-SCPH-1001-runner    textured 15-bit  16x16     4 words   bit 28     108..108      bit 26      339..1105      +45 (+15.3%)  +133 (+13.7%)
+    2026-10-26-SCPH-5000           textured 15-bit  64x64     4 words   bit 28     108..108      bit 26    11139..11727
+    2026-10-09-SCPH-1001-runner    textured 15-bit  64x64     4 words   bit 28     108..108      bit 26    14796..15564      +3657 (+32.8%)  +3837 (+32.7%)
+    2026-10-26-SCPH-5000           textured 15-bit 256x256    4 words   bit 28     108..108      bit 26   176982..181227
+    2026-10-09-SCPH-1001-runner    textured 15-bit 256x256    4 words   bit 28     108..113      bit 26   244924..244928      +5 (+4.6%)  +67942 (+38.4%)  +63701 (+35.1%)
+    2026-10-26-SCPH-5000           across  16    3 words   bit 28     140..228      bit 26      140..228
+    2026-10-09-SCPH-1001-runner    across  16    3 words   bit 28     140..224      bit 26      140..224      -4 (-1.8%)  -4 (-1.8%)
+    2026-10-26-SCPH-5000           down    16    3 words   bit 28     140..218      bit 26      191..269
+    2026-10-09-SCPH-1001-runner    down    16    3 words   bit 28     140..223      bit 26      236..274      +5 (+2.3%)  +45 (+23.6%)  +5 (+1.9%)
+    2026-10-26-SCPH-5000           diagonal  16    3 words   bit 28     140..218      bit 26      191..269
+    2026-10-09-SCPH-1001-runner    diagonal  16    3 words   bit 28     140..218      bit 26      236..269      +45 (+23.6%)
+    2026-10-26-SCPH-5000           across  64    3 words   bit 28     140..218      bit 26      191..269
+    2026-10-09-SCPH-1001-runner    across  64    3 words   bit 28     140..224      bit 26      191..224      +6 (+2.8%)  -45 (-16.7%)
+    2026-10-26-SCPH-5000           down    64    3 words   bit 28     140..219      bit 26      416..512
+    2026-10-09-SCPH-1001-runner    down    64    3 words   bit 28     140..218      bit 26      596..629      -1 (-0.5%)  +180 (+43.3%)  +117 (+22.9%)
+    2026-10-26-SCPH-5000           diagonal  64    3 words   bit 28     140..218      bit 26      418..497
+    2026-10-09-SCPH-1001-runner    diagonal  64    3 words   bit 28     140..218      bit 26      596..629      +178 (+42.6%)  +132 (+26.6%)
+    2026-10-26-SCPH-5000           across 256    3 words   bit 28     140..221      bit 26      416..452
+    2026-10-09-SCPH-1001-runner    across 256    3 words   bit 28     140..223      bit 26      371..416      +2 (+0.9%)  -45 (-10.8%)  -36 (-8.0%)
+    2026-10-26-SCPH-5000           down   256    3 words   bit 28     140..223      bit 26     1407..1457
+    2026-10-09-SCPH-1001-runner    down   256    3 words   bit 28     140..223      bit 26     1949..1990      +542 (+38.5%)  +533 (+36.6%)
+    2026-10-26-SCPH-5000           diagonal 256    3 words   bit 28     142..223      bit 26     1379..1462
+    2026-10-09-SCPH-1001-runner    diagonal 256    3 words   bit 28     140..223      bit 26     1954..1992      -2 (-1.4%)  +575 (+41.7%)  +530 (+36.3%)
+    2026-10-26-SCPH-5000           gouraud across 256    4 words   bit 28     204..206      bit 26      480..483
+    2026-10-09-SCPH-1001-runner    gouraud across 256    4 words   bit 28     204..210      bit 26      480..486      +4 (+1.9%)  +3 (+0.6%)
+    2026-10-26-SCPH-5000           flat          L   8    4 words   bit 28     159..260      bit 26      210..260
+    2026-10-09-SCPH-1001-runner    flat          L   8    4 words   bit 28     159..256      bit 26      210..256      -4 (-1.5%)  -4 (-1.5%)
+    2026-10-26-SCPH-5000           gouraud       L   8    6 words   bit 28     331..336      bit 26      382..387
+    2026-10-09-SCPH-1001-runner    gouraud       L   8    6 words   bit 28     331..331      bit 26      382..383      -5 (-1.5%)  -4 (-1.0%)
+    2026-10-26-SCPH-5000           semi          L   8    4 words   bit 28     159..160      bit 26      255..256
+    2026-10-09-SCPH-1001-runner    semi          L   8    4 words   bit 28     159..159      bit 26      255..260      -1 (-0.6%)  +4 (+1.6%)
+    2026-10-26-SCPH-5000           textured  4-bit L   8    7 words   bit 28     297..304      bit 26      348..400
+    2026-10-09-SCPH-1001-runner    textured  4-bit L   8    7 words   bit 28     297..302      bit 26      348..442      -2 (-0.7%)  +42 (+10.5%)
+    2026-10-26-SCPH-5000           textured  8-bit L   8    7 words   bit 28     297..302      bit 26      348..393
+    2026-10-09-SCPH-1001-runner    textured  8-bit L   8    7 words   bit 28     297..300      bit 26      348..438      -2 (-0.7%)  +45 (+11.5%)
+    ... 39 more (--all)
+
+== gpu-tex-opaque   (gpu-tex-opaque-SCPH-5000.txt / gpu-tex-opaque-SCPH-1001-2.txt)
+  numbers differ (44):
+    2026-10-26-SCPH-5000           rectangle 60h            3 words   bit 28      91..151      bit 26    33709..35716
+    2026-10-09-SCPH-1001-runner    rectangle 60h            3 words   bit 28      91..151      bit 26    35062..35110      +1353 (+4.0%)  -606 (-1.7%)
+    2026-10-26-SCPH-5000           quad 28h                 5 words   bit 28   18119..18179    bit 26    36293..36350
+    2026-10-09-SCPH-1001-runner    quad 28h                 5 words   bit 28   18411..18464    bit 26    36669..36681      +292 (+1.6%)  +285 (+1.6%)  +376 (+1.0%)  +331 (+0.9%)
+    2026-10-26-SCPH-5000           semi rectangle 62h       3 words   bit 28      91..91       bit 26    50692..54536
+    2026-10-09-SCPH-1001-runner    semi rectangle 62h       3 words   bit 28      91..96       bit 26   101877..101928      +5 (+5.5%)  +51185 (+101.0%)  +47392 (+86.9%)
+    2026-10-26-SCPH-5000           semi quad 2Ah            5 words   bit 28   27819..27873    bit 26    55566..55665
+    2026-10-09-SCPH-1001-runner    semi quad 2Ah            5 words   bit 28   52103..52114    bit 26   103743..103804      +24284 (+87.3%)  +24241 (+87.0%)  +48177 (+86.7%)  +48139 (+86.5%)
+    2026-10-26-SCPH-5000           triangle 20h L 256       4 words   bit 28     153..163      bit 26    18103..18231
+    2026-10-09-SCPH-1001-runner    triangle 20h L 256       4 words   bit 28     153..155      bit 26    18411..18453      -8 (-4.9%)  +308 (+1.7%)  +222 (+1.2%)
+    2026-10-26-SCPH-5000           semi triangle 22h        4 words   bit 28     153..159      bit 26    27214..27901
+    2026-10-09-SCPH-1001-runner    semi triangle 22h        4 words   bit 28     153..156      bit 26    52065..52117      -3 (-1.9%)  +24851 (+91.3%)  +24216 (+86.8%)
+    2026-10-26-SCPH-5000           quad 28h 64x64           5 words   bit 28    1327..1375     bit 26     2637..2695
+    2026-10-09-SCPH-1001-runner    quad 28h 64x64           5 words   bit 28    1567..1614     bit 26     3017..3025      +240 (+18.1%)  +239 (+17.4%)  +380 (+14.4%)  +330 (+12.2%)
+    2026-10-26-SCPH-5000           semi quad 2Ah 64x64      5 words   bit 28    2135..2183     bit 26     4176..4222
+    2026-10-09-SCPH-1001-runner    semi quad 2Ah 64x64      5 words   bit 28    3732..3772     bit 26     7253..7308      +1597 (+74.8%)  +1589 (+72.8%)  +3077 (+73.7%)  +3086 (+73.1%)
+    2026-10-26-SCPH-5000            4-bit rectangle  64x64      4 words   bit 28     113..257      bit 26     2467..5232
+    2026-10-09-SCPH-1001-runner     4-bit rectangle  64x64      4 words   bit 28     113..162      bit 26     2606..5680      -95 (-37.0%)  +139 (+5.6%)  +448 (+8.6%)
+    2026-10-26-SCPH-5000            4-bit rectangle 256x256     4 words   bit 28     113..157      bit 26    77073..80035
+    2026-10-09-SCPH-1001-runner     4-bit rectangle 256x256     4 words   bit 28     113..157      bit 26    84938..88031      +7865 (+10.2%)  +7996 (+10.0%)
+    2026-10-26-SCPH-5000            4-bit quad       64x64      9 words   bit 28    2527..4071     bit 26     4750..7374
+    2026-10-09-SCPH-1001-runner     4-bit quad       64x64      9 words   bit 28    2778..4599     bit 26     5221..8264      +251 (+9.9%)  +528 (+13.0%)  +471 (+9.9%)  +890 (+12.1%)
+    2026-10-26-SCPH-5000            4-bit quad      256x256     9 words   bit 28   50488..55577    bit 26   107692..113078
+    2026-10-09-SCPH-1001-runner     4-bit quad      256x256     9 words   bit 28   59698..62775    bit 26   121592..124674      +9210 (+18.2%)  +7198 (+13.0%)  +13900 (+12.9%)  +11596 (+10.3%)
+    2026-10-26-SCPH-5000            4-bit semi rect 256x256     4 words   bit 28     113..163      bit 26    96996..101498
+    2026-10-09-SCPH-1001-runner     4-bit semi rect 256x256     4 words   bit 28     113..165      bit 26   154801..154871      +2 (+1.2%)  +57805 (+59.6%)  +53373 (+52.6%)
+    2026-10-26-SCPH-5000            4-bit semi quad 256x256     9 words   bit 28   56288..58743    bit 26   122973..125333
+    2026-10-09-SCPH-1001-runner     4-bit semi quad 256x256     9 words   bit 28  129823..129831   bit 26   258310..258318      +73535 (+130.6%)  +71088 (+121.0%)  +135337 (+110.1%)  +132985 (+106.1%)
+    2026-10-26-SCPH-5000            8-bit rectangle  64x64      4 words   bit 28     113..401      bit 26     8026..8228
+    2026-10-09-SCPH-1001-runner     8-bit rectangle  64x64      4 words   bit 28     113..401      bit 26     9059..9311      +1033 (+12.9%)  +1083 (+13.2%)
+    2026-10-26-SCPH-5000            8-bit rectangle 256x256     4 words   bit 28     113..119      bit 26   124887..125263
+    2026-10-09-SCPH-1001-runner     8-bit rectangle 256x256     4 words   bit 28     113..115      bit 26   142323..142337      -4 (-3.4%)  +17436 (+14.0%)  +17074 (+13.6%)
+    2026-10-26-SCPH-5000            8-bit quad       64x64      9 words   bit 28    5037..5375     bit 26     9965..10354
+    2026-10-09-SCPH-1001-runner     8-bit quad       64x64      9 words   bit 28    5887..6276     bit 26    11538..11930      +850 (+16.9%)  +901 (+16.8%)  +1573 (+15.8%)  +1576 (+15.2%)
+    2026-10-26-SCPH-5000            8-bit quad      256x256     9 words   bit 28   75252..76655    bit 26   152329..155720
+    2026-10-09-SCPH-1001-runner     8-bit quad      256x256     9 words   bit 28   88746..89756    bit 26   177887..178937      +13494 (+17.9%)  +13101 (+17.1%)  +25558 (+16.8%)  +23217 (+14.9%)
+    2026-10-26-SCPH-5000            8-bit semi rect 256x256     4 words   bit 28     113..113      bit 26   149071..152996
+    2026-10-09-SCPH-1001-runner     8-bit semi rect 256x256     4 words   bit 28     113..116      bit 26   208970..209018      +3 (+2.7%)  +59899 (+40.2%)  +56022 (+36.6%)
+    2026-10-26-SCPH-5000            8-bit semi quad 256x256     9 words   bit 28   85903..86012    bit 26   174697..177980
+    2026-10-09-SCPH-1001-runner     8-bit semi quad 256x256     9 words   bit 28  156799..156852   bit 26   312528..312627      +70896 (+82.5%)  +70840 (+82.4%)  +137831 (+78.9%)  +134647 (+75.7%)
+    2026-10-26-SCPH-5000           15-bit rectangle  64x64      4 words   bit 28     113..116      bit 26    12950..12959
+    2026-10-09-SCPH-1001-runner    15-bit rectangle  64x64      4 words   bit 28     113..116      bit 26    15791..15839      +2841 (+21.9%)  +2880 (+22.2%)
+    2026-10-26-SCPH-5000           15-bit rectangle 256x256     4 words   bit 28     113..113      bit 26   198398..202558
+    2026-10-09-SCPH-1001-runner    15-bit rectangle 256x256     4 words   bit 28     113..119      bit 26   250352..250392      +6 (+5.3%)  +51954 (+26.2%)  +47834 (+23.6%)
+    2026-10-26-SCPH-5000           15-bit quad       64x64      9 words   bit 28    7903..7915     bit 26    15226..15274
+    2026-10-09-SCPH-1001-runner    15-bit quad       64x64      9 words   bit 28    9638..9688     bit 26    18587..18640      +1735 (+22.0%)  +1773 (+22.4%)  +3361 (+22.1%)  +3366 (+22.0%)
+    2026-10-26-SCPH-5000           15-bit quad      256x256     9 words   bit 28  117247..117300   bit 26   230566..234486
+    2026-10-09-SCPH-1001-runner    15-bit quad      256x256     9 words   bit 28  143698..143747   bit 26   286867..286916      +26451 (+22.6%)  +26447 (+22.5%)  +56301 (+24.4%)  +52430 (+22.4%)
+    2026-10-26-SCPH-5000           15-bit semi rect 256x256     4 words   bit 28     113..115      bit 26   230885..234937
+    2026-10-09-SCPH-1001-runner    15-bit semi rect 256x256     4 words   bit 28     113..118      bit 26   317562..317624      +3 (+2.6%)  +86677 (+37.5%)  +82687 (+35.2%)
+    2026-10-26-SCPH-5000           15-bit semi quad 256x256     9 words   bit 28  127436..131360   bit 26   258727..262610
+    2026-10-09-SCPH-1001-runner    15-bit semi quad 256x256     9 words   bit 28  210751..210803   bit 26   420426..420565      +83315 (+65.4%)  +79443 (+60.5%)  +161699 (+62.5%)  +157955 (+60.1%)
+    2026-10-26-SCPH-5000            4-bit rectangle  64x64      4 words   bit 28     113..119      bit 26     2468..5222
+    2026-10-09-SCPH-1001-runner     4-bit rectangle  64x64      4 words   bit 28     113..116      bit 26     2603..5678      -3 (-2.5%)  +135 (+5.5%)  +456 (+8.7%)
+    2026-10-26-SCPH-5000            4-bit rectangle 256x256     4 words   bit 28     113..119      bit 26    77318..79997
+    2026-10-09-SCPH-1001-runner     4-bit rectangle 256x256     4 words   bit 28     113..115      bit 26    84907..88032      -4 (-3.4%)  +7589 (+9.8%)  +8035 (+10.0%)
+    2026-10-26-SCPH-5000            4-bit quad       64x64      9 words   bit 28    2481..3879     bit 26     4704..7047
+    2026-10-09-SCPH-1001-runner     4-bit quad       64x64      9 words   bit 28    2772..4597     bit 26     5220..8310      +291 (+11.7%)  +718 (+18.5%)  +516 (+11.0%)  +1263 (+17.9%)
+    2026-10-26-SCPH-5000            4-bit quad      256x256     9 words   bit 28   52984..55567    bit 26   110410..112961
+    2026-10-09-SCPH-1001-runner     4-bit quad      256x256     9 words   bit 28   59704..62774    bit 26   121600..124718      +6720 (+12.7%)  +7207 (+13.0%)  +11190 (+10.1%)  +11757 (+10.4%)
+    2026-10-26-SCPH-5000            4-bit semi rect 256x256     4 words   bit 28     113..119      bit 26   101489..101588
+    2026-10-09-SCPH-1001-runner     4-bit semi rect 256x256     4 words   bit 28     113..113      bit 26   154759..154849      -6 (-5.0%)  +53270 (+52.5%)  +53261 (+52.4%)
+    2026-10-26-SCPH-5000            4-bit semi quad 256x256     9 words   bit 28   56823..58643    bit 26   123415..125325
+    2026-10-09-SCPH-1001-runner     4-bit semi quad 256x256     9 words   bit 28  129823..129884   bit 26   258278..258332      +73000 (+128.5%)  +71241 (+121.5%)  +134863 (+109.3%)  +133007 (+106.1%)
+    2026-10-26-SCPH-5000            8-bit rectangle  64x64      4 words   bit 28     113..113      bit 26     7979..8069
+    2026-10-09-SCPH-1001-runner     8-bit rectangle  64x64      4 words   bit 28     113..113      bit 26     9067..9070      +1088 (+13.6%)  +1001 (+12.4%)
+    2026-10-26-SCPH-5000            8-bit rectangle 256x256     4 words   bit 28     113..115      bit 26   121382..125215
+    2026-10-09-SCPH-1001-runner     8-bit rectangle 256x256     4 words   bit 28     113..115      bit 26   142323..142337      +20941 (+17.3%)  +17122 (+13.7%)
+    2026-10-26-SCPH-5000            8-bit quad       64x64      9 words   bit 28    5071..5315     bit 26    10001..10241
+    2026-10-09-SCPH-1001-runner     8-bit quad       64x64      9 words   bit 28    5891..6276     bit 26    11509..11930      +820 (+16.2%)  +961 (+18.1%)  +1508 (+15.1%)  +1689 (+16.5%)
+    2026-10-26-SCPH-5000            8-bit quad      256x256     9 words   bit 28   75834..76689    bit 26   152370..155705
+    2026-10-09-SCPH-1001-runner     8-bit quad      256x256     9 words   bit 28   88752..89744    bit 26   177891..178932      +12918 (+17.0%)  +13055 (+17.0%)  +25521 (+16.7%)  +23227 (+14.9%)
+    2026-10-26-SCPH-5000            8-bit semi rect 256x256     4 words   bit 28     113..119      bit 26   149060..152994
+    2026-10-09-SCPH-1001-runner     8-bit semi rect 256x256     4 words   bit 28     113..119      bit 26   208972..209013      +59912 (+40.2%)  +56019 (+36.6%)
+    2026-10-26-SCPH-5000            8-bit semi quad 256x256     9 words   bit 28   82891..86049    bit 26   174922..178028
+    2026-10-09-SCPH-1001-runner     8-bit semi quad 256x256     9 words   bit 28  156758..156856   bit 26   312533..312573      +73867 (+89.1%)  +70807 (+82.3%)  +137611 (+78.7%)  +134545 (+75.6%)
+    2026-10-26-SCPH-5000           15-bit rectangle  64x64      4 words   bit 28     113..117      bit 26    11411..11462
+    2026-10-09-SCPH-1001-runner    15-bit rectangle  64x64      4 words   bit 28     113..116      bit 26    14756..14761      -1 (-0.9%)  +3345 (+29.3%)  +3299 (+28.8%)
+    2026-10-26-SCPH-5000           15-bit rectangle 256x256     4 words   bit 28     113..117      bit 26   177655..179790
+    2026-10-09-SCPH-1001-runner    15-bit rectangle 256x256     4 words   bit 28     113..116      bit 26   233546..233582      -1 (-0.9%)  +55891 (+31.5%)  +53792 (+29.9%)
+    ... 4 more (--all)
+
+== gpu-version   (gpu-version-SCPH-5000.txt / gpu-version-SCPH-1001-2.txt)
+  numbers differ (45):
+    2026-10-26-SCPH-5000         INFO GPUSTAT at entry 14042000, GP1(10h:07h) 00000002
+    2026-10-09-SCPH-1001-runner  INFO GPUSTAT at entry 14040000, GP1(10h:07h) 00000000      -2000 (-0.0%)  -2 (-100.0%)
+    2026-10-26-SCPH-5000           0a: 80028001
+    2026-10-09-SCPH-1001-runner    0a: 800f8421      80028001->800f8421
+    2026-10-26-SCPH-5000           1a: 80028001
+    2026-10-09-SCPH-1001-runner    1a: 800f8421      80028001->800f8421
+    2026-10-26-SCPH-5000           0b: 80028001
+    2026-10-09-SCPH-1001-runner    0b: 80000801      -27200 (-0.0%)
+    2026-10-26-SCPH-5000           1b: 80028001
+    2026-10-09-SCPH-1001-runner    1b: 80000801      -27200 (-0.0%)
+    2026-10-26-SCPH-5000           0c: 80028001
+    2026-10-09-SCPH-1001-runner    0c: 8007f7fe      80028001->8007f7fe
+    2026-10-26-SCPH-5000           0d: 80028001
+    2026-10-09-SCPH-1001-runner    0d: 803d5923      80028001->803d5923
+    2026-10-26-SCPH-5000           1d: 80028001
+    2026-10-09-SCPH-1001-runner    1d: 803d5923      80028001->803d5923
+    2026-10-26-SCPH-5000           07: 00000002
+    2026-10-09-SCPH-1001-runner    07: 80028001      +80027999 (+4001399950.0%)
+    2026-10-26-SCPH-5000           17: 00000002
+    2026-10-09-SCPH-1001-runner    17: 80028001      +80027999 (+4001399950.0%)
+    2026-10-26-SCPH-5000           E3/E4 = 3FF,3FF read through 03h/04h: 800fffff 800fffff
+    2026-10-09-SCPH-1001-runner    E3/E4 = 3FF,3FF read through 03h/04h: 8007ffff 8007ffff      800fffff->8007ffff  800fffff->8007ffff
+    2026-10-26-SCPH-5000         STAT GP1(08h).7 set: GPUSTAT 1404611f (bit 14 1)
+    2026-10-09-SCPH-1001-runner  STAT GP1(08h).7 set: GPUSTAT 1404011f (bit 14 0)      1404611f->1404011f  -1 (-100.0%)
+    2026-10-26-SCPH-5000           interlace off, 8 reads: bit 13 1 1 1 1 1 1 1 1
+    2026-10-09-SCPH-1001-runner    interlace off, 8 reads: bit 13 0 0 0 0 0 0 0 0      -1 (-100.0%)  -1 (-100.0%)  -1 (-100.0%)  -1 (-100.0%)  -1 (-100.0%)  -1 (-100.0%)  -1 (-100.0%)  -1 (-100.0%)
+    2026-10-26-SCPH-5000           E1h.11 set: GPUSTAT 9404211f (bit 15 0); GP1(09h)=1, E1h.11 again: 9404a11f (bit 15 1); GP1(09h)=0: 9404a11f (bit 15 1)
+    2026-10-09-SCPH-1001-runner    E1h.11 set: GPUSTAT 9404011f (bit 15 0); GP1(09h)=1, E1h.11 again: 9404011f (bit 15 0); GP1(09h)=0: 9404011f (bit 15 0)      9404211f->9404011f  9404a11f->9404011f  -1 (-100.0%)  9404a11f->9404011f  -1 (-100.0%)
+    2026-10-26-SCPH-5000           c 87:  0.31.16  8.24.16 16.15.16 25. 7.16 31. 1.16 31. 0.16
+    2026-10-09-SCPH-1001-runner    c 87:  0.31.16  8.23.16 16.15.16 24. 7.16 30. 1.16 31. 0.16      -0.01 (-0.1%)  -1 (-4.0%)  -1 (-3.2%)
+    2026-10-26-SCPH-5000           c 8f:  0.31.17  8.25.17 17.16.17 26. 7.17 31. 1.17 31. 0.17
+    2026-10-09-SCPH-1001-runner    c 8f:  0.31.17  8.24.17 17.15.17 25. 7.17 31. 1.17 31. 0.17      -0.01 (-0.1%)  -0.01 (-0.1%)  -1 (-3.8%)
+    2026-10-26-SCPH-5000           c 47:  0.17. 8  4.12. 8  8. 8. 8 13. 3. 8 16. 0. 8 17. 0. 8
+    2026-10-09-SCPH-1001-runner    c 47:  0.15. 8  4.11. 8  8. 7. 8 12. 3. 8 15. 0. 8 15. 0. 8      -0.02 (-11.8%)  -0.01 (-0.2%)  -1 (-12.5%)  -1 (-7.7%)  -1 (-6.3%)  -2 (-11.8%)
+    2026-10-26-SCPH-5000           c 4f:  0.19. 9  4.14. 9  9. 9. 9 14. 4. 9 18. 0. 9 19. 0. 9
+    2026-10-09-SCPH-1001-runner    c 4f:  0.17. 9  4.12. 9  9. 8. 9 13. 3. 9 16. 0. 9 17. 0. 9      -0.02 (-10.5%)  -0.02 (-0.5%)  -1 (-11.1%)  -1 (-7.1%)  -1 (-25.0%)  -2 (-11.1%)  -2 (-10.5%)
+    2026-10-26-SCPH-5000           c 0f:  0. 3. 1  0. 2. 1  1. 1. 1  2. 0. 1  3. 0. 1  3. 0. 1
+    2026-10-09-SCPH-1001-runner    c 0f:  0. 1. 1  0. 1. 1  1. 0. 1  1. 0. 1  1. 0. 1  1. 0. 1      -2 (-66.7%)  -1 (-50.0%)  -1 (-100.0%)  -1 (-50.0%)  -2 (-66.7%)  -2 (-66.7%)
+    2026-10-26-SCPH-5000           c 87, red of u = 0..31: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 20 21 22 23 24 25 26 27 28 29 30 31 31
+    2026-10-09-SCPH-1001-runner    c 87, red of u = 0..31: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31      -1 (-5.0%)  -1 (-4.8%)  -1 (-4.5%)  -1 (-4.3%)  -1 (-4.2%)  -1 (-4.0%)  -1 (-3.8%)  -1 (-3.7%)  -1 (-3.6%)  -1 (-3.4%)  -1 (-3.3%)  -1 (-3.2%)
+    2026-10-26-SCPH-5000           c 87:  0.31.16  8.24.16 16.15.16 25. 7.16 31. 1.16 31. 0.16
+    2026-10-09-SCPH-1001-runner    c 87:  0.31.16  8.23.16 16.15.16 24. 7.16 30. 1.16 31. 0.16      -0.01 (-0.1%)  -1 (-4.0%)  -1 (-3.2%)
+    2026-10-26-SCPH-5000           c 8f:  0.31.17  8.25.17 17.16.17 26. 7.17 31. 1.17 31. 0.17
+    2026-10-09-SCPH-1001-runner    c 8f:  0.31.17  8.24.17 17.15.17 25. 7.17 31. 1.17 31. 0.17      -0.01 (-0.1%)  -0.01 (-0.1%)  -1 (-3.8%)
+    2026-10-26-SCPH-5000           c 47:  0.17. 8  4.12. 8  8. 8. 8 13. 3. 8 16. 0. 8 17. 0. 8
+    2026-10-09-SCPH-1001-runner    c 47:  0.15. 8  4.11. 8  8. 7. 8 12. 3. 8 15. 0. 8 15. 0. 8      -0.02 (-11.8%)  -0.01 (-0.2%)  -1 (-12.5%)  -1 (-7.7%)  -1 (-6.3%)  -2 (-11.8%)
+    2026-10-26-SCPH-5000           c 4f:  0.19. 9  4.14. 9  9. 9. 9 14. 4. 9 18. 0. 9 19. 0. 9
+    2026-10-09-SCPH-1001-runner    c 4f:  0.17. 9  4.12. 9  9. 8. 9 13. 3. 9 16. 0. 9 17. 0. 9      -0.02 (-10.5%)  -0.02 (-0.5%)  -1 (-11.1%)  -1 (-7.1%)  -1 (-25.0%)  -2 (-11.1%)  -2 (-10.5%)
+    2026-10-26-SCPH-5000           c 0f:  0. 3. 1  0. 2. 1  1. 1. 1  2. 0. 1  3. 0. 1  3. 0. 1
+    2026-10-09-SCPH-1001-runner    c 0f:  0. 1. 1  0. 1. 1  1. 0. 1  1. 0. 1  1. 0. 1  1. 0. 1      -2 (-66.7%)  -1 (-50.0%)  -1 (-100.0%)  -1 (-50.0%)  -2 (-66.7%)  -2 (-66.7%)
+    2026-10-26-SCPH-5000           c 87, red of u = 0..31: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 20 21 22 23 24 25 26 27 28 29 30 31 31
+    2026-10-09-SCPH-1001-runner    c 87, red of u = 0..31: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31      -1 (-5.0%)  -1 (-4.8%)  -1 (-4.5%)  -1 (-4.3%)  -1 (-4.2%)  -1 (-4.0%)  -1 (-3.8%)  -1 (-3.7%)  -1 (-3.6%)  -1 (-3.4%)  -1 (-3.3%)  -1 (-3.2%)
+    2026-10-26-SCPH-5000           1111111111111111 1111111111111111 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+    2026-10-09-SCPH-1001-runner    0101010101010101 1111111111111111 1010101010101010 0000000000000000 0000000000000000 0000000000000000      -1010101010101010 (-90.9%)  +1010101010101010
+    2026-10-26-SCPH-5000         FLIP raw rectangle from u 31, X flip: red of each pixel: 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0
+    2026-10-09-SCPH-1001-runner  FLIP raw rectangle from u 31, X flip: red of each pixel: 31 31 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0      +1 (+3.3%)  -29 (-100.0%)  -28 (-100.0%)  -27 (-100.0%)  -26 (-100.0%)  -25 (-100.0%)  -24 (-100.0%)  -23 (-100.0%)  -22 (-100.0%)  -21 (-100.0%)  -20 (-100.0%)  -19 (-100.0%)  -18 (-100.0%)  -17 (-100.0%)  -16 (-100.0%)  -15 (-100.0%)  -14 (-100.0%)  -13 (-100.0%)  -12 (-100.0%)  -11 (-100.0%)  -10 (-100.0%)  -9 (-100.0%)  -8 (-100.0%)  -7 (-100.0%)  -6 (-100.0%)  -5 (-100.0%)  -4 (-100.0%)  -3 (-100.0%)  -2 (-100.0%)  -1 (-100.0%)
+    2026-10-26-SCPH-5000         AREA rectangle at Y 1008 in an area at Y 1008-1023: row 496: 03e0 03e0 03e0 03e0 03e0 03e0 03e0 03e0 03e0 03e0 03e0 03e0 03e0 03e0 03e0 03e0
+    2026-10-09-SCPH-1001-runner  AREA rectangle at Y 1008 in an area at Y 1008-1023: row 496: 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000      03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000  03e0->0000
+    2026-10-26-SCPH-5000            0:    722   2253
+    2026-10-09-SCPH-1001-runner     0:   1014   2562      +292 (+40.4%)  +309 (+13.7%)
+    2026-10-26-SCPH-5000            1:    650   2346
+    2026-10-09-SCPH-1001-runner     1:    994   2551      +344 (+52.9%)  +205 (+8.7%)
+    2026-10-26-SCPH-5000            2:    703   2384
+    2026-10-09-SCPH-1001-runner     2:    959   2562      +256 (+36.4%)  +178 (+7.5%)
+    2026-10-26-SCPH-5000            3:    832   2476
+    2026-10-09-SCPH-1001-runner     3:    962   2551      +130 (+15.6%)  +75 (+3.0%)
+    2026-10-26-SCPH-5000            4:    960   2556
+    2026-10-09-SCPH-1001-runner     4:    959   2562      -1 (-0.1%)  +6 (+0.2%)
+    2026-10-26-SCPH-5000            5:   1090   2605
+    2026-10-09-SCPH-1001-runner     5:   1003   2556      -87 (-8.0%)  -49 (-1.9%)
+    2026-10-26-SCPH-5000            6:   1218   2640
+    2026-10-09-SCPH-1001-runner     6:    956   2562      -262 (-21.5%)  -78 (-3.0%)
+    2026-10-26-SCPH-5000            7:   1348   2734
+    2026-10-09-SCPH-1001-runner     7:    960   2554      -388 (-28.8%)  -180 (-6.6%)
+    2026-10-26-SCPH-5000            8:   1484   2777
+    2026-10-09-SCPH-1001-runner     8:   1004   2562      -480 (-32.3%)  -215 (-7.7%)
+    2026-10-26-SCPH-5000            9:   1615   2992
+    2026-10-09-SCPH-1001-runner     9:   1003   2556      -612 (-37.9%)  -436 (-14.6%)
+    2026-10-26-SCPH-5000           10:   1744   2992
+    2026-10-09-SCPH-1001-runner    10:    959   2605      -785 (-45.0%)  -387 (-12.9%)
+    ... 5 more (--all)
+
+== gpuinfo-latch   (gpuinfo-latch-SCPH-5000.txt / gpuinfo-latch-SCPH-1001.txt)
+  numbers differ (5):
+    2026-10-26-SCPH-5000             GP1(10h) 07h (GPU type)      00000002
+    2026-10-09-SCPH-1001-runner      GP1(10h) 07h (GPU type)      12345678      +12345676 (+617283800.0%)
+    2026-10-26-SCPH-5000             GP1(10h) 00h                 00000002
+    2026-10-09-SCPH-1001-runner      GP1(10h) 00h                 12345678      +12345676 (+617283800.0%)
+    2026-10-26-SCPH-5000             GP1(10h) 06h                 00000002
+    2026-10-09-SCPH-1001-runner      GP1(10h) 06h                 12345678      +12345676 (+617283800.0%)
+    2026-10-26-SCPH-5000             GP1(10h) 08h                 00000000
+    2026-10-09-SCPH-1001-runner      GP1(10h) 08h                 fff336ab      00000000->fff336ab
+    2026-10-26-SCPH-5000             GP1(10h) 00h                 00000000
+    2026-10-09-SCPH-1001-runner      GP1(10h) 00h                 fff336ab      00000000->fff336ab
+
+== gpustat31   (gpustat31-SCPH-5000.txt / gpustat31-SCPH-1001-2.txt)
+  numbers differ (9):
+    2026-10-26-SCPH-5000         240  Y=0  ACTIVE   8.7%   8.7%   8.7%   8.7%  VBLANK   0.0%  (32223 / 2695 samples)
+    2026-10-09-SCPH-1001-runner  240  Y=0  ACTIVE   8.7%   8.7%   8.7%   8.7%  VBLANK   0.0%  (32224 / 2694 samples)      +1 (+0.0%)  -1 (-0.0%)
+    2026-10-26-SCPH-5000         240  Y=1  ACTIVE  91.2%  91.2%  91.2%  91.2%  VBLANK 100.0%  (32219 / 2692 samples)
+    2026-10-09-SCPH-1001-runner  240  Y=1  ACTIVE  91.2%  91.2%  91.2%  91.2%  VBLANK 100.0%  (32227 / 2693 samples)      +8 (+0.0%)  +1 (+0.0%)
+    2026-10-26-SCPH-5000         240  Y=2  ACTIVE   8.7%   8.7%   8.7%   8.7%  VBLANK   0.0%  (32223 / 2693 samples)
+    2026-10-09-SCPH-1001-runner  240  Y=2  ACTIVE   8.7%   8.7%   8.7%   8.7%  VBLANK   0.0%  (32227 / 2695 samples)      +4 (+0.0%)  +2 (+0.1%)
+    2026-10-26-SCPH-5000         240  Y=3  ACTIVE  91.2%  91.2%  91.2%  91.2%  VBLANK 100.0%  (32223 / 2695 samples)
+    2026-10-09-SCPH-1001-runner  240  Y=3  ACTIVE  91.2%  91.2%  91.2%  91.2%  VBLANK 100.0%  (32231 / 2695 samples)      +8 (+0.0%)
+    2026-10-26-SCPH-5000         240  Y=0  ACTIVE   8.7%   8.7%   8.7%   8.7%  VBLANK   0.0%  (32223 / 2693 samples)
+    2026-10-09-SCPH-1001-runner  240  Y=0  ACTIVE   8.7%   8.7%   8.7%   8.7%  VBLANK   0.0%  (32225 / 2695 samples)      +2 (+0.0%)  +2 (+0.1%)
+    2026-10-26-SCPH-5000         480i Y=0  frames 0-7: bit31 in the picture 10101010, bit13 (field) 01010101, bit31 in v-blank 00000000
+    2026-10-09-SCPH-1001-runner  480i Y=0  frames 0-7: bit31 in the picture 10101010, bit13 (field) 00000000, bit31 in v-blank 00000000      -1010101 (-100.0%)
+    2026-10-26-SCPH-5000         480i Y=1  frames 0-7: bit31 in the picture 10101010, bit13 (field) 10101010, bit31 in v-blank 11111111
+    2026-10-09-SCPH-1001-runner  480i Y=1  frames 0-7: bit31 in the picture 10101010, bit13 (field) 00000000, bit31 in v-blank 11111111      -10101010 (-100.0%)
+    2026-10-26-SCPH-5000         480i Y=2  frames 0-7: bit31 in the picture 10101010, bit13 (field) 01010101, bit31 in v-blank 00000000
+    2026-10-09-SCPH-1001-runner  480i Y=2  frames 0-7: bit31 in the picture 10101010, bit13 (field) 00000000, bit31 in v-blank 00000000      -1010101 (-100.0%)
+    2026-10-26-SCPH-5000         480i Y=3  frames 0-7: bit31 in the picture 10101010, bit13 (field) 10101010, bit31 in v-blank 11111111
+    2026-10-09-SCPH-1001-runner  480i Y=3  frames 0-7: bit31 in the picture 10101010, bit13 (field) 00000000, bit31 in v-blank 11111111      -10101010 (-100.0%)
+
+== line-split   (line-split-SCPH-5000.txt / line-split-SCPH-1001-2.txt)
+  numbers differ (37):
+    2026-10-26-SCPH-5000         GPUSTAT 94042000 (bit 20: PAL)
+    2026-10-09-SCPH-1001-runner  GPUSTAT 94040000 (bit 20: PAL)      -2000 (-0.0%)
+    2026-10-26-SCPH-5000         parity 0, lines 1-260: average 2152.53 cycles a line; each line's mean minus that, in hundredths:
+    2026-10-09-SCPH-1001-runner  parity 0, lines 1-261: average 2152.54 cycles a line; each line's mean minus that, in hundredths:      -1 (-0.4%)  +0.01 (+0.0%)
+    2026-10-26-SCPH-5000            +2  +30  +24  -16  -31  -11   -3  +18  +11   -6  -12   -3   +6  +17   +8   -8
+    2026-10-09-SCPH-1001-runner     +9  +23  +52  +11  -14  -16   +8   -9   -1  -12  -13   +5  +32  +16   +8  -10      +7 (+350.0%)  -7 (-23.3%)  +28 (+116.7%)  +27 (+168.8%)  +17 (+54.8%)  -5 (-45.5%)  +11 (+366.7%)  -27 (-150.0%)  -12 (-109.1%)  -6 (-100.0%)  -1 (-8.3%)  +8 (+266.7%)  +26 (+433.3%)  -1 (-5.9%)  -2 (-25.0%)
+    2026-10-26-SCPH-5000           -21  +12   +5  +15   -3  -16   +0  +12   -1   -7   +2   +2   +3   +9   -3  -13
+    2026-10-09-SCPH-1001-runner     -2   -8  +13   +4   -8   -8   +3   +4   +8   -2   -8   +6   +5   +0   +4   -7      +19 (+90.5%)  -20 (-166.7%)  +8 (+160.0%)  -11 (-73.3%)  -5 (-166.7%)  +8 (+50.0%)  +3  -8 (-66.7%)  +9 (+900.0%)  +5 (+71.4%)  -10 (-500.0%)  +4 (+200.0%)  +2 (+66.7%)  -9 (-100.0%)  +7 (+233.3%)  +6 (+46.2%)
+    2026-10-26-SCPH-5000            +1   +1   +0   +4   +1   -4   -1   +3   -4   +0   +4   -3   +1   +1   -5   +1
+    2026-10-09-SCPH-1001-runner     +1   +5  +11   -6   -2   +2   -8   +7  +10   -9   -1   +6   +0   -2   +8   -7      +4 (+400.0%)  +11  -10 (-250.0%)  -3 (-300.0%)  +6 (+150.0%)  -7 (-700.0%)  +4 (+133.3%)  +14 (+350.0%)  -9  -5 (-125.0%)  +9 (+300.0%)  -1 (-100.0%)  -3 (-300.0%)  +13 (+260.0%)  -8 (-800.0%)
+    2026-10-26-SCPH-5000            +7   +0   +1   +2   -3   -3   +3   -4   +1   +6   -5   -4   +3   -1   -2   +5
+    2026-10-09-SCPH-1001-runner     -3  +16   +5   -3   +0   +0   -9  +10   +3   -7   +4   +3   -3   +8   +7  -18      -10 (-142.9%)  +16  +4 (+400.0%)  -5 (-250.0%)  +3 (+100.0%)  +3 (+100.0%)  -12 (-400.0%)  +14 (+350.0%)  +2 (+200.0%)  -13 (-216.7%)  +9 (+180.0%)  +7 (+175.0%)  -6 (-200.0%)  +9 (+900.0%)  +9 (+450.0%)  -23 (-460.0%)
+    2026-10-26-SCPH-5000            +1   +0   +4   -3   +2   +0   +3   -4   +3   -4   -2   -3   +5   -1   +2   -1
+    2026-10-09-SCPH-1001-runner     +3  +10   +2   +0   +5   -7   -4  +17   -2  -10   +6   -2   +5   +9   -2   -8      +2 (+200.0%)  +10  -2 (-50.0%)  +3 (+100.0%)  +3 (+150.0%)  -7  -7 (-233.3%)  +21 (+525.0%)  -5 (-166.7%)  -6 (-150.0%)  +8 (+400.0%)  +1 (+33.3%)  +10 (+1000.0%)  -4 (-200.0%)  -7 (-700.0%)
+    2026-10-26-SCPH-5000            -1   +0   +5   -4   +2   +4   -4   -6   +1   -3   +3   +5   +0   -3   +2   +0
+    2026-10-09-SCPH-1001-runner     -1   +7   +1   +5   +0   -7   +4   +8   -3   -1   +2   -5   +5  +13   -7   -8      +7  -4 (-80.0%)  +9 (+225.0%)  -2 (-100.0%)  -11 (-275.0%)  +8 (+200.0%)  +14 (+233.3%)  -4 (-400.0%)  +2 (+66.7%)  -1 (-33.3%)  -10 (-200.0%)  +5  +16 (+533.3%)  -9 (-450.0%)  -8
+    2026-10-26-SCPH-5000            -2   +6   -2   -1   +2   +1  -10   +4   +0   +0   +8   -1   -8   +3   -1   +1
+    2026-10-09-SCPH-1001-runner     +6   -2   +3  +11   -7   -2   +8   +5   +0   -2   +1  -12  +10   +7   -8   +8      +8 (+400.0%)  -8 (-133.3%)  +5 (+250.0%)  +12 (+1200.0%)  -9 (-450.0%)  -3 (-300.0%)  +18 (+180.0%)  +1 (+25.0%)  -2  -7 (-87.5%)  -11 (-1100.0%)  +18 (+225.0%)  +4 (+133.3%)  -7 (-700.0%)  +7 (+700.0%)
+    2026-10-26-SCPH-5000            +2   +4   -8   +2   +5   -7   +1   -1   -4   +5   +1   -6   +4   +6   +0   +0
+    2026-10-09-SCPH-1001-runner     -6   -1   +7   +6  -13   +4   +7   +4   +6   -3   -2   -6  +10   -2   -5   +9      -8 (-400.0%)  -5 (-125.0%)  +15 (+187.5%)  +4 (+200.0%)  -18 (-360.0%)  +11 (+157.1%)  +6 (+600.0%)  +5 (+500.0%)  +10 (+250.0%)  -8 (-160.0%)  -3 (-300.0%)  +6 (+150.0%)  -8 (-133.3%)  -5  +9
+    2026-10-26-SCPH-5000            +2   -5   -4   +1   -4   +5   +1   -2   -7   +8   +0   -2   +3   +2   +0   +1
+    2026-10-09-SCPH-1001-runner     -6   +0  +11   -4   -7   +8   -1   -1   +9   -1   -5   +8   +0   -2   +0   +8      -8 (-400.0%)  +5 (+100.0%)  +15 (+375.0%)  -5 (-500.0%)  -3 (-75.0%)  +3 (+60.0%)  -2 (-200.0%)  +1 (+50.0%)  +16 (+228.6%)  -9 (-112.5%)  -5  +10 (+500.0%)  -3 (-100.0%)  -4 (-200.0%)  +7 (+700.0%)
+    2026-10-26-SCPH-5000            -5   -1   +5   +3   -6   +3   -3   -1   +3   -1   -3   +4   +2   -5   +0   +1
+    2026-10-09-SCPH-1001-runner     -6   -1   +9   -3   -3   +7  -10   +4  +15   -4   +0   +6   -1   +5   +0   +0      -1 (-20.0%)  +4 (+80.0%)  -6 (-200.0%)  +3 (+50.0%)  +4 (+133.3%)  -7 (-233.3%)  +5 (+500.0%)  +12 (+400.0%)  -3 (-300.0%)  +3 (+100.0%)  +2 (+50.0%)  -3 (-150.0%)  +10 (+200.0%)  -1 (-100.0%)
+    2026-10-26-SCPH-5000            -4   +2   +6   -5   -1   -1   -3   +3   +4   -2   +0   +3   -1   -4   +6   -3
+    2026-10-09-SCPH-1001-runner    -10   +7   +6   -2   +8   -3   -4   +7   +4   -6   +3   -1   +0   +6   +1   -1      -6 (-150.0%)  +5 (+250.0%)  +3 (+60.0%)  +9 (+900.0%)  -2 (-200.0%)  -1 (-33.3%)  +4 (+133.3%)  -4 (-200.0%)  +3  -4 (-133.3%)  +1 (+100.0%)  +10 (+250.0%)  -5 (-83.3%)  +2 (+66.7%)
+    2026-10-26-SCPH-5000            +1   -2   -3   -1   +3   -1   +2   +4   +0   -7   +3   -4   +3   +1   +2   -4
+    2026-10-09-SCPH-1001-runner     -3   +6   -3   +3  +13  -12   -2   +8   -1   -2   +8   -4   -6  +15   +2   -3      -4 (-400.0%)  +8 (+400.0%)  +4 (+400.0%)  +10 (+333.3%)  -11 (-1100.0%)  -4 (-200.0%)  +4 (+100.0%)  -1  +5 (+71.4%)  +5 (+166.7%)  -9 (-300.0%)  +14 (+1400.0%)  +1 (+25.0%)
+    2026-10-26-SCPH-5000            +4   -1   -6   +0   +1   +0   +2   +2   -2   +2   +4   -2   +2   +3   -7   -3
+    2026-10-09-SCPH-1001-runner     +4   -4   -2   +7   +7   -9   +1   +5   -2   +3   +7  -17   +5  +12   -3   +7      -3 (-300.0%)  +4 (+66.7%)  +7  +6 (+600.0%)  -9  -1 (-50.0%)  +3 (+150.0%)  +1 (+50.0%)  +3 (+75.0%)  -15 (-750.0%)  +3 (+150.0%)  +9 (+300.0%)  +4 (+57.1%)  +10 (+333.3%)
+    2026-10-26-SCPH-5000            -2   -1   +4   +3   -3   -3   +4   -1   +0   +3   +1   -1   +5   -7   -6   +4
+    2026-10-09-SCPH-1001-runner     +3   -9   -3  +15   -1  -10   +4   +2   +3   +5   +1  -10   +7   +5   -2   +5      +5 (+250.0%)  -8 (-800.0%)  -7 (-175.0%)  +12 (+400.0%)  +2 (+66.7%)  -7 (-233.3%)  +3 (+300.0%)  +3  +2 (+66.7%)  -9 (-900.0%)  +2 (+40.0%)  +12 (+171.4%)  +4 (+66.7%)  +1 (+25.0%)
+    2026-10-26-SCPH-5000            +2   -1   +2   -1   -3   +2   +0   -1   +4   +0   -3   +0   +1   -4   +2   +3
+    2026-10-09-SCPH-1001-runner     +0   -7   +3  +12   -8   +0   +3   -7   +7  +12   -9   -4   +5   +2   -3  +11      -2 (-100.0%)  -6 (-600.0%)  +1 (+50.0%)  +13 (+1300.0%)  -5 (-166.7%)  -2 (-100.0%)  +3  -6 (-600.0%)  +3 (+75.0%)  +12  -6 (-200.0%)  -4  +4 (+400.0%)  +6 (+150.0%)  -5 (-250.0%)  +8 (+266.7%)
+    2026-10-26-SCPH-5000            -5   +3   -1   -2   +1   +6   -2   +1   +1   -2   -2   +5   -4   +0   +0   -1
+    2026-10-09-SCPH-1001-runner     -8   -2  +10  +11   -7   +0   -1   -7  +12   +6  -12   +6   +3   -4  +10   +7      -3 (-60.0%)  -5 (-166.7%)  +11 (+1100.0%)  +13 (+650.0%)  -8 (-800.0%)  -6 (-100.0%)  +1 (+50.0%)  -8 (-800.0%)  +11 (+1100.0%)  +8 (+400.0%)  -10 (-500.0%)  +1 (+20.0%)  +7 (+175.0%)  -4  +10  +8 (+800.0%)
+    2026-10-26-SCPH-5000         (each line seen 4946 times)
+    2026-10-09-SCPH-1001-runner  (each line seen 4924 times)      -22 (-0.4%)
+    2026-10-26-SCPH-5000         parity 1, lines 1-260: average 2152.53 cycles a line; each line's mean minus that, in hundredths:
+    2026-10-09-SCPH-1001-runner  parity 1, lines 1-261: average 2152.54 cycles a line; each line's mean minus that, in hundredths:      -1 (-0.4%)  +0.01 (+0.0%)
+    2026-10-26-SCPH-5000            +4  +20  +14   -6  -22  -23  +10  +12  +11   -8  -20   +5  +17  +10   +7  -14
+    2026-10-09-SCPH-1001-runner     +3  +39  +50   -8   +4  -15   +8   -7   -8  -18  -11   +2  +39  +20   +5  -19      -1 (-25.0%)  +19 (+95.0%)  +36 (+257.1%)  -2 (-33.3%)  +26 (+118.2%)  +8 (+34.8%)  -2 (-20.0%)  -19 (-158.3%)  -19 (-172.7%)  -10 (-125.0%)  +9 (+45.0%)  -3 (-60.0%)  +22 (+129.4%)  +10 (+100.0%)  -2 (-28.6%)  -5 (-35.7%)
+    2026-10-26-SCPH-5000            -4   -1  +11  +19  -12  -16   +1   +2   +8   -1   -8   +1   +9   +1   -5   +2
+    2026-10-09-SCPH-1001-runner     +8   -6   +2   +2   +1  -15   +4  +16   -1   -9   -1   +0   +9  +10   -6   -8      +12 (+300.0%)  -5 (-500.0%)  -9 (-81.8%)  -17 (-89.5%)  +13 (+108.3%)  +1 (+6.3%)  +3 (+300.0%)  +14 (+700.0%)  -9 (-112.5%)  -8 (-800.0%)  +7 (+87.5%)  -1 (-100.0%)  +9 (+900.0%)  -1 (-20.0%)  -10 (-500.0%)
+    2026-10-26-SCPH-5000            -2   +3   +0   -5   -2   +2   +3   +1   +2   -3   -5   +3   +0   +2   +2   +0
+    2026-10-09-SCPH-1001-runner    +12   +2   -2   -1   +0   -7   +7   +9   -9   +7   -2   -3   +5   +3   -5   +5      +14 (+700.0%)  -1 (-33.3%)  -2  +4 (+80.0%)  +2 (+100.0%)  -9 (-450.0%)  +4 (+133.3%)  +8 (+800.0%)  -11 (-550.0%)  +10 (+333.3%)  +3 (+60.0%)  -6 (-200.0%)  +5  +1 (+50.0%)  -7 (-350.0%)  +5
+    2026-10-26-SCPH-5000            -5   +2   -2   -5   +4   +3   -3   +5   -3   -1   +2   +4   -1   +2   +1   -6
+    2026-10-09-SCPH-1001-runner     -1   +5   +2   +2   -8   +0   +8   +1   -8  +14   -8   -1  +12   -4   -8  +10      +4 (+80.0%)  +3 (+150.0%)  +4 (+200.0%)  +7 (+140.0%)  -12 (-300.0%)  -3 (-100.0%)  +11 (+366.7%)  -4 (-80.0%)  -5 (-166.7%)  +15 (+1500.0%)  -10 (-500.0%)  -5 (-125.0%)  +13 (+1300.0%)  -6 (-300.0%)  -9 (-900.0%)  +16 (+266.7%)
+    2026-10-26-SCPH-5000            -4   +2   -3   +2   +1   -2   -2   +8   -5   +1   +6   -1   -3   +2   -2   -2
+    2026-10-09-SCPH-1001-runner     -5   +0   +8   +2   -4   +9   -1   +0   -1   +6   -7   -2  +10   -2   +1   +6      -1 (-25.0%)  -2 (-100.0%)  +11 (+366.7%)  -5 (-500.0%)  +11 (+550.0%)  +1 (+50.0%)  -8 (-100.0%)  +4 (+80.0%)  +5 (+500.0%)  -13 (-216.7%)  -1 (-100.0%)  +13 (+433.3%)  -4 (-200.0%)  +3 (+150.0%)  +8 (+400.0%)
+    2026-10-26-SCPH-5000            +2   +1   -4   +0   +2   -1   +1   -1   +2   +3   -1   -4   +0   +2   -1   +3
+    2026-10-09-SCPH-1001-runner    -12   +3  +11   -3   +0   +6   -4   +7   +3   -2   -7   +6   +2   -1   +8   -1      -14 (-700.0%)  +2 (+200.0%)  +15 (+375.0%)  -3  -2 (-100.0%)  +7 (+700.0%)  -5 (-500.0%)  +8 (+800.0%)  +1 (+50.0%)  -5 (-166.7%)  -6 (-600.0%)  +10 (+250.0%)  +2  -3 (-150.0%)  +9 (+900.0%)  -4 (-133.3%)
+    2026-10-26-SCPH-5000            +1   -9   +1   +1   -1   +3   +8   -6   +1   +1   -3   -2   +4   +0   +0   -4
+    2026-10-09-SCPH-1001-runner     -8   +6   +3   -1   +6   -1   -1   +5   +4   -3   -3   +2   -7   +7  +13  -10      -9 (-900.0%)  +15 (+166.7%)  +2 (+200.0%)  -2 (-200.0%)  +7 (+700.0%)  -4 (-133.3%)  -9 (-112.5%)  +11 (+183.3%)  +3 (+300.0%)  -4 (-400.0%)  +4 (+200.0%)  -11 (-275.0%)  +7  +13  -6 (-150.0%)
+    2026-10-26-SCPH-5000            +1   -4   +6   +0   +0   +6   -2   -5   +2   -2   +1   +5   -2   -8   +4   +1
+    2026-10-09-SCPH-1001-runner     -2   +4   +1   -3  +12   -5   -5  +13   +4   -2   +0   -3   -6   +9   +8  -11      -3 (-300.0%)  +8 (+200.0%)  -5 (-83.3%)  -3  +12  -11 (-183.3%)  -3 (-150.0%)  +18 (+360.0%)  +2 (+100.0%)  -1 (-100.0%)  -8 (-160.0%)  -4 (-200.0%)  +17 (+212.5%)  +4 (+100.0%)  -12 (-1200.0%)
+    2026-10-26-SCPH-5000            -4   +4   +3   -4   +4   -3   -2   +4   +5   -4   +2   -2   -6   -3   +2   -2
+    2026-10-09-SCPH-1001-runner     +4   -1   -2   +5  +10  -16   +3  +11   +0   +4   +0   -6   -2  +14   -1  -10      +8 (+200.0%)  -5 (-125.0%)  -5 (-166.7%)  +9 (+225.0%)  +6 (+150.0%)  -13 (-433.3%)  +5 (+250.0%)  +7 (+175.0%)  -5 (-100.0%)  +8 (+200.0%)  -2 (-100.0%)  -4 (-200.0%)  +4 (+66.7%)  +17 (+566.7%)  -3 (-150.0%)  -8 (-400.0%)
+    2026-10-26-SCPH-5000            +5   +2   -5   -2   +8   -4   +1   +2   -1   +1   +1   -6   +0   +5   +2   -3
+    2026-10-09-SCPH-1001-runner     +5   +1   +2   +9   -2   -9   +4   +9   -3   +6   -2   -7   +6  +11   -5   +0      -1 (-50.0%)  +7 (+140.0%)  +11 (+550.0%)  -10 (-125.0%)  -5 (-125.0%)  +3 (+300.0%)  +7 (+350.0%)  -2 (-200.0%)  +5 (+500.0%)  -3 (-300.0%)  -1 (-16.7%)  +6  +6 (+120.0%)  -7 (-350.0%)  +3 (+100.0%)
+    2026-10-26-SCPH-5000            +1   -1   -2   +3   +0   +0   +2   -2   -6   +4   -1   -2   +3   +5   -8   -1
+    2026-10-09-SCPH-1001-runner     +3   -8   +7  +11   -8   -4   +2   +6   -4  +13  -10   -5  +14   +8   -4   +1      +2 (+200.0%)  -7 (-700.0%)  +9 (+450.0%)  +8 (+266.7%)  -8  -4  +8 (+400.0%)  +2 (+33.3%)  +9 (+225.0%)  -9 (-900.0%)  -3 (-150.0%)  +11 (+366.7%)  +3 (+60.0%)  +4 (+50.0%)  +2 (+200.0%)
+    2026-10-26-SCPH-5000            +0   +3   +3   +5   -6   +3   +1   -4   -3   +6   -4   -1   +1   +0   +0   +3
+    2026-10-09-SCPH-1001-runner     +1  -11   +9   +8  -12   +5   -1   +1  +11   +3  -14   +4   +4   +3   +2   +2      +1  -14 (-466.7%)  +6 (+200.0%)  +3 (+60.0%)  -6 (-100.0%)  +2 (+66.7%)  -2 (-200.0%)  +5 (+125.0%)  +14 (+466.7%)  -3 (-50.0%)  -10 (-250.0%)  +5 (+500.0%)  +3 (+300.0%)  +3  +2  -1 (-33.3%)
+    2026-10-26-SCPH-5000            -2   +2   +6   -5   -2   -1   -1   +0   +5   -1   -8   +4   +1   -4   +3   +1
+    2026-10-09-SCPH-1001-runner     -8   -1   +7   +0   -6  +10  -10   +3  +11   -2  -10   +7   +1   +1   +6   -1      -6 (-300.0%)  -3 (-150.0%)  +1 (+16.7%)  +5 (+100.0%)  -4 (-200.0%)  +11 (+1100.0%)  -9 (-900.0%)  +3  +6 (+120.0%)  -1 (-100.0%)  -2 (-25.0%)  +3 (+75.0%)  +5 (+125.0%)  +3 (+100.0%)  -2 (-200.0%)
+    2026-10-26-SCPH-5000            +0   +3   -1   -2   +2   +4   -3   +5   -4   -5   +0   -1   +0   +6   +5   -6
+    2026-10-09-SCPH-1001-runner     -4   +5   +1   +2   -1   +4   -6   +1  +14   -3   -7   +7   -6   +0  +12   -4      -4  +2 (+66.7%)  +2 (+200.0%)  +4 (+200.0%)  -3 (-150.0%)  -3 (-100.0%)  -4 (-80.0%)  +18 (+450.0%)  +2 (+40.0%)  -7  +8 (+800.0%)  -6  -6 (-100.0%)  +7 (+140.0%)  +2 (+33.3%)
+    2026-10-26-SCPH-5000            -2   +7   -3   -1   +1   -1   +4   -3   -1   -5   +4   +2   +0   +1   -2   -2
+    2026-10-09-SCPH-1001-runner     -1   +9   +2   -1   +3   -4   -3   +3  +10   -8   +5   +3   -7   +8   +4  -10      +1 (+50.0%)  +2 (+28.6%)  +5 (+166.7%)  +2 (+200.0%)  -3 (-300.0%)  -7 (-175.0%)  +6 (+200.0%)  +11 (+1100.0%)  -3 (-60.0%)  +1 (+25.0%)  +1 (+50.0%)  -7  +7 (+700.0%)  +6 (+300.0%)  -8 (-400.0%)
+    2026-10-26-SCPH-5000            +5   -3   -1   +4   -1   -9   +6   -2   -4   +7   +3   -8   +4   -1   +1   +1
+    2026-10-09-SCPH-1001-runner     +7   +0   +3   +4   +3   -6   +0   +5   +2   -4  +12  -11   -2  +11   -2   -4      +2 (+40.0%)  +3 (+100.0%)  +4 (+400.0%)  +4 (+400.0%)  +3 (+33.3%)  -6 (-100.0%)  +7 (+350.0%)  +6 (+150.0%)  -11 (-157.1%)  +9 (+300.0%)  -3 (-37.5%)  -6 (-150.0%)  +12 (+1200.0%)  -3 (-300.0%)  -5 (-500.0%)
+    2026-10-26-SCPH-5000         (each line seen 4946 times)
+    2026-10-09-SCPH-1001-runner  (each line seen 4914 times)      -32 (-0.6%)
+  differ in form (12):
+    2026-10-26-SCPH-5000            -6   +5   -2   +0
+    2026-10-09-SCPH-1001-runner    -20   +3   +9   +6 -288
+    2026-10-26-SCPH-5000         L/S: LLLSSSSLLSSSLLLSSLLLSSSLSSLLLLSSLLSLLSSLSSLSLLSLLSLLSSLSLLSSLSSL
+    2026-10-09-SCPH-1001-runner  L/S: LLLLSSLSSSSLLLLSSSLLSSLLLSSLLSLSLLLSSLSLLSSLSSLSSLLSSSSLLSLLSLLS
+    2026-10-26-SCPH-5000              LSLSLSLSLSSSLSLSSSLSLLSSLSLLSSLSSLSSLLSLSSLSSLSLLLSLLSLSSLLSLLSS
+    2026-10-09-SCPH-1001-runner       LLLSLSSLSSLSLLSSSLLLSSLLSSLSLLSSLSLLSSLLSSLSLLSLSSLLSLLLLSSSLSSL
+    2026-10-26-SCPH-5000              LSSLSLLSSLSSLLSLSSLLSLSSLSSLLSSLSLLSSSSLLSSLSSLSLSSSLSLLSSLSLLLS
+    2026-10-09-SCPH-1001-runner       SSLSSLSSLSSLSSSLSSLSSLSLLSSLSLSSSLLSLSSLLSLSSLLSSLSLLSSLSSLSSLLS
+    2026-10-26-SCPH-5000              LSSSLSLLSLLSLLSSSSLLSSLSSLLSLSSLLSLSSLSSLSSSLSLLSLSSLLSLLSSLSSSS
+    2026-10-09-SCPH-1001-runner       LSSLLSLLSLLSLLSLLSSLSSLLLLLSLLSLSSLLSSLSLLSSLLSLSSLLSSSSLLSLLSLL
+    2026-10-26-SCPH-5000              SLSS
+    2026-10-09-SCPH-1001-runner       SLLLS
+    2026-10-26-SCPH-5000            +6   -7   +3   -1
+    2026-10-09-SCPH-1001-runner     +9   -6   +0  +12 -271
+    2026-10-26-SCPH-5000         L/S: LLLSSSLLLSSLLLLSSSLLSSLLLSSLLLSLSLSSSLLLLSSLSLLSSLSSLLSLSSLLSLLS
+    2026-10-09-SCPH-1001-runner  L/S: LLLSLSLSSSSLLLLSLSLLLSLLSSSSLLSSLLSSSSLLSLSSLLSLSLLLSSLLSLSSLSSL
+    2026-10-26-SCPH-5000              SLSLLSSLSLLSSLSSLLSSLSLSLLSSSLSLLSLLSLLSLLSSLSSSLSLSSLSSLSLLSSLL
+    2026-10-09-SCPH-1001-runner       SSLLSLSSSLSSLSLLSLLSSLSLLSSLLSLSSLLSLSSLLSSLSLLSSLLSLSSLLSSSSLLS
+    2026-10-26-SCPH-5000              SLLSLSSLLSLSSSLSLLSSLSLLSLLSSLLSLSSLSSLSSLSSLLSSSLLLSLLSSLSSLSSL
+    2026-10-09-SCPH-1001-runner       LSSLLSLLSLSSSLSSLLLLSSLLSLSSLLSSLSLLSSLLSLSSLLSLLSLLSLSLLLSLLLLL
+    2026-10-26-SCPH-5000              SLLSSSSSLSSLLSLLSLSSLLSLSSSSSLLSSLSSLSLSSSLLSLSSLSSLSSLSSLLSLSLL
+    2026-10-09-SCPH-1001-runner       SSLSSLSLLSSLLLLSSLLLSLSLLSSLSSLSSLLSLSSLLSLLSLLSLSLLLSSLLSLSSLSS
+    2026-10-26-SCPH-5000              LSLS
+    2026-10-09-SCPH-1001-runner       LSSLS
+
+== machine-id   (machine-id-SCPH-5000.txt / machine-id-SCPH-1001-2.txt)
+  numbers differ (4):
+    2026-10-26-SCPH-5000         BIOS CRC32: 24FC7E17
+    2026-10-09-SCPH-1001-runner  BIOS CRC32: AFF00F2F      24FC7E17->AFF00F2F
+    2026-10-26-SCPH-5000         GPU type (GP1(10h:07h)): 00000002 (GPUREAD before it 44E744E7)
+    2026-10-09-SCPH-1001-runner  GPU type (GP1(10h:07h)): 44E744E7 (GPUREAD before it 44E744E7)      00000002->44E744E7
+    2026-10-26-SCPH-5000         RAM_SIZE (1F801060h): 80010B88
+    2026-10-09-SCPH-1001-runner  RAM_SIZE (1F801060h): 80010B80      80010B88->80010B80
+    2026-10-26-SCPH-5000         CPU PRID (cop0r15): 00000002
+    2026-10-09-SCPH-1001-runner  CPU PRID (cop0r15): 00000001      -1 (-50.0%)
+  differ in form (2):
+    2026-10-26-SCPH-5000         BIOS: "System ROM Version 2.2 12/04/95 J"
+    2026-10-09-SCPH-1001-runner  BIOS: "System ROM Version 2.1 07/17/95 A"
+    2026-10-26-SCPH-5000         CD region (19h,22h): "for Japan"
+    2026-10-09-SCPH-1001-runner  CD region (19h,22h): "for U/C"
+
+== semi-cost   (semi-cost-SCPH-5000.txt / semi-cost-SCPH-1001-2.txt)
+  numbers differ (12):
+    2026-10-26-SCPH-5000           SPRT opaque                    8538 hblanks  ~ 183788 cycles each
+    2026-10-09-SCPH-1001-runner    SPRT opaque                   10790 hblanks  ~ 232265 cycles each      +2252 (+26.4%)  +48477 (+26.4%)
+    2026-10-26-SCPH-5000           SPRT semi                      9983 hblanks  ~ 214894 cycles each  116% of opaque
+    2026-10-09-SCPH-1001-runner    SPRT semi                     13798 hblanks  ~ 297015 cycles each  127% of opaque      +3815 (+38.2%)  +82121 (+38.2%)  +11 (+9.5%)
+    2026-10-26-SCPH-5000           POLY_FT4 opaque                9974 hblanks  ~ 214700 cycles each
+    2026-10-09-SCPH-1001-runner    POLY_FT4 opaque               12495 hblanks  ~ 268967 cycles each      +2521 (+25.3%)  +54267 (+25.3%)
+    2026-10-26-SCPH-5000           POLY_FT4 semi                 11184 hblanks  ~ 240746 cycles each  112% of opaque
+    2026-10-09-SCPH-1001-runner    POLY_FT4 semi                 18273 hblanks  ~ 393344 cycles each  146% of opaque      +7089 (+63.4%)  +152598 (+63.4%)  +34 (+30.4%)
+    2026-10-26-SCPH-5000           SPRT opaque                    8537 hblanks  ~ 183767 cycles each
+    2026-10-09-SCPH-1001-runner    SPRT opaque                   10806 hblanks  ~ 232609 cycles each      +2269 (+26.6%)  +48842 (+26.6%)
+    2026-10-26-SCPH-5000           SPRT semi                      9984 hblanks  ~ 214915 cycles each  116% of opaque
+    2026-10-09-SCPH-1001-runner    SPRT semi                     13798 hblanks  ~ 297015 cycles each  127% of opaque      +3814 (+38.2%)  +82100 (+38.2%)  +11 (+9.5%)
+    2026-10-26-SCPH-5000           POLY_FT4 opaque                9975 hblanks  ~ 214721 cycles each
+    2026-10-09-SCPH-1001-runner    POLY_FT4 opaque               12495 hblanks  ~ 268967 cycles each      +2520 (+25.3%)  +54246 (+25.3%)
+    2026-10-26-SCPH-5000           POLY_FT4 semi                 11182 hblanks  ~ 240703 cycles each  112% of opaque
+    2026-10-09-SCPH-1001-runner    POLY_FT4 semi                 18274 hblanks  ~ 393366 cycles each  146% of opaque      +7092 (+63.4%)  +152663 (+63.4%)  +34 (+30.4%)
+    2026-10-26-SCPH-5000           TILE opaque                    1509 hblanks  ~  32482 cycles each
+    2026-10-09-SCPH-1001-runner    TILE opaque                    1518 hblanks  ~  32676 cycles each      +9 (+0.6%)  +194 (+0.6%)
+    2026-10-26-SCPH-5000           TILE semi                      2300 hblanks  ~  49509 cycles each  152% of opaque
+    2026-10-09-SCPH-1001-runner    TILE semi                      4404 hblanks  ~  94800 cycles each  290% of opaque      +2104 (+91.5%)  +45291 (+91.5%)  +138 (+90.8%)
+    2026-10-26-SCPH-5000           POLY_F4 opaque                 1545 hblanks  ~  33257 cycles each
+    2026-10-09-SCPH-1001-runner    POLY_F4 opaque                 1584 hblanks  ~  34097 cycles each      +39 (+2.5%)  +840 (+2.5%)
+    2026-10-26-SCPH-5000           POLY_F4 semi                   2347 hblanks  ~  50521 cycles each  151% of opaque
+    2026-10-09-SCPH-1001-runner    POLY_F4 semi                   4497 hblanks  ~  96802 cycles each  283% of opaque      +2150 (+91.6%)  +46281 (+91.6%)  +132 (+87.4%)
+
+== spu-fifo   (spu-fifo-SCPH-5000.txt / spu-fifo-SCPH-1001-2.txt)
+  numbers differ (7):
+    2026-10-26-SCPH-5000           STOPPED 31     landed  31 of  31: 0-30  (read 0 late, 0 strays)  busy 1524 cycles
+    2026-10-09-SCPH-1001-runner    STOPPED 31     landed  31 of  31: 0-30  (read 0 late, 0 strays)  busy 1519 cycles      -5 (-0.3%)
+    2026-10-26-SCPH-5000           STOPPED 32     landed  32 of  32: 0-31  (read 0 late, 0 strays)  busy 1465 cycles
+    2026-10-09-SCPH-1001-runner    STOPPED 32     landed  32 of  32: 0-31  (read 0 late, 0 strays)  busy 1521 cycles      +56 (+3.8%)
+    2026-10-26-SCPH-5000           STOPPED 33     landed  32 of  33: 0-31  (read 0 late, 0 strays)  busy 1469 cycles
+    2026-10-09-SCPH-1001-runner    STOPPED 33     landed  32 of  33: 0-31  (read 0 late, 0 strays)  busy 1521 cycles      +52 (+3.5%)
+    2026-10-26-SCPH-5000           STOPPED 48     landed  32 of  48: 0-31  (read 0 late, 0 strays)  busy 1456 cycles
+    2026-10-09-SCPH-1001-runner    STOPPED 48     landed  32 of  48: 0-31  (read 0 late, 0 strays)  busy 1517 cycles      +61 (+4.2%)
+    2026-10-26-SCPH-5000           STOPPED 64     landed  32 of  64: 0-31  (read 0 late, 0 strays)  busy 705 cycles
+    2026-10-09-SCPH-1001-runner    STOPPED 64     landed  32 of  64: 0-31  (read 0 late, 0 strays)  busy 702 cycles      -3 (-0.4%)
+    2026-10-26-SCPH-5000           TWICE 32+32    landed  38 of  64: 0-37  (read 0 late, 10 strays)
+    2026-10-09-SCPH-1001-runner    TWICE 32+32    landed  39 of  64: 0-38  (read 0 late, 9 strays)      +1 (+2.6%)  -1 (-2.7%)  -1 (-10.0%)
+    2026-10-26-SCPH-5000           AFTER 32+32    landed   5 of  64: 0-4  (read 0 late, 54 strays)
+    2026-10-09-SCPH-1001-runner    AFTER 32+32    landed   6 of  64: 0-5  (read 0 late, 52 strays)      +1 (+20.0%)  -1 (-25.0%)  -2 (-3.7%)
+
+== spu-health   (spu-health-SCPH-5000.txt / spu-health-SCPH-1001-2.txt)
+  numbers differ (3):
+    2026-10-26-SCPH-5000           as found:              SPUCNT c085 SPUSTAT 0805 XFER 0004 MAINVOL 0000 0000 ENDX 00fffffd DPCR 08009899 CHCR4 00000201
+    2026-10-09-SCPH-1001-runner    as found:              SPUCNT c085 SPUSTAT 0005 XFER 0004 MAINVOL 0000 0000 ENDX 00fffffd DPCR 08009899 CHCR4 00000201      -800 (-99.4%)
+    2026-10-26-SCPH-5000           the reverb bit off:    SPUCNT c005  changed:  01000:   69 of 1024 halfwords (read 1 late) first at +3e  40000:   72 of 1024 halfwords (read 1 late) first at +3e  7e000:   72 of 1024 halfwords (read 1 late) first at +3e
+    2026-10-09-SCPH-1001-runner    the reverb bit off:    SPUCNT c005  changed:  01000:   73 of 1024 halfwords (read 1 late) first at +3e  40000:   75 of 1024 halfwords (read 1 late) first at +3e  7e000:   74 of 1024 halfwords (read 1 late) first at +3e      +4 (+5.8%)  +3 (+4.2%)  +2 (+2.8%)
+    2026-10-26-SCPH-5000           at the end:            SPUCNT c000 SPUSTAT 0000 XFER 0004 MAINVOL 0000 0000 ENDX 00fffffd DPCR 08009899 CHCR4 00000200
+    2026-10-09-SCPH-1001-runner    at the end:            SPUCNT c000 SPUSTAT 0800 XFER 0004 MAINVOL 0000 0000 ENDX 00fffffd DPCR 08009899 CHCR4 00000200      +800
+  differ in form (1):
+    2026-10-26-SCPH-5000           sound RAM as found:    SPUCNT c085  changed:  01000:   69 of 1024 halfwords (read 1 late) first at +e  40000:   72 of 1024 halfwords (read 1 late) first at +3e  7e000:   72 of 1024 halfwords (read 1 late) first at +3e
+    2026-10-09-SCPH-1001-runner    sound RAM as found:    SPUCNT c085  changed:  01000:   75 of 1024 halfwords (read 1 late) first at +3e  40000:   76 of 1024 halfwords (read 1 late) first at +2e  7e000:   74 of 1024 halfwords (read 1 late) first at +3e
+
+== spu-irq   (spu-irq-SCPH-5000.txt / spu-irq-SCPH-1001-2.txt)
+  numbers differ (5):
+    2026-10-26-SCPH-5000           transfer 2000h, then the IRQ address set to 2000h          IRQ after      888 cycles
+    2026-10-09-SCPH-1001-runner    transfer 2000h, then the IRQ address set to 2000h          IRQ after      160 cycles      -728 (-82.0%)
+    2026-10-26-SCPH-5000           both 2200h with IRQ9 off, then IRQ9 enabled                IRQ after      648 cycles
+    2026-10-09-SCPH-1001-runner    both 2200h with IRQ9 off, then IRQ9 enabled                IRQ after      584 cycles      -64 (-9.9%)
+    2026-10-26-SCPH-5000           IRQ address set to 1000h (the block's first half)          IRQ after      392 cycles
+    2026-10-09-SCPH-1001-runner    IRQ address set to 1000h (the block's first half)          IRQ after      448 cycles      +56 (+14.3%)
+    2026-10-26-SCPH-5000           IRQ address set to 1008h (the block's second half)         IRQ after 10886736 cycles
+    2026-10-09-SCPH-1001-runner    IRQ address set to 1008h (the block's second half)         IRQ after 10886000 cycles      -736 (-0.0%)
+    2026-10-26-SCPH-5000           reverb ENABLED (SPUCNT bit 7)                              IRQ after 24809504 cycles
+    2026-10-09-SCPH-1001-runner    reverb ENABLED (SPUCNT bit 7)                              IRQ after 24809440 cycles      -64 (-0.0%)
+
+== spu-lead   (spu-lead-SCPH-5000.txt / spu-lead-SCPH-1001-2.txt)
+  numbers differ (8):
+    2026-10-26-SCPH-5000         0800   1040h     0.1     9     0.3    227    226.7         4079   4026   3470   2032    600     51      0      0
+    2026-10-09-SCPH-1001-runner  0800   1040h     0.1     8     0.3    226    225.7         4079   4026   3470   2032    600     51      0      0      -1 (-11.1%)  -1 (-0.4%)  -1 (-0.4%)
+    2026-10-26-SCPH-5000         0800   1048h     0.0     9   239.0    227    -12.0         4079   4026   3470   2032    600     51      0      0
+    2026-10-09-SCPH-1001-runner  0800   1048h     0.0     8   237.9    226    -11.9         4079   4026   3470   2032    600     51      0      0      -1 (-11.1%)  -1.10 (-0.5%)  -1 (-0.4%)  +0.10 (+0.8%)
+    2026-10-26-SCPH-5000         1000   1040h     0.0     9   111.0    117      6.0         4079   4079   3470    600      0      0      0      0
+    2026-10-09-SCPH-1001-runner  1000   1040h     0.0     8   110.0    116      6.0         4079   4079   3470    600      0      0      0      0      -1 (-11.1%)  -1 (-0.9%)  -1 (-0.9%)
+    2026-10-26-SCPH-5000         1000   1048h     0.0     9   123.0    117     -6.0         4079   4079   3470    600      0      0      0      0
+    2026-10-09-SCPH-1001-runner  1000   1048h     0.0     8   122.0    116     -6.0         4079   4079   3470    600      0      0      0      0      -1 (-11.1%)  -1 (-0.8%)  -1 (-0.9%)
+    2026-10-26-SCPH-5000         2000   1040h     0.0     9    59.0     62      3.0         4079   4079   3470      0      0      0      0      0
+    2026-10-09-SCPH-1001-runner  2000   1040h     0.0     8    57.9     61      3.1         4079   4079   3470      0      0      0      0      0      -1 (-11.1%)  -1.10 (-1.9%)  -1 (-1.6%)  +0.10 (+3.3%)
+    2026-10-26-SCPH-5000         2000   1048h     0.0     9    65.0     62     -3.0         4079   4079   3470      0      0      0      0      0
+    2026-10-09-SCPH-1001-runner  2000   1048h     0.0     8    64.0     61     -3.0         4079   4079   3470      0      0      0      0      0      -1 (-11.1%)  -1 (-1.5%)  -1 (-1.6%)
+    2026-10-26-SCPH-5000           hit 1 at      8294 cycles (loop 0.04)  ENVX 3fff  ENDX fffffd
+    2026-10-09-SCPH-1001-runner    hit 1 at      7521 cycles (loop 0.04)  ENVX 3fff  ENDX fffffd      -773 (-9.3%)
+    2026-10-26-SCPH-5000           hit 2 at     10613 cycles (loop 0.06)  ENVX 3fff  ENDX fffffd
+    2026-10-09-SCPH-1001-runner    hit 2 at      9818 cycles (loop 0.05)  ENVX 3fff  ENDX fffffd      -795 (-7.5%)  -0.01 (-16.7%)
+
+== spu-path   (spu-path-SCPH-5000.txt / spu-path-SCPH-1001-2.txt)
+  numbers differ (2):
+    2026-10-26-SCPH-5000           1DA0h as found       voice 1 on a loud loop: ENVX 7fff; its capture ring  25 of 512 halfwords nonzero (first at 101: 30ce 619d); voice 3's 0
+    2026-10-09-SCPH-1001-runner    1DA0h as found       voice 1 on a loud loop: ENVX 7fff; its capture ring  25 of 512 halfwords nonzero (first at 96: 30ce 619d); voice 3's 0      -5 (-5.0%)
+    2026-10-26-SCPH-5000           1DA0h written 0000h  voice 1 on a loud loop: ENVX 7fff; its capture ring 300 of 512 halfwords nonzero (first at 101: 30ce 619d); voice 3's 0
+    2026-10-09-SCPH-1001-runner    1DA0h written 0000h  voice 1 on a loud loop: ENVX 7fff; its capture ring 298 of 512 halfwords nonzero (first at 96: 30ce 619d); voice 3's 0      -2 (-0.7%)  -5 (-5.0%)
+
+== spu-read-trace   (spu-read-trace-SCPH-5000.txt / spu-read-trace-SCPH-1001-2.txt)
+  numbers differ (9):
+    2026-10-26-SCPH-5000           phase mod 768 from the bit-11 change: 370 590
+    2026-10-09-SCPH-1001-runner    phase mod 768 from the bit-11 change: 153 373      -217 (-58.6%)  -217 (-36.8%)
+    2026-10-26-SCPH-5000           bit 11 rose at read 2695: read 2694 at 83612, read 2695 at 83643 (cycles from the trace's start), intervals around it 31 31 31 31 31 31 31
+    2026-10-09-SCPH-1001-runner    bit 11 rose at read 1019: read 1018 at 31605, read 1019 at 31636 (cycles from the trace's start), intervals around it 31 31 31 31 31 31 31      -1676 (-62.2%)  -1676 (-62.2%)  -52007 (-62.2%)  -1676 (-62.2%)  -52007 (-62.2%)
+    2026-10-26-SCPH-5000           bit 11 fell at read 4184: read 4183 at 167355, read 4184 at 167395 (cycles from the trace's start), intervals around it 40 40 40 40 40 40 40
+    2026-10-09-SCPH-1001-runner    bit 11 fell at read 3515: read 3514 at 140581, read 3515 at 140621 (cycles from the trace's start), intervals around it 40 40 40 40 40 40 40      -669 (-16.0%)  -669 (-16.0%)  -26774 (-16.0%)  -669 (-16.0%)  -26774 (-16.0%)
+    2026-10-26-SCPH-5000           long (> 54): 140; spacing 315 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072
+    2026-10-09-SCPH-1001-runner    long (> 54): 140; spacing 420 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072      +105 (+33.3%)
+    2026-10-26-SCPH-5000           phase mod 768 from the bit-11 change: 293 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608
+    2026-10-09-SCPH-1001-runner    phase mod 768 from the bit-11 change: 188 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608 608      -105 (-35.8%)
+    2026-10-26-SCPH-5000           bit 11 rose at read 3201: read 3200 at 166655, read 3201 at 166707 (cycles from the trace's start), intervals around it 52 52 52 52 52 52 52
+    2026-10-09-SCPH-1001-runner    bit 11 rose at read 3557: read 3556 at 185192, read 3557 at 185244 (cycles from the trace's start), intervals around it 52 52 52 52 52 52 52      +356 (+11.1%)  +356 (+11.1%)  +18537 (+11.1%)  +356 (+11.1%)  +18537 (+11.1%)
+    2026-10-26-SCPH-5000         SPUCNT k=0 (4096 reads over 127077 cycles): intervals 31x3970 32x124 39x1
+    2026-10-09-SCPH-1001-runner  SPUCNT k=0 (4096 reads over 127075 cycles): intervals 31x3972 32x122 39x1      -2 (-0.0%)  +2 (+0.1%)  -2 (-1.6%)
+    2026-10-26-SCPH-5000           long (> 27): 408; spacing 829 259 253 259 253 259 253 259 253 259 253 259 253 259 253 259
+    2026-10-09-SCPH-1001-runner    long (> 27): 408; spacing 634 253 259 253 259 253 259 253 259 253 259 253 259 253 259 253      -195 (-23.5%)  -6 (-2.3%)  +6 (+2.4%)  -6 (-2.3%)  +6 (+2.4%)  -6 (-2.3%)  +6 (+2.4%)  -6 (-2.3%)  +6 (+2.4%)  -6 (-2.3%)  +6 (+2.4%)  -6 (-2.3%)  +6 (+2.4%)  -6 (-2.3%)  +6 (+2.4%)  -6 (-2.3%)
+    2026-10-26-SCPH-5000           phase mod 768 from the first long one: 0 61 320 573 64 317 576 61 320 573 64 317 576 61 320 573 64 317 576 61 320 573 64 317
+    2026-10-09-SCPH-1001-runner    phase mod 768 from the first long one: 0 634 119 378 631 122 375 634 119 378 631 122 375 634 119 378 631 122 375 634 119 378 631 122      +573 (+939.3%)  -201 (-62.8%)  -195 (-34.0%)  +567 (+885.9%)  -195 (-61.5%)  -201 (-34.9%)  +573 (+939.3%)  -201 (-62.8%)  -195 (-34.0%)  +567 (+885.9%)  -195 (-61.5%)  -201 (-34.9%)  +573 (+939.3%)  -201 (-62.8%)  -195 (-34.0%)  +567 (+885.9%)  -195 (-61.5%)  -201 (-34.9%)  +573 (+939.3%)  -201 (-62.8%)  -195 (-34.0%)  +567 (+885.9%)  -195 (-61.5%)
+  differ in form (9):
+    2026-10-26-SCPH-5000         SPUSTAT k=12 (8192 reads over 327675 cycles): intervals 40x8189 45x1 70x1
+    2026-10-09-SCPH-1001-runner  SPUSTAT k=12 (8192 reads over 327661 cycles): intervals 40x8190 61x1
+    2026-10-26-SCPH-5000           long (> 42): 2; spacing 765
+    2026-10-09-SCPH-1001-runner    long (> 42): 1
+    2026-10-26-SCPH-5000           phase mod 768 from the bit-11 change: 355 352
+    2026-10-09-SCPH-1001-runner    phase mod 768 from the bit-11 change: 240
+    2026-10-26-SCPH-5000         SPUSTAT k=24 (8192 reads over 426523 cycles): intervals 52x8051 55x1 56x138 88x1
+    2026-10-09-SCPH-1001-runner  SPUSTAT k=24 (8192 reads over 426524 cycles): intervals 52x8051 56x139 88x1
+    2026-10-26-SCPH-5000         VOL0 k=0 (4096 reads over 127089 cycles): intervals 31x3969 32x123 36x1 38x1 40x1
+    2026-10-09-SCPH-1001-runner  VOL0 k=0 (4096 reads over 127079 cycles): intervals 31x3970 32x123 35x1 38x1
+    2026-10-26-SCPH-5000           long (> 33): 3; spacing 567 253
+    2026-10-09-SCPH-1001-runner    long (> 33): 2; spacing 221
+    2026-10-26-SCPH-5000           phase mod 768 from the first long one: 0 567 52
+    2026-10-09-SCPH-1001-runner    phase mod 768 from the first long one: 0 221
+    2026-10-26-SCPH-5000         I_STAT k=0 (4096 reads over 65525 cycles): intervals 16x4094 21x1
+    2026-10-09-SCPH-1001-runner  I_STAT k=0 (4096 reads over 65527 cycles): intervals 16x4093 18x1 21x1
+    2026-10-26-SCPH-5000         I_STAT k=12 (4096 reads over 104840 cycles): intervals 25x3687 28x203 29x1 34x203 50x1
+    2026-10-09-SCPH-1001-runner  I_STAT k=12 (4096 reads over 104845 cycles): intervals 25x3687 28x203 34x204 50x1
+
+== spu-xfer   (spu-xfer-SCPH-5000.txt / spu-xfer-SCPH-1001-2.txt)
+  numbers differ (8):
+    2026-10-26-SCPH-5000           N= 1  applied   368  SPUSTAT then 0810  bit 10 clear    112 later  | mode 1 kept: SPUSTAT 0810, clear after     64
+    2026-10-09-SCPH-1001-runner    N= 1  applied   304  SPUSTAT then 0410  bit 10 clear    616 later  | mode 1 kept: SPUSTAT 0010, clear after     64      -64 (-17.4%)  -400 (-49.4%)  +504 (+450.0%)  -800 (-98.8%)
+    2026-10-26-SCPH-5000           N= 2  applied   704  SPUSTAT then 0010  bit 10 clear     64 later  | mode 1 kept: SPUSTAT 0010, clear after     64
+    2026-10-09-SCPH-1001-runner    N= 2  applied   704  SPUSTAT then 0810  bit 10 clear     64 later  | mode 1 kept: SPUSTAT 0810, clear after     56      +800 (+8000.0%)  +800 (+8000.0%)  -8 (-12.5%)
+    2026-10-26-SCPH-5000           N= 4  applied   704  SPUSTAT then 0010  bit 10 clear     64 later  | mode 1 kept: SPUSTAT 0010, clear after     56
+    2026-10-09-SCPH-1001-runner    N= 4  applied   696  SPUSTAT then 0810  bit 10 clear     64 later  | mode 1 kept: SPUSTAT 0810, clear after     64      -8 (-1.1%)  +800 (+8000.0%)  +800 (+8000.0%)  +8 (+14.3%)
+    2026-10-26-SCPH-5000           N= 8  applied   632  SPUSTAT then 0810  bit 10 clear     64 later  | mode 1 kept: SPUSTAT 0810, clear after     64
+    2026-10-09-SCPH-1001-runner    N= 8  applied   640  SPUSTAT then 0010  bit 10 clear     56 later  | mode 1 kept: SPUSTAT 0010, clear after     56      +8 (+1.3%)  -800 (-98.8%)  -8 (-12.5%)  -800 (-98.8%)  -8 (-12.5%)
+    2026-10-26-SCPH-5000           N=16  applied   632  SPUSTAT then 0c10  bit 10 clear    624 later  | mode 1 kept: SPUSTAT 0810, clear after     64
+    2026-10-09-SCPH-1001-runner    N=16  applied   632  SPUSTAT then 0410  bit 10 clear    648 later  | mode 1 kept: SPUSTAT 0010, clear after     64      0c10->0410  +24 (+3.8%)  -800 (-98.8%)
+    2026-10-26-SCPH-5000           N=32  applied   424  SPUSTAT then 0410  bit 10 clear   1424 later  | mode 1 kept: SPUSTAT 0010, clear after     64
+    2026-10-09-SCPH-1001-runner    N=32  applied   496  SPUSTAT then 0c10  bit 10 clear   1360 later  | mode 1 kept: SPUSTAT 0810, clear after     64      +72 (+17.0%)  0410->0c10  -64 (-4.5%)  +800 (+8000.0%)
+    2026-10-26-SCPH-5000           mode 2 (DMA write): start 0800  400:0aa0
+    2026-10-09-SCPH-1001-runner    mode 2 (DMA write): start 0000  208:02a0      -800 (-100.0%)  -192 (-48.0%)  0aa0->02a0
+    2026-10-26-SCPH-5000           mode 3 (DMA read): start 0800  64:0830  16248:09b0
+    2026-10-09-SCPH-1001-runner    mode 3 (DMA read): start 0000  568:0030  17280:01b0      -800 (-100.0%)  +504 (+787.5%)  -800 (-96.4%)  +1032 (+6.4%)  09b0->01b0
+  differ in form (2):
+    2026-10-26-SCPH-5000           type 0: ffff 8888 eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee
+    2026-10-09-SCPH-1001-runner    type 0: ffff 1111 eeee eeee eeee 2222 eeee eeee eeee 3333 eeee eeee
+    2026-10-26-SCPH-5000           type 1: ffff 8888 eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee
+    2026-10-09-SCPH-1001-runner    type 1: ffff 1111 eeee eeee eeee 3333 eeee eeee eeee 5555 eeee eeee
+
+== t1-edges   (t1-edges-SCPH-5000.txt / t1-edges-SCPH-1001.txt)
+  numbers differ (59):
+    2026-10-26-SCPH-5000           RESET - IRQ                           7636 /    7651 /    7678   (48 frames)
+    2026-10-09-SCPH-1001-runner    RESET - IRQ                           7628 /    7666 /    7674   (48 frames)      -8 (-0.1%)  +15 (+0.2%)  -4 (-0.1%)
+    2026-10-26-SCPH-5000           TICK  0 - IRQ, read before            1813 /    1906 /    1923   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  0 - IRQ, read before            1809 /    1904 /    1923   (48 frames)      -4 (-0.2%)  -2 (-0.1%)
+    2026-10-26-SCPH-5000           TICK  0 - IRQ, read after             1915 /    2007 /    2020   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  0 - IRQ, read after             1906 /    2004 /    2020   (48 frames)      -9 (-0.5%)  -3 (-0.1%)
+    2026-10-26-SCPH-5000           TICK  1 - IRQ, read before            3969 /    4066 /    4085   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  1 - IRQ, read before            3969 /    4063 /    4085   (48 frames)      -3 (-0.1%)
+    2026-10-26-SCPH-5000           TICK  1 - IRQ, read after             4066 /    4165 /    4186   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  1 - IRQ, read after             4066 /    4160 /    4187   (48 frames)      -5 (-0.1%)  +1 (+0.0%)
+    2026-10-26-SCPH-5000           TICK  3 - IRQ, read before            8296 /    8310 /    8393   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  3 - IRQ, read before            8296 /    8310 /    8399   (48 frames)      +6 (+0.1%)
+    2026-10-26-SCPH-5000           TICK  3 - IRQ, read after             8393 /    8409 /    8495   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  3 - IRQ, read after             8393 /    8411 /    8496   (48 frames)      +2 (+0.0%)  +1 (+0.0%)
+    2026-10-26-SCPH-5000           TICK  4 - IRQ, read before           10463 /   10473 /   10514   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  4 - IRQ, read before           10463 /   10477 /   10499   (48 frames)      +4 (+0.0%)  -15 (-0.1%)
+    2026-10-26-SCPH-5000           TICK  4 - IRQ, read after            10560 /   10574 /   10611   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  4 - IRQ, read after            10560 /   10574 /   10596   (48 frames)      -15 (-0.1%)
+    2026-10-26-SCPH-5000           TICK  5 - IRQ, read before           12632 /   12641 /   12678   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  5 - IRQ, read before           12632 /   12643 /   12663   (48 frames)      +2 (+0.0%)  -15 (-0.1%)
+    2026-10-26-SCPH-5000           TICK  5 - IRQ, read after            12729 /   12740 /   12781   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  5 - IRQ, read after            12729 /   12742 /   12766   (48 frames)      +2 (+0.0%)  -15 (-0.1%)
+    2026-10-26-SCPH-5000           TICK  6 - IRQ, read before           14742 /   14807 /   14820   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  6 - IRQ, read before           14793 /   14809 /   14829   (48 frames)      +51 (+0.3%)  +2 (+0.0%)  +9 (+0.1%)
+    2026-10-26-SCPH-5000           TICK  6 - IRQ, read after            14844 /   14904 /   14923   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  6 - IRQ, read after            14895 /   14906 /   14926   (48 frames)      +51 (+0.3%)  +2 (+0.0%)  +3 (+0.0%)
+    2026-10-26-SCPH-5000           TICK  7 - IRQ, read before           16882 /   16968 /   16986   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  7 - IRQ, read before           16882 /   16970 /   16996   (48 frames)      +2 (+0.0%)  +10 (+0.1%)
+    2026-10-26-SCPH-5000           TICK  7 - IRQ, read after            16979 /   17070 /   17083   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  7 - IRQ, read after            16979 /   17071 /   17093   (48 frames)      +1 (+0.0%)  +10 (+0.1%)
+    2026-10-26-SCPH-5000           TICK  8 - IRQ, read before           19032 /   19132 /   19153   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  8 - IRQ, read before           19035 /   19129 /   19153   (48 frames)      +3 (+0.0%)  -3 (-0.0%)
+    2026-10-26-SCPH-5000           TICK  8 - IRQ, read after            19129 /   19231 /   19250   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  8 - IRQ, read after            19138 /   19232 /   19250   (48 frames)      +9 (+0.0%)  +1 (+0.0%)
+    2026-10-26-SCPH-5000           TICK  9 - IRQ, read before           21193 /   21220 /   21308   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK  9 - IRQ, read before           21193 /   21220 /   21309   (48 frames)      +1 (+0.0%)
+    2026-10-26-SCPH-5000           TICK 10 - IRQ, read before           23360 /   23378 /   23470   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 10 - IRQ, read before           23363 /   23379 /   23462   (48 frames)      +3 (+0.0%)  +1 (+0.0%)  -8 (-0.0%)
+    2026-10-26-SCPH-5000           TICK 10 - IRQ, read after            23462 /   23475 /   23567   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 10 - IRQ, read after            23462 /   23476 /   23559   (48 frames)      +1 (+0.0%)  -8 (-0.0%)
+    2026-10-26-SCPH-5000           TICK 11 - IRQ, read before           25529 /   25540 /   25581   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 11 - IRQ, read before           25529 /   25542 /   25566   (48 frames)      +2 (+0.0%)  -15 (-0.1%)
+    2026-10-26-SCPH-5000           TICK 11 - IRQ, read after            25629 /   25637 /   25678   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 11 - IRQ, read after            25627 /   25639 /   25663   (48 frames)      -2 (-0.0%)  +2 (+0.0%)  -15 (-0.1%)
+    2026-10-26-SCPH-5000           TICK 12 - IRQ, read before           27695 /   27706 /   27741   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 12 - IRQ, read before           27695 /   27706 /   27726   (48 frames)      -15 (-0.1%)
+    2026-10-26-SCPH-5000           TICK 12 - IRQ, read after            27792 /   27805 /   27838   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 12 - IRQ, read after            27792 /   27806 /   27823   (48 frames)      +1 (+0.0%)  -15 (-0.1%)
+    2026-10-26-SCPH-5000           TICK 13 - IRQ, read before           29811 /   29871 /   29883   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 13 - IRQ, read before           29862 /   29872 /   29893   (48 frames)      +51 (+0.2%)  +1 (+0.0%)  +10 (+0.0%)
+    2026-10-26-SCPH-5000           TICK 13 - IRQ, read after            29908 /   29969 /   29980   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 13 - IRQ, read after            29959 /   29970 /   29990   (48 frames)      +51 (+0.2%)  +1 (+0.0%)  +10 (+0.0%)
+    2026-10-26-SCPH-5000           TICK 14 - IRQ, read before           31942 /   32037 /   32050   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 14 - IRQ, read before           31953 /   32039 /   32063   (48 frames)      +11 (+0.0%)  +2 (+0.0%)  +13 (+0.0%)
+    2026-10-26-SCPH-5000           TICK 14 - IRQ, read after            32045 /   32134 /   32147   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 14 - IRQ, read after            32050 /   32136 /   32160   (48 frames)      +5 (+0.0%)  +2 (+0.0%)  +13 (+0.0%)
+    2026-10-26-SCPH-5000           TICK 15 - IRQ, read before           32046 /   34199 /   34220   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 15 - IRQ, read before           34106 /   34198 /   34223   (48 frames)      +2060 (+6.4%)  -1 (-0.0%)  +3 (+0.0%)
+    2026-10-26-SCPH-5000           TICK 15 - IRQ, read after            32152 /   34300 /   34317   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 15 - IRQ, read after            34206 /   34296 /   34326   (48 frames)      +2054 (+6.4%)  -4 (-0.0%)  +9 (+0.0%)
+    2026-10-26-SCPH-5000           TICK 16 - IRQ, read before           34109 /   36359 /   36380   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 16 - IRQ, read before           36262 /   36293 /   36381   (48 frames)      +2153 (+6.3%)  -66 (-0.2%)  +1 (+0.0%)
+    2026-10-26-SCPH-5000           TICK 16 - IRQ, read after            34212 /   36456 /   36483   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 16 - IRQ, read after            36359 /   36390 /   36483   (48 frames)      +2147 (+6.3%)  -66 (-0.2%)
+    2026-10-26-SCPH-5000           TICK 17 - IRQ, read before           36276 /   38445 /   38534   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 17 - IRQ, read before           38431 /   38445 /   38529   (48 frames)      +2155 (+5.9%)  -5 (-0.0%)
+    2026-10-26-SCPH-5000           TICK 17 - IRQ, read after            36373 /   38542 /   38631   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 17 - IRQ, read after            38529 /   38542 /   38626   (48 frames)      +2156 (+5.9%)  -5 (-0.0%)
+    2026-10-26-SCPH-5000           TICK 18 - IRQ, read before           38446 /   40605 /   40689   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 18 - IRQ, read before           40592 /   40606 /   40689   (48 frames)      +2146 (+5.6%)  +1 (+0.0%)
+    2026-10-26-SCPH-5000           TICK 18 - IRQ, read after            38545 /   40706 /   40792   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 18 - IRQ, read after            40689 /   40708 /   40792   (48 frames)      +2144 (+5.6%)  +2 (+0.0%)
+    2026-10-26-SCPH-5000           TICK 19 - IRQ, read before           40612 /   42769 /   42805   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 19 - IRQ, read before           42759 /   42770 /   42790   (48 frames)      +2147 (+5.3%)  +1 (+0.0%)  -15 (-0.0%)
+    2026-10-26-SCPH-5000           TICK 19 - IRQ, read after            40709 /   42869 /   42902   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 19 - IRQ, read after            42856 /   42869 /   42887   (48 frames)      +2147 (+5.3%)  -15 (-0.0%)
+    2026-10-26-SCPH-5000           TICK 20 - IRQ, read before           42773 /   44934 /   44947   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 20 - IRQ, read before           44926 /   44936 /   44960   (48 frames)      +2153 (+5.0%)  +2 (+0.0%)  +13 (+0.0%)
+    2026-10-26-SCPH-5000           TICK 20 - IRQ, read after            42875 /   45031 /   45045   (48 frames)
+    2026-10-09-SCPH-1001-runner    TICK 20 - IRQ, read after            45023 /   45037 /   45059   (48 frames)      +2148 (+5.0%)  +6 (+0.0%)  +14 (+0.0%)
+    ... 19 more (--all)
+
+== t1-gate   (t1-gate-SCPH-5000.txt / t1-gate-SCPH-1001-2.txt)
+  numbers differ (8):
+    2026-10-26-SCPH-5000         frame  1:  DROP 7628..7684 ffd8->0010  DROP 49468..49524 a348->001c
+    2026-10-09-SCPH-1001-runner  frame  1:  DROP 7605..7661 ffc9->0001  DROP 49444..49500 a338->0006      -23 (-0.3%)  -23 (-0.3%)  ffd8->ffc9  -9 (-90.0%)  -24 (-0.0%)  -24 (-0.0%)  a348->a338  001c->0006
+    2026-10-26-SCPH-5000         frame  5:  DROP 7627..7683 ffd9->0011  DROP 49468..49524 a34a->001e
+    2026-10-09-SCPH-1001-runner  frame  2:  DROP 7622..7678 fff1->0029  DROP 49462..49518 a361->0030      -3 (-60.0%)  -5 (-0.1%)  -5 (-0.1%)  ffd9->fff1  +18 (+163.6%)  -6 (-0.0%)  -6 (-0.0%)  a34a->a361  001e->0030
+    2026-10-26-SCPH-5000         frame  6:  DROP 7622..7678 ffd0->0008  DROP 49459..49515 a33d->0012
+    2026-10-09-SCPH-1001-runner  frame  6:  DROP 7624..7680 fff2->002a  DROP 49464..49530 a362->003b      +2 (+0.0%)  +2 (+0.0%)  ffd0->fff2  0008->002a  +5 (+0.0%)  +15 (+0.0%)  a33d->a362  0012->003b
+    2026-10-26-SCPH-5000         frame  7:  DROP 7656..7712 fff2->002a  DROP 49440..49505 a32a->0007
+    2026-10-09-SCPH-1001-runner  frame  7:  DROP 7622..7678 ffe3->001b  DROP 49459..49515 a350->001e      -34 (-0.4%)  -34 (-0.4%)  fff2->ffe3  002a->001b  +19 (+0.0%)  +10 (+0.0%)  a32a->a350  0007->001e
+    2026-10-26-SCPH-5000         frame  8:  DROP 7613..7679 ffc7->0009  DROP 49460..49516 a33e->0012
+    2026-10-09-SCPH-1001-runner  frame  8:  DROP 7622..7678 ffd1->0009  DROP 49459..49515 a33e->000d      +9 (+0.1%)  -1 (-0.0%)  ffc7->ffd1  -1 (-0.0%)  -1 (-0.0%)  0012->000d
+    2026-10-26-SCPH-5000         frame  9:  DROP 7624..7680 fff3->002b  DROP 49408..49464 a32b->0000
+    2026-10-09-SCPH-1001-runner  frame 12:  DROP 7627..7683 ffd1->0009  DROP 49468..49524 a342->0011      +3 (+33.3%)  +3 (+0.0%)  +3 (+0.0%)  fff3->ffd1  002b->0009  +60 (+0.1%)  +60 (+0.1%)  a32b->a342  +11
+    2026-10-26-SCPH-5000         frame 13:  DROP 7613..7679 ffd5->0017  DROP 49460..49516 a34c->0020
+    2026-10-09-SCPH-1001-runner  frame 13:  DROP 7600..7656 ffd8->0010  DROP 49441..49497 a349->0018      -13 (-0.2%)  -23 (-0.3%)  ffd5->ffd8  -7 (-41.2%)  -19 (-0.0%)  -19 (-0.0%)  a34c->a349  -2 (-10.0%)
+    2026-10-26-SCPH-5000         frame 15:  DROP 7628..7684 fff7->002f  DROP 49409..49465 a32c->0000
+    2026-10-09-SCPH-1001-runner  frame 15:  DROP 7622..7678 fff0->0028  DROP 49459..49515 a35d->002c      -6 (-0.1%)  -6 (-0.1%)  fff7->fff0  002f->0028  +50 (+0.1%)  +50 (+0.1%)  a32c->a35d  0000->002c
+  differ in form (2):
+    2026-10-26-SCPH-5000         frame  0:  DROP 7628..7684 ffce->0006  DROP 49466..49522 a33c->0011
+    2026-10-09-SCPH-1001-runner  frame  0:  DROP 7607..7673 ffda->001c  DROP 49455..49511 a352->0021
+    2026-10-26-SCPH-5000         frame 14:  DROP 7613..7669 ffcb->0003  DROP 49450..49506 a338->000c
+    2026-10-09-SCPH-1001-runner  frame 14:  DROP 7662..7718 ffff->0037  DROP 49447..49503 a338->0006
+  only 2026-10-26-SCPH-5000 (6):
+    frame  2:  DROP 7614..7670 ffcc->0004  DROP 49455..49511 a33d->0011
+    frame  3:  DROP 7600..7656 ffdb->0013  DROP 49437..49493 a348->001d
+    frame  4:  DROP 7601..7657 ffcd->0005  DROP 49442..49498 a33e->0012
+    frame 10:  DROP 7622..7678 ffea->0022  DROP 49459..49515 a357->002b
+    frame 11:  DROP 7622..7678 ffde->0016  DROP 49459..49515 a34b->001f
+    frame 12:  DROP 7656..7712 ffff->0037  DROP 49440..49505 a337->0015
+  only 2026-10-09-SCPH-1001-runner (6):
+    frame  3:  DROP 7622..7678 ffe0->0018  DROP 49459..49515 a34d->001c
+    frame  4:  DROP 7656..7712 fffc->0034  DROP 49440..49505 a334->000b
+    frame  5:  DROP 7613..7679 ffcb->000d  DROP 49460..49516 a342->0011
+    frame  9:  DROP 7614..7670 ffee->0026  DROP 49461..49517 a365->0034
+    frame 10:  DROP 7601..7657 ffdc->0014  DROP 49442..49498 a34d->001c
+    frame 11:  DROP 7601..7657 ffcb->0003  DROP 49442..49498 a33c->000a
+
+== t1-hres   (t1-hres-SCPH-5000.txt / t1-hres-SCPH-1001.txt)
+  numbers differ (8):
+    2026-10-26-SCPH-5000           found: GPUSTAT 14042000
+    2026-10-09-SCPH-1001-runner    found: GPUSTAT 14040000      -2000 (-0.0%)
+    2026-10-26-SCPH-5000           256 wide, display on               GPUSTAT 14002000  tick at 2033 (median, 160 ticks; quartiles 2014..2048) cycles into the line from the IRQ
+    2026-10-09-SCPH-1001-runner    256 wide, display on               GPUSTAT 14000000  tick at 2020 (median, 160 ticks; quartiles 2005..2038) cycles into the line from the IRQ      -2000 (-0.0%)  -13 (-0.6%)  -9 (-0.4%)  -10 (-0.5%)
+    2026-10-26-SCPH-5000           320 wide, display on               GPUSTAT 94022000  tick at 2037 (median, 160 ticks; quartiles 2018..2052) cycles into the line from the IRQ
+    2026-10-09-SCPH-1001-runner    320 wide, display on               GPUSTAT 14020000  tick at 2017 (median, 160 ticks; quartiles 2001..2034) cycles into the line from the IRQ      -80002000 (-85.1%)  -20 (-1.0%)  -17 (-0.8%)  -18 (-0.9%)
+    2026-10-26-SCPH-5000           368 wide, display on               GPUSTAT 94012000  tick at 2034 (median, 160 ticks; quartiles 2017..2051) cycles into the line from the IRQ
+    2026-10-09-SCPH-1001-runner    368 wide, display on               GPUSTAT 14010000  tick at 2018 (median, 160 ticks; quartiles 2005..2037) cycles into the line from the IRQ      -80002000 (-85.1%)  -16 (-0.8%)  -12 (-0.6%)  -14 (-0.7%)
+    2026-10-26-SCPH-5000           512 wide, display on               GPUSTAT 14042000  tick at 2012 (median, 160 ticks; quartiles 1999..2030) cycles into the line from the IRQ
+    2026-10-09-SCPH-1001-runner    512 wide, display on               GPUSTAT 94040000  tick at 2014 (median, 160 ticks; quartiles 2000..2032) cycles into the line from the IRQ      +79998000 (+569.7%)  +2 (+0.1%)  +1 (+0.1%)  +2 (+0.1%)
+    2026-10-26-SCPH-5000           640 wide, display on               GPUSTAT 94062000  tick at 2014 (median, 160 ticks; quartiles 2000..2033) cycles into the line from the IRQ
+    2026-10-09-SCPH-1001-runner    640 wide, display on               GPUSTAT 14060000  tick at 2017 (median, 160 ticks; quartiles 2002..2035) cycles into the line from the IRQ      -80002000 (-85.1%)  +3 (+0.1%)  +2 (+0.1%)  +2 (+0.1%)
+    2026-10-26-SCPH-5000           320 wide, display OFF              GPUSTAT 94822000  tick at 2026 (median, 160 ticks; quartiles 2011..2044) cycles into the line from the IRQ
+    2026-10-09-SCPH-1001-runner    320 wide, display OFF              GPUSTAT 94820000  tick at 2015 (median, 160 ticks; quartiles 2001..2033) cycles into the line from the IRQ      -2000 (-0.0%)  -11 (-0.5%)  -10 (-0.5%)  -11 (-0.5%)
+    2026-10-26-SCPH-5000           320 wide, range 200h..C00h         GPUSTAT 14022000  tick at 1973 (median, 160 ticks; quartiles 1954..1987) cycles into the line from the IRQ
+    2026-10-09-SCPH-1001-runner    320 wide, range 200h..C00h         GPUSTAT 94020000  tick at 1963 (median, 160 ticks; quartiles 1949..1982) cycles into the line from the IRQ      +79998000 (+570.5%)  -10 (-0.5%)  -5 (-0.3%)  -5 (-0.3%)
+
+== t1-hsweep   (t1-hsweep-SCPH-5000.txt / t1-hsweep-SCPH-1001.txt)
+  numbers differ (9):
+    2026-10-26-SCPH-5000           X1 260h X2 c60h   tick at 2034 (median of 288; quartiles 2016..2052)
+    2026-10-09-SCPH-1001-runner    X1 260h X2 c60h   tick at 2028 (median of 288; quartiles 2012..2048)      -6 (-0.3%)  -4 (-0.2%)  -4 (-0.2%)
+    2026-10-26-SCPH-5000           X1 260h X2 c40h   tick at 2010 (median of 288; quartiles 1998..2025)
+    2026-10-09-SCPH-1001-runner    X1 260h X2 c40h   tick at 2004 (median of 288; quartiles 1990..2021)      -6 (-0.3%)  -8 (-0.4%)  -4 (-0.2%)
+    2026-10-26-SCPH-5000           X1 260h X2 c00h   tick at 1973 (median of 288; quartiles 1954..1989)
+    2026-10-09-SCPH-1001-runner    X1 260h X2 c00h   tick at 1962 (median of 288; quartiles 1944..1982)      -11 (-0.6%)  -10 (-0.5%)  -7 (-0.4%)
+    2026-10-26-SCPH-5000           X1 260h X2 bc0h   tick at 1934 (median of 288; quartiles 1918..1947)
+    2026-10-09-SCPH-1001-runner    X1 260h X2 bc0h   tick at 1924 (median of 288; quartiles 1903..1940)      -10 (-0.5%)  -15 (-0.8%)  -7 (-0.4%)
+    2026-10-26-SCPH-5000           X1 260h X2 b60h   tick at 1872 (median of 288; quartiles 1854..1884)
+    2026-10-09-SCPH-1001-runner    X1 260h X2 b60h   tick at 1869 (median of 288; quartiles 1850..1883)      -3 (-0.2%)  -4 (-0.2%)  -1 (-0.1%)
+    2026-10-26-SCPH-5000           X1 260h X2 a60h   tick at 1701 (median of 288; quartiles 1688..1720)
+    2026-10-09-SCPH-1001-runner    X1 260h X2 a60h   tick at 1699 (median of 288; quartiles 1686..1718)      -2 (-0.1%)  -2 (-0.1%)  -2 (-0.1%)
+    2026-10-26-SCPH-5000           X1 200h X2 c60h   tick at 2027 (median of 288; quartiles 2011..2046)
+    2026-10-09-SCPH-1001-runner    X1 200h X2 c60h   tick at 2026 (median of 288; quartiles 2011..2047)      -1 (-0.0%)  +1 (+0.0%)
+    2026-10-26-SCPH-5000           X1 2c0h X2 c60h   tick at 2028 (median of 288; quartiles 2012..2048)
+    2026-10-09-SCPH-1001-runner    X1 2c0h X2 c60h   tick at 2023 (median of 288; quartiles 2009..2042)      -5 (-0.2%)  -3 (-0.1%)  -6 (-0.3%)
+    2026-10-26-SCPH-5000           X1 360h X2 c60h   tick at 2030 (median of 288; quartiles 2015..2049)
+    2026-10-09-SCPH-1001-runner    X1 360h X2 c60h   tick at 2025 (median of 288; quartiles 2011..2046)      -5 (-0.2%)  -4 (-0.2%)  -3 (-0.1%)
+
+== t1-line   (t1-line-SCPH-5000.txt / t1-line-SCPH-1001-2.txt)
+  numbers differ (13):
+    2026-10-26-SCPH-5000         GPUSTAT 14042000
+    2026-10-09-SCPH-1001-runner  GPUSTAT 14040000      -2000 (-0.0%)
+    2026-10-26-SCPH-5000           change  0: after   2146, by   2149 (the tightest over 32 frames; earliest read-before 2076)
+    2026-10-09-SCPH-1001-runner    change  0: after   2146, by   2153 (the tightest over 32 frames; earliest read-before 2080)      +4 (+0.2%)  +4 (+0.2%)
+    2026-10-26-SCPH-5000           change  1: after   4294, by   4307 (the tightest over 32 frames; earliest read-before 4234)
+    2026-10-09-SCPH-1001-runner    change  1: after   4300, by   4305 (the tightest over 32 frames; earliest read-before 4226)      +6 (+0.1%)  -2 (-0.0%)  -8 (-0.2%)
+    2026-10-26-SCPH-5000           change  2: after   6453, by   6453 (the tightest over 32 frames; earliest read-before 6380)
+    2026-10-09-SCPH-1001-runner    change  2: after   6451, by   6453 (the tightest over 32 frames; earliest read-before 6380)      -2 (-0.0%)
+    2026-10-26-SCPH-5000           change  3: after   8604, by   8606 (the tightest over 32 frames; earliest read-before 8533)
+    2026-10-09-SCPH-1001-runner    change  3: after   8605, by   8608 (the tightest over 32 frames; earliest read-before 8535)      +1 (+0.0%)  +2 (+0.0%)  +2 (+0.0%)
+    2026-10-26-SCPH-5000           change  4: after  10754, by  10765 (the tightest over 32 frames; earliest read-before 10692)
+    2026-10-09-SCPH-1001-runner    change  4: after  10753, by  10763 (the tightest over 32 frames; earliest read-before 10690)      -1 (-0.0%)  -2 (-0.0%)  -2 (-0.0%)
+    2026-10-26-SCPH-5000           change  5: after  12910, by  12915 (the tightest over 32 frames; earliest read-before 12842)
+    2026-10-09-SCPH-1001-runner    change  5: after  12902, by  12912 (the tightest over 32 frames; earliest read-before 12839)      -8 (-0.1%)  -3 (-0.0%)  -3 (-0.0%)
+    2026-10-26-SCPH-5000           change  6: after  15063, by  15063 (the tightest over 32 frames; earliest read-before 14990)
+    2026-10-09-SCPH-1001-runner    change  6: after  15063, by  15065 (the tightest over 32 frames; earliest read-before 14992)      +2 (+0.0%)  +2 (+0.0%)
+    2026-10-26-SCPH-5000           change  7: after  17214, by  17219 (the tightest over 32 frames; earliest read-before 17146)
+    2026-10-09-SCPH-1001-runner    change  7: after  17213, by  17226 (the tightest over 32 frames; earliest read-before 17153)      -1 (-0.0%)  +7 (+0.0%)  +7 (+0.0%)
+    2026-10-26-SCPH-5000           change  8: after  19364, by  19372 (the tightest over 32 frames; earliest read-before 19299)
+    2026-10-09-SCPH-1001-runner    change  8: after  19367, by  19372 (the tightest over 32 frames; earliest read-before 19299)      +3 (+0.0%)
+    2026-10-26-SCPH-5000           change  9: after  21520, by  21521 (the tightest over 32 frames; earliest read-before 21447)
+    2026-10-09-SCPH-1001-runner    change  9: after  21520, by  21521 (the tightest over 32 frames; earliest read-before 21448)      +1 (+0.0%)
+    2026-10-26-SCPH-5000           change 10: after  23672, by  23674 (the tightest over 32 frames; earliest read-before 23601)
+    2026-10-09-SCPH-1001-runner    change 10: after  23671, by  23683 (the tightest over 32 frames; earliest read-before 23610)      -1 (-0.0%)  +9 (+0.0%)  +9 (+0.0%)
+    2026-10-26-SCPH-5000           change 11: after  25819, by  25835 (the tightest over 32 frames; earliest read-before 25762)
+    2026-10-09-SCPH-1001-runner    change 11: after  25822, by  25832 (the tightest over 32 frames; earliest read-before 25759)      +3 (+0.0%)  -3 (-0.0%)  -3 (-0.0%)
+
+== t1-ticks   (t1-ticks-SCPH-5000.txt / t1-ticks-SCPH-1001.txt)
+  numbers differ (29):
+    2026-10-26-SCPH-5000            0     1932..1909        1929..1912        1932..1914
+    2026-10-09-SCPH-1001-runner     0     1932..1914        1932..1910        1931..1909      +5 (+0.3%)  +3 (+0.2%)  -2 (-0.1%)  -1 (-0.1%)  -5 (-0.3%)
+    2026-10-26-SCPH-5000            1     4091..4062        4072..4064        4091..4063
+    2026-10-09-SCPH-1001-runner     1     4090..4075        4090..4063        4091..4058      -1 (-0.0%)  +13 (+0.3%)  +18 (+0.4%)  -1 (-0.0%)  -5 (-0.1%)
+    2026-10-26-SCPH-5000            2     6245..6220        6230..6218        6250..6217
+    2026-10-09-SCPH-1001-runner     2     6240..6217        6240..6217        6245..6217      -5 (-0.1%)  -3 (-0.0%)  +10 (+0.2%)  -1 (-0.0%)  -5 (-0.1%)
+    2026-10-26-SCPH-5000            3     8386..8375        8390..8372        8404..8375
+    2026-10-09-SCPH-1001-runner     3     8379..8371        8384..8373        8400..8372      -7 (-0.1%)  -4 (-0.0%)  -6 (-0.1%)  +1 (+0.0%)  -4 (-0.0%)  -3 (-0.0%)
+    2026-10-26-SCPH-5000            4    10540..10533      10546..10531      10546..10533
+    2026-10-09-SCPH-1001-runner     4    10537..10529      10538..10531      10554..10528      -3 (-0.0%)  -4 (-0.0%)  -8 (-0.1%)  +8 (+0.1%)  -5 (-0.0%)
+    2026-10-26-SCPH-5000            5    12698..12689      12702..12689      12703..12690
+    2026-10-09-SCPH-1001-runner     5    12697..12689      12698..12689      12707..12688      -1 (-0.0%)  -4 (-0.0%)  +4 (+0.0%)  -2 (-0.0%)
+    2026-10-26-SCPH-5000            6    14851..14843      14862..14843      14858..14843
+    2026-10-09-SCPH-1001-runner     6    14851..14843      14851..14843      14849..14843      -11 (-0.1%)  -9 (-0.1%)
+    2026-10-26-SCPH-5000            7    17009..17003      17004..17003      17007..17003
+    2026-10-09-SCPH-1001-runner     7    17009..17003      17009..17003      16967..17003      +5 (+0.0%)  -40 (-0.2%)
+    2026-10-26-SCPH-5000            8    19158..19161      19119..19161      19165..19161
+    2026-10-09-SCPH-1001-runner     8    19162..19161      19124..19161      19124..19160      +4 (+0.0%)  +5 (+0.0%)  -41 (-0.2%)  -1 (-0.0%)
+    2026-10-26-SCPH-5000            9    21306..21282      21279..21321      21282..21321
+    2026-10-09-SCPH-1001-runner     9    21282..21321      21282..21321      21282..21282      -24 (-0.1%)  +39 (+0.2%)  +3 (+0.0%)  -39 (-0.2%)
+    2026-10-26-SCPH-5000           10    23464..23436      23435..23475      23438..23475
+    2026-10-09-SCPH-1001-runner    10    23438..23431      23439..23438      23439..23436      -26 (-0.1%)  -5 (-0.0%)  +4 (+0.0%)  -37 (-0.2%)  +1 (+0.0%)  -39 (-0.2%)
+    2026-10-26-SCPH-5000           11    25596..25591      25593..25590      25596..25592
+    2026-10-09-SCPH-1001-runner    11    25596..25586      25596..25586      25596..25590      -5 (-0.0%)  +3 (+0.0%)  -4 (-0.0%)  -2 (-0.0%)
+    2026-10-26-SCPH-5000           12    27756..27744      27751..27749      27754..27745
+    2026-10-09-SCPH-1001-runner    12    27756..27742      27756..27744      27754..27745      -2 (-0.0%)  +5 (+0.0%)  -5 (-0.0%)
+    2026-10-26-SCPH-5000           13    29908..29903      29911..29904      29909..29899
+    2026-10-09-SCPH-1001-runner    13    29911..29893      29909..29895      29911..29895      +3 (+0.0%)  -10 (-0.0%)  -2 (-0.0%)  -9 (-0.0%)  +2 (+0.0%)  -4 (-0.0%)
+    2026-10-26-SCPH-5000           14    32068..32053      32065..32043      32068..32057
+    2026-10-09-SCPH-1001-runner    14    32068..32051      32068..32053      32067..32053      -2 (-0.0%)  +3 (+0.0%)  +10 (+0.0%)  -1 (-0.0%)  -4 (-0.0%)
+    2026-10-26-SCPH-5000           15    34226..34197      34223..34200      34226..34199
+    2026-10-09-SCPH-1001-runner    15    34226..34207      34226..34199      34221..34194      +10 (+0.0%)  +3 (+0.0%)  -1 (-0.0%)  -5 (-0.0%)  -5 (-0.0%)
+    2026-10-26-SCPH-5000           16    36381..36351      36366..36354      36386..36353
+    2026-10-09-SCPH-1001-runner    16    36376..36353      36376..36351      36381..36349      -5 (-0.0%)  +2 (+0.0%)  +10 (+0.0%)  -3 (-0.0%)  -5 (-0.0%)  -4 (-0.0%)
+    2026-10-26-SCPH-5000           17    38530..38511      38522..38508      38539..38511
+    2026-10-09-SCPH-1001-runner    17    38530..38507      38520..38509      38530..38508      -4 (-0.0%)  -2 (-0.0%)  +1 (+0.0%)  -9 (-0.0%)  -3 (-0.0%)
+    2026-10-26-SCPH-5000           18    40676..40669      40680..40666      40679..40669
+    2026-10-09-SCPH-1001-runner    18    40673..40665      40674..40667      40690..40664      -3 (-0.0%)  -4 (-0.0%)  -6 (-0.0%)  +1 (+0.0%)  +11 (+0.0%)  -5 (-0.0%)
+    2026-10-26-SCPH-5000           19    42834..42825      42838..42825      42836..42825
+    2026-10-09-SCPH-1001-runner    19    42829..42825      42832..42825      42841..42822      -5 (-0.0%)  -6 (-0.0%)  +5 (+0.0%)  -3 (-0.0%)
+    2026-10-26-SCPH-5000           20    44987..44979      44998..44979      44994..44979
+    2026-10-09-SCPH-1001-runner    20    44987..44979      44987..44979      44985..44979      -11 (-0.0%)  -9 (-0.0%)
+    2026-10-26-SCPH-5000           21    47141..47137      47140..47137      47146..47137
+    2026-10-09-SCPH-1001-runner    21    47145..47137      47141..47137      47100..47136      +4 (+0.0%)  +1 (+0.0%)  -46 (-0.1%)  -1 (-0.0%)
+    2026-10-26-SCPH-5000           22    49282..49294      49255..49297      49301..49297
+    2026-10-09-SCPH-1001-runner    22    49298..49297      49260..49297      49260..49296      +16 (+0.0%)  +3 (+0.0%)  +5 (+0.0%)  -41 (-0.1%)  -1 (-0.0%)
+    2026-10-26-SCPH-5000           23    51440..51451      51415..51451      51455..51451
+    2026-10-09-SCPH-1001-runner    23    51415..51451      51415..51451      51415..51451      -25 (-0.0%)  -40 (-0.1%)
+    2026-10-26-SCPH-5000           25    55732..55730      57906..57891      55732..55728
+    2026-10-09-SCPH-1001-runner    25    55732..55721      55732..55720      55732..55726      -9 (-0.0%)  -2174 (-3.8%)  -2171 (-3.8%)  -2 (-0.0%)
+    2026-10-26-SCPH-5000           26    57890..57880      60062..60049      57890..57875
+    2026-10-09-SCPH-1001-runner    26    57890..57873      57890..57880      57890..57871      -7 (-0.0%)  -2172 (-3.6%)  -2169 (-3.6%)  -4 (-0.0%)
+    2026-10-26-SCPH-5000           27    60044..60034      62203..62203      60044..60035
+    2026-10-09-SCPH-1001-runner    27    60046..60029      60044..60029      60047..60029      +2 (+0.0%)  -5 (-0.0%)  -2159 (-3.5%)  -2174 (-3.5%)  +3 (+0.0%)  -6 (-0.0%)
+    2026-10-26-SCPH-5000           28    62203..62189      64323..64363      62203..62193
+    2026-10-09-SCPH-1001-runner    28    62203..62187      62203..62189      62203..62189      -2 (-0.0%)  -2120 (-3.3%)  -2174 (-3.4%)  -4 (-0.0%)
+    2026-10-26-SCPH-5000           29    64357..64332      66479..66521      64362..64352
+    2026-10-09-SCPH-1001-runner    29    64362..64343      64362..64343      64357..64329      +5 (+0.0%)  +11 (+0.0%)  -2117 (-3.2%)  -2178 (-3.3%)  -5 (-0.0%)  -23 (-0.0%)
+  differ in form (1):
+    2026-10-26-SCPH-5000           24    53600..53572      51961..51958 R    53572..53611
+    2026-10-09-SCPH-1001-runner    24    53572..53567      53575..53572      53575..53572
+
+== t1-toggle   (t1-toggle-SCPH-5000.txt / t1-toggle-SCPH-1001-2.txt)
+  numbers differ (16):
+    2026-10-26-SCPH-5000           found: GPUSTAT 94042000
+    2026-10-09-SCPH-1001-runner    found: GPUSTAT 94040000      -2000 (-0.0%)
+    2026-10-26-SCPH-5000           NTSC 320  260h..C60h                     GPUSTAT 14022000  toggle - tick: mean 127.99, median 131, 120..141 cycles (600 lines; 0 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  260h..C60h                     GPUSTAT 94020000  toggle - tick: mean 133.34, median 131, 131..143 cycles (600 lines; 0 waits timed out)      +79998000 (+570.5%)  +5.35 (+4.2%)  +11 (+9.2%)  +2 (+1.4%)
+    2026-10-26-SCPH-5000           NTSC 512  260h..C60h                     GPUSTAT 94042000  toggle - tick: mean 139.87, median 142, 131..142 cycles (600 lines; 0 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 512  260h..C60h                     GPUSTAT 94040000  toggle - tick: mean 142.56, median 142, 142..153 cycles (600 lines; 0 waits timed out)      -2000 (-0.0%)  +2.69 (+1.9%)  +11 (+8.4%)  +11 (+7.7%)
+    2026-10-26-SCPH-5000           NTSC 320  260h..A60h                     GPUSTAT 14022000  toggle - tick: mean 451.35, median 450, 450..461 cycles (600 lines; 0 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  260h..A60h                     GPUSTAT 94020000  toggle - tick: mean 455.99, median 461, 450..461 cycles (600 lines; 0 waits timed out)      +79998000 (+570.5%)  +4.64 (+1.0%)  +11 (+2.4%)
+    2026-10-26-SCPH-5000           NTSC 320  265h..C60h                     GPUSTAT 14022000  toggle - tick: mean 128.25, median 131, 120..131 cycles (600 lines; 0 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  265h..C60h                     GPUSTAT 94020000  toggle - tick: mean 133.20, median 131, 131..142 cycles (600 lines; 0 waits timed out)      +79998000 (+570.5%)  +4.95 (+3.9%)  +11 (+9.2%)  +11 (+8.4%)
+    2026-10-26-SCPH-5000           NTSC 320  25Bh..C5Bh                     GPUSTAT 94022000  toggle - tick: mean 133.34, median 131, 131..142 cycles (600 lines; 0 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  25Bh..C5Bh                     GPUSTAT 14020000  toggle - tick: mean 138.64, median 142, 131..142 cycles (600 lines; 0 waits timed out)      -80002000 (-85.1%)  +5.30 (+4.0%)  +11 (+8.4%)
+    2026-10-26-SCPH-5000           NTSC 256  265h..C65h                     GPUSTAT 14002000  toggle - tick: mean 120.62, median 120, 120..131 cycles (600 lines; 0 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 256  265h..C65h                     GPUSTAT 94000000  toggle - tick: mean 126.78, median 131, 120..131 cycles (600 lines; 0 waits timed out)      +79998000 (+571.3%)  +6.16 (+5.1%)  +11 (+9.2%)
+    2026-10-26-SCPH-5000           NTSC 320  260h..D00h                     GPUSTAT 94022000  toggle - tick: mean 27.58, median 32, 21..32 cycles (600 lines; 0 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  260h..D00h                     GPUSTAT 14020000  toggle - tick: mean 32.27, median 32, 32..43 cycles (600 lines; 0 waits timed out)      -80002000 (-85.1%)  +4.69 (+17.0%)  +11 (+52.4%)  +11 (+34.4%)
+    2026-10-26-SCPH-5000           NTSC 320  260h..D30h                     GPUSTAT 14022000  toggle - tick: mean 2164.98, median 2133, 2133..6445 cycles (596 lines; 4 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  260h..D30h                     GPUSTAT 94020000  toggle - tick: mean 2170.24, median 2144, 2133..6445 cycles (596 lines; 4 waits timed out)      +79998000 (+570.5%)  +5.26 (+0.2%)  +11 (+0.5%)
+    2026-10-26-SCPH-5000           NTSC 320  260h..D50h                     GPUSTAT 14022000  toggle - tick: mean 2145.53, median 2122, 2111..6423 cycles (596 lines; 4 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  260h..D50h                     GPUSTAT 94020000  toggle - tick: mean 2150.27, median 2122, 2111..6423 cycles (596 lines; 4 waits timed out)      +79998000 (+570.5%)  +4.74 (+0.2%)
+    2026-10-26-SCPH-5000           NTSC 320  260h..FFFh                     GPUSTAT 14022000  toggle - tick: mean 0.00, median -1, -1..-1 cycles (0 lines; 600 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  260h..FFFh                     GPUSTAT 14020000  toggle - tick: mean 0.00, median -1, -1..-1 cycles (0 lines; 600 waits timed out)      -2000 (-0.0%)
+    2026-10-26-SCPH-5000           NTSC 320  260h..260h (X2 = X1)           GPUSTAT 14022000  toggle - tick: mean 0.00, median -1, -1..-1 cycles (0 lines; 600 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  260h..260h (X2 = X1)           GPUSTAT 14020000  toggle - tick: mean 0.00, median -1, -1..-1 cycles (0 lines; 600 waits timed out)      -2000 (-0.0%)
+    2026-10-26-SCPH-5000           NTSC 320  260h..268h (one dot)           GPUSTAT 94022000  toggle - tick: mean 1748.20, median 1726, 1715..6027 cycles (596 lines; 4 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  260h..268h (one dot)           GPUSTAT 94020000  toggle - tick: mean 1749.58, median 1726, 1726..6038 cycles (596 lines; 4 waits timed out)      -2000 (-0.0%)  +1.38 (+0.1%)  +11 (+0.6%)  +11 (+0.2%)
+    2026-10-26-SCPH-5000           NTSC 320  C60h..260h (X2 < X1)           GPUSTAT 94022000  toggle - tick: mean 1751.58, median 1737, 1726..6038 cycles (596 lines; 4 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  C60h..260h (X2 < X1)           GPUSTAT 94020000  toggle - tick: mean 1763.48, median 1737, 1737..6049 cycles (596 lines; 4 waits timed out)      -2000 (-0.0%)  +11.90 (+0.7%)  +11 (+0.6%)  +11 (+0.2%)
+    2026-10-26-SCPH-5000           NTSC 320  000h..A00h                     GPUSTAT 94022000  toggle - tick: mean 511.94, median 516, 505..516 cycles (600 lines; 0 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  000h..A00h                     GPUSTAT 94020000  toggle - tick: mean 516.77, median 516, 516..527 cycles (600 lines; 0 waits timed out)      -2000 (-0.0%)  +4.83 (+0.9%)  +11 (+2.2%)  +11 (+2.1%)
+    2026-10-26-SCPH-5000           NTSC 320  260h..C60h, display OFF        GPUSTAT 94822000  toggle - tick: mean 128.34, median 131, 120..131 cycles (600 lines; 0 waits timed out)
+    2026-10-09-SCPH-1001-runner    NTSC 320  260h..C60h, display OFF        GPUSTAT 14820000  toggle - tick: mean 133.23, median 131, 131..142 cycles (600 lines; 0 waits timed out)      -80002000 (-84.4%)  +4.89 (+3.8%)  +11 (+9.2%)  +11 (+8.4%)
+  differ in form (4):
+    2026-10-26-SCPH-5000           PAL  320  260h..C60h                     no VBlank IRQ
+    2026-10-09-SCPH-1001-runner    PAL  320  260h..C60h                     GPUSTAT 94120000  toggle - tick: mean 128.54, median 131, 120..131 cycles (600 lines; 0 waits timed out)
+    2026-10-26-SCPH-5000           PAL  512  260h..C60h                     no VBlank IRQ
+    2026-10-09-SCPH-1001-runner    PAL  512  260h..C60h                     GPUSTAT 94140000  toggle - tick: mean 137.80, median 142, 131..142 cycles (600 lines; 0 waits timed out)
+    2026-10-26-SCPH-5000           PAL  320  260h..A60h                     no VBlank IRQ
+    2026-10-09-SCPH-1001-runner    PAL  320  260h..A60h                     GPUSTAT 14120000  toggle - tick: mean 451.30, median 450, 450..461 cycles (600 lines; 0 waits timed out)
+    2026-10-26-SCPH-5000           PAL  256  260h..C60h                     no VBlank IRQ
+    2026-10-09-SCPH-1001-runner    PAL  256  260h..C60h                     GPUSTAT 94100000  toggle - tick: mean 128.32, median 131, 120..131 cycles (600 lines; 0 waits timed out)
+

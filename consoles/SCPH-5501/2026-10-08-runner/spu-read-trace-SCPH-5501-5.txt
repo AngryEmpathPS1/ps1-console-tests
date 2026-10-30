@@ -1,0 +1,31 @@
+
+spu/spu-read-trace
+Every read of an SPU register timestamped (Timer 2, the system clock): the read-to-read intervals, and the long
+ones' spacing and phase in the sample (768 cycles). No assertions - compare against your emulator.
+
+SPUSTAT k=0 (8192 reads over 254185 cycles): intervals 31x7942 32x247 34x1 45x1
+  long (> 33): 2; spacing 220
+  phase mod 768 from the bit-11 change: 207 427
+  bit 11 fell at read 1834: read 1833 at 56895, read 1834 at 56926 (cycles from the trace's start), intervals around it 31 31 31 31 31 31 31
+SPUSTAT k=12 (8192 reads over 327661 cycles): intervals 40x8190 61x1
+  long (> 42): 1
+  phase mod 768 from the bit-11 change: 296
+  bit 11 rose at read 3840: read 3839 at 153581, read 3840 at 153621 (cycles from the trace's start), intervals around it 40 40 40 40 40 40 40
+SPUSTAT k=24 (8192 reads over 426523 cycles): intervals 52x8051 55x1 56x138 88x1
+  long (> 54): 140; spacing 315 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072
+  phase mod 768 from the bit-11 change: 621 168 168 168 168 168 168 168 168 168 168 168 168 168 168 168 168 168 168 168 168 168 168 168
+  bit 11 fell at read 3711: read 3710 at 193207, read 3711 at 193259 (cycles from the trace's start), intervals around it 52 52 52 52 52 52 52
+SPUCNT k=0 (4096 reads over 127077 cycles): intervals 31x3970 32x124 39x1
+  long (> 33): 1
+  phase mod 768 from the first long one: 0
+VOL0 k=0 (4096 reads over 127089 cycles): intervals 31x3969 32x123 36x1 38x1 40x1
+  long (> 33): 3; spacing 567 253
+  phase mod 768 from the first long one: 0 567 52
+I_STAT k=0 (4096 reads over 65525 cycles): intervals 16x4094 21x1
+  long (> 18): 1
+  phase mod 768 from the first long one: 0
+I_STAT k=12 (4096 reads over 104840 cycles): intervals 25x3687 28x203 29x1 34x203 50x1
+  long (> 27): 408; spacing 829 259 253 259 253 259 253 259 253 259 253 259 253 259 253 259
+  phase mod 768 from the first long one: 0 61 320 573 64 317 576 61 320 573 64 317 576 61 320 573 64 317 576 61 320 573 64 317
+
+Done.

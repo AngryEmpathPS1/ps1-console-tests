@@ -1,0 +1,22 @@
+
+spu/spu-late
+IRQ9 late fire by the order of its writes: cycles from the first hit. No assertions.
+
+pitch  order        CLR     W1     W2     H2
+1000   BIT,ADDR     757    859    930   2290
+1000   ADDR,BIT     741    812    878   2305
+1000   ADDR+1S      741    814   1660   none
+1000   BIT          741    818    818   2269
+1000   ADDR(on)     793    871   1756   2318
+0400   BIT,ADDR     741    802    841   2269
+0400   ADDR,BIT     741    795    840   2269
+0400   ADDR+1S      741    789   1652   3077
+0400   BIT          738    802    802   2298
+0400   ADDR(on)     793    851   1732   2363
+0100   BIT,ADDR     741    802    841   2269
+0100   ADDR,BIT     793    844    889   2317
+0100   ADDR+1S      741    789   1652   3077
+0100   BIT          793    851    851   2344
+0100   ADDR(on)     741    802   1682   2308
+
+spu/spu-late: Done.

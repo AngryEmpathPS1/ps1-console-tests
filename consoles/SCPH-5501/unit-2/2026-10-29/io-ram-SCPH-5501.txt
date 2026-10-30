@@ -1,0 +1,41 @@
+
+cpu/io-ram
+Per-turn cost above a loop of nops in the same eight slots, 100 turns.
+There are no assertions - compare against your emulator.
+
+  I_STAT alone             2.00 a turn   less the loads alone 2.00
+  T2 alone                 2.03 a turn   less the loads alone 2.03
+  lw RAM alone             2.03 a turn   less the loads alone 2.03
+
+I_STAT then lw RAM, k slots after:
+  k=1                      5.02 a turn   less the loads alone 0.99
+  k=2                      6.06 a turn   less the loads alone 2.03
+  k=3                      5.05 a turn   less the loads alone 1.02
+  k=4                      4.01 a turn   less the loads alone -0.02
+  k=5                      4.06 a turn   less the loads alone 0.03
+  k=6                      4.00 a turn   less the loads alone -0.03
+  k=7                      4.05 a turn   less the loads alone 0.02
+
+T2 then lw RAM, k slots after:
+  k=1                      5.03 a turn   less the loads alone 0.97
+  k=2                      6.03 a turn   less the loads alone 1.97
+  k=3                      5.07 a turn   less the loads alone 1.01
+  k=4                      4.05 a turn   less the loads alone -0.01
+  k=5                      4.11 a turn   less the loads alone 0.05
+  k=6                      3.98 a turn   less the loads alone -0.08
+  k=7                      4.15 a turn   less the loads alone 0.09
+
+lw RAM then I_STAT, k slots after:
+  k=1                      7.16 a turn   less the loads alone 3.13
+  k=2                      8.17 a turn   less the loads alone 4.14
+  k=3                      7.03 a turn   less the loads alone 3.00
+  k=4                      6.11 a turn   less the loads alone 2.08
+  k=5                      5.31 a turn   less the loads alone 1.28
+  k=6                      4.17 a turn   less the loads alone 0.14
+  k=7                      4.07 a turn   less the loads alone 0.04
+
+The harness's shape (T2; jal stub; nop - the stub's lw at the T2 read's third place):
+  T2; jal stub(lw); nop    8.10 a turn   less the loads alone 0.86
+  T2; jal stub(nop); nop   5.21 a turn   less the loads alone 3.18
+
+Done.

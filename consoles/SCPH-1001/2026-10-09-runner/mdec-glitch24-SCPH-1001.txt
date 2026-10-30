@@ -1,0 +1,166 @@
+
+mdec/mdec-glitch24
+The 24bpp word that reads the next quadrant's half, at every pace. No assertions.
+
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015400, color=1)... ok
+mdec_idctTable(addr=0x80015480)... ok
+mdec_enableDma (MDEC_CTRL <- 0x60000000)... ok
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015400, color=1)... ok
+mdec_idctTable(addr=0x80015480)... ok
+mdec_enableDma (MDEC_CTRL <- 0x60000000)... ok
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015400, color=1)... ok
+mdec_idctTable(addr=0x80015480)... ok
+mdec_enableDma (MDEC_CTRL <- 0x60000000)... ok
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015400, color=1)... ok
+mdec_idctTable(addr=0x80015480)... ok
+mdec_enableDma (MDEC_CTRL <- 0x60000000)... ok
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015400, color=1)... ok
+mdec_idctTable(addr=0x80015480)... ok
+mdec_enableDma (MDEC_CTRL <- 0x60000000)... ok
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015400, color=1)... ok
+mdec_idctTable(addr=0x80015480)... ok
+mdec_enableDma (MDEC_CTRL <- 0x60000000)... ok
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015400, color=1)... ok
+mdec_idctTable(addr=0x80015480)... ok
+mdec_enableDma (MDEC_CTRL <- 0x60000000)... ok
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015400, color=1)... ok
+mdec_idctTable(addr=0x80015480)... ok
+mdec_enableDma (MDEC_CTRL <- 0x60000000)... ok
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015400, color=1)... ok
+mdec_idctTable(addr=0x80015480)... ok
+mdec_enableDma (MDEC_CTRL <- 0x60000000)... ok
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015400, color=1)... ok
+mdec_idctTable(addr=0x80015480)... ok
+mdec_enableDma (MDEC_CTRL <- 0x60000000)... ok
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+STEP (mdec-step24's order, 600,000 cycles before each access): words 16 and 40 of each quadrant
+  q0   w16 0000e3e3  w40 00000000   (w15 00000000  w17 00000000)
+  q1   w16 00000000  w40 00000909   (w15 e3060606  w17 ffffff00)
+  q2   w16 0c0c0000  w40 0e0e0909   (w15 00efefef  w17 0000000c)
+  q3   w16 ffff0000  w40 ffff0000   (w15 fff2f2f2  w17 000000ff)
+  q4   w16 00000000  w40 00000000   (w15 00000000  w17 00000000)
+  q5   w16 00000000  w40 00000000   (w15 00ffffff  w17 03030300)
+  q6   w16 ffff0000  w40 0e0ebebe   (w15 ffbcbcbc  w17 000000ff)
+  q7   w16 00000000  w40 d2d2bebe   (w15 00ffffff  w17 00000000)
+  q8   w16 00fe2ddd  w40 00fe2ae3   (w15 ed2c00ed  w17 3700fe37)
+  q9   w16 d93be000  w40 e02ed200   (w15 322ddd32  w17 2dd93b2d)
+  q10  w16 0a00e217  w40 0e00d31d   (w15 16e00016  w17 eb0a00eb)
+  q11  w16 1cd2e217  w40 23cad31d   (w15 dce217dc  w17 e21cd2e2)
+  q12  w16 f2ffeff2  w40 f4fff1f5   (w15 ff1bf9ff  w17 00f2ff00)
+  q13  w16 f2210004  w40 f41c0006   (w15 20eff220  w17 ecf221ec)
+  q14  w16 0500ffff  w40 0600ffff   (w15 01000401  w17 00050000)
+  q15  w16 ffe9ffff  w40 ffe2ffff   (w15 edffffed  w17 ffffe9ff)
+CPU 0: 7 words differ from STEP
+    q2  w16  0c0cffff  (STEP 0c0c0000)
+    q2  w40  0e0e1616  (STEP 0e0e0909)
+    q3  w16  ffffffff  (STEP ffff0000)
+    q5  w16  0000ffff  (STEP 00000000)
+    q5  w40  0000ffff  (STEP 00000000)
+    q7  w40  d2d22a09  (STEP d2d2bebe)
+    q11 w40  23ca22fd  (STEP 23cad31d)
+CPU 64: 8 words differ from STEP
+    q2  w16  0c0cffff  (STEP 0c0c0000)
+    q2  w40  0e0e1616  (STEP 0e0e0909)
+    q5  w16  0000ffff  (STEP 00000000)
+    q5  w40  0000ffff  (STEP 00000000)
+    q7  w16  00002c00  (STEP 00000000)
+    q7  w40  d2d22a09  (STEP d2d2bebe)
+    q11 w16  1cd21bf9  (STEP 1cd2e217)
+    q11 w40  23ca22fd  (STEP 23cad31d)
+CPU 256: 8 words differ from STEP
+    q2  w16  0c0cffff  (STEP 0c0c0000)
+    q2  w40  0e0e1616  (STEP 0e0e0909)
+    q5  w16  0000ffff  (STEP 00000000)
+    q5  w40  0000ffff  (STEP 00000000)
+    q7  w16  00002c00  (STEP 00000000)
+    q7  w40  d2d22a09  (STEP d2d2bebe)
+    q11 w16  1cd21bf9  (STEP 1cd2e217)
+    q11 w40  23ca22fd  (STEP 23cad31d)
+CPU 1024: 8 words differ from STEP
+    q2  w16  0c0cffff  (STEP 0c0c0000)
+    q2  w40  0e0e1616  (STEP 0e0e0909)
+    q5  w16  0000ffff  (STEP 00000000)
+    q5  w40  0000ffff  (STEP 00000000)
+    q7  w16  00002c00  (STEP 00000000)
+    q7  w40  d2d22a09  (STEP d2d2bebe)
+    q11 w16  1cd21bf9  (STEP 1cd2e217)
+    q11 w40  23ca22fd  (STEP 23cad31d)
+CPU 4096: 8 words differ from STEP
+    q2  w16  0c0cffff  (STEP 0c0c0000)
+    q2  w40  0e0e1616  (STEP 0e0e0909)
+    q5  w16  0000ffff  (STEP 00000000)
+    q5  w40  0000ffff  (STEP 00000000)
+    q7  w16  00002c00  (STEP 00000000)
+    q7  w40  d2d22a09  (STEP d2d2bebe)
+    q11 w16  1cd21bf9  (STEP 1cd2e217)
+    q11 w40  23ca22fd  (STEP 23cad31d)
+CPU 16384: 8 words differ from STEP
+    q2  w16  0c0cffff  (STEP 0c0c0000)
+    q2  w40  0e0e1616  (STEP 0e0e0909)
+    q5  w16  0000ffff  (STEP 00000000)
+    q5  w40  0000ffff  (STEP 00000000)
+    q7  w16  00002c00  (STEP 00000000)
+    q7  w40  d2d22a09  (STEP d2d2bebe)
+    q11 w16  1cd21bf9  (STEP 1cd2e217)
+    q11 w40  23ca22fd  (STEP 23cad31d)
+CPU 65536: 8 words differ from STEP
+    q2  w16  0c0cffff  (STEP 0c0c0000)
+    q2  w40  0e0e1616  (STEP 0e0e0909)
+    q5  w16  0000ffff  (STEP 00000000)
+    q5  w40  0000ffff  (STEP 00000000)
+    q7  w16  00002c00  (STEP 00000000)
+    q7  w40  d2d22a09  (STEP d2d2bebe)
+    q11 w16  1cd21bf9  (STEP 1cd2e217)
+    q11 w40  23ca22fd  (STEP 23cad31d)
+DMA1 32: 19 words differ from STEP
+    q0  w16  00000000  (STEP 0000e3e3)
+    q1  w16  0000e3e3  (STEP 00000000)
+    q1  w40  00000000  (STEP 00000909)
+    q3  w16  ffffffff  (STEP ffff0000)
+    q3  w40  ffff1616  (STEP ffff0000)
+    q6  w16  ffffffff  (STEP ffff0000)
+    q6  w40  0e0effff  (STEP 0e0ebebe)
+    q8  w16  00fe2c00  (STEP 00fe2ddd)
+    q8  w40  00fe2a09  (STEP 00fe2ae3)
+    q9  w16  d93b2ddd  (STEP d93be000)
+    q9  w40  e02e2ae3  (STEP e02ed200)
+    q10 w16  0a00e000  (STEP 0a00e217)
+    q10 w40  0e00d200  (STEP 0e00d31d)
+    q12 w16  f2ff1bf9  (STEP f2ffeff2)
+    q12 w40  f4ff22fd  (STEP f4fff1f5)
+    q13 w16  f221eff2  (STEP f2210004)
+    q13 w40  f41cf1f5  (STEP f41c0006)
+    q14 w16  05000004  (STEP 0500ffff)
+    q14 w40  06000006  (STEP 0600ffff)
+DMA1 16: 19 words differ from STEP
+    q0  w16  00000000  (STEP 0000e3e3)
+    q1  w16  0000e3e3  (STEP 00000000)
+    q1  w40  00000000  (STEP 00000909)
+    q3  w16  ffffffff  (STEP ffff0000)
+    q3  w40  ffff1616  (STEP ffff0000)
+    q6  w16  ffffffff  (STEP ffff0000)
+    q6  w40  0e0effff  (STEP 0e0ebebe)
+    q8  w16  00fe2c00  (STEP 00fe2ddd)
+    q8  w40  00fe2a09  (STEP 00fe2ae3)
+    q9  w16  d93b2ddd  (STEP d93be000)
+    q9  w40  e02e2ae3  (STEP e02ed200)
+    q10 w16  0a00e000  (STEP 0a00e217)
+    q10 w40  0e00d200  (STEP 0e00d31d)
+    q12 w16  f2ff1bf9  (STEP f2ffeff2)
+    q12 w40  f4ff22fd  (STEP f4fff1f5)
+    q13 w16  f221eff2  (STEP f2210004)
+    q13 w40  f41cf1f5  (STEP f41c0006)
+    q14 w16  05000004  (STEP 0500ffff)
+    q14 w40  06000006  (STEP 0600ffff)
+
+mdec/mdec-glitch24: Done.

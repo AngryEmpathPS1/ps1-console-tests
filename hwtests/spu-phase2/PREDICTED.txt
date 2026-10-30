@@ -1,0 +1,20 @@
+# spu-phase2 on v0.377.205 through the runner as the SCPH-7501 (hwrunner --emu --lock=0 --video=24000 --tol=0), 2026-10-27: this core has no mechanism - the capture position steps every sample whatever 1F801DACh holds - so every reading the start's class:
+spu/spu-phase2
+Voice 1's onset in its capture ring, KON 96 cycles after SPUSTAT bit 11 falls (8 or 9: spu-latch's two classes),
+after the transfer control held at 0 (or another value) for a time, four times each. No assertions.
+
+at the start: onset 8
+  0 x100      8   8   8   8
+  0 x300      8   8   8   8
+  0 x600      8   8   8   8
+  0 x900      8   8   8   8
+  0 x1200     8   8   8   8
+  0 x1536     8   8   8   8
+  0 x2000     8   8   8   8
+  0 x2304     8   8   8   8
+  0 x3072     8   8   8   8
+  4 again     8   8   8   8
+  8 x1000     8   8   8   8
+  2 x1000     8   8   8   8
+
+spu/spu-phase2: Done.

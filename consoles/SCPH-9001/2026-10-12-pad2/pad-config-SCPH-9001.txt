@@ -1,0 +1,61 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+sio/pad-config
+A DualShock's replies, byte for byte, port 1. Needs a DualShock and a person to press ANALOG when asked.
+
+PACKETS (the bytes sent, then the bytes answered; | after the pad's last byte):
+  42h poll               01 42 00 00 00 00 00 00 00
+                         ff 41 5a ff ff|ee ee ee ee
+  45h outside config     01 45 00 00 00 00 00 00 00
+                         ff 41|ee ee ee ee ee ee ee
+  43h 01 into config     01 43 00 01 00 00 00 00 00
+                         ff 41 5a ff ff|ee ee ee ee
+  45h status             01 45 00 00 00 00 00 00 00
+                         ff f3 5a 01 02 00 02 01 00
+  46h 00                 01 46 00 00 00 00 00 00 00
+                         ff f3 5a 00 00 01 02 00 0a
+  46h 01                 01 46 00 01 00 00 00 00 00
+                         ff f3 5a 00 00 01 01 01 14
+  47h 00                 01 47 00 00 00 00 00 00 00
+                         ff f3 5a 00 00 02 00 01 00
+  4Ch 00                 01 4c 00 00 00 00 00 00 00
+                         ff f3 5a 00 00 00 04 00 00
+  4Ch 01                 01 4c 00 01 00 00 00 00 00
+                         ff f3 5a 00 00 00 07 00 00
+  44h 01 00 analog       01 44 00 01 00 00 00 00 00
+                         ff f3 5a 00 00 00 00 00 00
+  45h status             01 45 00 00 00 00 00 00 00
+                         ff f3 5a 01 02 01 02 01 00
+  4Dh motors             01 4d 00 00 01 ff ff ff ff
+                         ff f3 5a ff ff ff ff ff ff
+  4Dh motors again       01 4d 00 00 01 ff ff ff ff
+                         ff f3 5a 00 01 ff ff ff ff
+  43h 00 out of config   01 43 00 00 00 00 00 00 00
+                         ff f3 5a 00 00 00 00 00 00
+  42h poll, analog       01 42 00 00 00 00 00 00 00
+                         ff 73 5a ff ff 6a 73 73 78
+
+A: press ANALOG once now - the ANALOG button on the controller, ONCE, then leave it.
+   (out of config mode; the light may go on or off - either is fine; watching 10 s)
+    at    1 ms: ff 73 5a ff ff 6a 73 73 78
+    at 1546 ms: ff 41 00 ff ff ee ee ee ee
+    at 1937 ms: ff 73 00 ff ff 6a 73 73 78
+  (10 s up)
+B: press ANALOG once now - the ANALOG button on the controller, ONCE, then leave it.
+   (inside config mode, 45h polled; the light may go on or off; watching 10 s)
+    at    1 ms: ff f3 5a 01 02 01 02 01 00
+    at 1701 ms: ff f3 00 01 02 00 02 01 00
+  (10 s up)
+  43h 00 out of config   01 43 00 00 00 00 00 00 00
+                         ff f3 00 00 00 00 00 00 00
+  44h 01 03 analog, locked 01 44 00 01 03 00 00 00 00
+                         ff f3 5a 00 00 00 00 00 00
+  43h 00 out of config   01 43 00 00 00 00 00 00 00
+                         ff f3 5a 00 00 00 00 00 00
+C: press ANALOG once now - the ANALOG button on the controller, ONCE, then leave it.
+   (analog mode locked: the light may not change at all - that is a result too; watching 10 s)
+    at    1 ms: ff 73 5a ff ff 6a 73 73 78
+  (10 s up)
+
+sio/pad-config: Done.

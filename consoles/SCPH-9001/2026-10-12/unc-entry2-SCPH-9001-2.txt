@@ -1,0 +1,23 @@
+
+cpu/unc-entry2
+unc-entry's transitions further (Timer 2 cycles, fastest..slowest of 16 over the refresh, against the stub cached).
+There are no assertions - compare against your emulator.
+
+  CU4 0    uncached   22..22    cached   12..12    difference 10
+  CU4 1    uncached   28..33    cached   13..13    difference 15
+  CU4 4    uncached   46..52    cached   16..16    difference 30
+  CE 0 0   uncached   18..22    cached    6..6     difference 12
+  CE 0 1   uncached   18..18    cached    6..6     difference 12
+  CE 0 2   uncached   18..18    cached    6..6     difference 12
+  CE 0 3   uncached   18..18    cached    6..6     difference 12
+  CE 2 0   uncached   30..36    cached    7..7     difference 23
+  CE 2 1   uncached   30..36    cached    7..7     difference 23
+  CE 2 2   uncached   30..36    cached    7..7     difference 23
+  CE 2 3   uncached   30..34    cached    7..7     difference 23
+  CE4 0    uncached   23..23    cached    9..9     difference 14
+  CE4 2    uncached   35..39    cached   11..11    difference 24
+  UC 0     uncached    7..7     cached    6..6     difference 1
+  UC 1     uncached   11..11    cached    7..7     difference 4
+  UC 4     uncached   29..35    cached   10..10    difference 19
+
+Done.

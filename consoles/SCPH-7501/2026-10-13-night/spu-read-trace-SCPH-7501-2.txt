@@ -1,0 +1,31 @@
+
+spu/spu-read-trace
+Every read of an SPU register timestamped (Timer 2, the system clock): the read-to-read intervals, and the long
+ones' spacing and phase in the sample (768 cycles). No assertions - compare against your emulator.
+
+SPUSTAT k=0 (8192 reads over 254185 cycles): intervals 31x7942 32x247 34x1 45x1
+  long (> 33): 2; spacing 220
+  phase mod 768 from the bit-11 change: 417 637
+  bit 11 fell at read 2941: read 2940 at 91245, read 2941 at 91276 (cycles from the trace's start), intervals around it 31 31 31 31 31 31 31
+SPUSTAT k=12 (8192 reads over 327661 cycles): intervals 40x8190 61x1
+  long (> 42): 1
+  phase mod 768 from the bit-11 change: 240
+  bit 11 rose at read 4283: read 4282 at 171301, read 4283 at 171341 (cycles from the trace's start), intervals around it 40 40 40 40 40 40 40
+SPUSTAT k=24 (8192 reads over 426523 cycles): intervals 52x8051 55x1 56x138 88x1
+  long (> 54): 140; spacing 315 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072
+  phase mod 768 from the bit-11 change: 281 596 596 596 340 340 340 340 340 340 340 340 340 340 340 340 340 340 340 340 340 340 340 340
+  bit 11 rose at read 148: read 147 at 7691, read 148 at 7743 (cycles from the trace's start), intervals around it 52 52 52 52 52 52 52
+SPUCNT k=0 (4096 reads over 127085 cycles): intervals 31x3970 32x123 36x1 43x1
+  long (> 33): 2; spacing 253
+  phase mod 768 from the first long one: 0 253
+VOL0 k=0 (4096 reads over 127078 cycles): intervals 31x3972 32x122 42x1
+  long (> 33): 1
+  phase mod 768 from the first long one: 0
+I_STAT k=0 (4096 reads over 65525 cycles): intervals 16x4094 21x1
+  long (> 18): 1
+  phase mod 768 from the first long one: 0
+I_STAT k=12 (4096 reads over 104840 cycles): intervals 25x3687 28x203 29x1 34x203 50x1
+  long (> 27): 408; spacing 679 259 253 259 253 259 253 259 253 259 253 259 253 259 253 259
+  phase mod 768 from the first long one: 0 679 170 423 682 167 426 679 170 423 682 167 426 679 170 423 682 167 426 679 170 423 682 167
+
+Done.

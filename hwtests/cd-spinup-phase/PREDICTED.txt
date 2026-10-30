@@ -1,0 +1,32 @@
+cd-spinup-phase - PREDICTED before its first console run (2026-10-18), as the SCPH-7001 under the runner, X-Files Disc 1.
+If the decoder's alignment against the subchannel is set at each spin-up, the console's ten spin-ups split between two
+states (cd-hold-loc: P/L -1/-2 on most, +1/0 on some, after a SeekL's INT2) and the hold's kick back with them.
+v0.377.129 (the HLE) has one state (-1/0, ^2 every time, INT5 mid-seek); the drive's own program (SC430934) mostly 0/-2
+^3, a seek now and then shifted by one or two (its landing).
+
+hle:
+spin-up  1:  -1/0 ^2  -1/0 ^2  -1/0 ^2  mid-seek GetlocL INT5
+spin-up  2:  -1/0 ^2  -1/0 ^2  -1/0 ^2  mid-seek GetlocL INT5
+spin-up  3:  -1/0 ^2  -1/0 ^2  -1/0 ^2  mid-seek GetlocL INT5
+spin-up  4:  -1/0 ^2  -1/0 ^2  -1/0 ^2  mid-seek GetlocL INT5
+spin-up  5:  -1/0 ^2  -1/0 ^2  -1/0 ^2  mid-seek GetlocL INT5
+spin-up  6:  -1/0 ^2  -1/0 ^2  -1/0 ^2  mid-seek GetlocL INT5
+spin-up  7:  -1/0 ^2  -1/0 ^2  -1/0 ^2  mid-seek GetlocL INT5
+spin-up  8:  -1/0 ^2  -1/0 ^2  -1/0 ^2  mid-seek GetlocL INT5
+spin-up  9:  -1/0 ^2  -1/0 ^2  -1/0 ^2  mid-seek GetlocL INT5
+spin-up 10:  -1/0 ^2  -1/0 ^2  -1/0 ^2  mid-seek GetlocL INT5
+waits that ran out: 0
+
+lle:
+spin-up  1:  0/-2 ^3  0/-2 ^3  0/-2 ^3  mid-seek GetlocL INT5
+spin-up  2:  0/-2 ^3  1/-1 ^3  0/-2 ^3  mid-seek GetlocL INT5
+spin-up  3:  0/-2 ^3  0/-2 ^3  0/-2 ^3  mid-seek GetlocL INT5
+spin-up  4:  0/-2 ^3  0/-2 ^3  0/-2 ^3  mid-seek GetlocL INT5
+spin-up  5:  0/-2 ^3  0/-2 ^3  0/-2 ^3  mid-seek GetlocL INT5
+spin-up  6:  0/-2 ^3  0/-2 ^3  0/-2 ^3  mid-seek GetlocL INT5
+spin-up  7:  0/-2 ^3  2/0 ^3  2/0 ^3  mid-seek GetlocL INT5
+spin-up  8:  1/-1 ^3  0/-2 ^3  1/-1 ^3  mid-seek GetlocL INT5
+spin-up  9:  0/-2 ^3  0/-2 ^3  0/-2 ^3  mid-seek GetlocL INT5
+spin-up 10:  1/-1 ^3  0/-2 ^3  0/-2 ^3  mid-seek GetlocL INT5
+waits that ran out: 0
+

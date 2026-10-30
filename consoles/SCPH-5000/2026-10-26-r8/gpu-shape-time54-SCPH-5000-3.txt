@@ -1,0 +1,68 @@
+
+gpu/gpu-shape-time54
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+semi par 4 s-256       1191..1194     717..717  
+semi par 4 s-64        1088..1111     670..693  
+semi par 4 s0          1086..1108     635..657  
+semi par 4 s32         1086..1108     626..648  
+semi par 4 s64         1086..1108     660..682  
+semi par 4 s128        1090..1112     635..657  
+semi par 4 s192        1115..1137     660..682  
+semi par 4 s256        1200..1222     713..713  
+semi par 4 s512        1688..1688     965..965  
+semi par 8 s-256       1460..1460     846..846  
+semi par 8 s-64        1277..1299     746..769  
+semi par 8 s0          1275..1297     704..727  
+semi par 8 s32         1275..1297     705..727  
+semi par 8 s64         1275..1297     729..751  
+semi par 8 s128        1289..1311     719..741  
+semi par 8 s192        1322..1344     779..788  
+semi par 8 s256        1447..1451     842..842  
+semi par 8 s512        1951..1951    1094..1094 
+semi par 16 s-256      1985..1993    1103..1104 
+semi par 16 s-64       1689..1711     945..967  
+semi par 16 s0         1630..1653     890..912  
+semi par 16 s32        1648..1670     900..923  
+semi par 16 s64        1671..1693     931..954  
+semi par 16 s128       1740..1762     973..980  
+semi par 16 s192       1833..1843    1036..1038 
+semi par 16 s256       1962..1966    1099..1099 
+semi par 16 s512       2467..2468    1351..1351 
+semi par 4 s0 x1       1086..1108     681..703  
+semi par 4 s0 x2       1086..1108     635..657  
+semi par 4 s0 x512     1086..1108     635..657  
+opaq par 4 s-256       1191..1191     717..717  
+opaq par 4 s-64         807..807      525..525  
+opaq par 4 s0           716..739      461..461  
+opaq par 4 s32          739..758      473..473  
+opaq par 4 s64          801..805      524..524  
+opaq par 4 s128         928..928      587..587  
+opaq par 4 s192        1053..1053     650..650  
+opaq par 4 s256        1180..1180     713..713  
+opaq par 4 s512        1684..1684     965..965  
+opaq par 8 s-256       1460..1460     846..846  
+opaq par 8 s-64        1076..1081     654..654  
+opaq par 8 s0           958..980      590..590  
+opaq par 8 s32         1001..1001     604..604  
+opaq par 8 s64         1063..1063     653..653  
+opaq par 8 s128        1190..1190     716..716  
+opaq par 8 s192        1315..1315     779..779  
+opaq par 8 s256        1442..1442     842..842  
+opaq par 8 s512        1946..1946    1094..1094 
+opaq par 16 s-256      1985..1985    1103..1103 
+opaq par 16 s-64       1601..1601     911..911  
+opaq par 16 s0         1479..1501     847..847  
+opaq par 16 s32        1512..1512     862..862  
+opaq par 16 s64        1574..1574     910..910  
+opaq par 16 s128       1701..1701     973..973  
+opaq par 16 s192       1826..1826    1036..1036 
+opaq par 16 s256       1953..1953    1099..1099 
+opaq par 16 s512       2457..2457    1351..1351 
+opaq par 4 s0 x1        708..731      461..475  
+opaq par 4 s0 x2        716..739      461..461  
+opaq par 4 s0 x512      716..739      461..461  
+
+gpu/gpu-shape-time54: Done.

@@ -1,0 +1,33 @@
+# spu-phase4 on v0.377.212 + experiments/_mkxq213.js XQ 1 (each transfer-control write seen at its own delay), node hwtests/run.js --ntsc, 2026-10-29: the bit-3 hold read as bit 2's - one edge to 1,125, two from 1,150; 8 x100 no flip (XQ 0: flips)
+
+spu/spu-phase4
+Voice 1's onset in its capture ring, KON 96 cycles after SPUSTAT bit 11 falls (8 or 9: spu-latch's two classes),
+after the transfer control held at 0008h (bit 3; or as named) for a time, then 0004h. No assertions.
+
+at the start: onset 8
+  8 x850     9   8   9   8
+  8 x875     9   8   9   8
+  8 x900     9   8   9   8
+  8 x925     9   8   9   8
+  8 x950     9   8   9   8
+  8 x975     9   8   9   8
+  8 x1000    9   8   9   8
+  8 x1025    9   8   9   8
+  8 x1050    9   8   9   8
+  8 x1075    9   8   9   8
+  8 x1100    8   9   8   9
+  8 x1125    9   8   9   8
+  8 x1150    8   8   8   8
+  8 x1175    8   8   8   8
+  8 x1200    8   8   8   8
+  8 x1225    8   8   8   8
+  8 x1250    8   8   8   8
+  8 x100     8   8   8   8
+  8 x300     8   8   8   8
+  8 x600     9   8   9   8
+  C x1000    8   8   8   8
+  8 x1000    9   8   9   8   9   8   9   8
+  0 x1000    9   8   9   8   9   8   9   8
+
+spu/spu-phase4: Done.
+

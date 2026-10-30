@@ -1,0 +1,67 @@
+
+cpu/load-fill6
+Cold store grids: a store (or I_STAT load) at word w of its line, the second access d instructions behind.
+Timer 2, fastest..slowest of four. There are no assertions - compare against your emulator.
+
+  S0 S+1           5653..5658    above the nops    937  ->  7.32 a unit
+  S0 S+2           5651..5654    above the nops    935  ->  7.30 a unit
+  S0 S+3           6048..6058    above the nops   1332  ->  10.41 a unit
+  S0 S+4           6050..6058    above the nops   1334  ->  10.42 a unit
+  S1 S+1           5652..5657    above the nops    936  ->  7.31 a unit
+  S1 S+2           6046..6059    above the nops   1330  ->  10.39 a unit
+  S1 S+3           6043..6050    above the nops   1327  ->  10.37 a unit
+  S1 S+4           6048..6058    above the nops   1332  ->  10.41 a unit
+  S2 S+1           5647..5654    above the nops    931  ->  7.27 a unit
+  S2 S+2           5655..5657    above the nops    939  ->  7.34 a unit
+  S2 S+3           5647..5656    above the nops    931  ->  7.27 a unit
+  S2 S+4           5650..5656    above the nops    934  ->  7.30 a unit
+  S3 S+1           5655..5657    above the nops    939  ->  7.34 a unit
+  S3 S+2           5647..5656    above the nops    931  ->  7.27 a unit
+  S3 S+3           5650..5656    above the nops    934  ->  7.30 a unit
+  S3 S+4           6053..6053    above the nops   1337  ->  10.45 a unit
+  S0 L+1           5905..5925    above the nops   1189  ->  9.29 a unit
+  S0 L+2           5905..5922    above the nops   1189  ->  9.29 a unit
+  S0 L+3           5904..5907    above the nops   1188  ->  9.28 a unit
+  S0 L+4           5905..5906    above the nops   1189  ->  9.29 a unit
+  S1 L+1           5905..6191    above the nops   1189  ->  9.29 a unit
+  S1 L+2           5905..5907    above the nops   1189  ->  9.29 a unit
+  S1 L+3           5904..5905    above the nops   1188  ->  9.28 a unit
+  S1 L+4           5904..5905    above the nops   1188  ->  9.28 a unit
+  S2 L+1           5903..5910    above the nops   1187  ->  9.27 a unit
+  S2 L+2           5903..5910    above the nops   1187  ->  9.27 a unit
+  S2 L+3           5903..5910    above the nops   1187  ->  9.27 a unit
+  S2 L+4           5905..5908    above the nops   1189  ->  9.29 a unit
+  S3 L+1           5903..5910    above the nops   1187  ->  9.27 a unit
+  S3 L+2           5903..5910    above the nops   1187  ->  9.27 a unit
+  S3 L+3           5903..5910    above the nops   1187  ->  9.27 a unit
+  S3 L+4           5904..5906    above the nops   1188  ->  9.28 a unit
+  S0 I+1           5431..5489    above the nops    715  ->  5.59 a unit
+  S0 I+2           5435..5489    above the nops    719  ->  5.62 a unit
+  S0 I+3           5422..5487    above the nops    706  ->  5.52 a unit
+  S0 I+4           5483..5487    above the nops    767  ->  5.99 a unit
+  S1 I+1           5433..5693    above the nops    717  ->  5.60 a unit
+  S1 I+2           5435..5489    above the nops    719  ->  5.62 a unit
+  S1 I+3           5422..5487    above the nops    706  ->  5.52 a unit
+  S1 I+4           5496..5508    above the nops    780  ->  6.09 a unit
+  S2 I+1           5430..5487    above the nops    714  ->  5.58 a unit
+  S2 I+2           5444..5485    above the nops    728  ->  5.69 a unit
+  S2 I+3           5426..5489    above the nops    710  ->  5.55 a unit
+  S2 I+4           5408..5487    above the nops    692  ->  5.41 a unit
+  S3 I+1           5444..5485    above the nops    728  ->  5.69 a unit
+  S3 I+2           5426..5489    above the nops    710  ->  5.55 a unit
+  S3 I+3           5408..5487    above the nops    692  ->  5.41 a unit
+  S3 I+4           5445..5485    above the nops    729  ->  5.70 a unit
+  I0 S+1           5794..5797    above the nops   1078  ->  8.42 a unit
+  I0 S+2           5885..5892    above the nops   1169  ->  9.13 a unit
+  I0 S+3           5438..5483    above the nops    722  ->  5.64 a unit
+  I1 S+1           5753..5761    above the nops   1037  ->  8.10 a unit
+  I1 S+2           5496..5513    above the nops    780  ->  6.09 a unit
+  I1 S+3           5496..5511    above the nops    780  ->  6.09 a unit
+  I2 S+1           5795..5815    above the nops   1079  ->  8.43 a unit
+  I2 S+2           5987..5993    above the nops   1271  ->  9.93 a unit
+  I2 S+3           5987..5994    above the nops   1271  ->  9.93 a unit
+  I3 S+1           5798..5814    above the nops   1082  ->  8.45 a unit
+  I3 S+2           5989..5996    above the nops   1273  ->  9.95 a unit
+  I3 S+3           5885..5890    above the nops   1169  ->  9.13 a unit
+
+Done.

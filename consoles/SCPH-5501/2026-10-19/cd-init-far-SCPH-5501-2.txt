@@ -1,0 +1,33 @@
+
+cdrom/cd-init-far
+Init from a stopped disc (S: SeekL, Stop, 1 s) and a turning one (T: SeekL) at each place, in then out.
+Cycles from Init's write (1 ms = 33,869), the stats, and GetlocP's sector after. No assertions.
+
+00:02 S  Init INT3     94328 (00)  INT2   71530880 (02)  then GetlocP -1
+00:02 T  Init INT3     70064 (02)  INT2    3106248 (02)  then GetlocP -1
+10:00 S  Init INT3     97952 (00)  INT2   75640488 (02)  then GetlocP -1
+10:00 T  Init INT3     90776 (02)  INT2   19953920 (02)  then GetlocP -1
+20:00 S  Init INT3     88496 (00)  INT2   72334888 (02)  then GetlocP -3
+20:00 T  Init INT3     82984 (02)  INT2   26414328 (02)  then GetlocP -2
+30:00 S  Init INT3     94328 (00)  INT2   77300136 (02)  then GetlocP -1
+30:00 T  Init INT3     90776 (02)  INT2   45193424 (02)  then GetlocP -1
+40:00 S  Init INT3     89976 (00)  INT2   78864976 (02)  then GetlocP -1
+40:00 T  Init INT3     80232 (02)  INT2   60853592 (02)  then GetlocP -2
+50:00 S  Init INT3     93720 (00)  INT2   77918968 (02)  then GetlocP -1
+50:00 T  Init INT3     82480 (02)  INT2   45760136 (02)  then GetlocP 0
+50:00 S  Init INT3     89600 (00)  INT2   81270632 (02)  then GetlocP -3
+50:00 T  Init INT3     82160 (02)  INT2   50136816 (02)  then GetlocP 0
+40:00 S  Init INT3     97824 (00)  INT2   72525960 (02)  then GetlocP -1
+40:00 T  Init INT3     70032 (02)  INT2   44014968 (02)  then GetlocP -1
+30:00 S  Init INT3     91792 (00)  INT2   73349688 (02)  then GetlocP -1
+30:00 T  Init INT3     90768 (02)  INT2   32899496 (02)  then GetlocP 0
+20:00 S  Init INT3     88384 (00)  INT2   74815256 (02)  then GetlocP -1
+20:00 T  Init INT3     91320 (02)  INT2   31067760 (02)  then GetlocP -1
+10:00 S  Init INT3     90864 (00)  INT2   75364544 (02)  then GetlocP -2
+10:00 T  Init INT3     69976 (02)  INT2   20344728 (02)  then GetlocP 0
+00:02 S  Init INT3     91192 (00)  INT2   73322648 (02)  then GetlocP -3
+00:02 T  Init INT3     81552 (02)  INT2    4101632 (02)  then GetlocP -1
+
+waits that ran out: 0
+
+cdrom/cd-init-far: Done.

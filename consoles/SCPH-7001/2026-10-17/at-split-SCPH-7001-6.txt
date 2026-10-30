@@ -1,0 +1,58 @@
+
+cpu/at-split
+access-time's windows apart: nop loop and read loop, cold (first call) and warm, Timer 2 cycles.
+There are no assertions - compare against your emulator.
+
+SEGMENT    ADDRESS  W   nop cold warm   read cold warm   (read - nop) / 100
+RAM        80000000  8   nop   420   420   read   930   925   cold 5.10 warm 5.05
+RAM        80000000 16   nop   417   422   read   944   937   cold 5.27 warm 5.15
+RAM        80000000 32   nop   417   422   read   935   938   cold 5.18 warm 5.16
+BIOS       bfc00000  8   nop   420   420   read  1123  1123   cold 7.03 warm 7.03
+BIOS       bfc00000 16   nop   422   417   read  1717  1717   cold 12.95 warm 13.00
+BIOS       bfc00000 32   nop   422   417   read  2917  2917   cold 24.95 warm 25.00
+SCRATCHPAD 1f800000  8   nop   422   419   read   525   518   cold 1.03 warm 0.99
+SCRATCHPAD 1f800000 16   nop   424   420   read   517   518   cold 0.93 warm 0.98
+SCRATCHPAD 1f800000 32   nop   420   420   read   517   518   cold 0.97 warm 0.98
+EXPANSION1 1f000000  8   nop   420   420   read  1122  1116   cold 7.02 warm 6.96
+EXPANSION1 1f000000 16   nop   417   422   read  1723  1723   cold 13.06 warm 13.01
+EXPANSION1 1f000000 32   nop   417   422   read  2923  2923   cold 25.06 warm 25.01
+EXPANSION2 1f802000  8   nop   420   420   read  1528  1520   cold 11.08 warm 11.00
+EXPANSION2 1f802000 16   nop   417   422   read  3016  3017   cold 25.99 warm 25.95
+EXPANSION2 1f802000 32   nop   422   417   read  6017  6027   cold 55.95 warm 56.10
+EXPANSION3 1fa00000  8   nop   422   417   read  1017  1017   cold 5.95 warm 6.00
+EXPANSION3 1fa00000 16   nop   420   420   read  1016  1020   cold 5.96 warm 6.00
+EXPANSION3 1fa00000 32   nop   420   420   read  1416  1420   cold 9.96 warm 10.00
+DMAC_CTRL  1f8010f0  8   nop   417   422   read   718   719   cold 3.01 warm 2.97
+DMAC_CTRL  1f8010f0 16   nop   420   420   read   719   717   cold 2.99 warm 2.97
+DMAC_CTRL  1f8010f0 32   nop   420   420   read   725   718   cold 3.05 warm 2.98
+JOY_STAT   1f801044  8   nop   420   420   read   725   718   cold 3.05 warm 2.98
+JOY_STAT   1f801044 16   nop   417   422   read   722   719   cold 3.05 warm 2.97
+JOY_STAT   1f801044 32   nop   422   417   read   717   729   cold 2.95 warm 3.12
+SIO_STAT   1f801054  8   nop   422   417   read   717   725   cold 2.95 warm 3.08
+SIO_STAT   1f801054 16   nop   420   420   read   725   718   cold 3.05 warm 2.98
+SIO_STAT   1f801054 32   nop   420   420   read   719   717   cold 2.99 warm 2.97
+RAM_SIZE   1f801060  8   nop   420   420   read   733   726   cold 3.13 warm 3.06
+RAM_SIZE   1f801060 16   nop   422   417   read   729   738   cold 3.07 warm 3.21
+RAM_SIZE   1f801060 32   nop   419   422   read   727   729   cold 3.08 warm 3.07
+I_STAT     1f801070  8   nop   417   422   read   722   719   cold 3.05 warm 2.97
+I_STAT     1f801070 16   nop   420   420   read   719   717   cold 2.99 warm 2.97
+I_STAT     1f801070 32   nop   420   420   read   725   718   cold 3.05 warm 2.98
+TIMER0_VAL 1f801100  8   nop   420   420   read   725   718   cold 3.05 warm 2.98
+TIMER0_VAL 1f801100 16   nop   417   422   read   718   719   cold 3.01 warm 2.97
+TIMER0_VAL 1f801100 32   nop   422   417   read   717   725   cold 2.95 warm 3.08
+CDROM_STAT 1f801800  8   nop   422   417   read  1217  1223   cold 7.95 warm 8.06
+CDROM_STAT 1f801800 16   nop   420   420   read  1823  1816   cold 14.03 warm 13.96
+CDROM_STAT 1f801800 32   nop   420   420   read  3017  3017   cold 25.97 warm 25.97
+GPUSTAT    1f801814  8   nop   420   420   read   719   717   cold 2.99 warm 2.97
+GPUSTAT    1f801814 16   nop   422   417   read   717   725   cold 2.95 warm 3.08
+GPUSTAT    1f801814 32   nop   417   422   read   718   719   cold 3.01 warm 2.97
+MDECSTAT   1f801824  8   nop   417   422   read   718   719   cold 3.01 warm 2.97
+MDECSTAT   1f801824 16   nop   420   420   read   719   717   cold 2.99 warm 2.97
+MDECSTAT   1f801824 32   nop   420   420   read   725   718   cold 3.05 warm 2.98
+SPUCNT     1f801daa  8   nop   420   420   read  2228  2215   cold 18.08 warm 17.95
+SPUCNT     1f801daa 16   nop   417   422   read  2216  2217   cold 17.99 warm 17.95
+SPUCNT     1f801daa 32   nop   422   417   read  4317  4317   cold 38.95 warm 39.00
+CACHECTRL  fffe0130  8   nop   417   422   read   528   528   cold 1.11 warm 1.06
+CACHECTRL  fffe0130 16   nop   422   417   read   518   518   cold 0.96 warm 1.01
+CACHECTRL  fffe0130 32   nop   420   420   read   520   520   cold 1.00 warm 1.00
+Done.

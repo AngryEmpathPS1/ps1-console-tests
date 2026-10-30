@@ -1,0 +1,23 @@
+# cpu-loop-tick16 on v0.377.212, node hwtests/run.js --ntsc, 2026-10-29 (v0.377.211's uncached column: CTRL 45.87, ADDU 47.98, JR / BEQ 54.03, SWDATA 53.10, ADDR 51.34, POS2 52.03, SAME 48.90, SP-FIRST 39.95, SP-SECOND / IO-FIRST 42.80, IO-SECOND 41.73, THREE 54.99, EPILOG 54.03)
+
+cpu/cpu-loop-tick16
+tick14's rows cached and UNCACHED (each loop through its KSEG1 alias). No assertions.
+
+  variant     cold        hot     uncached   (cycles an iteration)
+  CTRL        14.31      14.26      45.87
+  ADDU        15.29      15.25      48.90
+  JR          15.29      15.25      55.00
+  BEQ         15.29      15.25      55.00
+  SWDATA      19.41      19.36      54.03
+  ADDR        21.43      21.37      52.08
+  POS2        14.31      14.26      52.03
+  SAME        16.25      16.20      48.90
+  SP-FIRST     9.22       9.18      40.86
+  SP-SECOND   12.28      12.23      42.81
+  IO-FIRST    13.21      13.17      43.71
+  IO-SECOND   14.28      14.26      42.80
+  THREE       20.40      20.36      54.99
+  EPILOG      15.30      15.25      54.99
+
+cpu/cpu-loop-tick16: Done.
+

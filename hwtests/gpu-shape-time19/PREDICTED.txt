@@ -1,0 +1,33 @@
+gpu-shape-time19 - written down BEFORE any console ran it (2026-10-14 night), after gpu-shape-time18 on the SCPH-1001 showed
+no x-position effect at all (every shape at x 193 and 194 = at 192, to the cycle).
+
+The pairs counted from the triangle's leftmost vertex (at x 192 / 0 here, so the fit's own terms apply as fitted):
+  A  a row ENDING an even distance from the vertex costs less (1001: 0.815 cycle)
+  B  an odd-WIDTH row costs less, one STARTING an odd distance from it more (1001: -1.219 / +0.761)
+  C  neither (rows, pixels, walk, empty, hidden only)
+bit 26 less bit 28 (fastest of each), SCPH-1001, from gpu-shape-time3-6's fits (scratch/scratch_predict19.js):
+
+shape                A         B         C
+TR 15x16         144.7     155.3     153.3
+TR 16x16         170.0     169.1     165.5
+TR 17x16         157.7     167.8     166.3
+TL 15x16         158.4     157.5     161.2
+TL 16x16         159.8     159.3     161.7
+TL 17x16         167.8     167.3     169.7
+BR 15x16         132.9     144.0     141.5
+BR 17x16         144.7     155.3     153.3
+BL 15x16         146.9     146.5     149.7
+BL 17x16         155.3     155.2     157.2
+TR 63x64        1364.5    1411.4    1398.5
+TR 64x64        1453.0    1449.2    1434.9
+TR 65x64        1401.6    1448.0    1435.7
+TL 63x64        1410.2    1407.6    1418.3
+TL 64x64        1411.5    1409.3    1418.8
+TL 65x64        1443.5    1441.3    1451.0
+TR 15x64         558.9     603.2     588.1
+TR 17x64         596.0     639.7     625.3
+TL 15x64         628.3     627.7     632.0
+TL 17x64         661.7     661.4     664.8
+
+Where they part: TR at an odd W (15x16: A 145, B 155, C 153; 63x64: A 1,365, B 1,411, C 1,399; 15x64: A 559, B 603,
+C 588) and BR at an odd W; TL / BL the same under all three within a few cycles.

@@ -1,0 +1,42 @@
+gpu-shape-time38 - PREDICTED before its first console run (2026-10-16 small hours): v0.377.117 as the SCPH-9001 under the
+runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. This
+core charges semi triangles GPU_SEMI_PAIRS' rows with no line stall (its constants carry the stalls' average) and
+opaque ones GPU_FLAT_PAIRS'. What would settle what: if a semi triangle stalls ~20-25 cycles a line, the 256-wide semi
+column's marginal cost between heights steps by that where its drawing crosses each further ~2,150 cycles, over a
+smooth rows-only curve; the opaque column, none (or its own).
+
+row                      b26    b28
+semi TL 256x8             919    32
+semi TL 256x16           1704    32
+semi TL 256x24           2489    32
+semi TL 256x32           3275    32
+semi TL 256x40           4060    32
+semi TL 256x48           4845    32
+semi TL 256x56           5631    32
+semi TL 256x64           6416    32
+semi TL 256x80           7987    32
+semi TL 256x96           8001    32
+semi TL 256x112          8001    32
+semi TL 256x128          8001    32
+flat TL 256x8             637    32
+flat TL 256x16           1166    32
+flat TL 256x24           1695    32
+flat TL 256x32           2224    32
+flat TL 256x40           2754    32
+flat TL 256x48           3283    32
+flat TL 256x56           3812    32
+flat TL 256x64           4341    32
+flat TL 256x80           5399    32
+flat TL 256x96           6458    32
+flat TL 256x112          7516    32
+flat TL 256x128          8001    32
+semi TL 128x16            914    31
+semi TL 128x32           1743    31
+semi TL 128x64           3400    31
+semi TL 128x96           5058    31
+semi TL 128x128          6670    31
+flat TL 128x16            619    31
+flat TL 128x32           1164    31
+flat TL 128x64           2254    31
+flat TL 128x96           3345    31
+flat TL 128x128          4404    31

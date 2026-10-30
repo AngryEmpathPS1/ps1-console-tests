@@ -1,0 +1,14 @@
+gpu-shape-time51 - PREDICTED for the SCPH-1001 before its first run there (2026-10-16): v0.377.121 as the SCPH-1001
+under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000 --tol=0).
+The OLD GPU keeps its own model (GPU_OLD*): none of v0.377.119-121's new-GPU pieces (the quad's second set-up, empty
+triangles, the semi sprite / textured / shaded laws, the scan-out's bursts by place) apply to it. What it settles: the
+same questions as PREDICTED.txt, on the old GPU - each piece the old GPU's too, or the new GPU's alone.
+
+bit 26's D in the blanking, then at 201,800 + 10 j cycles after VBlank's IRQ less the blanking's, j = 0..47
+rect 16x16     234 : 0 0 0 0 0 0 0 0 0 18 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 0 0 5 0 0 0 0 0 0 0 0 0 0 0
+semi 16x16     490 : 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 26 41 3 11 11 0 0 0 0 0 0 0 0 0 0 0
+fill 16x16     140 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 35 40 41 41 41 41 41 41 41 41 41 41 41 33 41 2 18 1 0 0 0 0 0 0 0 0 0 0 0
+flat 16        188 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 41 41 41 41 41 41 41 41 41 41 41 41 0 0 31 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr4 16x16     234 : 0 0 0 0 0 0 0 0 19 11 7 28 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 40 41 1 17 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 64 down   472 : 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 0 6 0 0 0 0 0 0 0 0 0 0 0 0
+

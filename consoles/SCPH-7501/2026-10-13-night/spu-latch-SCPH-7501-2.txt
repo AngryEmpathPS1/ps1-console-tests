@@ -1,0 +1,161 @@
+
+spu/spu-latch
+When inside a 44.1 kHz sample does the SPU take a register write? KON and the reverb master enable written D
+cycles after SPUSTAT bit 11 changes (a sample is 768 cycles). No assertions.
+
+KON: D (the delay asked) / the write's measured cycles after the edge / voice 1's onset (ring index from
+the half the edge began), two runs:
+ bit 11 -> 1:
+  D   0: 107 108   onset   9   9
+  D  16: 108 108   onset   9   9
+  D  32: 108 108   onset   9   9
+  D  48: 108 108   onset   9   9
+  D  64: 108 108   onset   9   9
+  D  80: 139 139   onset   9   9
+  D  96: 139 139   onset   9   9
+  D 112: 170 170   onset   9   9
+  D 128: 170 170   onset   9   9
+  D 144: 201 201   onset   9   9
+  D 160: 201 201   onset   9   9
+  D 176: 232 232   onset   9   9
+  D 192: 232 232   onset   9   9
+  D 208: 263 263   onset   9   9
+  D 224: 263 263   onset   9   9
+  D 240: 294 294   onset   9   9
+  D 256: 294 294   onset   9   9
+  D 272: 329 329   onset   9   9
+  D 288: 329 329   onset   9   9
+  D 304: 360 360   onset   9   9
+  D 320: 360 360   onset   9   9
+  D 336: 391 391   onset   9   9
+  D 352: 391 391   onset   9   9
+  D 368: 422 422   onset   9   9
+  D 384: 422 422   onset   9   9
+  D 400: 453 453   onset   9   9
+  D 416: 453 453   onset   9   9
+  D 432: 484 484   onset   9   9
+  D 448: 484 484   onset   9   9
+  D 464: 515 515   onset   9   9
+  D 480: 515 515   onset   9   9
+  D 496: 546 546   onset   9   9
+  D 512: 546 546   onset   9   9
+  D 528: 577 577   onset   9   9
+  D 544: 577 577   onset   9   9
+  D 560: 608 608   onset   9   9
+  D 576: 608 608   onset   9   9
+  D 592: 639 639   onset   9   9
+  D 608: 639 639   onset   9   9
+  D 624: 670 670   onset   9   9
+  D 640: 701 701   onset   9   9
+  D 656: 701 701   onset   9   9
+  D 672: 732 732   onset   9   9
+  D 688: 732 732   onset   9   9
+  D 704: 763 763   onset   9   9
+  D 720: 763 763   onset   9   9
+  D 736: 794 794   onset   9   9
+  D 752: 794 794   onset   9   9
+  D 768: 825 825   onset   9   9
+ bit 11 -> 0:
+  D   0: 186 107   onset   9   9
+  D  16: 108 108   onset   9   9
+  D  32: 108 108   onset   9   9
+  D  48: 108 108   onset   9   9
+  D  64: 108 108   onset   9   9
+  D  80: 139 139   onset   9   9
+  D  96: 139 139   onset   9   9
+  D 112: 170 170   onset   9   9
+  D 128: 170 170   onset   9   9
+  D 144: 201 201   onset   9   9
+  D 160: 201 201   onset   9   9
+  D 176: 232 232   onset   9   9
+  D 192: 232 232   onset   9   9
+  D 208: 263 263   onset   9   9
+  D 224: 263 263   onset   9   9
+  D 240: 294 294   onset   9   9
+  D 256: 294 294   onset   9   9
+  D 272: 329 329   onset   9   9
+  D 288: 329 329   onset   9   9
+  D 304: 360 360   onset   9   9
+  D 320: 360 360   onset   9   9
+  D 336: 391 391   onset   9   9
+  D 352: 391 391   onset   9   9
+  D 368: 422 422   onset   9   9
+  D 384: 422 422   onset   9   9
+  D 400: 453 453   onset   9   9
+  D 416: 453 453   onset   9   9
+  D 432: 484 484   onset   9   9
+  D 448: 484 484   onset   9   9
+  D 464: 515 515   onset   9   9
+  D 480: 515 515   onset   9   9
+  D 496: 546 546   onset   9   9
+  D 512: 546 546   onset   9   9
+  D 528: 577 577   onset   9   9
+  D 544: 577 577   onset   9   9
+  D 560: 608 608   onset   9   9
+  D 576: 608 608   onset   9   9
+  D 592: 639 639   onset   9   9
+  D 608: 639 639   onset   9   9
+  D 624: 670 670   onset   9   9
+  D 640: 701 701   onset   9   9
+  D 656: 701 701   onset   9   9
+  D 672: 732 732   onset   9   9
+  D 688: 732 732   onset   9   9
+  D 704: 763 763   onset   9   9
+  D 720: 763 763   onset   9   9
+  D 736: 794 794   onset   9   9
+  D 752: 794 794   onset   9   9
+  D 768: 825 825   onset   9   9
+
+REVERB: D / the enable's measured cycles after the falling edge (mBASE written at it) / each line's first
+written step (mLSAME mRSAME mLDIFF mRDIFF), two runs:
+  D   0: 176 122     1   0   1   0     1   0   1   0
+  D  16: 122 122     1   0   1   0     1   0   1   0
+  D  32: 122 122     1   0   1   0     1   0   1   0
+  D  48: 122 122     1   0   1   0     1   0   1   0
+  D  64: 122 122     1   0   1   0     1   0   1   0
+  D  80: 122 122     1   0   1   0     1   0   1   0
+  D  96: 153 153     1   0   1   0     1   0   1   0
+  D 112: 184 184     1   0   1   0     1   0   1   0
+  D 128: 184 184     1   0   1   0     1   0   1   0
+  D 144: 215 215     1   0   1   0     1   0   1   0
+  D 160: 215 215     1   0   1   0     1   0   1   0
+  D 176: 246 246     1   0   1   0     1   0   1   0
+  D 192: 246 246     1   0   1   0     1   0   1   0
+  D 208: 277 277     1   0   1   0     1   0   1   0
+  D 224: 277 277     1   0   1   0     1   0   1   0
+  D 240: 308 308     1   0   1   0     1   0   1   0
+  D 256: 308 308     1   0   1   0     1   0   1   0
+  D 272: 339 339     1   0   1   0     1   0   1   0
+  D 288: 339 339     1   0   1   0     1   0   1   0
+  D 304: 376 376     1   0   1   0     1   0   1   0
+  D 320: 376 376     1   0   1   0     1   0   1   0
+  D 336: 407 407     1   0   1   0     1   0   1   0
+  D 352: 407 407     1   0   1   0     1   0   1   0
+  D 368: 438 438     1   0   1   0     1   0   1   0
+  D 384: 438 438     1   0   1   0     1   0   1   0
+  D 400: 469 469     1   0   1   0     1   0   1   0
+  D 416: 469 469     1   0   1   0     1   0   1   0
+  D 432: 500 500     1   0   1   0     1   0   1   0
+  D 448: 500 500     1   0   1   0     1   0   1   0
+  D 464: 531 531     1   0   1   0     1   0   1   0
+  D 480: 531 531     1   0   1   0     1   0   1   0
+  D 496: 562 562     1   1   1   1     1   1   1   1
+  D 512: 562 562     1   1   1   1     1   1   1   1
+  D 528: 593 593     1   1   1   1     1   1   1   1
+  D 544: 596 596     1   1   1   1     1   1   1   1
+  D 560: 627 627     1   1   1   1     1   1   1   1
+  D 576: 627 627     1   1   1   1     1   1   1   1
+  D 592: 658 658     1   1   1   1     1   1   1   1
+  D 608: 658 658     1   1   1   1     1   1   1   1
+  D 624: 689 689     1   1   1   1     1   1   1   1
+  D 640: 689 689     1   1   1   1     1   1   1   1
+  D 656: 720 720     1   1   1   1     1   1   1   1
+  D 672: 720 720     1   1   1   1     1   1   1   1
+  D 688: 751 751     1   1   1   1     1   1   1   1
+  D 704: 751 751     1   1   1   1     1   1   1   1
+  D 720: 782 782     1   1   1   1     1   1   1   1
+  D 736: 782 782     1   1   1   1     1   1   1   1
+  D 752: 813 813     1   1   1   1     1   1   1   1
+  D 768: 813 813     1   1   1   1     1   1   1   1
+
+spu/spu-latch: Done.

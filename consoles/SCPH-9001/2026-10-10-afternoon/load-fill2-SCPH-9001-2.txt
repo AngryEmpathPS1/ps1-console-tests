@@ -1,0 +1,21 @@
+
+cpu/load-fill2
+8 KB blocks from a cold instruction cache (Timer 2, fastest..slowest of four): loads used, paired, stored,
+from the scratchpad and the SPU. There are no assertions - compare against your emulator.
+
+  NOPS             4716..4720    above the nops      0  ->  0.00 a unit
+  RAM              5246..5252    above the nops    530  ->  4.14 a unit
+  USE 1            5631..5634    above the nops    915  ->  7.15 a unit
+  USE 2            5631..5637    above the nops    915  ->  7.15 a unit
+  USE 4            5246..5252    above the nops    530  ->  4.14 a unit
+  USE 8            5247..5252    above the nops    531  ->  4.15 a unit
+  TWO              6027..6031    above the nops   1311  ->  10.24 a unit
+  SPLIT            5786..5788    above the nops   1070  ->  8.36 a unit
+  STORE            5441..5494    above the nops    725  ->  5.66 a unit
+  LW+SW            6276..6282    above the nops   1560  ->  12.19 a unit
+  SCRATCH          4716..4722    above the nops      0  ->  0.00 a unit
+  SCRATCH USE      4716..4722    above the nops      0  ->  0.00 a unit
+  I_STAT 1 USE     5209..5215    above the nops    493  ->  3.85 a unit
+  SPU              6604..6612    above the nops   1888  ->  14.75 a unit
+
+Done.

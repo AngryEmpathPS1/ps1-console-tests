@@ -1,0 +1,15 @@
+
+cpu/cpu-loop-tick7
+A read between two stores, by register and page. No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  T2-NEAR      15.14      15.08
+  T2-FAR       12.53      12.49
+  ISTAT-NEAR   15.09      15.09
+  ISTAT-FAR    12.49      12.49
+  JOY-NEAR     15.07      15.09
+  JOY-FAR      12.49      12.49
+  DPCR-NEAR    15.07      15.09
+  DPCR-FAR     12.49      12.49
+
+cpu/cpu-loop-tick7: Done.

@@ -1,0 +1,16 @@
+cpu/cpu-loop-tick
+A Timer 2 polling loop's cycles an iteration, piece by piece (1,000 iterations). No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  REAL       32.08      32.04
+  INLINE     30.20      30.15
+  T2          7.05       7.02
+  T2+LD      20.26      20.23
+  T2+ST      13.19      13.16
+  T2+LD+ST   30.19      30.16
+  ST,NOP3    32.05      32.03
+  SPUSTAT    46.58      46.57
+  RAMREAD    35.87      35.87
+
+cpu/cpu-loop-tick: Done.
+

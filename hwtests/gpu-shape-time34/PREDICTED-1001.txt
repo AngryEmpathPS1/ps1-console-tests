@@ -1,0 +1,49 @@
+gpu-shape-time34 - PREDICTED for the SCPH-1001 before its first run there (2026-10-15 night): v0.377.115 as the
+SCPH-1001 under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000
+--tol=0), bit 26's D and bit 28's, cycles. The old GPU's semi rectangles are GPU_RECTF_OLD2's / GPU_POLY_OLD3's semi terms.
+What it settles: whether the old GPU's semi rectangle row has the new GPU's step between 8 and 16 pixels (gpu-shape-time24 on
+the 9001: 1.06 a pair to 8 wide, 1.44 past 16), and whether a block is the frame buffer's (8 / 16 / 24 wide at other x).
+
+row                      b26    b28
+semi 1x16 @0              122      9
+semi 2x16 @0              154      9
+semi 3x16 @0              170      9
+semi 4x16 @0              202      9
+semi 5x16 @0              218      9
+semi 6x16 @0              250      9
+semi 7x16 @0              266      9
+semi 8x16 @0              298      9
+semi 9x16 @0              314      9
+semi 10x16 @0             346      9
+semi 11x16 @0             362      9
+semi 12x16 @0             394      9
+semi 13x16 @0             410      9
+semi 14x16 @0             442      9
+semi 15x16 @0             458      9
+semi 16x16 @0             490      9
+semi 17x16 @0             506      9
+semi 18x16 @0             538      9
+semi 19x16 @0             554      9
+semi 20x16 @0             586      9
+semi 21x16 @0             602      9
+semi 22x16 @0             634      9
+semi 23x16 @0             650      9
+semi 24x16 @0             682      9
+semi 28x16 @0             778      9
+semi 31x16 @0             842      9
+semi 32x16 @0             874      9
+semi 33x16 @0             889      9
+semi 40x16 @0            1065      9
+semi 48x16 @0            1257      9
+semi 63x16 @0            1609      9
+semi 64x16 @0            1641      9
+semi 65x16 @0            1657      9
+semi 96x16 @0            2450      9
+semi 128x16 @0           3218      9
+semi 8x16 @4              298      9
+semi 8x16 @8              298      9
+semi 16x16 @1             490      9
+semi 16x16 @4             490      9
+semi 16x16 @8             490      9
+semi 16x16 @15            490      9
+semi 24x16 @8             682      9

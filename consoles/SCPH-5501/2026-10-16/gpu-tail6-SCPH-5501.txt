@@ -1,0 +1,31 @@
+
+gpu/gpu-tail6
+(1) A VBlank wait, then sixteen semi 256x32 probes back to back; (2) a probe after N idle cycles, no VBlank wait.
+Fastest..slowest of eight and how many were cheap (under 6,600). No assertions.
+
+(1) after a VBlank wait, probe by probe:
+  #1  6201..6302 cheap 8
+  #2  6207..6251 cheap 8
+  #3  6206..6248 cheap 8
+  #4  6206..6244 cheap 8
+  #5  6238..6251 cheap 8
+  #6  6237..6243 cheap 8
+  #7  6202..6247 cheap 8
+  #8  6419..6512 cheap 8
+  #9  6825..6870 cheap 0
+  #10 6870..6875 cheap 0
+  #11 6824..6875 cheap 0
+  #12 6828..6920 cheap 0
+  #13 6824..6873 cheap 0
+  #14 6830..6876 cheap 0
+  #15 6825..6880 cheap 0
+  #16 6824..6925 cheap 0
+(2) after N idle cycles, no VBlank wait:
+  N 128000: 6824..6884 cheap 0 of 8
+  N 192000: 6239..6872 cheap 1 of 8
+  N 256000: 6239..6882 cheap 1 of 8
+  N 384000: 6239..6917 cheap 1 of 8
+  N 512000: 6246..6924 cheap 1 of 8
+  N 768000: 6246..6876 cheap 1 of 8
+
+gpu/gpu-tail6: Done.

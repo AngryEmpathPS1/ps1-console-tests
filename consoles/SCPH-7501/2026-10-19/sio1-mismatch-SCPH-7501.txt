@@ -1,0 +1,26 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+sio/sio1-mismatch
+SIO1's receiver at another rate than its transmitter, through a loopback plug (4-1 TXD-RXD, 6-3 DTR-DSR,
+8-5 RTS-CTS): BAUD rewritten after a byte is written. No assertions.
+
+>>> NO BUTTONS IN THIS TEST - WATCH THE TV. When it turns BLUE: take the serial cable out of the console and put the loopback plug in. YELLOW: it is measuring (a few seconds). GREEN: take the loopback plug out and put the serial cable back - no hurry: the results come 20 s after the plug is out.
+THE PLUG: seen by its lines
+8N1 MUL16; each row: the bytes written, BAUD rewritten +N cycles after the first write; the receiver's bytes, SR.3/4/5
+  R1   BAUD 0024 -> 0024 at +206  : 55   PE 0 OE 0 FE 0
+  R2   BAUD 0024 -> 0012 at +206  : 55   PE 0 OE 0 FE 0
+  R2b  BAUD 0024 -> 0012 at +481  : 55   PE 0 OE 0 FE 0
+  RM   BAUD 0024 -> 0012 at +1585 : 55   PE 0 OE 0 FE 0
+  R4   BAUD 0012 -> 0048 at +159  : 02   PE 0 OE 0 FE 0
+  R4b  BAUD 0012 -> 0048 at +160  : 55   PE 0 OE 0 FE 0
+  RB   BAUD 0002 -> 0048 at +155  : 49 0b ff c4   PE 0 OE 0 FE 0
+  R1   BAUD 0024 -> 0024 at +207  : 55   PE 0 OE 0 FE 0
+  R2   BAUD 0024 -> 0012 at +207  : 55   PE 0 OE 0 FE 0
+  R2b  BAUD 0024 -> 0012 at +486  : 55   PE 0 OE 0 FE 0
+  RM   BAUD 0024 -> 0012 at +1576 : 55   PE 0 OE 0 FE 0
+  R4   BAUD 0012 -> 0048 at +155  : 02   PE 0 OE 0 FE 0
+  R4b  BAUD 0012 -> 0048 at +159  : 55   PE 0 OE 0 FE 0
+  RB   BAUD 0002 -> 0048 at +155  : 49 0b ff c4   PE 0 OE 0 FE 0
+
+Done.

@@ -1,0 +1,26 @@
+
+timers/timer-sync
+Timer corners: the target flag, sync mode 3's bit 0, the /8 prescaler, the hblank gate, vblank sync. No assertions.
+
+TARGET (Timer1 counting hblanks, target 20):
+  no reset       : bit 11 first seen after the counter read 0; values: 15 16 17 18 19 20 21 22 23 24
+  reset at target: bit 11 first seen after the counter read 0; values: 0 1 2 3 15 16 17 18 19 0 1 2 3 15 16 17 18 19 0
+
+MODE 3 (Timer0 MODE 0007h): at once MODE 0007 counter 0; 3 lines later MODE 0007 counter 3836
+
+PRESCALER (Timer2 at sysclock/8; how many of 32 read 1 or more, K = 0..12 nops after the write):
+  counter written:  9  2 13 13 25 20 29 32 32 32 32 32 32
+  MODE written   :  0  1  5 13 19 21 19 29 32 32 32 32 32
+
+GATE (Timer0, system clock, paused in hblank: counts a line, over 16 lines):
+  NTSC  display 260h..C60h: 1614.00   400h..A00h: 970.50
+  PAL   display 260h..C60h: 1613.75   400h..A00h: 970.43
+
+VBLANK (Timer1 counting hblanks, set just after a vblank starts; the count when the next frame's vblank
+starts (I_STAT bit 0), then once a line (every 2,152 cycles) for 40 lines, runs as value x lines):
+  mode 0 pause in vblank        at vblank  239, then 239 240x25 241 242 243 244 245 246 247 248 249 250 251 252 253 254   MODE bit 0 1
+  mode 1 reset at vblank        at vblank  237, then 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 0x2 1 2 3 4 5 6 7 8 9 10 11 12 13   MODE bit 0 1
+  mode 2 reset, count in vblank at vblank    0, then 0x2 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 0x15   MODE bit 0 1
+  mode 3 wait once, then free   at vblank  238, then 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277   MODE bit 0 1
+
+timers/timer-sync: Done.

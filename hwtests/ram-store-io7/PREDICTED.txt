@@ -1,0 +1,131 @@
+ram-store-io7 - PREDICTED before its first console run (2026-10-15 small hours), the MOST COMMON of each row's 16, cycles.
+
+Columns: this core at v0.377.112 (every read waits for the whole write queue, M207) and v0.377.113 (read priority:
+scratch/apply_rdpri_final.js), each as the SCPH-1001 (scratch/rsio7_v112.txt, rsio7_v113.txt).
+
+What would settle what:
+  EG/EO: v0.377.113 has P, R and X alike. If the console repeats ram-store-io5's 41 (P6 at k4) and 34 (X4 at k2) on
+    one twin only, and the o16 / o512 rows move it, the odd cells are the address; if the k neighbours carry it too, a
+    timing edge the rule misses; if all three twins read alike here, io5's two cells were that program's layout.
+  F: a RAM read that went first, then a GPUSTAT read - v0.377.113 leaves the stores it passed in their place; if they
+    follow the RAM read instead the F rows read later by about its access (5-6).
+  T: v0.377.113 lets an on-die read go first at +0 asking at its own cycle (from ram-store-io2's fastest rows).
+
+row          v112  v113
+EGP6k3         41    25
+EGP6k4         41    31
+EGP6k5         41    31
+EGP6k6         41    31
+EOP4k1         34    24
+EOP4k2         34    24
+EOP4k3         34    24
+EGP6k4o16      41    31
+EOP4k2o16      34    24
+EGP6k4o512     41    31
+EOP4k2o512     34    24
+EGR6k3         41    25
+EGR6k4         41    31
+EGR6k5         41    31
+EGR6k6         41    31
+EOR4k1         34    24
+EOR4k2         34    24
+EOR4k3         34    24
+EGR6k4o16      41    31
+EOR4k2o16      34    24
+EGR6k4o512     41    31
+EOR4k2o512     34    24
+EGX6k3         41    25
+EGX6k4         41    31
+EGX6k5         41    31
+EGX6k6         41    31
+EOX4k1         34    24
+EOX4k2         34    24
+EOX4k3         34    24
+EGX6k4o16      41    31
+EOX4k2o16      34    24
+EGX6k4o512     41    31
+EOX4k2o512     34    24
+FP3j0          33    23
+FP3j2          35    25
+FP3j4          35    25
+FP3j8          37    27
+FP4j0          39    29
+FP4j2          41    31
+FP4j4          41    31
+FP4j8          43    33
+FP5j0          45    31
+FP5j2          47    35
+FP5j4          47    35
+FP5j8          49    35
+FQ3j0          29    25
+FQ3j2          31    27
+FQ3j4          31    27
+FQ3j8          33    29
+FQ4j0          31    27
+FQ4j2          33    29
+FQ4j4          33    29
+FQ4j8          35    31
+FQ5j0          37    27
+FQ5j2          39    29
+FQ5j4          39    29
+FQ5j8          41    31
+TS2k0          13    13
+TS2k2          13    13
+TS2k4          14    14
+TS2k8          18    18
+TS3k0          15    15
+TS3k2          15    15
+TS3k4          15    15
+TS3k8          19    19
+TS4k0          17    17
+TS4k2          17    17
+TS4k4          17    17
+TS4k8          20    20
+TS5k0          19    19
+TS5k2          19    19
+TS5k4          19    19
+TS5k8          22    21
+TS6k0          21    21
+TS6k2          21    21
+TS6k4          21    21
+TS6k8          24    24
+TP2k0          17    12
+TP2k2          17    12
+TP2k4          17    14
+TP2k8          18    18
+TP3k0          23    12
+TP3k2          23    13
+TP3k4          23    18
+TP3k8          23    19
+TP4k0          29    12
+TP4k2          29    14
+TP4k4          29    18
+TP4k8          29    20
+TP5k0          35    18
+TP5k2          35    18
+TP5k4          35    18
+TP5k8          35    24
+TP6k0          41    24
+TP6k2          41    24
+TP6k4          41    24
+TP6k8          41    30
+TQ2k0          13    13
+TQ2k2          13    13
+TQ2k4          14    14
+TQ2k8          18    18
+TQ3k0          19    14
+TQ3k2          19    14
+TQ3k4          19    15
+TQ3k8          19    19
+TQ4k0          21    16
+TQ4k2          21    16
+TQ4k4          21    16
+TQ4k8          21    21
+TQ5k0          27    16
+TQ5k2          27    16
+TQ5k4          27    22
+TQ5k8          27    22
+TQ6k0          29    24
+TQ6k2          29    24
+TQ6k4          29    24
+TQ6k8          29    24

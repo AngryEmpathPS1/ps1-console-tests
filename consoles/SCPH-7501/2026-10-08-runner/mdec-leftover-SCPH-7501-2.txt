@@ -1,0 +1,25 @@
+ResetGraph:itb=80012dec,ehk=80012e1c
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-leftover
+Output words DMA1 never takes, at a command's end and the next one's start. No assertions.
+
+C  one macroblock DC 300, reset, DMA1 128 words: done, status after 8604ffff
+  first 4: 7dff7dff 7dff7dff 7dff7dff 7dff7dff
+  last 4 : 7dff7dff 7dff7dff 7dff7dff 7dff7dff
+
+A  two macroblocks (DC 100, 200), DMA1 224 of 256 words: done, status after 2603ffff
+  DMA1's last 4: 00000000 00000000 00000000 00000000
+   the CPU read 32 more words, status after 8604ffff
+  first 4: 7e1f7e1f 7e1f7e1f 7e1f7e1f 7e1f7e1f
+  last 4 : 7e1f7e1f 7e1f7e1f 7e1f7e1f 7e1f7e1f
+
+B  the short command (done, status a603ffff), then one macroblock DC 300 with nothing drained: done, status after a603ffff
+  first 4: 7e1f7e1f 7e1f7e1f 7e1f7e1f 7e1f7e1f
+  last 4 : 7dff7dff 7dff7dff 7dff7dff 7dff7dff
+   68 of 128 words equal to C
+
+mdec/mdec-leftover: Done.

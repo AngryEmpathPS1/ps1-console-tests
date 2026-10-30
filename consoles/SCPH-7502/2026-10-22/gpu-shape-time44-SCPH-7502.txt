@@ -1,0 +1,43 @@
+
+gpu/gpu-shape-time44
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+flat empty 1x4           38..38        28..28   
+flat empty 1x16          52..52        30..30   
+flat empty 1x64         102..102       32..32   
+gour empty 1x4          180..180      169..169  
+gour empty 1x16         194..194      171..171  
+gour empty 1x64         244..244      173..173  
+tex4 empty 1x4          126..126      115..115  
+tex4 empty 1x16         140..140      117..117  
+tex4 empty 1x64         190..190      119..119  
+semi spr15 64x8 x0 u1  1726..1751       8..8    
+semi spr15 64x8 x0 u2  1797..1818       8..8    
+semi spr15 64x8 x0 u4  1726..1747       8..8    
+semi spr15 64x8 x1 u0  1726..1747       8..8    
+semi spr15 64x8 x4 u0  1726..1749       8..8    
+semi spr15 64x8 x8 u0  1726..1752       8..8    
+opaq spr15 64x8 x0 u1  1478..1501       8..8    
+opaq spr15 64x8 x0 u2  1549..1568       8..8    
+opaq spr15 64x8 x0 u4  1478..1500       8..8    
+opaq spr15 64x8 x1 u0  1478..1496       8..8    
+opaq spr15 64x8 x4 u0  1478..1500       8..8    
+opaq spr15 64x8 x8 u0  1478..1500       8..8    
+semi spr4 32x8          263..288        8..8    
+semi spr4 128x8        1478..1502       8..8    
+semi spr8 128x8        2242..2247       8..8    
+opaq spr4 32x8          170..183        8..8    
+opaq spr4 128x8        1183..1201       8..8    
+opaq spr8 128x8        1819..1841       8..8    
+semi gour TL 4x16       306..306      167..167  
+semi gour TL 8x16       327..347      168..168  
+semi gour TL 32x16      503..521      170..170  
+opaq gour TL 4x16       256..256      167..167  
+opaq gour TL 8x16       285..285      168..168  
+opaq gour TL 32x16      484..484      170..170  
+semi gour 2 tris 64x16  1245..1254     659..666  
+opaq gour 2 tris 64x16  1240..1240     659..659  
+
+gpu/gpu-shape-time44: Done.

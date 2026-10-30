@@ -1,0 +1,31 @@
+
+spu/spu-kon-touch
+When a key-on first touches its start block, by the KON write's phase. No assertions.
+
+   D   pitch 1000h  pitch 0040h   (cycles from the KON write to IRQ9; 0 = none in 100 samples)
+    0        2178        2219
+   32        2175        2219
+   64        2166        2166
+   96        2111        2111
+  128        2101        2101
+  160        2113        2113
+  192        2057        2057
+  224        1985        1985
+  256        1994        1994
+  288        1924        1924
+  320        1932        1932
+  352        1865        1865
+  384        1866        1866
+  416        1815        1815
+  448        1806        1806
+  480        1754        1754
+  512        1757        1757
+  544        1692        1692
+  576        1695        1695
+  608        1630        1630
+  640        3169        3169
+  672        3115        3115
+  704        3124        3124
+  736        3047        3047
+
+spu/spu-kon-touch: Done.

@@ -1,0 +1,26 @@
+
+cdrom/cd-init-args
+A Nop right after an Init refused for its four parameters (nugget cdlInitWithArgs), and where the slow
+maintenance cycles fall after an Init. Cycles from each write to its interrupt; histogram in 16,384-cycle
+steps (the last 180,224+). No assertions.
+
+RANDOM PHASE (the refused Init: INT5 256 of 256, its second byte 20h 256 of 256):
+  Init refused, to INT5    min   27192  avg   44356  max  177600  over 3.5 ms   7 of 256  | 0 90 117 19 10 8 4 3 2 2 1 0
+  then Nop, to INT3        min   29368  avg   43226  max  193128  over 3.5 ms   2 of 256  | 0 113 100 11 11 10 8 1 1 0 0 1
+CONTROL:
+  Nop alone                min   18872  avg   38509  max  185592  over 3.5 ms   3 of 256  | 0 153 53 15 11 15 6 2 0 0 0 1
+AFTER A COMPLETED INIT (64 tries):
+  Init refused, to INT5    min   30632  avg   39225  max   62728  over 3.5 ms   0 of 64  | 0 18 33 13 0 0 0 0 0 0 0 0
+  then Nop, to INT3        min   29432  avg   46348  max   56192  over 3.5 ms   0 of 64  | 0 13 13 38 0 0 0 0 0 0 0 0
+SLOW CYCLES AFTER AN INIT (Nops back to back for ~250 ms; those over 100,000 cycles, at their write's time
+after the Init's INT2):
+  Init 0: 351576(146464) 1026352(127104) 2382040(102200) 4653000(146320) 5304424(123816) 5758648(101368) 7124784(101384) 8026928(192112)
+  Init 1: 367904(145976) 1044968(126232) 1922360(106112) 4671208(146480) 5321504(123816) 5774024(102248)
+  Init 2: 365000(195128) 1014240(114720) 4184944(103592) 4658400(145936) 5309472(126224)
+  Init 3: 365456(192664) 1016688(115880) 1491112(101608) 3746048(106808) 4623904(144824) 5296552(130688) 6652896(107352)
+  Init 4: 373224(192552) 1045000(114104) 1947416(102704) 4212312(145768) 4856072(115152) 5308208(101704)
+  Init 5: 408472(146160) 1028504(114560) 1479632(104360) 4663264(146192) 5314600(126168)
+  Init 6: 365448(191680) 1018392(115112) 3267256(101384) 4184264(102040) 4658528(146760) 5305696(115656) 6654176(106112) 7567264(101384)
+  Init 7: 402320(145936) 1021696(114608) 2373912(101384) 3755352(191248) 4411144(127048) 5314024(101432) 6206352(102104)
+
+Done.

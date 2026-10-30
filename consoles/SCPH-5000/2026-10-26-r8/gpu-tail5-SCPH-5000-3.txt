@@ -1,0 +1,15 @@
+
+gpu/gpu-tail5
+A VBlank wait, then four 256x32 probes at (0,16) back to back (and with a 1x1 draw first): each probe's
+fastest..slowest of eight and how many were cheap (flat under 4,420, semi under 6,600). No assertions.
+
+  flat:
+    #1 4248..4260 cheap 8 #2 4215..4260 cheap 8 #3 4215..4260 cheap 8 #4 4251..4257 cheap 8
+  flat, a 1x1 draw first:
+    #1 4215..4259 cheap 8 #2 4212..4260 cheap 8 #3 4215..4260 cheap 8 #4 4215..4260 cheap 8
+  semi:
+    #1 6206..6246 cheap 8 #2 6201..6246 cheap 8 #3 6237..6246 cheap 8 #4 6201..6252 cheap 8
+  semi, a 1x1 draw first:
+    #1 6203..6241 cheap 8 #2 6237..6246 cheap 8 #3 6240..6249 cheap 8 #4 6241..6249 cheap 8
+
+gpu/gpu-tail5: Done.

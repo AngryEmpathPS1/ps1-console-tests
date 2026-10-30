@@ -1,0 +1,50 @@
+
+dma/dma-rates
+DMA starts, rates and the CPU's share on the channels chopping did not sweep. No assertions.
+
+Cycles at the system clock. 'first read' is CHCR read once after the write (and K units of work).
+OTC (DMA6, SyncMode 0, CHCR 11000002h):
+  CONTROL (CHCR = 0)         first read idle at     12   total      12   turns     0
+  CONTROL, 64 ALU ops        first read idle at     75   total      75   turns     0
+     1 words               first read BUSY at     17   total      43   turns     1
+     1 words, 64 ALU ops   first read idle at     75   total      75   turns     0
+     2 words               first read BUSY at     18   total      44   turns     1
+     2 words, 64 ALU ops   first read idle at     75   total      75   turns     0
+    16 words               first read BUSY at     32   total      58   turns     1
+    16 words, 64 ALU ops   first read idle at     75   total      75   turns     0
+   256 words               first read BUSY at    287   total     313   turns     1
+   256 words, 64 ALU ops   first read idle at    301   total     301   turns     0
+  1024 words               first read BUSY at   1100   total    1126   turns     1
+  1024 words, 64 ALU ops   first read idle at   1104   total    1104   turns     0
+  (table check: the first entry 00ffffff, the last 0001d6d8)
+
+MDEC IN (DMA0, SyncMode 1, CHCR 01000201h), the quantisation tables after the CPU writes the command:
+  CONTROL (CHCR = 0)         first read idle at     12   total      12   turns     0
+  32 words, 1 x 32           first read BUSY at     12   total  655370   turns 32767   GAVE UP: still busy (channel stopped)
+  32 words, 1 x 32, 16 ALU   first read BUSY at     27   total 1179638   turns 32767   GAVE UP: still busy (channel stopped)
+  32 words, 2 x 16           first read BUSY at     12   total  655351   turns 32767   GAVE UP: still busy (channel stopped)
+  32 words, 2 x 16, 16 ALU   first read BUSY at     27   total 1179638   turns 32767   GAVE UP: still busy (channel stopped)
+  32 words, 4 x 8           first read BUSY at     12   total  655351   turns 32767   GAVE UP: still busy (channel stopped)
+  32 words, 4 x 8, 16 ALU   first read BUSY at     27   total 1179638   turns 32767   GAVE UP: still busy (channel stopped)
+  16 words, 1 x 16           first read BUSY at     12   total  655351   turns 32767   GAVE UP: still busy (channel stopped)
+  16 words, 1 x 16, 16 ALU   first read BUSY at     27   total 1179638   turns 32767   GAVE UP: still busy (channel stopped)
+
+SPU (DMA4 write to sound RAM 8000h, SyncMode 1, blocks of 16 words, 16 ALU ops a turn):
+  a turn with no DMA: 35.94 cycles
+    1 blocks (  16 words)   first read idle at     86   total      86   turns     0
+    per word 5.37
+    4 blocks (  64 words)   first read BUSY at     86   total    3376   turns    86
+    per word 52.75
+   16 blocks ( 256 words)   first read BUSY at     86   total   16582   turns   432
+    per word 64.77
+   64 blocks (1024 words)   first read BUSY at     86   total   69982   turns  1828
+    per word 68.34
+
+GPU (DMA2, a 128x128 upload, 512 blocks of 16 words):
+  SPIN                       first read BUSY at     42   total   14545   turns   511
+  16 ALU ops a turn          first read BUSY at     36   total   14305   turns   278
+  16 RAM loads a turn        first read BUSY at    435   total   14259   turns    31
+  16 ROM loads a turn        first read BUSY at    747   total   23523   turns    30
+  a turn with no DMA: ALU 35.94, RAM 132.66, ROM 450.95 cycles
+
+dma/dma-rates: Done.

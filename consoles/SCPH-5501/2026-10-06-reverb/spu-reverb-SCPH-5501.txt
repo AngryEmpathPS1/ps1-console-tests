@@ -1,0 +1,297 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+spu/spu-reverb
+Studio Small's work area after an impulse and after a DC input, read back by DMA. No assertions.
+
+(after the zeroing DMA the area read back 27 non-zero halfwords)
+(voice 0: the sample read back DIFFERENT; after the run its repeat address 034c, envelope 7fff, ENDX bit 0 0)
+  read back:
+   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   02 02 00 00 00 00 00 00 ff 00 0f 40 e3 cf 30 10
+   01 02 21 00 bd 0f 43 10 e0 bf 2d 30 12 df fe df
+   01 02 51 f0 31 b0 ea 10 54 f0 ef 9f 60 20 21 c0
+IMPULSE, 1,000.5 steps: 4000 non-zero halfwords, checksum 7396c5b3. Rows of 16 from 7E0C0h, non-zero rows only:
+  7e0c0: 1508 101b ef88 ef1f 0701 11f1 0f53 f1f1 e56b 05f9 0d22 11af ff18 e4d6 f553 0f2a
+  7e0e0: 1080 1152 ecb6 e60f 0444 1d78 136e e492 e355 0cc6 17cc 17b9 f474 d8db f863 1df7
+  7e100: 165b fce3 e7ac f51c 0bb9 1caa 0469 dbbd f1b6 1644 10a2 1092 f420 e5ea fca3 1b4f
+  7e120: 0f31 f9e0 edbd fd48 0ae6 180a 05c8 e7d2 f457 107c 1454 0fd3 f27f de9e fe04 235e
+  7e140: 0eac efd1 e77f ff4e 1396 21be ff34 d7c6 f728 231b 1494 0599 ef9c ea18 0a08 241f
+  7e160: 09df e78e e97b 0c2f 13f8 1349 f6e9 e628 ff56 1685 0b2e 047e ec16 f1f4 0c2f 1958
+  7e180: 03ea e899 efd5 0b79 14ff 17a9 f44c e33b ffcd 1dcb 0efe fac6 e5af fb96 14b0 2181
+  7e1a0: 0052 e236 f2cb 16aa 19a2 08db ea21 e47d 07e2 2117 0835 eed8 e748 0afe 1670 1390
+  7e1c0: fe06 e978 f84e 1d7e 1905 05b6 ea97 ef2f 06ee 19b3 08f1 f08e ebb8 08a9 1895 1947
+  7e1e0: f8fe e3c7 f795 2261 159c fcdf e4d4 f32e 10d2 224a 05bc e302 ed08 1536 1696 0ae4
+  7e200: efee e987 01ca 25b2 0bd4 f077 ea97 0407 12fd 1ac7 0005 ea83 f890 17fd 121b 0b02
+  7e220: f3db f103 0497 1e9b e748 f642 fa3f 186f 0ea3 f67e da12 015c 060e 15ff ffc2 ea63
+  7e240: e376 175a 1432 08bb e7af f7d4 f9d6 18b2 0e75 f6f2 e074 029a 0d55 12c9 f4cb e9fe
+  7e260: e980 1854 14ad fdfd db93 f727 0045 164f ff58 ea92 e31a 0f98 0e68 085c edfd ef41
+  7e280: f0d0 1524 0a17 f7d7 e145 fbe8 fe83 1611 01d9 ea70 ea2e 0e74 0dbe 0cdb ec3d ed58
+  7e2a0: f437 195b 1465 f853 e056 02e0 0cdc 14fd fa43 e5aa e4ac 119e 0f3d fe31 e422 f370
+  7e2c0: fb53 1616 0a29 ec68 e1d0 063e 0a2f 1008 f933 e801 ed46 12b5 0f26 fb33 e323 f587
+  7e2e0: 00f2 1139 0413 eda0 e95c 0868 0c7f 0cf7 f347 ea9e ef34 1368 12ee f834 e087 f8c2
+  7e300: 06a8 1760 ff95 e0e1 e348 131d 1892 0390 e6b1 ee37 00da 1148 07a4 f1f0 e43b fe93
+  7e320: 0c3c 0874 f8bb eddd efde 0a99 0ee5 fc41 e955 f1e9 fd54 10ce 0f71 ec2d e0c1 04b6
+  7e340: 12a3 0e85 f937 e595 ede9 13f2 1903 fa00 e65c f3d0 04fe 115e 0632 ea35 e6da 09b1
+  7e360: 1322 020c efb7 ed01 f75f 10b9 11f7 eee2 e2be fcbf 0957 0b1d 00f5 e6f9 ebaf 0a0c
+  7e380: 0f43 fd5f f3e6 eda9 fa66 0e21 0dc0 f097 e7e9 fa05 08e9 0b22 00a6 e3fc eab8 0c2a
+  7e3a0: 1898 fa50 e84a f137 0536 121c 0eb7 e816 e60a 072c 1485 03da f682 ea86 f9c0 0eaa
+  7e3c0: 100b f568 ef8c f237 053b 0d90 05b0 e9e0 f0b6 048b 1123 0364 f992 eb50 f929 0d99
+  7e3e0: 1547 f3be e9fd f738 0ad7 0af9 04fe e6ca efeb 09d1 174b feb3 f30f e9de fe08 1120
+  7e400: 1250 ed2e ebd0 fcf3 114d 0931 fc1d e81f f8a1 0dbf 14c8 f60d ef31 f48f 0a4b 0b59
+  7e420: 07ca ecf1 f0b2 ff3f 13c3 00ce fc38 ebc5 f59e 0a5b 1744 f6b0 eee9 f18c 098d 1060
+  7e440: 0ad5 e78d ea9a 0423 1997 0120 f557 e9e4 fdc4 1322 1482 ed48 eb39 fc05 1251 081d
+  7e460: 010a e888 f4e5 0c5f 193e f884 f52c f2db 0101 0e89 0f59 ed18 ed82 fbc4 1273 0837
+  7e480: 00a6 ea89 f735 0c2f 1973 f846 f1ce ef41 03d0 120c 0cbc ecad ed56 00fa 18c1 0346
+  7e4a0: fac9 ea1e f70e 148a 1cbb f02e edd7 f6c5 0bc2 0f17 090a e915 effe 0998 18e8 fa9b
+  7e4c0: f6ca f1c6 0253 109d 113c f424 f63e f6b7 0c90 0d17 0689 eeb1 f5a1 071c 1bf0 fe2c
+  7e4e0: f78e ecbc ff5b 15b3 143a e9ce ece0 fd9a 14d2 07d9 fd90 ea42 fa1d 1210 1bef f595
+  7e500: f3d6 f74b 0bd2 0f60 0870 f06b f848 01a2 15d8 02ee fa22 f18b ff16 0d05 13c8 f4b8
+  7e520: f627 f6f7 0c0c 0f4b 0871 f05d f4b8 0305 1831 0297 faa2 efb3 fc7e 1765 199a ef32
+  7e540: f056 fb91 126d 0d60 ffbc ec6e f72b 0bf1 1f17 f8c8 edc5 f819 0a7c 10cf 0e05 f0be
+  7e560: f4dc 032f 17b8 04c7 fcad f4bb fa85 0b9a 188c f9cd f6c8 f6f5 0512 1586 10c0 f09d
+  7e580: f513 030a 1809 07b0 f9fe f0c7 fb9e 1353 1964 f230 ed57 fcf7 1123 0ec9 0589 efe5
+  7e5a0: f461 0d71 2143 fdcd f461 f657 017b 171b 1645 f0dd f597 0119 11e8 0eba 020a f15a
+  7e5c0: fa38 0b9d 182e fbc8 f925 f68b 0221 14ca 10e7 f029 f258 0051 1261 0c80 002c ef5b
+  7e5e0: f486 1049 1ed9 f801 edef f812 0a94 18f6 0e18 ecf4 f45b 080c 1b08 028b f6e3 f316
+  7e600: 04b7 1548 1127 f371 f63e fbbe 0c07 11ad 0589 f212 fa02 089a 1b37 027a f717 f636
+  7e620: 01b1 16f5 1695 f3c3 f310 0077 1222 11de 029b f172 fa2e 107f 1bd5 fc4d f153 f59c
+  7e640: 0564 1858 0e4d efba f22d 0588 18ca 0ad9 f70a f602 ffac 116b 19d5 f1e4 edaf ffc9
+  7e660: 0b12 0f80 0835 f27e f5c5 0603 1569 0747 f9da f97d fd1e 10bd 1691 f63f f101 fdb5
+  7e680: 0c97 1663 05c5 ef25 f4a9 0d09 1e6d fffe ee86 fa2f 04c3 1995 1473 edbd ed37 07e5
+  7e6a0: 128e 0bb8 fcfd f3e6 f749 1036 1662 f64a f0fa fd78 05d3 1786 0ec1 f2c3 f2d8 053c
+  7e6c0: 1226 0ba9 fcf6 f411 faaf 2034 1ca1 f5cb fbf8 07d4 178b 2f0a 13c2 f719 f65a 0999
+  7e6e0: 1838 068d f75b f30f fcd2 191d 1465 f0df ede9 02dc 0fb0 1436 0021 f0a8 fa9b 0e5b
+  7e700: 162d 0116 f42b fd79 0619 1269 0bc6 f7e5 f5f4 0309 0cb2 1041 ffe5 f362 f852 0cbe
+  7e720: 14cc fdc6 edb2 fe6a 0387 1238 10b2 f0b6 f76e 05e7 03fb 0945 0167 f96c fe0c 02bf
+  7e740: 0d54 fdf9 f113 f8c6 02a5 08f3 0d70 f3d4 fbee fa73 010f 0a28 0338 fb83 f7c7 0222
+  7e760: 1a26 fce4 f6dd f418 f2b7 0ffa 1a75 f0e1 ebbb fa3e 1232 0cb9 0017 f3d0 fa5e 0756
+  7e780: 1778 f9a3 f817 f5a7 fceb 0d4a 0f71 f2b3 f3c5 014c 1448 04a1 0101 f9b5 fab0 0869
+  7e7a0: 1a0e f84d f709 f093 ff2b 1193 0f02 f038 f171 0386 145c 01e3 02e9 f013 f869 12bc
+  7e7c0: 1c6b f172 f1c2 fa1e 0f68 0ae1 052f f146 f75e 0403 0f03 ffe4 f97b f394 feb2 0bde
+  7e7e0: 1401 f2e8 f8ec fae0 0a2b 0c1f 09f0 f164 fa09 09ba 126e fe5d fc32 f90c fd47 0bfc
+  7e800: 132e f50c f76c ff05 1131 0b77 fc04 ee1f fec5 0aa5 18c5 fb98 eefa f565 0a4d 0eb2
+  7e820: 0b50 f1d2 f6a1 0799 15b6 0431 f98e f484 009c 0c4f 1582 f4a9 fa75 fe07 0c40 074a
+  7e840: 0a05 f72e f8bf fe27 1023 030e f636 f682 fef9 0749 14f3 f640 f221 fe93 1092 0d1d
+  7e860: 07db f506 f632 072a 1c7c fc20 f38c f574 051a faa9 0142 03df 021c f22b f7b4 fe0c
+  7e880: 05a5 fd57 fb88 f4be fee1 feeb 02b3 fdb7 fcde fa7e fe71 0472 01fa f7be fb02 f83d
+  7e8a0: 070e 01c5 faa6 f5f1 0148 0155 0341 f900 fbd8 fc99 0040 fada fec6 fc69 ff47 ffb1
+  7e8c0: 0260 fb80 fa8b fb24 fd43 0485 0494 f7e4 fa86 f8cb fba3 032d 0178 f99e fd5a fc23
+  7e8e0: 0295 02b3 f758 f70a faa3 026d 0791 0424 fabc f5f6 0386 0b29 064c ee18 f354 0807
+  7e900: 0bcb f942 f10d f04b ff37 1292 0325 ee60 f31d 07f6 0bf3 0875 f9b7 e8e9 fd29 0c47
+  7e920: 0340 f69d f296 f9ab 06cb 0af1 ff97 f15b f3d6 0bb1 092b 02bc f52f ecc7 0012 1263
+  7e940: 0591 f520 ee13 02ae 0e16 08d6 f9bb e61b fc75 19a8 094a ffad f1f7 f27a 073d 1390
+  7e960: 0330 f689 f58f 0c5d 0f20 0517 f37c ebed 0161 13d2 098a fb6f ef24 0254 0676 0d3e
+  7e980: 028b ef7a f2f7 13d9 0d32 0715 f5ac ef51 0397 165c 0941 feb9 f0d9 f1b3 0637 1858
+  7e9a0: 0093 e6d7 f52d 161f 0fe3 0843 ee3a f302 098a 1de3 09f6 e9f5 eda5 0e5d 1062 0e4c
+  7e9c0: 0f45 fc42 06c0 f877 0415 069a 146b f893 fd4e fbf8 076f 0408 0b91 ef0f fe59 06f7
+  7e9e0: 112c fdd5 0200 fa42 0ba0 07d8 07af fb28 fda2 ff95 0eef 0520 03dd f9fc 04ba 0c24
+  7ea00: 131b fb33 fd92 ff3b 0a8f 0a69 0d1b f97b fd02 0391 066d 0d51 1104 f770 fd0e 0b6a
+  7ea20: 1685 03fb fdbc fd63 0cfb 1095 06a4 f693 fc9c 0bb6 1a38 0435 f58b 008e 0e8a 0d9f
+  7ea40: 0a7a f7ce fec5 0e3a 0c51 0654 036e fa5e f974 0f34 0d28 02fe fa2d ff0a 0744 0e3f
+  7ea60: 06d1 fb70 005a 07f9 0b91 0c27 fe85 fedb 05a1 0cac 0aa1 00d5 f7f7 0635 0b42 0f0f
+  7ea80: 05d8 ff5c f98d 1082 1297 085d fc51 01fb 01e7 165e 0eb4 fdfd f618 0c23 10da 0e95
+  7eaa0: fd63 ff96 0473 0eee 04eb 0225 f858 0c14 060b 04fa 02c3 0707 fada 07b7 04a5 0d0c
+  7eac0: 02f1 005e f40e 0f25 0a42 072e f48e 04e2 0208 1808 04b9 faad f931 1323 0b56 0f7a
+  7eae0: f93f 0152 07b3 1043 027e 0100 f030 0f1c 0b21 1535 0917 f809 f29e efbe 0419 0f7c
+  7eb00: 03fe f595 f057 f92e 04c3 12a6 0447 dcfd f0fd 0cb3 0e6c 04cd eae6 e18c 0638 1b1b
+  7eb20: 0bdf e180 e6d0 08d3 0e6f 1240 f31b d572 0080 21f1 0e1e f58e edca fb2b 0718 18f5
+  7eb40: 0361 e1fe f156 0f36 0ef4 091a f516 ea4d 0311 1530 0d47 fa0d ec0c f192 0828 1d2d
+  7eb60: 002e e1d1 f124 10e1 0e1d 08ef f026 e2cc 032a 24ae 0c84 eced ea60 fd01 1171 2287
+  7eb80: fa29 ddbb f7b1 2131 14bc f854 e8b8 f675 0fa8 1c23 fd1a e872 f201 0fbc 141c 073c
+  7eba0: f182 f558 00dc 0f42 0d34 0201 f3e2 fa8b 063c 1aff 08cc ea2a edea 0c1c 13f8 16dd
+  7ebc0: eb86 e85e 00a4 22a5 128f e81e e490 06d1 1361 1b48 f257 e295 fb00 1c71 0baa fe91
+  7ebe0: ed05 fde7 0d40 1ec9 0b7d e351 ef0b 153f 136b 0fb6 ef26 ef82 0491 1a6c 0ea8 f374
+  7ec00: e9c9 077f 0ada 190a fe00 e89c f6b3 10d7 0e02 1085 f12f eee0 fcf6 201e 14eb ee6e
+  7ec20: e5f4 0c24 132d 200e f95f dd00 f670 246e 13fc 00c2 e930 faf9 0f60 213b fe07 e53a
+  7ec40: f747 1f05 0fda 0fd4 f8e1 f582 fff4 1508 0989 0b28 f6e9 fbd7 0578 1a00 0ae0 f744
+  7ec60: ee97 0b54 136e 1920 f703 e33e fc26 1e94 0ab2 ffcf e977 fdcc 0fe4 262c 0753 e3eb
+  7ec80: f538 1d94 12dc 154d f646 f022 09d5 26c9 ff3d f6eb fa0f 1386 1755 0042 049d f7ce
+  7eca0: fb83 16bd 13b6 000d f5e2 fc51 14b6 1426 04a3 f6c3 f1f9 106e 15ba 0cf3 fdf9 f716
+  7ecc0: 04a9 1b82 131a 016e eef0 08db 1dc5 13e0 0844 f357 ec3b 20f1 212d 046f f0aa f831
+  7ece0: 0999 2180 08af fe22 ed61 154a 1aa7 0d4b fee4 fea9 fbf9 186b 0c56 08dd f9c3 fc6b
+  7ed00: 0721 14ee 0795 ff85 e752 0d3e 1673 11a6 0112 f3ea f7f0 3000 1af3 0047 eea2 09eb
+  7ed20: 1115 1917 0093 f540 ece4 1d7c 1470 03a6 f211 ff67 03e4 1ab3 0464 08e4 f840 07f2
+  7ed40: 1362 11f0 fc6b fc92 ed0f 1d36 11e7 07eb f2de f921 fdc2 1ba6 03f4 fd48 ebd9 0a56
+  7ed60: 091e 101d 049a f886 ea19 191e 0d5e 0973 f4f5 fa63 0116 1db2 07b1 fe40 e41e 1239
+  7ed80: 1b85 0a99 efe6 f400 f9a9 1c37 09dc 0026 f2e8 fece 085b 13f9 02db 0010 e8fa 0d61
+  7eda0: 0db6 0b1d fba5 f3fa ee29 1d90 118a 01f1 e682 001c 1454 1382 fd98 f17c e273 183b
+  7edc0: 1c58 ff25 e987 f30f fe15 1663 0677 fbec e508 0942 120e 0c2a fd59 f2a0 ea86 1d11
+  7ede0: 1316 01c7 ef89 f41f 03a6 1bae 0580 f48f e612 1280 15e8 05c7 f794 f443 f39d 17be
+  7ee00: 0e46 fd8c eb1c f91e 0b7b 1500 05c5 f514 e1fc 0f16 13dd 0429 f20b e644 f1a5 1fa5
+  7ee20: 0d59 ef1b e2e1 0503 13a1 0c14 f722 f1f6 f0f7 feef 11d0 1cff fa30 db73 fbc1 12bc
+  7ee40: 0ff2 ffb5 eebe e6a9 0664 1f7a 0e1d ddc0 efd8 095e 13f7 0dfa f4b3 e5f9 07d5 135b
+  7ee60: 10d7 f506 ebed f9ae 1063 14d5 021d e71f f4ca 02f5 1291 07be f2f4 e729 02e3 12cd
+  7ee80: 1598 ed71 ec7b f477 100f 195c 0212 dca3 f294 11fb 1852 042a ee00 ead2 0ad7 180b
+  7eea0: 1138 e25e eed6 03de 1160 0ba4 f80b dbd7 f78b 10dc 199f f8a1 ecde f5cd 0bc1 1567
+  7eec0: 0867 de31 eecf 03a4 117d 0b83 f83a dbb8 014a 17ff 13f6 f22e f070 f534 0bfa 15ac
+  7eee0: 0778 e28b f2ad 0721 16ab 0115 f1f0 e00a 0547 186a 106f e374 ea45 f902 107b 0b57
+  7ef00: f7e5 dc9b fcf6 1043 101e f6eb f0cf e8ed 076d 10f9 05b2 e458 f0c5 faae 0d96 0e4f
+  7ef20: f79b e0af 0165 0cd3 137a f8f8 ed1f eaa6 0a5a 194e 0c2b e22f f2f1 073c 164a 06c9
+  7ef40: f26a dabc ff82 1249 0c12 ea53 ed22 f35e 0c76 1234 ff56 dc56 f7a4 07a5 1139 0426
+  7ef60: f1f3 e1cd 0497 1261 0a5c e812 ed0b f8a8 0d87 0ab8 fc8e e1b2 fd74 0891 12e5 fceb
+  7ef80: f105 e4cf 0566 14b5 0c17 e2cf ee78 fc89 14fa 0c34 f2bf d61a ffb2 17e2 1474 eea1
+  7efa0: eaa2 f307 0f67 0b0e 01f9 e29a f2aa 0548 0f7f fd87 f617 e7bb 0073 0d37 0b48 ec3b
+  7efc0: ef41 f3b0 0a67 116b 03c7 dab1 f580 0baf 1643 0179 f1bf e032 0510 18d1 0f94 e782
+  7efe0: eee1 f8a6 10de 0b3c fc80 de25 fb55 0fba 0fef f3bc f050 ec58 0761 1376 05d5 de8c
+  7f000: f21d 026b 0dea 05ac f6c7 e030 fe6a 0e59 0995 f49b f2e6 ee2d 084c 0f10 038c e411
+  7f020: f2e2 0014 0e11 05e7 f4ba de1f fe1a 151e 0f26 ea1d ed37 f86e 0f6a 1202 ff9a dc1f
+  7f040: f936 0fc0 103f fa0d f199 ec26 07f2 112f 058d ed1a f243 f837 0df2 0a74 f94e e615
+  7f060: fd2e 0b59 0e0c fc06 f39e ec84 05fd 13cd 08ef e766 f13c 003d 0e54 089c f7a6 e35b
+  7f080: ff1a 12fc 0ed2 f500 ef05 eee7 0af6 14c1 0265 e4ba f5a4 06f9 11d7 018f f238 ea5e
+  7f0a0: 060c 13dd 089b ecfd f213 fde5 0e6e 0a11 fbf0 e94e f834 0af8 0e2b fb49 f67e eab4
+  7f0c0: 0166 13e2 0abc ed0d f076 fb14 10cd 0f8b fac2 e1a8 f764 122b 115c f7d5 efdd eeca
+  7f0e0: 0b39 17fc 02ca e53c f3a2 085c 1071 0430 f58c e88e 01c9 16de 0b84 f18e f5d1 f682
+  7f100: 098f 1281 ff5f e79e f440 0855 1082 041f f5cb ebb0 026d 16ce 0bbd f005 f15c f5c5
+  7f120: 0e53 1274 fd35 e7a7 f5c0 1026 1171 fc89 f385 eae3 0636 1f71 07d0 e862 f2e6 0065
+  7f140: 0ff5 0e8b f939 e665 fc73 166b 0b68 f51a f4a7 f744 0ab4 1534 0209 f26f f5f3 0086
+  7f160: 0fec 0b2f fa3b ee61 fcdc 15d4 0fdb f767 f2a6 f18d 0c32 1b2c fe8e e563 f4bb 0b23
+  7f180: 118e 0234 f345 ed82 068c 1cb5 09fd ef9a f5be 0056 102d 0e51 fafd f1b9 fbed 0dcb
+  7f1a0: 0fa0 fc5b f532 f62d 05de 1526 0453 f222 f635 0057 1049 0e1d fb6f efa5 f9db 1119
+  7f1c0: 1019 fc4e f55c f21f 09ac 2040 0377 eabb f552 079d 1342 077d f429 ef10 ff96 1b33
+  7f1e0: 0f41 ed53 f1cc 0200 0dfd 13a3 fe1f ef8d fa19 10e0 1099 feed f857 f61f 00aa 17c2
+  7f200: 0a0a f4ae f709 fc2c 0da9 191c fe72 efb3 fa44 105e 12df ff8e f402 f3ec 0604 1d94
+  7f220: 0600 eaae f385 0917 1169 0c50 f95b ef26 fdaa 1e46 11a5 f482 f548 fa80 0aff 1e7d
+  7f240: 013d ef6b fac7 0ace 1206 0a67 f6f8 f449 00bf 178d 0a69 f79c f816 fa20 0b7e 190b
+  7f260: fecb ed8b f844 0b11 11ad 071f f6ad eec6 ffc2 1ef6 0d36 ed97 f1fc 0118 127d 19b7
+  7f280: fa42 ed55 fc3d 163f 10fe fa7a f33d fa3e 0dc4 18a0 0080 f202 f8b6 035b 10c1 0ed6
+  7f2a0: f8c1 f4be feda 1634 115d f9d8 f5aa fa9c 0b36 1de4 03b6 ef9b f880 0ab7 13d8 0caf
+  7f2c0: f707 f3db 0341 1c4d 0d6e f2fc f284 fc0d 0fce 1944 fc92 ed80 fa09 1244 150e ffcc
+  7f2e0: f34d fb8b 0565 1cf1 0672 e9cb f67a 0732 0d0b 0f92 fb95 f192 fc49 10c1 10b3 fefd
+  7f300: f831 fb3f 03c3 1ab8 0627 ef8e f676 0564 12f7 125b f72e ef72 fe2a 1b77 126d f25a
+  7f320: f2e2 ffd8 0da7 1e99 ffc3 e77d fa20 10b0 1015 052e f67e f416 00f9 1aad 062b ef45
+  7f340: f72e 0191 0e03 194d fe77 ef91 fa9d 0e84 104e 050d f662 f58e 057d 1c67 081d f1d7
+  7f360: f698 03ae 107e 1783 fa68 ed26 fc58 1623 1149 fd82 f3f4 f546 0a9a 1e28 0184 ea25
+  7f380: f805 0aa6 1393 0d5f f460 f40e 0374 1690 0d30 f796 f74d 0257 0bde 1363 0063 f494
+  7f3a0: fb7f 0904 0faa 0a95 f6d8 f434 010e 16d8 0cf6 f2ed f23c fcc8 0d11 19a8 fc54 e9ce
+  7f3c0: fbec 1254 1308 fdfc f118 fb27 0b49 17ff 03c5 e9fe f600 089b 0d05 0baf f81e f546
+  7f3e0: fef6 0de1 1098 fb06 fc1b fb03 f65a 180d 1033 f0fe f3a6 f7b7 0a73 169b ff34 e569
+  7f400: f4d3 0f06 18ed f6fc fd03 ee36 fa6b 1eb9 12a4 ead5 eef8 ff0d 1a35 0b26 fbfb e1f0
+  7f420: edd8 1f2a 2241 ec3b eea9 f6e4 0a1c 1cb6 0c6f e412 f50d 0138 1428 03c3 02b3 e49c
+  7f440: efbd 1926 1bd1 f360 f50f ecc0 08cb 1cef 0e93 e330 ec5d 0945 1f2b 006b f939 dff5
+  7f460: fa24 248e 18bd e46e eea0 fbd0 1196 107e 0752 e060 f754 15b5 1fff f6c7 f739 ed78
+  7f480: 091a 1a99 0fc1 e321 f36a fe71 0d5f 0cc6 0318 e6c2 f99d 1263 1ff0 f4b1 f4e4 ebe8
+  7f4a0: 069b 1deb 152c e23b ef65 0594 18ce 0e86 01c5 e09d f6d5 1d66 2029 ec5d ec82 f664
+  7f4c0: 1311 1a10 01f4 dc9f fa12 1088 1df8 fb0f f510 ef4b 0245 1401 1308 ed17 f40b ff00
+  7f4e0: 100f 0e5f 05e9 e74c f32d 0c99 1ed8 fc5d f94c e9bf 0299 1ddb 1b65 e746 ec5d fc6e
+  7f500: d9f9 0bcc 124c 165e f299 ecc5 f4ca 1903 1508 fe25 db3a 0181 05fd 1631 ff53 eb61
+  7f520: dedb 0caf 130f 123a e748 f642 fa3f 186f 0ea3 f67e da12 015c 060e 15ff ffc2 ea63
+  7f540: e376 175a 1432 08bb e7af f7d4 f9d6 18b2 0e75 f6f2 e074 029a 0d55 12c9 f4cb e9fe
+  7f560: e980 1854 14ad fdfd db93 f727 0045 164f ff58 ea92 e31a 0f98 0e68 085c edfd ef41
+  7f580: f0d0 1524 0a17 f7d7 e145 fbe8 fe83 1611 01d9 ea70 ea2e 0e74 0dbe 0cdb ec3d ed58
+  7f5a0: f437 195b 1465 f853 e056 02e0 0cdc 14fd fa43 e5aa e4ac 119e 0f3d fe31 e422 f370
+  7f5c0: fb53 1616 0a29 ec68 e1d0 063e 0a2f 1008 f933 e801 ed46 12b5 0f26 fb33 e323 f587
+  7f5e0: 00f2 1139 0413 eda0 e95c 0868 0c7f 0cf7 f347 ea9e ef34 1368 12ee f834 e087 f8c2
+  7f600: 06a8 1760 ff95 e0e1 e348 131d 1892 0390 e6b1 ee37 00da 1148 07a4 f1f0 e43b fe93
+  7f620: 0c3c 0874 f8bb eddd efde 0a99 0ee5 fc41 e955 f1e9 fd54 10ce 0f71 ec2d e0c1 04b6
+  7f640: 12a3 0e85 f937 e595 ede9 13f2 1903 fa00 e65c f3d0 04fe 115e 0632 ea35 e6da 09b1
+  7f660: 1322 020c efb7 ed01 f75f 10b9 11f7 eee2 e2be fcbf 0957 0b1d 00f5 e6f9 ebaf 0a0c
+  7f680: 0f43 fd5f f3e6 eda9 fa66 0e21 0dc0 f097 e7e9 fa05 08e9 0b22 00a6 e3fc eab8 0c2a
+  7f6a0: 1898 fa50 e84a f137 0536 121c 0eb7 e816 e60a 072c 1485 03da f682 ea86 f9c0 0eaa
+  7f6c0: 100b f568 ef8c f237 053b 0d90 05b0 e9e0 f0b6 048b 1123 0364 f992 eb50 f929 0d99
+  7f6e0: 1547 f3be e9fd f738 0ad7 0af9 04fe e6ca efeb 09d1 174b feb3 f30f e9de fe08 1120
+  7f700: 1250 ed2e ebd0 fcf3 114d 0931 fc1d e81f f8a1 0dbf 14c8 f60d ef31 f48f 0a4b 0b59
+  7f720: 07ca ecf1 f0b2 ff3f 13c3 00ce fc38 ebc5 f59e 0a5b 1744 f6b0 eee9 f18c 098d 1060
+  7f740: 0ad5 e78d ea9a 0423 1997 0120 f557 e9e4 fdc4 1322 1482 ed48 eb39 fc05 1251 081d
+  7f760: 010a e888 f4e5 0c5f 193e f884 f52c f2db 0101 0e89 0f59 ed18 ed82 fbc4 1273 0837
+  7f780: 00a6 ea89 f735 0c2f 1973 f846 f1ce ef41 03d0 120c 0cbc ecad ed56 00fa 18c1 0346
+  7f7a0: fac9 ea1e f70e 148a 1cbb f02e edd7 f6c5 0bc2 0f17 090a e915 effe 0998 18e8 fa9b
+  7f7c0: f6ca f1c6 0253 109d 113c f424 f63e f6b7 0c90 0d17 0689 eeb1 f5a1 071c 1bf0 fe2c
+  7f7e0: f78e ecbc ff5b 15b3 143a e9ce ece0 fd9a 14d2 07d9 fd90 ea42 fa1d 1210 1bef f595
+  7f800: f3d6 f74b 0bd2 0f60 0870 f06b f848 01a2 15d8 02ee fa22 f18b ff16 0d05 13c8 f4b8
+  7f820: f627 f6f7 0c0c 0f4b 0871 f05d f4b8 0305 1831 0297 faa2 efb3 fc7e 1765 199a ef32
+  7f840: f056 fb91 126d 0d60 ffbc ec6e f72b 0bf1 1f17 f8c8 edc5 f819 0a7c 10cf 0e05 f0be
+  7f860: f4dc 032f 17b8 04c7 fcad f4bb fa85 0b9a 188c f9cd f6c8 f6f5 0512 1586 10c0 f09d
+  7f880: f513 030a 1809 07b0 f9fe f0c7 fb9e 1353 1964 f230 ed57 fcf7 1123 0ec9 0589 efe5
+  7f8a0: f461 0d71 2143 fdcd f461 f657 017b 171b 1645 f0dd f597 0119 11e8 0eba 020a f15a
+  7f8c0: fa38 0b9d 182e fbc8 f925 f68b 0221 14ca 10e7 f029 f258 0051 1261 0c80 002c ef5b
+  7f8e0: f486 1049 1ed9 f801 edef f812 0a94 18f6 0e18 ecf4 f45b 080c 1b08 028b f6e3 f316
+  7f900: 04b7 1548 1127 f371 f63e fbbe 0c07 11ad 0589 f212 fa02 089a 1b37 027a f717 f636
+  7f920: 01b1 16f5 1695 f3c3 f310 0077 1222 11de 029b f172 fa2e 107f 1bd5 fc4d f153 f59c
+  7f940: 0564 1858 0e4d efba f22d 0588 18ca 0ad9 f70a f602 ffac 116b 19d5 f1e4 edaf ffc9
+  7f960: 0b12 0f80 0835 f27e f5c5 0603 1569 0747 f9da f97d fd1e 10bd 1691 f63f f101 fdb5
+  7f980: 0c97 1663 05c5 ef25 f4a9 0d09 1e6d fffe ee86 fa2f 04c3 1995 1473 edbd ed37 07e5
+  7f9a0: 128e 0bb8 fcfd f3e6 f749 1036 1662 f64a f0fa fd78 05d3 1786 0ec1 f2c3 f2d8 053c
+  7f9c0: 1226 0ba9 fcf6 f411 faaf 13eb 1739 f981 f18c fdb4 0905 17f7 0b55 ef2a f20d 0a6c
+  7f9e0: 1879 0699 f75c f30f fcd2 191d 1465 f0df ede9 02dc 0fb0 1436 0021 f0a8 fa9b 0e5b
+  7fa00: 162d 0116 f42b fd79 0619 1269 0bc6 f7e5 f5f4 030a 0cb3 1047 ffdd f378 f827 0d8b
+  7fa20: 16b7 feb0 eee2 f7f6 02eb 1788 0ec6 ed98 f02f 0894 162c 09f6 f432 f4a8 0279 1447
+  7fa40: 11fc f3e2 eb3a 0221 0c60 1057 0385 f1ac f313 0b40 1408 0406 f1d5 fad8 0051 13cf
+  7fa60: 11ed f415 ee62 02ba 0c63 1066 0370 f1d4 f2bd 0d15 16c1 01d3 efb3 fb1b 039b 1765
+  7fa80: 0f61 f364 eb2f 0711 1367 0c44 f8de f0ce f797 185f 19df f9e9 ebbd 0276 0bf8 1266
+  7faa0: 0968 f004 f10a 0970 0f4b 03cb f9f4 fbea f595 11ec 145b fe50 f6e9 f37a f9d9 1f30
+  7fac0: 1013 f0bc e44f fd5b 1842 0f41 ee46 edf0 f4c9 19ef 15c3 f926 eadb ecb3 066f 1e65
+  7fae0: 0759 edda e71b 0d91 1f45 076c f1ed e2d8 f29f 2700 15bd ead2 dfe8 fc9a 13a2 1b0d
+  7fb00: fb98 ed7f eea0 0dc1 19f7 09b5 eef9 e397 fc22 2536 1444 f30a deac f69c 15b2 1db6
+  7fb20: ffae e12e e95c 1d73 1fc5 00b2 e14c e2f9 0c2b 2c3c 0956 e3b3 e657 0d07 1b4b 111f
+  7fb40: eeec e979 fa54 1da5 153e f692 e398 f9a3 0f8e 196a 029f eb8c e745 02c9 1877 11b5
+  7fb60: ec0c e85d f805 2418 1930 f5c2 e28e f04e 1298 f6eb f0cf e8ed 076d 10f9 05b2 e458
+  7fb80: f0c5 faae 0d96 0e4f f79b e0af 0165 0cd3 137a f8f8 ed1f eaa6 0a5a 194e 0c2b e22f
+  7fba0: f2f1 073c 164a 06c9 f26a dabc ff82 1249 0c12 ea53 ed22 f35e 0c76 1234 ff56 dc56
+  7fbc0: f7a4 07a5 1139 0426 f1f3 e1cd 0497 1261 0a5c e812 ed0b f8a8 0d87 0ab8 fc8e e1b2
+  7fbe0: fd74 0891 12e5 fceb f105 e4cf 0566 14b5 0c17 e2cf ee78 fc89 14fa 0c34 f2bf d61a
+  7fc00: ffb2 17e2 1474 eea1 eaa2 f307 0f67 0b0e 01f9 e29a f2aa 0548 0f7f fd87 f617 e7bb
+  7fc20: 0073 0d37 0b48 ec3b ef41 f3b0 0a67 116b 03c7 dab1 f580 0baf 1643 0179 f1bf e032
+  7fc40: 0510 18d1 0f94 e782 eee1 f8a6 10de 0b3c fc80 de25 fb55 0fba 0fef f3bc f050 ec58
+  7fc60: 0761 1376 05d5 de8c f21d 026b 0dea 05ac f6c7 e030 fe6a 0e59 0995 f49b f2e6 ee2d
+  7fc80: 084c 0f10 038c e411 f2e2 0014 0e11 05e7 f4ba de1f fe1a 151e 0f26 ea1d ed37 f86e
+  7fca0: 0f6a 1202 ff9a dc1f f936 0fc0 103f fa0d f199 ec26 07f2 112f 058d ed1a f243 f837
+  7fcc0: 0df2 0a74 f94e e615 fd2e 0b59 0e0c fc06 f39e ec84 05fd 13cd 08ef e766 f13c 003d
+  7fce0: 0e54 089c f7a6 e35b ff1a 12fc 0ed2 f500 ef05 eee7 0af6 14c1 0265 e4ba f5a4 06f9
+  7fd00: 11d7 018f f238 ea5e 060c 13dd 089b ecfd f213 fde5 0e6e 0a11 fbf0 e94e f834 0af8
+  7fd20: 0e2b fb49 f67e eab4 0166 13e2 0abc ed0d f076 fb14 10cd 0f8b fac2 e1a8 f764 122b
+  7fd40: 115c f7d5 efdd eeca 0b39 17fc 02ca e53c f3a2 085c 1071 0430 f58c e88e 01c9 16de
+  7fd60: 0b84 f18e f5d1 f682 098f 1281 ff5f e79e f440 0855 1082 041f f5cb ebb0 026d 16ce
+  7fd80: 0bbd f005 f15c f5c5 0e53 1274 fd35 e7a7 f5c0 1026 1171 fc89 f385 eae3 0636 1f71
+  7fda0: 07d0 e862 f2e6 0065 0ff5 0e8b f939 e665 fc73 166b 0b68 f51a f4a7 f744 0ab4 1534
+  7fdc0: 0209 f26f f5f3 0086 0fec 0b2f fa3b ee61 fcdc 15d4 0fdb f767 f2a6 f18d 0c32 1b2c
+  7fde0: fe8e e563 f4bb 0b23 118e 0234 f345 ed82 068c 1cb5 09fd ef9a f5be 0056 102d 0e51
+  7fe00: fafd f1b9 fbed 0dcb 0fa0 fc5b f532 f62d 05de 1526 0453 f222 f635 0057 1049 0e1d
+  7fe20: fb6f efa5 f9db 1119 1019 fc4e f55c f21f 09ac 2040 0377 eabb f552 079d 1342 077d
+  7fe40: f429 ef10 ff96 1b33 0f41 ed53 f1cc 0200 0dfd 13a3 fe1f ef8d fa19 10e0 1099 feed
+  7fe60: f857 f61f 00aa 17c2 0a0a f4ae f709 fc2c 0da9 191c fe72 efb3 fa44 105e 12df ff8e
+  7fe80: f402 f3ec 0604 1d94 0600 eaae f385 0917 1169 0c50 f95b ef26 fdaa 1e46 11a5 f482
+  7fea0: f548 fa80 0aff 1e7d 013d ef6b fac7 0ace 1206 0a67 f6f8 f449 00bf 178d 0a69 f79c
+  7fec0: f816 fa20 0b7e 190b fecb ed8b f844 0b11 11ad 071f f6ad eec6 ffc2 1ef6 0d36 ed97
+  7fee0: f1fc 0118 127d 19b7 fa42 ed55 fc3d 163f 10fe fa7a f33d fa3e 0dc4 18a0 0080 f202
+  7ff00: f8b6 035b 10c1 0ed6 f8c1 f4be feda 1634 115d f9d8 f5aa fa9c 0b36 1de4 03b6 ef9b
+  7ff20: f880 0ab7 13d8 0caf f707 f3db 0341 1c4d 0d6e f2fc f284 fc0d 0fce 1944 fc92 ed80
+  7ff40: fa09 1244 150e ffcc f34d fb8b 0565 1cf1 0672 e9cb f67a 0732 0d0b 0f92 fb95 f192
+  7ff60: fc49 10c1 10b3 fefd f831 fb3f 03c3 1ab8 0627 ef8e f676 0564 12f7 125b f72e ef72
+  7ff80: fe2a 1b77 126d f25a f2e2 ffd8 0da7 1e99 ffc3 e77d fa20 10b0 1015 052e f67e f416
+  7ffa0: 00f9 1aad 062b ef45 f72e 0191 0e03 194d fe77 ef91 fa9d 0e84 104e 050d f662 f589
+  7ffc0: 0583 1c54 0837 eff2 f590 01e5 12f8 1d8d f590 eba6 ff12 1b57 1683 f08f e6c3 ff9e
+  7ffe0: 1400 1f5d f4df dc23 fc68 15ca 103c 03af e926 f750 09c6 1c84 0c7b df43 f040 12ad
+
+
+(after the zeroing DMA the area read back 28 non-zero halfwords)
+(voice 0: the sample read back DIFFERENT; after the run its repeat address 0200, envelope 7fff, ENDX bit 0 1)
+  read back:
+   00 07 44 44 44 44 44 44 00 00 00 00 00 00 00 00
+   02 02 00 00 00 00 00 00 ff 00 0f 40 e3 cf 30 10
+   01 02 21 00 bd 0f 43 10 e0 bf 2d 30 12 df fe df
+   01 02 51 f0 31 b0 ea 10 54 f0 ef 9f 60 20 21 c0
+
+DC 4000h, 3 s: 64 distinct values (and 1433 halfwords beyond the first 64), value x count:
+  f446 x38    f339 x59    f475 x59    f94f x59    eb68 x59    ee3e x59  
+  ebc0 x58    ec24 x58    e8df x39    ddde x59    f69e x38    fafa x59  
+  f553 x38    f4ee x38    f69d x21    f552 x21    f4ed x21    f445 x21  
+  e8de x20    1881 x55    fa5f x55    e566 x55    e989 x55    ed63 x55  
+  d90d x55    d2b0 x55    d34c x55    ce5e x54    ddd3 x54    e1f9 x54  
+  0bc0 x54    265d x54    1ada x54    0aa0 x58    0c22 x58    fce3 x58  
+  e7a7 x58    c602 x58    d2ca x58    e973 x57    e5aa x57    d15f x57  
+  e41f x57    1dd0 x57    15e4 x57    ee89 x57    ee6f x57    f328 x12  
+  1352 x12    255d x4     256c x12    28f8 x12    090a x12    f634 x12  
+  f520 x12    f454 x12    e4ec x12    e01f x2     e865 x12    eab8 x12  
+  f2a4 x19    255e x7     e020 x10    255f x1   
+
+VOICE 1 on the same blocks, 2 ms after KON: 69 non-zero samples in its capture ring (written half now 1):
+  1b8:ff67  1b9:fc99  1ba:fc9b  1bb:ff69  1bc:ff67  1bd:fd32  1be:ff69  1bf:025f
+  1c0:0cfd  1c1:098f  1c2:fb8e  1c3:f9a4  1c4:f432  1c5:ff6f  1c6:0867  1c7:0259
+  1c8:03fc  1c9:0890  1ca:0c61  1cb:0257  1cc:fc6e  1cd:e93b  1ce:df42  1cf:f485
+  1d0:0263  1d1:1592  1d2:19f0  1d3:05e0  1d4:059a  1d5:fecb  1d6:f399  1d7:f219
+  1d8:df39  1d9:ebb0  1da:07af  1db:05e8  1dc:1330  1dd:0fea  1de:06c2  1df:f7ff
+  1e0:eba0  1e1:f013  1e2:f6db  1e3:f5a6  1e4:ef31  1e5:0806  1e6:1d32  1e7:04ac
+
+
+spu/spu-reverb: Done.

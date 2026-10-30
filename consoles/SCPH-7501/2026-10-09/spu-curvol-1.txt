@@ -1,0 +1,100 @@
+
+spu/spu-curvol
+The SPU's current-level registers (1F801E00h+N*4, 1F801DB8h, ENVX) read and written, and its unknown
+registers (1F801DA0h, 1DBCh, 1E60h-1E7Fh, 1E80h). Values in hex; a sample is 768 cycles.
+No assertions.
+
+UNKNOWN at entry: 1DA0 ac00 ac00  1DBC c84d b8d2
+  1E00: 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  1E20: 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  1E40: 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  1E60: 96c6 5862 349a fdaf 6b2a 7008 e4c4 9c2c 58b6 907c a01c 556c 7c0d dc80 88b2 de6f
+UNKNOWN 1DA0 x32:
+  ac00 ac00 ac00 ac00 ac00 ac00 ac00 ac00 ac00 0100 ac00 ac00 ac00 ac00 0100 ac00
+  ac00 ac00 ac00 ac00 ac00 ac00 ac00 ac00 ac00 ac00 ac00 ac00 ac00 ac00 ac00 ac00
+UNKNOWN read back after 0000 FFFF 5A5A A5A5:
+  1dbc: 0000 ffff 5a5a a5a5
+  1dbe: 0000 ffff 5a5a a5a5
+  1e60: 0000 ffff 5a5a a5a5
+  1e62: 0000 ffff 5a5a a5a5
+  1e64: 0000 ffff 5a5a a5a5
+  1e66: 0000 ffff 5a5a a5a5
+  1e68: 0000 ffff 5a5a a5a5
+  1e6a: 0000 ffff 5a5a a5a5
+  1e6c: 0000 ffff 5a5a a5a5
+  1e6e: 0000 ffff 5a5a a5a5
+  1e70: 0000 ffff 5a5a a5a5
+  1e72: 0000 ffff 5a5a a5a5
+  1e74: 0000 ffff 5a5a a5a5
+  1e76: 0000 ffff 5a5a a5a5
+  1e78: 0000 ffff 5a5a a5a5
+  1e7a: 0000 ffff 5a5a a5a5
+  1e7c: 0000 ffff 5a5a a5a5
+  1e7e: 0000 ffff 5a5a a5a5
+  1DA0: 0100 ac00 5a5a a5a5
+UNKNOWN 1E80-1E86 before and after 1234: ffff/ffff ffff/ffff ffff/ffff ffff/ffff
+
+FIXED: VOLL (VOLR = VOLL^7FFF) / current L R at once / L R two samples later
+ voice 5 (off):
+  0000: 0000 0000   0000 fffe
+  0001: 0000 fffe   0002 fffc
+  1234: 0002 fffc   2468 db96
+  3fff: 2468 db96   7ffe 8000
+  4000: 7ffe 8000   8000 7ffe
+  4001: 8000 7ffe   8002 7ffc
+  7fff: 8002 7ffc   fffe 0000
+ voice 1 (playing):
+  0000: 0000 0000   0000 fffe
+  0001: 0000 fffe   0002 fffc
+  1234: 0002 fffc   2468 db96
+  3fff: 2468 db96   7ffe 8000
+  4000: 7ffe 8000   8000 7ffe
+  4001: 8000 7ffe   8002 7ffc
+  7fff: 8002 7ffc   fffe 0000
+
+SWEEP (8020h from level 0), current L once a sample:
+ voice 1 playing:
+  0038 0070 00a8 00e0 0118 0150 0188 01c0 01f8 0230 0268 02a0 02d8 0310 0348 0380
+  03b8 03f0 0428 0460 0498 04d0 0508 0540 0578 05b0 05e8 0620 0658 0690 06c8 0700
+  0738 0770 07a8 07e0 0818 0850 0888 08c0 08f8 0930 0968 09a0 09d8 0a10 0a48 0a80
+ voice 5 off, SPU IRQ off:
+  0038 0070 00a8 00e0 0118 0150 0188 01c0 01f8 0230 0268 02a0 02d8 0310 0348 0380
+  03b8 03f0 0428 0460 0498 04d0 0508 0540 0578 05b0 05e8 0620 0658 0690 06c8 0700
+  0738 0770 07a8 07e0 0818 0850 0888 08c0 08f8 0930 0968 09a0 09d8 0a10 0a48 0a80
+ voice 5 off, SPU IRQ on:
+  0038 0070 00a8 00e0 0118 0150 0188 01c0 01f8 0230 0268 02a0 02d8 0310 0348 0380
+  03b8 03f0 0428 0460 0498 04d0 0508 0540 0578 05b0 05e8 0620 0658 0690 06c8 0700
+  0738 0770 07a8 07e0 0818 0850 0888 08c0 08f8 0930 0968 09a0 09d8 0a10 0a48 0a80
+
+VWRITE fixed (VOLL 2000): 1234 into 1E04, read at once, samples 1 2 8: 1234 4000 4000 4000
+VWRITE sweeping: before 0460, 4000 into 1E04, at once 4000, then once a sample:
+  4038 4070 40a8 40e0 4118 4150 4188 41c0
+  41f8 4230 4268 42a0 42d8 4310 4348 4380
+MWRITE fixed (main 0): 1234 into 1DB8, read at once, samples 1 2 8: 1234 0000 0000 0000
+MWRITE sweeping: before 0460, 4000 into 1DB8, at once 4000, then once a sample:
+  4038 4070 40a8 40e0 4118 4150 4188 41c0
+  41f8 4230 4268 42a0 42d8 4310 4348 4380
+
+ENVX HELD (sustain rate 7F), 2000 written: ENVX before 3fff, at once, then once a sample:
+  2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000
+  2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000
+  2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000
+ voice 1's ring from 8 samples before the write:
+  0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+
+ENVX STEPPING (sustain -16 a sample), 7000 written: ENVX before 140f, at once, then once a sample:
+  7000 6ff0 6fe0 6fd0 6fc0 6fb0 6fa0 6f90 6f80 6f70 6f60 6f50 6f40 6f30 6f20 6f10
+  6f00 6ef0 6ee0 6ed0 6ec0 6eb0 6ea0 6e90 6e80 6e70 6e60 6e50 6e40 6e30 6e20 6e10
+  6e00 6df0 6de0 6dd0 6dc0 6db0 6da0 6d90 6d80 6d70 6d60 6d50 6d40 6d30 6d20 6d10
+ voice 1's ring from 8 samples before the write:
+  0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+
+IRQ voice 1 playing over the IRQ address (SPUCNT c040 written): fired after -1 cycles; SPUCNT then c040 (bit 6 1), SPUSTAT 0000
+  SPUCNT.6 written 0: flag cleared (SPUSTAT 0000); re-armed: fired again after -1 cycles
+  keyed off, ENVX 0000, armed on block 6 then block 2: fired after -1 and -1 cycles (-1: not in 8,000,000)
+
+spu/spu-curvol: Done.

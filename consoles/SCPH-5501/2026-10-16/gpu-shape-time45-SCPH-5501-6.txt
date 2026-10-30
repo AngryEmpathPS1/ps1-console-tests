@@ -1,0 +1,48 @@
+
+gpu/gpu-shape-time45
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+semi tex4 TL 16x16      322..340      117..117  
+semi tex4 TL 16x64      886..908      117..117  
+semi tex4 TL 64x16      722..745      121..121  
+semi tex4 TL 64x64     2374..2393     121..121  
+semi tex4 TL 128x16    1634..1652     123..123  
+semi tex4 TL 128x64    5999..6024     123..123  
+opaq tex4 TL 16x16      296..296      117..117  
+opaq tex4 TL 16x64      806..812      117..117  
+opaq tex4 TL 64x16      707..709      121..121  
+opaq tex4 TL 64x64     2340..2353     121..121  
+opaq tex4 TL 128x16    1595..1612     123..123  
+opaq tex4 TL 128x64    5823..5849     123..123  
+semi tex8 TL 16x16      322..341      117..117  
+semi tex8 TL 16x64     1395..1424     117..117  
+semi tex8 TL 64x16      722..737      121..121  
+semi tex8 TL 64x64     4126..4145     121..121  
+semi tex8 TL 128x16    2042..2058     123..123  
+semi tex8 TL 128x64    9169..9206     123..123  
+opaq tex8 TL 16x16      296..296      117..117  
+opaq tex8 TL 16x64     1313..1336     117..117  
+opaq tex8 TL 64x16      707..708      121..121  
+opaq tex8 TL 64x64     3736..3772     121..121  
+opaq tex8 TL 128x16    1898..1916     123..123  
+opaq tex8 TL 128x64    8300..8333     123..123  
+semi tex15 TL 16x16     322..341      117..117  
+semi tex15 TL 16x64    1838..1860     117..117  
+semi tex15 TL 64x16    1496..1518     121..121  
+semi tex15 TL 64x64    7015..7050     121..121  
+semi tex15 TL 128x16   3825..3851     123..123  
+semi tex15 TL 128x64  15648..15698    123..123  
+opaq tex15 TL 16x16     296..296      117..117  
+opaq tex15 TL 16x64    1608..1628     117..117  
+opaq tex15 TL 64x16    1366..1387     121..121  
+opaq tex15 TL 64x64    6267..6289     121..121  
+opaq tex15 TL 128x16   3428..3451     123..123  
+opaq tex15 TL 128x64  13940..13967    123..123  
+semi gour TL64+flat     746..766      704..719  
+opaq gour TL64+flat     729..734      707..707  
+semi gour BR 64x16      761..783      175..175  
+opaq gour BR 64x16      756..761      175..175  
+
+gpu/gpu-shape-time45: Done.

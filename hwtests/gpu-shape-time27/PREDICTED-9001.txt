@@ -1,0 +1,38 @@
+gpu-shape-time27 on the SCPH-9001 - PREDICTED before its first run there (2026-10-15): this core, v0.377.113 (451d141), as the
+SCPH-9001 under the runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0) - the NEW GPU's
+model. This program ran on the SCPH-1001 (old GPU) first; its PREDICTED.txt is that run's.
+
+
+gpu/gpu-shape-time27
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+copy 48x8               599..599        3..3    
+copy 48x32             2412..2412       3..3    
+copy 96x8              1007..1007       3..3    
+copy 96x32             4044..4044       3..3    
+copy 160x8             1617..1617       3..3    
+copy 160x32            6484..6484       3..3    
+copy 192x8             1949..1949       3..3    
+copy 192x32            7813..7813       3..3    
+copy 224x8             2281..2281       3..3    
+copy 224x32            9142..9142       3..3    
+copy 256x8             2613..2613       3..3    
+copy 256x32           10470..10470      3..3    
+copy 320x8             3371..3371       3..3    
+copy 320x32           13502..13502      3..3    
+copy 384x8             4000..4000       3..3    
+copy 384x32           16017..16017      3..3    
+copy 512x8             5258..5258       3..3    
+copy 512x32           21047..21047      3..3    
+c256x8 0>512           2613..2613       3..3    
+c256x32 0>512         10470..10470      3..3    
+c256x8 256>768         2613..2613       3..3    
+c256x32 256>768       10470..10470      3..3    
+c256x8 768>256         2613..2613       3..3    
+c256x32 768>256       10470..10470      3..3    
+c256x8 768>0           2613..2613       3..3    
+c256x32 768>0         10470..10470      3..3    
+
+gpu/gpu-shape-time27: Done.

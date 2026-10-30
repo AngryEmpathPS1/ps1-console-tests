@@ -1,0 +1,18 @@
+cpu/cpu-loop-tick12
+A CD / SPU register read behind queued RAM stores. No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  CD-LD       25.65      25.62
+  CD-ST-LD    32.06      32.03
+  CD-ST       17.13      17.10
+  CD-1ST      15.12      15.09
+  CD-FAR      21.40      21.35
+  CD-ST-NOW   17.13      17.10
+  SPU-LD      35.37      35.33
+  SPU-ST-LD   42.70      42.66
+  SPU-ST      27.31      27.27
+  SPU-1ST     25.15      25.13
+  SPU-FAR     31.41      31.37
+  SPU-ST-NOW  27.30      27.27
+
+cpu/cpu-loop-tick12: Done.

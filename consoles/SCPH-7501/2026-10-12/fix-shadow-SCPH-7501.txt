@@ -1,0 +1,37 @@
+
+cpu/fix-shadow
+A cold line with a load at word 0, left for warm code (Timer 2 cycles, fastest..slowest of 16; cold / warm).
+There are no assertions - compare against your emulator.
+
+  N-B1-T0   no load (a nop), branch at C word 1, then nops         cold  22..22   warm  15..15   miss 7
+  N-B1-T1   no load (a nop), branch at C word 1, then nop, addiu, the load again cold  22..22   warm  15..15   miss 7
+  N-B2-T0   no load (a nop), branch at C word 2, then nops         cold  21..21   warm  16..16   miss 5
+  N-B2-T1   no load (a nop), branch at C word 2, then nop, addiu, the load again cold  21..25   warm  16..16   miss 5
+  N-S-T0    no load (a nop), fall into warm D, then nops           cold  21..25   warm  16..16   miss 5
+  N-S-T1    no load (a nop), fall into warm D, then nop, addiu, the load again cold  21..25   warm  16..16   miss 5
+  R-B1-T0   RAM lw, branch at C word 1, then nops                  cold  24..25   warm  17..17   miss 7
+  R-B1-T1   RAM lw, branch at C word 1, then nop, addiu, the load again cold  26..26   warm  20..22   miss 6
+  R-B2-T0   RAM lw, branch at C word 2, then nops                  cold  23..29   warm  18..18   miss 5
+  R-B2-T1   RAM lw, branch at C word 2, then nop, addiu, the load again cold  26..31   warm  20..26   miss 6
+  R-S-T0    RAM lw, fall into warm D, then nops                    cold  23..24   warm  18..18   miss 5
+  R-S-T1    RAM lw, fall into warm D, then nop, addiu, the load again cold  26..31   warm  20..23   miss 6
+  B-B1-T0   BIOS ROM lbu, branch at C word 1, then nops            cold  24..25   warm  17..17   miss 7
+  B-B1-T1   BIOS ROM lbu, branch at C word 1, then nop, addiu, the load again cold  29..29   warm  24..24   miss 5
+  B-B2-T0   BIOS ROM lbu, branch at C word 2, then nops            cold  23..23   warm  18..18   miss 5
+  B-B2-T1   BIOS ROM lbu, branch at C word 2, then nop, addiu, the load again cold  29..29   warm  24..24   miss 5
+  B-S-T0    BIOS ROM lbu, fall into warm D, then nops              cold  23..23   warm  18..18   miss 5
+  B-S-T1    BIOS ROM lbu, fall into warm D, then nop, addiu, the load again cold  29..29   warm  24..24   miss 5
+  J-B1-T0   JOY_STAT lbu, branch at C word 1, then nops            cold  24..28   warm  17..17   miss 7
+  J-B1-T1   JOY_STAT lbu, branch at C word 1, then nop, addiu, the load again cold  26..26   warm  19..19   miss 7
+  J-B2-T0   JOY_STAT lbu, branch at C word 2, then nops            cold  23..28   warm  18..18   miss 5
+  J-B2-T1   JOY_STAT lbu, branch at C word 2, then nop, addiu, the load again cold  25..25   warm  20..20   miss 5
+  J-S-T0    JOY_STAT lbu, fall into warm D, then nops              cold  23..23   warm  18..18   miss 5
+  J-S-T1    JOY_STAT lbu, fall into warm D, then nop, addiu, the load again cold  25..25   warm  20..20   miss 5
+  I-B1-T0   I_STAT lhu, branch at C word 1, then nops              cold  24..24   warm  17..17   miss 7
+  I-B1-T1   I_STAT lhu, branch at C word 1, then nop, addiu, the load again cold  26..26   warm  19..19   miss 7
+  I-B2-T0   I_STAT lhu, branch at C word 2, then nops              cold  23..24   warm  18..18   miss 5
+  I-B2-T1   I_STAT lhu, branch at C word 2, then nop, addiu, the load again cold  25..25   warm  20..20   miss 5
+  I-S-T0    I_STAT lhu, fall into warm D, then nops                cold  23..23   warm  18..18   miss 5
+  I-S-T1    I_STAT lhu, fall into warm D, then nop, addiu, the load again cold  25..25   warm  20..20   miss 5
+
+Done.

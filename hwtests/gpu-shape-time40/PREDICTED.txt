@@ -1,0 +1,33 @@
+gpu-shape-time40 - PREDICTED before its first console run (2026-10-16 small hours): v0.377.118 as the SCPH-9001 under the
+runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. This core
+holds only semi FLAT rectangles (25 cycles) and semi FLAT polygons (35) at each video line; semi gouraud, semi textured
+polygons and semi sprites carry no stall. What would settle what: semi less opaque, by height, against this core's semi
+less opaque - a stall shows as an extra ~25-35 for each further ~2,150 cycles of drawing in the console's difference.
+
+row                      b26    b28
+semi gour TL 256x16      2423   173
+semi gour TL 256x32      4533   173
+semi gour TL 256x48      6659   173
+semi gour TL 256x64      8753   173
+semi gour TL 256x80     10895   173
+opaq gour TL 256x16      2396   173
+opaq gour TL 256x32      4480   173
+opaq gour TL 256x48      6580   173
+opaq gour TL 256x64      8648   173
+opaq gour TL 256x80     10764   173
+semi tex TL 128x16       3697   123
+semi tex TL 128x32       7034   123
+semi tex TL 128x48      11353   123
+semi tex TL 128x64      15158   123
+opaq tex TL 128x16       3411   123
+opaq tex TL 128x32       6480   123
+opaq tex TL 128x48      10422   123
+opaq tex TL 128x64      13905   123
+semi sprite 256x4        3575     9
+semi sprite 256x8        7122     9
+semi sprite 256x16      14216     9
+semi sprite 256x32      28404     9
+opaq sprite 256x4        2954     9
+opaq sprite 256x8        5880     9
+opaq sprite 256x16      11733     9
+opaq sprite 256x32      23438     9

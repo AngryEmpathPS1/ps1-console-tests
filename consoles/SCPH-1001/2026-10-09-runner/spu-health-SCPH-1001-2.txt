@@ -1,0 +1,16 @@
+
+spu/spu-health
+Does voice 1 play (its envelope after key-on), as found and after the SPU is switched off and on. No assertions.
+
+  as found:              SPUCNT c085 SPUSTAT 0005 XFER 0004 MAINVOL 0000 0000 ENDX 00fffffd DPCR 08009899 CHCR4 00000201
+  reverb as found: mBASE e000 (sound RAM 70000), volumes 0000 0000, IN 0000 0000, regs 1DC0h: 0010 0012 0000 0000 0000 0000 0000 0000 0000 0000 0014 0016 0018 001a 001c 001e 0020 0022 0024 0026 0028 002a 002c 002e 0030 0032 0034 0036 0038 003a
+  sound RAM as found:    SPUCNT c085  changed:  01000:   75 of 1024 halfwords (read 1 late) first at +3e  40000:   76 of 1024 halfwords (read 1 late) first at +2e  7e000:   74 of 1024 halfwords (read 1 late) first at +3e
+  the reverb bit off:    SPUCNT c005  changed:  01000:   73 of 1024 halfwords (read 1 late) first at +3e  40000:   75 of 1024 halfwords (read 1 late) first at +3e  7e000:   74 of 1024 halfwords (read 1 late) first at +3e
+  voice 1 as found:      ENVX 0000 0000 7fff 7fff  current volume 0000 7ffe 7ffe 7ffe  -> PLAYS
+  after it:              SPUCNT c085 SPUSTAT 0005 XFER 0004 MAINVOL 0000 0000 ENDX 00fffffd DPCR 08009899 CHCR4 00000200
+  switched off:          SPUCNT 0000 SPUSTAT 0800 XFER 0004 MAINVOL 0000 0000 ENDX 00ffffff DPCR 08009899 CHCR4 00000200
+  switched on:           SPUCNT c000 SPUSTAT 0000 XFER 0004 MAINVOL 0000 0000 ENDX 00ffffff DPCR 08009899 CHCR4 00000200
+  voice 1 after it:      ENVX 0000 0000 7fff 7fff  current volume 7ffe 7ffe 7ffe 7ffe  -> PLAYS
+  at the end:            SPUCNT c000 SPUSTAT 0800 XFER 0004 MAINVOL 0000 0000 ENDX 00fffffd DPCR 08009899 CHCR4 00000200
+
+spu/spu-health: Done.

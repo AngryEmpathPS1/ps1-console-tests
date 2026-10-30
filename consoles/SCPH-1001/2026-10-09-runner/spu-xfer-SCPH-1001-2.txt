@@ -1,0 +1,26 @@
+
+spu/spu-xfer
+SPUSTAT around sound-RAM transfers: busy time, request bits by mode, transfer types.
+There are no assertions - compare against your emulator.
+
+BUSY (manual write: the mode applied / bit 10 clear, cycles after the SPUCNT write)
+  N= 1  applied   304  SPUSTAT then 0410  bit 10 clear    616 later  | mode 1 kept: SPUSTAT 0010, clear after     64
+  N= 2  applied   704  SPUSTAT then 0810  bit 10 clear     64 later  | mode 1 kept: SPUSTAT 0810, clear after     56
+  N= 4  applied   696  SPUSTAT then 0810  bit 10 clear     64 later  | mode 1 kept: SPUSTAT 0810, clear after     64
+  N= 8  applied   640  SPUSTAT then 0010  bit 10 clear     56 later  | mode 1 kept: SPUSTAT 0010, clear after     56
+  N=16  applied   632  SPUSTAT then 0410  bit 10 clear    648 later  | mode 1 kept: SPUSTAT 0010, clear after     64
+  N=32  applied   496  SPUSTAT then 0c10  bit 10 clear   1360 later  | mode 1 kept: SPUSTAT 0810, clear after     64
+REQUEST (Stop -> mode, SPUSTAT read back to back; each change with its cycle)
+  mode 2 (DMA write): start 0000  208:02a0
+  mode 3 (DMA read): start 0000  568:0030  17280:01b0
+TYPES (1F801DACh = type << 1; 1111h..8888h written by hand over EEEEh, read back by DMA4)
+  type 0: ffff 1111 eeee eeee eeee 2222 eeee eeee eeee 3333 eeee eeee
+  type 1: ffff 1111 eeee eeee eeee 3333 eeee eeee eeee 5555 eeee eeee
+  type 2: ffff 1111 2222 3333 4444 5555 6666 7777 8888 eeee eeee eeee
+  type 3: ffff 1111 3333 5555 7777 eeee eeee eeee eeee eeee eeee eeee
+  type 4: ffff 4444 8888 eeee eeee eeee eeee eeee eeee eeee eeee eeee
+  type 5: ffff 7777 eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee
+  type 6: ffff 8888 eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee
+  type 7: ffff 8888 eeee eeee eeee eeee eeee eeee eeee eeee eeee eeee
+
+Done.

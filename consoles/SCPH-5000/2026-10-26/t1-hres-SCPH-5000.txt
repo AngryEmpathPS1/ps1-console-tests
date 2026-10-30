@@ -1,0 +1,14 @@
+
+timer/t1-hres
+Timer 1's hblank tick, cycles into the line (mod 2,152.5) from the polled VBlank IRQ, by display mode. No assertions.
+
+  found: GPUSTAT 14042000
+  256 wide, display on               GPUSTAT 14002000  tick at 2033 (median, 160 ticks; quartiles 2014..2048) cycles into the line from the IRQ
+  320 wide, display on               GPUSTAT 94022000  tick at 2037 (median, 160 ticks; quartiles 2018..2052) cycles into the line from the IRQ
+  368 wide, display on               GPUSTAT 94012000  tick at 2034 (median, 160 ticks; quartiles 2017..2051) cycles into the line from the IRQ
+  512 wide, display on               GPUSTAT 14042000  tick at 2012 (median, 160 ticks; quartiles 1999..2030) cycles into the line from the IRQ
+  640 wide, display on               GPUSTAT 94062000  tick at 2014 (median, 160 ticks; quartiles 2000..2033) cycles into the line from the IRQ
+  320 wide, display OFF              GPUSTAT 94822000  tick at 2026 (median, 160 ticks; quartiles 2011..2044) cycles into the line from the IRQ
+  320 wide, range 200h..C00h         GPUSTAT 14022000  tick at 1973 (median, 160 ticks; quartiles 1954..1987) cycles into the line from the IRQ
+
+timer/t1-hres: Done.

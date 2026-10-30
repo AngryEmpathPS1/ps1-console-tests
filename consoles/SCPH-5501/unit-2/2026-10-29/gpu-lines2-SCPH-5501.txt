@@ -1,0 +1,43 @@
+
+gpu/gpu-lines2
+Lines in the blanking (20,000 cycles after the VBlank IRQ) and on active lines (200,000), fastest of four, and the
+active lines' toll in tenths of a percent. No assertions.
+
+  512x240         flat dx 255 dy   0  blank   353  active   353  toll 0
+  512x240         semi dx 255 dy   0  blank   353  active   403  toll 141
+  512x240         flat dx 255 dy  32  blank   672  active   671  toll -1
+  512x240         semi dx 255 dy  32  blank   671  active   717  toll 68
+  512x240         flat dx 255 dy  64  blank   717  active   719  toll 2
+  512x240         semi dx 255 dy  64  blank   719  active   809  toll 125
+  512x240         flat dx 255 dy 128  blank   853  active   899  toll 53
+  512x240         semi dx 255 dy 128  blank  1124  active  1220  toll 85
+  512x240         flat dx 255 dy 170  blank   941  active   988  toll 49
+  512x240         semi dx 255 dy 170  blank  1397  active  1577  toll 128
+  512x240         flat dx 255 dy 200  blank   989  active  1123  toll 135
+  512x240         semi dx 255 dy 200  blank  1667  active  1805  toll 82
+  512x240         flat dx 255 dy 228  blank  1124  active  1262  toll 122
+  512x240         semi dx 255 dy 228  blank  1844  active  2026  toll 98
+  512x240         flat dx 255 dy 255  blank  1259  active  1397  toll 109
+  512x240         semi dx 255 dy 255  blank  2027  active  2207  toll 88
+  512x240         flat dx   0 dy 255  blank  1259  active  1394  toll 107
+  512x240         semi dx   0 dy 255  blank  1891  active  2072  toll 95
+  640x240 24-bit  flat dx 255 dy   0  blank   353  active   353  toll 0
+  640x240 24-bit  semi dx 255 dy   0  blank   353  active   446  toll 263
+  640x240 24-bit  flat dx 255 dy  32  blank   671  active   671  toll 0
+  640x240 24-bit  semi dx 255 dy  32  blank   671  active   716  toll 67
+  640x240 24-bit  flat dx 255 dy  64  blank   716  active   764  toll 67
+  640x240 24-bit  semi dx 255 dy  64  blank   719  active   809  toll 125
+  640x240 24-bit  flat dx 255 dy 128  blank   854  active   860  toll 7
+  640x240 24-bit  semi dx 255 dy 128  blank  1124  active  1304  toll 160
+  640x240 24-bit  flat dx 255 dy 170  blank   943  active   991  toll 50
+  640x240 24-bit  semi dx 255 dy 170  blank  1397  active  1667  toll 193
+  640x240 24-bit  flat dx 255 dy 200  blank   991  active  1171  toll 181
+  640x240 24-bit  semi dx 255 dy 200  blank  1667  active  1906  toll 143
+  640x240 24-bit  flat dx 255 dy 228  blank  1127  active  1304  toll 157
+  640x240 24-bit  semi dx 255 dy 228  blank  1844  active  2164  toll 173
+  640x240 24-bit  flat dx 255 dy 255  blank  1261  active  1442  toll 143
+  640x240 24-bit  semi dx 255 dy 255  blank  2027  active  2435  toll 201
+  640x240 24-bit  flat dx   0 dy 255  blank  1259  active  1442  toll 145
+  640x240 24-bit  semi dx   0 dy 255  blank  1891  active  2207  toll 167
+
+gpu/gpu-lines2: Done.

@@ -1,0 +1,25 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80014ad4,ehk=80014b04
+ResetGraph:SR=7000ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+dma/otc-test (DMA Channel 6)
+pass - testOtcStandard
+pass - testOtcBigTransfer
+pass - testOtcWontStartOnAutomaticMode
+pass - testOtcWontStartWithoutStartFlag
+pass - testOtcForward
+pass - testOtcFromRam
+pass - testOtcSyncModeBlocks
+pass - testOtcSyncModeLinkedList
+pass - testOtcSyncModeReserved
+pass - testOtcWhichBitsAreHardwiredToZero
+pass - testOtcWhichBitsAreHardwiredToOne
+pass - testOtcUnusedControlBitsAreAlwaysZero
+pass - testOtcControlBitsAfterTransfer
+pass - testOtcControlBitsAfterTransferWithChopping
+pass - testOtcStandardWithMasterDisabled
+Done.

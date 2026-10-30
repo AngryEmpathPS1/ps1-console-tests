@@ -1,0 +1,34 @@
+
+gpu/gpu-shape-time40
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+semi gour TL 256x16    2410..2413     173..173  
+semi gour TL 256x32    4498..4508     173..173  
+semi gour TL 256x48    6602..6617     173..173  
+semi gour TL 256x64    8672..8682     173..173  
+semi gour TL 256x80   10792..10807    173..173  
+opaq gour TL 256x16    2394..2394     173..173  
+opaq gour TL 256x32    4472..4474     173..173  
+opaq gour TL 256x48    6567..6569     173..173  
+opaq gour TL 256x64    8631..8631     173..173  
+opaq gour TL 256x80   10743..10743    173..173  
+semi tex TL 128x16     3827..3852     123..123  
+semi tex TL 128x32     7278..7301     123..123  
+semi tex TL 128x48    11728..11762    123..123  
+semi tex TL 128x64    15664..15686    123..123  
+opaq tex TL 128x16     3428..3453     123..123  
+opaq tex TL 128x32     6515..6540     123..123  
+opaq tex TL 128x48    10442..10468    123..123  
+opaq tex TL 128x64    13932..13961    123..123  
+semi sprite 256x4      3385..3412       8..8    
+semi sprite 256x8      6773..6794       8..8    
+semi sprite 256x16    13528..13558      8..8    
+semi sprite 256x32    27055..27091      8..8    
+opaq sprite 256x4      2924..2945       8..8    
+opaq sprite 256x8      5836..5856       8..8    
+opaq sprite 256x16    11673..11698      8..8    
+opaq sprite 256x32    23336..23362      8..8    
+
+gpu/gpu-shape-time40: Done.

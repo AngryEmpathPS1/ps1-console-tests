@@ -1,0 +1,22 @@
+== pal-probe: 1473 bytes, 1418349 cycles, ended at its end line (8.0 s)
+ResetGraph:itb=80012754,ehk=80012784
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+timer/pal-probe
+NTSC then PAL, each width: Timer 1 (hblanks) stepping, VBlank coming, lines a frame - every wait bounded.
+
+NTSC 320  T1 18 steps in 3000 polls  vblank yes (51461 polls)  next vblank yes  lines a frame 263  GPUSTAT 5602220a
+NTSC 256  T1 18 steps in 3000 polls  vblank yes (51464 polls)  next vblank yes  lines a frame 263  GPUSTAT 5600220a
+NTSC 368  T1 18 steps in 3000 polls  vblank yes (51463 polls)  next vblank yes  lines a frame 263  GPUSTAT 5601220a
+NTSC 512  T1 18 steps in 3000 polls  vblank yes (51463 polls)  next vblank yes  lines a frame 263  GPUSTAT 5604220a
+NTSC 640  T1 18 steps in 3000 polls  vblank yes (51464 polls)  next vblank yes  lines a frame 263  GPUSTAT 5606220a
+PAL  320  T1 0 steps in 3000 polls  vblank NONE (1500000 polls)  next vblank NONE  lines a frame 0  GPUSTAT 5612220a
+PAL  256  T1 0 steps in 3000 polls  vblank NONE (1500000 polls)  next vblank NONE  lines a frame 0  GPUSTAT 5610220a
+PAL  368  T1 0 steps in 3000 polls  vblank NONE (1500000 polls)  next vblank NONE  lines a frame 0  GPUSTAT 5611220a
+PAL  512  T1 0 steps in 3000 polls  vblank NONE (1500000 polls)  next vblank NONE  lines a frame 0  GPUSTAT 5614220a
+PAL  640  T1 0 steps in 3000 polls  vblank NONE (1500000 polls)  next vblank NONE  lines a frame 0  GPUSTAT 5616220a
+
+timer/pal-probe: Done.

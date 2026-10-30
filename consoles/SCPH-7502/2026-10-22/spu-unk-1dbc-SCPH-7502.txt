@@ -1,0 +1,27 @@
+
+spu/spu-unk-1dbc
+Which value written to 1F801DBCh (then 1DBEh) stops voice 1's capture? No assertions.
+
+  found: 1DA0 0000  1DBC b80d 3e4d  1E60 ab7e 3b96 ... 1E7E f507  1E80 ffff
+  before anything              off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBCh = own b80d (reads b80d) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBCh = 0000 (reads 0000)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBCh = own again (b80d)     off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBCh = ffff (reads ffff)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBCh = own again (b80d)     off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBCh = 5a5a (reads 5a5a)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBCh = own again (b80d)     off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBCh = a5a5 (reads a5a5)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBCh = own again (b80d)     off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBEh = own 3e4d (reads 3e4d) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBEh = 0000 (reads 0000)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBEh = own again (3e4d)     off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBEh = ffff (reads ffff)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBEh = own again (3e4d)     off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBEh = 5a5a (reads 5a5a)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBEh = own again (3e4d)     off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBEh = a5a5 (reads a5a5)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBEh = own again (3e4d)     off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  every write made: the capture lived through all of them
+
+spu/spu-unk-1dbc: Done.

@@ -1,0 +1,12 @@
+
+cdrom/cd-irq-glitch
+The first nonzero CD interrupt flag a tight poll reads, and the read after it, 3000 Getstats and 3000 invalid commands.
+About ten seconds; nothing prints until each part is done.
+
+Getstat (INT3):
+  first 1, then 3: 1
+  first 3, then 3: 2999
+invalid command 30h (INT5):
+  first 5, then 5: 3000
+
+cdrom/cd-irq-glitch: Done.

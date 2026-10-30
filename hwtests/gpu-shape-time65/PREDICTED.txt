@@ -1,0 +1,19 @@
+gpu/gpu-shape-time65
+A shape's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set,
+at 32 start places across one line in the blanking. No assertions.
+
+bit 26's D: the fastest of the 32 starts, then at 20,000 + 68 j cycles after VBlank's IRQ less it, j = 0..31
+line 64x32       220 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17 17 17 0 0 0 0 0 0 0 0 0 0 0 0
+line 128         164 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 64x64       316 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 20 20 20 20 0 0 0 0 0 0 0 0 0 0 0 0
+poly1 64x32      219 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17 17 17 0 0 0 0 0 0 0 0 0 0 0 0
+poly2 64x32      420 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 14 17 17 17 0 0 0 0 0 0 0 0 0 0 0 0
+poly3 64x32      621 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 17 17 1 0 0 0 0 0 0 0 0 0 0 0 0
+poly2 32x16      229 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17 22 0 0 0 0 0 0 0 0 0 0 0 0
+poly2 128        301 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+poly3 128        439 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 16 0 0 0 0 0 0 0 0 0 0 0 0
+poly2 64x64      605 : 0 0 0 0 0 0 0 0 0 0 0 20 20 20 20 17 20 20 20 20 0 0 0 0 0 0 0 0 0 0 0 0
+gpoly2 64        234 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 17 0 0 0 0 0 0 0 0 0 0 0 0
+
+gpu/gpu-shape-time65: Done.
+

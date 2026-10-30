@@ -1,0 +1,58 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80012af8,ehk=80012b28
+ResetGraph:SR=ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset
+A control write right after the MDEC's reset: the request enables, then a table DMA. No assertions.
+
+reset, wait N, enables, command, DMA0:
+  N    0: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N    1: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N    2: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N    4: status 80040000 (in 0, out 0)   DMA0 done after 85 cycles
+  N    8: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N   16: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N   32: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N   64: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N  128: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N  256: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N  512: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N 1024: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N 2048: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N 4096: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+reset, command, wait N, enables, DMA0:
+  N    0: status b004001f (in 1, out 0)   DMA0 done after 76 cycles
+  N    1: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+  N    2: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+  N    4: status b004001f (in 1, out 0)   DMA0 done after 78 cycles
+  N    8: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+  N   16: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+  N   32: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+  N   64: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+  N  128: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+  N  256: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+  N  512: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+  N 1024: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+  N 2048: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+  N 4096: status b004001f (in 1, out 0)   DMA0 done after 75 cycles
+reset, enables, wait N, enables again, command, DMA0:
+  N    0: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N    1: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N    2: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N    4: status 80040000 (in 0, out 0)   DMA0 done after 78 cycles
+  N    8: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N   16: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N   32: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N   64: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N  128: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N  256: status 80040000 (in 0, out 0)   DMA0 done after 85 cycles
+  N  512: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N 1024: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N 2048: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+  N 4096: status 80040000 (in 0, out 0)   DMA0 done after 75 cycles
+
+mdec/mdec-reset: Done.

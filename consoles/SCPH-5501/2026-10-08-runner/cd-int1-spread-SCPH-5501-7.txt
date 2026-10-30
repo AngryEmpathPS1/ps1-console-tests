@@ -1,0 +1,16 @@
+
+cdrom/cd-int1-spread
+Every interval between INT1s over 300 sectors at double and at single speed. Needs a data disc.
+Cycles at the system clock (1 ms = 33,869). No assertions - compare against your emulator.
+
+drive region: for U/C - unlocking (a burned disc needs it; a pressed one ignores it)
+2x: 300 intervals, min 196088 max 244760 mean 225699 sd 9408
+  histogram (4,000-cycle bins from 196000): 2 1 15 6 20 34 54 36 56 37 15 20 4
+  first 48:
+   196088 242504 220760 214392 244152 212432 223184 242776 212328 223216 239720 214736
+   243832 207792 222440 223376 230408 238504 213720 218496 234608 228960 216536 228864
+   237448 216224 221600 241072 207776 230712 238512 221024 217112 221592 227088 230408
+   231256 224400 220368 224976 232640 217112 228920 239160 208200 229192 241080 207752
+1x: only -8 intervals
+
+Done.

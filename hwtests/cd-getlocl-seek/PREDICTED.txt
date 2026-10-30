@@ -1,0 +1,49 @@
+cd-getlocl-seek - PREDICTED before its first console run (2026-10-18): v0.377.128 (the HLE) and the drive's own program
+(SC430934) as the SCPH-7001 under the runner, X-Files Disc 1 (on the build before the last edit, which only fixed the
+"refused" line's line break). Both answer a mid-seek GetlocL with INT5 (HLE 42h,80h / 43h,80h; the program 53h,80h /
+13h,80h) - and cd-seek-cmd's console answered INT3 to a GetlocL 0.2M and 2M into a SeekL. After a SeekL both read the
+target's header (the program a sector or two short), after a SeekP INT5 (nugget's 9001: 03h,80h). The program refuses
+the ReadN here (after a SeekP and its GetlocL) - the HLE reads.
+
+v0.377.128 (HLE):
+SeekL 29:01 -> 50:00 at 0.1M: 5 42 80  | 3 50 00 00 02/01 01 64 04 
+SeekL 29:01 -> 50:00 at 0.5M: 5 42 80  | 3 50 00 00 02/01 01 64 04 
+SeekL 29:01 -> 50:00 at 2  M: 5 42 80  | 3 50 00 00 02/01 01 64 04 
+SeekL 29:01 -> +6    at 0.1M: 5 42 80  | 3 29 01 43 02/01 01 48 00 
+SeekL 29:01 -> +6    at 0.5M: 5 42 80  | 3 29 01 43 02/01 01 48 00 
+SeekL 29:01 -> +6    at 2  M: 5 42 80  | 3 29 01 43 02/01 01 48 00 
+SeekP 29:01 -> 50:00 at 0.1M: 5 43 80  | 5 03 80 
+SeekP 29:01 -> 50:00 at 0.5M: 5 43 80  | 5 03 80 
+SeekP 29:01 -> 50:00 at 2  M: 5 43 80  | 5 03 80 
+SeekP 29:01 -> +6    at 0.1M: 5 43 80  | 5 03 80 
+SeekP 29:01 -> +6    at 0.5M: 5 43 80  | 5 03 80 
+SeekP 29:01 -> +6    at 2  M: 5 43 80  | 5 03 80 
+ReadN 29:01 -> 50:00 at 0.1M: 5 42 80  | 3 50 01 19 02/01 01 48 00 
+ReadN 29:01 -> 50:00 at 0.5M: 5 42 80  | 3 50 01 20 02/01 01 48 00 
+ReadN 29:01 -> 50:00 at 2  M: 5 42 80  | 3 50 01 23 02/01 01 48 00 
+ReadN 29:01 -> +6    at 0.1M: 5 42 80  | 3 29 03 42 02/01 01 48 00 
+ReadN 29:01 -> +6    at 0.5M: 5 42 80  | 3 29 01 43 02/01 01 48 00 
+ReadN 29:01 -> +6    at 2  M: 5 42 80  | 3 29 01 46 02/01 01 64 04 
+waits that ran out: 4
+
+The drive's own program (SC430934):
+SeekL 29:01 -> 50:00 at 0.1M: 5 53 80  | 3 50 00 00 02/01 01 64 04 
+SeekL 29:01 -> 50:00 at 0.5M: 5 53 80  | 3 49 59 66 02/01 01 48 00 
+SeekL 29:01 -> 50:00 at 2  M: 5 53 80  | 3 49 59 68 02/01 01 48 00 
+SeekL 29:01 -> +6    at 0.1M: 5 53 80  | 3 29 01 33 02/01 01 48 00 
+SeekL 29:01 -> +6    at 0.5M: 5 53 80  | 3 29 01 34 02/01 00 00 00 
+SeekL 29:01 -> +6    at 2  M: 5 53 80  | 3 29 01 38 02/01 01 48 00 
+SeekP 29:01 -> 50:00 at 0.1M: 5 53 80  | 5 13 80 
+SeekP 29:01 -> 50:00 at 0.5M: 5 53 80  | 5 13 80 
+SeekP 29:01 -> 50:00 at 2  M: 5 53 80  | 5 13 80 
+SeekP 29:01 -> +6    at 0.1M: 5 13 80  | 5 13 80 
+SeekP 29:01 -> +6    at 0.5M: 5 13 80  | 5 13 80 
+SeekP 29:01 -> +6    at 2  M: 5 13 80  | 5 13 80 
+ReadN refused
+ReadN refused
+ReadN refused
+ReadN refused
+ReadN refused
+ReadN refused
+
+waits that ran out: 0

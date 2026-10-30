@@ -1,0 +1,52 @@
+
+cpu/io-shadow
+Cycles a pass above the empty loop, 100 passes, cached: register reads with k nops behind them.
+No assertions - compare against your emulator.
+
+T2 (one read of Timer 2's count)
+  T2      k= 0     721 -    337 =   384 over 100  ->  3.84
+  T2      k= 1     735 -    337 =   398 over 100  ->  3.98
+  T2      k= 2     835 -    337 =   498 over 100  ->  4.98
+  T2      k= 3     929 -    337 =   592 over 100  ->  5.92
+  T2      k= 4    1033 -    337 =   696 over 100  ->  6.96
+  T2      k= 5    1131 -    337 =   794 over 100  ->  7.94
+  T2      k= 6    1231 -    337 =   894 over 100  ->  8.94
+  T2      k= 8    1439 -    337 =  1102 over 100  ->  11.02
+  T2      k=10    1636 -    337 =  1299 over 100  ->  12.99
+
+IS+T2 (I_STAT, then Timer 2)
+  IS+T2   k= 0    1023 -    337 =   686 over 100  ->  6.86
+  IS+T2   k= 1    1128 -    337 =   791 over 100  ->  7.91
+  IS+T2   k= 2    1228 -    337 =   891 over 100  ->  8.91
+  IS+T2   k= 3    1340 -    337 =  1003 over 100  ->  10.03
+  IS+T2   k= 4    1437 -    337 =  1100 over 100  ->  11.00
+  IS+T2   k= 5    1538 -    337 =  1201 over 100  ->  12.01
+  IS+T2   k= 6    1639 -    337 =  1302 over 100  ->  13.02
+  IS+T2   k= 7    1737 -    337 =  1400 over 100  ->  14.00
+  IS+T2   k= 8    1837 -    337 =  1500 over 100  ->  15.00
+  IS+T2   k=10    2040 -    337 =  1703 over 100  ->  17.03
+  IS+T2   k=12    2245 -    337 =  1908 over 100  ->  19.08
+
+SPU+T2 (SPUSTAT, then Timer 2)
+  SPU+T2  k= 0    2523 -    337 =  2186 over 100  ->  21.86
+  SPU+T2  k= 2    2733 -    337 =  2396 over 100  ->  23.96
+  SPU+T2  k= 4    2932 -    337 =  2595 over 100  ->  25.95
+  SPU+T2  k= 6    3132 -    337 =  2795 over 100  ->  27.95
+  SPU+T2  k= 8    3336 -    337 =  2999 over 100  ->  29.99
+  SPU+T2  k=10    3541 -    337 =  3204 over 100  ->  32.04
+  SPU+T2  k=12    3742 -    337 =  3405 over 100  ->  34.05
+  SPU+T2  k=14    3942 -    337 =  3605 over 100  ->  36.05
+  SPU+T2  k=16    4146 -    337 =  3809 over 100  ->  38.09
+  SPU+T2  k=18    4357 -    337 =  4020 over 100  ->  40.20
+  SPU+T2  k=20    4552 -    337 =  4215 over 100  ->  42.15
+
+TRACE (spu-read-trace's body after I_STAT: lhu; lhu T2; k nops; sll; or; sw)
+  TRACE   k= 0    1634 -    337 =  1297 over 100  ->  12.97
+  TRACE   k= 2    1641 -    337 =  1304 over 100  ->  13.04
+  TRACE   k= 4    1739 -    337 =  1402 over 100  ->  14.02
+  TRACE   k= 6    1961 -    337 =  1624 over 100  ->  16.24
+  TRACE   k= 8    2168 -    337 =  1831 over 100  ->  18.31
+  TRACE   k=10    2373 -    337 =  2036 over 100  ->  20.36
+  TRACE   k=12    2608 -    337 =  2271 over 100  ->  22.71
+
+Done.

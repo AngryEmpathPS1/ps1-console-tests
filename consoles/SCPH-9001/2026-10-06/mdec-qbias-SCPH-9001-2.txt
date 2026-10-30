@@ -1,0 +1,90 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80013a50,ehk=80013a80
+ResetGraph:SR=7000ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-qbias
+11 blocks at q_scale 1-4, 8-bit mono: is the dequantiser's half step 8 (this emulator), 5, or none?
+There are no assertions - compare against your emulator.
+
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80013850, color=1)... ok
+mdec_idctTable(addr=0x800138d0)... ok
+mdec_decode(addr=0x80011e2e, length=0x4, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0xfe000400
+ok
+   0 control dc    0  AC  0 =    0  q 1   8: 64/64  5: 64/64  0: 64/64
+     then 16 more words: 817e7e86 8982828e 7f81817e 7e7f7f7d 817f7f81 82808182 7f80807f 80807f80 ... (status 8204ffff)
+mdec_decode(addr=0x80011f06, length=0x4, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0xfe000428
+ok
+   1 control dc   40  AC  0 =    0  q 1   8: 64/64  5: 64/64  0: 64/64
+     then 16 more words: 817e7e86 8982828e 7f81817e 7e7f7f7d 817f7f81 82808182 7f80807f 80807f80 ... (status 8204ffff)
+mdec_decode(addr=0x80011fde, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x03ea07c4
+MDEC_DATA <- 0xfe00fe00
+ok
+   2 AC      dc  -60  AC  1 =  -22  q 1   8: 48/64  5: 56/64  0: 48/64
+     none: 696b6d7073757879 696b6d7073757879 696b6d7073757879 696b6d7073757879 696b6d7073757879 696b6d7073757879 696b6d7073757879 696b6d7073757879
+     then 16 more words: 80857f88 857c8073 817f807e 7f818083 7f808181 81807f7e 81817f7f 80808180 ... (status 8204ffff)
+mdec_decode(addr=0x800120b6, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x07c40bc4
+MDEC_DATA <- 0xfe00fe00
+ok
+   3 AC      dc  -60  AC  2 =  -60  q 2   8: 64/64  5: 56/64  0: 48/64
+     then 16 more words: 80857f88 857c8073 817f807e 7f818083 7f808181 81807f7e 81817f7f 80808180 ... (status 8204ffff)
+mdec_decode(addr=0x8001218e, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x0bd807c4
+MDEC_DATA <- 0xfe00fe00
+ok
+   4 AC      dc  -60  AC  3 =  -40  q 1   8: 64/64  5: 48/64  0: 32/64
+     then 16 more words: 80857f88 857c8073 817f807e 7f818083 7f808181 81807f7e 81817f7f 80808180 ... (status 8204ffff)
+mdec_decode(addr=0x80012266, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x10350c00
+MDEC_DATA <- 0xfe00fe00
+ok
+   5 AC      dc    0  AC  5 =   53  q 3   8: 16/64  5: 48/64  0: 48/64
+     none: be996642426699be be996642426699be be996642426699be be996642426699be be996642426699be be996642426699be be996642426699be be996642426699be
+     then 16 more words: 80857f88 857c8073 817f807e 7f818083 7f808181 81807f7e 81817f7f 80808180 ... (status 8204ffff)
+mdec_decode(addr=0x8001233e, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x23d707c4
+MDEC_DATA <- 0xfe00fe00
+ok
+   6 AC      dc  -60  AC  9 =  -41  q 1   8: 56/64  5: 64/64  0: 56/64
+     then 16 more words: 80857f88 857c8073 817f807e 7f818083 7f808181 81807f7e 81817f7f 80808180 ... (status 8204ffff)
+mdec_decode(addr=0x80012416, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x4fca07c4
+MDEC_DATA <- 0xfe00fe00
+ok
+   7 AC      dc  -60  AC 20 =  -54  q 1   8: 64/64  5: 56/64  0: 48/64
+     then 16 more words: 80857f88 857c8073 817f807e 7f818083 7f808181 81807f7e 81817f7f 80808180 ... (status 8204ffff)
+mdec_decode(addr=0x800124ee, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x6be61000
+MDEC_DATA <- 0xfe00fe00
+ok
+   8 AC      dc    0  AC 27 =  -26  q 4   8: 48/64  5: 48/64  0: 16/64
+     none: 67be43999943be67 67be43999943be67 67be43999943be67 67be43999943be67 67be43999943be67 67be43999943be67 67be43999943be67 67be43999943be67
+     then 16 more words: 80857f88 857c8073 817f807e 7f818083 7f808181 81807f7e 81817f7f 80808180 ... (status 8204ffff)
+mdec_decode(addr=0x800125c6, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x883b0400
+MDEC_DATA <- 0xfe00fe00
+ok
+   9 AC      dc    0  AC 35 =   59  q 1   8: 56/64  5: 56/64  0: 40/64
+     none: 8787878787878787 6c6c6c6c6c6c6c6c 9d9d9d9d9d9d9d9d 5e5e5e5e5e5e5e5e a2a2a2a2a2a2a2a2 6363636363636363 9393939393939393 7979797979797979
+     then 16 more words: 80857f88 857c8073 817f807e 7f818083 7f808181 81807f7e 81817f7f 80808180 ... (status 8204ffff)
+mdec_decode(addr=0x8001269e, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0xac030800
+MDEC_DATA <- 0xfe00fe00
+ok
+  10 AC      dc    0  AC 44 =    3  q 2   8: 40/64  5: 48/64  0: 56/64
+     none: 827b857e7e857b82 7f817f81817f817f 7d867a83837a867d 7f847c81817c847f 817c847f7f847c81 837a867d7d867a83 817f817f7f817f81 7e857b82827b857e
+     then 16 more words: 80857f88 857c8073 817f807e 7f818083 7f808181 81807f7e 81817f7f 80808180 ... (status 8204ffff)
+
+  blocks each half step predicts exactly: 8 5, 5 3, 0 2 of 11
+  words past a block's 16: after 11 of 11 blocks, 176 in all
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+
+mdec/mdec-qbias: Done.

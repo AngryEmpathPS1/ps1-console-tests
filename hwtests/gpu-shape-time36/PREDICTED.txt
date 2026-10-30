@@ -1,0 +1,40 @@
+gpu-shape-time36 - PREDICTED before its first console run (2026-10-15 night): bit 26's D, cycles - v0.377.116 as the
+SCPH-9001 under the runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), and gpu-shape-time34's
+law over 16 rows (129 + 16 x (p + 3.5 floor(W / 16) + min(p, 7) / 16)), which gpu-shape-time35 found exact to 160 wide
+and 25 under from 176, 50 under from 384. Bit 28 v0.377.116's. What would settle what: the law + 25 from the first width
+of A's 160-176 run that reads it, + 50 from B's; whether more steps come by 1023; and C's X 16 / 64 / 128 against X 0
+(a step the frame buffer's moves with X; the rectangle's does not).
+
+row                    v116    law   b28
+semi 160x16              1987   1976     9
+semi 162x16              1989   1992     9
+semi 164x16              2015   2008     9
+semi 166x16              2042   2024     9
+semi 168x16              2068   2040     9
+semi 170x16              2094   2056     9
+semi 172x16              2120   2072     9
+semi 174x16              2146   2088     9
+semi 176x16              2172   2160     9
+semi 320x16              3841   3816     9
+semi 328x16              3922   3880     9
+semi 336x16              4027   4000     9
+semi 344x16              4107   4064     9
+semi 352x16              4212   4184     9
+semi 360x16              4293   4248     9
+semi 368x16              4398   4368     9
+semi 376x16              4478   4432     9
+semi 384x16              4583   4552     9
+semi 576x16              6808   6760     9
+semi 640x16              7550   7496     9
+semi 704x16              8291   8232     9
+semi 768x16              9033   8968     9
+semi 832x16              9775   9704     9
+semi 896x16             10516  10440     9
+semi 960x16             11258  11176     9
+semi 1023x16            11987  11840     9
+semi 176x16 @16          2172   2160     9
+semi 384x16 @16          4583   4552     9
+semi 176x16 @64          2172   2160     9
+semi 384x16 @64          4583   4552     9
+semi 176x16 @128         2172   2160     9
+semi 384x16 @128         4583   4552     9

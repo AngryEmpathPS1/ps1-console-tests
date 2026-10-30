@@ -1,0 +1,40 @@
+hwtests/gpu-shape-time60 on this emulator as an NTSC SCPH-7501, v0.377.187 (2026-10-25 night), written before any console ran it:
+
+gpu/gpu-shape-time60
+A shape's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape               bit 26        bit 28
+16,0                  52..52        17..17   
+16,1                  52..52        17..17   
+16,2                  60..60        17..17   
+64,0                 100..100       17..17   
+64,1                 145..145       17..17   
+64,2                 153..153       17..17   
+64,3                 157..157       17..17   
+64,4                 161..161       17..17   
+64,6                 166..166       17..17   
+64,8                 170..170       17..17   
+128,0                164..164       17..17   
+128,1                270..270       17..17   
+128,2                278..278       17..17   
+128,4                286..286       17..17   
+128,8                295..295       17..17   
+255,0                291..291       17..17   
+255,1                518..518       17..17   
+255,2                526..533       17..17   
+255,4                534..534       17..17   
+poly 1x64,0           99..99        16..16   
+poly 2x64,0          163..163       98..98   
+poly 3x64,0          228..228      163..163  
+poly 4x64,0          247..248      180..183  
+poly 1x64,1          144..144       16..16   
+poly 2x64,1          254..254      143..143  
+poly 3x64,1          365..365      254..254  
+poly 4x64,1          427..431      317..320  
+poly 1x64,2          152..152       16..16   
+poly 2x64,2          270..270      151..151  
+poly 3x64,2          389..389      270..270  
+poly 4x64,2          462..463      341..344  
+
+gpu/gpu-shape-time60: Done.

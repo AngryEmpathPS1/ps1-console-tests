@@ -1,0 +1,20 @@
+
+spu/spu-fifo3
+The manual write FIFO past 32, and what waits (runs p@i+n: halfwords i.. at offset p from 1000h). No assertions.
+
+  STOP40       busy    1465  runs: 0@0+32  other 0
+  STOP56       busy    1520  runs: 0@0+32  other 0
+  STOP60       busy    1456  runs: 0@0+32  other 0
+  STOP63       busy    1518  runs: 0@0+32  other 0
+  STOP64       busy    1463  runs: 0@0+32  other 0
+  STOP65       busy    1466  runs: 0@0+32  other 0
+  STOP72       busy     704  runs: 0@0+32  other 0
+  STOP96       busy     703  runs: 0@0+32  other 0
+  STOP128      busy    1458  runs: 0@0+32  other 0
+  AGAIN        busy      61  runs: 0@0+64  other 0
+  AFTER+GO     busy     704  runs: 0@0+32 256@32+32  other 0
+  AFTER        busy      61  runs: 0@0+11 11@10+1 12@10+1 13@10+1 14@10+1 15@10+1 16@10+1 17@10+1 18@10+1 19@10+1 20@10+1 21@10+1 (+11 runs)  other 0
+  AFTER read 2 busy      61  runs: 0@0+32  other 0
+  RUN40+GO     busy     709  runs: 256@0+32  other 0
+
+spu/spu-fifo3: Done.

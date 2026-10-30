@@ -1,0 +1,50 @@
+
+sio/pocket-write
+A write to frame 1023 of the card in slot 2, timed, read back, a bad-checksum write, then the original put back.
+
+1. read: ok
+2. write pattern A: 138 bytes
+  byte   1 -> ffh  /ACK +  1871  pulse   71
+  byte   2 -> 08h  /ACK +  1704  pulse   71
+  byte   3 -> 5ah  /ACK +  1828  pulse   34
+  byte   4 -> 5dh  /ACK +  1890  pulse   34
+  byte   5 -> 00h  /ACK +  1704  pulse   34
+  byte   6 -> 00h  /ACK +  1704  pulse   71
+  byte   7 -> 00h  /ACK +  2045  pulse   34
+  byte   8 -> 00h  /ACK +  1549  pulse   71
+  ...
+  byte  71 -> 00h  /ACK +  1549  pulse   34
+  byte 133 -> 00h  /ACK +  1549  pulse   34
+  byte 134 -> 00h  /ACK +  1735  pulse   34
+  byte 135 -> 00h  /ACK +  1828  pulse   34
+  byte 136 -> 5ch  /ACK +  1859  pulse   34
+  byte 137 -> 5dh  /ACK +  2045  pulse   71
+  byte 138 -> 47h  no /ACK
+  data bytes' /ACK +1549..2045
+   end status 47h
+3. read back: pattern A, as written
+4. write pattern B with a wrong checksum: 138 bytes
+  byte   1 -> ffh  /ACK +  1871  pulse   71
+  byte   2 -> 00h  /ACK +  1735  pulse   71
+  byte   3 -> 5ah  /ACK +  1611  pulse   71
+  byte   4 -> 5dh  /ACK +  2076  pulse   34
+  byte   5 -> 00h  /ACK +  1704  pulse   71
+  byte   6 -> 00h  /ACK +  1921  pulse   34
+  byte   7 -> 00h  /ACK +  2076  pulse   34
+  byte   8 -> 00h  /ACK +  1735  pulse   34
+  ...
+  byte  71 -> 00h  /ACK +  1549  pulse   71
+  byte 133 -> 00h  /ACK +  1580  pulse   34
+  byte 134 -> 00h  /ACK +  1581  pulse   34
+  byte 135 -> 00h  /ACK +  1828  pulse   34
+  byte 136 -> 5ch  /ACK +  1828  pulse   71
+  byte 137 -> 5dh  /ACK +  2014  pulse   71
+  byte 138 -> 4eh  no /ACK
+  data bytes' /ACK +1549..2076
+   end status 4eh
+   read back after it: still pattern A (not written)
+5. the original written back: status 47h, NOT RESTORED - restore from the pocket-dump backup
+   its read FAILED; first bytes original / read: ff/0b ff/30 ff/55 ff/7a ff/9f ff/c4 ff/e9 ff/0e
+   read once more: restored after all (the first read too soon)
+
+sio/pocket-write: Done.

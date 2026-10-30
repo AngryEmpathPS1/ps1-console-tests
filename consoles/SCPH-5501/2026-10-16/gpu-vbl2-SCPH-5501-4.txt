@@ -1,0 +1,19 @@
+
+gpu/gpu-vbl2
+By display state: a VBlank wait, X idle cycles on Timer 2, a semi 256x32 probe; fastest..slowest of four, how many cheap.
+No assertions.
+
+  display off      X  20000: 6241..6265 cheap 4 of 4
+  display off      X 200000: 6919..6927 cheap 0 of 4
+  256x240 15-bit   X  20000: 6246..6249 cheap 4 of 4
+  256x240 15-bit   X 200000: 6652..6702 cheap 0 of 4
+  320x240 15-bit   X  20000: 6246..6247 cheap 4 of 4
+  320x240 15-bit   X 200000: 6789..6832 cheap 0 of 4
+  640x240 15-bit   X  20000: 6241..6249 cheap 4 of 4
+  640x240 15-bit   X 200000: 7012..7057 cheap 0 of 4
+  640x480i 15-bit  X  20000: 6246..6249 cheap 4 of 4
+  640x480i 15-bit  X 200000: 7018..7057 cheap 0 of 4
+  640x480i 24-bit  X  20000: 6246..6249 cheap 4 of 4
+  640x480i 24-bit  X 200000: 7465..7471 cheap 0 of 4
+
+gpu/gpu-vbl2: Done.

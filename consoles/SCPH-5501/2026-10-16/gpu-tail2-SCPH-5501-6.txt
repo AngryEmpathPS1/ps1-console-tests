@@ -1,0 +1,27 @@
+
+gpu/gpu-tail2
+A primer primitive, GPUSTAT bits 28+26 set, N idle cycles, then a probe timed to bits 28+26: fastest..slowest
+of eight. No assertions.
+
+  flat 256x256 -> flat 256x32:
+    N      0: 4306..4607  dear 7 of 8
+    N   1000: 4306..4655  dear 6 of 8
+    N   2000: 4561..4621  dear 0 of 8
+    N   4000: 4292..4621  dear 7 of 8
+    N   8000: 4303..4606  dear 7 of 8
+    N  16000: 4292..4654  dear 7 of 8
+    N  32000: 4302..4610  dear 7 of 8
+    N  64000: 4305..4617  dear 7 of 8
+    N 128000: 4305..4621  dear 7 of 8
+  flat 256x256 -> semi 256x32:
+    N      0: 6332..7001  dear 7 of 8
+    N   1000: 6339..7014  dear 7 of 8
+    N   2000: 6913..7015  dear 0 of 8
+    N   4000: 6879..7014  dear 0 of 8
+    N   8000: 6334..7012  dear 7 of 8
+    N  16000: 6565..7001  dear 7 of 8
+    N  32000: 6281..7014  dear 7 of 8
+    N  64000: 6337..6925  dear 7 of 8
+    N 128000: 6336..7015  dear 7 of 8
+
+gpu/gpu-tail2: Done.

@@ -1,0 +1,16 @@
+gpu-shape-time23 - written down BEFORE any console ran it (2026-10-14 night).
+
+bit 26 less bit 28 of each order against order 1, SCPH-1001 (the same for flat and gouraud, 16x16 and 64x64):
+  DIRECTION: +4 where mednafen's core vertex (the leftmost; v1.x <= v0.x ? (v2.x <= v1.x ? 2 : 1) : (v2.x < v0.x ? 2 : 0))
+             is (0,H) and the triangle is drawn bottom-up - and NOT for BL (BL from (0,0),(0,H),(W,H) is drawn
+             bottom-up and costs what BLd, top-down, does: gpu-shape-time5/22). It cannot explain BL at all.
+  SORT:      +2 for each inversion of the vertices' y as listed (the swaps a 3-vertex sort by y makes).
+
+order          TL: DIRECTION  SORT       BL: SORT
+1 ABC               0           0             0      (TL [0,0,H]; BL [0,H,H])
+2 ACB              +4          +2             0      (TL [0,H,0]; BL [0,H,H])
+3 BAC              +4           0            +2      (TL [0,0,H]; BL [H,0,H])
+4 BCA               0          +2            +4      (TL [0,H,0]; BL [H,H,0])
+5 CAB               0          +4            +2      (TL [H,0,0]; BL [H,0,H])
+6 CBA (TLu)        +4          +4            +4      (TL [H,0,0]; BL [H,H,0])
+This core today: every order the same (scratch/gst23_1001v109.txt).

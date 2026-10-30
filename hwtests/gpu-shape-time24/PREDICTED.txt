@@ -1,0 +1,10 @@
+gpu-shape-time24 - written down BEFORE any console ran it (2026-10-14 night).
+
+This core (v0.377.110) as the SCPH-1001 - scratch/gst24_1001v110.txt - reads a flat rectangle row by PIXEL PAIRS from its
+own left x: (w >> 1) + 1 units of ~1 cycle a row (GPU_RECTF_OLD2), so 2 = 3, 4 = 5, ... 16 = 17 wide, and X 1 the same
+as X 0. The readings to test:
+  1. The pairs are counted from the RECTANGLE's x, not the frame buffer's (gpu-shape-time18: 16x64 / 15x64 at X 0 = X 1,
+     906 / 842 - a 15-wide row 1 cycle under a 16-wide). Predicted: X 1 = X 0 for every width.
+  2. Widths 2k and 2k+1 the same (the pairs' count): 2 = 3, 4 = 5, 6 = 7, 8 = 9, 14 = 15? 16 = 17, 32 = 33, 64 = 65.
+  3. The 15-bit sprite 64x16 at 3,899 here against 362 for 32x16 is this core's texture cache (a 64-texel row of 15-bit
+     texels over its 256 bytes): the console decides whether that is real.

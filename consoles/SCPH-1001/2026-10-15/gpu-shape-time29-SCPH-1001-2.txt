@@ -1,0 +1,45 @@
+
+gpu/gpu-shape-time29
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+flat TL 126x64         2501..2540      30..30   
+flat TL 127x64         2534..2575      30..30   
+flat TL 128x64         2532..2575      31..31   
+flat TL 129x64         2534..2577      31..31   
+flat TL 130x64         2568..2602      31..31   
+flat TL 254x64         4619..4662      31..31   
+flat TL 255x64         4654..4697      31..31   
+flat TL 256x64         4654..4699      32..32   
+flat TL 257x64         4656..4699      32..32   
+flat TL 258x64         4686..4731      32..32   
+flat TL 30x64           899..940       28..28   
+flat TL 31x64           915..956       28..28   
+flat TL 32x64           925..965       29..29   
+flat TL 33x64           949..990       29..29   
+flat TL 34x64           965..1006      29..29   
+flat TL 8x64 o1         539..580       27..27   
+flat TL 8x64 o2         548..589       32..32   
+flat BL 8x64 o1         539..577       32..32   
+flat BL 8x64 o2         540..578       33..33   
+flat TL 32x64 o1        925..966       29..29   
+flat TL 32x64 o2        932..973       32..32   
+flat BL 32x64 o1        911..952       32..32   
+flat BL 32x64 o2        914..955       35..35   
+flat TL 128x64 o1      2534..2577      31..31   
+flat TL 128x64 o2      2541..2582      32..32   
+flat BL 128x64 o1      2469..2508      32..32   
+flat BL 128x64 o2      2476..2518      37..37   
+flat TL 256x64 o1      4657..4699      32..32   
+flat TL 256x64 o2      4658..4703      32..32   
+flat BL 256x64 o1      4527..4531      32..32   
+flat BL 256x64 o2      4533..4573      38..38   
+semi TL 127x64         6776..6819      30..30   
+semi TL 128x64         6775..6814      31..31   
+semi TL 129x64         6904..6949      31..31   
+gour TL 127x64         4791..4836     171..171  
+gour TL 128x64         4795..4834     172..172  
+gour TL 129x64         4862..4903     172..172  
+
+gpu/gpu-shape-time29: Done.

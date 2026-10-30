@@ -1,0 +1,31 @@
+
+spu/spu-read-trace
+Every read of an SPU register timestamped (Timer 2, the system clock): the read-to-read intervals, and the long
+ones' spacing and phase in the sample (768 cycles). No assertions - compare against your emulator.
+
+SPUSTAT k=0 (8192 reads over 254185 cycles): intervals 31x7942 32x247 34x1 45x1
+  long (> 33): 2; spacing 220
+  phase mod 768 from the bit-11 change: 52 272
+  bit 11 fell at read 3225: read 3224 at 100058, read 3225 at 100089 (cycles from the trace's start), intervals around it 31 31 31 31 31 31 31
+SPUSTAT k=12 (8192 reads over 327663 cycles): intervals 40x8189 42x1 61x1
+  long (> 42): 1
+  phase mod 768 from the bit-11 change: 478
+  bit 11 rose at read 4373: read 4372 at 174903, read 4373 at 174943 (cycles from the trace's start), intervals around it 40 40 40 40 40 40 40
+SPUSTAT k=24 (8192 reads over 426523 cycles): intervals 52x8051 55x1 56x138 88x1
+  long (> 54): 140; spacing 315 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072
+  phase mod 768 from the bit-11 change: 177 492 492 492 492 492 492 492 492 492 492 492 492 492 492 492 492 492 492 492 492 492 492 492
+  bit 11 fell at read 3749: read 3748 at 195187, read 3749 at 195239 (cycles from the trace's start), intervals around it 52 52 52 52 52 52 52
+SPUCNT k=0 (4096 reads over 127077 cycles): intervals 31x3970 32x124 39x1
+  long (> 33): 1
+  phase mod 768 from the first long one: 0
+VOL0 k=0 (4096 reads over 127089 cycles): intervals 31x3969 32x123 36x1 38x1 40x1
+  long (> 33): 3; spacing 567 253
+  phase mod 768 from the first long one: 0 567 52
+I_STAT k=0 (4096 reads over 65525 cycles): intervals 16x4094 21x1
+  long (> 18): 1
+  phase mod 768 from the first long one: 0
+I_STAT k=12 (4096 reads over 104840 cycles): intervals 25x3687 28x203 29x1 34x203 50x1
+  long (> 27): 408; spacing 829 259 253 259 253 259 253 259 253 259 253 259 253 259 253 259
+  phase mod 768 from the first long one: 0 61 320 573 64 317 576 61 320 573 64 317 576 61 320 573 64 317 576 61 320 573 64 317
+
+Done.

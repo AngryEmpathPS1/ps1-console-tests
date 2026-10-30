@@ -1,0 +1,9 @@
+cd-hc05-tick - PREDICTED before its first console run (2026-10-24): v0.377.172 as the SCPH-7501 on SC430940 under the runner.
+The program counts the ticks it HANDLES (two that come while it is busy are one), so the count is below Timer 2's ~1,017 a
+second: here 904 idle, 874 reading. The console's focus sweep samples ~1.5x slower than here: if its counts are ~1.5x lower
+too, the tick (the oscillator, or Timer 2's setting) is slow on the console; if they match, the sweep's extra time is
+elsewhere.
+
+idle: 4532 ticks in 5.012 s over 234 reads = 904.2 a second
+reading: 4377 ticks in 5.008 s over 230 reads = 874.0 a second
+Done.

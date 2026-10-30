@@ -1,0 +1,33 @@
+
+cdrom/cd-seek-pause
+A command while a SeekL runs: per command and delay into the seek, the interrupts after it in order (3, 5, 2) and
+an INT2's time from the SeekL's write (M cycles, - if none). Single speed. No assertions.
+
+29:01 -> 50:00, the command 0.2M into the seek:
+  none      2  INT2 13.35
+  Pause     5  INT2 -
+  Getstat   3  INT2 -
+  Pause     5  INT2 -
+  none      2  INT2 21.82
+29:01 -> 50:00, the command 2M into the seek:
+  none      2  INT2 13.27
+  Pause     5  INT2 -
+  Getstat   3  INT2 -
+  Pause     5  INT2 -
+  none      2  INT2 13.32
+29:01 -> +6, the command 0.2M into the seek:
+  none      2  INT2 2.65
+  Pause     5  INT2 -
+  Getstat   3  INT2 -
+  Pause     5  INT2 -
+  none      2  INT2 2.68
+29:01 -> +6, the command 2M into the seek:
+  none      2  INT2 2.66
+  Pause     5  INT2 -
+  Getstat   3  INT2 -
+  Pause     5  INT2 -
+  none      2  INT2 2.66
+
+waits that ran out: 0
+
+cdrom/cd-seek-pause: Done.

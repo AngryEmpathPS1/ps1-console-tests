@@ -1,0 +1,20 @@
+
+mdec/mdec-time
+320 macroblocks (or mono blocks) in one command, DMA in and out, Timer 2. No assertions - compare against your emulator.
+
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x8001270c, color=1)... ok
+mdec_idctTable(addr=0x8001278c)... ok
+DC only (input 1920 words colour, 320 mono)
+  15 bpp, per macroblock       983552 cycles    3073 each
+  24 bpp, per macroblock       983544 cycles    3073 each
+  8-bit mono, per block        164328 cycles     513 each
+  (depth 3 stuck: MDEC status a6007fff, DMA0 CHCR 01000201 BCR 04000020, DMA1 CHCR 01000200 BCR 02ac0020)
+  (depth 2 stuck: MDEC status a4007fff, DMA0 CHCR 01000201 BCR 04000020, DMA1 CHCR 01000200 BCR 04020020)
+dense: DC + 62 AC a block (input 61440 words colour, 10240 mono)
+  15 bpp, per macroblock     STUCK (DMA1 not done after 50M cycles; see above)
+  24 bpp, per macroblock     STUCK (DMA1 not done after 50M cycles; see above)
+  8-bit mono, per block        164312 cycles     513 each
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+
+mdec/mdec-time: Done.

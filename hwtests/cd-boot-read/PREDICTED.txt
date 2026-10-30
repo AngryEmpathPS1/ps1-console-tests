@@ -1,0 +1,66 @@
+cd-boot-read - PREDICTED before its first console run (2026-10-19, after the SCPH-7501's three boot recordings; no
+console has run it). Two predictions, which disagree:
+
+THIS EMULATOR'S MODEL (the 7501 row's speed change, 24.0M to double): ONE VALUE - the first INT1 26.2M-26.7M after the
+ReadN at all three places, three runs alike; the control 0.87M.
+
+THE 7501's OWN DRIVE PROGRAM (SC430940) ON THE SERVO: TWO VALUES - ~22.0M or ~41.1M (a second spin-up lock, +19M), at
+every place, run to run; the control 0.86M. The boot traced on the program drew 41.07M at 00:02:04.
+
+THE CONSOLE'S BOOTS: the SONY screen's fade-out 11.61 / 11.91 / 11.95 s after the first signal - two boots ~0.33 s later
+than the third, and every boot later than this model's 11.51 (tools/capturefields.js --arm; STATUS). If the console
+answers two-valued here, the boot spread is this draw.
+
+this emulator, as the SCPH-7501 (hwtests/run.js, --disc=xfiles):
+TO DOUBLE SPEED, Setmode 80h:
+  00:02:04 :  seek  3882279  read INT1  26609468  first 00:02:04  seek   200349  read INT1  26470940  first 00:02:04  seek   200358  read INT1  26184423  first 00:02:04
+  00:02:16 :  seek  5605420  read INT1  26748733  first 00:02:16  seek   200365  read INT1  26736017  first 00:02:16  seek   200339  read INT1  26608145  first 00:02:16
+  00:06:16 :  seek  4437992  read INT1  26156339  first 00:06:16  seek   200371  read INT1  26227462  first 00:06:16  seek   200345  read INT1  26490756  first 00:06:16
+CONTROL, Setmode 00h (no speed change):
+  00:02:04 :  seek  4365537  read INT1    879572  first 00:02:04  seek   200349  read INT1    881932  first 00:02:04  seek   200342  read INT1    877750  first 00:02:04
+  00:02:16 :  seek  5450608  read INT1    867876  first 00:02:16  seek   200345  read INT1    879334  first 00:02:16  seek   200346  read INT1    871893  first 00:02:16
+  00:06:16 :  seek  4219455  read INT1    876810  first 00:06:16  seek   200333  read INT1    873100  first 00:06:16  seek   200347  read INT1    867082  first 00:06:16
+Done.
+
+the 7501's program (PSX_CD_FIRMWARE=CDROM-firmware/SC430940.S19):
+TO DOUBLE SPEED, Setmode 80h:
+  00:02:04 :  seek  2256620  read INT1  21939094  first 00:02:04  seek   759733  read INT1  22146815  first 00:02:04  seek   616048  read INT1  41071475  first 00:02:04
+  00:02:16 :  seek  2456551  read INT1  40859121  first 00:02:16  seek   734278  read INT1  41089941  first 00:02:16  seek   818821  read INT1  22183318  first 00:02:16
+  00:06:16 :  seek  3578808  read INT1  23852741  first 00:06:16  seek   868279  read INT1  22179811  first 00:06:16  seek   875109  read INT1  41141579  first 00:06:16
+CONTROL, Setmode 00h (no speed change):
+  00:02:04 :  seek  3766602  read INT1    870691  first 00:02:04  seek  4110401  read INT1    867184  first 00:02:04  seek  4084133  read INT1    858263  first 00:02:04
+  00:02:16 :  seek  5512623  read INT1    851833  first 00:02:16  seek  4090842  read INT1    863814  first 00:02:16  seek  4119961  read INT1    856580  first 00:02:16
+  00:06:16 :  seek  4423717  read INT1    856862  first 00:06:16  seek  4233670  read INT1    858467  first 00:06:16  seek  4250141  read INT1    861348  first 00:06:16
+Done.
+
+THE SCPH-1001 (its night run of 2026-10-19 ends with cd-boot-read x3) - PREDICTED, this core v0.377.143 as the 1001
+(its row's speed change, 18.85M to double): one value, 21.1-21.5M at all three places; the control 0.87M. The 1001's drive
+is the older generation (its spin-up alone differs by 34M with the speed it stopped from: v0.377.143), so its answer
+speaks for its own drive; the 7501 still owes its own run for the boot gap.
+TO DOUBLE SPEED, Setmode 80h:
+  00:02:04 :  seek  3882333  read INT1  21077805  first 00:02:04  seek   200344  read INT1  21139145  first 00:02:04  seek   200343  read INT1  21498015  first 00:02:04
+  00:02:16 :  seek  5605467  read INT1  21266926  first 00:02:16  seek   200353  read INT1  21476588  first 00:02:16  seek   200364  read INT1  21480528  first 00:02:16
+  00:06:16 :  seek  4367087  read INT1  21534874  first 00:06:16  seek   200371  read INT1  21266070  first 00:06:16  seek   200353  read INT1  21269801  first 00:06:16
+CONTROL, Setmode 00h (no speed change):
+  00:02:04 :  seek  4343138  read INT1    865061  first 00:02:04  seek   200346  read INT1    868223  first 00:02:04  seek   200364  read INT1    876696  first 00:02:04
+  00:02:16 :  seek  5450655  read INT1    874878  first 00:02:16  seek   200328  read INT1    880876  first 00:02:16  seek   200342  read INT1    868052  first 00:02:16
+  00:06:16 :  seek  4219391  read INT1    872005  first 00:06:16  seek   200346  read INT1    869653  first 00:06:16  seek   200358  read INT1    867124  first 00:06:16
+Done.
+
+THE SCPH-1001'S ANSWER (2026-10-19 night, four runs, 36 cells): TWO-VALUED, as the drive's program had it - 22.2-22.6M (20 cells), 26.3-26.7M (3)
+or 35.3-46.1M (13), at every place; the control 0.86M. This core's one value (21.1-21.5M) was the fast one alone. THE
+MECHANISM, on the 7501's program on the servo (scratch/scratch_bootread.js, 8 phases: 22.1-24.0M x4, 41.0-41.1M x4): the spindle
+locks at double speed ~19.7M after the ReadN with the head ~65 sectors PAST the target - it ran on up the spiral while the
+spindle changed, the hold having no Q - and the program walks it back either in one burst of single-track jumps (~22M)
+or one track per fresh Q (~1.2M a step, each netting -4 sectors: ~41M); which depends on where its loop stands at the lock.
+
+PREDICTED FOR THE SCPH-7501 (not yet run on it), the run-on model (scratch/apply_runon.js: the head run on through the
+rest of the change, the walk back drawn slow on 40%): fast 25.4-27.7M, slow 48.9M (its drive.speed.double 24.0M runs the
+head ~80 sectors on); the 7501's own program on the servo: ~22.0M or ~41.1M. Its boots (11.61 / 11.91 / 11.95 s against
+this core's 11.51) suggest ~+0.4 s for a slow one, nearer the program's 41M than the model's 48.9M.
+
+...and on v0.377.144's servo (the measured spiral, the ride through a jump, lag 1, blind 3.0), the 7501's program as the 7501:
+22.25-22.33M (4 of 9) or 39.39-39.42M (5 of 9) - beside the SCPH-1001's 22.2-22.6 / 35.3-46.1 (median ~39.6).
+
+...and the model with the idle head riding through the change (scratch/_cores/bootRSK, the 7501's change to double 22M):
+25.1-25.3M or 42.1-44.4M (STATUS "The model's speed change as the drive's program makes it").

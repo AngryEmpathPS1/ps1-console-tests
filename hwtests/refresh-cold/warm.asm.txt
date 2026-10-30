@@ -1,0 +1,104 @@
+.global rcSweep
+rcSweep:
+addiu $sp, $sp, -48
+sw $ra, 44($sp)
+sw $s0, 40($sp)
+sw $s1, 36($sp)
+sw $s2, 32($sp)
+sw $s3, 28($sp)
+sw $s4, 24($sp)
+sw $s5, 20($sp)
+sw $s6, 16($sp)
+sw $s7, 12($sp)
+move $s0, $a0
+move $s1, $a1
+move $s2, $a2
+move $s7, $a3
+lui $s3, %hi(rcRam)
+addiu $s3, $s3, %lo(rcRam)
+li $s4, -1
+rcRep:
+li $s5, 0
+rcTgt:
+beqz $s1, rcSpin0
+nop
+jalr $s1
+nop
+rcSpin0:
+lui $t4, 0x1f80
+rcSpin:
+lhu $t0, 0x1120($t4)
+nop
+subu $t0, $t0, $s5
+andi $t0, $t0, 0xff
+sltiu $t0, $t0, 6
+beqz $t0, rcSpin
+nop
+andi $t1, $s4, 7
+sll $t1, $t1, 2
+lui $t0, %hi(rcSled)
+addiu $t0, $t0, %lo(rcSled)
+subu $t0, $t0, $t1
+jr $t0
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+rcSled:
+lhu $s6, 0x1120($t4)
+jalr $s0
+nop
+lhu $t3, 0x1120($t4)
+bltz $s4, rcDrain
+subu $t3, $t3, $s6
+andi $t3, $t3, 0xffff
+sltiu $t0, $t3, 512
+beqz $t0, rcDrain
+andi $t1, $s6, 0xff
+sll $t1, $t1, 9
+addu $t1, $t1, $t3
+addu $t1, $t1, $s2
+lbu $t0, 0($t1)
+nop
+sltiu $t2, $t0, 255
+beqz $t2, rcDrain
+addiu $t0, $t0, 1
+sb $t0, 0($t1)
+rcDrain:
+li $t0, 8
+rcDrain1:
+addiu $t0, $t0, -1
+bnez $t0, rcDrain1
+nop
+bltz $s4, rcNext
+nop
+addiu $s5, $s5, 1
+sltiu $t0, $s5, 256
+bnez $t0, rcTgt
+nop
+rcNext:
+addiu $s4, $s4, 1
+slt $t0, $s4, $s7
+bnez $t0, rcRep
+nop
+lw $ra, 44($sp)
+lw $s0, 40($sp)
+lw $s1, 36($sp)
+lw $s2, 32($sp)
+lw $s3, 28($sp)
+lw $s4, 24($sp)
+lw $s5, 20($sp)
+lw $s6, 16($sp)
+lw $s7, 12($sp)
+jr $ra
+addiu $sp, $sp, 48
+.global rcCalib
+rcCalib:
+lw $t5, 0($s3)
+jr $ra
+nop

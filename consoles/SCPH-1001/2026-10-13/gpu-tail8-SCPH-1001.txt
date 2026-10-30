@@ -1,0 +1,12 @@
+
+gpu/gpu-tail8
+Four semi 256x32 probes at (0,16) back to back, ~200,000 cycles after a VBlank five ways: fastest..slowest of eight
+and how many cheap (under 6,600). No assertions.
+
+  B1 T1 as left, VBlank, 200,000 on T2     #1 12747..12771 cheap 0 #2 12745..12792 cheap 0 #3 12745..12792 cheap 0 #4 12745..12793 cheap 0
+  B2 T1 0103h, VBlank, T1 to 93            #1 12753..12793 cheap 0 #2 12757..12792 cheap 0 #3 12791..12793 cheap 0 #4 12747..12792 cheap 0
+  B3 T1 0103h, VBlank, 200,000 on T2       #1 12744..12751 cheap 0 #2 12742..12792 cheap 0 #3 12743..12792 cheap 0 #4 12742..12792 cheap 0
+  B4 T1 0103h, T1 to 93 (no VBlank wait)   #1 12746..12791 cheap 0 #2 12755..12792 cheap 0 #3 12755..12792 cheap 0 #4 12746..12792 cheap 0
+  B5 T1 as left, VBlank, T1 93 counts      #1 12751..12788 cheap 0 #2 12745..12792 cheap 0 #3 12747..12792 cheap 0 #4 12745..12792 cheap 0
+
+gpu/gpu-tail8: Done.

@@ -1,0 +1,64 @@
+
+gpu/gpu-thin
+Thin shapes written to GP0 by the CPU, then GPUSTAT polled: when bit 28 and bit 26 read set,
+cycles from the first word, fastest..slowest of four. No assertions.
+
+COPY (80h), from (X,0) to (512+X,256):
+   1x128 at X 0    4 words   bit 28     108..154      bit 26     3143..3235
+   2x128 at X 0    4 words   bit 28     108..113      bit 26     3141..3236
+   4x128 at X 0    4 words   bit 28     108..108      bit 26     3411..3456
+   8x128 at X 0    4 words   bit 28     108..108      bit 26     4089..4137
+  16x128 at X 0    4 words   bit 28     108..111      bit 26     5399..5445
+  32x128 at X 0    4 words   bit 28     108..110      bit 26     7976..8066
+  64x128 at X 0    4 words   bit 28     108..114      bit 26    11955..12678
+   1x256 at X 0    4 words   bit 28     108..108      bit 26     6213..6259
+   2x256 at X 0    4 words   bit 28     108..108      bit 26     6215..6258
+   4x256 at X 0    4 words   bit 28     108..108      bit 26     6754..6759
+   8x256 at X 0    4 words   bit 28     108..111      bit 26     8070..8114
+  16x256 at X 0    4 words   bit 28     108..113      bit 26    10686..10779
+  32x256 at X 0    4 words   bit 28     108..111      bit 26    15879..15885
+  64x256 at X 0    4 words   bit 28     108..113      bit 26    25146..25190
+   4x256 at X 5    4 words   bit 28     108..112      bit 26     7388..7570
+  16x256 at X 5    4 words   bit 28     108..108      bit 26    11588..11631
+RECTANGLE (60h flat, 62h semi-transparent, 64h textured):
+  flat  1x128 at X 0    3 words   bit 28      94..143      bit 26      733..782
+  flat  2x128 at X 0    3 words   bit 28      94..148      bit 26      691..787
+  flat  3x128 at X 0    3 words   bit 28      94..143      bit 26      685..787
+  flat  4x128 at X 0    3 words   bit 28      94..148      bit 26      779..787
+  flat  8x128 at X 0    3 words   bit 28      94..143      bit 26      958..1056
+  flat 16x128 at X 0    3 words   bit 28      94..148      bit 26     1453..1555
+  flat 32x128 at X 0    3 words   bit 28      94..143      bit 26     2581..2671
+  flat 64x128 at X 0    3 words   bit 28      94..143      bit 26     4754..4805
+  flat  1x256 at X 0    3 words   bit 28      94..143      bit 26     1370..1415
+  flat  2x256 at X 0    3 words   bit 28      94..143      bit 26     1360..1420
+  flat  3x256 at X 0    3 words   bit 28      94..143      bit 26     1368..1451
+  flat  4x256 at X 0    3 words   bit 28      94..143      bit 26     1547..1556
+  flat  8x256 at X 0    3 words   bit 28      94..143      bit 26     1815..1870
+  flat 16x256 at X 0    3 words   bit 28      94..143      bit 26     2854..2898
+  flat 32x256 at X 0    3 words   bit 28      94..143      bit 26     4747..4844
+  flat 64x256 at X 0    3 words   bit 28      94..143      bit 26     9449..9457
+  flat  3x256 at X 13    3 words   bit 28      94..143      bit 26     1366..1460
+  flat  8x256 at X 13    3 words   bit 28      94..143      bit 26     1816..1861
+  flat  3x256 at X 1021    3 words   bit 28      94..143      bit 26     1363..1459
+  flat  3x128 at X 1021    3 words   bit 28      94..143      bit 26      689..787
+  semi  4x256 at X 0    3 words   bit 28      94..143      bit 26     2629..2678
+  semi 16x256 at X 0    3 words   bit 28      94..144      bit 26     5338..5435
+  semi 64x256 at X 0    3 words   bit 28      94..143      bit 26    15142..15236
+  textured  4-bit  4x256 at X 0    4 words   bit 28     108..157      bit 26     3143..3279
+  textured  4-bit 16x256 at X 0    4 words   bit 28     108..157      bit 26     4498..4544
+  textured  4-bit 64x256 at X 0    4 words   bit 28     108..157      bit 26    18043..18093
+  textured 15-bit  4x256 at X 0    4 words   bit 28     108..159      bit 26     3366..3375
+  textured 15-bit 16x256 at X 0    4 words   bit 28     108..162      bit 26    12040..12051
+  textured 15-bit 64x256 at X 0    4 words   bit 28     108..157      bit 26    44435..46740
+QUAD (28h flat):
+  flat  4x256    5 words   bit 28    1358..1466     bit 26     2454..2518
+  flat  8x256    5 words   bit 28    1506..1582     bit 26     2832..2919
+  flat 16x256    5 words   bit 28    1893..1937     bit 26     3706..3755
+  flat 32x256    5 words   bit 28    2749..2807     bit 26     5375..5435
+FILL (02h):
+  16x256    3 words   bit 28      85..140      bit 26     1807..1831
+  32x256    3 words   bit 28      85..85       bit 26     2074..2124
+  48x256    3 words   bit 28      85..85       bit 26     2347..2353
+  64x256    3 words   bit 28      87..88       bit 26     2665..2668
+
+gpu/gpu-thin: Done.

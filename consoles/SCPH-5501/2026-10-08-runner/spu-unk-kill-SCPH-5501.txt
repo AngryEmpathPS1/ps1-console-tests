@@ -1,0 +1,35 @@
+
+spu/spu-unk-kill
+Which undocumented SPU register stops voice 1's capture? spu-curvol's writes one at a time. No assertions.
+
+  found: 1DA0 0000  1DBC 767f d272  1E60 d875 3f77 ... 1E7E 6eff  1E80 ffff
+  before anything              off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBCh (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DBEh (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E60h (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E62h (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E64h (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E66h (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E68h (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E6Ah (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E6Ch (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E6Eh (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E70h (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E72h (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E74h (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E76h (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E78h (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E7Ah (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E7Ch (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E7Eh (read 0000 ffff 5a5a a5a5) off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DA0h = 0000 (reads 0000)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DA0h = ffff (reads 0000)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DA0h = 5a5a (reads 0000)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1DA0h = a5a5 (reads 0000)    off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E80h = 1234 (ffff -> ffff)  off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E82h = 1234 (ffff -> ffff)  off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E84h = 1234 (ffff -> ffff)  off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  1E86h = 1234 (ffff -> ffff)  off   0  on 512 of 512 nonzero  ENVX 7fff  alive
+  every write made: the capture lived through all of them
+
+spu/spu-unk-kill: Done.

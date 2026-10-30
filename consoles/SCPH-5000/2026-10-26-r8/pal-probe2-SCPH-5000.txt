@@ -1,0 +1,15 @@
+== pal-probe2: 541 bytes, 525982 cycles, ended at its end line (0.4 s)
+ResetGraph:itb=800126f4,ehk=80012724
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/pal-probe2
+NTSC 320 then PAL 320: GP0(E1h) executed?, a 64x64 fill finished?, GP1(10h:07h) answered? - every wait bounded.
+
+NTSC 320  E1h seen (0 polls)  fill done (47 polls)  version 00000002  GPUSTAT 5602200a
+PAL  320  E1h seen (1 polls)  fill done (50 polls)  version 00000002  GPUSTAT 56122015
+back to NTSC 320: idle yes (0 polls)  GPUSTAT 56022015
+
+gpu/pal-probe2: Done.

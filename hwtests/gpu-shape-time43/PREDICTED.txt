@@ -1,0 +1,46 @@
+gpu-shape-time43 - PREDICTED before its first console run (2026-10-16): v0.377.118 as the SCPH-9001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. This core sets
+a quad up ONCE (GPU_POLY_SETUP2.quad +5 over its first triangle's) and releases bit 28 when the first triangle has drawn.
+What would settle what:
+  - if the console's second triangle takes its own set-up from when the first starts drawing (gpu-shape-time42's gouraud
+    quads: 334 at W 1-6), every small shaded quad's bit 28 reads ~2 lone set-ups (gouraud ~334, textured ~230, gouraud-
+    textured ~500) where this core has the first set-up plus the first triangle's drawing; flat ~55.
+  - the operand rows: the second set-up's own law (GPU_POLY_SETUP3 on v1, v2, v3) moves r3=r1 / r3+255 / v2(0,1) by
+    their terms; if it is a constant, they read alike.
+
+shape                  bit 26        bit 28
+flat Q 1x16             107..107      102..102  
+flat Q 2x2               57..57        41..41   
+flat Q 4x16             173..173      105..105  
+flat Q 8x8              122..122       73..73   
+flat Q 16x4              98..98        63..63   
+flat Q 16x16            253..253      137..137  
+gour Q 1x16             253..253      253..253  
+gour Q 2x2              199..199      183..183  
+gour Q 4x16             322..322      253..253  
+gour Q 8x8              288..288      229..229  
+gour Q 16x4             277..277      224..224  
+gour Q 16x16            520..520      345..345  
+tex4 Q 1x16             199..199      199..199  
+tex4 Q 2x2              145..145      129..129  
+tex4 Q 4x16             268..268      199..199  
+tex4 Q 8x8              235..235      176..176  
+tex4 Q 16x4             225..225      172..172  
+tex4 Q 16x16            468..468      293..293  
+tex15 Q 1x16            199..199      199..199  
+tex15 Q 2x2             145..145      129..129  
+tex15 Q 4x16            268..268      199..199  
+tex15 Q 8x8             235..235      176..176  
+tex15 Q 16x4            225..225      172..172  
+tex15 Q 16x16           468..468      293..293  
+gtex4 Q 1x16            341..341      341..341  
+gtex4 Q 2x2             287..287      271..271  
+gtex4 Q 4x16            410..410      341..341  
+gtex4 Q 8x8             376..376      317..317  
+gtex4 Q 16x4            365..365      312..312  
+gtex4 Q 16x16           608..608      433..433  
+gour Q 2x16 r3=r1       295..295      246..246  
+gour Q 2x16 r3+255      294..294      245..245  
+gour Q 2x16 r1+255      298..298      249..249  
+gour Q v2(0,1) 2x16     228..228      179..179  
+

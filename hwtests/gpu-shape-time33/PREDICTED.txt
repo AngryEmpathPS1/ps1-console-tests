@@ -1,0 +1,39 @@
+gpu-shape-time33 - PREDICTED before its first console run (2026-10-15): v0.377.114 as the SCPH-9001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. Semi rows here
+are GPU_SEMI_FLAT2's (per pixel); opaque rows GPU_FLAT_PAIRS' (pairs from the core vertex, a floor of 3). What would
+settle what:
+  A  opaque TL 2-6 x 128: gpu-shape-time31's TL 2 x H read ~2.6 pairs a row. If the floor is in PIXELS (5.18, the old
+     GPU_FLAT_WALK floor's), TL 2-5 read alike and 6 a little more; if it is the pairs a row touches (lone pixels
+     counted), 2 and 3 apart. TR (a lone first pixel on every odd-started row) against TL at each W says what that
+     pixel adds on the floor.
+  B  semi, the same shapes: scratch/scratch_semifit2.js's model (c 12.35 + max(7.6, 5.25 + 1.455 P) a row over bit 28)
+     has TR 2x128 45 cheap and TL 2x128 17 dear; the W steps say whether semi's floor is per pixel or per pair.
+  C  semi TL 16/32/64 x 64, order 2 against 1: the widening saving, semi's (gpu-shape-time25's TLu / BLd 12-13 under).
+
+row                      b26    b28
+flat TL 2x128             665     26
+flat TL 3x128             665     26
+flat TL 4x128             665     26
+flat TL 5x128             665     26
+flat TL 6x128             665     26
+flat TR 2x128             375     26
+flat TR 3x128             472     26
+flat TR 4x128             522     26
+flat TR 5x128             550     26
+flat TR 6x128             568     26
+semi TL 2x128             802     26
+semi TL 3x128             849     26
+semi TL 4x128             895     26
+semi TL 5x128             943     26
+semi TL 6x128             989     26
+semi TR 2x128             409     26
+semi TR 3x128             556     26
+semi TR 4x128             656     26
+semi TR 5x128             731     26
+semi TR 6x128             797     26
+semi TL 16x64 o1          753     28
+semi TL 16x64 o2          757     32
+semi TL 32x64 o1         1125     29
+semi TL 32x64 o2         1128     32
+semi TL 64x64 o1         1868     30
+semi TL 64x64 o2         1870     32

@@ -1,0 +1,74 @@
+# multitap-full on v0.377.202 (node hwtests/run.js multitap-full --tap4, 2026-10-27): M220's model - every tap byte's /ACK 338
+# after its end (SIO_ACK_DELAY), a card's 170 (SIO_ACK_DELAY_CARD) behind the tap too; 80h with a tap in unanswered.
+sio/multitap-full
+A Multitap in port 1, a pad in every slot, cards in its card slots (D empty), driven by hand. Read-only. No assertions.
+
+== round 1
+(a) slot A's pad, passthrough 01 42 00 .. (5 bytes):
+  ff 41 5a ff ff 
+  /ACK: 1776 1719 1663 1663 -
+(a) slot B's pad, passthrough 02 42 00 .. (5 bytes):
+  ff 41 5a ff ff 
+  /ACK: 1719 1663 1663 1663 -
+(a) slot C's pad, passthrough 03 42 00 .. (5 bytes):
+  ff 41 5a ff ff 
+  /ACK: 1724 1663 1663 1663 -
+(a) slot D's pad, passthrough 04 42 00 .. (9 bytes):
+  ff 73 5a ff ff 80 80 80 80 
+  /ACK: 1719 1663 1663 1663 1663 1663 1663 1663 -
+(b) 01 42 01 00 00: slot A, requesting full mode (5 bytes):
+  ff 41 5a ff ff 
+  /ACK: 1759 1719 1663 1663 -
+(b) full 1 (35 bytes):
+  ff 80 5a | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 73 5a ff ff 80 80 80 80 
+  /ACK: 1781 1638 1773 1773 1746 1773 1773 1750 1638 1773 1773 1746 1773 1773 1746 1773 1773 1773
+        1746 1773 1773 1746 1639 1773 1773 1746 1773 1773 1746 1773 1750 1638 1773 1773 -
+(b) full 2 (35 bytes):
+  ff 80 5a | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 73 5a ff ff 80 80 80 80 
+  /ACK: 1719 1746 1638 1773 1746 1638 1773 1751 1638 1773 1773 1746 1773 1773 1773 1749 1773 1773
+        1746 1773 1773 1773 1746 1773 1773 1746 1638 1773 1773 1746 1775 1773 1746 1638 -
+(b) full 3, REQ 0 (35 bytes):
+  ff 80 5a | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 73 5a ff ff 80 80 80 80 
+  /ACK: 1692 1773 1773 1746 1773 1773 1746 1638 1773 1773 1746 1773 1773 1773 1746 1773 1773 1746
+        1773 1773 1746 1773 1777 1746 1773 1773 1746 1773 1773 1773 1746 1773 1773 1746 -
+(c) card slot A (81h), sector 0 (140 bytes): ff 08 5a 5d 00 00 5c 5d 00 00 | data 00 00 00 00 | checksum 00 (matches) | end 47
+  /ACK first 12: 1429 1368 1422 1314 1314 1314 1314 1314 1449 1314 1449 1314; data bytes 1314..1455, median 1314 (128); checksum 1314; end -1
+(c) card slot B (82h), sector 0 (140 bytes): ff 08 5a 5d 00 00 5c 5d 00 00 | data 00 00 00 00 | checksum 00 (matches) | end 47
+  /ACK first 12: 1389 1314 1449 1314 1449 1314 1314 1341 1314 1341 1314 1341; data bytes 1314..1452, median 1314 (128); checksum 1449; end -1
+(c) card slot C (83h), sector 0 (140 bytes): ff 08 5a 5d 00 00 5c 5d 00 00 | data 00 00 00 00 | checksum 00 (matches) | end 47
+  /ACK first 12: 1389 1314 1449 1314 1454 1314 1449 1314 1449 1314 1449 1316; data bytes 1314..1453, median 1314 (128); checksum 1314; end -1
+(c) card slot D (84h), sector 0 (1 bytes):
+  ff 
+  /ACK: -
+(d) addressed 80h, sector 0 (1 bytes):
+  ff 
+  /ACK: -
+
+== round 2
+(b) 01 42 01 00 00: slot A, requesting full mode (5 bytes):
+  ff 41 5a ff ff 
+  /ACK: 1753 1722 1635 1667 -
+(b) full 1 (35 bytes):
+  ff 80 5a | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 73 5a ff ff 80 80 80 80 
+  /ACK: 1705 1665 1746 1774 1773 1746 1638 1773 1746 1638 1778 1746 1638 1773 1746 1773 1773 1773
+        1751 1773 1773 1746 1773 1773 1773 1746 1773 1773 1746 1638 1773 1773 1746 1775 -
+(b) full 2 (35 bytes):
+  ff 80 5a | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 73 5a ff ff 80 80 80 80 
+  /ACK: 1719 1746 1777 1773 1773 1746 1773 1773 1746 1773 1773 1752 1773 1773 1773 1746 1773 1773
+        1746 1638 1773 1773 1746 1773 1773 1746 1639 1773 1773 1746 1773 1773 1746 1773 -
+(b) full 3, REQ 0 (35 bytes):
+  ff 80 5a | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 41 5a ff ff ff ff ff ff | 73 5a ff ff 80 80 80 80 
+  /ACK: 1719 1746 1773 1774 1746 1638 1773 1773 1746 1773 1773 1749 1638 1773 1773 1746 1773 1773
+        1746 1638 1773 1773 1746 1773 1773 1773 1746 1773 1773 1746 1773 1773 1746 1773 -
+(c) card slot A (81h), sector 0 (140 bytes): ff 08 5a 5d 00 00 5c 5d 00 00 | data 00 00 00 00 | checksum 00 (matches) | end 47
+  /ACK first 12: 1424 1341 1449 1314 1449 1314 1449 1314 1449 1314 1315 1314; data bytes 1314..1455, median 1314 (128); checksum 1449; end -1
+(c) card slot B (82h), sector 0 (140 bytes): ff 08 5a 5d 00 00 5c 5d 00 00 | data 00 00 00 00 | checksum 00 (matches) | end 47
+  /ACK first 12: 1368 1314 1341 1314 1341 1314 1449 1314 1449 1314 1449 1314; data bytes 1314..1453, median 1314 (128); checksum 1314; end -1
+(c) card slot C (83h), sector 0 (140 bytes): ff 08 5a 5d 00 00 5c 5d 00 00 | data 00 00 00 00 | checksum 00 (matches) | end 47
+  /ACK first 12: 1389 1314 1449 1314 1449 1314 1314 1341 1314 1341 1314 1316; data bytes 1314..1449, median 1314 (128); checksum 1449; end -1
+(c) card slot D (84h), sector 0 (1 bytes):
+  ff 
+  /ACK: -
+
+sio/multitap-full: Done.
+

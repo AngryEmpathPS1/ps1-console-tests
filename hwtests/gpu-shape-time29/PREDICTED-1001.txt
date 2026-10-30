@@ -1,0 +1,43 @@
+gpu-shape-time29 - PREDICTED for the SCPH-1001 before its first run there (2026-10-15 evening): v0.377.114 as the
+SCPH-1001 under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000
+--tol=0), bit 26's D and bit 28's, cycles. The old GPU's model is GPU_OLD_FLAT / GPU_OLD_WALK / GPU_POLY_OLD3 (v0.377.109-110).
+What it settles: whether the old GPU's rows are pairs from the core vertex with a lone FIRST pixel paying its pair, as the 9001's (GPU_OLD_FLAT has a lone LAST pixel at -0.59 and no first-pixel term): TL 126-130 x 64 read 2223 / 2256 / 2258 / 2258 / 2291 on the 9001, a plateau over 127-129.
+
+row                      b26    b28
+flat TL 126x64           2503     30
+flat TL 127x64           2538     30
+flat TL 128x64           2540     31
+flat TL 129x64           2534     31
+flat TL 130x64           2569     31
+flat TL 254x64           4625     31
+flat TL 255x64           4660     31
+flat TL 256x64           4662     32
+flat TL 257x64           4656     32
+flat TL 258x64           4691     32
+flat TL 30x64             900     28
+flat TL 31x64             916     28
+flat TL 32x64             926     29
+flat TL 33x64             950     29
+flat TL 34x64             966     29
+flat TL 8x64 o1           540     27
+flat TL 8x64 o2           548     32
+flat BL 8x64 o1           540     32
+flat BL 8x64 o2           541     33
+flat TL 32x64 o1          926     29
+flat TL 32x64 o2          932     32
+flat BL 32x64 o1          912     32
+flat BL 32x64 o2          915     35
+flat TL 128x64 o1        2540     31
+flat TL 128x64 o2        2544     32
+flat BL 128x64 o1        2476     32
+flat BL 128x64 o2        2481     37
+flat TL 256x64 o1        4662     32
+flat TL 256x64 o2        4666     32
+flat BL 256x64 o1        4533     32
+flat BL 256x64 o2        4539     38
+semi TL 127x64           6774     30
+semi TL 128x64           6776     31
+semi TL 129x64           6901     31
+gour TL 127x64           4796    171
+gour TL 128x64           4798    172
+gour TL 129x64           4862    172

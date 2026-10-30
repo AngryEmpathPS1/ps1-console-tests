@@ -1,0 +1,16 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-init-after
+Init after a double-speed read is Paused at 09:02:55, with Famitsu Wave's commands and spacing. Needs a disc of 10+ minutes.
+Cycles at the system clock (1 ms = 33,869), each from its command's write. No assertions - compare against your emulator.
+
+drive region: for U/C - unlocking (a burned disc needs it; a pressed one ignores it)
+0  Pause 3 +43232 2 +2263624 | Init 3 +113384 2 +27921472 | Init 3 +67824 2 +410456 | ReadN 3 +41704 1 +30505136
+1  Pause 3 +27024 2 +2290168 | Init 3 +68312 2 +23213800 | Init 3 +67824 2 +4683648 | ReadN 3 +76352 1 +56118072
+2  Pause 3 +24616 2 +2289152 | Init 3 +115240 2 +46906528 | Init 3 +78072 2 +1302848 | ReadN 3 +39792 1 +58477536
+3  Pause 3 +27608 2 +2281448 | Init 3 +68264 2 +18118600 | Init 3 +77536 2 +1776176 | ReadN 3 +76032 1 +23867896
+4  Pause 3 +25168 2 +2304840 | Init 3 +68304 2 +34290728 | Init 3 +67832 2 +848456 | ReadN 3 +23744 1 +53510208
+5  Pause 3 +28584 2 +2308368 | Init 3 +68320 2 +27398416 | Init 3 +67824 2 +863344 | ReadN 3 +73560 1 +22021416
+
+Done.

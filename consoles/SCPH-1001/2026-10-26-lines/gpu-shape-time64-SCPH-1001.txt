@@ -1,0 +1,45 @@
+
+gpu/gpu-shape-time64
+A shape's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape               bit 26        bit 28
+level 1               24..28        17..17   
+level 2               25..25        17..17   
+level 3               26..26        17..17   
+level 4               27..27        17..17   
+level 5               28..28        17..17   
+level 6               29..36        17..17   
+level 7               30..30        17..17   
+level 8               31..31        17..17   
+level 10              33..36        17..17   
+level 12              35..35        17..17   
+level 14              37..37        17..17   
+level 16              39..39        17..17   
+level 20              43..43        17..17   
+level 24              47..47        17..17   
+level 28              51..51        17..17   
+rise1 3               32..32        17..17   
+rise1 4               33..33        17..17   
+rise1 5               34..34        17..17   
+rise1 7               36..38        17..17   
+rise1 9               38..38        17..17   
+rise1 13              43..43        17..17   
+gour level 4          89..89        79..79   
+gour level 16        101..101       79..79   
+steep 1x32,32        247..283       19..19   
+steep 2x32,32        481..517      254..290  
+steep 1x16,32        247..283       19..19   
+steep 2x16,32        481..516      254..291  
+steep 1x11,32        247..281       19..19   
+steep 2x11,32        481..517      254..289  
+steep 1x8,32         247..247       19..19   
+steep 2x8,32         481..516      254..291  
+steep 1x4,32         247..283       19..19   
+steep 2x4,32         481..516      254..290  
+steep 1x1,32         247..251       19..19   
+steep 2x1,32         481..518      254..290  
+steep 1x0,32         246..266       19..19   
+steep 2x0,32         479..515      252..287  
+
+gpu/gpu-shape-time64: Done.

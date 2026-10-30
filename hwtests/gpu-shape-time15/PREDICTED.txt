@@ -1,0 +1,19 @@
+Written 2026-10-14 06:23:36 (scratch/gst15_predict.txt's time), before the first SCPH-9001 run's log (06:32:43).
+
+gpu-shape-time15 - predicted BEFORE the console run (2026-10-14 06:30), from the write-buffer reading of gpu-shape-time14:
+a refill (~35 cycles) or the line-start fetch (~90) stops VRAM; the rasterizer runs on into a buffer of ~32 pixels
+within its current row, so a burst costs   L - min(run-ahead, the row's remaining drawing time),   run-ahead = 32 pixels
+x the kind's cycles a pixel (flat 0.5 -> 16; shaded 1.0 -> 32), and the full L where it meets the drawing's start.
+
+shape          per refill mid-draw         where a refill meets the drawing's start   line-start fetch (~90)
+gour 64x16     ~3  (35 - 32)                ~35                                         ~58 (90 - 32)
+gour 128x16    ~3                            ~35                                         ~58
+gour 16x64     ~19 (16-pixel rows: 16 cycles of run-ahead at most)                       ~74
+tex 64x16      ~3                            ~35                                         ~58
+tex 16x64      ~19                                                                        ~74
+semi 64x16     ~35 (it reads the frame buffer: no run-ahead)                              ~90
+semi 16x64     ~35                                                                        ~90
+flat 64x16     ~19 as gpu-shape-time14 (32 then 21 16 22 14)                              ~74 (90 - 16)
+
+If shaded wide draws pay the flat ~19 instead, the buffer is in TIME (~16 cycles), not pixels; if they pay the full 35,
+it is the flat pipeline's alone.

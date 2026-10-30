@@ -1,0 +1,66 @@
+gpu-shape-time28 - PREDICTED for the SCPH-1001 before its first run there (2026-10-15 evening): v0.377.114 as the
+SCPH-1001 under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000
+--tol=0), bit 26's D and bit 28's, cycles. The old GPU's model is GPU_OLD_FLAT / GPU_OLD_WALK / GPU_POLY_OLD3 (v0.377.109-110).
+What it settles: the old GPU's TR parity and slope-one rows (the 9001's were its pairs from the core vertex: a lone first pixel pays its pair) and its vertex orders (the 9001 drew narrow-first orders 19-22 cheaper on 16x64).
+
+row                      b26    b28
+flat TR 60x64            1390     29
+flat TL 60x64            1388     29
+flat TR 62x64            1422     29
+flat TL 62x64            1421     29
+flat TR 63x64            1401     29
+flat TL 63x64            1437     29
+flat TR 64x64            1472     30
+flat TL 64x64            1439     30
+flat TR 65x64            1434     30
+flat TL 65x64            1471     30
+flat TR 66x64            1489     30
+flat TL 66x64            1487     30
+flat TR 68x64            1521     30
+flat TL 68x64            1519     30
+flat TR 8x8                95     27
+flat TR 24x24             329     28
+flat TR 32x32             494     29
+flat TR 48x48             919     29
+flat TR 96x96            3002     30
+flat TR 128x128          5045     31
+flat TR 31x32             458     28
+flat TR 33x32             475     29
+flat TR 127x128          4904     30
+flat TR 129x128          4970     31
+flat TR 63x32             716     29
+flat TR 64x32             752     30
+flat TR 65x32             733     30
+flat TR 31x64             868     28
+flat TR 32x64             935     29
+flat TR 33x64             906     29
+semi TR 63x64            3549     29
+semi TR 64x64            3621     30
+semi TR 65x64            3649     30
+gour TR 63x64            2610    170
+gour TR 64x64            2676    171
+gour TR 65x64            2677    171
+flat TL 16x16 o1          188     28
+flat TL 16x16 o2          194     30
+flat BL 16x16 o1          182     30
+flat BL 16x16 o2          184     32
+flat TL 32x32 o1          477     29
+flat TL 32x32 o2          483     31
+flat BL 32x32 o1          463     31
+flat BL 32x32 o2          466     34
+flat TL 64x64 o1         1439     30
+flat TL 64x64 o2         1444     32
+flat BL 64x64 o1         1408     32
+flat BL 64x64 o2         1412     36
+flat TL 16x64 o1          669     28
+flat TL 16x64 o2          676     32
+flat BL 16x64 o1          664     32
+flat BL 16x64 o2          666     34
+flat TL 64x16 o1          399     30
+flat TL 64x16 o2          403     30
+flat BL 64x16 o1          366     30
+flat BL 64x16 o2          370     34
+gour TL 32x32 o1          890    170
+gour TL 32x32 o2          897    172
+gour TL 16x64 o1         1097    169
+gour TL 16x64 o2         1106    173

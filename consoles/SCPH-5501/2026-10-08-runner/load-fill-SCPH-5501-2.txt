@@ -1,0 +1,27 @@
+
+cpu/load-fill
+8 KB blocks from a cold instruction cache (Timer 2, fastest..slowest of four), a load every 16 instructions.
+There are no assertions - compare against your emulator.
+
+CACHED, cold (every line a fill):
+  NOPS             4716..4718    above the nops      0  ->  0.00 a load
+  RAM w=0          5249..5253    above the nops    533  ->  4.16 a load
+  RAM w=1          5247..5251    above the nops    531  ->  4.15 a load
+  RAM w=2          5247..5252    above the nops    531  ->  4.15 a load
+  RAM w=3          5248..5253    above the nops    532  ->  4.16 a load
+  I_STAT w=0       4716..4721    above the nops      0  ->  0.00 a load
+  I_STAT w=1       4854..4857    above the nops    138  ->  1.08 a load
+  I_STAT w=2       4716..4720    above the nops      0  ->  0.00 a load
+  I_STAT w=3       4716..4720    above the nops      0  ->  0.00 a load
+
+WARM (one unit in a loop of 128, from the cache):
+  NOPS             2066..2104    above the nops      0  ->  0.00 a load
+  RAM w=0          2322..2362    above the nops    256  ->  2.00 a load
+  I_STAT w=0       2322..2322    above the nops    256  ->  2.00 a load
+
+UNCACHED (KSEG1: every instruction a RAM read):
+  NOPS            12580..12586   above the nops      0  ->  0.00 a load
+  RAM w=0         13127..13135   above the nops    547  ->  4.27 a load
+  I_STAT w=0      12580..12582   above the nops      0  ->  0.00 a load
+
+Done.

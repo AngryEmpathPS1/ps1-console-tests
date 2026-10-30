@@ -1,0 +1,15 @@
+cpu/cpu-loop-tick15
+A CD / SPU read behind two pages' stores, entered with the write queue full. No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  CD-FAR      17.17      17.11
+  CD-FAR-P2   17.16      16.29
+  CD-FAR-P4   17.19      16.30
+  SPU-FAR     27.50      27.46
+  SPU-FAR-P2  27.53      26.46
+  SPU-FAR-P4  27.54      26.48
+  SPU-1ST-P4  27.17      27.11
+  SPU-FAR-N1  28.52      28.47
+  SPU-N1P4    28.55      28.49
+
+cpu/cpu-loop-tick15: Done.

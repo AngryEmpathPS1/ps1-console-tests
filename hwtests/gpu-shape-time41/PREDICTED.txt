@@ -1,0 +1,39 @@
+gpu-shape-time41 - PREDICTED before its first console run (2026-10-16 small hours): v0.377.118 as the SCPH-9001 under the
+runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. This core's
+semi premiums: gouraud GPU_POLY_NEW3.semiShRow 1.6 cycles a row; sprites GPU_TEXR2's semi terms (~155 a row at 256 wide).
+What would settle what: semi less opaque at each W and H on the console - a premium a row, a pixel, or a pair - against
+these (gpu-shape-time40 read ~0.5 a row + 9 for gouraud at 256 wide, ~117 a row for sprites at 256 wide).
+
+row                      b26    b28
+semi gour TL 16x16        375   169
+semi gour TL 16x64        960   169
+semi gour TL 64x16        784   171
+semi gour TL 64x64       2496   171
+semi gour TL 128x16      1331   172
+semi gour TL 128x64      4581   172
+semi gour TL 256x16      2423   173
+semi gour TL 256x64      8753   173
+opaq gour TL 16x16        349   169
+opaq gour TL 16x64        855   169
+opaq gour TL 64x16        758   171
+opaq gour TL 64x64       2391   171
+opaq gour TL 128x16      1304   172
+opaq gour TL 128x64      4476   172
+opaq gour TL 256x16      2396   173
+opaq gour TL 256x64      8648   173
+semi sprite 16x8          132     9
+semi sprite 16x32         445     9
+semi sprite 64x8         1812     9
+semi sprite 64x32        7166     9
+semi sprite 128x8        3582     9
+semi sprite 128x32      14245     9
+semi sprite 256x8        7122     9
+semi sprite 256x32      28404     9
+opaq sprite 16x8          104     9
+opaq sprite 16x32         332     9
+opaq sprite 64x8         1502     9
+opaq sprite 64x32        5925     9
+opaq sprite 128x8        2961     9
+opaq sprite 128x32      11763     9
+opaq sprite 256x8        5880     9
+opaq sprite 256x32      23438     9

@@ -1,0 +1,27 @@
+
+cpu/load-fill3
+Loads after loads and stores after stores, cold (8 KB, every line a fill) and warm (a loop from the cache).
+Timer 2, fastest..slowest of four. There are no assertions - compare against your emulator.
+
+COLD (128 units of 16):
+  NOPS             4716..4722    above the nops      0  ->  0.00 a unit
+  ISAME 16        13879..13887   above the nops   9163  ->  71.59 a unit
+  ISAME 4          4716..4722    above the nops      0  ->  0.00 a unit
+  ISAME 2          9794..9804    above the nops   5078  ->  39.67 a unit
+  IDIFF 16        13838..13870   above the nops   9122  ->  71.27 a unit
+  RSAME 2          6166..6186    above the nops   1450  ->  11.33 a unit
+  RDIFF 2          6031..6035    above the nops   1315  ->  10.27 a unit
+  RSAME 4          7835..7847    above the nops   3119  ->  24.37 a unit
+  SW 2             5651..5653    above the nops    935  ->  7.30 a unit
+  SW 4             6581..6591    above the nops   1865  ->  14.57 a unit
+  SW 8             8048..8064    above the nops   3332  ->  26.03 a unit
+  SW+LW            5905..5924    above the nops   1189  ->  9.29 a unit
+
+WARM (one unit in a loop of 128):
+  NOPS             2066..2104    above the nops      0  ->  0.00 a unit
+  ISAME 13         8593..8635    above the nops   6527  ->  50.99 a unit
+  ISAME 4          3601..3628    above the nops   1535  ->  11.99 a unit
+  RSAME 2          3091..3141    above the nops   1025  ->  8.01 a unit
+  SW 4             2066..2118    above the nops      0  ->  0.00 a unit
+
+Done.

@@ -1,0 +1,47 @@
+
+cpu/cold-bracket
+access-time's measure block at each word of the line, cold: the counter it reads, lowest..highest of four.
+There are no assertions - compare against your emulator.
+
+  stub nop100 w0         415..418    at 80011380
+  stub nop100 w1         414..414    at 80011440
+  stub nop100 w2         404..404    at 80011500
+  stub nop100 w3         417..417    at 800115c0
+  stub joy100 w0         710..711    at 80011680
+  stub joy100 w1         717..717    at 80011740
+  stub joy100 w2         715..715    at 80011800
+  stub joy100 w3         712..712    at 800118c0
+  stub spad100 w0        511..515    at 80011980
+  stub spad100 w1        516..516    at 80011a40
+  stub spad100 w2        514..514    at 80011b00
+  stub spad100 w3        514..514    at 80011bc0
+  stub nop1 w0            16..16     at 80011c80
+  stub nop1 w1            16..16     at 80011d40
+  stub nop1 w2             8..8      at 80011e00
+  stub nop1 w3            17..17     at 80011ec0
+  stub joy1 w0            17..17     at 80011f80
+  stub joy1 w1            22..22     at 80012040
+  stub joy1 w2            20..20     at 80012100
+  stub joy1 w3            17..17     at 800121c0
+  kernel nop100 w0       415..415    at 80012280
+  kernel nop100 w1       414..414    at 80012340
+  kernel nop100 w2       404..404    at 80012400
+  kernel nop100 w3       417..417    at 800124c0
+  kernel joy100 w0       710..710    at 80012580
+  kernel joy100 w1       717..717    at 80012640
+  kernel joy100 w2       715..719    at 80012700
+  kernel joy100 w3       712..712    at 800127c0
+  kernel spad100 w0      511..511    at 80012880
+  kernel spad100 w1      516..516    at 80012940
+  kernel spad100 w2      514..514    at 80012a00
+  kernel spad100 w3      514..515    at 80012ac0
+  kernel nop1 w0          16..16     at 80012b80
+  kernel nop1 w1          16..16     at 80012c40
+  kernel nop1 w2           8..8      at 80012d00
+  kernel nop1 w3          17..21     at 80012dc0
+  kernel joy1 w0          17..17     at 80012e80
+  kernel joy1 w1          23..23     at 80012f40
+  kernel joy1 w2          20..21     at 80013000
+  kernel joy1 w3          17..17     at 800130c0
+
+Done.

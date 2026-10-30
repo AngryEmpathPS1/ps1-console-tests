@@ -1,0 +1,31 @@
+cd-spinup-trend - PREDICTED before its first console run (2026-10-19). This core has one spin-up per console (v0.377.134's
+pooled 67.34M on the 7001): flat. A drive that spins up faster cold reads lower in the first rows after a cold
+power-on, climbing to its warm value; the first console runs (2026-10-19 morning) are WARM - the 7001 on all night.
+
+this core, as the SCPH-7001 (hwtests/run.js):
+ 1     4s  MotorOn INT2  67411048   Stop INT2  13339192
+ 2     8s  MotorOn INT2  67411008   Stop INT2  13363208
+ 3    13s  MotorOn INT2  67427128   Stop INT2  13366712
+ 4    17s  MotorOn INT2  67418632   Stop INT2  13339080
+ 5    21s  MotorOn INT2  67427128   Stop INT2  13355136
+ 6    26s  MotorOn INT2  67419168   Stop INT2  13344888
+ 7    30s  MotorOn INT2  67427072   Stop INT2  13366376
+ 8    35s  MotorOn INT2  67411000   Stop INT2  13355192
+ 9    39s  MotorOn INT2  67419064   Stop INT2  13339080
+10    43s  MotorOn INT2  67410992   Stop INT2  13366584
+11    48s  MotorOn INT2  67419392   Stop INT2  13344880
+12    52s  MotorOn INT2  67411008   Stop INT2  13384704
+13    57s  MotorOn INT2  67419224   Stop INT2  13339336
+14    61s  MotorOn INT2  67427128   Stop INT2  13366648
+15    65s  MotorOn INT2  67419232   Stop INT2  13366208
+16    70s  MotorOn INT2  67427128   Stop INT2  13344928
+17    74s  MotorOn INT2  67419448   Stop INT2  13358480
+18    78s  MotorOn INT2  67418248   Stop INT2  13366600
+19    83s  MotorOn INT2  67419056   Stop INT2  13339120
+20    87s  MotorOn INT2  67419776   Stop INT2  13366224
+21    92s  MotorOn INT2  67419568   Stop INT2  13355136
+22    96s  MotorOn INT2  67427080   Stop INT2  13366376
+23   100s  MotorOn INT2  67411008   Stop INT2  13366712
+24   105s  MotorOn INT2  67418792   Stop INT2  13339120
+
+waits that ran out: 0

@@ -1,0 +1,130 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80014c64,ehk=80014c94
+ResetGraph:SR=7000ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-mono-out
+What the MDEC hands out for one small command, read by the CPU to the end; then two tests' blocks, each from
+a reset decoder. No assertions - compare against your emulator.
+
+STREAM
+8 bpp, DC block [0340 FE00]                    96 words out (one block's worth  16), status after 8204ffff
+    [   0-  15] 50505050
+    [  16-  95] 80808080
+4 bpp, DC block [0340 FE00]                    48 words out (one block's worth   8), status after 8004ffff
+    [   0-   7] 55555555
+    [   8-  47] 88888888
+8 bpp, two DC blocks in one command            96 words out (one block's worth  32), status after 8204ffff
+    [   0-  15] 50505050
+    [  16-  31] a0a0a0a0
+    [  32-  95] 80808080
+8 bpp, AC block [03ba 07cd FE00 FE00]          80 words out (one block's worth  16), status after 8204ffff
+    [   0-   0] 7f75685e
+    [   1-   1] 5e68757f
+    [   2-   2] 7f75685e
+    [   3-   3] 5e68757f
+    [   4-   4] 7f75685e
+    [   5-   5] 5e68757f
+    [   6-   6] 7f75685e
+    [   7-   7] 5e68757f
+    [   8-   8] 7f75685e
+    [   9-   9] 5e68757f
+    [  10-  10] 7f75685e
+    [  11-  11] 5e68757f
+    [  12-  12] 7f75685e
+    [  13-  13] 5e68757f
+    [  14-  14] 7f75685e
+    [  15-  15] 5e68757f
+    [  16-  79] 80808080
+  the same again, no reset between             80 words out (one block's worth  16), status after 8204ffff
+    [   0-  15] 80808080
+    [  16-  16] 7f75685e
+    [  17-  17] 5e68757f
+    [  18-  79] 80808080
+8 bpp, AC block [03ba 07cd 0000 FE00]          80 words out (one block's worth  16), status after 8204ffff
+    [   0-   0] 7f75685e
+    [   1-   1] 5e68757f
+    [   2-   2] 7f75685e
+    [   3-   3] 5e68757f
+    [   4-   4] 7f75685e
+    [   5-   5] 5e68757f
+    [   6-   6] 7f75685e
+    [   7-   7] 5e68757f
+    [   8-   8] 7f75685e
+    [   9-   9] 5e68757f
+    [  10-  10] 7f75685e
+    [  11-  11] 5e68757f
+    [  12-  12] 7f75685e
+    [  13-  13] 5e68757f
+    [  14-  14] 7f75685e
+    [  15-  15] 5e68757f
+    [  16-  79] 80808080
+8 bpp, DC block padded FE00 to 32 words        16 words out (one block's worth  16), status after 8204ffff
+    [   0-  15] 50505050
+15 bpp, six DC blocks [0000 FE00]             128 words out (one block's worth 128), status after 8604ffff
+    [   0- 127] 42104210
+
+ROUND (mdec-round's blocks: q_scale 0; A rounds once, B each pass, C floors once)
+   0 control dc    0  AC  0 =    0   A 64/64  B 64/64  C 64/64   96 words out
+     8080808080808080 8080808080808080 8080808080808080 8080808080808080 8080808080808080 8080808080808080 8080808080808080 8080808080808080
+   1 control dc -192  AC  0 =    0   A 64/64  B 64/64  C 64/64   96 words out
+     5050505050505050 5050505050505050 5050505050505050 5050505050505050 5050505050505050 5050505050505050 5050505050505050 5050505050505050
+   2 DC      dc -398  AC  0 =    0   A  0/64  B 64/64  C 64/64   96 words out
+     1c1c1c1c1c1c1c1c 1c1c1c1c1c1c1c1c 1c1c1c1c1c1c1c1c 1c1c1c1c1c1c1c1c 1c1c1c1c1c1c1c1c 1c1c1c1c1c1c1c1c 1c1c1c1c1c1c1c1c 1c1c1c1c1c1c1c1c
+   3 DC      dc -118  AC  0 =    0   A  0/64  B 64/64  C 64/64   96 words out
+     6262626262626262 6262626262626262 6262626262626262 6262626262626262 6262626262626262 6262626262626262 6262626262626262 6262626262626262
+   4 DC      dc  130  AC  0 =    0   A 64/64  B  0/64  C 64/64   96 words out
+     a0a0a0a0a0a0a0a0 a0a0a0a0a0a0a0a0 a0a0a0a0a0a0a0a0 a0a0a0a0a0a0a0a0 a0a0a0a0a0a0a0a0 a0a0a0a0a0a0a0a0 a0a0a0a0a0a0a0a0 a0a0a0a0a0a0a0a0
+   5 DC      dc  398  AC  0 =    0   A 64/64  B  0/64  C 64/64   96 words out
+     e3e3e3e3e3e3e3e3 e3e3e3e3e3e3e3e3 e3e3e3e3e3e3e3e3 e3e3e3e3e3e3e3e3 e3e3e3e3e3e3e3e3 e3e3e3e3e3e3e3e3 e3e3e3e3e3e3e3e3 e3e3e3e3e3e3e3e3
+   6 AC      dc -100  AC  1 = -114   A 64/64  B 32/64  C 32/64   80 words out
+     3f45515f6f7d898f 3f45515f6f7d898f 3f45515f6f7d898f 3f45515f6f7d898f 3f45515f6f7d898f 3f45515f6f7d898f 3f45515f6f7d898f 3f45515f6f7d898f
+   7 AC      dc  -70  AC  2 =  -51   A  0/64  B  0/64  C  0/64   80 words out
+     5e68757f7f75685e 5e68757f7f75685e 5e68757f7f75685e 5e68757f7f75685e 5e68757f7f75685e 5e68757f7f75685e 5e68757f7f75685e 5e68757f7f75685e
+   8 AC      dc  -90  AC  3 = -207   A  0/64  B  0/64  C  0/64   80 words out
+     2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6
+   9 AC      dc -100  AC  5 = -219   A  0/64  B  0/64  C  0/64   80 words out
+     3cb35827a7761b92 3cb35827a7761b92 3cb35827a7761b92 3cb35827a7761b92 3cb35827a7761b92 3cb35827a7761b92 3cb35827a7761b92 3cb35827a7761b92
+  10 AC      dc  -70  AC  9 =  -51   A  0/64  B  0/64  C  1/64   80 words out
+     565a616a737c8387 5a5d636a737a8083 6163676c71767a7c 6a6a6c6e6f717373 7373716f6e6c6a6a 7c7a76716c676361 83807a736a635d5a 87837c736a615a56
+  11 AC      dc -100  AC 14 = -294   A  0/64  B  0/64  C  0/64   80 words out
+     30ec009e9e00ec30 38d800969600d838 48b21c86861cb248 5c824c72724c825c 724c815c5c814c72 861cb24848b21c86 9600d83838d80096 9e00ec3030ec009e
+  12 AC      dc  -70  AC 20 =  -51   A  0/64  B  0/64  C  0/64   80 words out
+     5e7f7f5e5e7f7f5e 6875756868757568 7568687575686875 7f5e5e7f7f5e5e7f 7f5e5e7f7f5e5e7f 7568687575686875 6875756868757568 5e7f7f5e5e7f7f5e
+  13 AC      dc -100  AC 27 = -219   A  0/64  B  0/64  C  0/64   80 words out
+     1b79c09a340e55b3 7963525b737c6b55 c052002ba3d07c0e 9a5b2b4589a37334 3473a389452b5b9a 0e7cd0a32b0052c0 556b7c735b526379 b3550e349ac0791b
+  14 AC      dc  -70  AC 35 =  -51   A  7/64  B  5/64  C  5/64   80 words out
+     5f728079645d6b7e 7d6b5d6478807260 7d6b5d6478807260 5f728079645d6b7e 5f728079645d6b7e 7d6b5d6478807260 7d6b5d6478807260 5f728079645d6b7e
+  15 AC      dc    0  AC 44 = -174   A  0/64  B  0/64  C  0/64   80 words out
+     5ea2a25e5ea2a25e bc4444bcbc4444bc 748c8c74748c8c74 4db3b34d4db3b34d b34d4db3b34d4db3 8c74748c8c74748c 44bcbc4444bcbc44 a25e5ea2a25e5ea2
+  blocks each rule gives exactly: A 5, B 4, C 6 of 16
+
+QBIAS (mdec-qbias's blocks: q_scale 1-4; the dequantiser's half step 8, 5 or 0, under this emulator's IDCT)
+   0 control dc    0  AC  0 =    0  q 1   8: 64/64  5: 64/64  0: 64/64   96 words out
+     8080808080808080 8080808080808080 8080808080808080 8080808080808080 8080808080808080 8080808080808080 8080808080808080 8080808080808080
+   1 control dc   40  AC  0 =    0  q 1   8: 64/64  5: 64/64  0: 64/64   96 words out
+     8a8a8a8a8a8a8a8a 8a8a8a8a8a8a8a8a 8a8a8a8a8a8a8a8a 8a8a8a8a8a8a8a8a 8a8a8a8a8a8a8a8a 8a8a8a8a8a8a8a8a 8a8a8a8a8a8a8a8a 8a8a8a8a8a8a8a8a
+   2 AC      dc  -60  AC  1 =  -22  q 1   8: 48/64  5: 56/64  0: 48/64   80 words out
+     696b6d7073757879 696b6d7073757879 696b6d7073757879 696b6d7073757879 696b6d7073757879 696b6d7073757879 696b6d7073757879 696b6d7073757879
+   3 AC      dc  -60  AC  2 =  -60  q 2   8: 64/64  5: 56/64  0: 48/64   80 words out
+     4848484848484848 4e4e4e4e4e4e4e4e 5a5a5a5a5a5a5a5a 6969696969696969 7979797979797979 8989898989898989 9494949494949494 9b9b9b9b9b9b9b9b
+   4 AC      dc  -60  AC  3 =  -40  q 1   8: 64/64  5: 48/64  0: 32/64   80 words out
+     6262626262626262 6b6b6b6b6b6b6b6b 7777777777777777 8080808080808080 8080808080808080 7777777777777777 6b6b6b6b6b6b6b6b 6262626262626262
+   5 AC      dc    0  AC  5 =   53  q 3   8: 16/64  5: 48/64  0: 48/64   80 words out
+     be996642426699be be996642426699be be996642426699be be996642426699be be996642426699be be996642426699be be996642426699be be996642426699be
+   6 AC      dc  -60  AC  9 =  -41  q 1   8: 56/64  5: 64/64  0: 56/64   80 words out
+     6060606060606060 7575757575757575 8585858585858585 7c7c7c7c7c7c7c7c 6666666666666666 5e5e5e5e5e5e5e5e 6d6d6d6d6d6d6d6d 8282828282828282
+   7 AC      dc  -60  AC 20 =  -54  q 1   8: 64/64  5: 56/64  0: 48/64   80 words out
+     6060606060606060 8f8f8f8f8f8f8f8f 6b6b6b6b6b6b6b6b 5757575757575757 8b8b8b8b8b8b8b8b 7777777777777777 5353535353535353 8282828282828282
+   8 AC      dc    0  AC 27 =  -26  q 4   8: 48/64  5: 48/64  0: 16/64   80 words out
+     67be43999943be67 67be43999943be67 67be43999943be67 67be43999943be67 67be43999943be67 67be43999943be67 67be43999943be67 67be43999943be67
+   9 AC      dc    0  AC 35 =   59  q 1   8: 56/64  5: 56/64  0: 40/64   80 words out
+     8787878787878787 6c6c6c6c6c6c6c6c 9d9d9d9d9d9d9d9d 5e5e5e5e5e5e5e5e a2a2a2a2a2a2a2a2 6363636363636363 9393939393939393 7979797979797979
+  10 AC      dc    0  AC 44 =    3  q 2   8: 40/64  5: 48/64  0: 56/64   80 words out
+     827b857e7e857b82 7f817f81817f817f 7d867a83837a867d 7f847c81817c847f 817c847f7f847c81 837a867d7d867a83 817f817f7f817f81 7e857b82827b857e
+  blocks each half step gives exactly: 8 5, 5 3, 0 2 of 11
+
+mdec/mdec-mono-out: Done.

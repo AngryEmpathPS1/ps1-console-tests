@@ -1,0 +1,22 @@
+
+cpu/miss-grid
+One cold line by its entry and its exit (Timer 2 cycles, fastest..slowest of 16; cold / warm).
+There are no assertions - compare against your emulator.
+
+  J-S   jal to C, run C, fall into warm D                        cold  18..22   warm  13..13   miss 5
+  J-B0  jal to C, taken branch at C word 0                       cold  18..20   warm  10..10   miss 8
+  J-B1  jal to C, taken branch at C word 1                       cold  18..18   warm  11..11   miss 7
+  J-B2  jal to C, taken branch at C word 2                       cold  17..17   warm  12..12   miss 5
+  J-B3  jal to C, taken branch at C word 3 (its slot D word 0)   cold  18..18   warm  13..13   miss 5
+  F-S   fall from warm W into C, run C, fall into warm D         cold  22..26   warm  17..17   miss 5
+  F-B0  fall from warm W into C, taken branch at C word 0        cold  22..22   warm  14..14   miss 8
+  F-B1  fall from warm W into C, taken branch at C word 1        cold  22..22   warm  15..15   miss 7
+  F-B2  fall from warm W into C, taken branch at C word 2        cold  21..21   warm  16..16   miss 5
+  F-B3  fall from warm W into C, taken branch at C word 3 (its slot D word 0) cold  22..22   warm  17..17   miss 5
+  P-S   W and C cold, jal to W, run C, fall into warm D          cold  27..31   warm  17..17   miss 10
+  P-B0  W and C cold, jal to W, taken branch at C word 0         cold  27..31   warm  14..14   miss 13
+  P-B1  W and C cold, jal to W, taken branch at C word 1         cold  27..33   warm  15..15   miss 12
+  P-B2  W and C cold, jal to W, taken branch at C word 2         cold  26..32   warm  16..16   miss 10
+  P-B3  W and C cold, jal to W, taken branch at C word 3 (its slot D word 0) cold  27..32   warm  17..17   miss 10
+
+Done.

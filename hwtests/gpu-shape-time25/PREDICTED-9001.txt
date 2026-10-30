@@ -1,0 +1,54 @@
+gpu-shape-time25 on the SCPH-9001 - PREDICTED before its first run there (2026-10-15): this core, v0.377.113 (451d141), as the
+SCPH-9001 under the runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0) - the NEW GPU's
+model. This program ran on the SCPH-1001 (old GPU) first; its PREDICTED.txt is that run's.
+
+
+gpu/gpu-shape-time25
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+semi TL 16x16           227..227       28..28   
+semi BR 16x16           215..215       32..32   
+semi TR 16x16           227..227       28..28   
+semi BL 16x16           213..213       30..30   
+semi TLu 16x16          231..231       32..32   
+semi BLd 16x16          215..215       32..32   
+semi TL 64x16           525..525       30..30   
+semi BR 64x16           478..478       34..34   
+semi TR 64x16           525..525       30..30   
+semi BL 64x16           474..474       30..30   
+semi TLu 64x16          529..529       34..34   
+semi BLd 64x16          478..478       34..34   
+semi TL 64x64          1868..1868      30..30   
+semi BR 64x64          1823..1823      36..36   
+semi TR 64x64          1868..1868      30..30   
+semi BL 64x64          1819..1819      32..32   
+semi TLu 64x64         1874..1874      36..36   
+semi BLd 64x64         1823..1823      36..36   
+semi TL 16x64           753..753       28..28   
+semi BR 16x64           693..693       34..34   
+semi TR 16x64           704..704       28..28   
+semi BL 16x64           740..740       32..32   
+semi TLu 16x64          759..759       34..34   
+semi BLd 16x64          742..742       34..34   
+semi TL 2x128           802..802       26..26   
+semi BR 2x128           410..410       33..33   
+semi TR 2x128           409..409       26..26   
+semi BL 2x128           803..803       33..33   
+semi TLu 2x128          809..809       33..33   
+semi BLd 2x128          803..803       33..33   
+stex 16 u0              321..321      115..115  
+stex 16 u15             322..322      116..116  
+stex 16 u63             998..998      118..118  
+stex 16 u255           1695..1695     120..120  
+stex 64 u0             2442..2442     117..117  
+stex 64 u15            2443..2443     118..118  
+stex 64 u63            6570..6570     120..120  
+stex 64 u255          23065..23065    122..122  
+tex 64 u0              2337..2337     117..117  
+tex 64 u15             2338..2338     118..118  
+tex 64 u63             5989..5989     120..120  
+tex 64 u255           19588..19588    122..122  
+
+gpu/gpu-shape-time25: Done.

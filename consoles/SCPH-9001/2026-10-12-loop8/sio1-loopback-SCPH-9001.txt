@@ -1,0 +1,54 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+sio/sio1-loopback
+SIO1 timed from the inside: rate, SR.0/SR.2, the start's alignment, and with a loopback plug
+(4-1 TXD-RXD, 6-3 DTR-DSR, 8-5 RTS-CTS) the receiver, the FIFO and the interrupts. No assertions.
+
+>>> NO BUTTONS IN THIS TEST - WATCH THE TV. When it turns BLUE: take the serial cable out of the console and put the loopback plug in. YELLOW: it is measuring (a second or two). GREEN: take the loopback plug out and put the serial cable back - no hurry: the results come 20 s after the plug is out.
+THE PLUG: seen by its lines
+
+LINES (SR.7 DSR, SR.8 CTS; each output on its own)
+  off: DSR 0 CTS 0   DTR: DSR 1 CTS 0   RTS: DSR 0 CTS 1   both: DSR 1 CTS 1
+  DSR follows DTR; CTS follows RTS - joined as they should be
+  data comes back (TXD to RXD): yes
+
+ONE BYTE: cycles from the TX_DATA write (Timer2, CPU clock)
+  8N1 MUL16 BAUD 0024h       bit   576  SR.0    584  SR.2   6341  RX   6140 (5a)
+  8N2 MUL16 BAUD 0024h       bit   576  SR.0    601  SR.2   6926  RX   6124 (5a)
+  8N1.5 MUL16 BAUD 0024h     bit   576  SR.0    601  SR.2   6638  RX   6124 (5a)
+  8O1 MUL16 BAUD 0024h       bit   576  SR.0    601  SR.2   6912  RX   6718 (5a)
+  8E1 MUL16 BAUD 0024h       bit   576  SR.0    601  SR.2   6912  RX   6718 (5a)
+  5N1 MUL16 BAUD 0024h       bit   576  SR.0    570  SR.2   4604  RX   4410 (1a)
+  8N1 MUL1 BAUD 0100h        bit   256  SR.0    187  SR.2   2740  RX   3004 (5a)
+  8N1 MUL1 BAUD 0101h (odd)  bit   256  SR.0    181  SR.2   2767  RX   3031 (5a)
+  8N1 MUL64 BAUD 0010h       bit  1024  SR.0   1056  SR.2  11285  RX  10803 (5a)
+  8N1 MUL16 BAUD 0001h       bit    16  SR.0     52  SR.2    182  RX    182 (5a)
+  8N1 MUL16 BAUD 00D8h       bit  3456  SR.0   3401  SR.2  37958  RX  36644 (5a)
+
+THE START'S ALIGNMENT (8N1 MUL16 BAUD 0024h, a bit is 576)
+  write   47 after BAUD      SR.0   645 after the write (  692 after BAUD)
+  write  167 after BAUD      SR.0   644 after the write (  811 after BAUD)
+  write  311 after BAUD      SR.0   646 after the write (  957 after BAUD)
+  write  455 after BAUD      SR.0   640 after the write ( 1095 after BAUD)
+  write  743 after BAUD      SR.0   640 after the write ( 1383 after BAUD)
+
+THE FIFO (8N1 MUL16 BAUD 0001h)
+  nine bytes, none read: SR.1 1 SR.4 (overrun) 1; reads: 01 02 03 04 05 06 07 09 00 00 00 00  (SR.1 now 0)
+  five, then a sixth: reads 11 12 13 14 15 16 16 16 00 00  (psx-spx: the sixth is stored thrice; after six reads it reads twice more, then 00h)
+  six, then a 16-bit read a2a1 and a 32-bit read a5a4a3a2: 1 left (a 16-bit read takes one, a 32-bit four)
+
+INTERRUPTS (I_STAT.8, polled; interrupts stay off)
+  RX: I_STAT.8 1 SR.9 1; ack with a byte left: I_STAT.8 1; ack with none: I_STAT.8 0 SR.9 0
+  TX IRQ while idle: I_STAT.8 1; DSR IRQ with DTR off 0, then DTR on 1 (meaningful only if LINES says DSR follows DTR)
+
+THE BAUD TIMER (SR bits 11-31; 8N1 MUL16 BAUD 0100h: reloads with 2048)
+    125 at 31 cycles after the BAUD write,   105 at 563
+
+CTS AND THE TRANSMITTER (RTS drives CTS through the plug; 8N1 MUL16 BAUD 0024h, a bit is 576; one byte ~6,300)
+  1. a byte written with CTS off: in 40,000 cycles SR.0 never SR.2 56 RX never
+     then CTS on: SR.0 +622 SR.2 +6376 RX +6160 (a5)
+  2. CTS off 1798 cycles after the write (3 bits into the byte): SR.2 at 6356, RX at 6156 (3c)
+  3. second byte queued at 704, CTS off with it: RX 6142 (11), 11940 (22) - the second at +- after CTS on if it waited (then never 00)
+
+Done.

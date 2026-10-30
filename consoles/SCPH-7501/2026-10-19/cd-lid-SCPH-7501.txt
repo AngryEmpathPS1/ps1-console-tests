@@ -1,0 +1,44 @@
+
+cdrom/cd-lid
++0.000 s  GetlocP before  INT3 01 00
+-- GetlocP through a lid cycle
+OPEN THE LID now, and leave it open until asked to shut it.
++0.000 s  the door switch reads open
++0.004 s  GetlocP  INT5 13 80
++0.475 s  GetlocP  INT5 11 80
+SHUT THE LID now, with the same disc in.
++0.000 s  the door switch reads shut
++0.004 s  GetlocP  INT5 11 80
++1.651 s  GetlocP  INT5 13 80
++6.582 s  GetlocP  INT3 01 01
++6.597 s  GetlocP  INT3 00 01
++6.633 s  GetlocP  INT3 00 a2
++6.659 s  GetlocP  INT3 00 01
++6.696 s  GetlocP  INT3 00 a0
++6.723 s  GetlocP  INT3 00 a1
++6.774 s  GetlocP  INT3 00 a2
++6.813 s  GetlocP  INT3 00 01
++6.838 s  GetlocP  INT3 00 a2
++6.899 s  GetlocP  INT3 01 01
++7.000 s  GetlocP  INT3 01 00
++7.143 s  GetlocP  INT3 01 01
++7.158 s  GetlocP  INT3 01 00
++7.266 s  GetlocP  INT3 01 01
++7.291 s  GetlocP  INT3 01 00
++7.518 s  GetlocP  INT3 01 01
++7.544 s  GetlocP  INT3 01 00
++7.592 s  Getstat  INT3 12 ff
+the door's own INT5 seen 1 time(s), last with stat 16
+-- ReadN through a lid cycle
+OPEN THE LID now, and leave it open until asked to shut it.
++0.000 s  the door switch reads open
++0.054 s  ReadN  INT5 13 80
++0.544 s  ReadN  INT5 11 80
+SHUT THE LID now, with the same disc in.
++0.000 s  the door switch reads shut
++0.011 s  ReadN  INT5 11 40
++1.657 s  ReadN  INT5 13 40
++6.555 s  ReadN  INT3 52 ff
++6.609 s  Getstat  INT3 52 ff
+the door's own INT5 seen 0 time(s), last with stat 16
+Done.

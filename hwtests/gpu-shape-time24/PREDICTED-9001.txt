@@ -1,0 +1,54 @@
+gpu-shape-time24 on the SCPH-9001 - PREDICTED before its first run there (2026-10-15): this core, v0.377.113 (451d141), as the
+SCPH-9001 under the runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0) - the NEW GPU's
+model. This program ran on the SCPH-1001 (old GPU) first; its PREDICTED.txt is that run's.
+
+
+gpu/gpu-shape-time24
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+flat 1x16 @0             95..95         9..9    
+flat 2x16 @0             95..95         9..10   
+flat 3x16 @0             95..95         9..9    
+flat 4x16 @0             95..95         9..9    
+flat 5x16 @0             95..95         9..10   
+flat 6x16 @0            103..103        9..9    
+flat 7x16 @0            111..111        9..9    
+flat 8x16 @0            119..119        9..9    
+flat 9x16 @0            127..127        9..10   
+flat 14x16 @0           167..167        9..9    
+flat 15x16 @0           175..175        9..9    
+flat 16x16 @0           183..183        9..10   
+flat 17x16 @0           191..191        9..9    
+flat 32x16 @0           312..312        9..9    
+flat 33x16 @0           320..320        9..9    
+flat 64x16 @0           569..569        9..9    
+flat 65x16 @0           577..577        9..9    
+flat 1x16 @1             95..95         9..9    
+flat 2x16 @1             95..95         9..9    
+flat 3x16 @1             95..95         9..9    
+flat 4x16 @1             95..95         9..9    
+flat 15x16 @1           175..175        9..10   
+flat 16x16 @1           183..183        9..10   
+flat 17x16 @1           191..191        9..9    
+flat 16x1 @0             33..33         9..10   
+flat 16x2 @0             43..43         9..10   
+flat 16x4 @0             63..63         9..9    
+flat 16x64 @0           664..664        9..10   
+semi 1x16 @0            122..122        9..10   
+semi 2x16 @0            135..135        9..9    
+semi 4x16 @0            161..161        9..10   
+semi 8x16 @0            214..214        9..10   
+semi 16x16 @0           318..318        9..9    
+semi 32x16 @0           504..504        9..9    
+semi 64x16 @0           875..875        9..9    
+tex 1x16 @0              65..65         9..9    
+tex 2x16 @0              73..73         9..9    
+tex 4x16 @0              88..88         9..9    
+tex 8x16 @0             119..119        9..9    
+tex 16x16 @0            180..180        9..9    
+tex 32x16 @0            303..303        9..9    
+tex 64x16 @0           2976..2976       9..9    
+
+gpu/gpu-shape-time24: Done.

@@ -1,0 +1,55 @@
+pocket-write - PREDICTED before its first console run (2026-10-24): v0.377.175 under hwtests/run.js --pocket2 (the modelled
+PocketStation, flash erased: frame 1023 FFh). Here a read straight after a write FAILS (the flash busy ~20 ms, Sony's
+"approximately 20 msec" - PK_FLASH_BUSY) and the next read has the data: step 5 says so. The console's answer to that is
+half of what this test is for.
+
+sio/pocket-write
+A write to frame 1023 of the card in slot 2, timed, read back, a bad-checksum write, then the original put back.
+
+1. read: ok
+2. write pattern A: 138 bytes
+  byte   1 -> ffh  /ACK +  1866  pulse   34
+  byte   2 -> 08h  /ACK +  1735  pulse   34
+  byte   3 -> 5ah  /ACK +  1859  pulse   34
+  byte   4 -> 5dh  /ACK +  1859  pulse   34
+  byte   5 -> 00h  /ACK +  1952  pulse   34
+  byte   6 -> 00h  /ACK +  1704  pulse   34
+  byte   7 -> 00h  /ACK +  1828  pulse   71
+  byte   8 -> 00h  /ACK +  1549  pulse   34
+  ...
+  byte  71 -> 00h  /ACK +  1580  pulse   34
+  byte 133 -> 00h  /ACK +  1549  pulse   71
+  byte 134 -> 00h  /ACK +  1549  pulse   34
+  byte 135 -> 00h  /ACK +  1983  pulse   71
+  byte 136 -> 5ch  /ACK +  1611  pulse   34
+  byte 137 -> 5dh  /ACK +  2076  pulse   34
+  byte 138 -> 47h  no /ACK
+  data bytes' /ACK +1549..1983
+   end status 47h
+3. read back: pattern A, as written
+4. write pattern B with a wrong checksum: 138 bytes
+  byte   1 -> ffh  /ACK +  1866  pulse   34
+  byte   2 -> 00h  /ACK +  1735  pulse   34
+  byte   3 -> 5ah  /ACK +  1642  pulse   34
+  byte   4 -> 5dh  /ACK +  2107  pulse   34
+  byte   5 -> 00h  /ACK +  1921  pulse   71
+  byte   6 -> 00h  /ACK +  1704  pulse   34
+  byte   7 -> 00h  /ACK +  1859  pulse   34
+  byte   8 -> 00h  /ACK +  1580  pulse   34
+  ...
+  byte  71 -> 00h  /ACK +  1580  pulse   34
+  byte 133 -> 00h  /ACK +  1704  pulse   34
+  byte 134 -> 00h  /ACK +  1580  pulse   34
+  byte 135 -> 00h  /ACK +  1828  pulse   34
+  byte 136 -> 5ch  /ACK +  1642  pulse   34
+  byte 137 -> 5dh  /ACK +  2076  pulse   34
+  byte 138 -> 4eh  no /ACK
+  data bytes' /ACK +1549..1859
+   end status 4eh
+   read back after it: still pattern A (not written)
+5. the original written back: status 47h, NOT RESTORED - restore from the pocket-dump backup
+   its read FAILED; first bytes original / read: ff/0b ff/30 ff/55 ff/7a ff/9f ff/c4 ff/e9 ff/0e
+   read once more: restored after all (the first read too soon)
+
+sio/pocket-write: Done.
+

@@ -1,0 +1,16 @@
+gpu-shape-time21 - written down BEFORE any console ran it (2026-10-14 night), from the SCPH-1001's fits.
+
+TR less TL (bit 26), the walk only (TL and TR have the same rows and pixels), 15 walking rows:
+                     walk/row   FREE (max(0, rate x walk - 5) a row)   BEYOND-4 (0.336 x (walk - 4) + 0.246 a row)
+  flat 96x16             6        0   (rate 0.5)                             14
+  flat 128x16            8        0                                          24
+  flat 160x16           10        0                                          34
+  flat 192x16           12       15                                          44
+  flat 256x16           16       45                                          64
+  semi 160x16           10       ~9 (rate ~0.56)                             -
+  semi 192x16           12       ~26                                         -
+  gouraud 80x16          5        0   (rate 1.0)                             -
+  gouraud 96x16          6       15                                          -
+(the pair-end term moves TL against TR by a few cycles where W/16 is odd: flat 80/112-wide rows; none here, every W/16
+even but 5 and 6's gouraud.) The clipped TR 128x16 at -64 / -32 against the unclipped one: FREE says the same walk
+cost (0) and any difference is the clipping's own; gpu-shape-time6 read the -64 one ~25 over FREE.

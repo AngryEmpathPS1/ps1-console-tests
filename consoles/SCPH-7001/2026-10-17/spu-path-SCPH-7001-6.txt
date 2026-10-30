@@ -1,0 +1,12 @@
+
+spu/spu-path
+A voice's way from sound RAM to its capture ring, link by link. No assertions.
+
+  found: SPUCNT c085 SPUSTAT 0005 XFER 0004 DPCR 08009899 SPU_DELAY 200931e1
+  manual write of 64 halfwords at 1000h: 32 found in the read-back (first missing 32); read: 5a00 5a01 5a02 5a03 ... 0000 0000
+  manual write of 32 halfwords at 1000h: 32 found in the read-back (first missing -1); read: 5a00 5a01 5a02 5a03 ... 0000 0000
+  1DA0h as found       voice 1 on a loud loop: ENVX 7fff; its capture ring  31 of 512 halfwords nonzero (first at 211: 30ce 619d); voice 3's 0
+  1DA0h written 0000h  voice 1 on a loud loop: ENVX 7fff; its capture ring 281 of 512 halfwords nonzero (first at 0: 6f8e 6f8e); voice 3's 0
+  1DA0h was 0000, now 0000
+
+spu/spu-path: Done.

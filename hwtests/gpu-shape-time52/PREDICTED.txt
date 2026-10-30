@@ -1,0 +1,33 @@
+gpu-shape-time52 - PREDICTED before its first console run (2026-10-16): v0.377.119 as the SCPH-9001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. This core's
+semi gouraud premium: GPU_POLY_NEW3.semiShRow, 1.6 a row of each half, whatever its width or the edge's slope.
+What would settle what: semi less opaque by W at each slope and by slope at each W - the narrow-row premium (~2.7 a row
+at 4 wide on gpu-shape-time50) a width's or a slope's (rows starting in the same pixel pair); the upright edge's extra
+(~10-13 a triangle) by slope.
+
+shape                  bit 26        bit 28
+semi par 4 s0           912..912      595..595  
+semi par 4 s16          918..918      556..556  
+semi par 4 s64          963..963      622..622  
+semi par 4 s256        1258..1258     770..770  
+semi par 16 s0         1680..1680     956..956  
+semi par 16 s16        1680..1680     909..909  
+semi par 16 s64        1749..1749    1002..1002 
+semi par 16 s256       2059..2059    1157..1157 
+semi par 64 s0         4799..4799    2492..2492 
+semi par 64 s16        4800..4800    2505..2505 
+semi par 64 s64        4799..4799    2543..2543 
+semi par 64 s256       5111..5111    2699..2699 
+opaq par 4 s0           729..729      490..490  
+opaq par 4 s16          738..738      463..463  
+opaq par 4 s64          800..800      528..528  
+opaq par 4 s256        1160..1160     708..708  
+opaq par 16 s0         1479..1479     851..851  
+opaq par 16 s16        1479..1479     812..812  
+opaq par 16 s64        1565..1565     908..908  
+opaq par 16 s256       1939..1939    1095..1095 
+opaq par 64 s0         4602..4602    2387..2387 
+opaq par 64 s16        4603..4603    2403..2403 
+opaq par 64 s64        4602..4602    2448..2448 
+opaq par 64 s256       4978..4978    2637..2637 
+

@@ -1,0 +1,23 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=800132c4,ehk=800132f4
+ResetGraph:SR=4000ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/fifo-burst
+64 dots (128 GP0 words) written unpaced: does the CPU wait on a full FIFO, or overrun it?
+Timer 2 at sysclk/8, interrupts off. There are no assertions - compare against your emulator.
+
+  PACED burst   3264 cycles, to idle    3296 cycles, dots 64/64
+  IDLE  burst    864 cycles, to idle     896 cycles, dots 46/64  missing 0007f800 03ff0000
+  FILL  burst    360 cycles, to idle    6640 cycles, dots  9/64  missing 00ffffff fffffffe
+  COPY  burst    352 cycles, to idle   42512 cycles, dots  9/64  missing 00ffffff fffffffe
+  the copy's destination matches its source at 16 of 16 points
+
+  A CPU that waits: FILL's burst about the fill's time, 64/64 everywhere.
+  A CPU that overruns: FILL's burst about IDLE's, dots lost behind the first ~16 words.
+  IDLE says whether an idle GPU keeps up with an unpaced CPU at all.
+
+gpu/fifo-burst: Done.

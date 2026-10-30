@@ -1,0 +1,63 @@
+
+gpu/gpu-semi-shape
+Semi-transparent textured primitives and their opaque twins at shapes whose rows and pixels part, written to GP0
+by the CPU, then GPUSTAT polled: when bit 28 and bit 26 read set, cycles from the first word, fastest..slowest
+of four. No assertions.
+
+QUAD 4-bit (2Eh semi / 2Ch opaque):
+  semi    16x256    9 words   bit 28    4982..5419     bit 26     9278..9736
+  opaque  16x256    9 words   bit 28    4892..5038     bit 26     9008..9160
+  semi    64x256    9 words   bit 28   15991..16170    bit 26    33070..33213
+  opaque  64x256    9 words   bit 28   14204..14978    bit 26    28392..29852
+  semi   256x256    9 words   bit 28   58084..58598    bit 26   122756..125231
+  opaque 256x256    9 words   bit 28   55435..55677    bit 26   111602..113100
+  semi   256x64     9 words   bit 28   14962..15067    bit 26    31378..31474
+  opaque 256x64     9 words   bit 28   14194..14244    bit 26    28296..28431
+  semi   256x16     9 words   bit 28    4025..4072     bit 26     7569..7604
+  opaque 256x16     9 words   bit 28    3877..3895     bit 26     7246..7322
+SPRITE 4-bit (66h semi / 64h opaque):
+  semi    16x256    4 words   bit 28     108..152      bit 26     8292..8396
+  opaque  16x256    4 words   bit 28     108..108      bit 26     5120..5132
+  semi    64x256    4 words   bit 28     108..189      bit 26    26728..26988
+  opaque  64x256    4 words   bit 28     108..109      bit 26    20298..20352
+  semi   256x256    4 words   bit 28     108..191      bit 26    96929..101578
+  opaque 256x256    4 words   bit 28     110..113      bit 26    79978..79991
+  semi   256x64     4 words   bit 28     108..187      bit 26    23463..25508
+  opaque 256x64     4 words   bit 28     108..114      bit 26    20083..20133
+  semi   256x16     4 words   bit 28     108..187      bit 26     6433..6485
+  opaque 256x16     4 words   bit 28     108..113      bit 26     5090..5175
+QUAD 15-bit (2Eh semi / 2Ch opaque):
+  semi    16x256    9 words   bit 28   10317..10510    bit 26    19719..19914
+  opaque  16x256    9 words   bit 28    8921..8930     bit 26    16836..16924
+  semi    64x256    9 words   bit 28   33644..34696    bit 26    65489..68451
+  opaque  64x256    9 words   bit 28   30621..30722    bit 26    60391..60457
+  semi   256x256    9 words   bit 28  127405..131466   bit 26   258694..262713
+  opaque 256x256    9 words   bit 28  113370..117308   bit 26   230609..234501
+  semi   256x64     9 words   bit 28   32254..33308    bit 26    62578..66107
+  opaque 256x64     9 words   bit 28   29719..29759    bit 26    59074..59131
+  semi   256x16     9 words   bit 28    8301..8932     bit 26    15492..16742
+  opaque 256x16     9 words   bit 28    7954..8018     bit 26    14930..14984
+SPRITE 15-bit (66h semi / 64h opaque):
+  semi    16x256    4 words   bit 28     108..113      bit 26    16337..16377
+  opaque  16x256    4 words   bit 28     108..112      bit 26    13251..13308
+  semi    64x256    4 words   bit 28     108..108      bit 26    57706..60066
+  opaque  64x256    4 words   bit 28     108..109      bit 26    51300..51435
+  semi   256x256    4 words   bit 28     108..108      bit 26   230693..234942
+  opaque 256x256    4 words   bit 28     108..108      bit 26   198388..202551
+  semi   256x64     4 words   bit 28     108..112      bit 26    58799..58879
+  opaque 256x64     4 words   bit 28     108..111      bit 26    50701..50715
+  semi   256x16     4 words   bit 28     108..113      bit 26    14801..14843
+  opaque 256x16     4 words   bit 28     108..108      bit 26    12754..12810
+ONE TEXEL 15-bit (every UV 0):
+  semi    16x256    9 words   bit 28    3460..3562     bit 26     6586..6707
+  opaque  16x256    9 words   bit 28    3010..3073     bit 26     5546..5608
+  semi    64x256    9 words   bit 28    9826..9884     bit 26    19239..19328
+  opaque  64x256    9 words   bit 28    9202..9260     bit 26    17973..18024
+  semi   256x256    9 words   bit 28   35989..36092    bit 26    71776..71873
+  opaque 256x256    9 words   bit 28   33740..34026    bit 26    67442..67731
+  semi   256x64     9 words   bit 28    9298..9402     bit 26    18335..18399
+  opaque 256x64     9 words   bit 28    8819..8832     bit 26    17327..17368
+  semi   256x16     9 words   bit 28    2488..2682     bit 26     4710..4992
+  opaque 256x16     9 words   bit 28    2530..2546     bit 26     4717..4764
+
+gpu/gpu-semi-shape: Done.

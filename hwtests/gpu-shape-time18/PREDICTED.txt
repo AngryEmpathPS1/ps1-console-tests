@@ -1,0 +1,54 @@
+gpu-shape-time18 - written down BEFORE any console ran it (2026-10-14 evening).
+
+Two readings of one fit (scratch/scratch_oldalign2.js over gpu-shape-time3-6's 65 lone flat triangles, the core's own
+spans; scratch/scratch_predict18.js), identical on every shape drawn so far because they all sit at an even x:
+  A  a row whose last pixel is at an EVEN x costs less (1001: 0.815 cycle; 9001: 0.744)
+  B  an odd-WIDTH row costs less and an odd-START row more (1001: -1.219 / +0.761; 9001: -0.692 / +0.752)
+  C  neither: no row's cost depends on its x (the fit without either, RMS 8.2 / 7.8 against 5.3)
+Each predicts bit 26 less bit 28 (fastest of each) per shape:
+
+SCPH-1001 (rows, pixels, walk, empty, hidden + the term)
+shape                  A        B        C
+TR 16x16 @192        170.0    169.1    165.5
+TR 16x16 @193        156.9    169.1    165.5     A: 13 cheaper than @192;  B, C: the same
+TR 16x16 @194        170.0    169.1    165.5
+TL 16x16 @192        159.8    159.3    161.7
+TL 16x16 @193        159.8    171.4    161.7     B: 12 dearer than @192;   A, C: the same
+TL 16x16 @194        159.8    159.3    161.7
+BR 16x16 @192        156.9    156.1    153.3
+BR 16x16 @193        144.7    155.3    153.3
+BL 16x16 @192        146.9    146.5    149.7
+BL 16x16 @193        147.8    157.9    149.7
+TR 16x64 @192        632.9    631.2    612.5
+TR 16x64 @193        583.2    628.9    612.5     A: 50 cheaper
+TL 16x64 @192        641.6    641.4    644.6
+TL 16x64 @193        641.6    690.1    644.6     B: 49 dearer
+TR 64x64 @0         1453.0   1449.2   1434.9
+TR 64x64 @1         1400.8   1449.2   1434.9     A: 52 cheaper
+TL 64x64 @0         1411.5   1409.3   1418.8
+TL 64x64 @1         1411.5   1458.0   1418.8     B: 49 dearer
+
+SCPH-9001 (rows, max(5.2 px floor, pixels + walk), empty, hidden + the term)
+shape                  A        B
+TR 16x16 @192        125.0    125.0
+TR 16x16 @193        113.1    125.0
+TR 16x16 @194        125.0    125.0
+TL 16x16 @192        113.6    113.6
+TL 16x16 @193        113.6    125.7
+TL 16x16 @194        113.6    113.6
+BR 16x16 @192        114.1    114.2
+BR 16x16 @193        103.0    113.4
+BL 16x16 @192        103.3    103.3
+BL 16x16 @193        104.0    114.5
+TR 16x64 @192        422.4    422.7
+TR 16x64 @193        377.1    420.4
+TL 16x64 @192        424.3    424.3
+TL 16x64 @193        424.3    472.4
+TR 64x64 @0         1228.2   1228.8
+TR 64x64 @1         1180.6   1228.8
+TL 64x64 @0         1175.0   1175.3
+TL 64x64 @1         1175.0   1223.4
+
+Rectangles (60h) 16x64 / 15x64 at X 0 / 1, gouraud TR/TL 16x64 and the quad: no fit covers them - recorded, not
+predicted (gpu-thin's flat 8x256 rectangle at X 13 = at X 0 on the 9001, 1,816 / 1,815, already says A is not a
+rectangle's rule).

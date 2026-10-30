@@ -1,0 +1,64 @@
+gpu-shape-time55 - PREDICTED before its first console run (2026-10-17): v0.377.123 (the new GPU as v0.377.121) as the
+SCPH-9001 under the runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit
+28's, cycles. This core's semi shaded floor: 6.9 + 0.4 a pixel of the row (GPU_SEMI_SHADED), straight in the width - so
+the semi premium at step 0 falls smoothly with W and is gone by ~9 wide. What would settle what: the premium W by W (a
+line, a curve, steps at pairs or at 4 / 8 pixels), where it reaches nothing, and how steps of 1 and 2 a row eat it.
+
+shape                  bit 26        bit 28
+semi par 1 s0           724..724      653..653  
+semi par 2 s0           926..926      666..666  
+semi par 3 s0          1019..1019     679..679  
+semi par 4 s0          1086..1086     692..692  
+semi par 5 s0          1132..1132     705..705  
+semi par 6 s0          1171..1171     718..718  
+semi par 7 s0          1203..1203     731..731  
+semi par 8 s0          1244..1244     744..744  
+semi par 10 s0         1316..1316     781..781  
+semi par 12 s0         1408..1408     826..826  
+semi par 14 s0         1514..1514     878..878  
+semi par 16 s0         1628..1628     928..928  
+semi par 1 s64          721..721      650..650  
+semi par 2 s64          948..948      664..664  
+semi par 3 s64         1033..1033     678..678  
+semi par 4 s64         1094..1094     691..691  
+semi par 5 s64         1138..1138     705..705  
+semi par 6 s64         1175..1175     718..718  
+semi par 7 s64         1208..1208     732..732  
+semi par 8 s64         1253..1253     750..750  
+semi par 10 s64        1342..1342     798..798  
+semi par 12 s64        1445..1445     850..850  
+semi par 14 s64        1557..1557     907..907  
+semi par 16 s64        1676..1676     961..961  
+semi par 2 s128         981..981      666..666  
+semi par 4 s128        1111..1111     692..692  
+semi par 6 s128        1192..1192     723..723  
+semi par 8 s128        1290..1290     769..769  
+opaq par 1 s0           532..532      461..461  
+opaq par 2 s0           625..625      461..461  
+opaq par 3 s0           676..676      470..470  
+opaq par 4 s0           729..729      490..490  
+opaq par 5 s0           784..784      516..516  
+opaq par 6 s0           843..843      544..544  
+opaq par 7 s0           903..903      574..574  
+opaq par 8 s0           968..968      602..602  
+opaq par 10 s0         1092..1092     666..666  
+opaq par 12 s0         1219..1219     728..728  
+opaq par 14 s0         1349..1349     792..792  
+opaq par 16 s0         1479..1479     851..851  
+opaq par 1 s64          532..532      461..461  
+opaq par 2 s64          667..667      474..474  
+opaq par 3 s64          733..733      500..500  
+opaq par 4 s64          800..800      528..528  
+opaq par 5 s64          864..864      560..560  
+opaq par 6 s64          928..928      590..590  
+opaq par 7 s64          990..990      623..623  
+opaq par 8 s64         1057..1057     652..652  
+opaq par 10 s64        1182..1182     719..719  
+opaq par 12 s64        1309..1309     783..783  
+opaq par 14 s64        1436..1436     849..849  
+opaq par 16 s64        1565..1565     908..908  
+opaq par 2 s128         756..756      518..518  
+opaq par 4 s128         907..907      582..582  
+opaq par 6 s128        1041..1041     648..648  
+opaq par 8 s128        1173..1173     711..711  
+

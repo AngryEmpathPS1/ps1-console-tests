@@ -1,0 +1,21 @@
+
+sio/pocket-start
+A 59h start and 5Ah polled every ~20 ms for 3 s: time(ms from the 59h):dir_index/FLAG at each change.
+
+run 1
+  59h 0000 (GUI): 2:0001/08 23:0000/08
+  59h 0001 (file 1): 1:0000/08 43:0001/08 337:ffff/ff 358:0001/08
+run 2
+  59h 0000 (GUI): 1:ffff/ff 22:0000/08
+  59h 0001 (file 1): 1:0000/08 22:ffff/ff 43:0001/08 85:ffff/ff 106:0001/08
+run 3
+  59h 0000 (GUI): 1:0001/08 22:0000/08
+  59h 0001 (file 1): 1:0000/08 43:0001/08 85:ffff/ff 106:0001/08
+run 4
+  59h 0000 (GUI): 1:0001/08 22:0000/08
+  59h 0001 (file 1): 1:0000/08 22:ffff/ff 43:0001/08 85:ffff/ff 106:0001/08
+run 5
+  59h 0000 (GUI): 1:0001/08 22:0000/08
+  59h 0001 (file 1): 1:0000/08 43:0001/08 85:ffff/ff 106:0001/08
+
+sio/pocket-start: Done.

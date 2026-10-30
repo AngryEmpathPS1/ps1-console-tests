@@ -1,0 +1,26 @@
+
+timer/t1-toggle
+Timer 1's hblank tick against GPUSTAT bit 31's toggle in the same line, cycles, by mode and range. No assertions.
+
+  found: GPUSTAT 94042000
+  NTSC 320  260h..C60h                     GPUSTAT 14022000  toggle - tick: mean 128.06, median 131, 120..141 cycles (600 lines; 0 waits timed out)
+  NTSC 512  260h..C60h                     GPUSTAT 94042000  toggle - tick: mean 139.32, median 142, 131..142 cycles (600 lines; 0 waits timed out)
+  NTSC 320  260h..A60h                     GPUSTAT 94022000  toggle - tick: mean 451.32, median 450, 450..461 cycles (600 lines; 0 waits timed out)
+  NTSC 320  265h..C60h                     GPUSTAT 14022000  toggle - tick: mean 128.48, median 131, 120..131 cycles (600 lines; 0 waits timed out)
+  NTSC 320  25Bh..C5Bh                     GPUSTAT 14022000  toggle - tick: mean 133.62, median 131, 131..142 cycles (600 lines; 0 waits timed out)
+  NTSC 256  265h..C65h                     GPUSTAT 94002000  toggle - tick: mean 120.58, median 120, 120..131 cycles (600 lines; 0 waits timed out)
+  NTSC 320  260h..D00h                     GPUSTAT 14022000  toggle - tick: mean 27.36, median 32, 21..32 cycles (600 lines; 0 waits timed out)
+  NTSC 320  260h..D30h                     GPUSTAT 94022000  toggle - tick: mean 2165.52, median 2133, 2133..6445 cycles (596 lines; 4 waits timed out)
+  NTSC 320  260h..D50h                     GPUSTAT 14022000  toggle - tick: mean 2145.55, median 2122, 2111..6423 cycles (596 lines; 4 waits timed out)
+  NTSC 320  260h..FFFh                     GPUSTAT 14022000  toggle - tick: mean 0.00, median -1, -1..-1 cycles (0 lines; 600 waits timed out)
+  NTSC 320  260h..260h (X2 = X1)           GPUSTAT 14022000  toggle - tick: mean 0.00, median -1, -1..-1 cycles (0 lines; 600 waits timed out)
+  NTSC 320  260h..268h (one dot)           GPUSTAT 94022000  toggle - tick: mean 1747.98, median 1726, 1715..6027 cycles (596 lines; 4 waits timed out)
+  NTSC 320  C60h..260h (X2 < X1)           GPUSTAT 94022000  toggle - tick: mean 1754.93, median 1737, 1726..6038 cycles (596 lines; 4 waits timed out)
+  NTSC 320  000h..A00h                     GPUSTAT 14022000  toggle - tick: mean 511.65, median 516, 505..516 cycles (600 lines; 0 waits timed out)
+  NTSC 320  260h..C60h, display OFF        GPUSTAT 94822000  toggle - tick: mean 128.50, median 131, 120..131 cycles (600 lines; 0 waits timed out)
+  PAL  320  260h..C60h                     no VBlank IRQ
+  PAL  512  260h..C60h                     no VBlank IRQ
+  PAL  320  260h..A60h                     no VBlank IRQ
+  PAL  256  260h..C60h                     no VBlank IRQ
+
+timer/t1-toggle: Done.

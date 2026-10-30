@@ -1,0 +1,43 @@
+gpu-shape-time30 - PREDICTED for the SCPH-1001 before its first run there (2026-10-15 evening): v0.377.114 as the
+SCPH-1001 under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000
+--tol=0), bit 26's D and bit 28's, cycles. The old GPU's model is GPU_OLD_FLAT / GPU_OLD_WALK / GPU_POLY_OLD3 (v0.377.109-110).
+What it settles: the old GPU's semi rows: pairs, the vertex's or the frame buffer's (X 0 against X 1); its order saving's curve.
+
+row                      b26    b28
+semi TL 126x64           6738     30
+semi TL 127x64           6774     30
+semi TL 128x64           6776     31
+semi TL 129x64           6901     31
+semi TL 130x64           6934     31
+semi TL 126x64 X1        6738     30
+semi TL 127x64 X1        6774     30
+semi TL 128x64 X1        6776     31
+semi TL 129x64 X1        6901     31
+semi TL 130x64 X1        6934     31
+semi TL 2x128            1114     26
+semi TL 2x128 X1         1114     26
+semi TR 2x128             676     26
+semi TR 2x128 X1          676     26
+semi TL 16x64            1244     28
+semi TL 16x64 X1         1244     28
+semi TR 16x64            1192     28
+semi TR 16x64 X1         1192     28
+flat TL 16x16 o1          188     28
+flat TL 16x16 o2          194     30
+flat TL 16x32 o1          348     28
+flat TL 16x32 o2          355     31
+flat TL 16x64 o1          669     28
+flat TL 16x64 o2          676     32
+flat TL 16x128 o1        1309     28
+flat TL 16x128 o2        1318     33
+flat TL 8x64 o1           540     27
+flat TL 8x64 o2           548     32
+flat TL 12x64 o1          606     27
+flat TL 12x64 o2          614     32
+flat TL 20x64 o1          737     28
+flat TL 20x64 o2          744     32
+flat TL 24x64 o1          801     28
+flat TL 24x64 o2          808     32
+flat TL 127x64 X1        2538     30
+flat TL 128x64 X1        2540     31
+flat TL 129x64 X1        2534     31

@@ -1,0 +1,60 @@
+
+cpu/biu-dram
+RAM_SIZE bit 7 under cold and warm loads and stores (Timer 2 cycles).
+No assertions - compare against your emulator.
+
+BIU as it stands: 0001e988, RAM_SIZE 00e00b88
+
+== as the BIOS leaves it: 0001e988 00e00b88
+  NOPS           4716..4721    above the nops      0  ->  0.00 a load
+  RAM w=0        5246..5252    above the nops    530  ->  4.14 a load
+  RAM w=1        5247..5252    above the nops    531  ->  4.15 a load
+  RAM w=2        5247..5248    above the nops    531  ->  4.15 a load
+  RAM w=3        5248..5250    above the nops    532  ->  4.16 a load
+  I_STAT w=1     4858..4861    above the nops    142  ->  1.11 a load
+  STORE          5450..5494    above the nops    734  ->  5.73 a load
+  LW+SW          6276..6283    above the nops   1560  ->  12.19 a load
+  WARM NOPS      2066..2104    above the nops      0  ->  0.00 a load
+  WARM RAM       2322..2362    above the nops    256  ->  2.00 a load
+  lw 10..14; lw; 1 nop 12..12; lw; 2 nops 12..16; lw; 3 nops 12..12; lw; 4 nops 12..12; lw; 7 nops 14..14; T1 24..30; T3 23..28;
+
+== RAM_SIZE bit 7 clear: 0001e988 00e00b08
+  NOPS           4712..4719    above the nops      0  ->  0.00 a load
+  RAM w=0        4950..4953    above the nops    238  ->  1.86 a load
+  RAM w=1        5073..5081    above the nops    361  ->  2.82 a load
+  RAM w=2        4950..4955    above the nops    238  ->  1.86 a load
+  RAM w=3        4950..4954    above the nops    238  ->  1.86 a load
+  I_STAT w=1     4814..4817    above the nops    102  ->  0.80 a load
+  STORE          5081..5084    above the nops    369  ->  2.88 a load
+  LW+SW          5868..5873    above the nops   1156  ->  9.03 a load
+  WARM NOPS      2066..2104    above the nops      0  ->  0.00 a load
+  WARM RAM       2322..2362    above the nops    256  ->  2.00 a load
+  lw 10..10; lw; 1 nop 12..12; lw; 2 nops 12..12; lw; 3 nops 12..12; lw; 4 nops 12..12; lw; 7 nops 14..16; T1 23..31; T3 22..26;
+
+== LDSCH 0: 0000e988 00e00b88
+  NOPS           4720..4726    above the nops      0  ->  0.00 a load
+  RAM w=0        5635..5640    above the nops    915  ->  7.15 a load
+  RAM w=1        5497..5504    above the nops    777  ->  6.07 a load
+  RAM w=2        5886..5895    above the nops   1166  ->  9.11 a load
+  RAM w=3        5761..5764    above the nops   1041  ->  8.13 a load
+  I_STAT w=1     5214..5223    above the nops    494  ->  3.86 a load
+  STORE          5444..5497    above the nops    724  ->  5.66 a load
+  LW+SW          6279..6290    above the nops   1559  ->  12.18 a load
+  WARM NOPS      2068..2113    above the nops      0  ->  0.00 a load
+  WARM RAM       2860..2911    above the nops    792  ->  6.19 a load
+  lw 12..13; lw; 1 nop 13..13; lw; 2 nops 14..19; lw; 3 nops 15..21; lw; 4 nops 16..19; lw; 7 nops 19..24; T1 26..32; T3 26..32;
+
+== LDSCH 0, RAM_SIZE bit 7 clear: 0000e988 00e00b08
+  NOPS           4713..4722    above the nops      0  ->  0.00 a load
+  RAM w=0        5497..5504    above the nops    784  ->  6.13 a load
+  RAM w=1        5493..5502    above the nops    780  ->  6.09 a load
+  RAM w=2        5730..5741    above the nops   1017  ->  7.95 a load
+  RAM w=3        5603..5609    above the nops    890  ->  6.95 a load
+  I_STAT w=1     5203..5208    above the nops    490  ->  3.83 a load
+  STORE          5081..5096    above the nops    368  ->  2.88 a load
+  LW+SW          5869..5876    above the nops   1156  ->  9.03 a load
+  WARM NOPS      2068..2108    above the nops      0  ->  0.00 a load
+  WARM RAM       2840..2880    above the nops    772  ->  6.03 a load
+  lw 12..14; lw; 1 nop 13..14; lw; 2 nops 14..14; lw; 3 nops 15..15; lw; 4 nops 16..21; lw; 7 nops 19..24; T1 25..33; T3 25..33;
+
+cpu/biu-dram: Done.

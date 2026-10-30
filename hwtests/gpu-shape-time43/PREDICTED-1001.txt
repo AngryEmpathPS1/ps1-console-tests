@@ -1,0 +1,42 @@
+gpu-shape-time43 - PREDICTED for the SCPH-1001 before its first run there (2026-10-16): v0.377.121 as the SCPH-1001
+under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000 --tol=0).
+The OLD GPU keeps its own model (GPU_OLD*): none of v0.377.119-121's new-GPU pieces (the quad's second set-up, empty
+triangles, the semi sprite / textured / shaded laws, the scan-out's bursts by place) apply to it. What it settles: the
+same questions as PREDICTED.txt, on the old GPU - each piece the old GPU's too, or the new GPU's alone.
+
+shape                  bit 26        bit 28
+flat Q 1x16             125..125      125..125  
+flat Q 2x2               54..54        42..42   
+flat Q 4x16             236..277      141..164  
+flat Q 8x8              157..157       94..94   
+flat Q 16x4             111..111       75..75   
+flat Q 16x16            351..392      191..212  
+gour Q 1x16             283..283      283..283  
+gour Q 2x2              197..197      186..186  
+gour Q 4x16             410..418      307..310  
+gour Q 8x8              330..330      256..256  
+gour Q 16x4             283..283      237..237  
+gour Q 16x16            619..660      405..426  
+tex4 Q 1x16             229..246      229..256  
+tex4 Q 2x2              143..164      132..134  
+tex4 Q 4x16             356..380      253..253  
+tex4 Q 8x8              277..277      203..223  
+tex4 Q 16x4             231..231      185..185  
+tex4 Q 16x16            567..608      353..374  
+tex15 Q 1x16            229..262      229..270  
+tex15 Q 2x2             143..146      132..146  
+tex15 Q 4x16            356..356      253..253  
+tex15 Q 8x8             277..294      203..203  
+tex15 Q 16x4            231..232      185..187  
+tex15 Q 16x16           567..608      353..374  
+gtex4 Q 1x16            371..412      371..412  
+gtex4 Q 2x2             285..285      274..274  
+gtex4 Q 4x16            498..539      395..418  
+gtex4 Q 8x8             418..459      344..365  
+gtex4 Q 16x4            371..412      325..348  
+gtex4 Q 16x16           707..748      493..514  
+gour Q 2x16 r3=r1       358..358      291..291  
+gour Q 2x16 r3+255      357..357      290..290  
+gour Q 2x16 r1+255      361..361      294..294  
+gour Q v2(0,1) 2x16     250..250      179..179  
+

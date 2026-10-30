@@ -1,0 +1,53 @@
+gpu-shape-time45 - PREDICTED before its first console run (2026-10-16): v0.377.118 as the SCPH-9001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. This core's
+semi textured premium: GPU_TEX2's turnaround twice a fill, 0.131 ticks a drawn texel and GPU_POLY_NEW3.semiShRow 2.6
+ticks a row. (The v0.377.119 candidate - quads, empty triangles, semi sprites - changes none of these shapes.)
+What would settle what:
+  A  semi less opaque by depth, width and height: if the premium is a fill's (the read stream broken at each texture
+     fill, as on sprites) it goes with the fills - 15-bit's 4-texel lines most, 4-bit's 16 least - and not with the
+     pixels; gpu-shape-time40's 15-bit 128 x 16-64 ~1.5 a fill, gpu-shape-time42's 4-bit 128 x 32 ~0.7.
+  B  semi gouraud's end cost behind an OPAQUE flat triangle: hidden (the pair's premium ~5, as two semi triangles') or
+     paid (~15, as the lone TL 64x16); and a lone BR, its last row the widest, against the lone TL's 15.
+
+shape                  bit 26        bit 28
+semi tex4 TL 16x16      323..323      117..117  
+semi tex4 TL 16x64      908..908      117..117  
+semi tex4 TL 64x16      734..734      121..121  
+semi tex4 TL 64x64     2446..2446     121..121  
+semi tex4 TL 128x16    1697..1697     123..123  
+semi tex4 TL 128x64    6192..6192     123..123  
+opaq tex4 TL 16x16      297..297      117..117  
+opaq tex4 TL 16x64      803..803      117..117  
+opaq tex4 TL 64x16      708..708      121..121  
+opaq tex4 TL 64x64     2341..2341     121..121  
+opaq tex4 TL 128x16    1621..1621     123..123  
+opaq tex4 TL 128x64    5890..5890     123..123  
+semi tex8 TL 16x16      323..323      117..117  
+semi tex8 TL 16x64     1552..1552     117..117  
+semi tex8 TL 64x16      734..734      121..121  
+semi tex8 TL 64x64     4056..4056     121..121  
+semi tex8 TL 128x16    2006..2006     123..123  
+semi tex8 TL 128x64    8879..8879     123..123  
+opaq tex8 TL 16x16      297..297      117..117  
+opaq tex8 TL 16x64     1329..1329     117..117  
+opaq tex8 TL 64x16      708..708      121..121  
+opaq tex8 TL 64x64     3733..3733     121..121  
+opaq tex8 TL 128x16    1899..1899     123..123  
+opaq tex8 TL 128x64    8274..8274     123..123  
+semi tex15 TL 16x16     323..323      117..117  
+semi tex15 TL 16x64    1874..1874     117..117  
+semi tex15 TL 64x16    1459..1459     121..121  
+semi tex15 TL 64x64    6793..6793     121..121  
+semi tex15 TL 128x16   3697..3697     123..123  
+semi tex15 TL 128x64  15158..15158    123..123  
+opaq tex15 TL 16x16     297..297      117..117  
+opaq tex15 TL 16x64    1618..1618     117..117  
+opaq tex15 TL 64x16    1351..1351     121..121  
+opaq tex15 TL 64x64    6188..6188     121..121  
+opaq tex15 TL 128x16   3411..3411     123..123  
+opaq tex15 TL 128x64  13905..13905    123..123  
+semi gour TL64+flat     766..767      734..737  
+opaq gour TL64+flat     737..741      710..711  
+semi gour BR 64x16      771..771      175..175  
+opaq gour BR 64x16      756..756      175..175  
+

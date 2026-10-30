@@ -1,0 +1,10 @@
+gpu-shape-time20 - written down BEFORE any console ran it (2026-10-14 night).
+
+The reading to test (the SCPH-1001's opaque flat rows, gpu-shape-time3-6/18/19): a row whose left edge moved costs a
+little (flat 0.25 cycle), and only the walk BEYOND 4 pixels a row costs a pixel's worth. So, TR less TL (bit 26):
+  gouraud  walks 1 / 2 / 4 a row: TR - TL small and alike (~15 rows x 0.3-0.4, the extra rows' pixels aside);
+           8 / 16 a row: grows by ~0.88 a pixel beyond 4 (gpu-shape-time6's 320x16: 225 for 300 walked)
+  semi     walks 1 / 2 / 4: TR = TL within a few cycles (gpu-shape-time6's 64x16: TR = TL, 942)
+           8 / 16: grows by ~0.49 a pixel beyond 4 (gpu-shape-time6's 320x16: 125)
+The core today (scratch/_cores/old_e.js as the 1001, scratch/gst20_1001olde.txt) charges every walked pixel - gouraud
+0.79, semi 0.39 - so its TR - TL grows from the first: gouraud 12 / 24 / 47 / 95 / 191, semi 5 / 11 / 23 / 46 / 93.

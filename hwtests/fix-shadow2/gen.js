@@ -1,0 +1,116 @@
+'use strict';
+// Writes hwtests/fix-shadow2/main.cpp: node hwtests/fix-shadow2/gen.js
+const fs = require('fs'), path = require('path');
+// t6 = the slot (RAM), t5 = BFC00000h, t9 = 1F800000h
+const LOADS = [
+  ['N', 'no load', 'nop'],
+  ['R', 'RAM lw', 'lw $t0, 0x40($t6)'],
+  ['B', 'BIOS lbu', 'lbu $t0, 0($t5)'],
+  ['J', 'JOY_STAT lbu', 'lbu $t0, 0x1044($t9)'],
+];
+const CASES = [];   // [name, words, C's four words, D's words, ends the window itself]
+for (const [lk, ll, ld] of LOADS) for (let w = 0; w < 4; w++)
+  CASES.push([`${lk}-w${w}`, `${ll} at C word ${w}, then nops`, [0, 1, 2, 3].map((k) => (k === w ? ld : 'nop')), ['nop', 'nop', 'nop', 'nop', 'jr $ra', 'nop'], false]);
+for (let w = 0; w < 4; w++)
+  CASES.push([`JR-w${w}`, `JOY_STAT lbu at C word ${w}, its reader first in D`, [0, 1, 2, 3].map((k) => (k === w ? 'lbu $t0, 0x1044($t9)' : 'nop')), ['addu $t2, $t0, $zero', 'nop', 'nop', 'nop', 'jr $ra', 'nop'], false]);
+for (let w = 0; w < 4; w++)
+  CASES.push([`E-w${w}`, `the closing Timer 2 read itself at C word ${w}`, [0, 1, 2, 3].map((k) => (k === w ? 'lhu $t3, 0x1120($t9)' : 'nop')), ['jr $ra', 'nop', 'nop', 'nop'], true]);
+const NL = '\\n';
+const q = (s) => `    "${s}${NL}"\n`;
+let asm = q('.text') + q('.set push') + q('.set noreorder') + q('.set noat');
+CASES.forEach(([, , cw, dw, self], i) => {
+  const b = 'fs2B' + i;
+  asm += q('.balign 8192') + q(`.global ${b}_trial`) + q(`${b}_trial:`);
+  // a0 = evict?, a1 = spin turns; t9 = 1F800000h, t5 = BFC00000h, t6 = this slot; the count in v0 - the whole trial here
+  asm += q('move $t7, $ra') + q('lui $t9, 0x1f80') + q('lui $t5, 0xbfc0') + q(`la $t6, ${b}_trial`) + q(`jal ${b}_entry`) + q('nop');
+  asm += q(`beqz $a0, ${b}_sp`) + q('nop') + q(`jal ${b}_ev`) + q('nop');
+  asm += q(`${b}_sp:`) + q(`bnez $a1, ${b}_sp`) + q('addiu $a1, $a1, -1');
+  asm += q(`jal ${b}_entry`) + q('nop') + q('jr $t7') + q('nop');
+  asm += q(`.org ${b}_trial + 0x80`) + q(`${b}_w16:`) + q('sh $zero, 0x1120($t9)') + q('jr $ra') + q('nop') + q('nop');
+  asm += q(`${b}_r16:`) + q('lhu $t3, 0x1120($t9)') + q('jr $ra') + q('nop') + q('nop');
+  asm += q(`.org ${b}_trial + 0x100`) + q(`${b}_entry:`);
+  asm += q('move $t8, $ra') + q(`jal ${b}_w16`) + q('nop') + q('nop');
+  if (self) asm += q(`jal ${b}_c`) + q('nop') + q('nop') + q('nop') + q('andi $v0, $t3, 0xffff') + q('jr $t8') + q('nop');
+  else asm += q(`jal ${b}_c`) + q('nop') + q(`jal ${b}_r16`) + q('nop') + q('andi $v0, $t3, 0xffff') + q('jr $t8') + q('nop');
+  // C at +0x200 (entered at word 0 by the jal), D at +0x210, warm (C falls into it)
+  asm += q(`.org ${b}_trial + 0x200`) + q(`${b}_c:`);
+  for (const w of cw) asm += q(w);
+  for (const w of dw) asm += q(w);
+  asm += q('nop') + q('nop');
+  // the evictor 4 KB above C
+  asm += q(`.org ${b}_trial + 0x1200`) + q(`${b}_ev:`) + q('jr $ra') + q('nop') + q('nop') + q('nop');
+});
+asm += q('.balign 8192') + q('nop') + q('.set pop');
+
+const decl = CASES.map((_, i) => `extern "C" uint32_t fs2B${i}_trial(uint32_t evict, uint32_t spin);`).join('\n');
+const tab = CASES.map((_, i) => `fs2B${i}_trial`).join(', ');
+const names = CASES.map(([n, w]) => `"${(n + '      ').slice(0, 6)} ${w}"`).join(',\n    ');
+const caseList = CASES.map(([n, w]) => ` *   ${(n + '       ').slice(0, 7)}${w}`).join('\n');
+
+const src = `/*
+ * cpu/fix-shadow2 - a load at each word of a cold line that runs into warm code: what the load costs while its line
+ * streams, and when its access happens (2026-10-12 small hours)
+ *
+ * WHY. hwtests/fix-shadow (SCPH-1001 x3, identical): a load at a cold line's word 0 - RAM, BIOS, JOY_STAT, I_STAT - left
+ * for warm code leaves the miss as with no load (7 5 5 by exit): the load's own 2 cycles (from a cached line, against
+ * nops) are paid while its line streams too, where this core ran the CPU on and hid them in the fill. Charging them at
+ * the load breaks the cold blocks (io-chain, load-fill3: there the next line's fill hides them); charging them at the
+ * fill sequence's first hit reads fix-shadow and the blocks but moves cold-bracket's JOY_STAT loop (its load at word 1)
+ * and line-fill's cold rows (their Timer 2 read, the window's own start, at a cold line's word 0). Is it the word?
+ *
+ * WHAT IT DOES. fix-shadow's harness. C (entered at word 0 by a jal) holds one load at word 0..3 and nops, and runs into
+ * D, warm: nops (N R B J), or the load's reader first (JR); or C's load is the closing Timer 2 read itself (E), so the
+ * count says when its access happened. 16 trials over the refresh, cold against warm:
+${caseList}
+ *
+ * READ IT LIKE THIS. cold - warm against the N row at the same word (the line's own cost): the load's extra while
+ * streaming. E: the read's sample, cold against warm - how long a streamed load's access waits for its line.
+ *
+ * There are no assertions - compare against your emulator.
+ *
+ * THE RULE: run it here first: \`node hwtests/run.js fix-shadow2\`. Generated by gen.js.
+ */
+#include <common.h>
+#include <psxapi.h>
+#include <io.h>
+
+${decl}
+__asm__(
+${asm});
+
+typedef uint32_t (*Trial)(uint32_t, uint32_t);
+static const Trial trials[] = { ${tab} };
+static const char* const names[] = {
+    ${names}
+};
+struct Span { uint32_t lo, hi; };
+static Span run(Trial t, uint32_t evict) {
+    Span s = { 0xFFFF, 0 };
+    t(evict, 0);
+    for (uint32_t k = 0; k < 16; k++) {
+        const uint32_t v = t(evict, k * 8);
+        if (v < s.lo) s.lo = v;
+        if (v > s.hi) s.hi = v;
+    }
+    return s;
+}
+
+int main() {
+    printf("\\ncpu/fix-shadow2\\n");
+    printf("A load at each word of a cold line running into warm code (Timer 2 cycles, fastest..slowest of 16; cold / warm).\\n");
+    printf("There are no assertions - compare against your emulator.\\n\\n");
+    EnterCriticalSection();
+    const uint16_t m2 = read16(0x1F801124u);
+    write16(0x1F801124u, 0);
+    for (unsigned i = 0; i < sizeof(trials) / sizeof(trials[0]); i++) {
+        const Span c = run(trials[i], 1), w = run(trials[i], 0);
+        printf("  %-56s cold %3u..%-3u  warm %3u..%-3u  miss %d\\n", names[i], (unsigned)c.lo, (unsigned)c.hi, (unsigned)w.lo, (unsigned)w.hi, (int)c.lo - (int)w.lo);
+    }
+    write16(0x1F801124u, m2);
+    ExitCriticalSection();
+    printf("\\nDone.\\n");
+    for (;;) {}   /* park after Done. (console day: a program that returns leaves Unirom deaf) */
+}
+`;
+fs.writeFileSync(path.join(__dirname, 'main.cpp'), src);
+console.log('wrote main.cpp');

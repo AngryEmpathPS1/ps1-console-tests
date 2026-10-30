@@ -1,0 +1,25 @@
+
+cdrom/cd-spinup-state
+Sixteen spin-ups (Stop, 1 s, Init): Init's INT2 (the spin-up), then at 10:00 and 29:01 the SeekL's INT2, P/L at once
+and ^K (GetlocP's highest before the hold's kick back), all less the target. Cycles at the system clock. No assertions.
+
+spin-up  1: Init  68227344  | 19065008 -1/-2 ^0  | 20203016 -1/-2 ^0
+spin-up  2: Init  79742984  | 18571328 -1/-2 ^2  | 18946576 -1/-2 ^2
+spin-up  3: Init  75462912  | 18593216 -1/-2 ^0  | 20159224 -1/-2 ^0
+spin-up  4: Init  70820096  | 24457168 -1/-2 ^2  | 19025384 -1/-2 ^2
+spin-up  5: Init  71410744  | 19098912 -1/-2 ^2  | 18988296 -1/-2 ^2
+spin-up  6: Init  69074104  | 19063888 -1/-2 ^0  | 20162152 -1/-2 ^0
+spin-up  7: Init  70854096  | 19805728 1/0 ^2  | 19049840 -1/-2 ^2
+spin-up  8: Init  70865768  | 19055296 -1/-2 ^2  | 18972240 -1/-2 ^2
+spin-up  9: Init  71483968  | 24413456 -1/-2 ^2  | 19024232 -1/-2 ^2
+spin-up 10: Init  79818400  | 18534040 -1/-2 ^2  | 19023344 -1/-2 ^2
+spin-up 11: Init  69951264  | 18579992 -1/-2 ^0  | 20168872 -1/-2 ^0
+spin-up 12: Init  79279616  | 25188416 -1/-2 ^2  | 18885608 -1/-2 ^2
+spin-up 13: Init  75355072  | 19732984 -1/-2 ^2  | 18962512 -1/-2 ^2
+spin-up 14: Init  71493248  | 19012232 -1/-2 ^0  | 20223640 -1/-2 ^0
+spin-up 15: Init  79178176  | 25129280 -1/-2 ^2  | 19035968 -1/-2 ^2
+spin-up 16: Init  70127344  | 19075464 -1/-2 ^2  | 32531704 -1/-2 ^2
+
+waits that ran out: 0
+
+cdrom/cd-spinup-state: Done.

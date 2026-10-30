@@ -1,0 +1,25 @@
+
+mdec/mdec-in-hang
+dma-rates' MDEC IN step under each of its conditions, one changed at a time. No assertions.
+
+DPCR at the start 08009899, DICR 00840000, MDEC status 80040000
+  A  as dma-rates (DPCR|08080808, OTC first)   done after    143 cycles   MDEC 8004ffff (in-req 0)  CHCR0 00000201  DICR 00840000  DPCR 08089899
+  A  as dma-rates (DPCR|08080808, OTC first)   HUNG (0 cycles)             MDEC a004001f (in-req 0)  CHCR0 01000201  DICR 00840000  DPCR 08089899
+  B  A without the OTC transfer                HUNG (0 cycles)             MDEC a004001f (in-req 0)  CHCR0 01000201  DICR 00840000  DPCR 08089899
+  B  A without the OTC transfer                HUNG (0 cycles)             MDEC a004001f (in-req 0)  CHCR0 01000201  DICR 00840000  DPCR 08089899
+  C  DPCR|8 alone, no OTC                      HUNG (0 cycles)             MDEC a004001f (in-req 0)  CHCR0 01000201  DICR 00840000  DPCR 08009899
+  C  DPCR|8 alone, no OTC                      HUNG (0 cycles)             MDEC a004001f (in-req 0)  CHCR0 01000201  DICR 00840000  DPCR 08009899
+  D  A, then DPCR|8 again after the OTC        HUNG (0 cycles)             MDEC a004001f (in-req 0)  CHCR0 01000201  DICR 00840000  DPCR 08089899
+  D  A, then DPCR|8 again after the OTC        HUNG (0 cycles)             MDEC a004001f (in-req 0)  CHCR0 01000201  DICR 00840000  DPCR 08089899
+  E  A with dma-rates' asm poll                HUNG (60 cycles)             MDEC a004001f (in-req 0)  CHCR0 01000201  DICR 00840000  DPCR 08089899
+  E  A with dma-rates' asm poll                HUNG (31 cycles)             MDEC a004001f (in-req 0)  CHCR0 01000201  DICR 00840000  DPCR 08089899
+ResetGraph:itb=80012b50,ehk=80012b80
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+after initVideo: DPCR 3b333b33, DICR 00000000
+  F  A after initVideo (ResetGraph)            HUNG (0 cycles)             MDEC a004001f (in-req 0)  CHCR0 01000201  DICR 00000000  DPCR 3b3b3b3b
+  F  A after initVideo (ResetGraph)            HUNG (0 cycles)             MDEC a004001f (in-req 0)  CHCR0 01000201  DICR 00000000  DPCR 3b3b3b3b
+
+mdec/mdec-in-hang: Done.

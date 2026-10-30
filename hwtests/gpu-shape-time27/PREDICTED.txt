@@ -1,0 +1,7 @@
+gpu-shape-time27 - written down BEFORE any console ran it (2026-10-15 small hours).
+
+This core (v0.377.111) as the SCPH-1001: scratch/gst27_1001v111.txt (a row 10.84 + 1.545 cycles a pixel, every place
+alike). From gpu-shape-time26: ~25 a 16-pixel chunk + ~8.5 a row, so 48 / 96 / 160 / 192 / 224 wide ~83.5 / 158.5 / 258.5
+/ 308.5 / 358.5 a row; 256 and wider either the same rule (~408.5 at 256, ~808.5 at 512) - the 256's extra a PLACE
+effect, which the four 256 copies moved about show - or ~8 more a row past 128 or 256 wide (a width effect: then all
+four places alike and the 320 / 384 / 512 dearer by it too).

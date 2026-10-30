@@ -1,0 +1,19 @@
+# spu-phase5 on v0.377.212 + experiments/_mkxq213.js XQ 1, node hwtests/run.js --ntsc, 2026-10-29: the class moves on bit 2 clear (0008h, 000Ah, 0001h, 0010h flip; 0006h, 000Eh, 0005h do not)
+
+spu/spu-phase5
+Voice 1's onset in its capture ring, KON 96 cycles after SPUSTAT bit 11 falls (8 or 9: spu-latch's two classes),
+after the transfer control held at each transfer type for 1,000 cycles, then 0004h, eight in a row. No assertions.
+
+at the start: onset 9
+  8 x1000      9   8   9   8   9   8   9   8
+  8 / 0        9   8   9   8   9   8   9   8
+  8 / 8x100    9   9   8   8   9   9   8   8
+  6 x1000      8   8   8   8   8   8   8   8
+  A x1000      9   8   9   8   9   8   9   8
+  E x1000      8   8   8   8   8   8   8   8
+  5 x1000      8   8   8   8   8   8   8   8
+  1 x1000      9   8   9   8   9   8   9   8
+  10 x1000     9   8   9   8   9   8   9   8
+
+spu/spu-phase5: Done.
+

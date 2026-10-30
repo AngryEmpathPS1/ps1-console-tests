@@ -1,0 +1,19 @@
+
+cdrom/cd-spinup-phase
+After each of ten spin-ups: per SeekL P/L (GetlocP / GetlocL less the target) at once and ^K (GetlocP's highest
+before the hold's kick back); then a GetlocL's interrupt 0.2M into a SeekL. No assertions.
+
+spin-up  1:  0/-1 ^2  -1/-2 ^2  -1/-2 ^2  mid-seek GetlocL INT3
+spin-up  2:  -1/-2 ^2  1/0 ^2  -1/-2 ^2  mid-seek GetlocL INT3
+spin-up  3:  -1/-2 ^0  0/-1 ^1  -1/-2 ^0  mid-seek GetlocL INT3
+spin-up  4:  -1/-2 ^2  0/-1 ^2  -1/-2 ^2  mid-seek GetlocL INT3
+spin-up  5:  -1/-2 ^2  0/-1 ^2  -1/-2 ^2  mid-seek GetlocL INT3
+spin-up  6:  0/-1 ^2  -1/-2 ^2  -1/-2 ^2  mid-seek GetlocL INT3
+spin-up  7:  -1/-2 ^2  -1/-2 ^2  -1/-2 ^2  mid-seek GetlocL INT3
+spin-up  8:  -1/-2 ^2  -1/-2 ^2  -1/-2 ^2  mid-seek GetlocL INT3
+spin-up  9:  -1/-2 ^2  -1/-2 ^2  -1/-2 ^2  mid-seek GetlocL INT3
+spin-up 10:  -1/-2 ^2  0/-1 ^2  -1/-2 ^2  mid-seek GetlocL INT3
+
+waits that ran out: 4
+
+cdrom/cd-spinup-phase: Done.

@@ -1,0 +1,30 @@
+
+gpu/vblank-edge
+video: NTSC, display range 16..200
+240: frame (VBlank edge to edge, unchanged range) 263 / 263 lines
+240 d= 1  RAISE next VBlank after 302 lines (per-line 39, latch 302)   LOWER 222 (both 222)
+240 d= 3  RAISE next VBlank after 300 lines (per-line 37, latch 300)   LOWER 220 (both 220)
+240 d= 6  RAISE next VBlank after 297 lines (per-line 34, latch 297)   LOWER 217 (both 217)
+240 d=10  RAISE next VBlank after 293 lines (per-line 30, latch 293)   LOWER 213 (both 213)
+240 d=15  RAISE next VBlank after 288 lines (per-line 25, latch 288)   LOWER 208 (both 208)
+240 d=20  RAISE next VBlank after 283 lines (per-line 20, latch 283)   LOWER 203 (both 203)
+240 d=30  RAISE next VBlank after 273 lines (per-line 10, latch 273)   LOWER 193 (both 193)
+240 PAST  Y2 past the last line: 0 VBlank IRQs in 10 frames (per-line 10, latch 0); range restored: 3 in 3
+240 DROP  Y2 moved above the beam: next VBlank after 233 lines (per-line 1, start-latch 233)
+480i: frame (VBlank edge to edge, unchanged range) 263 / 262 lines
+480i d= 1  RAISE next VBlank after 302 lines (per-line 39, latch 302)   LOWER 221 (both 222)
+480i d= 3  RAISE next VBlank after 300 lines (per-line 37, latch 300)   LOWER 219 (both 220)
+480i d= 6  RAISE next VBlank after 297 lines (per-line 34, latch 297)   LOWER 216 (both 217)
+480i d=10  RAISE next VBlank after 293 lines (per-line 30, latch 293)   LOWER 212 (both 213)
+480i d=15  RAISE next VBlank after 288 lines (per-line 25, latch 288)   LOWER 207 (both 208)
+480i d=20  RAISE next VBlank after 283 lines (per-line 20, latch 283)   LOWER 202 (both 203)
+480i d=30  RAISE next VBlank after 273 lines (per-line 10, latch 273)   LOWER 192 (both 193)
+480i PAST  Y2 past the last line: 0 VBlank IRQs in 10 frames (per-line 10, latch 0); range restored: 3 in 3
+480i DROP  Y2 moved above the beam: next VBlank after 232 lines (per-line 1, start-latch 233)
+
+Read it like this: RAISE near 40-d means VBlank follows the range line by line
+(DuckStation); RAISE near a whole frame means VBlank ends only at Y1 (mednafen,
+this core since M194). PAST 0 is nocash's documented behaviour; DROP near a
+whole frame means VBlank also STARTS only on the line equal to Y2.
+
+Done.

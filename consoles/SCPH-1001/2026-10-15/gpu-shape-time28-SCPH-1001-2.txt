@@ -1,0 +1,68 @@
+
+gpu/gpu-shape-time28
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+flat TR 60x64          1385..1426      29..29   
+flat TL 60x64          1387..1428      29..29   
+flat TR 62x64          1417..1458      29..29   
+flat TL 62x64          1420..1461      29..29   
+flat TR 63x64          1400..1441      29..29   
+flat TL 63x64          1436..1477      29..29   
+flat TR 64x64          1470..1511      30..30   
+flat TL 64x64          1438..1479      30..30   
+flat TR 65x64          1438..1479      30..30   
+flat TL 65x64          1470..1511      30..30   
+flat TR 66x64          1487..1528      30..30   
+flat TL 66x64          1486..1527      30..30   
+flat TR 68x64          1520..1561      30..30   
+flat TL 68x64          1518..1559      30..30   
+flat TR 8x8              95..95        27..27   
+flat TR 24x24           328..369       28..28   
+flat TR 32x32           493..532       29..29   
+flat TR 48x48           917..958       29..29   
+flat TR 96x96          2997..3039      30..30   
+flat TR 128x128        5036..5081      31..31   
+flat TR 31x32           455..492       28..28   
+flat TR 33x32           477..518       29..29   
+flat TR 127x128        4904..4948      30..30   
+flat TR 129x128        4975..5018      31..31   
+flat TR 63x32           717..758       29..29   
+flat TR 64x32           750..791       30..30   
+flat TR 65x32           750..791       30..30   
+flat TR 31x64           874..915       28..28   
+flat TR 32x64           937..978       29..29   
+flat TR 33x64           912..953       29..29   
+semi TR 63x64          3546..3593      29..29   
+semi TR 64x64          3618..3665      30..30   
+semi TR 65x64          3655..3697      30..30   
+gour TR 63x64          2602..2625     170..170  
+gour TR 64x64          2671..2714     171..171  
+gour TR 65x64          2673..2714     171..171  
+flat TL 16x16 o1        188..188       28..28   
+flat TL 16x16 o2        194..194       30..30   
+flat BL 16x16 o1        181..181       30..30   
+flat BL 16x16 o2        183..183       32..32   
+flat TL 32x32 o1        477..518       29..29   
+flat TL 32x32 o2        483..522       31..31   
+flat BL 32x32 o1        462..503       31..31   
+flat BL 32x32 o2        465..503       34..34   
+flat TL 64x64 o1       1438..1479      30..30   
+flat TL 64x64 o2       1444..1485      32..32   
+flat BL 64x64 o1       1407..1448      32..32   
+flat BL 64x64 o2       1411..1452      36..36   
+flat TL 16x64 o1        668..705       28..28   
+flat TL 16x64 o2        676..717       32..32   
+flat BL 16x64 o1        663..703       32..32   
+flat BL 16x64 o2        665..706       34..34   
+flat TL 64x16 o1        398..438       30..30   
+flat TL 64x16 o2        402..443       30..30   
+flat BL 64x16 o1        365..406       30..30   
+flat BL 64x16 o2        369..410       34..34   
+gour TL 32x32 o1        890..930      170..170  
+gour TL 32x32 o2        896..937      172..172  
+gour TL 16x64 o1       1097..1136     169..169  
+gour TL 16x64 o2       1105..1146     173..173  
+
+gpu/gpu-shape-time28: Done.

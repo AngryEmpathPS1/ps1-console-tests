@@ -1,0 +1,65 @@
+
+cdrom/cd-seek-cmd
+A command while a SeekL runs: per command and delay into the seek, the interrupts after it in order (3, 5, 2) and
+an INT2's time from the SeekL's write (M cycles, - if none). Single speed. No assertions.
+
+29:01 -> 50:00, the command 0.2M into the seek:
+  none      2  INT2 30.54
+  Getstat   3  INT2 -
+  Setloc    3  INT2 -
+  Mute      3  INT2 -
+  Demute    3  INT2 -
+  Setmode   3  INT2 -
+  Setfilter 3  INT2 -
+  GetlocL   5  INT2 -
+  GetlocP   3  INT2 -
+  GetTN     3  INT2 -
+  GetTD     3  INT2 -
+  Test20    3  INT2 -
+  GetID     35  INT2 -
+29:01 -> 50:00, the command 2M into the seek:
+  none      2  INT2 30.45
+  Getstat   3  INT2 -
+  Setloc    3  INT2 -
+  Mute      3  INT2 -
+  Demute    3  INT2 -
+  Setmode   3  INT2 -
+  Setfilter 3  INT2 -
+  GetlocL   5  INT2 -
+  GetlocP   3  INT2 -
+  GetTN     3  INT2 -
+  GetTD     3  INT2 -
+  Test20    3  INT2 -
+  GetID     35  INT2 -
+29:01 -> +6, the command 0.2M into the seek:
+  none      2  INT2 2.65
+  Getstat   3  INT2 -
+  Setloc    3  INT2 -
+  Mute      3  INT2 -
+  Demute    3  INT2 -
+  Setmode   3  INT2 -
+  Setfilter 3  INT2 -
+  GetlocL   5  INT2 -
+  GetlocP   3  INT2 -
+  GetTN     3  INT2 -
+  GetTD     3  INT2 -
+  Test20    3  INT2 -
+  GetID     35  INT2 -
+29:01 -> +6, the command 2M into the seek:
+  none      2  INT2 2.67
+  Getstat   3  INT2 -
+  Setloc    3  INT2 -
+  Mute      3  INT2 -
+  Demute    3  INT2 -
+  Setmode   3  INT2 -
+  Setfilter 3  INT2 -
+  GetlocL   5  INT2 -
+  GetlocP   3  INT2 -
+  GetTN     3  INT2 -
+  GetTD     3  INT2 -
+  Test20    3  INT2 -
+  GetID     35  INT2 -
+
+waits that ran out: 0
+
+cdrom/cd-seek-cmd: Done.

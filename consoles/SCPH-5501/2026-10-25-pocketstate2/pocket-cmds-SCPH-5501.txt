@@ -1,0 +1,184 @@
+
+sio/pocket-cmds
+PocketStation card-port commands (read-only) on both slots: reply bytes and /ACK cycles from each byte's write.
+There are no assertions - compare against your emulator.
+
+slot 1, 53h Get ID: 9 byte(s) acknowledged
+  byte   1  81h -> ffh  /ACK + 1323.. 1368 (4 of 4)  pulse  81.. 82
+  byte   2  53h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  81.. 90
+  byte   3  00h -> 5ah  /ACK + 1342.. 1395 (4 of 4)  pulse  57.. 81
+  byte   4  00h -> 5dh  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte   5  00h -> 5ch  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte   6  00h -> 5dh  /ACK + 1395.. 1422 (4 of 4)  pulse  81.. 81
+  byte   7  00h -> 04h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte   8  00h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte   9  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  10  00h -> 80h  no /ACK
+slot 1, 58h Get ID/version: 1 byte(s) acknowledged
+  byte   1  81h -> ffh  /ACK + 1368.. 1467 (4 of 4)  pulse  73.. 89
+  byte   2  58h -> 00h  no /ACK
+slot 1, 5Ah (1 of 3): 1 byte(s): ff 00
+slot 1, 5Ah (2 of 3): 1 byte(s): ff 00
+slot 1, 5Ah (3 of 3): 1 byte(s): ff 00
+slot 1, 5Ah dir/flags/date/time (timing): 1 byte(s) acknowledged
+  byte   1  81h -> ffh  /ACK + 1370.. 1370 (4 of 4)  pulse  54.. 78
+  byte   2  5ah -> 00h  no /ACK
+slot 1, 5Bh FUNC 00h get date/time: 1 byte(s) acknowledged
+  byte   1  81h -> ffh  /ACK + 1328.. 1374 (4 of 4)  pulse  81.. 88
+  byte   2  5bh -> 00h  no /ACK
+slot 1, 52h Read Sector 0: 139 byte(s) acknowledged
+  byte   1  81h -> ffh  /ACK + 1345.. 1368 (4 of 4)  pulse  81.. 82
+  byte   2  52h -> 00h  /ACK + 1395.. 1425 (4 of 4)  pulse  57.. 90
+  byte   3  00h -> 5ah  /ACK + 1368.. 1399 (4 of 4)  pulse  57.. 81
+  byte   4  00h -> 5dh  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte   5  00h -> 00h  /ACK + 1368.. 1396 (4 of 4)  pulse  81.. 81
+  byte   6  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte   7  00h -> 5ch  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte   8  00h -> 5dh  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte   9  00h -> 00h  /ACK + 1503.. 1530 (4 of 4)  pulse  81.. 81
+  byte  10  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte  11  00h -> 4dh  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  12  00h -> 43h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte  13  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  14  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  15  00h -> 00h  /ACK + 1374.. 1395 (4 of 4)  pulse  57.. 81
+  byte  16  00h -> 00h  /ACK + 1370.. 1395 (4 of 4)  pulse  81.. 81
+  byte  17  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte  18  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  19  00h -> 00h  /ACK + 1372.. 1395 (4 of 4)  pulse  57.. 81
+  byte  20  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  21  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte  22  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  23  00h -> 00h  /ACK + 1368.. 1401 (4 of 4)  pulse  81.. 81
+  byte  24  00h -> 00h  /ACK + 1372.. 1395 (4 of 4)  pulse  81.. 81
+  byte  25  00h -> 00h  /ACK + 1368.. 1399 (4 of 4)  pulse  81.. 81
+  byte  26  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  27  00h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte  28  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  29  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  30  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  31  00h -> 00h  /ACK + 1368.. 1401 (4 of 4)  pulse  57.. 81
+  byte  32  00h -> 00h  /ACK + 1372.. 1395 (4 of 4)  pulse  81.. 81
+  byte  33  00h -> 00h  /ACK + 1368.. 1398 (4 of 4)  pulse  81.. 81
+  byte  34  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  35  00h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte  36  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  37  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  38  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  39  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  40  00h -> 00h  /ACK + 1370.. 1395 (4 of 4)  pulse  81.. 81
+  byte  41  00h -> 00h  /ACK + 1368.. 1399 (4 of 4)  pulse  81.. 81
+  byte  42  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  43  00h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte  44  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  45  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  46  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte  47  00h -> 00h  /ACK + 1368.. 1400 (4 of 4)  pulse  81.. 81
+  byte  48  00h -> 00h  /ACK + 1374.. 1395 (4 of 4)  pulse  57.. 81
+  byte  49  00h -> 00h  /ACK + 1368.. 1424 (4 of 4)  pulse  57.. 81
+  byte  50  00h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte  51  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  52  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  53  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  81.. 81
+  byte  54  00h -> 00h  /ACK + 1372.. 1395 (4 of 4)  pulse  57.. 81
+  byte  55  00h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte  56  00h -> 00h  /ACK + 1368.. 1401 (4 of 4)  pulse  57.. 81
+  byte  57  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  58  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  59  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  60  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte  61  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  62  00h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte  63  00h -> 00h  /ACK + 1395.. 1398 (4 of 4)  pulse  57.. 81
+  byte  64  00h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte  65  00h -> 00h  /ACK + 1368.. 1399 (4 of 4)  pulse  81.. 81
+  byte  66  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  67  00h -> 00h  /ACK + 1368.. 1398 (4 of 4)  pulse  57.. 81
+  byte  68  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  69  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  81.. 81
+  byte  70  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  71  00h -> 00h  /ACK + 1395.. 1398 (4 of 4)  pulse  57.. 81
+  byte  72  00h -> 00h  /ACK + 1372.. 1395 (4 of 4)  pulse  81.. 81
+  byte  73  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  74  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  75  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  76  00h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte  77  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  78  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  79  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  80  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  81  00h -> 00h  /ACK + 1368.. 1399 (4 of 4)  pulse  81.. 81
+  byte  82  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  83  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  84  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  85  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte  86  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  87  00h -> 00h  /ACK + 1395.. 1399 (4 of 4)  pulse  57.. 81
+  byte  88  00h -> 00h  /ACK + 1371.. 1395 (4 of 4)  pulse  81.. 81
+  byte  89  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte  90  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte  91  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  92  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  93  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte  94  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte  95  00h -> 00h  /ACK + 1368.. 1399 (4 of 4)  pulse  81.. 81
+  byte  96  00h -> 00h  /ACK + 1374.. 1395 (4 of 4)  pulse  57.. 81
+  byte  97  00h -> 00h  /ACK + 1368.. 1398 (4 of 4)  pulse  81.. 81
+  byte  98  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte  99  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte 100  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte 101  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte 102  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte 103  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte 104  00h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte 105  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte 106  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  81.. 81
+  byte 107  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte 108  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte 109  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte 110  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte 111  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte 112  00h -> 00h  /ACK + 1395.. 1398 (4 of 4)  pulse  57.. 81
+  byte 113  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte 114  00h -> 00h  /ACK + 1395.. 1422 (4 of 4)  pulse  57.. 81
+  byte 115  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte 116  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  81.. 81
+  byte 117  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte 118  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte 119  00h -> 00h  /ACK + 1395.. 1399 (4 of 4)  pulse  57.. 81
+  byte 120  00h -> 00h  /ACK + 1372.. 1395 (4 of 4)  pulse  81.. 81
+  byte 121  00h -> 00h  /ACK + 1368.. 1397 (4 of 4)  pulse  81.. 81
+  byte 122  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte 123  00h -> 00h  /ACK + 1395.. 1396 (4 of 4)  pulse  57.. 81
+  byte 124  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte 125  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte 126  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte 127  00h -> 00h  /ACK + 1395.. 1396 (4 of 4)  pulse  81.. 81
+  byte 128  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte 129  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte 130  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte 131  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte 132  00h -> 00h  /ACK + 1368.. 1422 (4 of 4)  pulse  57.. 81
+  byte 133  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte 134  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  81.. 81
+  byte 135  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  57.. 81
+  byte 136  00h -> 00h  /ACK + 1371.. 1422 (4 of 4)  pulse  57.. 81
+  byte 137  00h -> 00h  /ACK + 1368.. 1395 (4 of 4)  pulse  57.. 81
+  byte 138  00h -> 0eh  /ACK + 1530.. 1530 (4 of 4)  pulse  57.. 81
+  byte 139  00h -> 00h  /ACK + 1395.. 1395 (4 of 4)  pulse  81.. 81
+  byte 140  00h -> 47h  no /ACK
+slot 2, 53h Get ID: 0 byte(s) acknowledged
+  byte   1  81h -> ffh  no /ACK
+slot 2, 58h Get ID/version: 0 byte(s) acknowledged
+  byte   1  81h -> ffh  no /ACK
+slot 2, 5Ah (1 of 3): 0 byte(s): ff
+slot 2, 5Ah (2 of 3): 0 byte(s): ff
+slot 2, 5Ah (3 of 3): 0 byte(s): ff
+slot 2, 5Ah dir/flags/date/time (timing): 0 byte(s) acknowledged
+  byte   1  81h -> ffh  no /ACK
+slot 2, 5Bh FUNC 00h get date/time: 0 byte(s) acknowledged
+  byte   1  81h -> ffh  no /ACK
+slot 2, 52h Read Sector 0: 0 byte(s) acknowledged
+  byte   1  81h -> ffh  no /ACK
+
+sio/pocket-cmds: Done.

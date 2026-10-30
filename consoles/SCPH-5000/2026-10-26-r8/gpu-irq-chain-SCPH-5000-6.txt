@@ -1,0 +1,44 @@
+
+gpu/gpu-irq-chain
+amidog's IRQ demo's GPU chain: each command, then GP0(1Fh); cycles from the first word to the GPU interrupt,
+fastest..slowest of four (GPUSTAT bit 26 beside it). No assertions.
+
+CONTROL:
+  1Fh alone                        irq       51..94        bit 26       51..94
+TRANSPARENT (CLUT entry 0 = 0000h):
+  3Eh demo quad 704x512            irq   361349..361450    bit 26        0..361450
+  3Ch the same, not semi           irq   361389..361404    bit 26   361389..361404
+  2Eh flat-shaded, semi            irq   361192..361239    bit 26        0..361239
+  2Ch flat-shaded                  irq   361233..361245    bit 26   361233..361245
+  64h box sprite 64x64             irq     2217..4313      bit 26     2217..4313
+DRAWN (7FFFh, STP clear):
+  3Eh demo quad 704x512            irq   384083..387346    bit 26   384083..387346
+  3Ch the same, not semi           irq   364910..365334    bit 26   364910..365334
+  2Eh flat-shaded, semi            irq   383877..387243    bit 26        0..387243
+  2Ch flat-shaded                  irq   364814..365170    bit 26   364814..365170
+  64h box sprite 64x64             irq     2414..5209      bit 26        0..5209
+BLEND (FFFFh, STP set):
+  3Eh demo quad 704x512            irq   384087..387379    bit 26   384087..387379
+  3Ch the same, not semi           irq   364860..365264    bit 26        0..365264
+  2Eh flat-shaded, semi            irq   383937..387234    bit 26        0..383950
+  2Ch flat-shaded                  irq   364593..365340    bit 26   364593..365340
+  64h box sprite 64x64             irq     2443..5203      bit 26        0..5203
+FILLS:
+  02h 1024x90 at (0,0)             irq     7009..7111      bit 26        0..7111
+  02h 1024x358 at (0,154)          irq    27638..27706     bit 26    27638..27706
+CHAIN, TRANSPARENT (CLUT entry 0 = 0000h) (the demo's cycle; cycles each step from the interrupt before it):
+  cycle 0: 3Eh  361629  3Eh  361472  64h   4653  02h   7092  02h  27769   cycle  762615
+  cycle 1: 3Eh  361531  3Eh  361441  64h   2259  02h   7019  02h  27662   cycle  759912
+  cycle 2: 3Eh  361489  3Eh  361455  64h   2259  02h   7064  02h  25673   cycle  757940
+  cycle 3: 3Eh  361489  3Eh  361455  64h   2259  02h   7109  02h  27707   cycle  760019
+  cycle 4: 3Eh  361489  3Eh  361455  64h   2259  02h   7109  02h  27752   cycle  760064
+  cycle 5: 3Eh  361489  3Eh  361455  64h   2259  02h   6431  02h  25133   cycle  756767
+CHAIN, DRAWN (7FFFh, STP clear) (the demo's cycle; cycles each step from the interrupt before it):
+  cycle 0: 3Eh  384362  3Eh  387435  64h   5238  02h   7078  02h  27710   cycle  811823
+  cycle 1: 3Eh  384239  3Eh  384228  64h   2498  02h   7109  02h  27707   cycle  805781
+  cycle 2: 3Eh  387480  3Eh  384135  64h   2484  02h   7064  02h  27707   cycle  808870
+  cycle 3: 3Eh  384166  3Eh  384498  64h   2408  02h   6881  02h  27755   cycle  805708
+  cycle 4: 3Eh  387432  3Eh  384228  64h   2498  02h   7109  02h  27617   cycle  808884
+  cycle 5: 3Eh  384256  3Eh  387463  64h   2532  02h   7061  02h  27527   cycle  808839
+
+Done.

@@ -1,0 +1,66 @@
+gpu-shape-time42 - PREDICTED before its first console run (2026-10-16): v0.377.118 as the SCPH-9001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. This core's
+semi premiums: gouraud GPU_POLY_NEW3.semiShRow (2.6 ticks, ~1.6 cycles a row, whatever the row's width); textured semi
+through GPU_TEX2's turnaround a fill (twice an opaque one's) - by fills, so a 4-bit sprite's premium here is per 16
+texels, and the texel's semi-transparency bit changes nothing in the cost.
+What would settle what:
+  A  semi less opaque gouraud quad by W at 16 rows: a premium a row that FALLS with the row's width (gpu-shape-time41's
+     narrow TL dearest) - its shape by W 1-256 against this core's flat 1.6 a row (~26 a quad).
+  B  the same law on TL triangles 4 / 8 / 32 wide (rows of every width below W).
+  C  the sprite premium by depth: per pixel (4-bit = 8-bit = 15-bit's 0.453 a pixel) or per fill (4-bit a quarter).
+  D  texels WITH bit 15 against gpu-shape-time41's without: whether the blend itself costs more than the command.
+  E  a 4-bit semi triangle, for the triangles' 1.37x (gpu-shape-time40) by depth.
+
+shape                  bit 26        bit 28
+semi gour Q 1x16        279..279      279..279  
+semi gour Q 2x16        334..334      272..272  
+semi gour Q 3x16        348..348      275..275  
+semi gour Q 4x16        367..367      279..279  
+semi gour Q 6x16        398..398      294..294  
+semi gour Q 8x16        434..434      308..308  
+semi gour Q 12x16       497..497      342..342  
+semi gour Q 16x16       568..568      371..371  
+semi gour Q 24x16       701..701      442..442  
+semi gour Q 32x16       836..836      507..507  
+semi gour Q 64x16      1375..1375     780..780  
+semi gour Q 256x16     4608..4608    2419..2419 
+opaq gour Q 1x16        253..253      253..253  
+opaq gour Q 2x16        295..295      246..246  
+opaq gour Q 3x16        306..306      248..248  
+opaq gour Q 4x16        322..322      253..253  
+opaq gour Q 6x16        351..351      267..267  
+opaq gour Q 8x16        386..386      282..282  
+opaq gour Q 12x16       449..449      316..316  
+opaq gour Q 16x16       520..520      345..345  
+opaq gour Q 24x16       654..654      416..416  
+opaq gour Q 32x16       791..791      481..481  
+opaq gour Q 64x16      1335..1335     754..754  
+opaq gour Q 256x16     4598..4598    2392..2392 
+semi gour TL 4x64       599..599      167..167  
+semi gour TL 8x64       711..711      168..168  
+semi gour TL 32x64     1470..1470     170..170  
+opaq gour TL 4x64       494..494      167..167  
+opaq gour TL 8x64       606..606      168..168  
+opaq gour TL 32x64     1365..1365     170..170  
+semi spr4 16x8          138..138        9..9    
+semi spr4 64x8          417..417        9..9    
+semi spr4 256x8        3030..3030       9..9    
+opaq spr4 16x8          108..108        9..9    
+opaq spr4 64x8          300..300        9..9    
+opaq spr4 256x8        2357..2357       9..9    
+semi spr8 16x8          137..137        9..9    
+semi spr8 64x8          415..415        9..9    
+semi spr8 256x8        4503..4503       9..9    
+opaq spr8 16x8          108..108        9..9    
+opaq spr8 64x8          298..298        9..9    
+opaq spr8 256x8        3628..3628       9..9    
+semi spr15S 16x8        132..132        9..9    
+semi spr15S 64x8       1812..1812       9..9    
+semi spr15S 256x8      7122..7122       9..9    
+semi spr4S 16x8         138..138        9..9    
+semi spr4S 64x8         417..417        9..9    
+semi spr4S 256x8       3030..3030       9..9    
+opaq spr15S 256x8      5880..5880       9..9    
+semi tex4 TL 128x32    3195..3195     123..123  
+opaq tex4 TL 128x32    3044..3044     123..123  
+

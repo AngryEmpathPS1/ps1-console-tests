@@ -1,0 +1,31 @@
+
+cpu/fix-shadow2
+A load at each word of a cold line running into warm code (Timer 2 cycles, fastest..slowest of 16; cold / warm).
+There are no assertions - compare against your emulator.
+
+  N-w0   no load at C word 0, then nops                    cold  21..27   warm  16..16   miss 5
+  N-w1   no load at C word 1, then nops                    cold  21..21   warm  16..16   miss 5
+  N-w2   no load at C word 2, then nops                    cold  21..21   warm  16..16   miss 5
+  N-w3   no load at C word 3, then nops                    cold  21..25   warm  16..16   miss 5
+  R-w0   RAM lw at C word 0, then nops                     cold  23..24   warm  18..18   miss 5
+  R-w1   RAM lw at C word 1, then nops                     cold  23..23   warm  18..18   miss 5
+  R-w2   RAM lw at C word 2, then nops                     cold  23..27   warm  18..20   miss 5
+  R-w3   RAM lw at C word 3, then nops                     cold  23..26   warm  18..18   miss 5
+  B-w0   BIOS lbu at C word 0, then nops                   cold  23..23   warm  18..18   miss 5
+  B-w1   BIOS lbu at C word 1, then nops                   cold  23..23   warm  18..18   miss 5
+  B-w2   BIOS lbu at C word 2, then nops                   cold  23..23   warm  18..18   miss 5
+  B-w3   BIOS lbu at C word 3, then nops                   cold  23..23   warm  18..18   miss 5
+  J-w0   JOY_STAT lbu at C word 0, then nops               cold  23..23   warm  18..18   miss 5
+  J-w1   JOY_STAT lbu at C word 1, then nops               cold  23..27   warm  18..18   miss 5
+  J-w2   JOY_STAT lbu at C word 2, then nops               cold  23..23   warm  18..18   miss 5
+  J-w3   JOY_STAT lbu at C word 3, then nops               cold  23..23   warm  18..18   miss 5
+  JR-w0  JOY_STAT lbu at C word 0, its reader first in D   cold  24..24   warm  19..19   miss 5
+  JR-w1  JOY_STAT lbu at C word 1, its reader first in D   cold  25..25   warm  20..20   miss 5
+  JR-w2  JOY_STAT lbu at C word 2, its reader first in D   cold  25..26   warm  20..20   miss 5
+  JR-w3  JOY_STAT lbu at C word 3, its reader first in D   cold  23..28   warm  18..18   miss 5
+  E-w0   the closing Timer 2 read itself at C word 0       cold   9..9    warm   4..4    miss 5
+  E-w1   the closing Timer 2 read itself at C word 1       cold  10..11   warm   5..5    miss 5
+  E-w2   the closing Timer 2 read itself at C word 2       cold  11..11   warm   6..6    miss 5
+  E-w3   the closing Timer 2 read itself at C word 3       cold  12..12   warm   7..7    miss 5
+
+Done.

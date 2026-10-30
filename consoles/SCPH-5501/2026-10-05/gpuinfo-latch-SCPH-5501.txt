@@ -1,0 +1,41 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80012ae8,ehk=80012b18
+ResetGraph:SR=ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpuinfo-latch
+GPUREAD after GP1(10h), primed by a VRAM read or by a GP1 answer.
+There are no assertions - compare against your emulator.
+
+  A  VRAM read, then unused indices
+    VRAM read 80008000, latch    80008000
+    GP1(10h) 00h                 80008000
+    GP1(10h) 06h                 80008000
+    GP1(10h) 0Fh                 80008000
+  B
+    VRAM read 12345678, latch    12345678
+    GP1(10h) 00h                 12345678
+  C  a GP1 answer, then unused indices
+    GP1(10h) 07h (GPU type)      00000002
+    GP1(10h) 00h                 00000002
+    GP1(10h) 06h                 00000002
+  D
+    VRAM read 9234D678, latch    9234d678
+    GP1(10h) 05h (offset)        92022923
+    GP1(10h) 00h                 92022923
+  E
+    VRAM read FFFFFFFF, latch    ffffffff
+    GP1(10h) 02h (tex window)    fff12345
+    GP1(10h) 03h (area TL)       fff10c21
+    GP1(10h) 04h (area BR)       fff336ab
+    GP1(10h) 00h                 fff336ab
+  F
+    GP1(10h) 08h                 00000000
+    GP1(10h) 00h                 00000000
+
+  amidog's rule: an unused index keeps only bit 31. DIAG's: it keeps everything.
+
+gpu/gpuinfo-latch: Done.

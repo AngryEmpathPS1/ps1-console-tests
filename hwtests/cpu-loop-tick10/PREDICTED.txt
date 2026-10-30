@@ -1,0 +1,21 @@
+cpu/cpu-loop-tick10
+The first of two RAM loads' reader after Timer 2, SPUSTAT or nothing; the delay-slot store. No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  LD          14.29      14.25
+  LD-V        14.28      14.25
+  T2-LD       20.26      20.24
+  T2-LD-V     20.25      20.24
+  SPU-LD      35.34      35.34
+  SPU-LD-V    35.34      35.34
+  SPU-ST-LD   42.69      42.67
+  SPU-ST-LDV  42.71      42.67
+  N2-LD-V     15.13      15.09
+  DS-1        10.85      10.81
+  DS-3        12.17      12.13
+  DS-5        14.08      14.02
+  DS-SAMEW    10.20      10.17
+  DS-SH       10.22      10.17
+  DS-2PRE     10.73      10.70
+
+cpu/cpu-loop-tick10: Done.

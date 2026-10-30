@@ -1,0 +1,25 @@
+
+cpu/ram-store-io
+An I/O read behind RAM stores (cached; Timer 2 cycles, fastest..slowest of 16 over the refresh).
+Z: two Timer 2 reads.  S n k: n stores to one 1 KB block, k nops.  P n k: alternating between two blocks.
+G n: n alternating stores, a GPUSTAT read.  L n: n alternating stores, a RAM read.  N: 4 alternating, 4 nops.
+There are no assertions - compare against your emulator.
+
+  Z         4..4   
+  S1k0      7..10  
+  S2k0      9..10  
+  S4k0     13..13  
+  S1k8     13..13  
+  S2k8     14..14  
+  S4k8     16..16  
+  P2k0      7..7   
+  P4k0     13..13  
+  P2k8     14..14  
+  P4k8     18..19  
+  G2       13..13  
+  G4       19..19  
+  L2       18..28  
+  L4       24..34  
+  N4       13..18  
+
+cpu/ram-store-io: Done.

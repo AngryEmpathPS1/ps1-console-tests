@@ -1,0 +1,12 @@
+
+gpu/gpu-shape-time68e
+A shape's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set,
+at one start place each, under two display modes. No assertions.
+
+bit 26's D in the blanking, then at 200,000 + 67 j cycles after VBlank's IRQ less the blanking's, j = 0..31
+320x240 15-bit:
+copy 64x64    5921 : 267 204 248 236 329 298 314 334 331 315 323 313 308 314 326 306 300 289 330 267 329 318 338 312 329 263 295 275 260 296 314 308
+spr4 256x16   4689 : 247 218 219 212 218 218 252 242 245 246 242 250 243 245 240 250 244 247 251 244 253 243 251 310 327 320 282 295 297 280 289 293
+copy 256x32  10479 : 226 149 104 208 131 241 163 116 195 120 216 161 174 155 115 224 149 234 193 220 199 145 227 160 127 193 148 230 163 128 179 131
+
+gpu/gpu-shape-time68e: Done.

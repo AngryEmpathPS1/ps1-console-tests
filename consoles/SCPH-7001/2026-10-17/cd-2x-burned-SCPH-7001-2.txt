@@ -1,0 +1,307 @@
+
+cdrom/cd-2x-burned
+A CD-R read at single and double speed from the hub to the edge, a speed change mid-read, seeks at double speed.
+Needs the double-speed disc (or the games disc). Cycles at the system clock (1 ms = 33,869). No assertions.
+
+drive region: for U/C - unlocking
+disc: lead-out at LBA 323850 (72:00), 00:02:16 marked D16
+the double-speed disc: 10 places, 00:02:16 to 70:00:00
+
+SURVEY 1 at 05:00:00 (LBA 22350), double speed:
+  2x:
+    +      456 Setloc
+    +    28984 INT3 12
+    +    29584 ReadN
+    +    80336 INT3 12
+    + 50936688 INT1 32 x4 to +51602416, D22350 .. D22353
+    +101687944 Pause
+    +101729232 INT5 53 80
+  RECOVERY (Init after a Pause that did not complete):
+    +       80 Init
+    +    61568 INT3 52
+    + 43890280 INT2 12
+
+SURVEY 2 at 60:00:00 (LBA 269850), double speed:
+  2x:
+    +      416 Setloc
+    +    39088 INT3 12
+    +    39696 ReadN
+    +    72448 INT3 12
+    + 96514656 INT5 16 10
+    +101680032 Pause
+    +101700400 INT3 10
+    +101708936 INT2 10
+
+SURVEY 3 at 20:00:00 (LBA 89850), double speed:
+  2x:
+    +      424 Setloc
+    +    29952 INT3 10
+    +    30528 ReadN
+    +   112496 INT3 10
+    +101720056 Pause
+    +101770424 INT5 53 80
+  RECOVERY (Init after a Pause that did not complete):
+    +       48 Init
+    +    87784 INT3 52
+    + 49350896 INT2 12
+
+SURVEY 4 at 70:00:00 (LBA 314850), double speed:
+  2x:
+    +      416 Setloc
+    +    36536 INT3 12
+    +    37144 ReadN
+    +    79824 INT3 12
+    +101687384 Pause
+    +101710560 INT5 53 80
+  RECOVERY (Init after a Pause that did not complete):
+    +       48 Init
+    +    65392 INT3 52
+    + 54184312 INT2 12
+
+SURVEY 5 at 40:00:00 (LBA 179850), double speed:
+  2x:
+    +      424 Setloc
+    +    45704 INT3 12
+    +    46304 ReadN
+    +    79448 INT3 12
+    + 66711536 INT5 16 10
+    +101687040 Pause
+    +101716304 INT3 10
+    +101724240 INT2 10
+
+SURVEY 6 at 00:02:16 (LBA 16), double speed:
+  2x:
+    +      424 Setloc
+    +    31672 INT3 10
+    +    32256 ReadN
+    +   114752 INT3 10
+    + 70338144 INT1 32 x3 to +70789536, D16 .. D18
+    +101722360 Pause
+    +101744264 INT5 53 80
+  RECOVERY (Init after a Pause that did not complete):
+    +       48 Init
+    +    79144 INT3 52
+    + 34978680 INT2 12
+
+THE SURVEY READ AT DOUBLE SPEED: every place gets its rows.
+
+AT 00:02:16 (LBA 16):
+  1x:
+    +       88 Setmode
+    +   206984 INT3 12
+    + 67945944 Setloc
+    + 67982704 INT3 12
+    + 67983192 ReadN
+    + 68135816 INT3 12
+    + 74636264 INT1 32 x20 to +83203264, D16 .. D35
+    + 83203800 Pause
+    + 83236864 INT3 32
+    + 89226456 INT2 12
+  2x:
+    +      128 Setmode
+    +    22488 INT3 12
+    + 67761168 Setloc
+    + 67798688 INT3 12
+    + 67799184 ReadN
+    + 67842408 INT3 12
+    + 70307256 INT1 32 x3 to +70780320, D16 .. D18
+    + 76310264 GetlocP
+    + 76350960 INT3 01 01 00 00 42 00 02 42
+    + 84777528 GetlocP
+    + 84820296 INT3 01 01 00 00 21 00 02 21
+    + 93244792 GetlocP
+    + 93384192 INT3 01 01 00 00 22 00 02 22
+    +101712096 GetlocP
+    +101789976 INT3 01 01 00 00 18 00 02 18
+    +110179400 GetlocP
+    +110227560 INT3 01 01 00 00 27 00 02 27
+    +118646664 GetlocP
+    +118680064 INT3 01 01 00 00 12 00 02 12
+    +127113984 GetlocP
+    +127146392 INT3 01 01 00 00 50 00 02 50
+    +135581272 GetlocP
+    +135642544 INT3 01 01 00 00 48 00 02 48
+    +144048536 GetlocP
+    +144094072 INT3 01 01 00 00 43 00 02 43
+    +152515840 GetlocP
+    +152555696 INT3 01 01 00 00 39 00 02 39
+    +160983128 GetlocP
+    +161017904 INT3 01 01 00 00 48 00 02 48
+    +169450024 Pause
+    +169472168 INT5 53 80
+  RECOVERY (Init after a Pause that did not complete):
+    +       48 Init
+    +    62960 INT3 52
+    + 35119888 INT2 12
+  SWITCH (Setmode 80h after 10 sectors at 1x):
+    +      120 Setmode
+    +    26888 INT3 12
+    + 67765584 Setloc
+    + 67801568 INT3 12
+    + 67802016 ReadN
+    + 67844752 INT3 12
+    + 83997376 INT1 32 x10 to +88067288, D16 .. D25
+    + 88067784 Setmode
+    + 88098992 INT3 32
+    + 88657696 INT1 32, D28
+    + 96566824 GetlocP
+    + 96603696 INT3 01 01 00 00 28 00 02 28
+    +105034088 GetlocP
+    +105078472 INT3 01 01 00 00 28 00 02 28
+    +113501336 GetlocP
+    +113542656 INT3 01 01 00 00 28 00 02 28
+    +121968656 GetlocP
+    +122018968 INT3 01 01 00 00 28 00 02 28
+    +130435960 GetlocP
+    +130469768 INT3 01 01 00 00 28 00 02 28
+    +138903208 GetlocP
+    +138938696 INT3 01 01 00 00 71 00 02 71
+    +147370496 GetlocP
+    +147403912 INT3 01 01 00 00 51 00 02 51
+    +155837768 GetlocP
+    +155885072 INT3 01 01 00 00 51 00 02 51
+    +164305064 GetlocP
+    +164365128 INT3 01 01 00 00 64 00 02 64
+    +172772352 GetlocP
+    +172807064 INT3 01 01 00 00 65 00 02 65
+    +181239624 GetlocP
+    +181293704 INT3 01 01 00 00 43 00 02 43
+    +189706520 Pause
+    +189727832 INT5 53 80
+  RECOVERY (Init after a Pause that did not complete):
+    +       48 Init
+    +   216416 INT3 52
+    + 25340064 INT2 12
+  SEEK at 2x (SeekL 300 on, SeekP back):
+    +      448 Setloc
+    +    28192 INT3 12
+    +    28672 SeekL
+    +   109104 INT3 12
+    +  3674768 INT2 12
+    +  3675128 Setloc
+    +  3733888 INT3 12
+    +  3734312 SeekP
+    +  3766248 INT3 12
+    +  5287272 INT2 12
+
+AT 02:00:00 (LBA 8850):
+  1x:
+    +      112 Setmode
+    +    22912 INT3 12
+    + 67761864 Setloc
+    + 67790480 INT3 12
+    + 67790968 ReadN
+    + 67833960 INT3 12
+    +169441416 Pause
+    +169467640 INT5 53 80
+  2x:
+    +      128 Setmode
+    +    28384 INT3 52
+    + 67767072 Setloc
+    + 67804472 INT3 52
+    + 67804968 ReadN
+    + 67845752 INT3 52
+    + 76313632 GetlocP
+    + 76355088 INT3 01 01 01 23 43 01 25 43
+    + 84780912 GetlocP
+    + 84824512 INT3 01 01 01 23 43 01 25 43
+    + 93248192 GetlocP
+    + 93285296 INT3 01 01 01 23 43 01 25 43
+    +101715464 GetlocP
+    +101761296 INT3 01 01 01 23 43 01 25 43
+    +110182744 GetlocP
+    +110230520 INT3 01 01 01 23 43 01 25 43
+    +118650032 GetlocP
+    +118686656 INT3 01 01 01 23 43 01 25 43
+    +127117304 GetlocP
+    +127173368 INT3 01 01 01 23 43 01 25 43
+    +135584624 GetlocP
+    +135618784 INT3 01 01 01 23 43 01 25 43
+    +144051888 GetlocP
+    +144089144 INT3 01 01 01 23 43 01 25 43
+    +152519176 GetlocP
+    +152553568 INT3 01 01 01 23 43 01 25 43
+    +160986480 GetlocP
+    +161033848 INT3 01 01 01 23 43 01 25 43
+    +169453392 Pause
+    +169490464 INT5 53 80
+  RECOVERY (Init after a Pause that did not complete):
+    +       72 Init
+    +    69128 INT3 52
+    +  4597192 INT5 16 10
+
+AT 05:00:00 (LBA 22350):
+  1x:
+    +      104 Setmode
+    +    25840 INT3 12
+    + 67764776 Setloc
+    + 67796296 INT3 10
+    + 67796784 ReadN
+    + 67880928 INT3 10
+    +169488400 Pause
+    +169561984 INT5 53 80
+  2x:
+    +      136 Setmode
+    +    28824 INT3 52
+    + 67767520 Setloc
+    + 67815912 INT3 52
+    + 67816408 ReadN
+    + 67857472 INT3 52
+    + 76325304 GetlocP
+    + 76363688 INT3 01 01 05 00 56 05 02 56
+    + 84792592 GetlocP
+    + 84840360 INT3 01 01 05 00 56 05 02 56
+    + 93259880 GetlocP
+    + 93296272 INT3 01 01 05 00 56 05 02 56
+    +101727200 GetlocP
+    +101781648 INT3 01 01 04 57 58 04 59 58
+    +110194488 GetlocP
+    +110237560 INT3 01 01 04 58 39 05 00 39
+    +118661792 GetlocP
+    +118709232 INT3 01 01 04 58 05 05 00 05
+    +127129088 GetlocP
+    +127163176 INT3 01 01 04 58 15 05 00 15
+    +135596408 GetlocP
+    +135632040 INT3 01 01 04 58 56 05 00 56
+    +144063712 GetlocP
+    +144110784 INT3 01 01 04 58 56 05 00 56
+    +152530984 GetlocP
+    +152568080 INT3 01 01 04 58 56 05 00 56
+    +160998248 GetlocP
+    +161034560 INT3 01 01 05 00 22 05 02 22
+    +169465112 Pause
+    +169486440 INT5 53 80
+  RECOVERY (Init after a Pause that did not complete):
+    +       40 Init
+    +    65760 INT3 52
+    + 78761720 INT2 12
+
+  BACK at 1x, 00:02:16:
+    +      136 Setmode
+    +    30368 INT3 12
+    + 67769088 Setloc
+    + 67821584 INT3 12
+    + 67822024 ReadN
+    + 67855112 INT3 12
+    + 71890488 INT1 32 x5 to +73681816, D16 .. D20
+    + 73682304 Pause
+    + 73725632 INT3 32
+    + 76585048 INT2 12
+
+STOPPED EARLY after 05:00:00: two places in a row read nothing at either speed, so the rest were not tried.
+
+SUMMARY (1x: sectors of 20; 2x: sectors in 3 s, the first one's time from the ReadN, INT5s and the first one's bytes, the last
+stat; Pause: completed or refused, and whether an Init brought the drive back):
+ the survey, in its order (2x: sectors of 5):
+  05:00:00          2x   4 from +50907168  INT5 x0  stat 32  Pause REFUSED, Init brought it back
+  60:00:00          2x   0             INT5 x1 (16 10)  stat 16  Pause ok
+  20:00:00          2x   0             INT5 x0  stat 10  Pause REFUSED, Init brought it back
+  70:00:00          2x   0             INT5 x0  stat 12  Pause REFUSED, Init brought it back
+  40:00:00          2x   0             INT5 x1 (16 10)  stat 16  Pause ok
+  00:02:16          2x   3 from +70305952  INT5 x0  stat 32  Pause REFUSED, Init brought it back
+ the places:
+  00:02:16  1x 20   2x   3 from +2508152  INT5 x0  stat 01  Pause REFUSED, Init brought it back
+  02:00:00  1x  0   2x   0             INT5 x0  stat 01  Pause REFUSED, Init did NOT complete
+  05:00:00  1x  0   2x   0             INT5 x0  stat 01  Pause REFUSED, Init brought it back
+
+cdrom/cd-2x-burned: Done.

@@ -1,0 +1,45 @@
+
+gpu/gpu-shape-time3
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape               bit 26        bit 28
+tri flat 4            53..53        26..26   
+tri flat 8            78..79        27..27   
+tri flat 16          143..166       28..28   
+tri flat 32          368..376       29..29   
+tri flat 64         1201..1224      30..30   
+tri flat 2x64        321..344       26..26   
+tri flat 64x2         99..101       30..30   
+tri gour 8           231..231      168..168  
+tri gour 16          348..365      169..169  
+tri gour 32          773..773      170..170  
+tri gour 64         2390..2390     171..171  
+tri tex15 8          177..177      114..114  
+tri tex15 16         295..314      116..116  
+tri tex15 32         721..721      118..118  
+tri tex4 16          295..298      116..116  
+tri tex4 64         2339..2339     120..120  
+tri gtex15 16        433..433      254..254  
+tri gtex15 32        858..862      255..255  
+tri semi 16          221..244       28..28   
+tri semi 64         1866..1891      30..30   
+tri semi gour 16     374..396      169..169  
+tri semi tex 16      321..341      116..116  
+quad flat 16         248..255      132..134  
+quad flat 64        2386..2400    1190..1201 
+quad gour 16         519..519      343..343  
+quad tex15 16        468..468      292..292  
+line level 4          33..33        17..17   
+line level 32         68..68        17..17   
+line level 128       162..163       17..17   
+line level 255       288..288       17..17   
+line diag 32         169..191       17..17   
+line steep 32        168..191       17..17   
+line steep 128       600..623       17..17   
+line gour 16         110..126       79..79   
+line gour 128        224..224       79..79   
+line gour steep 64   374..397       79..79   
+line semi 64         103..104       17..17   
+
+gpu/gpu-shape-time3: Done.

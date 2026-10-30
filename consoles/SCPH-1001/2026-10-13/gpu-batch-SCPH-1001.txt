@@ -1,0 +1,15 @@
+
+gpu/gpu-batch
+N primitives back to back, each fed when GPUSTAT bit 28 reads set, in the blanking, fastest of four: cycles
+from the first word to bits 28+26. No assertions.
+
+kind                 N=1      2      4      8     16
+flat 16x16          374    574   1041   2007   3920
+flat 64x64         2608   5107  10087  20016  39916
+semi 16x16          613   1097   2122   4105   8111
+sprite15 same       401    624   1066   2031   3947
+sprite15 fresh      394    617   2603   8156  16183
+sprite4 fresh       394    614   1052   2578   6038
+flat tri 16         342    510    807   1531   2844
+
+gpu/gpu-batch: Done.

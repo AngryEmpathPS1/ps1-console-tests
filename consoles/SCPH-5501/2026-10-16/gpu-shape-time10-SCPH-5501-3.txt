@@ -1,0 +1,17 @@
+
+gpu/gpu-shape-time10
+A lone polygon's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set,
+fastest..slowest over eight start points at each of four places in the frame. No assertions.
+
+bit 26's D started at 20,000 (blanking) / 80,000 / 200,000 / 400,000 cycles after VBlank's IRQ
+shape              blank          80000          200000         400000
+flat 16            143..143       143..177       143..205       143..178    
+flat 64           1201..1212     1239..1309     1240..1310     1244..1305   
+gour 16            338..338       338..384       338..374       338..345    
+tex 0..15          295..295       295..354       295..344       295..330    
+tex 0..255        1440..1461     1541..1595     1532..1595     1542..1597   
+tex4 0..15         295..295       295..350       295..344       295..316    
+tex4 0..255       1300..1320     1369..1452     1369..1455     1368..1453   
+tex 256x16        2341..2341     2351..2378     2357..2424     2351..2410   
+
+gpu/gpu-shape-time10: Done.

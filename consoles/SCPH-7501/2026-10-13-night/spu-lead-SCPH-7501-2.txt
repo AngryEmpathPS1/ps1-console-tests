@@ -1,0 +1,19 @@
+
+spu/spu-lead
+How far ahead of playback a voice reads its ADPCM, as IRQ9 sees it. No assertions.
+
+LEAD (samples since the bit-11 sync; the ring's index is the same scale)
+pitch  IRQ at  key-on  onset   IRQ9   change  IRQ leads by   ring round the change (change-2 ..)
+0800   1040h     0.1     8     0.3    226    225.7         4079   4026   3470   2032    600     51      0      0
+0800   1048h     0.0     8   237.9    226    -11.9         4079   4026   3470   2032    600     51      0      0
+1000   1040h     0.0     8   110.0    116      6.0         4079   4079   3470    600      0      0      0      0
+1000   1048h     0.0     8   122.0    116     -6.0         4079   4079   3470    600      0      0      0      0
+2000   1040h     0.0     8    58.0     61      3.0         4079   4079   3470      0      0      0      0      0
+2000   1048h     0.0     8    64.0     61     -3.0         4079   4079   3470      0      0      0      0      0
+
+MIDBLOCK (nugget's probe: IRQ9 at 2008h, re-armed after each hit; a loop is 172,032 cycles)
+  hit 1 at      7521 cycles (loop 0.04)  ENVX 3fff  ENDX fffffd
+  hit 2 at      9818 cycles (loop 0.05)  ENVX 3fff  ENDX fffffd
+  2 hits, then none for 0.5 s; at the end ENVX 3fff, ENDX fffffd
+
+spu/spu-lead: Done.

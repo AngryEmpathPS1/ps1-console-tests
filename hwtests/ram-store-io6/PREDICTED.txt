@@ -1,0 +1,24 @@
+ram-store-io6 - PREDICTED before its first console run (2026-10-15 small hours), the MOST COMMON of each row's 16, cycles.
+
+From scratch/scratch_rdpri.js's read-priority model (ram-store-io5 on the SCPH-1001, 373 of 375 rows exact): stores leave
+a 4-deep queue for the bus in order - a store to another 1 KB block than the last a new transaction (+6), the same block's
++2 (a burst); when the bus comes free with stores still queued, a read already waiting goes first (+2, +4 when the next
+two queued stores are one block's) unless a queued store is in the read's own block; a RAM read 5 more than a GPUSTAT
+read behind a write. This core (v0.377.112) waits every read out behind the whole queue: scratch/rsio6_v112.txt.
+
+C rows (stores A, B, A+4; a RAM read):
+                    the check is the 1 KB block     the check is the word        this core
+  CA4k0 / k2        28 / 28                         28 / 28 (its own word)        28 / 28
+  CA8..1020 k0/k2   28 / 28                         18 / 24                       28 / 28
+  CB0..1020 k0/k2   24 / 24                         18 / 24 (CB0: 24 / 24)        28 / 28
+  CX k0 / k2        18 / 24 (28 / 28 if the check   18 / 24                       28 / 28
+                    compares only low bits)
+  CC k0 / k2        18 / 24                         18 / 24                       28 / 28
+
+A and B rows (stores, a GPUSTAT read that goes first, j nops, a second read): what the stores it went ahead of do next is
+unmeasured - two pictures:
+  H1 they wait for the read's whole access and go on as new transactions: the second read waits for them, AP4j0 ~ 19 + 2
+     + 6 + 6 + its own 2, flat in j until they are done;
+  H2 the read takes the bus for its 2 cycles only and they go on at once: AP4j0 ~ 25 + 2, earlier by the read's latency.
+  Either way the S rows (no read goes first: a burst is one transaction) read as one read behind the burst plus a second
+  read's cost, and the j at which a row stops being flat says when the last store went.

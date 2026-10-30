@@ -1,0 +1,26 @@
+
+cdrom/cd-init-args
+A Nop right after an Init refused for its four parameters (nugget cdlInitWithArgs), and where the slow
+maintenance cycles fall after an Init. Cycles from each write to its interrupt; histogram in 16,384-cycle
+steps (the last 180,224+). No assertions.
+
+RANDOM PHASE (the refused Init: INT5 256 of 256, its second byte 20h 256 of 256):
+  Init refused, to INT5    min   26968  avg   48192  max  167296  over 3.5 ms   9 of 256  | 0 75 99 42 16 10 4 4 3 2 1 0
+  then Nop, to INT3        min   29384  avg   44726  max  200760  over 3.5 ms   3 of 256  | 0 111 91 15 14 16 3 4 0 1 0 1
+CONTROL:
+  Nop alone                min   18536  avg   38541  max  194736  over 3.5 ms   6 of 256  | 0 154 58 13 12 11 1 3 1 0 1 2
+AFTER A COMPLETED INIT (64 tries):
+  Init refused, to INT5    min   30528  avg   37096  max   60808  over 3.5 ms   0 of 64  | 0 24 32 8 0 0 0 0 0 0 0 0
+  then Nop, to INT3        min   29864  avg   46987  max   56592  over 3.5 ms   0 of 64  | 0 9 36 19 0 0 0 0 0 0 0 0
+SLOW CYCLES AFTER AN INIT (Nops back to back for ~250 ms; those over 100,000 cycles, at their write's time
+after the Init's INT2):
+  Init 0: 376504(200304) 1039848(125408) 1471560(101760) 4641192(147568) 5312400(124968) 5765800(108064)
+  Init 1: 353056(147072) 996400(127544) 2362480(100080) 3734272(102912) 4171760(102712) 4628936(202480) 5291136(129192) 5726632(100072) 8453856(102744)
+  Init 2: 800272(150160) 1467664(115760) 4657144(147568) 5304936(124968) 5738960(102256)
+  Init 3: 358880(147584) 4173664(104904) 4648528(148056) 5296840(125408) 5753056(102272) 6643184(103184) 7996656(102200)
+  Init 4: 797600(202480) 1474392(125400) 4625696(204288) 5288992(127600) 6197536(104064) 7086952(102256) 8464576(103240)
+  Init 5: 358160(200784) 1034424(125416) 4183424(105008) 4659144(147512) 5324528(115744) 5752464(102256)
+  Init 6: 372384(200288) 1037048(125904) 1467600(101824) 3727192(100056) 4632960(200328) 5298816(125400) 8448032(104992)
+  Init 7: 362088(148008) 3726464(102216) 4183400(102696) 5079912(150208) 5744800(115696) 8447760(102696)
+
+Done.

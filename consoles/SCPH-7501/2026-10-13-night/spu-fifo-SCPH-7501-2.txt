@@ -1,0 +1,15 @@
+
+spu/spu-fifo
+The manual write's FIFO: how many halfwords it takes, by case. No assertions.
+
+  STOPPED 31     landed  31 of  31: 0-30  (read 0 late, 0 strays)  busy 1523 cycles
+  STOPPED 32     landed  32 of  32: 0-31  (read 0 late, 0 strays)  busy 1516 cycles
+  STOPPED 33     landed  32 of  33: 0-31  (read 0 late, 0 strays)  busy 1527 cycles
+  STOPPED 48     landed  32 of  48: 0-31  (read 0 late, 0 strays)  busy 1514 cycles
+  STOPPED 64     landed  32 of  64: 0-31  (read 0 late, 0 strays)  busy 705 cycles
+  RUNNING 64     landed   0 of  64: none  (read 0 late, 0 strays)
+  SLOW 64        landed   0 of  64: none  (read 0 late, 0 strays)
+  TWICE 32+32    landed  39 of  64: 0-38  (read 0 late, 9 strays)
+  AFTER 32+32    landed   6 of  64: 0-5  (read 0 late, 52 strays)
+
+spu/spu-fifo: Done.

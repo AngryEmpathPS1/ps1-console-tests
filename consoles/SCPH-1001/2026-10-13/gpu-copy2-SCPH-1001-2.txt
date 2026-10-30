@@ -1,0 +1,23 @@
+
+gpu/gpu-copy2
+VRAM-to-VRAM copies in the vertical blanking, fastest of four, cycles from the first word. No assertions.
+
+by width, height 32:   w    same rows   other rows
+                       16       1200       1160
+                       32       1970       1971
+                       64       3506       3506
+                      128       6671       6669
+                      256      13359      13353
+                      320      16922      16923
+                      512      26726      26727
+
+by height, width 128:  h    same rows   other rows
+                        8       1743       1714
+                       64      13308      13308
+                      128      26546      26544
+
+gpu-scanout2's 128x32 (768,256)->(0,16): 6671
+gpu-scan3's 128x32 (512,0)->(0,16): 6669
+gpu/bandwidth's 320x32 (0,0)->(320,0): 16923
+
+gpu/gpu-copy2: Done.

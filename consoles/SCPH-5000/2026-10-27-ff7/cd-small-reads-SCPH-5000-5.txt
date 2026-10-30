@@ -1,0 +1,47 @@
+
+cdrom/cd-small-reads
+A read started a few sectors ahead while the drive reads, with Lagnacure Legend's commands and spacing. Needs a data disc.
+Cycles at the system clock (1 ms = 33,869), from the ReadN's write. No assertions - compare against your emulator.
+
+drive region: for Japa - no unlock for it
+CHAIN 1 (the file's first sector after its ReadN; ReadN's INT3):
+  00:13:29   2790928 (+0)  INT3  31752
+  00:13:31   5903320 (+0)  INT3 145112
+  00:13:32   6081368 (+0)  INT3 119152
+  00:13:33   6064784 (+0)  INT3 119152
+  00:13:34   5803960 (+0)  INT3 103880
+  00:13:35   1980656 (+0)  INT3 114632
+  00:13:41   1969640 (+0)  INT3  99224
+  00:13:42   2013232 (+0)  INT3 131992
+  00:13:47   6104256 (+0)  INT3 131480
+  00:13:64   6034584 (+0)  INT3 115224
+  00:13:73   1780456 (+0)  INT3 116296
+CHAIN 2 (the file's first sector after its ReadN; ReadN's INT3):
+  00:13:29   2555128 (+0)  INT3  71752
+  00:13:31   5936136 (+0)  INT3  98904
+  00:13:32   1764736 (+0)  INT3 114576
+  00:13:33   6035696 (+0)  INT3  99464
+  00:13:34   5841984 (+0)  INT3 114640
+  00:13:35   1982648 (+0)  INT3 103368
+  00:13:41   1976520 (+0)  INT3 114520
+  00:13:42   1991240 (+0)  INT3  99472
+  00:13:47   6069016 (+0)  INT3 115824
+  00:13:64   5982376 (+0)  INT3  85576
+  00:13:73   6040216 (+0)  INT3 103384
+
+AHEAD: reading at 2x, a new Setloc to the sector k after the one just delivered and ReadN, written a
+quarter / three quarters of a sector after it; the target's first sector from the ReadN's write:
+  k  1 :  2594360 (first +1)   2519320 (first +1)
+  k  2 :   388536 (first +2)   2703112 (first +2)
+  k  3 :   513672 (first +3)    441280 (first +3)
+  k  4 :   755088 (first +4)    645568 (first +4)
+  k  5 :   988224 (first +5)    901568 (first +5)
+  k  6 :  1199496 (first +6)   1124552 (first +6)
+  k  7 :  1419064 (first +7)   1350984 (first +7)
+  k  8 :  1677112 (first +8)   1574152 (first +8)
+  k  9 :  1915880 (first +9)   1793472 (first +9)
+  k 10 :  2168744 (first +10)   2011344 (first +10)
+  k 11 :  2334024 (first +11)   2239232 (first +11)
+  k 12 :  2583680 (first +12)   2445608 (first +12)
+
+Done.

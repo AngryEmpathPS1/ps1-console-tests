@@ -1,0 +1,43 @@
+gpu-shape-time44 - PREDICTED for the SCPH-1001 before its first run there (2026-10-16): v0.377.121 as the SCPH-1001
+under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000 --tol=0).
+The OLD GPU keeps its own model (GPU_OLD*): none of v0.377.119-121's new-GPU pieces (the quad's second set-up, empty
+triangles, the semi sprite / textured / shaded laws, the scan-out's bursts by place) apply to it. What it settles: the
+same questions as PREDICTED.txt, on the old GPU - each piece the old GPU's too, or the new GPU's alone.
+
+shape                  bit 26        bit 28
+flat empty 1x4           28..28        28..28   
+flat empty 1x16          30..30        30..30   
+flat empty 1x64          32..32        32..32   
+gour empty 1x4          169..169      169..169  
+gour empty 1x16         171..171      171..171  
+gour empty 1x64         173..173      173..173  
+tex4 empty 1x4          115..115      115..115  
+tex4 empty 1x16         117..117      117..117  
+tex4 empty 1x64         119..119      119..119  
+semi spr15 64x8 x0 u1  2486..2527       9..9    
+semi spr15 64x8 x0 u2  2590..2631       9..9    
+semi spr15 64x8 x0 u4  2486..2527       9..9    
+semi spr15 64x8 x1 u0  2486..2527       9..9    
+semi spr15 64x8 x4 u0  2486..2527       9..9    
+semi spr15 64x8 x8 u0  2486..2527       9..9    
+opaq spr15 64x8 x0 u1  1934..1975       9..9    
+opaq spr15 64x8 x0 u2  2038..2079       9..9    
+opaq spr15 64x8 x0 u4  1934..1975       9..9    
+opaq spr15 64x8 x1 u0  1934..1975       9..9    
+opaq spr15 64x8 x4 u0  1934..1975       9..9    
+opaq spr15 64x8 x8 u0  1934..1975       9..9    
+semi spr4 32x8          442..483        9..9    
+semi spr4 128x8        2424..2465       9..9    
+semi spr8 128x8        3254..3295       9..9    
+opaq spr4 32x8          186..186        9..9    
+opaq spr4 128x8        1361..1402       9..9    
+opaq spr8 128x8        2232..2232       9..9    
+semi gour TL 4x16       381..422      167..167  
+semi gour TL 8x16       478..519      168..168  
+semi gour TL 32x16     1080..1121     170..170  
+opaq gour TL 4x16       304..345      167..167  
+opaq gour TL 8x16       337..378      168..168  
+opaq gour TL 32x16      539..580      170..170  
+semi gour 2 tris 64x16  3377..3422    1810..1851 
+opaq gour 2 tris 64x16  1299..1340     720..765  
+

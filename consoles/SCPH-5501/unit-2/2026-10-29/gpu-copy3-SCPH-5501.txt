@@ -1,0 +1,19 @@
+
+gpu/gpu-copy3
+Copies in the blanking (20,000 cycles after the VBlank IRQ) and on active lines (200,000), fastest of four, and
+the active lines' toll in tenths of a percent. No assertions.
+
+  512x240  copy  16x32  blank   1276  active   1408  toll 103
+  512x240  copy  32x32  blank   1912  active   1996  toll 43
+  512x240  copy  64x32  blank   2994  active   3175  toll 60
+  512x240  copy 128x32  blank   5253  active   5521  toll 51
+  512x240  copy 256x32  blank  10536  active  11080  toll 51
+  512x240  copy 512x32  blank  21108  active  22105  toll 47
+  320x240  copy  16x32  blank   1273  active   1368  toll 74
+  320x240  copy  32x32  blank   1954  active   1996  toll 21
+  320x240  copy  64x32  blank   2992  active   3130  toll 46
+  320x240  copy 128x32  blank   5251  active   5341  toll 17
+  320x240  copy 256x32  blank  10540  active  10627  toll 8
+  320x240  copy 512x32  blank  21111  active  21244  toll 6
+
+gpu/gpu-copy3: Done.

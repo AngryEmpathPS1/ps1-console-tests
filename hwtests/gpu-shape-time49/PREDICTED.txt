@@ -1,0 +1,34 @@
+gpu-shape-time49 - PREDICTED before its first console run (2026-10-16): v0.377.118 as the SCPH-9001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. (The
+v0.377.119 candidate changes none of these.) This core's semi gouraud premium: GPU_POLY_NEW3.semiShRow 1.6 a row, and
+the semi walk at 0.83 of a pixel's (GPU_SHADED_ROWS.semiWalk) - the TR's walked left edge cheaper semi than opaque.
+What would settle what: the semi less opaque by orientation - if narrow rows LAST cost (the TL's end), TR pays as TL
+and BL / BR as each other; if an upright LEFT edge costs (every row from the same x), TL and BL pay and TR / BR not;
+gpu-shape-time45's TL 64x16 15 and BR 64x16 5 one of each.
+
+shape                  bit 26        bit 28
+semi gour TL 64x16      784..784      171..171  
+semi gour TR 64x16      834..834      171..171  
+semi gour BL 64x16      717..717      171..171  
+semi gour BR 64x16      771..771      175..175  
+semi gour TL 256x16    2423..2423     173..173  
+semi gour TR 256x16    2622..2622     173..173  
+semi gour BL 256x16    2161..2161     171..171  
+semi gour BR 256x16    2366..2366     177..177  
+semi gour TL 256x64    8753..8753     173..173  
+semi gour TR 256x64    8963..8963     173..173  
+semi gour BL 256x64    8493..8493     173..173  
+semi gour BR 256x64    8709..8709     179..179  
+opaq gour TL 64x16      758..758      171..171  
+opaq gour TR 64x16      818..818      171..171  
+opaq gour BL 64x16      692..692      171..171  
+opaq gour BR 64x16      756..756      175..175  
+opaq gour TL 256x16    2396..2396     173..173  
+opaq gour TR 256x16    2637..2637     173..173  
+opaq gour BL 256x16    2136..2136     171..171  
+opaq gour BR 256x16    2383..2383     177..177  
+opaq gour TL 256x64    8648..8648     173..173  
+opaq gour TR 256x64    8901..8901     173..173  
+opaq gour BL 256x64    8390..8390     173..173  
+opaq gour BR 256x64    8648..8648     179..179  
+

@@ -1,0 +1,26 @@
+
+cdrom/cd-init-args
+A Nop right after an Init refused for its four parameters (nugget cdlInitWithArgs), and where the slow
+maintenance cycles fall after an Init. Cycles from each write to its interrupt; histogram in 16,384-cycle
+steps (the last 180,224+). No assertions.
+
+RANDOM PHASE (the refused Init: INT5 256 of 256, its second byte 20h 256 of 256):
+  Init refused, to INT5    min   26912  avg   48387  max  213816  over 3.5 ms   7 of 256  | 0 69 111 32 21 10 6 2 0 0 3 2
+  then Nop, to INT3        min   29384  avg   43384  max  149176  over 3.5 ms   3 of 256  | 0 116 97 14 4 14 6 2 0 3 0 0
+CONTROL:
+  Nop alone                min   18600  avg   37092  max  187448  over 3.5 ms   5 of 256  | 0 153 63 14 13 5 3 1 1 1 0 2
+AFTER A COMPLETED INIT (64 tries):
+  Init refused, to INT5    min   30584  avg   39976  max   59104  over 3.5 ms   0 of 64  | 0 12 38 14 0 0 0 0 0 0 0 0
+  then Nop, to INT3        min   29424  avg   46024  max   56200  over 3.5 ms   0 of 64  | 0 14 9 41 0 0 0 0 0 0 0 0
+SLOW CYCLES AFTER AN INIT (Nops back to back for ~250 ms; those over 100,000 cycles, at their write's time
+after the Init's INT2):
+  Init 0: 809000(205984) 1495024(114984) 2826720(101272) 3725576(101760) 5086392(205824) 5757136(126680)
+  Init 1: 823568(205448) 1483648(115144) 5099720(149984) 5755296(114600) 6658968(100896)
+  Init 2: 365024(210152) 1028520(114664) 2382192(101064) 4643928(150208) 5305624(124432) 6641688(100232) 7539600(106864) 8016552(148512)
+  Init 3: 371088(150192) 1026920(114272) 2383320(101376) 4188616(150600) 4844808(115152) 5296968(101720) 7571960(104120)
+  Init 4: 795896(149648) 1482048(125352) 1911104(103952) 5545952(150424) 6202016(114664) 7105744(101384) 7991216(101656)
+  Init 5: 387272(150208) 1027016(124320) 3273736(109224) 4211912(150488) 4871232(115152) 7117200(100824) 8464472(103864)
+  Init 6: 365040(202552) 1022768(115368) 1479080(101720) 1914696(100280) 2827552(100224) 4178416(102816) 4653000(149104) 5309296(115440)
+  Init 7: 365376(205880) 1026776(115968) 2385648(101592) 4644656(149656) 5309896(125616)
+
+Done.

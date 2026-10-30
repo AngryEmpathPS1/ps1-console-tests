@@ -1,0 +1,51 @@
+gpu-shape-time29 - PREDICTED before its first console run (2026-10-15), bit 26's D (the fastest of eight), cycles.
+
+Columns: this core, v0.377.113, as the SCPH-9001 under the runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0
+--video=24000 --tol=0); and the same plus scratch/scratch_resfit9001.js's four-term description of gpu-shape-time18-28
+(flat shapes only; a row ending an even distance from the leftmost vertex -0.419, ending where the last did +0.259,
+-0.469 more if the end last moved out, +0.044 if in). What would settle what:
+  A  if the parity term is real, TL 128 / 256 x 64 (the end steps 2 / 4 pixels a row: its parity the same every row,
+     none standing) part from 127 / 129 / 255 / 257 by ~0.4 a row (~27 cycles) the way the fit says; if it was standing
+     still that cost, they read as their neighbours.
+  B  half the rows standing: the fit's +0.26 a standing row, against nothing.
+  C  the direction alone: if it is the end moving out against in, o1 and o2 part by the fit; if not, by their own.
+  D  semi and gouraud at 127-129: semi as flat (gst28's TR 64 x 64 +44), gouraud not.
+
+row                      core    fit
+flat TL 126x64           2236   2223
+flat TL 127x64           2252   2252
+flat TL 128x64           2254   2254
+flat TL 129x64           2285   2258
+flat TL 130x64           2301   2288
+flat TL 254x64           4322   4309
+flat TL 255x64           4339   4339
+flat TL 256x64           4341   4341
+flat TL 257x64           4372   4345
+flat TL 258x64           4388   4375
+flat TL 30x64             677    674
+flat TL 31x64             693    689
+flat TL 32x64             703    699
+flat TL 33x64             725    721
+flat TL 34x64             741    737
+flat TL 8x64 o1           348    351
+flat TL 8x64 o2           353    331
+flat BL 8x64 o1           348    351
+flat BL 8x64 o2           349    327
+flat TL 32x64 o1          703    699
+flat TL 32x64 o2          706    686
+flat BL 32x64 o1          688    684
+flat BL 32x64 o2          691    672
+flat TL 128x64 o1        2254   2254
+flat TL 128x64 o2        2255   2255
+flat BL 128x64 o1        2189   2189
+flat BL 128x64 o2        2194   2194
+flat TL 256x64 o1        4341   4341
+flat TL 256x64 o2        4341   4341
+flat BL 256x64 o1        4210   4210
+flat BL 256x64 o2        4216   4216
+semi TL 127x64           3375       
+semi TL 128x64           3377       
+semi TL 129x64           3423       
+gour TL 127x64           4474       
+gour TL 128x64           4476       
+gour TL 129x64           4540       

@@ -1,0 +1,19 @@
+
+gpu/gpu-tail4
+A 256x32 probe at (0,16) under Timer 1 modes and with or without a VBlank wait before it: fastest..slowest of
+eight and how many were cheap (flat under 4,420, semi under 6,600). No assertions.
+
+  Timer 1 as left        flat  4256..4563  cheap 3 of 8
+  Timer 1 0103h          flat  4481..4527  cheap 0 of 8
+  Timer 1 0100h          flat  4481..4526  cheap 0 of 8
+  Timer 1 0000h          flat  4482..4530  cheap 0 of 8
+  as left + VBlank wait  flat  4212..4253  cheap 8 of 8
+  0103h + VBlank wait    flat  4208..4256  cheap 8 of 8
+  Timer 1 as left        semi  6831..6923  cheap 0 of 8
+  Timer 1 0103h          semi  6833..6923  cheap 0 of 8
+  Timer 1 0100h          semi  6831..6930  cheap 0 of 8
+  Timer 1 0000h          semi  6245..6878  cheap 5 of 8
+  as left + VBlank wait  semi  6203..6244  cheap 8 of 8
+  0103h + VBlank wait    semi  6203..6244  cheap 8 of 8
+
+gpu/gpu-tail4: Done.

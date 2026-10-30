@@ -1,0 +1,26 @@
+
+cdrom/cd-init-args
+A Nop right after an Init refused for its four parameters (nugget cdlInitWithArgs), and where the slow
+maintenance cycles fall after an Init. Cycles from each write to its interrupt; histogram in 16,384-cycle
+steps (the last 180,224+). No assertions.
+
+RANDOM PHASE (the refused Init: INT5 256 of 256, its second byte 20h 256 of 256):
+  Init refused, to INT5    min   26968  avg   46079  max  162464  over 3.5 ms   4 of 256  | 0 83 110 25 16 7 9 2 1 3 0 0
+  then Nop, to INT3        min   29384  avg   40625  max  145392  over 3.5 ms   3 of 256  | 0 129 89 17 8 6 4 1 2 0 0 0
+CONTROL:
+  Nop alone                min   18712  avg   37246  max  141992  over 3.5 ms   4 of 256  | 0 150 64 21 7 6 4 2 2 0 0 0
+AFTER A COMPLETED INIT (64 tries):
+  Init refused, to INT5    min   30584  avg   40595  max   62728  over 3.5 ms   0 of 64  | 0 12 37 15 0 0 0 0 0 0 0 0
+  then Nop, to INT3        min   29928  avg   45712  max   56200  over 3.5 ms   0 of 64  | 0 15 8 41 0 0 0 0 0 0 0 0
+SLOW CYCLES AFTER AN INIT (Nops back to back for ~250 ms; those over 100,000 cycles, at their write's time
+after the Init's INT2):
+  Init 0: 375040(146472) 1025360(123768) 2379976(100824) 4191912(146480) 4845160(124808) 5298304(101384)
+  Init 1: 364976(194960) 1019912(126992) 2377736(101600) 4637344(146096) 5306728(115416) 6207832(102928)
+  Init 2: 365000(195736) 1038704(115416) 1915416(106880) 2835600(100224) 3265616(104504) 4630200(191240) 5288784(124904) 7098112(101648)
+  Init 3: 365008(197664) 1016048(116136) 3269216(106856) 5104936(145920) 5755088(125096) 6183920(106864) 7099024(101608)
+  Init 4: 373240(191952) 1025288(114984) 4192088(104576) 4626384(192504) 5298640(114104) 5749368(102088) 7114952(102104) 7570864(102088) 8460976(194856)
+  Init 5: 808952(192008) 1490008(125400) 2846000(101704) 3730304(100824) 5109352(145648) 5757928(115152) 7107008(101704)
+  Init 6: 359184(146480) 1022592(123760) 2830272(100776) 4176800(101376) 4655176(145936) 5299088(114664) 6648992(100768)
+  Init 7: 346928(146200) 1020992(128528) 2374776(102144) 3263320(100792) 4635144(103296) 5068192(192168) 5739624(114104)
+
+Done.

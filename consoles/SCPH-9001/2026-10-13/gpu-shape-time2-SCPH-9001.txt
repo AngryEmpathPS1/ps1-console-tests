@@ -1,0 +1,43 @@
+
+gpu/gpu-shape-time2
+A lone primitive's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set and
+with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape               bit 26        bit 28
+spr15 4x4             38..38         8..8    
+spr15 8x8             68..68         8..8    
+spr15 16x16          182..182        8..8    
+spr15 32x32          602..612        8..8    
+spr15 32x8           170..170        8..8    
+spr15 8x32           212..217        8..8    
+spr15 64x16 miss    2959..2982       8..8    
+spr15 16x64 miss    3040..3063       8..8    
+spr15 64h 16x16      182..182        8..8    
+spr15 semi 16x16     319..344        8..8    
+spr8 16x16           182..182        8..8    
+spr8 32x32           602..612        8..8    
+spr8 64x8            296..304        8..8    
+spr4 16x16           182..182        8..8    
+spr4 64x64          2206..2213       8..8    
+spr4 128x8 miss     1183..1205       8..8    
+copy 16x16           627..646        2..2    
+copy 64x4            371..373        2..2    
+copy 4x64           1539..1557       2..2    
+copy 64x64          5924..5935       2..2    
+copy 128x32         5188..5227       2..2    
+line level 16         48..48        17..17   
+line level 64         98..98        17..17   
+line diag 16          97..97        17..17   
+line steep 64        312..335       17..17   
+line gour 64         160..160       79..79   
+tri flat 8            78..78        27..27   
+tri flat 16          143..143       28..28   
+tri flat 64         1201..1210      30..30   
+tri gour 16          348..348      169..169  
+tri tex15 16         295..295      116..116  
+quad flat 16         248..267      132..132  
+fill 32x32           240..256        9..9    
+fill 128x8           120..120        9..9    
+fill 8x128           784..806        9..9    
+
+gpu/gpu-shape-time2: Done.

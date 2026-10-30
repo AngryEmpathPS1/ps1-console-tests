@@ -1,0 +1,20 @@
+
+sio/pocket-protect
+ComFlags.10 (5Dh) and a write to frames 16..55: each frame written back with its own bytes.
+
+  frame 15 read ok, first bytes a0 00 00 00
+  frame 16 read ok, first bytes ff ff ff ff
+  frame 55 read ok, first bytes ff ff ff ff
+  frame 56 read ok, first bytes ff ff ff ff
+
+protect ON (5Dh 00 00 00), replies ff 08 03 00 00 00
+  frame 15: write status 47, after it unchanged
+  frame 16: write status fd, after it unchanged
+  frame 55: write status fd, after it unchanged
+  frame 56: write status 47, after it unchanged
+
+protect OFF (5Dh 00 01 00), replies ff 00 03 00 00 00
+  frame 16: write status 47, after it unchanged
+  frame 55: write status 47, after it unchanged
+
+sio/pocket-protect: Done.

@@ -1,0 +1,191 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-xa-switch
+Leaving an XA music stream for a data read, with The Solitaire's commands and spacing. Needs the games disc.
+Cycles at the system clock (1 ms = 33,869). No assertions - compare against your emulator.
+
+drive region: for U/C - unlocking
+SEEK: reading the music as data D sectors on, Setloc 00:20:05 + ReadN; write -> its first sector:
+  D 510 :        0 (+-1)        0 (+-1)        0 (+-1)
+  D 345 :        0 (+-1)        0 (+-1)        0 (+-1)
+  D 200 :        0 (+-1)        0 (+-1)        0 (+-1)
+
+SWITCH (A: the model's sequence; B: the drive program's), times from the switch's first write:
+A W      0: 30 Getstats to 22h, GetlocL 00 20 25 02 01 04 64 01
+    +     136 Setmode
+    +   42880 INT3 42
+    +   47432 ReadN
+    +   83528 INT3 42
+    +   88056 Setloc
+    +  170112 INT3 42
+    +  174624 Setloc
+    +  208944 INT3 42
+    +  213328 Setmode
+    +  257240 INT3 42
+    +  261608 ReadN
+    +  298600 INT3 42
+    +68039120 Pause
+    +68068760 INT5 43 80
+A W  28224: 30 Getstats to 22h, GetlocL 00 20 34 02 01 05 64 01
+    +     136 Setmode
+    +   43800 INT3 42
+    +   48224 ReadN
+    +  118392 INT3 42
+    +  122880 Setloc
+    +  176296 INT3 42
+    +  180784 Setloc
+    +  221232 INT3 42
+    +  225632 Setmode
+    +  274640 INT3 42
+    +  279008 ReadN
+    +  350400 INT3 42
+    +68090888 Pause
+    +68134608 INT5 43 80
+A W  56448: 30 Getstats to 22h, GetlocL 00 20 04 02 00 00 89 00
+    +     128 Setmode
+    +   48728 INT3 42
+    +   53152 ReadN
+    +   88952 INT3 42
+    +   93448 Setloc
+    +  181224 INT3 42
+    +  185656 Setloc
+    +  220072 INT3 42
+    +  224440 Setmode
+    +  293032 INT3 42
+    +  297384 ReadN
+    +  368808 INT3 42
+    +68109328 Pause
+    +68165440 INT5 43 80
+A W  84672: 30 Getstats to 22h, GetlocL 00 20 34 02 01 05 64 01
+    +     144 Setmode
+    +   36224 INT3 42
+    +   40632 ReadN
+    +  130144 INT3 42
+    +  134632 Setloc
+    +  168936 INT3 42
+    +  173368 Setloc
+    +  234704 INT3 42
+    +  239080 Setmode
+    +  266816 INT3 42
+    +  271200 ReadN
+    +  361152 INT3 42
+    + 6393696 INT1 22  00:08:34 0:0 08
+    + 6626256 INT1 22  00:08:35 0:0 08
+    + 6841696 INT1 22  00:08:36 0:0 08
+    +68101712 Pause
+    +68176024 INT5 43 80
+A W 112896: 30 Getstats to 22h, GetlocL 00 20 35 02 01 06 64 01
+    +     128 Setmode
+    +   79768 INT3 42
+    +   84208 ReadN
+    +  120464 INT3 42
+    +  124936 Setloc
+    +  177264 INT3 42
+    +  181672 Setloc
+    +  216096 INT3 42
+    +  220488 Setmode
+    +  258304 INT3 42
+    +  262688 ReadN
+    +  334112 INT3 42
+    +68074624 Pause
+    +68126776 INT5 43 80
+A W 141120: 30 Getstats to 22h, GetlocL 00 20 72 02 01 03 64 01
+    +     136 Setmode
+    +   71576 INT3 42
+    +   76000 ReadN
+    +  111736 INT3 42
+    +  116232 Setloc
+    +  175736 INT3 42
+    +  180176 Setloc
+    +  214608 INT3 42
+    +  218992 Setmode
+    +  305760 INT3 42
+    +  310136 ReadN
+    +  347072 INT3 42
+    +68087608 Pause
+    +68108608 INT5 43 80
+A W 169344: 30 Getstats to 22h, GetlocL 00 20 43 02 01 06 64 01
+    +     136 Setmode
+    +   28368 INT3 42
+    +   32784 ReadN
+    +   74672 INT3 42
+    +   79144 Setloc
+    +  132560 INT3 42
+    +  136992 Setloc
+    +  206288 INT3 42
+    +  210656 Setmode
+    +  269184 INT3 42
+    +  273552 ReadN
+    +  311016 INT3 42
+    +68051536 Pause
+    +68123088 INT5 43 80
+A W 197568: 30 Getstats to 22h, GetlocL 00 20 22 02 01 01 64 01
+    +     144 Setmode
+    +   34624 INT3 42
+    +   39048 ReadN
+    +  109272 INT3 42
+    +  113768 Setloc
+    +  259448 INT3 42
+    +  263888 Setloc
+    +  298960 INT3 42
+    +  303328 Setmode
+    +  384352 INT3 42
+    +  388728 ReadN
+    +  425664 INT3 42
+    +49839664 INT1 22  00:08:34 0:0 08
+    +50080464 INT1 22  00:08:35 0:0 08
+    +50282304 INT1 22  00:08:36 0:0 08
+    +50512592 INT1 22  00:08:37 0:0 08
+    +50748112 INT1 22  00:08:38 0:0 08
+    +50967216 INT1 22  00:08:39 0:0 08
+    +51208032 INT1 22  00:08:40 0:0 08
+    +51409056 INT1 22  00:08:41 0:0 08
+    +51433624 Pause
+    +51487608 INT3 22
+B W      0: 1 Getstats to 22h, GetlocL 43 80
+    +     168 Setloc
+    +   63392 INT3 42
+    +   67784 Setmode
+    +   95440 INT3 42
+    +   99856 ReadN
+    +  156176 INT3 42
+    +67896680 Pause
+    +67925888 INT5 43 80
+B W  56448: 30 Getstats to 22h, GetlocL 43 80
+    +     176 Setloc
+    +   34600 INT3 42
+    +   39024 Setmode
+    +   78496 INT3 42
+    +   82896 ReadN
+    +  155064 INT3 42
+    +67895576 Pause
+    +67918696 INT5 43 80
+B W 112896: 30 Getstats to 22h, GetlocL 43 80
+    +     176 Setloc
+    +   52384 INT3 42
+    +   56808 Setmode
+    +   84416 INT3 42
+    +   88816 ReadN
+    +  136272 INT3 42
+    +67876784 Pause
+    +67901800 INT5 43 80
+B W 169344: 30 Getstats to 22h, GetlocL 43 80
+    +     176 Setloc
+    +   63784 INT3 42
+    +   68192 Setmode
+    +  116624 INT3 42
+    +  121024 ReadN
+    +  164848 INT3 42
+    +13771376 INT1 22  00:08:34 0:0 08
+    +13978056 INT1 22  00:08:35 0:0 08
+    +14205136 INT1 22  00:08:36 0:0 08
+    +14432824 INT1 22  00:08:37 0:0 08
+    +14661104 INT1 22  00:08:38 0:0 08
+    +14884328 INT1 22  00:08:39 0:0 08
+    +15131376 INT1 22  00:08:40 0:0 08
+    +15334632 INT1 22  00:08:41 0:0 08
+    +15358976 Pause
+    +15393760 INT3 22
+
+Done.

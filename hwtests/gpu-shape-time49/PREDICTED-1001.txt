@@ -1,0 +1,32 @@
+gpu-shape-time49 - PREDICTED for the SCPH-1001 before its first run there (2026-10-16): v0.377.121 as the SCPH-1001
+under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000 --tol=0).
+The OLD GPU keeps its own model (GPU_OLD*): none of v0.377.119-121's new-GPU pieces (the quad's second set-up, empty
+triangles, the semi sprite / textured / shaded laws, the scan-out's bursts by place) apply to it. What it settles: the
+same questions as PREDICTED.txt, on the old GPU - each piece the old GPU's too, or the new GPU's alone.
+
+shape                  bit 26        bit 28
+semi gour TL 64x16     1898..1939     171..171  
+semi gour TR 64x16     1898..1939     171..171  
+semi gour BL 64x16     1701..1742     171..171  
+semi gour BR 64x16     1705..1746     175..175  
+semi gour TL 256x16    6921..6962     173..173  
+semi gour TR 256x16    7116..7157     173..173  
+semi gour BL 256x16    6105..6146     171..171  
+semi gour BR 256x16    6306..6347     177..177  
+semi gour TL 256x64   26010..26010    173..173  
+semi gour TR 256x64   26010..26029    173..173  
+semi gour BL 256x64   25196..25237    173..173  
+semi gour BR 256x64   25202..25243    179..179  
+opaq gour TL 64x16      812..853      171..171  
+opaq gour TR 64x16      812..853      171..171  
+opaq gour BL 64x16      746..787      171..171  
+opaq gour BR 64x16      750..791      175..175  
+opaq gour TL 256x16    2487..2526     173..173  
+opaq gour TR 256x16    2652..2693     173..173  
+opaq gour BL 256x16    2227..2227     171..171  
+opaq gour BR 256x16    2398..2420     177..177  
+opaq gour TL 256x64    9042..9083     173..173  
+opaq gour TR 256x64    9042..9078     173..173  
+opaq gour BL 256x64    8784..8784     173..173  
+opaq gour BR 256x64    8760..8790     179..179  
+

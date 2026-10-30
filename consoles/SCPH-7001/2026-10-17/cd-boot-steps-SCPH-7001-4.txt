@@ -1,0 +1,51 @@
+
+cdrom/cd-boot-steps
+The drive's steps in a game's boot (ReadTOC and Init after a double-speed read), an Init while circling at double speed, and the holds a seek leaves.
+Needs a pressed disc of 53+ minutes. Cycles at the system clock (1 ms = 33,869). About a minute; nothing prints until each part is done.
+
+BIOS READTOC: Setloc 00:02:24, SeekL, Setmode, ReadN, 8 sectors, Pause, four frames, ReadTOC:
+  2x       INT3    120896   INT2   33686998 after it   then GetlocP 00:01:74  mode 20
+  2x       INT3    221326   INT2   33530327 after it   then GetlocP 00:01:74  mode 20
+  2x       INT3    228552   INT2   37700663 after it   then GetlocP 00:01:74  mode 20
+  2x       INT3    219149   INT2   33286982 after it   then GetlocP 00:01:74  mode 20
+  1x       INT3     80067   INT2   29198422 after it   then GetlocP 00:01:72  mode 20
+  1x       INT3     80813   INT2   21558370 after it   then GetlocP 00:01:74  mode 20
+FIRST INIT: the same double-speed read and Pause, then Init:
+  Init     INT3    250315   INT2   20715636 after it   then GetlocP 00:01:74  mode 20
+  Init     INT3    217026   INT2   20339298 after it   then GetlocP 00:01:73  mode 20
+  Init     INT3    244913   INT2   20537089 after it   then GetlocP 00:01:74  mode 20
+  Init     INT3    208135   INT2   16301752 after it   then GetlocP 00:01:73  mode 20
+INIT WHILE CIRCLING AT 2X: Init, half a second, Setmode 80h, a second, Init; then GetlocP every 20 ms for 1.2 s:
+  Init     INT3     69448   INT2   13202334 after it   then GetlocP 00:02:40  mode 20
+  after it
+    00:02:40..00:02:41(3) 00:02:15(1) 00:02:08(1) 00:02:00(1) 00:01:67..00:01:74(6)
+    00:01:67..00:02:00(7) 00:01:68..00:01:74(5) 00:01:66..00:01:74(7) 00:01:67..00:01:74(6) 00:01:66..00:02:00(7)
+    00:01:67..00:02:00(6) 00:01:67..00:01:74(6) 00:01:66..00:01:71(4)
+  Init     INT3     62839   INT2   19361833 after it   then GetlocP 00:01:74  mode 20
+  after it
+    00:01:74..00:02:00(2) 00:01:67..00:02:00(6) 00:01:67..00:01:74(6) 00:01:67..00:02:00(7) 00:01:68..00:02:00(6)
+    00:01:67..00:02:00(6) 00:01:67..00:02:00(7) 00:01:68..00:02:00(6) 00:01:67..00:02:00(6) 00:01:67..00:02:00(7)
+    00:01:68(1)
+  Init     INT3     63011   INT2   19096853 after it   then GetlocP 00:01:74  mode 20
+  after it
+    00:01:74..00:02:00(2) 00:01:67..00:02:00(6) 00:01:67..00:02:00(6) 00:01:67..00:02:00(7) 00:01:68..00:02:00(6)
+    00:01:67..00:02:00(6) 00:01:67..00:02:00(7) 00:01:68..00:02:00(6) 00:01:67..00:02:00(6) 00:01:67..00:02:00(7)
+    00:01:68(1)
+HOLDS: GetlocP every 10 ms for 1.2 s after each seek's INT2, as runs of climbing sectors (count):
+  after SeekL 00:02:16 at double speed
+    00:02:16..00:02:18(3) 00:02:11..00:02:16(5) 00:02:09..00:02:16(6) 00:02:09..00:02:16(7) 00:02:10..00:02:16(6)
+    00:02:09..00:02:18(8) 00:02:12..00:02:16(4) 00:02:09..00:02:18(8) 00:02:11..00:02:16(5) 00:02:09..00:02:16(6)
+    00:02:09..00:02:16(7) 00:02:10..00:02:16(7) 00:02:11..00:02:16(5) 00:02:09..00:02:16(7) 00:02:10..00:02:18(7)
+    00:02:11..00:02:16(5) 00:02:09..00:02:18(8) 00:02:11..00:02:18(6) 00:02:11..00:02:16(5) 00:02:09..00:02:15(5)
+  after SeekL 52:00:00 at single speed
+    51:59:74..52:00:00(4) 51:59:58..52:00:00(26) 51:59:58..52:00:00(26) 51:59:58..52:00:00(25) 51:59:58..52:00:00(26)
+    51:59:58..51:59:67(13)
+  after SeekL 52:00:00 at double speed
+    51:59:74..52:00:00(2) 51:59:58..52:00:00(13) 51:59:58..52:00:00(13) 51:59:58..52:00:00(13) 51:59:59..52:00:00(13)
+    51:59:59..52:00:00(12) 51:59:58..52:00:00(13) 51:59:58..52:00:00(13) 51:59:58..52:00:00(13) 51:59:58..52:00:00(13)
+    51:59:58..51:59:60(2)
+  after SeekP 00:02:16 at single speed
+    00:02:08..00:02:15(11) 00:02:07..00:02:15(14) 00:02:08..00:02:15(12) 00:02:07..00:02:15(14) 00:02:08..00:02:15(11)
+    00:02:07..00:02:15(13) 00:02:07..00:02:15(12) 00:02:07..00:02:15(13) 00:02:07..00:02:15(12) 00:02:07..00:02:12(8)
+
+cdrom/cd-boot-steps: Done.

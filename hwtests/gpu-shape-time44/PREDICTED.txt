@@ -1,0 +1,50 @@
+gpu-shape-time44 - PREDICTED before its first console run (2026-10-16): v0.377.118 as the SCPH-9001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. (The quad
+candidate, scratch/apply_quadsetup.js, changes none of these: no quads here.)
+What would settle what:
+  A  an empty triangle's cost by H: this core charges a shaded one nothing (bit 26 = bit 28), a flat one its empty rows;
+     gpu-shape-time43's 1x16 quads read 23 (shaded) and ~36 (flat) for their empty second triangle.
+  B  the semi sprite's fill premium by where the fills fall: u moves the fills against the pixels, x the pixels against
+     the frame buffer; if the premium is the 16-pixel block's, x 1 / 4 / 8 move it and u does not, or both.
+  C  more widths at 4- and 8-bit for the premium's law.
+  D  the semi gouraud premium on short TL triangles (16 rows) of narrow width.
+  E  two semi triangles sent apart against gpu-shape-time42's quad (semi 1,339, opaque 1,334): if the lone triangle's
+     premium is a cost at its end, the first triangle's is paid here and hidden in the quad.
+
+shape                  bit 26        bit 28
+flat empty 1x4           30..30        28..28   
+flat empty 1x16          36..36        30..30   
+flat empty 1x64          52..52        32..32   
+gour empty 1x4          169..169      169..169  
+gour empty 1x16         171..171      171..171  
+gour empty 1x64         173..173      173..173  
+tex4 empty 1x4          115..115      115..115  
+tex4 empty 1x16         117..117      117..117  
+tex4 empty 1x64         119..119      119..119  
+semi spr15 64x8 x0 u1  1812..1812       9..9    
+semi spr15 64x8 x0 u2  1901..1901       9..9    
+semi spr15 64x8 x0 u4  1812..1812       9..9    
+semi spr15 64x8 x1 u0  1812..1812       9..9    
+semi spr15 64x8 x4 u0  1812..1812       9..9    
+semi spr15 64x8 x8 u0  1812..1812       9..9    
+opaq spr15 64x8 x0 u1  1502..1502       9..9    
+opaq spr15 64x8 x0 u2  1578..1578       9..9    
+opaq spr15 64x8 x0 u4  1502..1502       9..9    
+opaq spr15 64x8 x1 u0  1502..1502       9..9    
+opaq spr15 64x8 x4 u0  1502..1502       9..9    
+opaq spr15 64x8 x8 u0  1502..1502       9..9    
+semi spr4 32x8          231..231        9..9    
+semi spr4 128x8        1537..1537       9..9    
+semi spr8 128x8        2274..2274       9..9    
+opaq spr4 32x8          172..172        9..9    
+opaq spr4 128x8        1200..1200       9..9    
+opaq spr8 128x8        1836..1836       9..9    
+semi gour TL 4x16       283..283      167..167  
+semi gour TL 8x16       312..312      168..168  
+semi gour TL 32x16      511..511      170..170  
+opaq gour TL 4x16       257..257      167..167  
+opaq gour TL 8x16       286..286      168..168  
+opaq gour TL 32x16      485..485      170..170  
+semi gour 2 tris 64x16  1281..1285     685..689  
+opaq gour 2 tris 64x16  1244..1244     663..663  
+

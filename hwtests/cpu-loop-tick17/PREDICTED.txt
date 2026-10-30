@@ -1,0 +1,24 @@
+# cpu-loop-tick17 on v0.377.214, node hwtests/run.js --ntsc, 2026-10-29 night (the consoles' tick16: SP-FIRST 40.87, SP-SECOND 41.81, SWDATA 52.08 uncached, CTRL 46.00)
+
+cpu/cpu-loop-tick17
+tick16's open uncached rows taken apart: scratchpad loads, a store two on. No assertions.
+
+  variant     cold        hot     uncached   (cycles an iteration)
+  CTRL        14.31      14.26      45.86
+  RAM-ALONE    9.22       9.18      40.86
+  SP-ALONE     6.08       6.04      36.70
+  SP-RD2       6.09       6.04      36.70
+  SP-SP        6.07       6.04      36.71
+  SPF-NR       8.21       8.17      39.96
+  SPF-RD3      8.21       8.16      45.94
+  SP-FIRST     9.22       9.18      39.95
+  SPS-NR      11.21      11.17      40.86
+  SPS-RD3     12.27      12.22      46.93
+  SP-SECOND   12.26      12.23      40.86
+  SW1         14.31      14.27      48.13
+  SW-OTHER    18.38      18.33      51.33
+  SW-SP       17.16      17.11      47.98
+  SW-RD3      20.41      20.36      57.02
+  SWDATA      19.39      19.36      53.10
+
+cpu/cpu-loop-tick17: Done.

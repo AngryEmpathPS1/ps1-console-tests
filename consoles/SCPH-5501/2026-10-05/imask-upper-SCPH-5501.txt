@@ -1,0 +1,27 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cpu/imask-upper
+A 32-bit read of I_MASK: what fills bits 16-31, after a store, a load, or nothing?
+There are no assertions - compare against your emulator, and say which console model ran it.
+
+I_MASK itself: 101
+
+cached   code            KUSEG 1F801074  KSEG1 BF801074  KSEG0 9F801074
+  after sw I_MASK    A5A5    80010101        80010101        80010101
+  after sw T2 target 5A5A    5a5a0101        5a5a0101        5a5a0101
+  after lw RAM       C3C3    c3c30101        c3c30101        c3c30101
+  after lw scratch   E7E7    c3c30101        c3c30101        c3c30101
+  after nothing              c3c30101        c3c30101        c3c30101
+
+uncached code            KUSEG 1F801074  KSEG1 BF801074  KSEG0 9F801074
+  after sw I_MASK    A5A5    24000101        24000101        24000101
+  after sw T2 target 5A5A    24000101        24000101        24000101
+  after lw RAM       C3C3    24000101        24000101        24000101
+  after lw scratch   E7E7    24000101        24000101        24000101
+  after nothing              24000101        24000101        24000101
+
+Top halves: A5A5/5A5A a store's data, C3C3 a load's, E7E7 the scratchpad, 1F80/BF80/9F80 the address,
+3000 3800 = fetches two and one before the read, 8Cxx/8Dxx the read, 3400 2400 2800 2C00 one to four after.
+
+cpu/imask-upper: Done.

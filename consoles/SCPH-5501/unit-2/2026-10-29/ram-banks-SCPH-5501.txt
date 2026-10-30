@@ -1,0 +1,20 @@
+
+cpu/ram-banks
+Four stores alternating X, Y, X+4, Y+4, then a RAM read (cached; Timer 2 cycles, fastest..slowest of 16).
+X = A (2 KB aligned); Y = A + 512 (SAME), 1K .. 5K (ALTnK); the read from A+8, or A+5K+8 (ALT1K/Z5K).
+PRE1K / NOPRE1K: a read from A+1K (or A+4K) first, four stores to A's block, the read from A+1K+8.
+ONE: a store to A, the read from A+8. There are no assertions - compare against your emulator.
+
+A at 80011800
+  ONE         16..21  
+  SAME        22..32  
+  ALT1K       30..36  
+  ALT2K       30..36  
+  ALT3K       30..35  
+  ALT4K       30..35  
+  ALT5K       30..36  
+  ALT1K/Z5K   19..24  
+  PRE1K       22..32  
+  NOPRE1K     22..22  
+
+cpu/ram-banks: Done.

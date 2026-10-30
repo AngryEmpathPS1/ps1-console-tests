@@ -1,0 +1,23 @@
+# cpu-loop-tick18 on v0.377.214, node hwtests/run.js --ntsc, 2026-10-29 night (the 9001's tick17: CTRL 46.00, SW-SP 47.01, SW-OTHER 52.08 uncached). v0.377.215's candidate (experiments/_mksp215.js) SP215 7 moves SW-SP to 46.93, SWO-SP to 46.94, SPS-ST to 46.68; SP215 3 SPS-ST to 46.70 only.
+cpu/cpu-loop-tick18
+the store two on behind a load taken apart: what, where, behind one load or two. No assertions.
+
+  variant     cold        hot     uncached   (cycles an iteration)
+  CTRL        14.31      14.26      45.87
+  SW-SP       17.15      17.12      47.99
+  SWO-SP      16.09      16.04      45.85
+  SW-OTHER    18.39      18.32      51.33
+  SPS-ST      13.21      13.17      45.86
+  RAM-ALONE    9.22       9.18      40.86
+  SW1-SP      12.27      12.23      42.80
+  SWO1-SP     12.27      12.22      40.86
+  SWO1        14.29      14.26      45.85
+  NOP4         9.22       9.19      46.93
+  SPST3       12.26      12.23      46.93
+  NOP3         6.08       6.04      36.70
+  SPST         6.08       6.04      36.71
+  ST           6.10       6.04      41.82
+  LD-NOP       9.22       9.18      40.86
+  LD-ST       12.28      12.24      45.86
+
+cpu/cpu-loop-tick18: Done.

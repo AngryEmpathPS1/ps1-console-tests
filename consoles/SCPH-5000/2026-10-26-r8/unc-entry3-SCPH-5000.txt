@@ -1,0 +1,19 @@
+
+cpu/unc-entry3
+A read or store in uncached code before jr ra and in its delay slot (Timer 2 cycles, fastest..slowest of 16).
+There are no assertions - compare against your emulator.
+
+  CE 0   uncached   18..22    cached    6..6     difference 12
+  CEd 0  uncached   15..19    cached    6..6     difference 9
+  CE 2   uncached   30..36    cached    7..7     difference 23
+  CEd 2  uncached   27..31    cached    8..8     difference 19
+  UC 0   uncached    7..7     cached    6..6     difference 1
+  UCd 0  uncached    6..6     cached    6..6     difference 0
+  UC 2   uncached    7..7     cached    6..6     difference 1
+  UCd 2  uncached    6..6     cached    6..6     difference 0
+  SC 0   uncached    3..3     cached    2..2     difference 1
+  SCd 0  uncached    0..0     cached    0..0     difference 0
+  SC 2   uncached    3..3     cached    2..2     difference 1
+  SCd 2  uncached    0..0     cached    0..0     difference 0
+
+Done.

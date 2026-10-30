@@ -1,0 +1,19 @@
+
+gpu/gpustat31
+GPUSTAT bit 31 by scanline (Timer1 hblanks since the VBlank edge) as VRAM display Y changes.
+There are no assertions - compare against your emulator.
+
+video: NTSC, 263 lines a frame, display 16..256, v-blank 23 lines
+
+240  Y=0  ACTIVE   8.7%   8.7%   8.7%   8.7%  VBLANK   0.0%  (32223 / 2695 samples)
+240  Y=1  ACTIVE  91.2%  91.2%  91.2%  91.2%  VBLANK 100.0%  (32219 / 2692 samples)
+240  Y=2  ACTIVE   8.7%   8.7%   8.7%   8.7%  VBLANK   0.0%  (32223 / 2693 samples)
+240  Y=3  ACTIVE  91.2%  91.2%  91.2%  91.2%  VBLANK 100.0%  (32223 / 2695 samples)
+240  Y=0  ACTIVE   8.7%   8.7%   8.7%   8.7%  VBLANK   0.0%  (32223 / 2693 samples)
+
+480i Y=0  frames 0-7: bit31 in the picture 10101010, bit13 (field) 01010101, bit31 in v-blank 00000000
+480i Y=1  frames 0-7: bit31 in the picture 10101010, bit13 (field) 10101010, bit31 in v-blank 11111111
+480i Y=2  frames 0-7: bit31 in the picture 10101010, bit13 (field) 01010101, bit31 in v-blank 00000000
+480i Y=3  frames 0-7: bit31 in the picture 10101010, bit13 (field) 10101010, bit31 in v-blank 11111111
+
+Done.

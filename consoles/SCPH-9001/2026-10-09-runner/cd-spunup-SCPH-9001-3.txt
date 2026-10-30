@@ -1,0 +1,44 @@
+
+cdrom/cd-spunup
+A command's first response in the seconds after the disc spins up. Needs a disc. No assertions.
+
+Cycles at the system clock (1 ms = 33,869). INT3 from the command write, INT2 from the INT3.
+SPUN UP (Stop, 2 s, Init from the stopped disc, D ms, Init):
+  spin-up  D    0 ms  INT3   101879 (00)   INT2  60098484 after it (02)
+  Init     D    0 ms  INT3    90785 (02)   INT2   3733695 after it (02)
+  spin-up  D    0 ms  INT3    98432 (00)   INT2  63802527 after it (02)
+  Init     D  100 ms  INT3    67399 (02)   INT2    358144 after it (02)
+  spin-up  D    0 ms  INT3    97950 (00)   INT2  63868490 after it (02)
+  Init     D  200 ms  INT3    65204 (02)   INT2   1727002 after it (02)
+  spin-up  D    0 ms  INT3   137095 (00)   INT2  64135756 after it (02)
+  Init     D  300 ms  INT3    80622 (02)   INT2   2124115 after it (02)
+  spin-up  D    0 ms  INT3    96150 (00)   INT2  64336075 after it (02)
+  Init     D  400 ms  INT3    63076 (02)   INT2   2579862 after it (02)
+  spin-up  D    0 ms  INT3    95410 (00)   INT2  63901343 after it (02)
+  Init     D  500 ms  INT3    64886 (02)   INT2   3918848 after it (02)
+  spin-up  D    0 ms  INT3    97966 (00)   INT2  63969942 after it (02)
+  Init     D  600 ms  INT3    60993 (02)   INT2    541193 after it (02)
+  spin-up  D    0 ms  INT3    95941 (00)   INT2  63874251 after it (02)
+  Init     D  800 ms  INT3    70651 (02)   INT2   2303638 after it (02)
+  spin-up  D    0 ms  INT3    98386 (00)   INT2  72160274 after it (02)
+  Init     D 1000 ms  INT3    63127 (02)   INT2    267847 after it (02)
+  spin-up  D    0 ms  INT3   101467 (00)   INT2  68688345 after it (02)
+  Init     D 1500 ms  INT3    65584 (02)   INT2   3779261 after it (02)
+GETSTAT (the same, then Getstat):
+  Getstat  D    0 ms  INT3    49287 (02)
+  Getstat  D  250 ms  INT3    87778 (02)
+  Getstat  D  550 ms  INT3    54768 (02)
+  Getstat  D 1000 ms  INT3    54396 (02)
+HELD AGAIN (a spin-up Init, then three Inits each held 500 ms - cd-init's HELD):
+  Init 1    INT3    63913   INT2 20603 after the acknowledge
+  Init 2    INT3   186574   INT2 56465 after the acknowledge
+  Init 3    INT3    69771   INT2 6330 after the acknowledge
+  Init 1    INT3    70309   INT2 78007 after the acknowledge
+  Init 2    INT3    83475   INT2 92411 after the acknowledge
+  Init 3    INT3    69828   INT2 6212 after the acknowledge
+CONTROL (an Init with the disc spinning, D ms, Init):
+  Init     D    0 ms  INT3    63761 (02)   INT2   4222226 after it (02)
+  Init     D  500 ms  INT3    62293 (02)   INT2    113394 after it (02)
+  Init     D 1000 ms  INT3    64047 (02)   INT2    265728 after it (02)
+
+cdrom/cd-spunup: Done.

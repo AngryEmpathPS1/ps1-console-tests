@@ -1,0 +1,66 @@
+cd-init-far - PREDICTED before its first console run (2026-10-18 night), as the SCPH-7001 under the runner, X-Files Disc 1.
+Both models answer a STOPPED disc's Init in the same time from any place - the spin-up alone (this core 60.95M, the
+drive's own program ~49.8M) - and a TURNING disc's Init in a time growing with the place (the walk home: this core 3.0M at
+00:02 to 41.7M at 50:00, the program 3.1M to 64-68M). cd-spinup-phase's 8-9 waits run out a run (2 s, after a Stop at
+50:00) say the console's stopped Init from 50:00 is over 67.7M: if it walks home after the spin-up, S grows with the
+place as T does, ~55M + T.
+
+hle (v0.377.133):
+
+00:02 S  Init INT3    108640 (00)  INT2   60958656 (02)  then GetlocP -2
+00:02 T  Init INT3     64136 (02)  INT2    3047912 (02)  then GetlocP -2
+10:00 S  Init INT3    101768 (00)  INT2   60951760 (02)  then GetlocP -2
+10:00 T  Init INT3     91936 (02)  INT2   19727704 (02)  then GetlocP -2
+20:00 S  Init INT3    104360 (00)  INT2   60954344 (02)  then GetlocP -2
+20:00 T  Init INT3     70264 (02)  INT2   25698512 (02)  then GetlocP -2
+30:00 S  Init INT3    104128 (00)  INT2   60954112 (02)  then GetlocP -2
+30:00 T  Init INT3     64176 (02)  INT2   31730936 (02)  then GetlocP -2
+40:00 S  Init INT3    100968 (00)  INT2   60950952 (02)  then GetlocP -2
+40:00 T  Init INT3     92032 (02)  INT2   40179528 (02)  then GetlocP -2
+50:00 S  Init INT3    105840 (00)  INT2   60955824 (02)  then GetlocP -2
+50:00 T  Init INT3     64168 (02)  INT2   41691824 (02)  then GetlocP -2
+50:00 S  Init INT3    101656 (00)  INT2   60951664 (02)  then GetlocP -2
+50:00 T  Init INT3     70424 (02)  INT2   41691832 (02)  then GetlocP -2
+40:00 S  Init INT3    102040 (00)  INT2   60952048 (02)  then GetlocP -2
+40:00 T  Init INT3     64128 (02)  INT2   40179544 (02)  then GetlocP -2
+30:00 S  Init INT3    103984 (00)  INT2   60953968 (02)  then GetlocP -2
+30:00 T  Init INT3     82336 (02)  INT2   31730936 (02)  then GetlocP -2
+20:00 S  Init INT3    107656 (00)  INT2   60957656 (02)  then GetlocP -2
+20:00 T  Init INT3     64168 (02)  INT2   25698504 (02)  then GetlocP -2
+10:00 S  Init INT3     96728 (00)  INT2   60946728 (02)  then GetlocP -2
+10:00 T  Init INT3     70528 (02)  INT2   19727688 (02)  then GetlocP -2
+00:02 S  Init INT3    102872 (00)  INT2   60952880 (02)  then GetlocP -2
+00:02 T  Init INT3     91432 (02)  INT2    3047936 (02)  then GetlocP -2
+
+waits that ran out: 0
+
+
+lle (SC430934 on src/cdservo.js):
+
+00:02 S  Init INT3    100744 (10)  INT2   52510832 (12)  then GetlocP -3
+00:02 T  Init INT3     88832 (12)  INT2    3051112 (12)  then GetlocP -2
+10:00 S  Init INT3     98704 (10)  INT2   49876160 (12)  then GetlocP -3
+10:00 T  Init INT3     89472 (12)  INT2   25771976 (12)  then GetlocP -2
+20:00 S  Init INT3    101712 (10)  INT2   49894968 (12)  then GetlocP -3
+20:00 T  Init INT3     90776 (12)  INT2   35817848 (12)  then GetlocP -2
+30:00 S  Init INT3    105736 (10)  INT2   48846168 (12)  then GetlocP -3
+30:00 T  Init INT3     90728 (12)  INT2   50197440 (12)  then GetlocP -2
+40:00 S  Init INT3    100408 (10)  INT2   49762744 (12)  then GetlocP -3
+40:00 T  Init INT3     81616 (12)  INT2   60163496 (12)  then GetlocP -2
+50:00 S  Init INT3     98368 (10)  INT2   49779328 (12)  then GetlocP -3
+50:00 T  Init INT3     79688 (12)  INT2   63947376 (12)  then GetlocP -2
+50:00 S  Init INT3     97936 (10)  INT2   49731064 (12)  then GetlocP -3
+50:00 T  Init INT3     89408 (12)  INT2   67954472 (12)  then GetlocP -2
+40:00 S  Init INT3    105840 (10)  INT2   49820864 (12)  then GetlocP -3
+40:00 T  Init INT3     70048 (12)  INT2   59072896 (12)  then GetlocP -2
+30:00 S  Init INT3    101776 (10)  INT2   49758104 (12)  then GetlocP -3
+30:00 T  Init INT3     89416 (12)  INT2   51759448 (12)  then GetlocP -2
+20:00 S  Init INT3    102216 (10)  INT2   49891632 (12)  then GetlocP -3
+20:00 T  Init INT3     82448 (12)  INT2   38876632 (12)  then GetlocP -2
+10:00 S  Init INT3     97360 (10)  INT2   49874640 (12)  then GetlocP -3
+10:00 T  Init INT3     96328 (12)  INT2   25219616 (12)  then GetlocP -2
+00:02 S  Init INT3    101664 (10)  INT2   49887680 (12)  then GetlocP -3
+00:02 T  Init INT3     88864 (12)  INT2    3060232 (12)  then GetlocP -2
+
+waits that ran out: 0
+

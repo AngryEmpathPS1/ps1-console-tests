@@ -1,0 +1,33 @@
+gpu-shape-time19 on the SCPH-9001 - PREDICTED before its first run there (2026-10-15 morning): this core, v0.377.113 (451d141),
+as the SCPH-9001 under the runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0). The NEW GPU's
+model: rows by its own fit (gpu-shape-time3-6), no pixel pairs counted from the leftmost vertex, no free part of the
+left-edge walk - the 1001 (old GPU) showed both (STATUS, gpu-shape-time18-21). Bits 26 / 28 D, fastest..slowest.
+
+
+gpu/gpu-shape-time19
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+TR 15x16                138..138       27..27   
+TR 16x16                150..150       28..28   
+TR 17x16                151..151       28..28   
+TL 15x16                143..143       27..27   
+TL 16x16                144..144       28..28   
+TL 17x16                150..150       28..28   
+BR 15x16                133..133       31..31   
+BR 17x16                144..144       32..32   
+BL 15x16                137..137       30..30   
+BL 17x16                142..142       30..30   
+TR 63x64               1207..1207      29..29   
+TR 64x64               1242..1242      30..30   
+TR 65x64               1243..1243      30..30   
+TL 63x64               1211..1211      29..29   
+TL 64x64               1212..1212      30..30   
+TL 65x64               1242..1242      30..30   
+TR 15x64                410..410       27..27   
+TR 17x64                445..445       28..28   
+TL 15x64                443..443       27..27   
+TL 17x64                474..474       28..28   
+
+gpu/gpu-shape-time19: Done.

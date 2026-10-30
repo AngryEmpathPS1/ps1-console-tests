@@ -1,0 +1,96 @@
+
+cdrom/cd-ack-getloc
+A held INT1 acknowledged after four frames, then GetlocL k cycles later (nocash's DISK DATA DURATION).
+Row: k j: order (31 INT3 first, 13 INT1 first, B = an INT1 first and the command not taken until it was acknowledged),
+busy (BUSYSTS clear), first and second interrupt - cycles from the acknowledge. There are no assertions.
+
+CONTROL at 2x (no command), the next interrupt after the acknowledge:
+  j= 0: INT1 at 17472
+  j= 1: INT1 at 40976
+  j= 2: INT1 at 80640
+  j= 3: INT1 at 40704
+  j= 4: INT1 at 75096
+  j= 5: INT1 at 31544
+  j= 6: INT1 at 43784
+  j= 7: INT1 at 45696
+  j= 8: INT1 at 22664
+  j= 9: INT1 at 27912
+  j=10: INT1 at 65888
+  j=11: INT1 at 23208
+CONTROL at 1x (no command), the next interrupt after the acknowledge:
+  j= 0: INT1 at 14592
+  j= 1: INT1 at 35600
+  j= 2: INT1 at 29024
+  j= 3: INT1 at 31760
+  j= 4: INT1 at 40152
+  j= 5: INT1 at 78840
+  j= 6: INT1 at 31816
+  j= 7: INT1 at 21984
+  j= 8: INT1 at 39984
+  j= 9: INT1 at 19904
+  j=10: INT1 at 15848
+  j=11: INT1 at 25352
+WITH the three data requests (the page's), at 1x:
+  k=    0 j= 0: 31  busy   36056  first INT3   38048  second INT1   53728
+  k=    0 j= 1: 31  busy   34496  first INT3   36488  second INT1   52736
+  k=    0 j= 2: 31  busy   32896  first INT3   34960  second INT1   50576
+  k=    0 j= 3: 31  busy   43760  first INT3   45816  second INT1   61984
+  k=    0 j= 4: 31  busy   33152  first INT3   35216  second INT1   51392
+  k=    0 j= 5: 31  busy   94160  first INT3   96216  second INT1  111824
+  k=    0 j= 6: 31  busy   61088  first INT3   63080  second INT1   78768
+  k=    0 j= 7: B1  busy      -1  first INT1   14376  second INT1  227880
+  k=    0 j= 8: 31  busy   49728  first INT3   51720  second INT1   67896
+  k=    0 j= 9: 31  busy   33808  first INT3   35864  second INT1   51544
+  k=    0 j=10: B3  busy  249408  first INT1   14912  second INT3  251400
+  k=    0 j=11: B3  busy  322552  first INT1   31480  second INT3  324544
+  k= 1711 j= 0: 31  busy   33584  first INT3   35640  second INT1   51808
+  k= 1711 j= 1: 31  busy   44856  first INT3   46840  second INT1   63080
+  k= 1711 j= 2: 31  busy   44200  first INT3   46192  second INT1   61808
+  k= 1711 j= 3: B3  busy  248832  first INT1   13400  second INT3  250824
+  k= 1711 j= 4: B3  busy  259336  first INT1   22624  second INT3  261328
+  k= 1711 j= 5: 31  busy   84136  first INT3   86696  second INT1  102392
+  k= 1711 j= 6: 31  busy   47816  first INT3   49808  second INT1   66064
+  k= 1711 j= 7: B3  busy  258280  first INT1   22232  second INT3  260272
+  k= 1711 j= 8: 31  busy   39696  first INT3   41752  second INT1   57920
+  k= 1711 j= 9: 31  busy   39272  first INT3   41336  second INT1   57520
+  k= 1711 j=10: 31  busy   73352  first INT3   75416  second INT1   91032
+  k= 1711 j=11: B3  busy  325384  first INT1   43872  second INT3  327944
+  k= 5000 j= 0: B3  busy  265296  first INT1   16128  second INT3  267352
+  k= 5000 j= 1: B3  busy  255256  first INT1   14848  second INT3  257248
+  k= 5000 j= 2: 31  busy   37960  first INT3   39952  second INT1   55640
+  k= 5000 j= 3: B3  busy  248648  first INT1   23288  second INT3  250704
+  k= 5000 j= 4: B3  busy  251216  first INT1   25344  second INT3  253272
+  k= 5000 j= 5: 31  busy   95912  first INT3   97976  second INT1  113592
+  k= 5000 j= 6: 31  busy   48272  first INT3   50328  second INT1   66496
+  k= 5000 j= 7: 31  busy   52456  first INT3   54448  second INT1   70632
+  k= 5000 j= 8: 31  busy   39872  first INT3   41936  second INT1   58112
+  k= 5000 j= 9: B3  busy  254744  first INT1   24576  second INT3  256808
+  k= 5000 j=10: 31  busy   48432  first INT3   50488  second INT1   66656
+  k= 5000 j=11: B3  busy  319528  first INT1   26728  second INT3  321520
+  k=30000 j= 0: B3  busy  265136  first INT1   30040  second INT3  267192
+  k=30000 j= 1: B3  busy  276200  first INT1   40000  second INT3  278192
+  k=30000 j= 2: B3  busy  274864  first INT1   30040  second INT3  276920
+  k=30000 j= 3: B3  busy  263872  first INT1   30048  second INT3  265864
+  k=30000 j= 4: B3  busy  263016  first INT1   30032  second INT3  265072
+  k=30000 j= 5: 31  busy   91024  first INT3   93640  second INT1  109320
+  k=30000 j= 6: 31  busy   65880  first INT3   67864  second INT1   84104
+  k=30000 j= 7: B1  busy      -1  first INT1   30032  second INT1  244928
+  k=30000 j= 8: B3  busy  257512  first INT1   30040  second INT3  259504
+  k=30000 j= 9: B1  busy      -1  first INT1   30040  second INT1  245768
+  k=30000 j=10: B3  busy  263192  first INT1   30032  second INT3  265256
+  k=30000 j=11: B3  busy  311088  first INT1   30040  second INT3  313144
+WITHOUT data requests, at 1x:
+  k= 1711 j= 0: 31  busy   50656  first INT3   52720  second INT1   68896
+  k= 1711 j= 1: B3  busy  240304  first INT1   14000  second INT3  242360
+  k= 1711 j= 2: 31  busy   40752  first INT3   42808  second INT1   58488
+  k= 1711 j= 3: 31  busy   53152  first INT3   55144  second INT1   71328
+  k= 1711 j= 4: 31  busy   39904  first INT3   41968  second INT1   57584
+  k= 1711 j= 5: 31  busy   95592  first INT3   97656  second INT1  113840
+  k= 1711 j= 6: B1  busy      -1  first INT1   20440  second INT1  233792
+  k= 1711 j= 7: 31  busy   33544  first INT3   35536  second INT1   51720
+  k= 1711 j= 8: B3  busy  260400  first INT1   14384  second INT3  262384
+  k= 1711 j= 9: B3  busy  271016  first INT1   21504  second INT3  273008
+  k= 1711 j=10: 31  busy   38320  first INT3   40304  second INT1   55984
+  k= 1711 j=11: B3  busy  324256  first INT1   33760  second INT3  326320
+
+Done.

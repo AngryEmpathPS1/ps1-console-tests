@@ -1,0 +1,38 @@
+
+cpu/shadow-miss2
+A miss k instructions behind a slow read: cold and warm counters, lowest..highest of four.
+There are no assertions - compare against your emulator.
+
+  block          COLD        WARM      COLD-WARM
+  spu b2 k0      32..32      25..25       7
+  spu b2 k1      32..32      25..25       7
+  spu b2 k2      32..32      25..25       7
+  spu b2 k3      32..32      25..25       7
+  spu b2 k4      32..32      25..25       7
+  spu b2 k5      32..32      25..25       7
+  spu b2 k6      32..32      25..25       7
+  spu b0 k0      33..33      25..25       8
+  spu b0 k1      33..33      25..25       8
+  spu b0 k2      33..33      25..25       8
+  cd b2 k0       22..22      15..15       7
+  cd b2 k1       22..22      15..15       7
+  cd b2 k2       22..23      15..15       7
+  cd b2 k3       22..22      16..16       6
+  cd b2 k4       22..22      17..17       5
+  cd b2 k5       22..27      18..18       4
+  cd b2 k6       22..22      19..19       3
+  cd b0 k0       23..23      15..15       8
+  cd b0 k1       23..23      15..15       8
+  cd b0 k2       23..23      15..15       8
+  rom b2 k0      39..39      32..32       7
+  rom b2 k1      39..39      32..32       7
+  rom b2 k2      39..39      32..32       7
+  rom b2 k3      39..39      32..32       7
+  rom b2 k4      39..39      32..32       7
+  rom b2 k5      39..39      32..32       7
+  rom b2 k6      39..39      32..32       7
+  rom b0 k0      40..40      32..32       8
+  rom b0 k1      40..40      32..32       8
+  rom b0 k2      40..40      32..32       8
+
+Done.

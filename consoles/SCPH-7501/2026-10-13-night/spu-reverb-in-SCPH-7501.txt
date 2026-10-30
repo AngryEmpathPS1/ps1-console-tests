@@ -1,0 +1,69 @@
+
+spu/spu-reverb-in
+The reverb's input stage alone (vIIR 7FFFh, vLIN = vRIN = 8000h, everything else off): an impulse at two phases
+and a DC step, recorded in the work area, with voice 1's own output ring. No assertions.
+
+IMPULSE 0 (block 1, sample 0) (sync: bit 11 turned 0, the ring writing 000h-0FFh):
+  voice 1's ring (halfword:value):
+    01f:ffff 020:10a5 021:4e7b 022:106d
+  mLSAME (left, same side) (step:value):
+     16:0001  17:ffff  18:0006  19:ffeb  20:003f  21:ff5d  22:017a  23:fcd0
+     24:0717  25:df26  26:df41  27:0717  28:fcd0  29:017a  30:ff5d  31:003f
+     32:ffeb  33:0006  34:ffff
+  mRSAME (right, same side) (step:value):
+     17:0001  18:fffd  19:0009  20:ffeb  21:002e  22:ffa3  23:00d6  24:fc49
+     25:ce6d  26:fc5f  27:00ce  28:ffa6  29:002c  30:ffec  31:0008  32:fffe
+     33:0001
+  mLDIFF (left, other side) (step:value):
+     16:0001  17:ffff  18:0006  19:ffeb  20:003f  21:ff5d  22:017a  23:fcd0
+     24:0717  25:df26  26:df41  27:0717  28:fcd0  29:017a  30:ff5d  31:003f
+     32:ffeb  33:0006  34:ffff
+  mRDIFF (right, other side) (step:value):
+     17:0001  18:fffd  19:0009  20:ffeb  21:002e  22:ffa3  23:00d6  24:fc49
+     25:ce6d  26:fc5f  27:00ce  28:ffa6  29:002c  30:ffec  31:0008  32:fffe
+     33:0001
+  non-zero halfwords outside the four lines: 0
+
+IMPULSE 1 (block 1, sample 1) (sync: bit 11 turned 1, the ring writing 100h-1FFh):
+  voice 1's ring (halfword:value):
+    120:ffff 121:10a5 122:4e7b 123:106d
+  mLSAME (left, same side) (step:value):
+     18:0001  19:fffd  20:0009  21:ffeb  22:002e  23:ffa3  24:00d6  25:fc49
+     26:ce6d  27:fc5f  28:00ce  29:ffa6  30:002c  31:ffec  32:0008  33:fffe
+     34:0001
+  mRSAME (right, same side) (step:value):
+     16:0001  17:ffff  18:0006  19:ffeb  20:003f  21:ff5d  22:017a  23:fcd0
+     24:0717  25:df26  26:df41  27:0717  28:fcd0  29:017a  30:ff5d  31:003f
+     32:ffeb  33:0006  34:ffff
+  mLDIFF (left, other side) (step:value):
+     18:0001  19:fffd  20:0009  21:ffeb  22:002e  23:ffa3  24:00d6  25:fc49
+     26:ce6d  27:fc5f  28:00ce  29:ffa6  30:002c  31:ffec  32:0008  33:fffe
+     34:0001
+  mRDIFF (right, other side) (step:value):
+     16:0001  17:ffff  18:0006  19:ffeb  20:003f  21:ff5d  22:017a  23:fcd0
+     24:0717  25:df26  26:df41  27:0717  28:fcd0  29:017a  30:ff5d  31:003f
+     32:ffeb  33:0006  34:ffff
+  non-zero halfwords outside the four lines: 0
+
+DC 4000h from KON (sync: bit 11 turned 0, the ring writing 000h-0FFh):
+  voice 1's ring (halfword:value):
+    008:1be4 009:37c8 00a:3fbf 00b:1fdf 00c:3bc3 00d-1a5:3fbf
+  mLSAME (left, same side) (step:value):
+      6:0004   7:fff4   8:0029   9:ff9b  10:00f1  11:fdf9  12:0494  13:e1bf
+     14:c8bc  15:cd47  16:bce4  17:c1cb  18:bf99  19:c091  20:c02d  21:c051
+     22:c046  23:c04a  24-200:c049
+  mRSAME (right, same side) (step:value):
+      5:0002   6:fffe   7:000a   8:ffef   9:0026  10:ffbd  11:00b1  12:fb74
+     13:cb1c  14:cffb  15:c227  16:bf9d  17:c096  18:c025  19:c056  20:c044
+     21:c04a  22-199:c049
+  mLDIFF (left, other side) (step:value):
+      6:0004   7:fff4   8:0029   9:ff9b  10:00f1  11:fdf9  12:0494  13:e1bf
+     14:c8bc  15:cd47  16:bce4  17:c1cb  18:bf99  19:c091  20:c02d  21:c051
+     22:c046  23:c04a  24-200:c049
+  mRDIFF (right, other side) (step:value):
+      5:0002   6:fffe   7:000a   8:ffef   9:0026  10:ffbd  11:00b1  12:fb74
+     13:cb1c  14:cffb  15:c227  16:bf9d  17:c096  18:c025  19:c056  20:c044
+     21:c04a  22-199:c049
+  non-zero halfwords outside the four lines: 0
+
+spu/spu-reverb-in: Done.

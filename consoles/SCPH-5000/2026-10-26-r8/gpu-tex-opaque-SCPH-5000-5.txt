@@ -1,0 +1,54 @@
+
+gpu/gpu-tex-opaque
+Textured primitives over an all-drawn and an all-transparent texture, written to GP0 by the CPU, then GPUSTAT
+polled: when bit 28 and bit 26 read set, cycles from the first word, fastest..slowest of four. No assertions.
+
+CONTROL (flat, 256x256):
+  rectangle 60h            3 words   bit 28      91..152      bit 26    33705..35714
+  quad 28h                 5 words   bit 28   18125..18176    bit 26    36247..36301
+  semi rectangle 62h       3 words   bit 28      91..91       bit 26    50695..54490
+  semi quad 2Ah            5 words   bit 28   27870..27911    bit 26    55622..55656
+  triangle 20h L 256       4 words   bit 28     153..155      bit 26    18183..18188
+  semi triangle 22h        4 words   bit 28     153..156      bit 26    27226..27941
+  quad 28h 64x64           5 words   bit 28    1370..1428     bit 26     2638..2700
+  semi quad 2Ah 64x64      5 words   bit 28    2097..2141     bit 26     4172..4229
+OPAQUE (15-bit texels 1234; paletted texels 1111h, every CLUT entry 1234):
+   4-bit rectangle  64x64      4 words   bit 28     113..256      bit 26     2468..5228
+   4-bit rectangle 256x256     4 words   bit 28     113..157      bit 26    77112..80075
+   4-bit quad       64x64      9 words   bit 28    2532..4070     bit 26     4756..7421
+   4-bit quad      256x256     9 words   bit 28   50486..55532    bit 26   107685..113002
+   4-bit semi rect 256x256     4 words   bit 28     113..163      bit 26    96996..101495
+   4-bit semi quad 256x256     9 words   bit 28   56288..58690    bit 26   123063..125467
+   8-bit rectangle  64x64      4 words   bit 28     113..406      bit 26     8023..8274
+   8-bit rectangle 256x256     4 words   bit 28     113..118      bit 26   124888..125263
+   8-bit quad       64x64      9 words   bit 28    5036..5375     bit 26    10013..10309
+   8-bit quad      256x256     9 words   bit 28   75254..76690    bit 26   152327..155758
+   8-bit semi rect 256x256     4 words   bit 28     113..119      bit 26   148981..152987
+   8-bit semi quad 256x256     9 words   bit 28   85861..85999    bit 26   174779..177986
+  15-bit rectangle  64x64      4 words   bit 28     113..116      bit 26    12950..12959
+  15-bit rectangle 256x256     4 words   bit 28     113..113      bit 26   198398..202558
+  15-bit quad       64x64      9 words   bit 28    7867..7910     bit 26    15147..15237
+  15-bit quad      256x256     9 words   bit 28  117253..117302   bit 26   230608..234540
+  15-bit semi rect 256x256     4 words   bit 28     113..113      bit 26   230881..234899
+  15-bit semi quad 256x256     9 words   bit 28  127431..131323   bit 26   258766..262652
+TRANSPARENT (15-bit texels 0000; paletted texels 1111h, every CLUT entry 0000):
+   4-bit rectangle  64x64      4 words   bit 28     113..113      bit 26     2468..5177
+   4-bit rectangle 256x256     4 words   bit 28     113..116      bit 26    77313..79994
+   4-bit quad       64x64      9 words   bit 28    2483..3879     bit 26     4703..7045
+   4-bit quad      256x256     9 words   bit 28   53082..55519    bit 26   110460..112993
+   4-bit semi rect 256x256     4 words   bit 28     113..119      bit 26   101489..101586
+   4-bit semi quad 256x256     9 words   bit 28   56775..58643    bit 26   123415..125379
+   8-bit rectangle  64x64      4 words   bit 28     113..116      bit 26     7979..8029
+   8-bit rectangle 256x256     4 words   bit 28     113..113      bit 26   121373..125215
+   8-bit quad       64x64      9 words   bit 28    5071..5315     bit 26    10003..10246
+   8-bit quad      256x256     9 words   bit 28   75830..76742    bit 26   152368..155807
+   8-bit semi rect 256x256     4 words   bit 28     113..119      bit 26   149060..152959
+   8-bit semi quad 256x256     9 words   bit 28   82892..86049    bit 26   175016..178033
+  15-bit rectangle  64x64      4 words   bit 28     113..115      bit 26    11375..11457
+  15-bit rectangle 256x256     4 words   bit 28     113..119      bit 26   177563..179836
+  15-bit quad       64x64      9 words   bit 28    7328..7385     bit 26    14018..14077
+  15-bit quad      256x256     9 words   bit 28  108416..108477   bit 26   212478..216366
+  15-bit semi rect 256x256     4 words   bit 28     113..113      bit 26   177479..179739
+  15-bit semi quad 256x256     9 words   bit 28  104584..108476   bit 26   212470..216362
+
+Done.

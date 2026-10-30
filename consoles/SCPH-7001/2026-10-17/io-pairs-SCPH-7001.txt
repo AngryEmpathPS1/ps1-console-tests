@@ -1,0 +1,57 @@
+
+cpu/io-pairs
+Two register reads back to back (lhu A; lhu B), 512 pairs a case, cached code: cycles a pair over the same
+loop of nops, and a single read (lhu A; nop). No assertions - compare against your emulator.
+
+baseline (16 nops x 512): 1227 cycles
+
+singles:
+  T2CNT    3.75
+  T2MODE   3.75
+  T2TGT    3.75
+  T0CNT    3.75
+  T0MODE   3.75
+  ISTAT    3.75
+  IMASK    3.75
+  DPCR     3.75
+  DICR     3.75
+  MADR2    3.75
+  GPUSTAT  3.75
+  JOYSTAT  3.75
+  MDECST   3.75
+
+pairs (A then B):
+  T2CNT    T2CNT    7.62
+  T2MODE   T2MODE   7.62
+  T2TGT    T2TGT    7.62
+  T0CNT    T0CNT    7.62
+  T0MODE   T0MODE   7.62
+  ISTAT    ISTAT    7.62
+  IMASK    IMASK    7.62
+  DPCR     DPCR     7.62
+  DICR     DICR     7.62
+  MADR2    MADR2    7.62
+  GPUSTAT  GPUSTAT  7.62
+  JOYSTAT  JOYSTAT  7.62
+  MDECST   MDECST   7.62
+  T2CNT    T2MODE   7.62
+  T2MODE   T2CNT    7.62
+  T0CNT    T0MODE   7.62
+  T0MODE   T0CNT    7.62
+  T2CNT    T2TGT    7.62
+  T2TGT    T2CNT    7.62
+  T2MODE   T2TGT    7.62
+  T2TGT    T2MODE   7.62
+  T2CNT    T0CNT    7.62
+  T2CNT    ISTAT    7.62
+  ISTAT    T2CNT    7.62
+  T2CNT    IMASK    7.62
+  T2CNT    DPCR     7.62
+  DPCR     T2CNT    7.62
+  T2CNT    GPUSTAT  7.62
+  GPUSTAT  T2CNT    7.62
+  T2CNT    JOYSTAT  7.62
+  T2CNT    MDECST   7.62
+  ISTAT    IMASK    7.62
+
+cpu/io-pairs: Done.

@@ -1,0 +1,15 @@
+
+spu/spu-fifo2
+Where each halfword of a manual write lands (runs p@i+n: halfwords i.. at offset p from 1000h). No assertions.
+
+  STOP64       busy     699  runs: 0@0+32  other 0
+  STOP64+GO    busy      61  runs: 0@0+32  other 0
+  RUN64        busy      61  runs: none  other 0
+  RUN8         busy      61  runs: none  other 0
+  RUN8+STOPGO  busy      61  runs: 256@0+8  other 0
+  TWICE        busy    1224  runs: 0@0+45 45@46+1 46@49+1 47@51+1 48@54+1 49@57+1 50@59+1 51@62+1  other 0
+  AFTER        busy      65  runs: 0@0+10 10@9+1 11@9+1 12@9+1 13@9+1 14@9+1 15@9+1 16@9+1 17@9+1 18@9+1 19@9+1 20@9+1 (+11 runs)  other 0
+  AFTER+ADDR   busy      61  runs: 0@0+11 11@10+1 12@10+1 13@10+1 14@10+1 15@10+1 16@10+1 17@10+1 18@10+1 19@10+1 20@10+1 21@10+1 (+10 runs)  other 0
+  CHAIN        busy    1520  runs: 0@0+64  other 0
+
+spu/spu-fifo2: Done.

@@ -1,0 +1,30 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80013190,ehk=800131c0
+ResetGraph:SR=7000ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+dma/concurrent-dma
+DMA2 (to VRAM) and DMA4 (to SPU RAM), 128 blocks of 16 words each, started back to back; both MADRs sampled on Timer 2.
+There are no assertions - compare against your emulator.
+
+  EQ 2>4  DMA2 done   4656 with DMA4 at   4/128 blocks;  DMA4 done 162952 with DMA2 at 128/128
+          first moves 456 / 456, last 4656 / 162952 cycles; moving samples: DMA2 alone 22, DMA4 alone 124, both 4; lead changes 1
+  EQ 4>2  DMA2 done   4664 with DMA4 at   4/128 blocks;  DMA4 done 162648 with DMA2 at 128/128
+          first moves 336 / 336, last 4592 / 162360 cycles; moving samples: DMA2 alone 23, DMA4 alone 124, both 4; lead changes 1
+  2 HIGH  DMA2 done   4608 with DMA4 at   4/128 blocks;  DMA4 done 162672 with DMA2 at 128/128
+          first moves 312 / 312, last 4608 / 162616 cycles; moving samples: DMA2 alone 23, DMA4 alone 124, both 4; lead changes 1
+  4 HIGH  DMA2 done   4600 with DMA4 at   4/128 blocks;  DMA4 done 162664 with DMA2 at 128/128
+          first moves 296 / 296, last 4600 / 162664 cycles; moving samples: DMA2 alone 23, DMA4 alone 124, both 4; lead changes 1
+
+  OTC (DMA6, 16384 entries, a burst) started straight after DMA4:
+  EQ      OTC done  17912 with DMA4 at   2/128 blocks;  DMA4 done 179112
+  6 HIGH  OTC done  17864 with DMA4 at   2/128 blocks;  DMA4 done 179152
+  4 HIGH  OTC done  17872 with DMA4 at   2/128 blocks;  DMA4 done 179160
+
+  A channel that keeps the bus to its end: the other's blocks wait (the count at 'done' near 0 or 128).
+  Blocks shared as they are asked for: the counts follow each device's own pace, whatever the fields say.
+
+dma/concurrent-dma: Done.

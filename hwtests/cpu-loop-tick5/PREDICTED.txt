@@ -1,0 +1,17 @@
+cpu/cpu-loop-tick5
+After a store-queued Timer 2 read: when the next store may start. No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  NEAR-0      10.21      10.17
+  NEAR-1      12.25      12.22
+  NEAR-2      11.72      11.66
+  NEAR-3      11.20      11.16
+  NEAR-4      12.25      12.21
+  NEAR-6      14.12      14.09
+  FAR-0       12.34      12.31
+  FAR-2       12.35      12.31
+  FAR-4       12.35      12.31
+  NOREAD       6.16       6.13
+
+cpu/cpu-loop-tick5: Done.
+

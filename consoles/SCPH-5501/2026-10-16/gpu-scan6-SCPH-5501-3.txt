@@ -1,0 +1,15 @@
+
+gpu/gpu-scan6
+Uploads and downloads in the vertical blanking (20,000 cycles after the VBlank IRQ) and on active lines (200,000):
+fastest of four each, and the active lines' toll in tenths of a percent. No assertions.
+
+  320x240         upload DMA 128x64    blank   7336  active   7383  toll 6
+  320x240         upload CPU 64x32     blank  14615  active  14619  toll 0
+  320x240         download DMA 128x64  blank   8928  active   8955  toll 3
+  320x240         download CPU 64x32   blank  13449  active  13448  toll 0
+  640x240 24-bit  upload DMA 128x64    blank   7336  active   7393  toll 7
+  640x240 24-bit  upload CPU 64x32     blank  14615  active  14617  toll 0
+  640x240 24-bit  download DMA 128x64  blank   8922  active   8984  toll 6
+  640x240 24-bit  download CPU 64x32   blank  13448  active  13448  toll 0
+
+gpu/gpu-scan6: Done.

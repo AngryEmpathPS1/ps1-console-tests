@@ -1,0 +1,61 @@
+
+spu/spu-regs
+Key-on and the repeat address, the envelope's rates, SPUCNT bit 15. No assertions.
+
+REPEAT (voice 1's captured level: 1000h its start block, 2000h its own loop, 3000h the hand-written loop):
+  A  repeat written before key-on, a one-shot start: level 2fce; 1F801C0Eh after key-on 0202 (start 0200, written 0202)
+  B  repeat written  4 samples after key-on, a loop-start block after it: level 1fde, 1F801C0Eh 0208 (loop start 0208)
+  B  repeat written 20 samples after key-on, a loop-start block after it: level 2fce, 1F801C0Eh 0202 (loop start 0208)
+  C  the same with no write (control): level 1fde, 1F801C0Eh 0208
+
+ENVELOPE (voice 0; the sample, from the key-on write, at which ENVX first reaches each level):
+  attack                       0800   1000   2000   4000   6000   7000   7FFF
+  linear      rate 00               5      6      6      6      7      7      8
+  linear      rate 08               7      8      9     11     13     14     16
+  linear      rate 10               8     10     15     24     33     37     42
+  linear      rate 18              16     25     43     80    116    134    153
+  linear      rate 20              41     78    151    297    443    516    590
+  linear      rate 28             151    298    591   1176   1760   2053   2345
+  linear      rate 2c             298    591   1176   2346   3516   4101   4686
+  linear      rate 30             591   1176   2347   4687   7027   8196   9367
+  linear      rate 38            2344   4688   9368  18728      -      -      -
+  exponential rate 00               5      6      6      7      7      7      8
+  exponential rate 08               7      7      9     11     13     16     22
+  exponential rate 10               8     10     15     24     33     49     68
+  exponential rate 18              16     25     43     80    116    187    262
+  exponential rate 20              42     79    152    298    444    736   1029
+  exponential rate 28             151    297    590   1175   1760   2928   4098
+  exponential rate 2c             297    590   1175   2345   3515   5853   8193
+  exponential rate 30             591   1176   2347   4687   7027  11700  16380
+  exponential rate 38            2345   4689   9369  18729      -      -      -
+  decay to sustain level 0     6000   4000   2000   1000   0800   0000
+  decay shift  0                  9      9     10     11     12      -
+  decay shift  2                 11     14     19     24     29      -
+  decay shift  4                 18     30     52     74     95      -
+  decay shift  6                 44     96    183    271    357      -
+  decay shift  8                153    358    705   1044   1368      -
+  decay shift 10                576   1365   2664   3858   4882      -
+  decay shift 12               2202   5205   9984  14080  18176      -
+  sustain (level F, then)      6000   4000   2000   1000   0800   0000
+  linear down rate 20            9      9    137    201    232    265
+  exponential down rate 20       9      9    356    694   1020   2085
+  linear down rate 30            8      8   2056   3080   3592   4104
+  exponential down rate 30       9     10   4787   8883  12979  17075
+  linear down rate 40            8      9      -      -      -      -
+  exponential down rate 40       9     10      -      -      -      -
+  release from 7FFF            6000   4000   2000   1000   0800   0000
+  linear shift  0                40     41     42     42     42     43
+  exponential shift  0           42     42     42     44     45     56
+  linear shift  4                49     57     65     69     71     73
+  exponential shift  4           50     62     84    106    128    277
+  linear shift  8               168    295    424    488    520    552
+  exponential shift  8          185    391    738   1077   1401   2467
+  linear shift 12              2086   4134   6182   7206   7718   8230
+  exponential shift 12         2233   5237  10015  14111  18207      -
+  linear shift 16                 -      -      -      -      -      -
+  exponential shift 16            -      -      -      -      -      -
+
+SPUCNT.15 (voice 0 held at the top):
+  ENVX 7fff before; bit 15 cleared: 7fff at once, 0000 20 ms later (a key-on written meanwhile); set again: 0000 5 ms later
+
+spu/spu-regs: Done.

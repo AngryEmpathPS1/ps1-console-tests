@@ -1,0 +1,48 @@
+gpu-shape-time45 - PREDICTED for the SCPH-1001 before its first run there (2026-10-16): v0.377.121 as the SCPH-1001
+under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000 --tol=0).
+The OLD GPU keeps its own model (GPU_OLD*): none of v0.377.119-121's new-GPU pieces (the quad's second set-up, empty
+triangles, the semi sprite / textured / shaded laws, the scan-out's bursts by place) apply to it. What it settles: the
+same questions as PREDICTED.txt, on the old GPU - each piece the old GPU's too, or the new GPU's alone.
+
+shape                  bit 26        bit 28
+semi tex4 TL 16x16      621..662      117..117  
+semi tex4 TL 16x64     2171..2171     117..117  
+semi tex4 TL 64x16     1846..1887     121..121  
+semi tex4 TL 64x64     6854..6895     121..121  
+semi tex4 TL 128x16    3997..4038     123..123  
+semi tex4 TL 128x64   15164..15164    123..123  
+opaq tex4 TL 16x16      350..391      117..117  
+opaq tex4 TL 16x64     1045..1086     117..117  
+opaq tex4 TL 64x16      762..803      121..121  
+opaq tex4 TL 64x64     2626..2667     121..121  
+opaq tex4 TL 128x16    1787..1828     123..123  
+opaq tex4 TL 128x64    6708..6749     123..123  
+semi tex8 TL 16x16      621..662      117..117  
+semi tex8 TL 16x64     2683..2724     117..117  
+semi tex8 TL 64x16     1846..1887     121..121  
+semi tex8 TL 64x64     8654..8654     121..121  
+semi tex8 TL 128x16    4453..4463     123..123  
+semi tex8 TL 128x64   18577..18618    123..123  
+opaq tex8 TL 16x16      350..391      117..117  
+opaq tex8 TL 16x64     1558..1599     117..117  
+opaq tex8 TL 64x16      762..803      121..121  
+opaq tex8 TL 64x64     4426..4426     121..121  
+opaq tex8 TL 128x16    2243..2243     123..123  
+opaq tex8 TL 128x64   10121..10162    123..123  
+semi tex15 TL 16x16     621..662      117..117  
+semi tex15 TL 16x64    3099..3140     117..117  
+semi tex15 TL 64x16    2782..2823     121..121  
+semi tex15 TL 64x64   12226..12267    121..121  
+semi tex15 TL 128x16   6655..6696     123..123  
+semi tex15 TL 128x64  26840..26881    123..123  
+opaq tex15 TL 16x16     350..391      117..117  
+opaq tex15 TL 16x64    1973..2014     117..117  
+opaq tex15 TL 64x16    1656..1697     121..121  
+opaq tex15 TL 64x64    7998..8039     121..121  
+opaq tex15 TL 128x16   4445..4445     123..123  
+opaq tex15 TL 128x64  18384..18425    123..123  
+semi gour TL64+flat    1881..1926    1852..1898 
+opaq gour TL64+flat     793..837      770..811  
+semi gour BR 64x16     1705..1746     175..175  
+opaq gour BR 64x16      750..791      175..175  
+

@@ -1,0 +1,22 @@
+
+cdrom/cd-readtoc
+ReadTOC's two responses from where the head is, and where it leaves it. Needs a disc. No assertions.
+
+disc: 260925 sectors (57:59)
+1x from lba=     0: INT3    66891 (02)   INT2 233422742 after it (02)   then GetlocP 01 00 00:01:73
+1x from lba=     0: INT3    62867 (02)   INT2 233312494 after it (02)   then GetlocP 01 00 00:01:73
+1x from lba= 65231: INT3    69752 (02)   INT2 287565983 after it (02)   then GetlocP 01 00 00:01:73
+1x from lba= 65231: INT3    83348 (02)   INT2 290793083 after it (02)   then GetlocP 01 00 00:01:72
+1x from lba=130462: INT3    71673 (02)   INT2 334263481 after it (02)   then GetlocP 01 00 00:01:73
+1x from lba=130462: INT3   124468 (02)   INT2 332703052 after it (02)   then GetlocP 01 00 00:01:72
+1x from lba=234832: INT3    99355 (02)   no second response   then GetlocP 01 01 52:13:05
+1x from lba=234832: INT3    62135 (02)   no second response   then GetlocP 01 01 52:13:05
+2x from lba=234832: INT3   115730 (02)   INT2 294056554 after it (02)   then GetlocP 01 00 00:01:73
+2x from lba=234832: INT3    65869 (02)   no second response   then GetlocP 01 01 52:13:05
+again from lba=234832: INT3   142866 (02)   INT2 236119158 after it (02)   then GetlocP 01 00 00:01:73
+1x+ from lba= 32615: INT3    69745 (02)   INT2 265184971 after it (02)   then GetlocP 01 00 00:01:73
+1x+ from lba= 97846: INT3    80856 (02)   INT2 304072007 after it (02)   then GetlocP 01 00 00:01:73
+1x+ from lba=163078: INT3    81815 (02)   INT2 335554304 after it (02)   then GetlocP 01 00 00:01:74
+1x+ from lba=195693: INT3   147990 (02)   no second response   then GetlocP 01 01 43:31:19
+1x+ from lba=228309: INT3    64379 (02)   no second response   then GetlocP 01 01 50:46:07
+Done.

@@ -1,0 +1,24 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+dma/dma-contention
+One 128x128 CPU->VRAM transfer (8192 words, SyncMode 1, blockSize 16),
+run three times, changing only what the CPU does while it is in flight.
+
+  SPIN     14083 cycles   (CPU polls CHCR, touches no RAM - what dma/chopping does)
+  REGS     14140 cycles       51 iterations   (CPU busy, 64 ALU ops per iteration)
+  STORES   15605 cycles       18 iterations   (CPU busy, 64 word stores per iteration)
+
+  LOADS    15422 cycles        4 iterations   (CPU busy, 64 lw/lw/sw steps per iteration)
+  LOADS step during DMA:  60.24 cycles  (256 steps)
+  LOADS step with NO DMA: 22.27 cycles  (4096 steps, 91227 cycles)
+
+  STORES did 35% of the iterations REGS did.
+  transfer time, STORES vs SPIN: +1522 cycles
+  transfer time, REGS   vs SPIN: +57 cycles
+
+  A FLAT WINDOW (this core's model) predicts all three transfer times
+  equal and STORES/REGS explained only by the cost of a store.
+  CONTENTION predicts STORES slower, fewer iterations, or both.
+
+Done.

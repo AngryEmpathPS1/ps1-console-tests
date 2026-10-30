@@ -1,0 +1,38 @@
+
+cpu/unc-load
+RAM loads in uncached code (KSEG1): alone, in pairs at each distance, in runs, with a reader, beside I_STAT
+loads and stores. Timer 2, fastest..slowest of four. There are no assertions - compare against your emulator.
+
+  NOPS            12580..12586 
+  L               13128..13135   above the nops    548  ->  4.28 a unit
+  L L+1           13758..13768   above the nops   1178  ->  9.20 a unit
+  L L+2           13678..13681   above the nops   1098  ->  8.58 a unit
+  L L+3           13683..13685   above the nops   1103  ->  8.62 a unit
+  L L+4           13677..13681   above the nops   1097  ->  8.57 a unit
+  L L+5           13678..13681   above the nops   1098  ->  8.58 a unit
+  L L+6           13683..13685   above the nops   1103  ->  8.62 a unit
+  L L+8           13655..13659   above the nops   1075  ->  8.40 a unit
+  LL              13767..13771   above the nops   1187  ->  9.27 a unit
+  4L              15090..15095   above the nops   2510  ->  19.61 a unit
+  8L              17709..17713   above the nops   5129  ->  40.07 a unit
+  16L             23057..23061   above the nops  10477  ->  81.85 a unit
+  L U+1           13359..13366   above the nops    779  ->  6.09 a unit
+  L U+2           13360..13364   above the nops    780  ->  6.09 a unit
+  L U+3           13128..13131   above the nops    548  ->  4.28 a unit
+  L U+4           13127..13136   above the nops    547  ->  4.27 a unit
+  I               12580..12582   above the nops      0  ->  0.00 a unit
+  L I+1           13360..13367   above the nops    780  ->  6.09 a unit
+  L I+2           13360..13364   above the nops    780  ->  6.09 a unit
+  L I+3           13128..13131   above the nops    548  ->  4.28 a unit
+  I L+1           13505..13508   above the nops    925  ->  7.23 a unit
+  I L+2           13498..13510   above the nops    918  ->  7.17 a unit
+  I L+3           13126..13133   above the nops    546  ->  4.27 a unit
+  S               13288..13293   above the nops    708  ->  5.53 a unit
+  S L+1           13777..13782   above the nops   1197  ->  9.35 a unit
+  S L+2           13748..13768   above the nops   1168  ->  9.13 a unit
+  S L+3           13748..13761   above the nops   1168  ->  9.13 a unit
+  L S+1           13911..13919   above the nops   1331  ->  10.40 a unit
+  L S+2           13765..13768   above the nops   1185  ->  9.26 a unit
+  SS              13535..13540   above the nops    955  ->  7.46 a unit
+
+Done.

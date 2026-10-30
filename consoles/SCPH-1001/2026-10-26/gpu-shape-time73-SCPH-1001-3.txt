@@ -1,0 +1,19 @@
+
+gpu/gpu-shape-time73
+A shape's last words stored back to back from s cycles after Timer 0's reset, D cycles, one GPUSTAT read: the
+first D with bit 26 set, under two display modes. No assertions.
+
+bit 26's D in the blanking (20,000 cycles after VBlank's IRQ, 64 after Timer 0's reset): plain, mask-checked, the difference
+copy 8x1     plain    25  masked    33  +8
+copy 16x1    plain    37  masked    53  +16
+copy 32x1    plain    61  masked    93  +32
+copy 64x1    plain   109  masked   173  +64
+copy 128x1   plain   205  masked   333  +128
+copy 256x1   plain   410  masked   666  +256
+copy 512x1   plain   820  masked  1332  +512
+copy 16x16   plain   562  masked   818  +256
+copy 64x16   plain  1714  masked  2780  +1066
+copy 128x8   plain  1626  masked  2692  +1066
+copy 256x8   plain  3308  masked  5397  +2089
+
+gpu/gpu-shape-time73: Done.

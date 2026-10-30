@@ -1,0 +1,611 @@
+/*
+ * cpu/unc-store-phase - uncached RAM stores at every phase from a DRAM refresh: alone, back to back, beside a load either
+ * side, behind two loads, before a taken branch (2026-10-29 night)
+ *
+ * WHY. An uncached RAM store costs more on the consoles than this core charges in every shape measured - hwtests/unc-load
+ * (identical on all seven consoles): a lone sw 5.48 a unit over the nops (here 4.91), two back to back 7.42 (here 10.30), a
+ * store right behind a load 10.42 (here 9.09); cpu-loop-tick18 on the SCPH-9001: `nop; nop; sw` 6.00 a turn over three nops
+ * (here 5.11). Those are averages over the refresh, and their fractions say the store meets the refresh as no rule here
+ * does. This times each shape at every phase, where each cost is a whole number.
+ *
+ * WHAT IT DOES. refresh-warm's harness (experiments/_mkuncstore.js copies its rcSweep and rcCalib): interrupts off, Timer 2
+ * free-running at the system clock; the calibration (`lhu T2; jalr; lw RAM; jr; lhu T2`, F = the first phase of the highest
+ * cost); then each block, called through its KSEG1 alias (every instruction an uncached RAM fetch), timed between two Timer
+ * 2 reads at every phase, 16 trials a target. Each block is 24 instructions and `jr ra; nop`; a store writes RAM+128, a
+ * load reads RAM+0 (another 64-byte block of the same page).
+ *   U     24 nops
+ *   L     lw; 23 nops
+ *   S     sw; 23 nops
+ *   SS    sw; sw; 22 nops
+ *   SSS   sw; sw; sw; 21 nops
+ *   S_S   sw; nop; sw; 21 nops
+ *   LS    lw; sw; 22 nops
+ *   L_S   lw; nop; sw; 21 nops
+ *   LLS   lw; lw; sw; 21 nops
+ *   SL    sw; lw; 22 nops
+ *   S_L   sw; nop; lw; 21 nops
+ *   S__L  sw; nop; nop; lw; 20 nops
+ *   SB    sw; nop; beq zero, zero, +1 (taken); nop; 20 nops
+ * Each prints its commonest cost, then the cost by x = (F - the first Timer 2 read's phase) mod 256 - how many cycles into the
+ * window the refresh comes due - sixteen to a line ('.' where no trial landed).
+ *
+ * There are no assertions - compare against your emulator.
+ *
+ * THE RULE: run it here first: `node hwtests/run.js unc-store-phase --frames=3000 --quiet=600`.
+ */
+#include <common.h>
+#include <psxapi.h>
+#include <io.h>
+
+#define T2_MODE 0x1F801124u
+#define NC 13
+
+extern "C" {
+uint32_t rcRam[64] __attribute__((aligned(64)));
+void rcSweep(void (*blk)(void), void (*ev)(void), uint8_t* hist, int reps);
+void rcCalib(void);
+void usB0(void); void usB1(void); void usB2(void); void usB3(void); void usB4(void); void usB5(void); void usB6(void); void usB7(void); void usB8(void); void usB9(void); void usB10(void); void usB11(void); void usB12(void);
+}
+
+__asm__(
+    ".text\n"
+    ".set push\n"
+    ".set noreorder\n"
+    ".set noat\n"
+    ".balign 4096\n"
+    ".balign 512\n"
+    ".global usB0\n"
+    "usB0:\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB1\n"
+    "usB1:\n"
+    "lw $t5, 0($s3)\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB2\n"
+    "usB2:\n"
+    "sw $zero, 128($s3)\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB3\n"
+    "usB3:\n"
+    "sw $zero, 128($s3)\n"
+    "sw $zero, 128($s3)\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB4\n"
+    "usB4:\n"
+    "sw $zero, 128($s3)\n"
+    "sw $zero, 128($s3)\n"
+    "sw $zero, 128($s3)\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB5\n"
+    "usB5:\n"
+    "sw $zero, 128($s3)\n"
+    "nop\n"
+    "sw $zero, 128($s3)\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB6\n"
+    "usB6:\n"
+    "lw $t5, 0($s3)\n"
+    "sw $zero, 128($s3)\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB7\n"
+    "usB7:\n"
+    "lw $t5, 0($s3)\n"
+    "nop\n"
+    "sw $zero, 128($s3)\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB8\n"
+    "usB8:\n"
+    "lw $t5, 0($s3)\n"
+    "lw $t6, 4($s3)\n"
+    "sw $zero, 128($s3)\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB9\n"
+    "usB9:\n"
+    "sw $zero, 128($s3)\n"
+    "lw $t5, 0($s3)\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB10\n"
+    "usB10:\n"
+    "sw $zero, 128($s3)\n"
+    "nop\n"
+    "lw $t5, 0($s3)\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB11\n"
+    "usB11:\n"
+    "sw $zero, 128($s3)\n"
+    "nop\n"
+    "nop\n"
+    "lw $t5, 0($s3)\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global usB12\n"
+    "usB12:\n"
+    "sw $zero, 128($s3)\n"
+    "nop\n"
+    "beq $zero, $zero, 1f\n"
+    "nop\n"
+    "1:\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "jr $ra\n"
+    "nop\n"
+    ".balign 512\n"
+    ".global rcSweep\n"
+    "rcSweep:\n"
+    "addiu $sp, $sp, -48\n"
+    "sw $ra, 44($sp)\n"
+    "sw $s0, 40($sp)\n"
+    "sw $s1, 36($sp)\n"
+    "sw $s2, 32($sp)\n"
+    "sw $s3, 28($sp)\n"
+    "sw $s4, 24($sp)\n"
+    "sw $s5, 20($sp)\n"
+    "sw $s6, 16($sp)\n"
+    "sw $s7, 12($sp)\n"
+    "move $s0, $a0\n"
+    "move $s1, $a1\n"
+    "move $s2, $a2\n"
+    "move $s7, $a3\n"
+    "lui $s3, %hi(rcRam)\n"
+    "addiu $s3, $s3, %lo(rcRam)\n"
+    "li $s4, -1\n"
+    "rcRep:\n"
+    "li $s5, 0\n"
+    "rcTgt:\n"
+    "beqz $s1, rcSpin0\n"
+    "nop\n"
+    "jalr $s1\n"
+    "nop\n"
+    "rcSpin0:\n"
+    "lui $t4, 0x1f80\n"
+    "rcSpin:\n"
+    "lhu $t0, 0x1120($t4)\n"
+    "nop\n"
+    "subu $t0, $t0, $s5\n"
+    "andi $t0, $t0, 0xff\n"
+    "sltiu $t0, $t0, 6\n"
+    "beqz $t0, rcSpin\n"
+    "nop\n"
+    "andi $t1, $s4, 7\n"
+    "sll $t1, $t1, 2\n"
+    "lui $t0, %hi(rcSled)\n"
+    "addiu $t0, $t0, %lo(rcSled)\n"
+    "subu $t0, $t0, $t1\n"
+    "jr $t0\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "nop\n"
+    "rcSled:\n"
+    "lhu $s6, 0x1120($t4)\n"
+    "jalr $s0\n"
+    "nop\n"
+    "lhu $t3, 0x1120($t4)\n"
+    "bltz $s4, rcDrain\n"
+    "subu $t3, $t3, $s6\n"
+    "andi $t3, $t3, 0xffff\n"
+    "sltiu $t0, $t3, 512\n"
+    "beqz $t0, rcDrain\n"
+    "andi $t1, $s6, 0xff\n"
+    "sll $t1, $t1, 9\n"
+    "addu $t1, $t1, $t3\n"
+    "addu $t1, $t1, $s2\n"
+    "lbu $t0, 0($t1)\n"
+    "nop\n"
+    "sltiu $t2, $t0, 255\n"
+    "beqz $t2, rcDrain\n"
+    "addiu $t0, $t0, 1\n"
+    "sb $t0, 0($t1)\n"
+    "rcDrain:\n"
+    "li $t0, 8\n"
+    "rcDrain1:\n"
+    "addiu $t0, $t0, -1\n"
+    "bnez $t0, rcDrain1\n"
+    "nop\n"
+    "bltz $s4, rcNext\n"
+    "nop\n"
+    "addiu $s5, $s5, 1\n"
+    "sltiu $t0, $s5, 256\n"
+    "bnez $t0, rcTgt\n"
+    "nop\n"
+    "rcNext:\n"
+    "addiu $s4, $s4, 1\n"
+    "slt $t0, $s4, $s7\n"
+    "bnez $t0, rcRep\n"
+    "nop\n"
+    "lw $ra, 44($sp)\n"
+    "lw $s0, 40($sp)\n"
+    "lw $s1, 36($sp)\n"
+    "lw $s2, 32($sp)\n"
+    "lw $s3, 28($sp)\n"
+    "lw $s4, 24($sp)\n"
+    "lw $s5, 20($sp)\n"
+    "lw $s6, 16($sp)\n"
+    "lw $s7, 12($sp)\n"
+    "jr $ra\n"
+    "addiu $sp, $sp, 48\n"
+    ".global rcCalib\n"
+    "rcCalib:\n"
+    "lw $t5, 0($s3)\n"
+    "jr $ra\n"
+    "nop\n"
+    ".set pop\n"
+);
+
+typedef void (*Fn)(void);
+#define UNC(f) ((Fn)((uint32_t)(f) | 0xA0000000u))
+static const Fn BLK[NC] = { UNC(usB0), UNC(usB1), UNC(usB2), UNC(usB3), UNC(usB4), UNC(usB5), UNC(usB6), UNC(usB7), UNC(usB8), UNC(usB9), UNC(usB10), UNC(usB11), UNC(usB12) };
+static const char* const NAME[NC] = {
+    "U     24 nops",
+    "L     lw; 23 nops",
+    "S     sw; 23 nops",
+    "SS    sw; sw; 22 nops",
+    "SSS   sw; sw; sw; 21 nops",
+    "S_S   sw; nop; sw; 21 nops",
+    "LS    lw; sw; 22 nops",
+    "L_S   lw; nop; sw; 21 nops",
+    "LLS   lw; lw; sw; 21 nops",
+    "SL    sw; lw; 22 nops",
+    "S_L   sw; nop; lw; 21 nops",
+    "S__L  sw; nop; nop; lw; 20 nops",
+    "SB    sw; nop; beq zero, zero, +1 (taken); nop; 20 nops"
+};
+static uint8_t hist[256 * 512];     /* [phase][cost] trial counts */
+
+static void clear() { for (int i = 0; i < 256 * 512; i++) hist[i] = 0; }
+static int modeAt(int ph) {
+    const uint8_t* h = &hist[(ph & 0xFF) * 512];
+    int best = -1, bn = 0;
+    for (int c = 0; c < 512; c++) if (h[c] > bn) { bn = h[c]; best = c; }
+    return best;
+}
+static int modeAll() {
+    static uint32_t tot[512];
+    for (int c = 0; c < 512; c++) tot[c] = 0;
+    for (int p = 0; p < 256; p++) for (int c = 0; c < 512; c++) tot[c] += hist[p * 512 + c];
+    int best = 0;
+    for (int c = 1; c < 512; c++) if (tot[c] > tot[best]) best = c;
+    return best;
+}
+
+int main() {
+    printf("\ncpu/unc-store-phase\n");
+    printf("Uncached RAM stores at each phase from a DRAM refresh (Timer 2 cycles).\n");
+    printf("No assertions - compare against your emulator.\n\n");
+    EnterCriticalSection();
+    const uint16_t m2 = read16(T2_MODE);
+    write16(T2_MODE, 0);
+
+    clear();
+    rcSweep(rcCalib, 0, hist, 16);
+    const int base = modeAll();
+    int F = 0, hi = -1;
+    for (int p = 0; p < 256; p++) { const int m = modeAt(p); if (m > hi) { hi = m; F = p; } }
+    printf("CALIBRATION  lhu T2; jalr; lw RAM; jr; lhu T2: commonest %d, highest %d first at phase %d (F)\n", base, hi, F);
+    printf("  F-8 .. F+15:");
+    for (int k = -8; k < 16; k++) { const int m = modeAt(F + k); if (m < 0) printf(" ."); else printf(" %d", m); }
+    printf("\n\n");
+
+    for (int i = 0; i < NC; i++) {
+        clear();
+        rcSweep(BLK[i], 0, hist, 16);
+        printf("%s  commonest %d; cost by x = 0 .. 255:\n", NAME[i], modeAll());
+        for (int x = 0; x < 256; x++) {
+            const int m = modeAt(F - x);
+            if (m < 0) printf("    ."); else printf(" %4d", m);
+            if (x % 16 == 15) printf("\n");
+        }
+    }
+
+    write16(T2_MODE, m2);
+    ExitCriticalSection();
+    printf("\nDone.\n");
+    for (;;) {}
+}

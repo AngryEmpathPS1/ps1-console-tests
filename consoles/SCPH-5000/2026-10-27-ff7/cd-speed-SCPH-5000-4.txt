@@ -1,0 +1,115 @@
+
+cdrom/cd-speed
+The CD drive's speed change. Needs a disc. About five minutes; nothing prints until the end.
+
+Cycles at the system clock (1 ms = 33,869). Head moves from 00:02:16 to 00:06:16.
+CONTROL, no speed change, SeekL write -> INT2:
+  single   5518562   5549827   6431287
+  double   6187642   6225331   6227238
+SEEK SINGLE -> DOUBLE: Setmode, D ms after its INT3 SeekL, write -> INT2 (twice):
+  D   50  27330797  21096005
+  D  100  19408651  19522449
+  D  150  17870471  17564839
+  D  200  16453253  20158347
+  D  300  12830417  12879214
+  D  400  13670019  13320827
+  D  500   9990658   7890146
+  D  600   6679451   6588642
+  D  700   5310829   5605067
+  D  800   6361927   6240552
+  D 1000   5873221   5830077
+  D 1500   2303753   5975821
+SEEK DOUBLE -> SINGLE: Setmode, D ms after its INT3 SeekL, write -> INT2 (twice):
+  D   50  16613957  24643070
+  D  100  22886896  22967660
+  D  150  18910037  17946040
+  D  200  19645607  19467567
+  D  300   8184525  11296110
+  D  400  12776887   4712333
+  D  500  13688789   5169184
+  D  600  10365514  10288636
+  D  700  11231253   3537206
+  D  800   4486372   4384109
+  D 1000   9454554   9699007
+  D 1500   4352506   5934118
+READ SINGLE -> DOUBLE: Setmode, D ms after its INT3 ReadN, write -> first INT1 (twice):
+  D   50  25725542  21271519
+  D  200  20263017  15883370
+  D  400   9371748   9208535
+  D  700   3209854   3266052
+READ DOUBLE -> SINGLE: Setmode, D ms after its INT3 ReadN, write -> first INT1 (twice):
+  D   50  25490890  25523434
+  D  200  19297586  20077662
+  D  400   4208128  13637542
+  D  700  11276113  11926895
+STAT: Getstat back to back for 1 s after a Setmode's INT3 (times from that INT3):
+  to double:
+          347.. 33834174  744 x stat 02, acknowledged in 25626..232035
+    slow: the Getstat written at 19716947 acknowledged after 232035
+    slow: the Getstat written at 20599223 acknowledged after 225342
+    slow: the Getstat written at 21058301 acknowledged after 184162
+    slow: the Getstat written at 21524554 acknowledged after 190977
+    slow: the Getstat written at 22078770 acknowledged after 191905
+    slow: the Getstat written at 22632691 acknowledged after 188302
+    slow: the Getstat written at 24760053 acknowledged after 182185
+    slow: the Getstat written at 29065376 acknowledged after 182745
+  to single:
+          294.. 33833333  786 x stat 02, acknowledged in 25613..227590
+    slow: the Getstat written at 14063823 acknowledged after 227590
+    slow: the Getstat written at 14938721 acknowledged after 225550
+    slow: the Getstat written at 18315407 acknowledged after 181124
+    slow: the Getstat written at 26875207 acknowledged after 181194
+  to double:
+          289.. 33852453  749 x stat 02, acknowledged in 25679..224211
+    slow: the Getstat written at 20745794 acknowledged after 224211
+    slow: the Getstat written at 23209803 acknowledged after 182820
+    slow: the Getstat written at 31746519 acknowledged after 182750
+  to single:
+          289.. 33843553  792 x stat 02, acknowledged in 25614..191758
+    slow: the Getstat written at 18097669 acknowledged after 191758
+    slow: the Getstat written at 23485745 acknowledged after 181356
+    slow: the Getstat written at 27763227 acknowledged after 181194
+CANCEL SINGLE -> DOUBLE -> SINGLE: Setmode, F ms, Setmode back, 100 ms, SeekL write -> INT2 (twice):
+  F    2  34807718  48417629
+  F   50  32079908  39014711
+  F  150  36658629  35528875
+  F  300  30341375  31101925
+  F  500  24162565  24067177
+CANCEL DOUBLE -> SINGLE -> DOUBLE: Setmode, F ms, Setmode back, 100 ms, SeekL write -> INT2 (twice):
+  F    2   2913733   2419009
+  F   50  32455519  34974557
+  F  150  29602717  31728276
+  F  300  22618087  26614204
+  F  500  23239716  19429218
+INIT, 1.5 s settled (INT3 from the write, INT2 from the INT3):
+  from double  INT3    66774 (02)   INT2  19807709 after it (02)
+  from double  INT3    78766 (02)   INT2  14716085 after it (02)
+  from single  INT3    68588 (02)   INT2   2071808 after it (02)
+  from single  INT3    72139 (02)   INT2    360357 after it (02)
+DURING: ReadN of whole sectors from 00:02:16, Setmode after the 10th INT1 (times from its write):
+  single -> double:
+    INT3 (02) at -14144535
+    INT1 x10 00:02:16..00:02:25 at -4056033..-469  every 438044..469981
+    INT3 (22) at +46303
+    INT1 x2 00:02:26..00:02:27 at +642919..+22701535  every 22058616..22058616
+    INT1 x199 00:02:28..00:05:01 at +22903071..+67605791  every 193408..251840
+  double -> single:
+    INT3 (02) at -8447866
+    INT1 x10 00:02:16..00:02:25 at -2028176..-450  every 200228..251868
+    INT3 (22) at +48970
+    INT1 x2 00:02:26..00:02:27 at +218591..+14596567  every 14377976..14377976
+    INT1 x107 00:02:57..00:04:13 at +19640015..+67503806  every 430848..472896
+  single -> double:
+    INT3 (02) at -15211169
+    INT1 x10 00:02:16..00:02:25 at -4075508..-454  every 429859..476890
+    INT3 (22) at +33676
+    INT1 x2 00:02:26..00:02:27 at +375583..+22579615  every 22204032..22204032
+    INT1 x200 00:02:28..00:05:02 at +22789599..+67726047  every 201408..250496
+  double -> single:
+    INT3 (02) at -8458352
+    INT1 x10 00:02:16..00:02:25 at -2017604..-451  every 200676..250980
+    INT3 (22) at +50128
+    INT1 x2 00:02:26..00:02:27 at +227426..+14538914  every 14311488..14311488
+    INT1 x88 00:02:57..00:03:69 at +28266338..+67547042  every 424256..474688
+
+cdrom/cd-speed: Done.

@@ -1,0 +1,27 @@
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/semi-cost
+A semi-transparent textured primitive over texels with STP clear: extra cost? (FRAME.DOC: 0.3-0.5x)
+100 primitives of 256x240 a row, Timer1 hblanks. There are no assertions - compare against your emulator.
+
+texture A (STP clear)
+  SPRT opaque                    8537 hblanks  ~ 183767 cycles each
+  SPRT semi                      9984 hblanks  ~ 214915 cycles each  116% of opaque
+  POLY_FT4 opaque                9974 hblanks  ~ 214700 cycles each
+  POLY_FT4 semi                 11183 hblanks  ~ 240725 cycles each  112% of opaque
+texture B (STP set)
+  SPRT opaque                    8538 hblanks  ~ 183788 cycles each
+  SPRT semi                      9983 hblanks  ~ 214894 cycles each  116% of opaque
+  POLY_FT4 opaque                9976 hblanks  ~ 214743 cycles each
+  POLY_FT4 semi                 11181 hblanks  ~ 240682 cycles each  112% of opaque
+untextured (control: semi always blends)
+  TILE opaque                    1509 hblanks  ~  32482 cycles each
+  TILE semi                      2301 hblanks  ~  49531 cycles each  152% of opaque
+  POLY_F4 opaque                 1545 hblanks  ~  33257 cycles each
+  POLY_F4 semi                   2348 hblanks  ~  50543 cycles each  151% of opaque
+
+Done.

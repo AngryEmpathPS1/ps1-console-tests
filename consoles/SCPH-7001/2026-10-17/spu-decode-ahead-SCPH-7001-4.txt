@@ -1,0 +1,53 @@
+
+spu/spu-decode-ahead
+Voice 0 keyed on at 1000h at seven pitches, IRQ9 on each of its first six half-blocks in turn: cycles from the
+KON write to IRQ9, and that in source samples after the 1000h row. No assertions - compare against your emulator.
+
+pitch 0001h (3145728 cycles a source sample):
+  1000h       1216 cycles
+  1008h   12587056 cycles      4.00 samples after the first read
+  1010h   62919136 cycles     20.00 samples after the first read
+pitch 0010h (196608 cycles a source sample):
+  1000h       1568 cycles
+  1008h     790576 cycles      4.01 samples after the first read
+  1010h    3935936 cycles     20.01 samples after the first read
+  1018h    6296040 cycles     32.01 samples after the first read
+  1020h    9441816 cycles     48.01 samples after the first read
+  1028h   11801112 cycles     60.01 samples after the first read
+pitch 0040h (49152 cycles a source sample):
+  1000h        952 cycles
+  1008h     201128 cycles      4.07 samples after the first read
+  1010h     986760 cycles     20.05 samples after the first read
+  1018h    1576200 cycles     32.04 samples after the first read
+  1020h    2363928 cycles     48.07 samples after the first read
+  1028h    2953752 cycles     60.07 samples after the first read
+pitch 0100h (12288 cycles a source sample):
+  1000h        960 cycles
+  1008h      53672 cycles      4.28 samples after the first read
+  1010h     249480 cycles     20.22 samples after the first read
+  1018h     396376 cycles     32.17 samples after the first read
+  1020h     592984 cycles     48.17 samples after the first read
+  1028h     740440 cycles     60.17 samples after the first read
+pitch 0400h (3072 cycles a source sample):
+  1000h       1824 cycles
+  1008h      16496 cycles      4.77 samples after the first read
+  1010h      65216 cycles     20.63 samples after the first read
+  1018h     101704 cycles     32.51 samples after the first read
+  1020h     150616 cycles     48.43 samples after the first read
+  1028h     187480 cycles     60.43 samples after the first read
+pitch 1000h (768 cycles a source sample):
+  1000h        888 cycles
+  1008h       7592 cycles      8.72 samples after the first read
+  1010h      19384 cycles     24.08 samples after the first read
+  1018h      28296 cycles     35.68 samples after the first read
+  1020h      40264 cycles     51.27 samples after the first read
+  1028h      49480 cycles     63.27 samples after the first read
+pitch 3fffh (192 cycles a source sample):
+  1000h       1128 cycles
+  1008h       5744 cycles     24.04 samples after the first read
+  1010h       8632 cycles     39.08 samples after the first read
+  1018h      10912 cycles     50.95 samples after the first read
+  1020h      14160 cycles     67.87 samples after the first read
+  1028h      16488 cycles     80.00 samples after the first read
+
+spu/spu-decode-ahead: Done.

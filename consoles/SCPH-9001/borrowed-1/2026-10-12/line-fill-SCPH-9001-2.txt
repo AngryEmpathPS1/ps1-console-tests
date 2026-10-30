@@ -1,0 +1,15 @@
+
+cpu/line-fill
+Instruction-cache line fills back to back: 8 or 9 cycles apart on retail? (dev board: 9)
+A call of N lines of nops, cold (after FlushCache) and warm, Timer2 at the system clock.
+There are no assertions - compare against your emulator.
+
+N= 16 lines  cold   165   171   170   165   169   warm    87    82    82    86    82   cold-warm 83 = 5.18 a line
+N= 32 lines  cold   317   315   313   313   317   warm   156   156   156   156   156   cold-warm 157 = 4.90 a line
+N= 64 lines  cold   610   612   614   614   612   warm   294   294   294   294   298   cold-warm 316 = 4.93 a line
+N=128 lines  cold  1197  1194  1198  1198  1198   warm   550   555   550   550   550   cold-warm 644 = 5.03 a line
+N=255 lines  cold  2357  2358  2357  2357  2357   warm  1058  1058  1058  1058  1058   cold-warm 1299 = 5.09 a line
+
+slopes (min cold between N values, per line):  16-32: 9.25  32-64: 9.28  64-128: 9.12  128-255: 9.15
+
+Done.

@@ -1,0 +1,53 @@
+
+spu/spu-decode-ahead
+Voice 0 keyed on at 1000h at seven pitches, IRQ9 on each of its first six half-blocks in turn: cycles from the
+KON write to IRQ9, and that in source samples after the 1000h row. No assertions - compare against your emulator.
+
+pitch 0001h (3145728 cycles a source sample):
+  1000h       1208 cycles
+  1008h  no IRQ
+  1010h  no IRQ
+pitch 0010h (196608 cycles a source sample):
+  1000h       2312 cycles
+  1008h  no IRQ
+  1010h  no IRQ
+  1018h  no IRQ
+  1020h  no IRQ
+  1028h  no IRQ
+pitch 0040h (49152 cycles a source sample):
+  1000h       2128 cycles
+  1008h  no IRQ
+  1010h  no IRQ
+  1018h  no IRQ
+  1020h  no IRQ
+  1028h  no IRQ
+pitch 0100h (12288 cycles a source sample):
+  1000h       1888 cycles
+  1008h  no IRQ
+  1010h  no IRQ
+  1018h  no IRQ
+  1020h  no IRQ
+  1028h  no IRQ
+pitch 0400h (3072 cycles a source sample):
+  1000h       1200 cycles
+  1008h  no IRQ
+  1010h  no IRQ
+  1018h  no IRQ
+  1020h  no IRQ
+  1028h  no IRQ
+pitch 1000h (768 cycles a source sample):
+  1000h       1744 cycles
+  1008h  no IRQ
+  1010h  no IRQ
+  1018h  no IRQ
+  1020h  no IRQ
+  1028h  no IRQ
+pitch 3fffh (192 cycles a source sample):
+  1000h       1744 cycles
+  1008h  no IRQ
+  1010h  no IRQ
+  1018h  no IRQ
+  1020h  no IRQ
+  1028h  no IRQ
+
+spu/spu-decode-ahead: Done.

@@ -1,0 +1,27 @@
+
+gpu/gpu-dmastream2
+N primitives in a DMA2 linked list, timed from the CHCR write to DMA done and bits 28+26; fastest of 3 runs x 8
+start points in the blanking. No assertions.
+
+kind              N=1      8     32   (32-8)/24 x10
+tri flat 4        124    452   1481      428
+tri flat 8        178    454   1520      444
+tri flat 16       232    949   3499     1062
+tri flat 32       448   2758  10680     3300
+tri semi 8        178    718   2427      712
+tri semi 16       286   1544   5893     1812
+tri semi 32       664   4496  17677     5492
+rect 78h 16       284   1468   5652     1743
+rect 60h 8        177    573   2085      630
+rect 60h 16       285   1480   5687     1752
+rect 60h 32       666   4825  19059     5930
+semi 62h 8        177    810   2922      880
+semi 62h 16       393   2490   9669     2991
+sprite 7Dh 16     285   1464   5644     1741
+line 4            123    340   1182      350
+line 16           123    394   1234      350
+line 64           177    696   2520      760
+fill 16           177    880   3272      996
+copy 16           718   5087  20100     6255
+
+gpu/gpu-dmastream2: Done.

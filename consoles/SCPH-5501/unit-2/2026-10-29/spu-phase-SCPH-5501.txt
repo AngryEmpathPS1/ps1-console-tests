@@ -1,0 +1,16 @@
+
+spu/spu-phase
+Voice 1's onset in its capture ring, KON 96 cycles after SPUSTAT bit 11 falls (8 or 9: spu-latch's two classes),
+before and after each action, six times each. No assertions - compare against your emulator.
+
+at the start: onset 8
+  none        8   8   8   8   8   8
+  off-on      8   8   8   8   8   8
+  dma-512k    8   8   8   8   8   8
+  dma-1k      8   8   8   8   8   8
+  xfer        9   8   9   8   9   8
+  mute        8   8   8   8   8   8
+  reverb      8   8   8   8   8   8
+  idle-odd    8   8   8   8   8   8
+
+spu/spu-phase: Done.

@@ -1,0 +1,55 @@
+
+gpu/gpu-scan4
+Each primitive in the vertical blanking (20,000 cycles after the VBlank IRQ) and on active lines (200,000), by
+display mode: fastest of four each, and the active lines' toll in tenths of a percent. No assertions.
+
+  320x240         semi rect in        blank   6334  active   6835  toll 79
+  320x240         semi rect out       blank   6333  active   6829  toll 78
+  320x240         flat rect out       blank   4302  active   4528  toll 52
+  320x240         fill 512x128 out    blank   4933  active   5299  toll 74
+  320x240         flat line           blank    822  active    823  toll 1
+  320x240         gouraud line        blank    898  active    901  toll 3
+  320x240         semi sprite 15 64   blank  13957  active  14855  toll 64
+  320x240         textured tri 4      blank   6069  active   6246  toll 29
+  320x240         gouraud tex tri 15  blank  14346  active  15203  toll 59
+  320x240         gouraud quad        blank   8983  active   9076  toll 10
+  320x240         16 flat 16x16       blank   2957  active   3080  toll 41
+  320x240         16 sprites 16x16    blank  12522  active  13325  toll 64
+  368x240         semi rect in        blank   6334  active   6832  toll 78
+  368x240         semi rect out       blank   6334  active   6829  toll 78
+  368x240         flat rect out       blank   4303  active   4533  toll 53
+  368x240         fill 512x128 out    blank   4933  active   5256  toll 65
+  368x240         flat line           blank    822  active    822  toll 0
+  368x240         gouraud line        blank    898  active    901  toll 3
+  368x240         semi sprite 15 64   blank  13955  active  14858  toll 64
+  368x240         textured tri 4      blank   6067  active   6244  toll 29
+  368x240         gouraud tex tri 15  blank  14348  active  15209  toll 60
+  368x240         gouraud quad        blank   8987  active   9074  toll 9
+  368x240         16 flat 16x16       blank   2957  active   3039  toll 27
+  368x240         16 sprites 16x16    blank  12515  active  13307  toll 63
+  320x240 24-bit  semi rect in        blank   6334  active   6964  toll 99
+  320x240 24-bit  semi rect out       blank   6333  active   6928  toll 93
+  320x240 24-bit  flat rect out       blank   4300  active   4572  toll 63
+  320x240 24-bit  fill 512x128 out    blank   4935  active   5391  toll 92
+  320x240 24-bit  flat line           blank    823  active    820  toll -3
+  320x240 24-bit  gouraud line        blank    901  active    898  toll -3
+  320x240 24-bit  semi sprite 15 64   blank  13955  active  15085  toll 80
+  320x240 24-bit  textured tri 4      blank   6112  active   6289  toll 28
+  320x240 24-bit  gouraud tex tri 15  blank  14348  active  15474  toll 78
+  320x240 24-bit  gouraud quad        blank   8983  active   9076  toll 10
+  320x240 24-bit  16 flat 16x16       blank   2957  active   3079  toll 41
+  320x240 24-bit  16 sprites 16x16    blank  12511  active  13501  toll 79
+  640x240 24-bit  semi rect in        blank   6337  active   7467  toll 178
+  640x240 24-bit  semi rect out       blank   6331  active   7468  toll 179
+  640x240 24-bit  flat rect out       blank   4302  active   4753  toll 104
+  640x240 24-bit  fill 512x128 out    blank   4935  active   5839  toll 183
+  640x240 24-bit  flat line           blank    821  active    820  toll -1
+  640x240 24-bit  gouraud line        blank    901  active    898  toll -3
+  640x240 24-bit  semi sprite 15 64   blank  13957  active  16168  toll 158
+  640x240 24-bit  textured tri 4      blank   6067  active   6517  toll 74
+  640x240 24-bit  gouraud tex tri 15  blank  14348  active  16467  toll 147
+  640x240 24-bit  gouraud quad        blank   8986  active   9076  toll 10
+  640x240 24-bit  16 flat 16x16       blank   2958  active   3165  toll 69
+  640x240 24-bit  16 sprites 16x16    blank  12553  active  14421  toll 148
+
+gpu/gpu-scan4: Done.

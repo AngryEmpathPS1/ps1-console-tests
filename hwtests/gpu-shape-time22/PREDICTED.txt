@@ -1,0 +1,8 @@
+gpu-shape-time22 - written down BEFORE any console ran it (2026-10-14 night).
+
+What this core (v0.377.109) reads as the SCPH-1001 is scratch/gst22_1001v109.txt: shaded rows by GPU_POLY_OLD3's area,
+the apex row free, the free walk (gouraud / textured 1.0 a pixel beyond 5). The readings to test, from the flat rows:
+  1. TLu = TL and BLd = BL for shaded too, or TLu ~3.7 dearer as flat's.
+  2. BL (the apex row at the top, empty) dearer than its pixels say by ~4 (flat's end row 5.39 against 1.44 inside).
+  3. Shaded rows have no pair term (gpu-shape-time20's gouraud TR - TL at 1-4 a row: 0 to the cycle, where flat's
+     pair rows made TR 16x16 8 dearer than TL): TL = TR - walk for gouraud and textured at 16x16 and 64x64.

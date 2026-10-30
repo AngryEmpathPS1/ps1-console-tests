@@ -1,0 +1,122 @@
+ResetGraph:itb=80013e18,ehk=80013e48
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-round
+16 blocks at q_scale 0, 8-bit mono: does the IDCT round once (A, this emulator), each pass (B), or floor once (C)?
+There are no assertions - compare against your emulator.
+
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80013c18, color=1)... ok
+mdec_idctTable(addr=0x80013c98)... ok
+mdec_decode(addr=0x80011dfc, length=0x4, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0xfe000000
+ok
+   0 control dc    0  AC  0 =    0   A 64/64  B 64/64  C 64/64
+     then 64 more words: 7f7f7d7f 7f7d7f7f 7f7f7e7f 7f7e7f7f 7f7f7e7f 7f7e7f7f 7f7f7f7f 7f7f7f7f ... (status 8204ffff)
+mdec_decode(addr=0x80011ed0, length=0x4, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0xfe000340
+ok
+   1 control dc -192  AC  0 =    0   A  0/64  B  0/64  C  0/64
+     none: 9a9b9da0a2a1a0a3 807e7e7d7d7e7d7e 7e7d7d7e7f7f7e7e 807f7f80807f7f80 7f7f7f7f7f7f7f7f 807f7f7f7f7f7f80 807f7f7f7f7f7f80 807f807f7f807f80
+     then 64 more words: 50505050 50505050 29292928 29292a2b 282b2b2a 2726292b 27292828 24242729 ... (status 8204ffff)
+mdec_decode(addr=0x80011fa4, length=0x4, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0xfe000272
+ok
+   2 DC      dc -398  AC  0 =    0   A  0/64  B 64/64  C 64/64
+     then 64 more words: 7f7f7d7f 7f7d7f7f 7f7f7e7f 7f7e7f7f 7f7f7e7f 7f7e7f7f 7f7f7f7f 7f7f7f7f ... (status 8204ffff)
+mdec_decode(addr=0x80012078, length=0x4, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0xfe00038a
+ok
+   3 DC      dc -118  AC  0 =    0   A  0/64  B  0/64  C  0/64
+     none: 9a9b9da0a2a1a0a3 807e7e7d7d7e7d7e 7e7d7d7e7f7f7e7e 807f7f80807f7f80 7f7f7f7f7f7f7f7f 807f7f7f7f7f7f80 807f7f7f7f7f7f80 807f807f7f807f80
+     then 64 more words: 62626262 62626262 29292928 29292a2b 282b2b2a 2726292b 27292828 24242729 ... (status 8204ffff)
+mdec_decode(addr=0x8001214c, length=0x4, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0xfe000082
+ok
+   4 DC      dc  130  AC  0 =    0   A 64/64  B  0/64  C 64/64
+     then 64 more words: 7f7f7d7f 7f7d7f7f 7f7f7e7f 7f7e7f7f 7f7f7e7f 7f7e7f7f 7f7f7f7f 7f7f7f7f ... (status 8204ffff)
+mdec_decode(addr=0x80012220, length=0x4, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0xfe00018e
+ok
+   5 DC      dc  398  AC  0 =    0   A  0/64  B  0/64  C  0/64
+     none: 9a9b9da0a2a1a0a3 807e7e7d7d7e7d7e 7e7d7d7e7f7f7e7e 807f7f80807f7f80 7f7f7f7f7f7f7f7f 807f7f7f7f7f7f80 807f7f7f7f7f7f80 807f807f7f807f80
+     then 64 more words: e3e3e3e3 e3e3e3e3 29292928 29292a2b 282b2b2a 2726292b 27292828 24242729 ... (status 8204ffff)
+mdec_decode(addr=0x800122f4, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x038e039c
+MDEC_DATA <- 0xfe00fe00
+ok
+   6 AC      dc -100  AC  1 = -114   A 64/64  B 32/64  C 32/64
+     then 64 more words: 807f7f80 81808080 807f7f80 81808080 80808080 80808080 80808080 80808080 ... (status 8204ffff)
+mdec_decode(addr=0x800123c8, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x07cd03ba
+MDEC_DATA <- 0xfe00fe00
+ok
+   7 AC      dc  -70  AC  2 =  -51   A  4/64  B  4/64  C  4/64
+     none: 999c9e9fa1a2a1a2 82808080807f8081 807f7f8080808080 8080808080808080 8080808080808080 8081818080808080 8081818080818180 8081818080818180
+     then 64 more words: 7f75685e 5e68757f 29292928 29292a2b 282b2b2a 2726292b 27292828 24242729 ... (status 8204ffff)
+mdec_decode(addr=0x8001249c, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x0b3103a6
+MDEC_DATA <- 0xfe00fe00
+ok
+   8 AC      dc  -90  AC  3 = -207   A  0/64  B  0/64  C  0/64
+     none: 2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6 2d78b19241225ba6
+     then 64 more words: 807f7f80 81808080 807f7f80 81808080 80808080 80808080 80808080 80808080 ... (status 8204ffff)
+mdec_decode(addr=0x80012570, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x1325039c
+MDEC_DATA <- 0xfe00fe00
+ok
+   9 AC      dc -100  AC  5 = -219   A  0/64  B  0/64  C  0/64
+     none: 999c9e9fa1a2a1a2 82808080807f8081 807f7f8080808080 8080808080808080 8080808080808080 8081818080808080 8081818080818180 8081818080818180
+     then 64 more words: 2758b33c 921b76a7 29292928 29292a2b 282b2b2a 2726292b 27292828 24242729 ... (status 8204ffff)
+mdec_decode(addr=0x80012644, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x23cd03ba
+MDEC_DATA <- 0xfe00fe00
+ok
+  10 AC      dc  -70  AC  9 =  -51   A  0/64  B  0/64  C  1/64
+     none: 565a616a737c8387 5a5d636a737a8083 6163676c71767a7c 6a6a6c6e6f717373 7373716f6e6c6a6a 7c7a76716c676361 83807a736a635d5a 87837c736a615a56
+     then 64 more words: 807f7f80 81808080 807f7f80 81808080 80808080 80808080 80808080 80808080 ... (status 8204ffff)
+mdec_decode(addr=0x80012718, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x36da039c
+MDEC_DATA <- 0xfe00fe00
+ok
+  11 AC      dc -100  AC 14 = -294   A  0/64  B  0/64  C  0/64
+     none: 999c9e9fa1a2a1a2 82808080807f8081 807f7f8080808080 8080808080808080 8080808080808080 8081818080808080 8081818080818180 8081818080818180
+     then 64 more words: 9e00ec30 30ec009e 58009a00 009a005a 282b2b2a 2726292b 27292828 24242729 ... (status 8204ffff)
+mdec_decode(addr=0x800127ec, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x4fcd03ba
+MDEC_DATA <- 0xfe00fe00
+ok
+  12 AC      dc  -70  AC 20 =  -51   A  0/64  B  0/64  C  0/64
+     none: 5e7f7f5e5e7f7f5e 6875756868757568 7568687575686875 7f5e5e7f7f5e5e7f 7f5e5e7f7f5e5e7f 7568687575686875 6875756868757568 5e7f7f5e5e7f7f5e
+     then 64 more words: 807f7f80 81808080 807f7f80 81808080 80808080 80808080 80808080 80808080 ... (status 8204ffff)
+mdec_decode(addr=0x800128c0, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x6b25039c
+MDEC_DATA <- 0xfe00fe00
+ok
+  13 AC      dc -100  AC 27 = -219   A  0/64  B  0/64  C  0/64
+     none: 999c9e9fa1a2a1a2 82808080807f8081 807f7f8080808080 8080808080808080 8080808080808080 8081818080808080 8081818080818180 8081818080818180
+     then 64 more words: 9ac0791b b3550e34 1d142539 172d3f37 282b2b2a 2726292b 27292828 24242729 ... (status 8204ffff)
+mdec_decode(addr=0x80012994, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0x8bcd03ba
+MDEC_DATA <- 0xfe00fe00
+ok
+  14 AC      dc  -70  AC 35 =  -51   A  7/64  B  5/64  C  5/64
+     none: 5f728079645d6b7e 7d6b5d6478807260 7d6b5d6478807260 5f728079645d6b7e 5f728079645d6b7e 7d6b5d6478807260 7d6b5d6478807260 5f728079645d6b7e
+     then 64 more words: 807f7f80 81808080 807f7f80 81808080 80808080 80808080 80808080 80808080 ... (status 8204ffff)
+mdec_decode(addr=0x80012a68, length=0x8, colorDepth=1, outputSigned=0, setBit15=0)... 
+MDEC_DATA <- 0xaf520000
+MDEC_DATA <- 0xfe00fe00
+ok
+  15 AC      dc    0  AC 44 = -174   A  0/64  B  0/64  C  0/64
+     none: 999c9e9fa1a2a1a2 82808080807f8081 807f7f8080808080 8080808080808080 8080808080808080 8081818080808080 8081818080818180 8081818080818180
+     then 64 more words: 5ea2a25e 5ea2a25e 65000064 65000067 1c37371e 1b32351f 27292828 24242729 ... (status 8204ffff)
+
+  blocks each rule predicts exactly: A 3, B 2, C 3 of 16
+  words past a block's 16: after 16 of 16 blocks, 1024 in all
+  *** A CONTROL FAILED - this run says nothing about the rounding ***
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+
+mdec/mdec-round: Done.

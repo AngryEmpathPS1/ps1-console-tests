@@ -1,0 +1,73 @@
+gpu-shape-time58 - PREDICTED before its first console run (2026-10-18): v0.377.125 as the SCPH-7001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), and beside it the positional hold experiment holdP3
+with holdfit3's knobs (gpu-shape-time56/57 fitted: SHL 35, SHP 3402.5, SHA 0.8, SHF 8, SHB 5, SHR 1.7, SHQ 13, ends
+150/100/150). v0.377.125 holds only the semi rectangle in the blanking (GPU_RECTS3.stall, 25 at the line start); holdP3f
+adds opaque flat rectangles. Neither holds sprites, semi sprites, fills, lines or copies: what the console shows for those
+is the new information. What would settle what: per kind whether it rises at all, how high against its width, an end catch;
+the 64 x 200 drawings, how many line starts' holds vary with the start.
+
+v0.377.125 (the model as landed):
+A lone polygon's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set,
+at 32 start places across one line in the blanking. No assertions.
+bit 26's D: the fastest of the 32 starts, then at 20,000 + 68 j cycles after VBlank's IRQ less it, j = 0..31
+spr4 4           217 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr4 16          504 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr4 64         1654 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr15 4          512 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr15 16        1699 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr15 64        8873 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+semispr4 16      918 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+semispr4 64     2560 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+semi rect 1      340 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 24 25 25 25 25 0 0 0 0 0 0 0 0 0 0 0 0
+semi rect 4      442 : 0 0 0 0 0 0 0 0 0 0 0 0 0 3 25 25 25 25 25 25 0 0 0 0 0 0 0 0 0 0 0 0
+semi rect 16     913 : 0 0 0 0 0 0 0 25 25 25 25 25 25 25 25 25 25 25 25 25 0 0 0 0 0 0 0 0 0 0 0 0
+semi rect 64    2593 : 0 0 0 0 0 0 0 0 0 0 0 0 0 12 25 25 25 25 25 25 0 0 0 0 0 0 0 0 0 0 0 0
+rect 16          504 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+rect 64         1662 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+fill 16          311 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+fill 32          359 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+fill 64          455 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+fill 128         648 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 64 across   100 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 256 across   292 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 48 down     245 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 200 down    928 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 64x48       253 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+gline 256        354 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+copy 16         1874 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+copy 64         4428 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+rect 64x200     6846 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr4 64x200    14863 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+holdP3f (the positional hold, fitted on gpu-shape-time56/57):
+A lone polygon's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set,
+at 32 start places across one line in the blanking. No assertions.
+bit 26's D: the fastest of the 32 starts, then at 20,000 + 68 j cycles after VBlank's IRQ less it, j = 0..31
+spr4 4           217 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr4 16          504 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr4 64         1654 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr15 4          512 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr15 16        1699 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+spr15 64        8873 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+semispr4 16      918 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+semispr4 64     2560 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+semi rect 1      340 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 24 25 25 25 25 0 0 0 0 0 0 0 0 0 0 0 0
+semi rect 4      442 : 0 0 0 0 0 0 0 0 0 0 0 0 0 3 25 25 25 25 25 25 0 0 0 0 0 0 0 0 0 0 0 0
+semi rect 16     913 : 0 0 0 0 0 0 0 25 25 25 25 25 25 25 25 25 25 25 25 25 0 0 0 0 0 0 0 0 0 0 0 0
+semi rect 64    2593 : 0 0 0 0 0 0 0 0 0 0 0 0 0 12 25 25 25 25 25 25 0 0 0 0 0 0 0 0 0 0 0 0
+rect 16          504 : 0 0 0 0 0 0 0 0 0 0 0 0 3 22 8 8 8 8 8 8 0 0 0 0 0 0 0 0 0 0 0 0
+rect 64         1662 : 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 0 0 0 0 0 0 0 15 14 8 8 8
+fill 16          311 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+fill 32          359 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+fill 64          455 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+fill 128         648 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 64 across   100 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 256 across   292 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 48 down     245 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 200 down    928 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+line 64x48       253 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+gline 256        354 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+copy 16         1874 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+copy 64         4428 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+rect 64x200     6870 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 19 22 8 8 8 8 0 0 0 0 0 0 0 0 0 0 0 0
+spr4 64x200    14863 : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

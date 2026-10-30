@@ -1,0 +1,54 @@
+gpu-shape-time30 - PREDICTED before its first console run (2026-10-15): this core as the SCPH-9001 under the runner
+(scratch/_cores/nr_e.js = v0.377.114's drawing: tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0),
+bit 26's D and bit 28's, cycles. This core charges a semi flat row by the pixel (GPU_SEMI_FLAT2) and draws a triangle's
+two vertex orders alike. What would settle what:
+  A  semi TL 126-130 x 64. gpu-shape-time29 read 127 / 128 / 129 at X 0 as 3403 / 3407 / 3410, a plateau. If the semi
+     row's pairs are the VERTEX's (as the opaque row's), X 1 reads as X 0. If they are the FRAME BUFFER's, every row at
+     X 1 starts on a pair's second pixel: dearer by about a pair a row (~1.45 cycles semi, ~90 over 64 rows), and the
+     plateau one width lower (126-128).
+  B  semi 2x128: gpu-shape-time25 read TL (a pixel a row at x 0) 994, TR (at x 1) 577. Frame buffer pairs: at X 1 they
+     swap (TL ~577, TR ~994). The vertex's: as at X 0. 16x64 the same question on a wider row.
+  C  the vertex-order saving (order 2 - order 1; this core ~+4 everywhere): gpu-shape-time28/29 read 16x16 -4, 16x64
+     -20, 32x64 -7.5, 8x64 ~0. If it grows with the rows, 16x32 ~-10 and 16x128 ~-40; if with the width's place
+     against the 3-pair floor, 12x64 and 20x64 bracket 16x64's peak.
+  D  flat TL 127-129 x 64 at X 1: as at X 0 (2256 / 2258 / 2258), the pairs the vertex's (gpu-shape-time18: position
+     nothing).
+
+row                      b26    b28
+semi TL 126x64           3351     30
+semi TL 127x64           3375     30
+semi TL 128x64           3377     31
+semi TL 129x64           3423     31
+semi TL 130x64           3446     31
+semi TL 126x64 X1        3351     30
+semi TL 127x64 X1        3375     30
+semi TL 128x64 X1        3377     31
+semi TL 129x64 X1        3423     31
+semi TL 130x64 X1        3446     31
+semi TL 2x128             802     26
+semi TL 2x128 X1          802     26
+semi TR 2x128             409     26
+semi TR 2x128 X1          409     26
+semi TL 16x64             753     28
+semi TL 16x64 X1          753     28
+semi TR 16x64             704     28
+semi TR 16x64 X1          704     28
+flat TL 16x16 o1          144     28
+flat TL 16x16 o2          146     30
+flat TL 16x32 o1          247     28
+flat TL 16x32 o2          250     31
+flat TL 16x64 o1          454     28
+flat TL 16x64 o2          458     32
+flat TL 16x128 o1         868     28
+flat TL 16x128 o2         873     33
+flat TL 8x64 o1           361     27
+flat TL 8x64 o2           366     32
+flat TL 12x64 o1          402     27
+flat TL 12x64 o2          407     32
+flat TL 20x64 o1          514     28
+flat TL 20x64 o2          518     32
+flat TL 24x64 o1          573     28
+flat TL 24x64 o2          577     32
+flat TL 127x64 X1        2252     30
+flat TL 128x64 X1        2254     31
+flat TL 129x64 X1        2254     31

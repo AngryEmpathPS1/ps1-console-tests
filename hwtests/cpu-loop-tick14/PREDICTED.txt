@@ -1,0 +1,20 @@
+cpu/cpu-loop-tick14
+The first of two loads late for its reader in the second's delay slot: by reader, load kind, position. No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  CTRL        14.30      14.26
+  ADDU        14.30      14.25
+  JR          14.30      14.26
+  BEQ         14.31      14.26
+  SWDATA      18.36      18.32
+  ADDR        20.39      20.35
+  POS2        14.30      14.25
+  SAME        16.25      16.20
+  SP-FIRST     8.19       8.16
+  SP-SECOND   11.21      11.16
+  IO-FIRST    12.27      12.21
+  IO-SECOND   13.20      13.16
+  THREE       20.38      20.35
+  EPILOG      14.30      14.26
+
+cpu/cpu-loop-tick14: Done.

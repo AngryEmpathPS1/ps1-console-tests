@@ -1,0 +1,43 @@
+
+gpu/gpu-lines2
+Lines in the blanking (20,000 cycles after the VBlank IRQ) and on active lines (200,000), fastest of four, and the
+active lines' toll in tenths of a percent. No assertions.
+
+  512x240         flat dx 255 dy   0  blank   353  active   398  toll 127
+  512x240         semi dx 255 dy   0  blank   851  active   899  toll 56
+  512x240         flat dx 255 dy  32  blank   627  active   671  toll 70
+  512x240         semi dx 255 dy  32  blank  1171  active  1214  toll 36
+  512x240         flat dx 255 dy  64  blank   718  active   764  toll 64
+  512x240         semi dx 255 dy  64  blank  1262  active  1265  toll 2
+  512x240         flat dx 255 dy 128  blank  1124  active  1127  toll 2
+  512x240         semi dx 255 dy 128  blank  1666  active  1667  toll 0
+  512x240         flat dx 255 dy 170  blank  1351  active  1396  toll 33
+  512x240         semi dx 255 dy 170  blank  1894  active  1897  toll 1
+  512x240         flat dx 255 dy 200  blank  1574  active  1576  toll 1
+  512x240         semi dx 255 dy 200  blank  2075  active  2078  toll 1
+  512x240         flat dx 255 dy 228  blank  1754  active  1756  toll 1
+  512x240         semi dx 255 dy 228  blank  2254  active  2254  toll 0
+  512x240         flat dx 255 dy 255  blank  1894  active  1895  toll 0
+  512x240         semi dx 255 dy 255  blank  2432  active  2438  toll 2
+  512x240         flat dx   0 dy 255  blank  1892  active  1892  toll 0
+  512x240         semi dx   0 dy 255  blank  2432  active  2438  toll 2
+  640x240 24-bit  flat dx 255 dy   0  blank   353  active   353  toll 0
+  640x240 24-bit  semi dx 255 dy   0  blank   854  active   899  toll 52
+  640x240 24-bit  flat dx 255 dy  32  blank   627  active   673  toll 73
+  640x240 24-bit  semi dx 255 dy  32  blank  1171  active  1214  toll 36
+  640x240 24-bit  flat dx 255 dy  64  blank   717  active   761  toll 61
+  640x240 24-bit  semi dx 255 dy  64  blank  1259  active  1265  toll 4
+  640x240 24-bit  flat dx 255 dy 128  blank  1123  active  1130  toll 6
+  640x240 24-bit  semi dx 255 dy 128  blank  1664  active  1664  toll 0
+  640x240 24-bit  flat dx 255 dy 170  blank  1349  active  1397  toll 35
+  640x240 24-bit  semi dx 255 dy 170  blank  1895  active  1894  toll 0
+  640x240 24-bit  flat dx 255 dy 200  blank  1574  active  1574  toll 0
+  640x240 24-bit  semi dx 255 dy 200  blank  2078  active  2075  toll -1
+  640x240 24-bit  flat dx 255 dy 228  blank  1759  active  1754  toll -2
+  640x240 24-bit  semi dx 255 dy 228  blank  2255  active  2297  toll 18
+  640x240 24-bit  flat dx 255 dy 255  blank  1894  active  1894  toll 0
+  640x240 24-bit  semi dx 255 dy 255  blank  2435  active  2477  toll 17
+  640x240 24-bit  flat dx   0 dy 255  blank  1892  active  1894  toll 1
+  640x240 24-bit  semi dx   0 dy 255  blank  2437  active  2480  toll 17
+
+gpu/gpu-lines2: Done.

@@ -1,0 +1,18 @@
+
+spu/spu-rearm
+IRQ9 re-armed on the halfword a voice just read: cycles from the first hit. No assertions.
+
+   D  re-arm         CLR    ARM     H2
+   0  addr + bit      767    952   2311
+   1  addr + bit      674    860   8333
+   2  addr + bit      674   1635   8345
+   3  addr + bit      680   2401   8339
+   4  addr + bit      676   3165   8311
+   5  addr + bit      681   3937   8350
+   6  addr + bit      681   4705   8323
+   8  addr + bit      681   6241   8331
+   0  bit only        681    783   8315
+   2  bit only        681   1626   8362
+   4  bit only        672   3162   8337
+
+spu/spu-rearm: Done.

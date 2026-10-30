@@ -1,0 +1,65 @@
+
+cpu/sw-ioread2
+An on-die read behind RAM stores and its reader, warm code (Timer 2 cycles, fastest..slowest of 16).
+There are no assertions - compare against your emulator.
+
+  N0r1  no store, 0 nops, JOY_STAT lbu, 1 nops, its reader   cold  22..22   warm  22..22   miss 0
+  N0r3  no store, 0 nops, JOY_STAT lbu, 3 nops, its reader   cold  23..23   warm  23..23   miss 0
+  N0r4  no store, 0 nops, JOY_STAT lbu, 4 nops, its reader   cold  23..23   warm  23..23   miss 0
+  N0r5  no store, 0 nops, JOY_STAT lbu, 5 nops, its reader   cold  24..24   warm  24..24   miss 0
+  N0r7  no store, 0 nops, JOY_STAT lbu, 7 nops, its reader   cold  26..26   warm  26..26   miss 0
+  N1r1  no store, 1 nop, JOY_STAT lbu, 1 nops, its reader    cold  23..23   warm  23..23   miss 0
+  N1r3  no store, 1 nop, JOY_STAT lbu, 3 nops, its reader    cold  24..24   warm  24..24   miss 0
+  N1r4  no store, 1 nop, JOY_STAT lbu, 4 nops, its reader    cold  24..24   warm  24..24   miss 0
+  N1r5  no store, 1 nop, JOY_STAT lbu, 5 nops, its reader    cold  25..25   warm  25..25   miss 0
+  N1r7  no store, 1 nop, JOY_STAT lbu, 7 nops, its reader    cold  27..27   warm  27..27   miss 0
+  N2r1  no store, 2 nops, JOY_STAT lbu, 1 nops, its reader   cold  24..24   warm  24..24   miss 0
+  N2r3  no store, 2 nops, JOY_STAT lbu, 3 nops, its reader   cold  25..25   warm  25..25   miss 0
+  N2r4  no store, 2 nops, JOY_STAT lbu, 4 nops, its reader   cold  25..25   warm  25..25   miss 0
+  N2r5  no store, 2 nops, JOY_STAT lbu, 5 nops, its reader   cold  26..26   warm  26..26   miss 0
+  N2r7  no store, 2 nops, JOY_STAT lbu, 7 nops, its reader   cold  28..28   warm  28..28   miss 0
+  R0r1  RAM sw, 0 nops, JOY_STAT lbu, 1 nops, its reader     cold  24..30   warm  24..30   miss 0
+  R0r3  RAM sw, 0 nops, JOY_STAT lbu, 3 nops, its reader     cold  25..25   warm  25..25   miss 0
+  R0r4  RAM sw, 0 nops, JOY_STAT lbu, 4 nops, its reader     cold  25..25   warm  25..25   miss 0
+  R0r5  RAM sw, 0 nops, JOY_STAT lbu, 5 nops, its reader     cold  25..29   warm  25..29   miss 0
+  R0r7  RAM sw, 0 nops, JOY_STAT lbu, 7 nops, its reader     cold  26..26   warm  26..26   miss 0
+  R1r1  RAM sw, 1 nop, JOY_STAT lbu, 1 nops, its reader      cold  24..30   warm  24..30   miss 0
+  R1r3  RAM sw, 1 nop, JOY_STAT lbu, 3 nops, its reader      cold  25..25   warm  25..25   miss 0
+  R1r4  RAM sw, 1 nop, JOY_STAT lbu, 4 nops, its reader      cold  25..25   warm  25..25   miss 0
+  R1r5  RAM sw, 1 nop, JOY_STAT lbu, 5 nops, its reader      cold  25..25   warm  25..25   miss 0
+  R1r7  RAM sw, 1 nop, JOY_STAT lbu, 7 nops, its reader      cold  27..35   warm  27..35   miss 0
+  R2r1  RAM sw, 2 nops, JOY_STAT lbu, 1 nops, its reader     cold  24..30   warm  24..30   miss 0
+  R2r3  RAM sw, 2 nops, JOY_STAT lbu, 3 nops, its reader     cold  25..25   warm  25..25   miss 0
+  R2r4  RAM sw, 2 nops, JOY_STAT lbu, 4 nops, its reader     cold  25..25   warm  25..25   miss 0
+  R2r5  RAM sw, 2 nops, JOY_STAT lbu, 5 nops, its reader     cold  26..26   warm  26..26   miss 0
+  R2r7  RAM sw, 2 nops, JOY_STAT lbu, 7 nops, its reader     cold  28..28   warm  28..28   miss 0
+  N3r1  no store, 3 nops, JOY_STAT lbu, 1 nops, its reader   cold  25..25   warm  25..25   miss 0
+  N3r3  no store, 3 nops, JOY_STAT lbu, 3 nops, its reader   cold  26..26   warm  26..26   miss 0
+  N5r1  no store, 5 nops, JOY_STAT lbu, 1 nops, its reader   cold  27..27   warm  27..27   miss 0
+  N5r3  no store, 5 nops, JOY_STAT lbu, 3 nops, its reader   cold  28..28   warm  28..28   miss 0
+  N7r1  no store, 7 nops, JOY_STAT lbu, 1 nops, its reader   cold  29..29   warm  29..29   miss 0
+  N7r3  no store, 7 nops, JOY_STAT lbu, 3 nops, its reader   cold  30..30   warm  30..30   miss 0
+  R3r1  RAM sw, 3 nops, JOY_STAT lbu, 1 nops, its reader     cold  25..27   warm  25..27   miss 0
+  R3r3  RAM sw, 3 nops, JOY_STAT lbu, 3 nops, its reader     cold  26..26   warm  26..26   miss 0
+  R5r1  RAM sw, 5 nops, JOY_STAT lbu, 1 nops, its reader     cold  27..27   warm  27..27   miss 0
+  R5r3  RAM sw, 5 nops, JOY_STAT lbu, 3 nops, its reader     cold  28..28   warm  28..28   miss 0
+  R7r1  RAM sw, 7 nops, JOY_STAT lbu, 1 nops, its reader     cold  29..34   warm  29..34   miss 0
+  R7r3  RAM sw, 7 nops, JOY_STAT lbu, 3 nops, its reader     cold  30..30   warm  30..30   miss 0
+  D3r1  two RAM sw, 3 nops, JOY_STAT lbu, 1 nops, its reader cold  27..33   warm  27..33   miss 0
+  D3r3  two RAM sw, 3 nops, JOY_STAT lbu, 3 nops, its reader cold  28..33   warm  28..33   miss 0
+  D5r1  two RAM sw, 5 nops, JOY_STAT lbu, 1 nops, its reader cold  27..27   warm  27..27   miss 0
+  D5r3  two RAM sw, 5 nops, JOY_STAT lbu, 3 nops, its reader cold  28..38   warm  28..38   miss 0
+  D7r1  two RAM sw, 7 nops, JOY_STAT lbu, 1 nops, its reader cold  29..29   warm  29..29   miss 0
+  D7r3  two RAM sw, 7 nops, JOY_STAT lbu, 3 nops, its reader cold  30..30   warm  30..30   miss 0
+  D0r1  two RAM sw, 0 nops, JOY_STAT lbu, 1 nops, its reader cold  27..27   warm  27..27   miss 0
+  D0r3  two RAM sw, 0 nops, JOY_STAT lbu, 3 nops, its reader cold  28..28   warm  28..28   miss 0
+  D2r1  two RAM sw, 2 nops, JOY_STAT lbu, 1 nops, its reader cold  27..27   warm  27..27   miss 0
+  D2r3  two RAM sw, 2 nops, JOY_STAT lbu, 3 nops, its reader cold  28..34   warm  28..34   miss 0
+  N0x1  no store, 0 nops, JOY_STAT lbu, 1 nops, no reader    cold  20..20   warm  20..20   miss 0
+  N5x1  no store, 5 nops, JOY_STAT lbu, 1 nops, no reader    cold  25..25   warm  25..25   miss 0
+  R0x1  RAM sw, 0 nops, JOY_STAT lbu, 1 nops, no reader      cold  20..20   warm  20..20   miss 0
+  R5x1  RAM sw, 5 nops, JOY_STAT lbu, 1 nops, no reader      cold  25..25   warm  25..25   miss 0
+  D0x1  two RAM sw, 0 nops, JOY_STAT lbu, 1 nops, no reader  cold  20..20   warm  20..20   miss 0
+  D5x1  two RAM sw, 5 nops, JOY_STAT lbu, 1 nops, no reader  cold  25..25   warm  25..25   miss 0
+
+Done.

@@ -1,0 +1,22 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80012878,ehk=800128a8
+ResetGraph:SR=ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-a0-size
+GP0(A0h) at (256,500): the size word, one data word, then words until GPUSTAT.26 (idle).
+Bits shown as 26/27/28, e.g. 101 = idle, no read data, FIFO ready. No assertions.
+
+  2x1 (control)        size 00010002 | after 1 word: bits 26/27/28 000, 101, 101 | idle after 1 words
+  256x1 (control)      size 00010100 | after 1 word: bits 26/27/28 000, 001, 001 | idle after 128 words
+  0 (max, 1024x512)    size 00000000 | after 1 word: bits 26/27/28 000, 001, 001 | idle after 262144 words
+  FFFFFFFF (Tenga)     size ffffffff | after 1 word: bits 26/27/28 000, 001, 001 | idle after 261377 words
+  FFFF wide, 1 high    size 0001ffff | after 1 word: bits 26/27/28 000, 001, 001 | idle after 512 words
+  1 wide, FFFF high    size ffff0001 | after 1 word: bits 26/27/28 000, 001, 001 | idle after 256 words
+  8000 x 8000          size 80008000 | after 1 word: bits 26/27/28 000, 001, 001 | idle after 262144 words
+  0400 x 0200          size 02000400 | after 1 word: bits 26/27/28 000, 001, 001 | idle after 262144 words
+
+Done.

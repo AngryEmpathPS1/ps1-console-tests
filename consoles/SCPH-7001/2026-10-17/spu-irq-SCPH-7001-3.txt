@@ -1,0 +1,21 @@
+
+spu/spu-irq
+Which sound-RAM accesses raise IRQ9, and is it raised late when the address is set onto one?
+There are no assertions - compare against your emulator.
+
+TRANSFER (controls)
+  manual write 3000h-301Fh, IRQ address 3010h                IRQ after       56 cycles
+  manual write 3000h-301Fh, IRQ address 3040h (past the end) no IRQ
+LATE (the address set onto one already reached)
+  control: IRQ 2300h, transfer 2400h                         no IRQ
+  transfer 2000h, then the IRQ address set to 2000h          IRQ after      160 cycles
+  IRQ address 2100h, then the transfer address set to 2100h  IRQ after       24 cycles
+  both 2200h with IRQ9 off, then IRQ9 enabled                IRQ after      656 cycles
+VOICE (voice 0 on a block at 1000h, pitch 1: a block lasts ~2.6 s)
+  IRQ address set to 1000h (the block's first half)          IRQ after      448 cycles
+  IRQ address set to 1008h (the block's second half)         IRQ after 10886736 cycles
+REVERB (work area 70000h-7FFFFh, IRQ address 78000h)
+  reverb ENABLED (SPUCNT bit 7)                              IRQ after 24809440 cycles
+  reverb disabled                                            IRQ after       32 cycles
+
+Done.

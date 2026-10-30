@@ -1,0 +1,38 @@
+gpu-shape-time35 - PREDICTED before its first console run (2026-10-15 night), bit 26's D (and bit 28's), cycles: v0.377.116
+as the SCPH-9001 under the runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), and the
+v0.377.117 candidate (scratch/apply_semirect.js: gpu-shape-time34's law, exact over W 1-128 x 16). What would settle what:
+  - if the law holds past 128 wide, the candidate's column (W 144-512 x 16 within a few cycles);
+  - if v0.377.116's per-pixel charge is right out there, its column - the scan-out model was fitted on the semi 256 x 32;
+  - the heights (1, 4, 32 at five widths) give the row's own cost apart from the set-up, which gpu-shape-time34's
+    16-row rectangles could not.
+
+row                    v116   cand   b28
+semi 128x16              1616   1607     9
+semi 144x16              1802   1791     9
+semi 160x16              1987   1975     9
+semi 176x16              2172   2159     9
+semi 192x16              2358   2343     9
+semi 208x16              2543   2527     9
+semi 224x16              2729   2710     9
+semi 240x16              2914   2894     9
+semi 256x16              3100   3078     9
+semi 272x16              3285   3262     9
+semi 320x16              3841   3814     9
+semi 384x16              4583   4549     9
+semi 448x16              5325   5285     9
+semi 512x16              6066   6021     9
+semi 16x1                  36     36     9
+semi 16x4                  92     92     9
+semi 16x32                620    623     9
+semi 64x1                  70     70     9
+semi 64x4                 231    230     9
+semi 64x32               1732   1726     9
+semi 128x1                117    116     9
+semi 128x4                417    414     9
+semi 128x32              3216   3197     9
+semi 256x1                209    208     9
+semi 256x4                787    782     9
+semi 256x32              6182   6140     9
+semi 512x1                395    392     9
+semi 512x4               1529   1518     9
+semi 512x32             12116  12025     9

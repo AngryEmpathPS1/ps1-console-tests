@@ -1,0 +1,38 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+sio/sio1-loopback
+SIO1 timed from the inside: rate, SR.0/SR.2, the start's alignment, and with a loopback plug
+(4-1 TXD-RXD, 6-3 DTR-DSR, 8-5 RTS-CTS) the receiver, the FIFO and the interrupts. No assertions.
+
+>>> NO BUTTONS IN THIS TEST - WATCH THE TV. When it turns BLUE: take the serial cable out of the console and put the loopback plug in. YELLOW: it is measuring (a second or two). GREEN: take the loopback plug out and put the serial cable back. The results then print here by themselves.
+THE PLUG: seen by its lines
+
+LINES (SR.7 DSR, SR.8 CTS)
+  DTR/RTS off: DSR 0 CTS 1    DTR/RTS on: DSR 1 CTS 1    DTR alone: DSR 0 CTS 1
+  loopback plug: no (the receiver rows below will say no RX)
+  the handshake pairs: CROSSED - DTR reaches CTS and RTS reaches DSR: twist the four handshake wires the other way round
+
+ONE BYTE: cycles from the TX_DATA write (Timer2, CPU clock)
+  8N1 MUL16 BAUD 0024h       bit   576  SR.0    595  SR.2   6329  RX   6119 (5a)
+  8N2 MUL16 BAUD 0024h       bit   576  SR.0    601  SR.2   6936  RX   6116 (5a)
+  8N1.5 MUL16 BAUD 0024h     bit   576  SR.0    601  SR.2   6646  RX   6116 (5a)
+  8O1 MUL16 BAUD 0024h       bit   576  SR.0    601  SR.2   6923  RX   6710 (5a)
+  8E1 MUL16 BAUD 0024h       bit   576  SR.0    601  SR.2   6920  RX   6710 (5a)
+  5N1 MUL16 BAUD 0024h       bit   576  SR.0    601  SR.2   4610  RX   4400 (1a)
+  8N1 MUL1 BAUD 0100h        bit   256  SR.0    181  SR.2   2759  RX -    1 (00)
+  8N1 MUL1 BAUD 0101h (odd)  bit   256  SR.0    181  SR.2   2759  RX -    1 (00)
+  8N1 MUL64 BAUD 0010h       bit  1024  SR.0   1056  SR.2  11294  RX  10828 (5a)
+  8N1 MUL16 BAUD 0001h       bit    16  SR.0     27  SR.2    208  RX    208 (5a)
+  8N1 MUL16 BAUD 00D8h       bit  3456  SR.0   3401  SR.2  37967  RX  36669 (5a)
+
+THE START'S ALIGNMENT (8N1 MUL16 BAUD 0024h, a bit is 576)
+  write   37 after BAUD      SR.0   652 after the write (  689 after BAUD)
+  write  160 after BAUD      SR.0   638 after the write (  798 after BAUD)
+  write  304 after BAUD      SR.0   666 after the write (  970 after BAUD)
+  write  448 after BAUD      SR.0   672 after the write ( 1120 after BAUD)
+  write  736 after BAUD      SR.0   666 after the write ( 1402 after BAUD)
+
+No loopback plug: the receiver sections are skipped.
+
+Done.

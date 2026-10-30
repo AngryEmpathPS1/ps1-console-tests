@@ -1,0 +1,14 @@
+
+cdrom/cd-init-after
+Init after a double-speed read is Paused at 09:02:55, with Famitsu Wave's commands and spacing. Needs a disc of 10+ minutes.
+Cycles at the system clock (1 ms = 33,869), each from its command's write. No assertions - compare against your emulator.
+
+drive region: for U/C - unlocking (a burned disc needs it; a pressed one ignores it)
+0  Pause 3 +29432 2 +2305632 | Init 3 +68312 2 +40127112 | Init 3 +61952 2 +818008 | ReadN 3 +29600 1 +19350592
+1  Pause 3 +27608 2 +2273120 | Init 3 +68304 2 +48715128 | Init 3 +80832 2 +1748008 | ReadN 3 +29552 1 +21100792
+2  Pause 3 +34864 2 +2294480 | Init 3 +68256 2 +44494864 | Init 3 +61960 2 +10762056 | ReadN 3 +56352 1 +18755488
+3  Pause 3 +37320 2 +2281384 | Init 3 +68256 2 +44455720 | Init 3 +80784 2 +853032 | ReadN 3 +72712 1 +32211624
+4  Pause 3 +30928 2 +2291016 | Init 3 +68728 2 +40088000 | Init 3 +80680 2 +860768 | ReadN 3 +91688 1 +25708104
+5  Pause 3 +27568 2 +2296520 | Init 3 +68480 2 +31677232 | Init 3 +67776 2 +839760 | ReadN 3 +29560 1 +36291920
+
+Done.

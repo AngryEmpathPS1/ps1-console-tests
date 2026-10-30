@@ -1,0 +1,18 @@
+
+spu/spu-reverb
+Studio Small's work area after an impulse and after a DC input, read back by DMA. No assertions.
+
+(after the zeroing DMA the area read back 0 non-zero halfwords)
+(voice 0: the sample read back exactly; after the run its repeat address 0000, envelope 7fff, ENDX bit 0 0)
+IMPULSE, 1,000.5 steps: 0 non-zero halfwords, checksum 00000000. Rows of 16 from 7E0C0h, non-zero rows only:
+
+(after the zeroing DMA the area read back 0 non-zero halfwords)
+(voice 0: the sample read back exactly; after the run its repeat address 0200, envelope 7fff, ENDX bit 0 0)
+
+DC 4000h, 3 s: 1 distinct values (and 0 halfwords beyond the first 64), value x count:
+  0000 x4000
+
+VOICE 1 on the same blocks, 2 ms after KON: 0 non-zero samples in its capture ring (written half now 1):
+
+
+spu/spu-reverb: Done.

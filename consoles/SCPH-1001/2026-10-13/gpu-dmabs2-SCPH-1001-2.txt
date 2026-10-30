@@ -1,0 +1,18 @@
+
+gpu/gpu-dmabs2
+A: 128x64 uploads by DMA2 block size from a clean GPU, recovered after each. B: 4,096-word downloads by shape.
+In the blanking. No assertions.
+
+A  upload  32-word blocks: 6038 cycles
+A  upload  16-word blocks: 7380 cycles
+A  upload   8-word blocks: 10300 cycles
+A  upload  64-word blocks: 5240 cycles
+A  upload  16-word blocks: 7399 cycles
+
+B  shape     rows   16-word   128-word
+   512x16      16     12376       4873
+   256x32      32     12473       4871
+   128x64      64     12696       4823
+    64x128    128     13029       4825
+
+gpu/gpu-dmabs2: Done.

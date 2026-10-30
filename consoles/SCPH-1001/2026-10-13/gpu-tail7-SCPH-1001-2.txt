@@ -1,0 +1,66 @@
+
+gpu/gpu-tail7
+The cheap stretch after a VBlank: A 24 flat probes, B 200,000 idle cycles first, C an idle in the middle. 256x32 at
+(0,16); fastest..slowest of eight and how many cheap (flat under 4,420, semi under 6,600). No assertions.
+
+A  a VBlank wait, then 24 flat probes:
+  #1  4392..4460 cheap 3
+  #2  4391..4435 cheap 5
+  #3  4390..4435 cheap 4
+  #4  4389..4436 cheap 3
+  #5  4390..4436 cheap 4
+  #6  4392..4436 cheap 4
+  #7  4389..4436 cheap 5
+  #8  4433..4476 cheap 0
+  #9  4391..4436 cheap 2
+  #10 4392..4439 cheap 4
+  #11 4389..4435 cheap 3
+  #12 4390..4435 cheap 2
+  #13 4389..4436 cheap 3
+  #14 4393..4434 cheap 7
+  #15 4390..4436 cheap 5
+  #16 4389..4439 cheap 1
+  #17 4434..4436 cheap 0
+  #18 4394..4435 cheap 6
+  #19 4388..4435 cheap 6
+  #20 4387..4433 cheap 4
+  #21 4390..4435 cheap 3
+  #22 4390..4436 cheap 4
+  #23 4389..4434 cheap 6
+  #24 4390..4438 cheap 3
+B  a VBlank wait, 200,000 idle cycles, then 16 semi probes:
+  #1  12713..12785 cheap 0
+  #2  12743..12754 cheap 0
+  #3  12745..12789 cheap 0
+  #4  12745..12792 cheap 0
+  #5  12707..12790 cheap 0
+  #6  12746..12789 cheap 0
+  #7  12745..12789 cheap 0
+  #8  12744..12791 cheap 0
+  #9  12745..12792 cheap 0
+  #10 12745..12792 cheap 0
+  #11 12748..12789 cheap 0
+  #12 12704..12792 cheap 0
+  #13 12710..12792 cheap 0
+  #14 12709..12752 cheap 0
+  #15 12709..12792 cheap 0
+  #16 12745..12794 cheap 0
+C  a VBlank wait, 4 semi probes, 100,000 idle cycles, 12 more:
+  #1  12704..12789 cheap 0
+  #2  12710..12792 cheap 0
+  #3  12710..12791 cheap 0
+  #4  12709..12756 cheap 0
+  #5  12754..12793 cheap 0
+  #6  12756..12796 cheap 0
+  #7  12750..12756 cheap 0
+  #8  12752..12756 cheap 0
+  #9  12754..12791 cheap 0
+  #10 12750..12759 cheap 0
+  #11 12750..12756 cheap 0
+  #12 12753..12791 cheap 0
+  #13 12752..12789 cheap 0
+  #14 12752..12756 cheap 0
+  #15 12750..12795 cheap 0
+  #16 12750..12756 cheap 0
+
+gpu/gpu-tail7: Done.

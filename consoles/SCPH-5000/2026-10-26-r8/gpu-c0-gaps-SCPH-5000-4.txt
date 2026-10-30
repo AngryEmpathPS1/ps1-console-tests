@@ -1,0 +1,14 @@
+
+gpu/gpu-c0-gaps
+GPUSTAT bit 27 k NOPs after a GP0(C0h)'s last word, the clear (GP0(01h)) and the C0h at different spacings.
+A row: the case, the first k with bit 27 set, then bit 27 for k = 0..39. No assertions.
+
+A    first 20  0000000000000000000011111111111111111111  GP0(01h), C0h, position, size back to back (Datel's order, gpu-c0-datel's DATEL)
+B    first 17  0000000000000000011111111111111111111111  the products' spacing: the GP0 pointer loaded from RAM before every store (GameShark 2.42, 80010CF8h)
+C4   first 17  0000000000000000010110111111111111111011  GP0(01h), C0h, position, size with 4 NOPs between each
+C8   first 10  0000000000100000010111011101011111111111  GP0(01h), C0h, position, size with 8 NOPs between each
+C13  first 17  0000000000000000011111111111111111111111  GP0(01h), C0h, position, size with 13 NOPs between each
+D    first 19  0000000000000000000111111111111111111111  no clear: C0h, position, size back to back
+PROD  bit 27 at GameShark 2.42's own check: set 1 of 16
+
+Done.

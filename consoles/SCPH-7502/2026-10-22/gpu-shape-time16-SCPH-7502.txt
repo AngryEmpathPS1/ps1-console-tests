@@ -1,0 +1,16 @@
+
+gpu/gpu-shape-time16
+A lone polygon's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set,
+at one start place each. No assertions.
+
+bit 26's D in the blanking, then at 200,000 + 67 j cycles after VBlank's IRQ less the blanking's, j = 0..31
+gour 16x16     338 : 31 0 0 0 0 0 23 7 0 0 0 0 0 0 0 81 51 20 0 0 0 0 0 0 0 0 31 5 0 0 0 0
+gour 16x32     508 : 0 0 0 26 25 0 0 0 0 0 0 0 88 80 56 33 33 16 0 0 0 0 0 25 29 0 0 0 0 0 25 1
+gour 16x64     848 : 13 0 0 0 0 0 0 12 91 63 41 36 34 33 32 33 28 25 35 33 15 0 0 0 13 34 17 0 0 0 0 33
+gour 16x128   1538 : 57 34 29 31 25 29 28 23 56 56 41 18 20 24 50 52 42 10 -10 -10 -10 24 17 3 -10 -10 -10 -10 -10 -10 83 77
+gour 16x64 BL   835 : 15 0 0 0 0 0 0 15 89 78 45 41 34 32 34 29 27 12 0 28 18 0 0 0 11 32 15 0 0 0 0 34
+tex 16x64      805 : 11 0 0 0 0 0 0 19 91 79 56 38 36 33 31 33 26 22 9 33 14 0 0 0 1 33 17 0 0 0 0 34
+gtex 16x64     936 : 0 0 0 0 0 93 76 58 40 35 36 36 35 34 27 5 35 27 1 0 0 0 35 26 2 0 0 0 35 21 5 0
+flat 16x64     457 : 35 35 31 20 29 44 35 35 32 25 17 0 0 0 87 93 93 90 81 71 60 6 0 0 0 35 35 35 34 27 17 47
+
+gpu/gpu-shape-time16: Done.

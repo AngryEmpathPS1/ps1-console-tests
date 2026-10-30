@@ -1,0 +1,39 @@
+gpu-shape-time20 on the SCPH-9001 - PREDICTED before its first run there (2026-10-15 morning): this core, v0.377.113 (451d141),
+as the SCPH-9001 under the runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0). The NEW GPU's
+model: rows by its own fit (gpu-shape-time3-6), no pixel pairs counted from the leftmost vertex, no free part of the
+left-edge walk - the 1001 (old GPU) showed both (STATUS, gpu-shape-time18-21). Bits 26 / 28 D, fastest..slowest.
+
+
+gpu/gpu-shape-time20
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+gour TL 16x16           349..349      169..169  
+gour TR 16x16           362..362      169..169  
+gour TL 32x16           485..485      170..170  
+gour TR 32x16           514..514      170..170  
+gour TL 64x16           758..758      171..171  
+gour TR 64x16           818..818      171..171  
+gour TL 128x16         1304..1304     172..172  
+gour TR 128x16         1425..1425     172..172  
+gour TL 256x16         2396..2396     173..173  
+gour TR 256x16         2637..2637     173..173  
+semi TL 16x16           227..227       28..28   
+semi TR 16x16           227..227       28..28   
+semi TL 32x16           327..327       29..29   
+semi TR 32x16           327..327       29..29   
+semi TL 64x16           525..525       30..30   
+semi TR 64x16           525..525       30..30   
+semi TL 128x16          920..920       31..31   
+semi TR 128x16          920..920       31..31   
+semi TL 256x16         1710..1710      32..32   
+semi TR 256x16         1710..1710      32..32   
+sgour TL 32x16          511..511      170..170  
+sgour TR 32x16          535..535      170..170  
+sgour TL 128x16        1331..1331     172..172  
+sgour TR 128x16        1430..1430     172..172  
+gquad 64x16            1335..1335     754..754  
+gquad 256x16           4598..4598    2392..2392 
+
+gpu/gpu-shape-time20: Done.

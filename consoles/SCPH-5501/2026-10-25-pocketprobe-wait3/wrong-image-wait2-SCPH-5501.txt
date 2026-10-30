@@ -1,0 +1,79 @@
+
+sio/pocket-probe
+The image "PK PROBE WAIT2 in block 12, beside Pocket Alpha 3" (996 frames not erased) written to the card in slot 2, every frame read back, then started (59h).
+
+running before: dir_index 000c - sent back to its GUI (59h 0000)
+  after 1 59h: dir_index 0000
+  5Ah after the stop: ff 08 12 00 00 01 01 01 01 20 2d 3e 47 24 10 26 20 07 42 14 07   dir_index 0000  ComFlags b0 1 b1 1 b3 1 b2 1
+frames already right 1022, written and verified 2, FAILED 0
+  5Ah before the start: ff 00 12 00 00 01 01 01 01 20 2d 3e 47 24 10 26 20 16 42 14 07   dir_index 0000  ComFlags b0 1 b1 1 b3 1 b2 1
+  59h sent: 81->ff 59->00 00->06 00->00 0c->00 00->00 00->00 00->00 00->00
+  5Ah just after: ff 00 12 00 00 01 01 01 01 20 2d 3e 47 24 10 26 20 16 42 14 07   dir_index 0000  ComFlags b0 1 b1 1 b3 1 b2 1
+  result frame 831: written after 40 s and 1 polls of 0.5 s
+  word  0  32574b50  844581712
+  word  1  00000007  7
+  word  2  07144217  118768151
+  word  3  00000104  260
+  word  4  00000284  644
+  word  5  00000204  516
+  word  6  00000284  644
+  word  7  00000204  516
+  word  8  00000204  516
+  word  9  00000184  388
+  word 10  00000284  644
+  word 11  00000205  517
+  word 12  00000385  901
+  word 13  00000305  773
+  word 14  00000385  901
+  word 15  00000305  773
+  word 16  00000385  901
+  word 17  00000305  773
+  word 18  00000385  901
+  word 19  00000205  517
+  word 20  00000385  901
+  word 21  00000305  773
+  word 22  00000000  0
+  word 23  00000000  0
+  word 24  00000385  901
+  word 25  00000305  773
+  word 26  00000385  901
+  word 27  00000104  260
+  word 28  00000284  644
+  word 29  00000204  516
+  word 30  00000384  900
+  word 31  00000284  644
+  word 32  00000204  516
+  word 33  00000184  388
+  word 34  00000284  644
+  word 35  00000104  260
+  word 36  00000384  900
+  word 37  00000284  644
+  word 38  00000284  644
+  word 39  00000204  516
+  word 40  00000204  516
+  word 41  00000184  388
+  word 42  00000284  644
+  word 43  00000000  0
+  word 44  00000000  0
+  word 45  00000000  0
+  word 46  00000000  0
+  word 47  00000000  0
+  word 48  00000000  0
+  word 49  00000000  0
+  word 50  00000000  0
+  word 51  00000000  0
+  word 52  00000000  0
+  word 53  00000000  0
+  word 54  00000000  0
+  word 55  00000000  0
+  word 56  00000000  0
+  word 57  00000000  0
+  word 58  00000000  0
+  word 59  00000000  0
+  word 60  00000000  0
+  word 61  00000000  0
+  word 62  00000000  0
+  word 63  00000000  0
+  5Ah at the end: ff 08 12 00 0c 01 01 01 01 20 2d 3e 47 24 10 26 20 57 42 14 07   dir_index 000c  ComFlags b0 1 b1 1 b3 1 b2 1
+
+sio/pocket-probe: Done.

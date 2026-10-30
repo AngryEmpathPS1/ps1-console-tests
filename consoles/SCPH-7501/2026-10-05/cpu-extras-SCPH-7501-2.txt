@@ -1,0 +1,74 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cpu/cpu-extras
+Loops of 256, the second run of each, minus a loop with nops in place: extra cycles an iteration.
+
+PRID (cop0 r15): 00000002
+
+MUL/DIV then MFLO at once: extra, and latency = extra + 1
+  multu 0        x 3         extra 5.99  latency 6.99
+  multu 7FF      x 3         extra 5.99  latency 6.99
+  multu 800      x 3         extra 8.99  latency 9.99
+  multu FFFFF    x 3         extra 8.99  latency 9.99
+  multu 100000   x 3         extra 12.99  latency 13.99
+  multu 7FFFFFFF x 3         extra 12.99  latency 13.99
+  multu 80000000 x 3         extra 12.99  latency 13.99
+  multu FFFFFFFF x 3         extra 12.99  latency 13.99
+  multu 3        x FFFFFFFF  extra 5.99  latency 6.99
+  multu FFFFFFFF x 0         extra 12.99  latency 13.99
+  mult  FFFFFFFF x 3         extra 5.99  latency 6.99
+  mult  FFFFF801 x 3         extra 5.99  latency 6.99
+  mult  FFFFF800 x 3         extra 5.99  latency 6.99
+  mult  FFFFF7FF x 3         extra 8.99  latency 9.99
+  mult  FFF00001 x 3         extra 8.99  latency 9.99
+  mult  FFF00000 x 3         extra 8.99  latency 9.99
+  mult  FFEFFFFF x 3         extra 12.99  latency 13.99
+  mult  80000000 x 3         extra 12.99  latency 13.99
+  mult  7FFFF    x 3         extra 8.99  latency 9.99
+  mult  3        x 80000000  extra 5.99  latency 6.99
+  divu  100      / 7         extra 35.99  latency 36.99
+  divu  FFFFFFFF / 1         extra 35.99  latency 36.99
+  divu  1        / FFFFFFFF  extra 35.99  latency 36.99
+  divu  5        / 0         extra 35.99  latency 36.99
+  divu  0        / 0         extra 35.99  latency 36.99
+  div   100      / 7         extra 35.99  latency 36.99
+  div   -100     / 7         extra 35.99  latency 36.99
+  div   80000000 / -1        extra 35.99  latency 36.99
+  div   5        / 0         extra 35.99  latency 36.99
+  div   -5       / 0         extra 35.99  latency 36.99
+
+SWEEPS: K nops between the multiply and MFLO, extra at each K
+  multu        3 x 3, K = 0..16: 5.99 4.99 3.99 2.98 1.99 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.03 0.00 0.00
+  multu     1234 x 3, K = 0..16: 8.99 7.99 6.99 5.99 4.99 3.99 2.98 1.99 0.00 0.00 0.00 0.00 0.00 0.00 0.03 0.00 0.00
+  multu 12345678 x 3, K = 0..16: 12.99 11.99 10.99 9.99 8.99 7.99 6.99 5.99 4.99 3.99 2.98 1.99 0.00 0.00 0.03 0.00 0.00
+  divu 100 / 7, K = 0..40: 35.99 34.99 33.99 32.99 31.99 30.99 29.99 28.99 27.99 26.99 25.99 24.99 23.99 22.99 21.99 20.99 19.99 18.99 17.99 16.99 15.99 14.99 13.99 12.99 11.99 10.97 9.99 8.99 7.99 6.99 5.99 4.99 3.99 3.00 1.99 0.00 0.00 0.00 0.00 0.00 0.00
+
+IN FLIGHT (a = 12345678h slow, b = 3 fast, both times 5; x = 5A5A5A5Ah):
+  multu a; multu b; mflo           extra 5.99  read 0000000f
+  multu a; 5 nops; multu b; mflo   extra 5.99  read 0000000f
+  divu a/5; multu b; mflo          extra 5.99  read 0000000f
+  multu a; mtlo x; mflo            extra 0.00  read 5a5a5a5a
+  multu a; mthi x; mfhi            extra 0.00  read 5a5a5a5a
+  (a x 5 = 00000001:5B05B058, b x 5 = 15; a / 5 = 03A4A4B1 rem 3)
+
+LWC2 / LW, eight back to back (extra per load):
+  lwc2 RAM 6.15   lwc2 scratchpad 0.00   lw RAM 5.02   lw scratchpad 0.00
+  one load then K ALU ops, four times (extra per load), K = 0..6:
+    lwc2 RAM: 6.12 6.07 6.10 6.09 6.10 6.05 6.08
+    lw   RAM: 4.86 5.38 4.38 3.60 2.78 2.08 2.09
+
+SWC2 / MFC2 of SXY2, K nops after RTPS (extra), K = 0..20:
+  swc2: 15.00 14.00 13.00 11.99 11.00 10.00 9.00 8.00 7.00 6.00 5.00 4.00 3.00 2.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+  mfc2: 15.00 14.00 13.00 12.00 11.00 10.00 9.00 8.01 7.00 6.00 5.00 4.00 3.00 2.00 0.01 0.00 0.00 0.04 0.00 0.00 0.00
+  word read (N = RTPS's result 007f00ae, O = the 12341234 before it):
+  swc2: N N N N N N N N N N N N N N N N N N N N N
+  mfc2: N N N N N N N N N N N N N N N N N N N N N
+
+WRITE BUFFER: N stores back to back then 40 nops (extra per iteration), N = 1..8:
+  0.00 0.00 0.00 0.00 0.00 2.25 2.24 4.14
+
+CD STORE (1F801800h, extra per access):
+  sb x1 5.85   sb x4 8.21   lbu x1 8.00   lbu x4 9.25
+
+cpu/cpu-extras: Done.

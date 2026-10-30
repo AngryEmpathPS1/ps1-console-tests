@@ -1,0 +1,32 @@
+gpu-shape-time33 - PREDICTED for the SCPH-1001 before its first run there (2026-10-15 evening): v0.377.114 as the
+SCPH-1001 under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000
+--tol=0), bit 26's D and bit 28's, cycles. The old GPU's model is GPU_OLD_FLAT / GPU_OLD_WALK / GPU_POLY_OLD3 (v0.377.109-110).
+What it settles: the old GPU's thin rows (the 9001: opaque max(4.4, 4.0 + 0.45 P, 1.886 + 1.0036 P); semi its own narrow regime).
+
+row                      b26    b28
+flat TL 2x128             859     26
+flat TL 3x128             879     26
+flat TL 4x128             923     26
+flat TL 5x128             949     26
+flat TL 6x128             988     26
+flat TR 2x128             548     26
+flat TR 3x128             626     26
+flat TR 4x128             761     26
+flat TR 5x128             759     26
+flat TR 6x128             871     26
+semi TL 2x128            1114     26
+semi TL 3x128            1221     26
+semi TL 4x128            1306     26
+semi TL 5x128            1410     26
+semi TL 6x128            1501     26
+semi TR 2x128             676     26
+semi TR 3x128             885     26
+semi TR 4x128            1031     26
+semi TR 5x128            1182     26
+semi TR 6x128            1273     26
+semi TL 16x64 o1         1244     28
+semi TL 16x64 o2         1252     32
+semi TL 32x64 o1         2012     29
+semi TL 32x64 o2         2020     32
+semi TL 64x64 o1         3589     30
+semi TL 64x64 o2         3596     32

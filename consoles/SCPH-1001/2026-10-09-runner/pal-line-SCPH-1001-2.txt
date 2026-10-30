@@ -1,0 +1,25 @@
+ResetGraph:itb=80012af0,ehk=80012b20
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/pal-line
+A frame's length in CPU cycles (Timer 2) and hblanks (Timer 1), NTSC and PAL: 64 frames from a VBlank edge, then 8 one by one.
+No assertions - compare against your emulator.
+
+NTSC 320 240   GPUSTAT 5602020a  64 frames: 36231813 cycles, 16832 lines = 566122.07 cycles a frame, 263.00 lines, 2152.555 cycles a line
+               one by one: 566096/263 566110/263 566150/263 566087/263 566150/263 566150/263 566083/263 566138/263
+NTSC 320 480i  GPUSTAT 564a020a  64 frames: 36162854 cycles, 82336 lines = 565044.59 cycles a frame, 1286.50 lines, 439.210 cycles a line
+               one by one: 566151/263 563929/262 566138/263 563995/262 566135/263 563928/262 566154/263 563925/262
+PAL  320 240   GPUSTAT 5612020a  64 frames: 43162623 cycles, 85632 lines = 674415.98 cycles a frame, 1338.00 lines, 504.047 cycles a line
+               one by one: 674424/314 674398/314 674414/314 674399/314 674410/314 674399/314 674465/314 674399/314
+               PAL / NTSC frame: 1.191290 (3405 ticks a line: 1.191317, 3406: 1.191667)
+PAL  320 480i  GPUSTAT 565a020a  64 frames: 42956409 cycles, 85536 lines = 671193.89 cycles a frame, 1336.50 lines, 502.202 cycles a line
+               one by one: 670170/312 672256/313 670098/312 672244/313 670168/312 672241/313 670153/312 672256/313
+PAL  256 240   GPUSTAT 5610020a  64 frames: 43162623 cycles, 20096 lines = 674415.98 cycles a frame, 314.00 lines, 2147.821 cycles a line
+               one by one: 674415/314 674410/314 674399/314 674398/314 674466/314 674398/314 674399/314 674410/314
+PAL  640 240   GPUSTAT 5616020a  64 frames: 43162638 cycles, 20096 lines = 674416.21 cycles a frame, 314.00 lines, 2147.822 cycles a line
+               one by one: 674412/314 674465/314 674414/314 674399/314 674410/314 674399/314 674398/314 674466/314
+
+gpu/pal-line: Done.

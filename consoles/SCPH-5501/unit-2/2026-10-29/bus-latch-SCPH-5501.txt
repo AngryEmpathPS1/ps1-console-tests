@@ -1,0 +1,34 @@
+
+cpu/bus-latch
+What fills the top half of a 32-bit read of I_MASK: each case's last word on the main bus.
+There are no assertions - compare against your emulator, and say which console model ran it.
+
+HOT (second call, lines cached)                    top    rules
+  sw A1A1FFFFh to I_STAT                   0002   A1A1 it drives the bus (this core), 5A5A it does not
+  sw A5A5xxxxh to I_MASK, read T2 target   A5A5   5A5A it does not (imask-upper; this core), A5A5 it does when another is read
+  sh B2B2B3B3h to RAM+2                    8001   B3B3 the halfword shifted to its lane (this core), B2B2 the register
+  sh B2B2B3B3h to RAM+0                    8001   B2B2 the register's own upper half (this core), 0000 lanes left undriven
+  sb C4C5C6C7h to RAM+3                    8001   C700 the byte shifted to its lane (this core), C4C5 the register
+  sb C4C5C6C7h to RAM+1                    3C05   C5C6 the byte shifted to its lane (this core), C4C5 the register
+  marker, lw BFC00000h (ROM, 3C08xxxxh)    3C07   3C08 a ROM read drives it, 5A5A it does not (this core)
+  marker, lw SPU voice 0 ADSR (E5E51111h)  3C05   E5E5 an SPU read drives it, 5A5A it does not (this core)
+  sw D6D62222h to SPU voice 0 ADSR         0200   D6D6 an SPU store drives it (this core), 5A5A it does not
+  marker, lw RAM (C3C35A00h) - control     C3C3   C3C3 (imask-upper's row)
+  marker, DMA6 OTC ends on 00FFFFFFh       0002   00FF the DMA's last word, 1100 the CHCR store's own (this core)
+
+COLD (after FlushCache: the read's own line misses)
+  sw marker 1 slot before the read         03E0   5A5A pipeline order (this core), 03E0 program order
+  sw marker 2 slots before the read        03E0   5A5A pipeline order, 03E0 program order (this core)
+  sw marker 3 slots before the read        03E0   03E0 both (a tie: the fetch after the store)
+  lw RAM (C3C3) 1 slot before the read     C3C3   C3C3 pipeline order (this core), 03E0 program order
+  sw marker 1 slot before the read         03E0   5A5A pipeline order (this core), 03E0 program order
+  sw marker 2 slots before the read        03E0   5A5A pipeline order, 03E0 program order (this core)
+  sw marker 3 slots before the read        03E0   03E0 both (a tie: the fetch after the store)
+  lw RAM (C3C3) 1 slot before the read     C3C3   C3C3 pipeline order (this core), 03E0 program order
+  sw marker 1 slot before the read         03E0   5A5A pipeline order (this core), 03E0 program order
+  sw marker 2 slots before the read        03E0   5A5A pipeline order, 03E0 program order (this core)
+  sw marker 3 slots before the read        03E0   03E0 both (a tie: the fetch after the store)
+  lw RAM (C3C3) 1 slot before the read     C3C3   C3C3 pipeline order (this core), 03E0 program order
+  the 1-slot store, hot - control          5A5A   5A5A both (no fill between)
+
+cpu/bus-latch: Done.

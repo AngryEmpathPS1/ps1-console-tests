@@ -1,0 +1,31 @@
+
+gpu/gpu-scanout
+The same primitives under four display modes, written to GP0 by the CPU, then GPUSTAT polled: when bit 28 and
+bit 26 read set, cycles from the first word, fastest..slowest of four. No assertions.
+
+DISPLAY OFF:
+  flat rectangle 256x256     3 words   bit 28      94..138      bit 26    35561..35637
+  semi rectangle 256x256     3 words   bit 28      94..96       bit 26    49613..51829
+  fill 256x256               3 words   bit 28      94..99       bit 26     6071..6156
+  copy 256x256               4 words   bit 28     108..110      bit 26    85814..88706
+  sprite 15-bit 256x256      4 words   bit 28     108..108      bit 26   193510..202461
+320x240 15-bit:
+  flat rectangle 256x256     3 words   bit 28      94..97       bit 26    35164..35290
+  semi rectangle 256x256     3 words   bit 28      94..99       bit 26    51381..53458
+  fill 256x256               3 words   bit 28      94..99       bit 26     5929..6064
+  copy 256x256               4 words   bit 28     108..111      bit 26    84909..85772
+  sprite 15-bit 256x256      4 words   bit 28     108..108      bit 26   196221..199164
+640x480 interlaced 15-bit:
+  flat rectangle 256x256     3 words   bit 28      94..99       bit 26    33531..35973
+  semi rectangle 256x256     3 words   bit 28      94..94       bit 26    55531..55617
+  fill 256x256               3 words   bit 28      94..100      bit 26     6246..6295
+  copy 256x256               4 words   bit 28     108..111      bit 26    85407..85770
+  sprite 15-bit 256x256      4 words   bit 28     108..108      bit 26   200650..205716
+640x480 interlaced 24-bit:
+  flat rectangle 256x256     3 words   bit 28      94..94       bit 26    37186..37239
+  semi rectangle 256x256     3 words   bit 28      94..97       bit 26    49708..59103
+  fill 256x256               3 words   bit 28      94..94       bit 26     6649..6656
+  copy 256x256               4 words   bit 28     108..117      bit 26    87668..92821
+  sprite 15-bit 256x256      4 words   bit 28     108..111      bit 26   208830..216828
+
+gpu/gpu-scanout: Done.

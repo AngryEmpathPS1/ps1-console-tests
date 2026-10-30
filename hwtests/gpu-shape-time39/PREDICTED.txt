@@ -1,0 +1,36 @@
+gpu-shape-time39 - PREDICTED before its first console run (2026-10-16 small hours): v0.377.118 as the SCPH-9001 under the
+runner (tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. This core
+draws a kite's two orders alike (it has no narrow-first saving). What would settle what: order 2 less order 1 at each K
+(the widening rows first: K in order 1, 64 - K in order 2) - whether the saving grows by ~0.4-0.5 a widening row to a
+cap (gpu-shape-time32: ~20 at 16 wide), or steps at some row, and how 32 wide (gpu-shape-time32: -7.5 at TL 32x64)
+differs.
+
+row                      b26    b28
+flat kite16 K0 o1         452    28
+flat kite16 K0 o2         456    32
+flat kite16 K8 o1         451    31
+flat kite16 K8 o2         452    32
+flat kite16 K16 o1        447    32
+flat kite16 K16 o2        447    32
+flat kite16 K24 o1        452    32
+flat kite16 K24 o2        452    32
+flat kite16 K32 o1        448    33
+flat kite16 K32 o2        447    32
+flat kite16 K40 o1        453    33
+flat kite16 K40 o2        452    32
+flat kite16 K48 o1        448    33
+flat kite16 K48 o2        447    32
+flat kite16 K56 o1        453    33
+flat kite16 K56 o2        452    32
+flat kite16 K64 o1        449    34
+flat kite16 K64 o2        447    32
+flat kite32 K0 o1         693    29
+flat kite32 K0 o2         696    32
+flat kite32 K16 o1        693    33
+flat kite32 K16 o2        692    32
+flat kite32 K32 o1        680    34
+flat kite32 K32 o2        678    32
+flat kite32 K48 o1        694    34
+flat kite32 K48 o2        692    32
+flat kite32 K64 o1        681    35
+flat kite32 K64 o2        678    32

@@ -1,0 +1,115 @@
+
+spu/spu-read-grid
+Cycles an iteration above the empty loop, 256 iterations, cached: an SPU register read and k nops.
+No assertions - compare against your emulator.
+
+SPUSTAT (1F801DAEh)
+  SPUSTAT  k= 0    5655 -    806 =   4849 over 256  ->  18.94
+  SPUSTAT  k= 1    5655 -    806 =   4849 over 256  ->  18.94
+  SPUSTAT  k= 2    5661 -    806 =   4855 over 256  ->  18.96
+  SPUSTAT  k= 3    5664 -    806 =   4858 over 256  ->  18.97
+  SPUSTAT  k= 4    5680 -    806 =   4874 over 256  ->  19.03
+  SPUSTAT  k= 5    5664 -    806 =   4858 over 256  ->  18.97
+  SPUSTAT  k= 6    5664 -    806 =   4858 over 256  ->  18.97
+  SPUSTAT  k= 7    5674 -    806 =   4868 over 256  ->  19.01
+  SPUSTAT  k= 8    5673 -    806 =   4867 over 256  ->  19.01
+  SPUSTAT  k= 9    5687 -    806 =   4881 over 256  ->  19.06
+  SPUSTAT  k=10    5680 -    806 =   4874 over 256  ->  19.03
+  SPUSTAT  k=11    5682 -    806 =   4876 over 256  ->  19.04
+  SPUSTAT  k=12    5689 -    806 =   4883 over 256  ->  19.07
+  SPUSTAT  k=13    5684 -    806 =   4878 over 256  ->  19.05
+  SPUSTAT  k=14    5689 -    806 =   4883 over 256  ->  19.07
+  SPUSTAT  k=15    5692 -    806 =   4886 over 256  ->  19.08
+  SPUSTAT  k=16    5700 -    806 =   4894 over 256  ->  19.11
+  SPUSTAT  k=17    5958 -    806 =   5152 over 256  ->  20.12
+  SPUSTAT  k=18    6217 -    806 =   5411 over 256  ->  21.13
+  SPUSTAT  k=19    6468 -    806 =   5662 over 256  ->  22.11
+  SPUSTAT  k=20    6731 -    806 =   5925 over 256  ->  23.14
+  SPUSTAT  k=21    6984 -    806 =   6178 over 256  ->  24.13
+  SPUSTAT  k=22    7235 -    806 =   6429 over 256  ->  25.11
+  SPUSTAT  k=23    7497 -    806 =   6691 over 256  ->  26.13
+  SPUSTAT  k=24    7758 -    806 =   6952 over 256  ->  27.15
+  SPUSTAT  k=25    8016 -    806 =   7210 over 256  ->  28.16
+  SPUSTAT  k=26    8269 -    806 =   7463 over 256  ->  29.15
+  SPUSTAT  k=27    8530 -    806 =   7724 over 256  ->  30.17
+  SPUSTAT  k=28    8790 -    806 =   7984 over 256  ->  31.18
+  SPUSTAT  k=29    9042 -    806 =   8236 over 256  ->  32.17
+  SPUSTAT  k=30    9297 -    806 =   8491 over 256  ->  33.16
+  SPUSTAT  k=31    9558 -    806 =   8752 over 256  ->  34.18
+
+I_STAT (1F801070h) - the control
+  I_STAT   k= 0    1061 -    806 =    255 over 256  ->  0.99
+  I_STAT   k= 1    1309 -    806 =    503 over 256  ->  1.96
+  I_STAT   k= 2    1569 -    806 =    763 over 256  ->  2.98
+  I_STAT   k= 3    1827 -    806 =   1021 over 256  ->  3.98
+  I_STAT   k= 4    2086 -    806 =   1280 over 256  ->  5.00
+  I_STAT   k= 5    2338 -    806 =   1532 over 256  ->  5.98
+  I_STAT   k= 6    2602 -    806 =   1796 over 256  ->  7.01
+  I_STAT   k= 7    2858 -    806 =   2052 over 256  ->  8.01
+  I_STAT   k= 8    3111 -    806 =   2305 over 256  ->  9.00
+  I_STAT   k= 9    3372 -    806 =   2566 over 256  ->  10.02
+  I_STAT   k=10    3629 -    806 =   2823 over 256  ->  11.02
+  I_STAT   k=11    3889 -    806 =   3083 over 256  ->  12.04
+  I_STAT   k=12    4140 -    806 =   3334 over 256  ->  13.02
+  I_STAT   k=13    4401 -    806 =   3595 over 256  ->  14.04
+  I_STAT   k=14    4679 -    806 =   3873 over 256  ->  15.12
+  I_STAT   k=15    4921 -    806 =   4115 over 256  ->  16.07
+  I_STAT   k=16    5169 -    806 =   4363 over 256  ->  17.04
+  I_STAT   k=17    5434 -    806 =   4628 over 256  ->  18.07
+  I_STAT   k=18    5687 -    806 =   4881 over 256  ->  19.06
+  I_STAT   k=19    5943 -    806 =   5137 over 256  ->  20.06
+  I_STAT   k=20    6202 -    806 =   5396 over 256  ->  21.07
+  I_STAT   k=21    6454 -    806 =   5648 over 256  ->  22.06
+  I_STAT   k=22    6723 -    806 =   5917 over 256  ->  23.11
+  I_STAT   k=23    6980 -    806 =   6174 over 256  ->  24.11
+  I_STAT   k=24    7227 -    806 =   6421 over 256  ->  25.08
+  I_STAT   k=25    7488 -    806 =   6682 over 256  ->  26.10
+  I_STAT   k=26    7745 -    806 =   6939 over 256  ->  27.10
+  I_STAT   k=27    8007 -    806 =   7201 over 256  ->  28.12
+  I_STAT   k=28    8256 -    806 =   7450 over 256  ->  29.10
+  I_STAT   k=29    8512 -    806 =   7706 over 256  ->  30.10
+  I_STAT   k=30    8781 -    806 =   7975 over 256  ->  31.15
+  I_STAT   k=31    9032 -    806 =   8226 over 256  ->  32.13
+
+SPUCNT (1F801DAAh)
+  SPUCNT   k= 0    5658 -    806 =   4852 over 256  ->  18.95
+  SPUCNT   k= 1    5660 -    806 =   4854 over 256  ->  18.96
+  SPUCNT   k= 2    5665 -    806 =   4859 over 256  ->  18.98
+  SPUCNT   k= 3    5661 -    806 =   4855 over 256  ->  18.96
+  SPUCNT   k= 4    5668 -    806 =   4862 over 256  ->  18.99
+  SPUCNT   k= 5    5672 -    806 =   4866 over 256  ->  19.00
+  SPUCNT   k= 6    5671 -    806 =   4865 over 256  ->  19.00
+  SPUCNT   k= 7    5673 -    806 =   4867 over 256  ->  19.01
+  SPUCNT   k= 8    5680 -    806 =   4874 over 256  ->  19.03
+  SPUCNT   k= 9    5677 -    806 =   4871 over 256  ->  19.02
+  SPUCNT   k=10    5673 -    806 =   4867 over 256  ->  19.01
+  SPUCNT   k=11    5679 -    806 =   4873 over 256  ->  19.03
+  SPUCNT   k=12    5683 -    806 =   4877 over 256  ->  19.05
+  SPUCNT   k=13    5690 -    806 =   4884 over 256  ->  19.07
+  SPUCNT   k=14    5689 -    806 =   4883 over 256  ->  19.07
+  SPUCNT   k=15    5691 -    806 =   4885 over 256  ->  19.08
+
+voice 0 volume (1F801C00h)
+  VOL0     k= 0    5650 -    806 =   4844 over 256  ->  18.92
+  VOL0     k= 1    5659 -    806 =   4853 over 256  ->  18.95
+  VOL0     k= 2    5660 -    806 =   4854 over 256  ->  18.96
+  VOL0     k= 3    5669 -    806 =   4863 over 256  ->  18.99
+  VOL0     k= 4    5662 -    806 =   4856 over 256  ->  18.96
+  VOL0     k= 5    5674 -    806 =   4868 over 256  ->  19.01
+  VOL0     k= 6    5670 -    806 =   4864 over 256  ->  19.00
+  VOL0     k= 7    5671 -    806 =   4865 over 256  ->  19.00
+  VOL0     k= 8    5673 -    806 =   4867 over 256  ->  19.01
+  VOL0     k= 9    5673 -    806 =   4867 over 256  ->  19.01
+  VOL0     k=10    5687 -    806 =   4881 over 256  ->  19.06
+  VOL0     k=11    5683 -    806 =   4877 over 256  ->  19.05
+  VOL0     k=12    5681 -    806 =   4875 over 256  ->  19.04
+  VOL0     k=13    5697 -    806 =   4891 over 256  ->  19.10
+  VOL0     k=14    5708 -    806 =   4902 over 256  ->  19.14
+  VOL0     k=15    5693 -    806 =   4887 over 256  ->  19.08
+
+pairs
+  STAT2    k= 0   11045 -    806 =  10239 over 256  ->  39.99
+  STAT+IS  k= 0    6173 -    806 =   5367 over 256  ->  20.96
+  IS+STAT  k= 0    5911 -    806 =   5105 over 256  ->  19.94
+
+Done.

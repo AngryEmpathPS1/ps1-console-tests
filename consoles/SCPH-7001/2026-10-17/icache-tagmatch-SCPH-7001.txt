@@ -1,0 +1,15 @@
+
+cpu/icache-tagmatch
+An I-cache miss on a line whose tag already matches: the whole line refilled, or from the missed word?
+Times in system clocks (Timer 2), each the minimum of 16 runs. No assertions.
+
+  COLD    call from word 0 after FlushCache                   29
+  WARM    the same call again                                  15
+  CONTROL word 2, then word 0 (a matching-tag miss at word 0)   29   <- must read like COLD
+  CASE    word 2, word 1, then word 0                          29
+  W1 TIME word 2, then the call from word 1 (timed)            27
+  W1 COLD the call from word 1 after FlushCache                27
+
+  VERDICT: word 0 was still INVALID (CASE = CONTROL) - the refill ran from the MISSED word (mednafen; this core)
+
+Done.

@@ -1,0 +1,42 @@
+
+gpu/gpu-shape-time26
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+flat 64x1                48..49         9..9    
+flat 64x8               314..355        9..9    
+flat 64x32             1226..1267       9..9    
+flat 128x1               80..80         9..9    
+flat 128x8              570..611        9..9    
+flat 128x32            2290..2291       9..9    
+flat 192x1              112..112        9..9    
+flat 192x8              826..867        9..9    
+flat 192x32            3315..3356       9..9    
+flat 256x1              144..144        9..9    
+flat 256x8             1082..1123       9..9    
+flat 256x32            4380..4380       9..9    
+flat 320x1              176..184        9..9    
+flat 320x8             1338..1379       9..9    
+flat 320x32            5402..5445       9..9    
+flat 512x1              272..313        9..9    
+flat 512x8             2107..2147       9..9    
+flat 512x32            8524..8558       9..9    
+copy 16x1                37..37         2..2    
+copy 16x8               282..322        2..2    
+copy 16x32             1122..1164       2..2    
+copy 32x1                61..61         2..2    
+copy 32x8               474..515        2..2    
+copy 32x32             1891..1932       2..2    
+copy 64x1               109..109        2..2    
+copy 64x8               858..900        2..2    
+copy 64x32             3462..3509       2..2    
+copy 128x1              205..205        2..2    
+copy 128x8             1626..1668       2..2    
+copy 128x32            6618..6639       2..2    
+copy 256x1              410..452        2..2    
+copy 256x8             3307..3350       2..2    
+copy 256x32           13305..13349      2..2    
+copy 128x64           13240..13286      2..2    
+
+gpu/gpu-shape-time26: Done.

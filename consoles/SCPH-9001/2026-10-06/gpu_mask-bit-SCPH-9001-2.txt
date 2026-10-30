@@ -1,0 +1,15 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80012b30,ehk=80012b60
+ResetGraph:SR=7000ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/mask-bit
+pass - testWriteAndRead
+pass - testSetBit
+pass - testCheckMaskBit
+pass - testCheckIsMaskBitStickyManually
+pass - testCheckIsMaskBitStickySetBit
+Done.

@@ -1,0 +1,30 @@
+gpu-shape-time50 - PREDICTED before its first console run (2026-10-16): v0.377.119 as the SCPH-9001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. This core's
+semi gouraud premium: GPU_POLY_NEW3.semiShRow, 1.6 a row whatever the shape.
+What would settle what: the semi less opaque - A: narrow rows' own cost with no upright left edge (BR / TR against
+gpu-shape-time41/42's TL 4 / 8 / 16 / 32 x 64: 194 / 150 / 80 / 44); B: whether a left edge leaning a pixel or four over
+16 rows pays the upright edge's ~10 (TL 64x16 15, TR 5); C: a diamond quad, no edge upright; D: the upright edge at an
+odd x.
+
+shape                  bit 26        bit 28
+semi gour BR 4x64       490..490      173..173  
+semi gour BR 8x64       631..631      174..174  
+semi gour BR 16x64      900..900      175..175  
+semi gour BR 32x64     1430..1430     176..176  
+semi gour TR 4x64       492..492      167..167  
+semi gour TR 16x64      913..913      169..169  
+semi gour lean1 64x16   785..785      171..171  
+semi gour lean4 64x16   787..787      171..171  
+semi gour diamond 64   1378..1378     741..741  
+semi gour TL 64x16 X1   784..784      171..171  
+opaq gour BR 4x64       412..412      173..173  
+opaq gour BR 8x64       541..541      174..174  
+opaq gour BR 16x64      804..804      175..175  
+opaq gour BR 32x64     1333..1333     176..176  
+opaq gour TR 4x64       412..412      167..167  
+opaq gour TR 16x64      816..816      169..169  
+opaq gour lean1 64x16   759..759      171..171  
+opaq gour lean4 64x16   762..762      171..171  
+opaq gour diamond 64   1338..1338     721..721  
+opaq gour TL 64x16 X1   758..758      171..171  
+

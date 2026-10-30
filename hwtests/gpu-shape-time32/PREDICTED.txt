@@ -1,0 +1,44 @@
+gpu-shape-time32 - PREDICTED before its first console run (2026-10-15): v0.377.114 as the SCPH-9001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. This core draws
+a triangle's orders alike (bit 28, the set-up, differs by order and has been exact). What would settle what:
+  A  if the saving is the DIRECTION the rule picks: TL o2/o3/o6 ~19 under o1/o4/o5 (gpu-shape-time30's 16x64 -19), BL
+     o2/o3/o6 ~22 under o1/o4/o5 - the narrow-first orders cheap in both.
+  B  the kites: if it is narrow rows FIRST (the start), K16 drawn down starts on its narrow-to-wide half for 16 rows,
+     drawn up on 48: up cheaper there, down cheaper at K48, K32 alike; if it is the END (narrow rows last dear), the
+     other way about.
+  C  14-18 x 64: the peak is between 16 and 20 (-19, -17); pixel by pixel, does it move with the pairs (16 = 8 pairs)?
+  D  16 x 48 / 80 / 96: between 32 tall's -11 and 64's -19, and 64's and 128's -18: where it stops growing.
+
+row                      b26    b28
+flat TL 16x64 o1          454     28
+flat TL 16x64 o2          458     32
+flat TL 16x64 o3          454     28
+flat TL 16x64 o4          460     34
+flat TL 16x64 o5          458     32
+flat TL 16x64 o6          460     34
+flat BL 16x64 o1          448     32
+flat BL 16x64 o2          450     34
+flat BL 16x64 o3          448     32
+flat BL 16x64 o4          444     28
+flat BL 16x64 o5          450     34
+flat BL 16x64 o6          444     28
+flat kite K16 o1          448     32
+flat kite K16 o2          448     32
+flat kite K32 o1          449     33
+flat kite K32 o2          448     32
+flat kite K48 o1          449     33
+flat kite K48 o2          448     32
+flat TL 14x64 o1          427     27
+flat TL 14x64 o2          432     32
+flat TL 15x64 o1          441     27
+flat TL 15x64 o2          446     32
+flat TL 17x64 o1          470     28
+flat TL 17x64 o2          474     32
+flat TL 18x64 o1          484     28
+flat TL 18x64 o2          488     32
+flat TL 16x48 o1          351     28
+flat TL 16x48 o2          354     31
+flat TL 16x80 o1          557     28
+flat TL 16x80 o2          561     32
+flat TL 16x96 o1          661     28
+flat TL 16x96 o2          665     32

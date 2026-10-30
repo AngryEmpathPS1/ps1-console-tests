@@ -1,0 +1,19 @@
+
+cdrom/cd-2x-burned
+A CD-R read at single and double speed from the hub to the edge, a speed change mid-read, seeks at double speed.
+Needs the double-speed disc (or the games disc). Cycles at the system clock (1 ms = 33,869). No assertions.
+
+drive region: for U/C - unlocking
+disc: lead-out at LBA 323850 (72:00), 00:02:16 NOT marked
+THIS IS NOT THE DOUBLE-SPEED DISC (or the games disc), or the drive refused it - the check read:
+  disc check:
+    +      104 Setmode
+    +    44464 INT3 42
+    +    44960 Setloc
+    +    85120 INT3 42
+    +    85576 ReadN
+    +   132880 INT3 42
+    +101740416 Pause
+    +101767616 INT5 43 80
+
+cdrom/cd-2x-burned: Done.

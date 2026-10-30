@@ -1,0 +1,14 @@
+
+cdrom/cd-boot-read
+The BIOS's first double-speed read: SeekL from single speed, Setmode 80h at its INT2, ReadN at the Setmode's
+INT3 - the first INT1 from the ReadN's write, and GetlocL then (the first sector's header). Cycles at the system
+clock (1 ms = 33,869). About a minute; nothing prints until the end.
+TO DOUBLE SPEED, Setmode 80h:
+  00:02:04 :  seek  2885849  read INT1  19474200  first 00:02:04  seek  2750377  read INT1  23816744  first 00:02:04  seek  2255141  read INT1  19487699  first 00:02:04
+  00:02:16 :  seek  4424241  read INT1  30092650  first 00:02:16  seek  2559821  read INT1  28079053  first 00:02:16  seek  1948387  read INT1  21720559  first 00:02:16
+  00:06:16 :  seek  6103059  read INT1  19125865  first 00:06:16  seek  2540619  read INT1  25998455  first 00:06:16  seek  2715440  read INT1  19607620  first 00:06:16
+CONTROL, Setmode 00h (no speed change):
+  00:02:04 :  seek  3680666  read INT1    410447  first 00:02:04  seek  1089940  read INT1    865364  first 00:02:04  seek  1088687  read INT1    864100  first 00:02:04
+  00:02:16 :  seek  2672955  read INT1    411028  first 00:02:16  seek  1064462  read INT1    862593  first 00:02:16  seek  1537713  read INT1    433500  first 00:02:16
+  00:06:16 :  seek  3852870  read INT1    848250  first 00:06:16  seek  1203321  read INT1    861566  first 00:06:16  seek  1205440  read INT1    889022  first 00:06:16
+Done.

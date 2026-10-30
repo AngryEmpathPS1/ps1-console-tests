@@ -1,0 +1,45 @@
+
+gpu/gpu-shape-time30
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+semi TL 126x64         6740..6785      30..30   
+semi TL 127x64         6773..6814      30..30   
+semi TL 128x64         6775..6818      31..31   
+semi TL 129x64         6904..6947      31..31   
+semi TL 130x64         6936..6970      31..31   
+semi TL 126x64 X1      6742..6775      30..30   
+semi TL 127x64 X1      6774..6816      30..30   
+semi TL 128x64 X1      6775..6811      31..31   
+semi TL 129x64 X1      6905..6949      31..31   
+semi TL 130x64 X1      6937..6980      31..31   
+semi TL 2x128          1114..1151      26..26   
+semi TL 2x128 X1       1114..1155      26..26   
+semi TR 2x128           675..712       26..26   
+semi TR 2x128 X1        675..717       26..26   
+semi TL 16x64          1244..1285      28..28   
+semi TL 16x64 X1       1244..1286      28..28   
+semi TR 16x64          1190..1231      28..28   
+semi TR 16x64 X1       1190..1231      28..28   
+flat TL 16x16 o1        188..188       28..28   
+flat TL 16x16 o2        194..194       30..30   
+flat TL 16x32 o1        348..384       28..28   
+flat TL 16x32 o2        355..396       31..31   
+flat TL 16x64 o1        668..709       28..28   
+flat TL 16x64 o2        676..717       32..32   
+flat TL 16x128 o1      1308..1349      28..28   
+flat TL 16x128 o2      1317..1358      33..33   
+flat TL 8x64 o1         539..580       27..27   
+flat TL 8x64 o2         548..589       32..32   
+flat TL 12x64 o1        605..646       27..27   
+flat TL 12x64 o2        614..655       32..32   
+flat TL 20x64 o1        736..777       28..28   
+flat TL 20x64 o2        744..785       32..32   
+flat TL 24x64 o1        800..837       28..28   
+flat TL 24x64 o2        808..849       32..32   
+flat TL 127x64 X1      2534..2575      30..30   
+flat TL 128x64 X1      2536..2576      31..31   
+flat TL 129x64 X1      2534..2573      31..31   
+
+gpu/gpu-shape-time30: Done.

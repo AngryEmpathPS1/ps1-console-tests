@@ -1,0 +1,68 @@
+gpu-shape-time54 - PREDICTED for the SCPH-1001 before its first run there (2026-10-17): v0.377.122 as the SCPH-1001
+under the runner (tools/hwrunner.js --emu, PSX_MODEL=SCPH-1001, scph1001_v21.bin, --lock=0 --video=24000 --tol=0).
+The OLD GPU keeps its own model (GPU_OLD*): its semi gouraud rows are GPU_OLD_SEMI's, its walk GPU_OLD_WALK's - none of
+v0.377.121's semi floor. What it settles: whether the old GPU's semi shaded rows have a floor the walk hides too, and
+how its walk goes with the step (left and right, small and large).
+
+shape                  bit 26        bit 28
+semi par 4 s-256       1612..1653    1025..1049 
+semi par 4 s-64        1610..1651    1025..1049 
+semi par 4 s0          1610..1651    1025..1049 
+semi par 4 s32         1610..1651     957..980  
+semi par 4 s64         1622..1663    1025..1049 
+semi par 4 s128        1640..1681    1025..1048 
+semi par 4 s192        1658..1699    1025..1048 
+semi par 4 s256        1676..1717    1025..1048 
+semi par 4 s512        2186..2227    1277..1299 
+semi par 8 s-256       2463..2463    1432..1432 
+semi par 8 s-64        2459..2459    1432..1432 
+semi par 8 s0          2459..2459    1432..1432 
+semi par 8 s32         2459..2459    1374..1374 
+semi par 8 s64         2461..2461    1432..1432 
+semi par 8 s128        2470..2470    1432..1432 
+semi par 8 s192        2479..2479    1432..1432 
+semi par 8 s256        2488..2488    1432..1432 
+semi par 8 s512        2990..3031    1684..1706 
+semi par 16 s-256      4025..4066    2201..2222 
+semi par 16 s-64       4015..4056    2201..2222 
+semi par 16 s0         4015..4056    2201..2222 
+semi par 16 s32        4015..4056    2147..2168 
+semi par 16 s64        4015..4056    2201..2222 
+semi par 16 s128       4018..4059    2201..2222 
+semi par 16 s192       4023..4064    2201..2222 
+semi par 16 s256       4027..4068    2201..2222 
+semi par 16 s512       4559..4559    2474..2474 
+semi par 4 s0 x1       1610..1651    1025..1049 
+semi par 4 s0 x2       1610..1651    1025..1049 
+semi par 4 s0 x512     1610..1651    1025..1049 
+opaq par 4 s-256       1121..1162     719..742  
+opaq par 4 s-64        1121..1162     719..742  
+opaq par 4 s0          1117..1158     714..738  
+opaq par 4 s32         1120..1161     681..703  
+opaq par 4 s64         1127..1168     714..738  
+opaq par 4 s128        1143..1184     714..737  
+opaq par 4 s192        1159..1200     714..737  
+opaq par 4 s256        1175..1216     714..736  
+opaq par 4 s512        1567..1608     903..925  
+opaq par 8 s-256       1419..1460     848..870  
+opaq par 8 s-64        1419..1460     848..870  
+opaq par 8 s0          1414..1455     843..865  
+opaq par 8 s32         1417..1458     820..842  
+opaq par 8 s64         1416..1457     843..865  
+opaq par 8 s128        1424..1465     843..865  
+opaq par 8 s192        1432..1473     843..865  
+opaq par 8 s256        1440..1481     843..865  
+opaq par 8 s512        1820..1861    1032..1054 
+opaq par 16 s-256      1952..1993    1105..1126 
+opaq par 16 s-64       1952..1993    1105..1126 
+opaq par 16 s0         1947..1988    1100..1122 
+opaq par 16 s32        1950..1991    1082..1103 
+opaq par 16 s64        1947..1988    1100..1122 
+opaq par 16 s128       1949..1990    1100..1122 
+opaq par 16 s192       1953..1994    1100..1122 
+opaq par 16 s256       1957..1998    1100..1122 
+opaq par 16 s512       2366..2366    1311..1311 
+opaq par 4 s0 x1       1117..1158     714..738  
+opaq par 4 s0 x2       1117..1158     714..738  
+opaq par 4 s0 x512     1117..1158     714..738  
+

@@ -1,0 +1,60 @@
+gpu-shape-time31 - PREDICTED before its first console run (2026-10-15): v0.377.114 as the SCPH-9001 under the runner
+(tools/hwrunner.js --emu, scph7001.bin, --lock=0 --video=24000 --tol=0), bit 26's D and bit 28's, cycles. Semi flat rows
+here are GPU_SEMI_FLAT2's (23.5 + 4.79 a row + 0.725 a pixel); opaque flat rows GPU_FLAT_PAIRS'. What would settle what:
+  - the opaque column within a few cycles of the console (it is v0.377.114's model on its own kind of shape);
+  - semi less flat by shape: if semi's extra is a constant a row and a pair, it is linear in H at each W and in the
+    pairs at each H. gpu-shape-time25-30 left +-45 by size (16x16 +15, 64x16 +24, 64x64 -30, 16x64 -46, 2x128 +30 over a
+    row-and-pair fit): if that is a row cost that changes with the height, the H columns bend alike at every W; if it
+    goes with the area, along the diagonal.
+
+row                      b26    b28
+semi TL 2x8                97     26
+semi TL 2x16              144     26
+semi TL 2x32              238     26
+semi TL 2x64              426     26
+semi TL 2x128             802     26
+semi TL 8x8               115     27
+semi TL 8x16              180     27
+semi TL 8x32              309     27
+semi TL 8x64              566     27
+semi TL 8x128            1081     27
+semi TL 16x8              143     28
+semi TL 16x16             227     28
+semi TL 16x32             402     28
+semi TL 16x64             753     28
+semi TL 16x128           1453     28
+semi TL 32x8              196     29
+semi TL 32x16             327     29
+semi TL 32x32             589     29
+semi TL 32x64            1125     29
+semi TL 32x128           2197     29
+semi TL 64x8              301     30
+semi TL 64x16             525     30
+semi TL 64x32             973     30
+semi TL 64x64            1868     30
+semi TL 64x128           3682     30
+flat TL 2x8                77     26
+flat TL 2x16              117     26
+flat TL 2x32              195     26
+flat TL 2x64              352     26
+flat TL 2x128             665     26
+flat TL 8x8                79     27
+flat TL 8x16              120     27
+flat TL 8x32              200     27
+flat TL 8x64              361     27
+flat TL 8x128             682     27
+flat TL 16x8               95     28
+flat TL 16x16             144     28
+flat TL 16x32             247     28
+flat TL 16x64             454     28
+flat TL 16x128            868     28
+flat TL 32x8              130     29
+flat TL 32x16             211     29
+flat TL 32x32             368     29
+flat TL 32x64             694     29
+flat TL 32x128           1347     29
+flat TL 64x8              202     30
+flat TL 64x16             346     30
+flat TL 64x32             636     30
+flat TL 64x64            1200     30
+flat TL 64x128           2357     30

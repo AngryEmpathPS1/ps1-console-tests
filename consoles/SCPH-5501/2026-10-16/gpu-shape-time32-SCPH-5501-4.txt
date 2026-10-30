@@ -1,0 +1,40 @@
+
+gpu/gpu-shape-time32
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+flat TL 16x64 o1        457..476       28..28   
+flat TL 16x64 o2        438..461       32..32   
+flat TL 16x64 o3        434..456       28..28   
+flat TL 16x64 o4        463..483       34..34   
+flat TL 16x64 o5        461..479       32..32   
+flat TL 16x64 o6        440..462       34..34   
+flat BL 16x64 o1        452..471       32..32   
+flat BL 16x64 o2        430..453       34..34   
+flat BL 16x64 o3        428..450       32..32   
+flat BL 16x64 o4        448..469       28..28   
+flat BL 16x64 o5        454..473       34..34   
+flat BL 16x64 o6        424..445       28..28   
+flat kite K16 o1        443..459       32..32   
+flat kite K16 o2        426..443       32..32   
+flat kite K32 o1        436..444       33..33   
+flat kite K32 o2        435..446       32..32   
+flat kite K48 o1        427..443       33..33   
+flat kite K48 o2        443..460       32..32   
+flat TL 14x64 o1        430..453       27..27   
+flat TL 14x64 o2        412..434       32..32   
+flat TL 15x64 o1        444..464       27..27   
+flat TL 15x64 o2        425..447       32..32   
+flat TL 17x64 o1        473..489       28..28   
+flat TL 17x64 o2        455..475       32..32   
+flat TL 18x64 o1        487..509       28..28   
+flat TL 18x64 o2        469..489       32..32   
+flat TL 16x48 o1        352..375       28..28   
+flat TL 16x48 o2        333..351       31..31   
+flat TL 16x80 o1        561..584       28..28   
+flat TL 16x80 o2        543..565       32..32   
+flat TL 16x96 o1        666..688       28..28   
+flat TL 16x96 o2        647..670       32..32   
+
+gpu/gpu-shape-time32: Done.

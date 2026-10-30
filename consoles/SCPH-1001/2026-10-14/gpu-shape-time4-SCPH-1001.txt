@@ -1,0 +1,41 @@
+
+gpu/gpu-shape-time4
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape               bit 26        bit 28
+tri flat 128x16      671..712       31..31   
+tri flat 256x16     1216..1257      32..32   
+tri flat 320x16     1488..1529      32..32   
+tri flat 128x64     2534..2573      31..31   
+tri flat 16x128     1308..1349      28..28   
+tri flat 32x8        149..149       29..29   
+tri flat 8x32        283..319       27..27   
+quad flat 16x16      352..392      192..192  
+quad flat 64x16      739..780      402..443  
+quad flat 128x16    1254..1295     675..716  
+quad flat 256x16    2368..2397    1220..1261 
+quad flat 320x16    2911..2953    1492..1533 
+quad flat 64x64     2887..2932    1442..1483 
+quad flat 4x64       851..892      478..518  
+quad flat 8x64      1020..1059     543..579  
+quad flat 16x64     1297..1338     672..713  
+quad flat 2x128     1379..1415     862..900  
+tri semi 8           131..131       27..27   
+tri semi 32         1021..1062      29..29   
+tri semi 128x16     1759..1801      31..31   
+tri semi 256x16     3433..3475      32..32   
+quad semi 64x16     1763..1805     946..987  
+quad semi 256x16    6547..6564    3437..3478 
+quad gour 32        1580..1621     892..933  
+quad gour 64        5117..5159    2673..2715 
+quad tex15 32       1530..1571     842..882  
+tri gour 128x16     1356..1397     172..172  
+tri gour 256x16     2486..2526     173..173  
+line gour 32         117..117       79..79   
+line gour 64         149..149       79..79   
+line gour 255        340..381       79..79   
+line gour diag 32    303..339       79..79   
+line gour steep 32   303..339       79..79   
+
+gpu/gpu-shape-time4: Done.

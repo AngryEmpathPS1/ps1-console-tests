@@ -1,0 +1,31 @@
+
+spu/spu-read-trace
+Every read of an SPU register timestamped (Timer 2, the system clock): the read-to-read intervals, and the long
+ones' spacing and phase in the sample (768 cycles). No assertions - compare against your emulator.
+
+SPUSTAT k=0 (8192 reads over 254185 cycles): intervals 31x7942 32x247 34x1 45x1
+  long (> 33): 2; spacing 220
+  phase mod 768 from the bit-11 change: 285 505
+  bit 11 rose at read 6336: read 6335 at 196593, read 6336 at 196624 (cycles from the trace's start), intervals around it 31 31 31 31 31 31 31
+SPUSTAT k=12 (8192 reads over 327675 cycles): intervals 40x8189 45x1 70x1
+  long (> 42): 2; spacing 765
+  phase mod 768 from the bit-11 change: 11 8
+  bit 11 rose at read 679: read 678 at 27155, read 679 at 27195 (cycles from the trace's start), intervals around it 40 40 40 40 40 40 40
+SPUSTAT k=24 (8192 reads over 426523 cycles): intervals 52x8051 55x1 56x138 88x1
+  long (> 54): 140; spacing 627 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072
+  phase mod 768 from the bit-11 change: 413 272 272 272 272 272 272 272 272 272 272 272 272 272 272 272 272 272 272 272 272 272 272 272
+  bit 11 fell at read 1650: read 1649 at 85895, read 1650 at 85947 (cycles from the trace's start), intervals around it 52 52 52 52 52 52 52
+SPUCNT k=0 (4096 reads over 127079 cycles): intervals 31x3970 32x123 34x1 39x1
+  long (> 33): 2; spacing 933
+  phase mod 768 from the first long one: 0 165
+VOL0 k=0 (4096 reads over 127078 cycles): intervals 31x3972 32x122 42x1
+  long (> 33): 1
+  phase mod 768 from the first long one: 0
+I_STAT k=0 (4096 reads over 65525 cycles): intervals 16x4094 21x1
+  long (> 18): 1
+  phase mod 768 from the first long one: 0
+I_STAT k=12 (4096 reads over 104840 cycles): intervals 25x3687 28x203 29x1 34x203 50x1
+  long (> 27): 408; spacing 679 259 253 259 253 259 253 259 253 259 253 259 253 259 253 259
+  phase mod 768 from the first long one: 0 679 170 423 682 167 426 679 170 423 682 167 426 679 170 423 682 167 426 679 170 423 682 167
+
+Done.

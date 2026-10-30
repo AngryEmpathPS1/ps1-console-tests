@@ -1,0 +1,28 @@
+
+gpu/gpu-shape-time19
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+TR 15x16                135..156       27..27   
+TR 16x16                153..174       28..28   
+TR 17x16                147..169       28..28   
+TL 15x16                141..164       27..27   
+TL 16x16                143..166       28..28   
+TL 17x16                149..171       28..28   
+BR 15x16                131..141       31..31   
+BR 17x16                142..164       32..32   
+BL 15x16                136..158       30..30   
+BL 17x16                142..165       30..30   
+TR 63x64               1193..1200      29..29   
+TR 64x64               1259..1278      30..30   
+TR 65x64               1229..1250      30..30   
+TL 63x64               1199..1207      29..29   
+TL 64x64               1201..1212      30..30   
+TL 65x64               1231..1254      30..30   
+TR 15x64                408..431       27..27   
+TR 17x64                441..464       28..28   
+TL 15x64                444..466       27..27   
+TL 17x64                473..496       28..28   
+
+gpu/gpu-shape-time19: Done.

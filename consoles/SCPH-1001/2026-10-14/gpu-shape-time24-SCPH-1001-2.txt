@@ -1,0 +1,50 @@
+
+gpu/gpu-shape-time24
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+flat 1x16 @0            106..112        9..9    
+flat 2x16 @0            122..122        9..9    
+flat 3x16 @0            122..122        9..9    
+flat 4x16 @0            138..138        9..9    
+flat 5x16 @0            138..141        9..9    
+flat 6x16 @0            154..162        9..9    
+flat 7x16 @0            154..154        9..9    
+flat 8x16 @0            170..170        9..9    
+flat 9x16 @0            170..170        9..9    
+flat 14x16 @0           218..220        9..9    
+flat 15x16 @0           218..218        9..9    
+flat 16x16 @0           234..247        9..9    
+flat 17x16 @0           234..245        9..9    
+flat 32x16 @0           362..401        9..9    
+flat 33x16 @0           362..402        9..9    
+flat 64x16 @0           618..657        9..9    
+flat 65x16 @0           618..659        9..9    
+flat 1x16 @1            106..109        9..9    
+flat 2x16 @1            122..122        9..9    
+flat 3x16 @1            122..122        9..9    
+flat 4x16 @1            138..139        9..9    
+flat 15x16 @1           218..220        9..9    
+flat 16x16 @1           234..246        9..9    
+flat 17x16 @1           234..237        9..9    
+flat 16x1 @0             24..32         9..9    
+flat 16x2 @0             38..38         9..9    
+flat 16x4 @0             66..71         9..9    
+flat 16x64 @0           906..947        9..9    
+semi 1x16 @0            138..141        9..9    
+semi 2x16 @0            154..154        9..9    
+semi 4x16 @0            202..202        9..9    
+semi 8x16 @0            298..335        9..9    
+semi 16x16 @0           490..528        9..9    
+semi 32x16 @0           874..915        9..9    
+semi 64x16 @0          1642..1684       9..9    
+tex 1x16 @0             105..105        8..8    
+tex 2x16 @0             121..121        8..8    
+tex 4x16 @0             137..137        8..8    
+tex 8x16 @0             169..169        8..8    
+tex 16x16 @0            233..246        8..8    
+tex 32x16 @0            361..402        8..8    
+tex 64x16 @0           3902..3938       8..8    
+
+gpu/gpu-shape-time24: Done.

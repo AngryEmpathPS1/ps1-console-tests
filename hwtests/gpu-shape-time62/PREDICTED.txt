@@ -1,0 +1,40 @@
+gpu/gpu-shape-time62
+A shape's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape               bit 26        bit 28
+16,64                316..338       17..17   
+32,32                173..173       17..17   
+8,128                604..626       17..17   
+semi 16,64           526..547       17..17   
+semi 32,32           281..301       17..17   
+semi 8,128          1016..1037      17..17   
+mask 64,0            104..104       17..17   
+mask 128,1           233..234       17..17   
+mask 16,64           526..547       17..17   
+gsemi 128,1          295..295       79..79   
+diag 1x16,16         100..100       20..20   
+diag 2x16,16         177..177       99..99   
+diag 1x32,32         171..171       20..20   
+diag 2x32,32         319..319      170..170  
+diag 1x128,128       603..603       20..20   
+diag 2x128,128      1183..1183     602..602  
+steep 1x8,64         315..315       20..20   
+steep 2x8,64         607..607      314..314  
+steep 1x8,128        603..603       20..20   
+steep 2x8,128       1183..1183     602..602  
+tilt 1x64,8          169..169       20..20   
+tilt 2x64,8          315..315      168..168  
+tilt 1x64,16         186..186       20..20   
+tilt 2x64,16         349..349      185..185  
+tilt 1x64,32         219..219       20..20   
+tilt 2x64,32         415..415      218..218  
+level 1x128          163..163       20..20   
+level 2x128          303..303      162..162  
+level 1x255          290..290       20..20   
+level 2x255          557..557      289..289  
+gdiag 1x64,64        377..377       81..81   
+gdiag 2x64,64        669..669      376..376  
+
+gpu/gpu-shape-time62: Done.
+

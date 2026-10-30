@@ -1,0 +1,39 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-lid
++0.000 s  GetlocP before  INT3 01 00
+-- GetlocP through a lid cycle
+OPEN THE LID now, and leave it open until asked to shut it.
++0.000 s  the door switch reads open
++0.004 s  GetlocP  INT5 13 80
++0.496 s  GetlocP  INT5 11 80
+SHUT THE LID now, with the same disc in.
+
++0.000 s  the door switch reads shut
++0.004 s  GetlocP  INT5 11 80
++1.640 s  GetlocP  INT5 13 80
++6.368 s  GetlocP  INT3 01 01
++6.382 s  GetlocP  INT3 00 01
++6.408 s  GetlocP  INT3 00 a0
++6.434 s  GetlocP  INT3 00 a2
++6.521 s  GetlocP  INT3 00 a0
++6.550 s  GetlocP  INT3 00 a2
++6.587 s  GetlocP  INT3 00 a0
++6.613 s  GetlocP  INT3 00 a2
++6.638 s  GetlocP  INT3 01 00
++7.373 s  Getstat  INT3 12 ff
+the door's own INT5 seen 1 time(s), last with stat 16
+-- ReadN through a lid cycle
+OPEN THE LID now, and leave it open until asked to shut it.
++0.000 s  the door switch reads open
++0.054 s  ReadN  INT5 13 80
++0.544 s  ReadN  INT5 11 80
+SHUT THE LID now, with the same disc in.
++0.000 s  the door switch reads shut
++0.004 s  ReadN  INT5 11 40
++1.652 s  ReadN  INT5 13 40
++6.434 s  ReadN  INT3 12 ff
++6.489 s  Getstat  INT3 52 ff
+the door's own INT5 seen 1 time(s), last with stat 16
+Done.
