@@ -12,6 +12,9 @@
 
     powershell -NoProfile -ExecutionPolicy Bypass -File tools/serialbridge.ps1 -Com COM3 [-Baud 115200] [-Port 3335]
     ... -Com tcp:127.0.0.1:3334     the device end on a socket instead (tools/virtualconsole.js): how it was tested
+
+  A rate on <Port + 1>, the number in ASCII, moves the open port there and answers one byte (2026-10-31): nugget's monitor
+  changes its line rate inside a window of about a second (its PROTOCOL.md 2.5), too short to reopen the port.
 #>
 param([string]$Com = 'COM3', [int]$Baud = 115200, [int]$Port = 3335)
 
@@ -45,6 +48,24 @@ public static class PsxSerialBridge {
       sp.ReadBufferSize = 1 << 20;
       sp.Open();
       dev = sp.BaseStream;
+      var rates = new TcpListener(IPAddress.Loopback, port + 1);
+      rates.Start();
+      var rater = new Thread(() => {
+        while (true) {
+          using (var c = rates.AcceptTcpClient()) {
+            var ns = c.GetStream();
+            var b = new byte[16];
+            int n = ns.Read(b, 0, b.Length);
+            try {
+              sp.BaudRate = int.Parse(System.Text.Encoding.ASCII.GetString(b, 0, n));
+              Console.WriteLine("serialbridge: now at " + sp.BaudRate + " baud");
+              ns.WriteByte(1);
+            } catch (Exception e) { Console.WriteLine("serialbridge: rate refused: " + e.Message); ns.WriteByte(0); }
+          }
+        }
+      });
+      rater.IsBackground = true;
+      rater.Start();
     }
     var listener = new TcpListener(IPAddress.Loopback, port);
     listener.Start();

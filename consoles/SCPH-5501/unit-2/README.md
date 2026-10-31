@@ -31,4 +31,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-30-l](2026-10-30-l/) | 6 | 1 |
 | [2026-10-31-mdec](2026-10-31-mdec/) | 22 | 8 |
 | [2026-10-31-mdec2](2026-10-31-mdec2/) | 9 | 3 |
+| [2026-10-31-stream](2026-10-31-stream/) | 1 | 1 |
 | [2026-10-31-tail](2026-10-31-tail/) | 5 | 1 |

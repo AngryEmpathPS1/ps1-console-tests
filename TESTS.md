@@ -198,6 +198,7 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | refresh-store6 | no | refresh-store's sweep over sw; lhu T2; sw A+8; [nop;] lw at the stored word, the next, another 64 bytes, 1 KB, page, the first store's word; on the scratchpad; with the read not waiting; with no first store |
 | refresh-store7 | no | refresh-store's sweep over sw; lhu T2; sw; [nop;] lw into the on-die load's register or another, an ALU writer in its place, the same with no second store, no first store, on the scratchpad |
 | biu-sched | no | FFFE0130h as the BIOS leaves it, IBLKSZ 0, NOSTR 1, LDSCH 0, one bit at a time from uncached code: load-fill's cold rows, its warm loop, lw; k nops, T1 and T3 |
+| store-stream | no | a store every 16 words of cold code at all 256 refresh phases, by word, with a load, RAM_SIZE bit 7 both ways / does a stream of stores lock onto the refresh (the 5501 #2: 122 phases end on 6) |
 | biu-dram | no | RAM_SIZE bit 7 cleared, alone and with LDSCH off: biu-sched's rows and cold STORE and LW+SW |
 | cpu-loop-tick14 | no | lw v1; lw a1 then a reader of v1 in the second's delay slot - an ALU op, jr, beq, a store's data, a load's address, one later, the same register; the first or second load from the scratchpad or Timer 2; three loads; a return with its delay slot used |
 | cpu-loop-tick15 | no | sw A+4; sw A+16K; a CD status / SPUSTAT read, entered after 0 / 2 / 4 stores to other 1 KB blocks; one store a turn after 4; a nop longer |
@@ -442,4 +443,4 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | sio1-loopback | no, but a **loopback plug** (its header says how to make one) | the serial port timed from inside: when SR.0 and SR.2 set after a byte is written, at 5-8 bits, 1/1.5/2 stop bits, parity, three rate factors; where a start lands after the baud timer's reload; with the plug, when the byte is in the receiver, the FIFO's overrun and empty reads, 16/32-bit reads, and the interrupts |
 | sio1-mismatch | no, but the **loopback plug** (as sio1-loopback: the TV says when) | 8N1 at one rate, a byte written, BAUD rewritten before or inside its frame: every byte the receiver gets, and SR.3/4/5 |
 
-Not in the table (their headers say what they do): `build`, `cd-stop`, `cd-unlock`, `gpustat`, `pad-short-exit`, `pal-probe`, `pal-probe2`, `vram-zero`.
+Not in the table (their headers say what they do): `build`, `cd-stop`, `cd-unlock`, `cd-unlock-mon`, `gpustat`, `pad-short-exit`, `pal-probe`, `pal-probe2`, `vram-zero`.

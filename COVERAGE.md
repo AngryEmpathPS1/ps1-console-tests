@@ -444,6 +444,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | store-cost | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | store-shadow | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | store-stall | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
+| store-stream |  |  |  | 1 |  |  |  |  |  |
 | sw-ioread | 3 | 7 | 3 | 1 | 6 | 5 | 1 | 3 | 2 |
 | sw-ioread2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | sw-ioread3 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
