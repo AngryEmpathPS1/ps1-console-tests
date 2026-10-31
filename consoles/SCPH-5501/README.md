@@ -98,4 +98,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-25-pocketverify](2026-10-25-pocketverify/) | 3 | 0 |
 | [2026-10-28](2026-10-28/) | 78 | 47 |
 | [2026-10-29](2026-10-29/) | 17 | 4 |
-| [2026-10-31-movies](2026-10-31-movies/) | 4 | 4 |
+| [2026-10-31-movies](2026-10-31-movies/) | 6 | 6 |

@@ -340,7 +340,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | movie-browser-depths |  |  |  |  |  |  | 1 |  |  |
 | movie-browser-fixed |  |  |  |  |  |  | 1 |  |  |
 | movie-browser-hangs |  |  |  |  |  |  | 1 |  |  |
+| movie-browser-speed |  |  | 1 |  |  |  |  |  |  |
 | movie-browser-timing |  |  |  |  |  |  | 1 |  |  |
+| movie-browser-xfiles |  |  | 1 |  |  |  |  |  |  |
 | movie-disc-box1 |  |  | 1 |  |  |  | 1 |  |  |
 | movie-disc-box2 |  |  | 1 |  |  |  | 1 |  |  |
 | movie-disc-extras |  |  | 1 |  |  |  | 1 |  |  |
