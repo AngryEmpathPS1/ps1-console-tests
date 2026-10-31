@@ -343,6 +343,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | movie-browser-timing |  |  |  |  |  |  | 1 |  |  |
 | movie-disc-box1 |  |  | 1 |  |  |  | 1 |  |  |
 | movie-disc-box2 |  |  | 1 |  |  |  | 1 |  |  |
+| movie-disc-final |  | 1 | 1 |  |  |  | 1 |  |  |
 | movie-disc-hunt1 |  |  |  |  |  |  | 1 |  |  |
 | movie-disc-hunt2 |  |  |  |  |  |  | 1 |  |  |
 | movie-disc-hunt3 |  |  |  |  |  |  | 1 |  |  |
