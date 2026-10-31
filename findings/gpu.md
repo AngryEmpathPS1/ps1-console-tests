@@ -184,8 +184,8 @@ Evidence: gp0-overrun; SCPH-5501 unit 2 only (3 runs).
 **50. GPUSTAT.25 with GP1(04h)=1 falls at 9 words counted, as nocash says.** "About 11" is words written. Behind a copy, a fill, a triangle or a rectangle it falls at word 10, one word having left the FIFO, rises again at word 33 when the 5-bit count wraps to 0, and falls at word 42. So F 10, W 33, F2 42: T = 9 both ways. It never falls for NOPs, or for words to an idle GPU.
 Evidence: gp0-bit25, gp0-bit25b; SCPH-5501 unit 2 only (3 runs each).
 
-**51. A quad's own words stay counted in the FIFO during its first half: all but one vertex's.** gp0-bit25b's 48 words of E6h behind a long first half wrap the count early: at word 28 flat or semi, 26 gouraud, 25 textured, 23 gouraud-textured, so 4, 6, 7 and 9 words were counted before the first E6h. The quad's 5, 8, 9 and 12 words less 1, 2, 2 and 3, one vertex's. No E6h leaves the FIFO in that time. Every triangle of every kind, rectangle and copy reads 33, none of its own. nocash has "a quad leaves its last vertex"; that would be 1, 2, 2, 3.
-Evidence: gp0-bit25b; SCPH-5501 unit 2 only (3 runs), the gouraud-textured row with F at 1 so read from W alone.
+**51. A quad's own words stay counted in the FIFO during its first half: all but one vertex's.** gp0-bit25b's 48 words of E6h behind a long first half wrap the count early: at word 28 flat or semi, 26 gouraud, 25 textured, 23 gouraud-textured, so 4, 6, 7 and 9 words were counted before the first E6h. The quad's 5, 8, 9 and 12 words less 1, 2, 2 and 3, one vertex's. No E6h leaves the FIFO in that time. Every triangle of every kind, rectangle and copy reads 33, none of its own. nocash has "a quad leaves its last vertex"; that would be 1, 2, 2, 3. Before that, from the last word until its set-up ends, all of a polygon's words are counted: with GP1(04h)=1 a 9-word 34h holds bit 25 at 0 from the first read after its last word to 256 cycles, rising with bit 28, a 9-word 2Ch to 104, and a 12-word 3Ch for the whole 800 cycles read.
+Evidence: gp0-bit25b, gp0-bit25c; SCPH-5501 unit 2 only (3 runs each), the gouraud-textured row of gp0-bit25b with F at 1 so read from W alone.
 
 ## Drawing cost
 
@@ -256,6 +256,21 @@ Evidence: gpu-outside, gpu-outside3; SCPH-5501 unit 2 only.
 
 **55. Small rectangles: a list packet costs about 27-30 cycles, whatever it draws.** Cycles per primitive in a DMA2 list, one a packet (slope from 8 to 32): dot 68h 27.5, semi dot 27.5, textured dot 27.8, 60h 1x1 29.6, 2x2 29.9, 4x4 31.1, 16x1 29.6, 1x16 72.6, 70h 8x8 62.0, 60h 8x8 63.0, semi 72h 8x8 88.2, textured 75h 8x8 62.0. Sent in one block instead, so the GPU never waits for a packet, 64 dots take about 15 cycles each (974-1045 to idle). So the 27.5 is the list: finding 10's 13 for bit 28 and about 14 for the next packet to arrive.
 Evidence: gpu-dmastream5, gp0-overrun; SCPH-5501 unit 2 only (3 runs each).
+
+**57. A polygon of no area pays 13 cycles for each gradient.** A point, a row, a column, a diagonal and two points, inside the area, nothing drawn. Flat and semi triangles read their set-up. Gouraud reads 78 more, textured 52, gouraud-textured 130: six colour gradients, four texture ones, 13 cycles each. A quad's two halves each pay it, less 7 flat, 20 gouraud, 22 textured, 28 gouraud-textured when both have no area. So 40, 465, 319 and 735 cycles for a quad on one point, which is psx-spx's "about 460 cycles for a gouraud quad". Outside the drawing area it is the same to the cycle. With every colour and texel alike the shaded triangle reads 8 less, the textured one and the gouraud-textured one 8, quads 17-22: small, and not the 13s. nocash's DIAG sends GP0(3Ch) with eleven words of 55555555h and looks for ready about 530 cycles after the last (TEST GPU NUM PARAMS). Those exact words read 723 here, so that page could not pass on this console at that spacing.
+Evidence: gpu-degen, gpu-degen2; SCPH-5501 unit 2 only (3 runs each).
+
+**58. A line walks like a triangle.** A line runs left to right, swapped if x0 >= x1, so an upright line starts at its second vertex. Going down it stops below the area, going up it stops above, a level line outside the area's rows stops at once. A step it does not draw costs 1 cycle for a new row and 1 for a pixel left of the area, and nothing for a pixel right of it. 128 long, flat or semi, wholly outside:
+
+| Line | Left | Right | Above | Below |
+|---|---|---|---|---|
+| Level | 150 | 22 | 22 | 21 |
+| Upright, first vertex on top | 151 | 149 | 22 | 148 |
+| Upright, first vertex at the bottom | 150 | 149 | 149 | 21 |
+| Diagonal, down to the right | 277 | 149 | 149 | 21 |
+
+Gouraud adds 61 to each. Across the area's corner, a diagonal reads 22 + 64 + 64 + the part it draws.
+Evidence: gpu-outside4; SCPH-5501 unit 2 only (3 runs).
 
 ## Scan-out
 
@@ -371,6 +386,12 @@ Evidence: gpu-semi-shape; models as finding 39.
 
 **56. A cached 0001h texel against 0000h on the new GPU: 0.019 cycle a pixel, not 0.04.** A raw 15-bit 64x64 rectangle, texels cached by a texture window: 0001h 2,206-2,220 cycles, 0000h 2,127; uncached 11,813-11,842 and 10,392-10,417, 0.346 a pixel.
 Evidence: gpu-transp-cached; SCPH-5501 unit 2 only (3 runs).
+
+**59. A cached textured rectangle's row is the flat rectangle's, and a transparent texel's pair costs a cycle.** Raw 15-bit texels, all in the cache, W 8 to 256 by H 8, 16, 64. All 0000h: D = 15 + H (1 + W / 2), every one of 18 cells to the cycle, 8,271 at 256x64. All 0001h: D = 20 + H x finding 23's flat row, 2 more from 64 wide: 404, 662, 1,178, 2,206, 4,259, 8,370 at H 64. Modulated texels read the same. Where it starts makes no difference: W 4, 8, 16 and 32 at x 256 to 280 read the same to the cycle at all eleven offsets tried, odd ones included. The exception is a rectangle starting in the last 8 columns before a multiple of 512: 8 x 64 reads 436 at x 504, 508 and 1016 against 404 at x 112 to 496, 624 to 764 and 1008, half a cycle a row. 32 wide across x 512 pays nothing (488, 500, 512 alike).
+Evidence: gpu-rect-cached, gpu-rect-x, gpu-rect-x2; SCPH-5501 unit 2 only (3 runs each).
+
+**60. What is hidden left of the drawing area is paid once.** 128x64 clipped d pixels by the left edge, d 8 to 120: a flat, semi or textured rectangle pays d / 2 over the part it draws, 3,999, 3,245, 2,236, 1,223, 461 cycles; a triangle with an upright left edge d / 2 flat, d gouraud or textured. A triangle whose left edge leans right pays nothing extra beside its walk, which already covers the hidden part. Past the right edge nothing is paid (the 433 at 8 wide is that place, x 504, finding 59).
+Evidence: gpu-outside5; SCPH-5501 unit 2 only (3 runs).
 
 ## MDEC
 

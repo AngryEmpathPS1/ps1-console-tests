@@ -1,0 +1,17 @@
+
+gpu/gpu-outside5
+128 x 64 primitives clipped by the left and right edges of the drawing area (256,136)-(511,375). D as gpu-shape-time, the fastest of eight start points. No assertions.
+
+                  inside   left d 8     32     64     96    120   right d 8     32     64     96    120
+rect 60h         4254     3994   3228   2205   1173    406     3994   3228   2205   1173    406
+rect 65h         4262     4004   3237   2216   1175    405     4004   3237   2216   1175    405
+rect 62h         6433     5928   4937   3441   1968    717     5928   4937   3441   1965    717
+TR flat          2321     2311   2185   1786   1136    480     2058   1379    698    274    125
+TR shaded        4592     4572   4319   3533   2233    921     4079   2732   1387    554    267
+TR tex           4553     4533   4280   3494   2194    882     4040   2693   1348    515    228
+TL flat          2259     2000   1333    669    261    124     2249   2123   1725   1074    418
+TL shaded        4466     3961   2639   1325    525    261     4446   4193   3407   2107    796
+TL tex           4427     3922   2600   1286    486    222     4407   4154   3368   2068    757
+
+gpu/gpu-outside5: Done.
+

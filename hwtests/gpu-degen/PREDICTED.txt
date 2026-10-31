@@ -1,0 +1,17 @@
+
+gpu/gpu-degen
+Polygons with no area, inside the drawing area. D as gpu-shape-time, fastest..slowest of eight start points. No assertions.
+
+           point       row         column      diag        two         (fastest..slowest), then the two pixels of the last
+flat 20h     26..26      28..28      30..30      32..32      28..28    untouched untouched
+semi 22h     26..26      28..28      30..30      32..32      28..28    untouched untouched
+shaded 30h  165..165    167..167    169..169    171..171    167..167   untouched untouched
+tex 24h     121..121    123..123    125..125    127..127    123..123   untouched untouched
+shtex 34h   253..253    255..255    257..257    259..259    255..255   untouched untouched
+fquad 28h    47..47      51..51      55..55      59..59      51..51    untouched untouched
+gquad 38h   329..329    333..333    337..337    341..341    333..333   untouched untouched
+tquad 2Ch   237..237    241..241    245..245    249..249    241..241   untouched untouched
+stq 3Ch     503..503    507..507    511..511    515..515    507..507   untouched untouched
+
+gpu/gpu-degen: Done.
+

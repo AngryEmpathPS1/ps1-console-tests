@@ -132,6 +132,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | fourth-try-stop-polled |  |  | 1 |  |  |  |  |  |  |
 | gp0-bit25 |  |  |  | 3 |  |  |  |  |  |
 | gp0-bit25b |  |  |  | 3 |  |  |  |  |  |
+| gp0-bit25c |  |  |  | 3 |  |  |  |  |  |
 | gp0-overrun |  |  |  | 3 |  |  |  |  |  |
 | gp0-poll | 2 | 7 | 2 | 1 | 6 | 2 | 1 | 2 |  |
 | gp0-store | 2 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |
@@ -154,6 +155,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-copy3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-copy4 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-cost-sweep | 6 | 7 | 8 | 1 | 6 | 13 | 1 | 8 | 2 |
+| gpu-degen |  |  |  | 3 |  |  |  |  |  |
+| gpu-degen2 |  |  |  | 3 |  |  |  |  |  |
 | gpu-dmabs | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmabs2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmastream | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
@@ -170,8 +173,13 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-outside |  |  |  | 5 |  |  |  |  |  |
 | gpu-outside2 |  |  |  | 3 |  |  |  |  |  |
 | gpu-outside3 |  |  |  | 3 |  |  |  |  |  |
+| gpu-outside4 |  |  |  | 3 |  |  |  |  |  |
+| gpu-outside5 |  |  |  | 3 |  |  |  |  |  |
 | gpu-phase | 2 | 6 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-phase2 | 2 | 6 | 6 | 1 | 6 | 2 | 1 | 6 |  |
+| gpu-rect-cached |  |  |  | 3 |  |  |  |  |  |
+| gpu-rect-x |  |  |  | 3 |  |  |  |  |  |
+| gpu-rect-x2 |  |  |  | 3 |  |  |  |  |  |
 | gpu-scan3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-scan4 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-scan5 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |

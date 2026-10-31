@@ -10,7 +10,7 @@ What the logs in `consoles/` show, by subsystem. Each finding gives the numbers,
 
 ## How far to trust this
 
-Findings 48-56 of the GPU chapter, 50-52 of the CPU chapter and 41-43 of the SPU chapter came a night later, from one unit, and have not had the second pass.
+Findings 48-60 of the GPU chapter, 50-52 of the CPU chapter and 41-43 of the SPU chapter came a night later, from one unit, and have not had the second pass.
 
 An AI wrote these chapters. A separate AI pass then went through every finding, recomputed its numbers from the logs and recounted its runs. It found something to correct in 57 of the 204, mostly ranges and run counts, and those corrections are in. That is a check by another AI, not by a person. The logs are the evidence: if a finding and a log disagree, the log wins, and please say so.
 
@@ -23,11 +23,11 @@ Every finding was also compared with three texts: nocash's own, the `stable` bra
 | Chapter | Findings | Already there | There, this adds numbers, models or conditions | In none of the three | One of them says otherwise |
 |---|---:|---:|---:|---:|---:|
 | CPU and bus | 52 | 9 | 22 | 18 | 3 |
-| GPU and MDEC | 56 | 13 | 23 | 13 | 7 |
+| GPU and MDEC | 60 | 13 | 24 | 16 | 7 |
 | SPU | 43 | 5 | 23 | 9 | 6 |
 | CD-ROM | 42 | 3 | 20 | 14 | 5 |
 | Ports and serial | 26 | 4 | 16 | 2 | 4 |
-| Total | 219 | 34 | 104 | 56 | 25 |
+| Total | 223 | 34 | 105 | 59 | 25 |
 
 These are one reader's calls and "in none of the three" means a text search found nothing, so treat them as a guide.
 

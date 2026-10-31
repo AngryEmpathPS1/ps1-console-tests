@@ -27,6 +27,14 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | gpu-dmastream5 | no | as gpu-dmastream2, N = 1, 8, 32 packets, the small rectangles it left out: 68h dots, 70h, 60h at 1, 2, 4, 16x1, 1x16, semi and textured dots |
 | gpu-outside2 | no | shaded, textured, semi-transparent and shaded textured triangles and quads, and semi and textured rectangles, wholly left of, right of, above and below the drawing area, 16 and 128 rows, exact D |
 | gpu-outside3 | no | what a primitive outside the drawing area pays: by width at the left and right, by which vertex is leftmost at all four sides, and 128 x 128 shapes clipped by the top and bottom of the area, exact D |
+| gpu-degen | no | polygons of no area, inside the drawing area: nine kinds by five shapes (a point, a row, a column, a diagonal, two points), exact D |
+| gpu-outside4 | no | flat, semi and shaded lines 128 long, level, upright and diagonal, each way round, inside, outside on four sides and across a corner of the drawing area, exact D |
+| gpu-rect-cached | no | a raw 15-bit rectangle whose texels are all cached, W 8-256 by H 8, 16, 64, 0001h and 0000h, and modulated at H 16, exact D |
+| gpu-outside5 | no | rectangles and triangles 128 x 64 clipped by the left and right edges of the drawing area, by how much, exact D |
+| gpu-rect-x | no | cached textured rectangles 64 rows tall, W 4 to 32, by where they start in x, exact D |
+| gp0-bit25c | no | GPUSTAT.25, 26 and 28 by the 8 cycles after the last word of six big polygons, GP1(04h)=1, to 800 cycles |
+| gpu-degen2 | no | polygons of no area by place and by attributes: nocash DIAG's own words, a point in the area, attributes alike, a point outside it, exact D |
+| gpu-rect-x2 | no | cached textured rectangles 8 x 64 just before every 128-pixel boundary, and 32 x 64 across x 512, exact D |
 | gpu-copy-480i | no | in 480i with E1h.10 set and clear, a 512x240 and a 16x240 copy, timed, and copies and CPU uploads at y 0, 1, 40, 41 of each field, rows read back |
 | gp1-reset | no | whether GP1(00h) restarts the video timing: cycles and lines from the write to the next two VBlank edges at 27 places in the frame, GPUSTAT.31 around it, and whether the horizontal position restarts |
 | vblank-edge | no | how VBlank follows a vertical display range changed mid-frame |
