@@ -337,6 +337,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-time | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mem-delay | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | miss-grid | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
+| movie-browser-depths |  |  |  |  |  |  | 1 |  |  |
+| movie-browser-fixed |  |  |  |  |  |  | 1 |  |  |
+| movie-browser-hangs |  |  |  |  |  |  | 1 |  |  |
+| movie-browser-timing |  |  |  |  |  |  | 1 |  |  |
 | muldiv-overlap | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | multitap-modes |  | 1 |  |  |  |  |  |  |  |
 | pad-ack-hist | 6 | 6 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
