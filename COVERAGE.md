@@ -342,7 +342,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-scale | 2 | 7 | 2 | 1 | 6 | 6 | 1 | 2 |  |
 | mdec-scale2 | 2 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |
 | mdec-step24 | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
-| mdec-tail |  |  |  |  |  |  | 2 |  |  |
+| mdec-tail |  |  |  | 2 |  |  | 2 |  |  |
 | mdec-time | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-winddown |  |  |  | 2 |  |  | 2 |  |  |
 | mem-delay | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
