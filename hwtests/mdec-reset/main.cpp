@@ -22,7 +22,7 @@
  * ANSWERED by the SCPH-5501 and 7501 (console day; v0.377.30, src/psx.js DMA_MDEC_IN_START): every case done after 75-85
  * cycles - no lost control write, and no 230-cycle start. AT v0.377.30 every case 70; AT v0.377.38 (DMA_MDEC_IN_START 5)
  * every case 75, the consoles' 200 of 252. NOT THE WHOLE ANSWER: row N 0 of the first table came back "DMA0 STILL BUSY",
- * status 60000000h, on later runs of the 5000, 5501, 7001 and 7502: a control write with no gap behind the reset IS lost
+ * status 60000000h, in 24 logs of 30 across all seven models: a control write with no gap behind the reset IS lost
  * when the two land close enough, which a program's cache state decides (STATUS "MDEC1's enable is lost behind a reset").
  * THE RULE: run here first. ON THIS CORE AT v0.366 (`node hwtests/run.js mdec-reset`): every case done after 300
  * cycles (305 once) at every N - the instant reset. The status after the enables reads 80040000h (no request with no
