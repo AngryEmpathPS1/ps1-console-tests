@@ -1,0 +1,27 @@
+-- sending 14,336 bytes (menu mode)
+
+sio/pad-short-exit
+When a DualShock leaves config mode. Port 1, nothing to press.
+start: poll ID 41 status 5a
+leaving, from analog in config mode:
+  43h 00       9 bytes, 8 acknowledged: poll ID 73 status 5a
+  43h 00       8 bytes, 8 acknowledged: poll ID f3 status 5a
+  43h 00       7 bytes, 7 acknowledged: poll ID f3 status 5a
+  43h 00       6 bytes, 6 acknowledged: poll ID f3 status 5a
+  43h 00       5 bytes, 5 acknowledged: poll ID f3 status 5a
+  43h 00       4 bytes, 4 acknowledged: poll ID f3 status 5a
+  43h 00       3 bytes, 3 acknowledged: poll ID f3 status 5a
+psxsplash's own set-up, as it sends it, from digital:
+  its 43h 00   5 bytes, 5 acknowledged: poll ID f3 status 5a
+  three polls later: ID f3 status 5a
+entering, from digital:
+  43h 01       9 bytes, 4 acknowledged: poll ID f3 status 5a
+  43h 01       8 bytes, 4 acknowledged: poll ID f3 status 5a
+  43h 01       7 bytes, 4 acknowledged: poll ID f3 status 5a
+  43h 01       6 bytes, 4 acknowledged: poll ID f3 status 5a
+  43h 01       5 bytes, 4 acknowledged: poll ID f3 status 5a
+  43h 01       4 bytes, 4 acknowledged: poll ID 41 status 5a
+  43h 01       3 bytes, 3 acknowledged: poll ID 41 status 5a
+end: poll ID 41 status 5a
+
+sio/pad-short-exit: Done

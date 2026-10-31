@@ -355,6 +355,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | multitap-modes |  | 1 |  |  |  |  |  |  |  |
 | pad-ack-hist | 6 | 6 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | pad-config |  |  |  |  |  |  |  | 3 |  |
+| pad-short-exit |  |  | 1 |  |  |  |  |  |  |
 | pal-dots | 6 |  | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | pal-line | 6 |  | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | pal-probe |  | 1 |  |  |  |  |  |  |  |

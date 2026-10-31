@@ -432,4 +432,4 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | sio1-loopback | no, but a **loopback plug** (its header says how to make one) | the serial port timed from inside: when SR.0 and SR.2 set after a byte is written, at 5-8 bits, 1/1.5/2 stop bits, parity, three rate factors; where a start lands after the baud timer's reload; with the plug, when the byte is in the receiver, the FIFO's overrun and empty reads, 16/32-bit reads, and the interrupts |
 | sio1-mismatch | no, but the **loopback plug** (as sio1-loopback: the TV says when) | 8N1 at one rate, a byte written, BAUD rewritten before or inside its frame: every byte the receiver gets, and SR.3/4/5 |
 
-Not in the table (their headers say what they do): `build`, `cd-stop`, `cd-unlock`, `gpustat`, `pal-probe`, `pal-probe2`, `vram-zero`.
+Not in the table (their headers say what they do): `build`, `cd-stop`, `cd-unlock`, `gpustat`, `pad-short-exit`, `pal-probe`, `pal-probe2`, `vram-zero`.
