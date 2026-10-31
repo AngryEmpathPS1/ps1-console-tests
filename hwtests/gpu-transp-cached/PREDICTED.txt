@@ -1,0 +1,18 @@
+gpu/gpu-transp-cached, before any console (2026-10-30).
+
+psx-spx's dev text (cf1cd39, GPU drawing timings, notes): a raw 15bpp 64x64 rectangle whose texels are all 0000h draws about 0.08 cycles a pixel faster than one
+with visible texels on the v0 GPU and 0.04 faster on the v2 GPU when the texels are cached (328 and 164 cycles of the 4,096 pixels), and 0.26 (v0) and 0.38 (v2)
+faster when they are not (1,065 and 1,556). Taken in the display; these rows are in the blanking.
+
+This core at v0.377.224 (hwtests/run.js), D fastest..slowest:
+                    SCPH-7501          SCPH-1001
+  cached 0001h      2,123..2,144       2,508..2,549
+  cached 0000h      2,122..2,144       2,508..2,549
+  uncached 0001h   11,940..11,962     15,834..15,875
+  uncached 0000h   10,338..10,360     14,739..14,780
+  saving, cached    1 cycle, 0.000     0 cycles, 0.000
+  saving, uncached  1,602, 0.391       1,095, 0.267
+So the uncached pair is psx-spx's and the cached one is free here. The rectangle reads 0001h everywhere past the 16x16 with the window on, where the page is 0000h,
+and the sentinel after 0000h texels.
+
+Test of the test: a scratch core charging a skipped cached texel psx-spx's figures reads 0.038 on the 7501 and 0.080 on the 1001, the uncached rows unchanged.

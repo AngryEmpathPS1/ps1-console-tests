@@ -130,8 +130,12 @@ How many logs each test has on each console. Generated from the file names in `c
 | fix-shadow2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | fix-shadow3 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | fourth-try-stop-polled |  |  | 1 |  |  |  |  |  |  |
+| gp0-bit25 |  |  |  | 3 |  |  |  |  |  |
+| gp0-bit25b |  |  |  | 3 |  |  |  |  |  |
+| gp0-overrun |  |  |  | 3 |  |  |  |  |  |
 | gp0-poll | 2 | 7 | 2 | 1 | 6 | 2 | 1 | 2 |  |
 | gp0-store | 2 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |
+| gp1-reset |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0-ready | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu-a0-size | 1 | 7 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu-abort | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
@@ -145,6 +149,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-c0-ready | 1 | 7 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu-c0-size | 2 | 7 | 6 | 1 | 6 | 4 | 1 | 2 | 2 |
 | gpu-cmd-ready | 1 | 6 | 6 | 1 | 6 | 4 | 1 | 2 | 2 |
+| gpu-copy-480i |  |  |  | 3 |  |  |  |  |  |
 | gpu-copy2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-copy3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-copy4 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
@@ -155,11 +160,16 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dmastream2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmastream3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmastream4 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
+| gpu-dmastream5 |  |  |  | 3 |  |  |  |  |  |
 | gpu-drift | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
+| gpu-fill-480i |  |  |  | 3 |  |  |  |  |  |
 | gpu-height | 2 | 7 | 6 | 1 | 6 | 6 | 1 | 6 |  |
 | gpu-irq-chain | 3 | 7 | 6 | 1 | 6 | 5 | 1 | 3 | 2 |
 | gpu-lines | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-lines2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
+| gpu-outside |  |  |  | 5 |  |  |  |  |  |
+| gpu-outside2 |  |  |  | 3 |  |  |  |  |  |
+| gpu-outside3 |  |  |  | 3 |  |  |  |  |  |
 | gpu-phase | 2 | 6 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-phase2 | 2 | 6 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-scan3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
@@ -263,6 +273,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-tail9 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-tex-opaque | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | gpu-thin | 3 | 7 | 6 | 1 | 6 | 8 | 1 | 3 | 2 |
+| gpu-transp-cached |  |  |  | 3 |  |  |  |  |  |
 | gpu-tri-ready | 3 | 7 | 6 | 1 | 6 | 5 | 1 | 3 | 2 |
 | gpu-vbl | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-vbl2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
@@ -278,6 +289,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gte-irgb | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gte-latch-cached | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gte-sqr-align | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
+| gte-write-delay |  |  |  | 3 |  |  |  |  |  |
 | gte_test-all | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | hold-read | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | icache-tagmatch | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
@@ -363,6 +375,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu-curvol | 1 | 6 | 2 | 1 | 6 | 4 | 1 | 2 | 2 |
 | spu-decode-ahead | 6 | 6 | 6 | 1 | 6 | 10 | 1 | 6 | 2 |
 | spu-dma | 6 | 6 | 8 | 1 | 6 | 11 | 1 | 7 | 1 |
+| spu-exp-neg |  |  |  | 3 |  |  |  |  |  |
 | spu-fifo | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | spu-fifo2 | 4 |  | 3 | 1 |  | 4 | 1 | 4 |  |
 | spu-fifo3 | 3 |  | 3 | 1 |  | 3 | 1 | 3 |  |
@@ -373,6 +386,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu-late | 3 |  | 3 | 1 |  | 3 | 1 | 3 |  |
 | spu-lead | 6 | 7 | 8 | 1 | 6 | 11 | 1 | 8 | 2 |
 | spu-lead-phase | 6 | 6 | 6 | 1 | 6 | 8 | 1 | 5 | 2 |
+| spu-lsax-sweep |  |  |  | 6 |  |  |  |  |  |
 | spu-path | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | spu-phase | 4 |  | 1 | 1 |  | 6 | 4 | 4 |  |
 | spu-phase2 | 4 |  | 5 | 1 |  | 3 | 4 | 4 |  |
@@ -385,10 +399,12 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu-regs | 6 | 6 | 8 | 1 | 6 | 11 | 1 | 8 | 2 |
 | spu-reverb | 6 | 6 | 16 | 1 | 6 | 15 | 1 | 10 | 2 |
 | spu-reverb-in | 6 | 6 | 8 | 1 | 6 | 11 | 1 | 8 | 2 |
+| spu-statx-tail |  |  |  | 3 |  |  |  |  |  |
 | spu-unk-1dbc | 1 | 6 | 1 | 1 | 6 | 2 | 1 | 2 | 2 |
 | spu-unk-kill | 1 | 6 | 1 | 1 | 6 | 2 | 1 | 2 | 2 |
 | spu-xfer | 6 | 7 | 8 | 1 | 6 | 12 | 1 | 8 | 2 |
 | spu_memory-transfer | 1 | 6 | 3 | 1 | 6 | 7 | 1 | 4 | 2 |
+| sr-mask |  |  |  | 3 |  |  |  |  |  |
 | st-land | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | store-chain | 1 | 1 | 1 | 1 | 2 | 2 | 1 | 2 | 2 |
 | store-cost | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
@@ -411,6 +427,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | t2-path | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | third-try-stop-500ms |  |  | 1 |  |  |  |  |  |  |
 | timer-sync | 6 |  | 10 | 1 | 6 | 14 | 1 | 10 | 2 |
+| timer2-lap |  |  |  | 3 |  |  |  |  |  |
 | timers_timers | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | unc-entry | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | unc-entry2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |

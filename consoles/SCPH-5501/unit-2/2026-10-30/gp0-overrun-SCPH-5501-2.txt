@@ -1,0 +1,103 @@
+
+gpu/gp0-overrun
+DMA2 into a full GP0 FIFO, one-pixel dots. Three trials a row: dots landed, wrong-coloured, strays, cycles to the DMA's
+end and to idle, then the first trial's map: # landed . missing x wrong colour. No assertions.
+
+PACED by the CPU: landed 64 of 64, wrong 0, strays 0, timed out 0
+
+LIST: one node of N words behind a 640x480 fill, GP1(04h)=2
+N  12,  6 dots: landed  6  6  6, wrong 0 0 0, strays 0 0 0, DMA 171 82 82, idle 24119 24107 24103  ######
+N  13,  6 dots: landed  6  6  6, wrong 0 0 0, strays 0 0 0, DMA 83 83 83, idle 24120 24104 24156  ######
+N  14,  7 dots: landed  7  7  7, wrong 0 0 0, strays 0 0 0, DMA 84 93 84, idle 21907 23988 24117  #######
+N  15,  7 dots: landed  7  7  7, wrong 0 0 0, strays 0 0 0, DMA 85 85 91, idle 24121 24163 24213  #######
+N  16,  8 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 92 86 86, idle 24167 21903 23796  ########
+N  17,  8 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 87 87 87, idle 24115 24209 24155  ########
+N  18,  9 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 88 97 88, idle 24171 24171 21948  #########
+N  19,  9 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 99 89 99, idle 24133 24163 24209  #.#######
+N  20, 10 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 90 91 90, idle 24167 24206 24254  #.########
+N  21, 10 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 91 91 91, idle 24263 24161 24156  #..#######
+N  22, 11 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 98 102 102, idle 24228 24211 24263  #..########
+N  23, 11 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 93 93 93, idle 24262 24165 24210  #...#######
+N  24, 12 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 94 100 94, idle 24222 24211 24208  #...########
+N  25, 12 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 105 101 95, idle 24191 24171 24212  #....#######
+N  26, 13 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 96 96 96, idle 24306 24298 24251  #....########
+N  27, 13 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 107 103 97, idle 24232 24259 24208  #.....#######
+N  28, 14 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 108 98 104, idle 24229 24262 24261  #.....########
+N  29, 14 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 100 109 99, idle 22600 24263 24256  #......#######
+N  30, 15 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 109 100 110, idle 24277 24270 24363  #......########
+N  31, 15 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 101 103 111, idle 22019 23996 24228  #.......#######
+N  32, 16 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 112 102 102, idle 24284 24311 24314  #.......########
+N  33, 16 dots: landed  0  0  0, wrong 0 0 0, strays 0 0 0, DMA 103 113 103, idle -1 -1 -1  ................  GPU NEVER IDLE (a command waiting for its parameters)  GPU NEVER IDLE (a command waiting for its parameters)  GPU NEVER IDLE (a command waiting for its parameters)
+N  34, 17 dots: landed  1  1  1, wrong 0 0 0, strays 0 0 0, DMA 114 104 104, idle 24059 24084 24085  #................
+N  35, 17 dots: landed  1  1  1, wrong 0 0 0, strays 0 0 0, DMA 106 105 105, idle 22785 24038 24040  #................
+N  36, 18 dots: landed  2  2  2, wrong 0 0 0, strays 0 0 0, DMA 106 106 106, idle 24088 24037 24137  #................#
+N  37, 18 dots: landed  2  2  2, wrong 0 0 0, strays 0 0 0, DMA 107 107 107, idle 21840 24082 24138  #................#
+N  38, 19 dots: landed  3  3  3, wrong 0 0 0, strays 0 0 0, DMA 118 117 118, idle 24110 24094 24139  #................##
+N  39, 19 dots: landed  3  3  3, wrong 0 0 0, strays 0 0 0, DMA 109 119 119, idle 22244 22519 24059  #................##
+N  40, 20 dots: landed  4  4  4, wrong 0 0 0, strays 0 0 0, DMA 120 120 110, idle 24105 24107 24094  #................###
+N  41, 20 dots: landed  4  4  4, wrong 0 0 0, strays 0 0 0, DMA 117 121 111, idle 24111 21846 24132  #................###
+N  42, 21 dots: landed  5  5  5, wrong 0 0 0, strays 0 0 0, DMA 122 112 112, idle 24160 24175 24133  #................####
+N  43, 21 dots: landed  5  5  5, wrong 0 0 0, strays 0 0 0, DMA 113 113 113, idle 24055 22012 22787  #................####
+N  44, 22 dots: landed  6  6  6, wrong 0 0 0, strays 0 0 0, DMA 114 124 114, idle 24096 24111 24144  #................#####
+N  45, 22 dots: landed  6  6  6, wrong 0 0 0, strays 0 0 0, DMA 115 115 125, idle 24102 23604 21897  #................#####
+N  46, 23 dots: landed  7  7  7, wrong 0 0 0, strays 0 0 0, DMA 116 126 126, idle 24157 24152 24107  #................######
+N  47, 23 dots: landed  7  7  7, wrong 0 0 0, strays 0 0 0, DMA 127 117 124, idle 24110 24103 21941  #................######
+N  48, 24 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 118 118 118, idle 24239 24189 24189  #................#######
+N  49, 24 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 119 129 129, idle 24150 24159 22530  #................#######
+N  50, 25 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 130 130 130, idle 24166 24152 24159  #................########
+N  51, 25 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 121 131 121, idle 24113 24107 23511  #.................#######
+N  52, 26 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 123 122 122, idle 24200 24185 24195  #.................########
+N  53, 26 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 123 129 123, idle 24205 24197 24145  #..................#######
+N  54, 27 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 137 138 128, idle 24166 24209 24193  #..................########
+N  55, 27 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 139 130 129, idle 24214 24200 24201  #...................#######
+N  56, 28 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 140 130 141, idle 24213 24207 24218  #...................########
+N  57, 28 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 141 131 141, idle 24181 24246 24171  #....................#######
+N  58, 29 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 142 132 132, idle 24216 24290 24200  #....................########
+N  59, 29 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 133 143 139, idle 24216 24308 24251  #.....................#######
+N  60, 30 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 134 134 134, idle 24253 24347 24247  #.....................########
+N  61, 30 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 145 135 135, idle 24231 24247 24203  #......................#######
+N  62, 31 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 146 137 137, idle 24275 24259 24259  #......................########
+N  63, 31 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 147 137 137, idle 24230 24255 24210  #.......................#######
+N  64, 32 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 138 138 147, idle 24225 24345 24345  #.......................########
+N 128, 64 dots: landed  9  9  9, wrong 0 0 0, strays 0 0 0, DMA 202 212 212, idle 24239 24289 24332  #.......................................................########
+N 240, 120 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 325 324 324, idle 24181 24127 24165  #................................................................................................................#######
+
+LIST IDLE: the same node to an idle GPU
+N  12,  6 dots: landed  6  6  6, wrong 0 0 0, strays 0 0 0, DMA 103 92 82, idle 137 125 115  ######
+N  16,  8 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 86 86 86, idle 119 164 119  ########
+N  24, 12 dots: landed 10 10 10, wrong 0 0 0, strays 0 0 0, DMA 94 103 94, idle 172 226 172  ##..########
+N  32, 16 dots: landed 10 10 10, wrong 0 0 0, strays 0 0 0, DMA 102 102 102, idle 276 228 270  ##......########
+N  48, 24 dots: landed  8  8  8, wrong 0 0 0, strays 0 0 0, DMA 128 122 118, idle 161 155 151  ##........##........####
+N  64, 32 dots: landed 12 12 13, wrong 0 0 0, strays 0 0 0, DMA 138 138 148, idle 261 263 271  ##........#........#....########
+N 128, 64 dots: landed 15 15 15, wrong 1 1 1, strays 0 0 0, DMA 212 202 202, idle 245 235 235  ##........#........#........##........#........#........x#######
+N 240, 120 dots: landed 23 23 22, wrong 1 1 2, strays 0 0 0, DMA 324 324 324, idle 357 357 360  ##........#........#........#........x#........#........#........#........##........#........#........#........#########
+
+BLOCK: 128 words of dots, block size B, behind a 640x480 fill, GP1(04h)=1
+B   1, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 23722 25418 25419, idle 23755 25451 25452  ################################################################
+B   2, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 24991 25065 25025, idle 25024 25098 25103  ################################################################
+B   3, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 24988 25058 25003, idle 25021 25091 25036  ################################################################
+B   4, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 24950 25035 25007, idle 24983 25074 25040  ################################################################
+B   5, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 25054 24938 24922, idle 25087 25016 25000  ################################################################
+B   6, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 25081 24410 22767, idle 25114 24443 22800  ################################################################
+B   7, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 25016 25021 25020, idle 25049 25054 25053  ################################################################
+B   8, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 22708 24988 24963, idle 22786 25073 25041  ################################################################
+B   9, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 24959 25071 25026, idle 24992 25104 25059  ################################################################
+B  10, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 24893 24923 24926, idle 24971 25001 25007  ################################################################
+B  12, 64 dots: landed 63 63 63, wrong 0 0 0, strays 0 0 0, DMA 25021 24922 24913, idle 25099 25000 24991  #########################################################.######
+B  16, 64 dots: landed 62 62 62, wrong 0 0 0, strays 0 0 0, DMA 24970 24858 24854, idle 25093 24984 24977  ######..########################################################
+
+BLOCK IDLE: the same to an idle GPU
+B   1, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 1454 1439 1443, idle 1487 1478 1476  ################################################################
+B   2, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 1023 1000 984, idle 1056 1033 1017  ################################################################
+B   3, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 999 997 964, idle 1032 1030 997  ################################################################
+B   4, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 1002 962 933, idle 1035 995 1011  ################################################################
+B   5, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 961 963 949, idle 994 996 1027  ################################################################
+B   6, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 990 964 964, idle 1023 997 997  ################################################################
+B   7, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 1002 981 981, idle 1035 1014 1014  ################################################################
+B   8, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 978 919 919, idle 1059 997 997  ################################################################
+B   9, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 993 972 977, idle 1027 1006 1010  ################################################################
+B  10, 64 dots: landed 64 64 64, wrong 0 0 0, strays 0 0 0, DMA 975 954 937, idle 1053 1032 1015  ################################################################
+B  12, 64 dots: landed 63 63 64, wrong 0 0 0, strays 0 0 0, DMA 941 914 920, idle 1019 992 1043  #########################################################.######
+B  16, 64 dots: landed 62 62 62, wrong 0 0 0, strays 0 0 0, DMA 895 851 851, idle 1018 1019 1024  ######..########################################################
+
+gpu/gp0-overrun: Done.

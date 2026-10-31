@@ -1,0 +1,44 @@
+
+gpu/gpu-copy-480i
+640x480 interlaced, GP0(E1h) bit 10 set against clear. Cycles from the last word to bits 26+28, fastest..slowest of four,
+then the rows written. Field 1 reads GPUSTAT.31 = 1 through the picture, field 0 reads 0. No assertions.
+
+A. TIME, cycles fastest..slowest, and the rows written of column 0
+PICTURE line 100, field 1:
+ copy 512x240
+  bit set    159057..159105  bit 31 1->1, 13 0->0  even rows 120 (0..238) odd 120 (1..239)
+  bit clear  158976..159147  bit 31 1->1, 13 0->0  even rows 120 (0..238) odd 120 (1..239)
+  clear/set 99%, rows written with the bit clear 240 of 240
+ copy 16x240
+  bit set     10011..10026   bit 31 1->1, 13 0->0  even rows 120 (0..238) odd 120 (1..239)
+  bit clear    9979..10030   bit 31 1->1, 13 0->0  even rows 120 (0..238) odd 120 (1..239)
+  clear/set 99%, rows written with the bit clear 240 of 240
+PICTURE line 100, field 0:
+ copy 512x240
+  bit set    159102..159148  bit 31 0->0, 13 1->1  even rows 120 (0..238) odd 120 (1..239)
+  bit clear  159104..159147  bit 31 0->0, 13 1->1  even rows 120 (0..238) odd 120 (1..239)
+  clear/set 100%, rows written with the bit clear 240 of 240
+ copy 16x240
+  bit set      9984..10023   bit 31 0->0, 13 1->1  even rows 120 (0..238) odd 120 (1..239)
+  bit clear   10017..10063   bit 31 0->0, 13 1->1  even rows 120 (0..238) odd 120 (1..239)
+  clear/set 100%, rows written with the bit clear 240 of 240
+
+B. ROWS, E1h.10 clear, line 100 of each field: # written, . not, ? another colour
+copy    y  0 field 0: bit 31 0->0, rows from  0: ################....
+copy    y  0 field 1: bit 31 1->1, rows from  0: ################....
+copy    y  1 field 0: bit 31 0->0, rows from  0: .################...
+copy    y  1 field 1: bit 31 1->1, rows from  0: .################...
+copy    y 40 field 0: bit 31 0->0, rows from 38: ..################..
+copy    y 40 field 1: bit 31 1->1, rows from 38: ..################..
+copy    y 41 field 0: bit 31 0->0, rows from 39: ..################..
+copy    y 41 field 1: bit 31 1->1, rows from 39: ..################..
+upload  y  0 field 0: bit 31 0->0, rows from  0: ################....
+upload  y  0 field 1: bit 31 1->1, rows from  0: ################....
+upload  y  1 field 0: bit 31 0->0, rows from  0: .################...
+upload  y  1 field 1: bit 31 1->1, rows from  0: .################...
+upload  y 40 field 0: bit 31 0->0, rows from 38: ..################..
+upload  y 40 field 1: bit 31 1->1, rows from 38: ..################..
+upload  y 41 field 0: bit 31 0->0, rows from 39: ..################..
+upload  y 41 field 1: bit 31 1->1, rows from 39: ..################..
+
+gpu/gpu-copy-480i: Done.

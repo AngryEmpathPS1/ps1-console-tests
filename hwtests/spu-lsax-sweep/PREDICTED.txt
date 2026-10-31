@@ -1,0 +1,16 @@
+spu/spu-lsax-sweep, before any console (2026-10-30).
+
+psx-spx's dev text (848ed5d): a write before the last of the three header fetches after Key On's service sets no flag, so a later loop-start block
+wins; a write after it wins. It has ENVX move four samples after the first fetch, so with E the `fixed` row's 0800h column the last fetch is E - 2
+and the write first wins at n = E - 2, or E - 1 by where the write falls in its sample. It counts from the service, so the cut moves with the class.
+
+Mednafen, read from its source, not run: the protection ends at the end of a 4-sample play delay, one sample later than that. Finding 28, an
+unsynchronised write at n = 4: the write won 28 of 42 runs, n = 20 all 42.
+
+This core at v0.377.223, every try alike, level and 1F801C1Eh agreeing, CONTROL 1fde and 0208, onset alike all three times and as spu-phase reads
+it on each model:
+  SCPH-7501, 5501, 7502         onset 8, E 5: the flag to n = 4, the write from n = 5
+  SCPH-9001, 1001, 7001, 5000   onset 9, E 6: the flag to n = 5, the write from n = 6
+So the cut here is E, a sample or two behind psx-spx, because the protection is cleared at the voice's restart (SPU_KON_DELAY). The class here is
+each model's constant; a console draws it run by run. The `regs` row's 0800h column read 5 before the sweep and 6 after it on the 7501, the class
+unchanged: an unsynchronised Key On lands where it lands, so that column is not the class. `fixed` and `onset` are.

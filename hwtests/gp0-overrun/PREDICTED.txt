@@ -1,0 +1,14 @@
+gpu/gp0-overrun, before any console (2026-10-30).
+
+psx-spx's dev text (cf1cd39, GPU I/O ports, "GP0 write FIFO"): DMA2 list mode, GP1(04h)=2: a 12-word node is transferred intact, a 240-word node loses
+words. Block mode, GP1(04h)=1: completes, but 16-word blocks lose words (lines, polygons and rectangles); 1-word blocks are exact. No threshold. Writing to a
+full FIFO does not stall and does not drop the new word: the newest words overwrite the oldest queued ones.
+
+This core at v0.377.224, SCPH-7501 and SCPH-1001 alike (hwtests/run.js): PACED 64 of 64. Every dot of every row lands, 87 rows of 87, wrong 0, strays 0: a DMA
+word at a full FIFO waits in a spill list. LIST behind the fill: DMA 90-173 cycles (N 12-64, median 120; the top is a cold first trial), 206-216 at N 128, 328-331 at N 240: it does not wait for the fill.
+Idle 21,865-25,583. BLOCK behind the fill: DMA 23,105-24,741 at every block size: it waits, on bit 25. To an idle GPU 1,017-1,682.
+
+Test of the test: a scratch core with no spill list, DMA overrunning the FIFO as the CPU does, and bit 25 falling at 11 (gp0-bit25's other reading), reads N 12-17
+whole, N 18 .######## (dot 0 lost), then N 24 ....########, N 33 0 of 16 and the GPU never idle (a colour word waiting for its position), N 48 7 landed and 1 wrong,
+N 128 8 landed. Not a straight fall with N: past 32 queued words the 5-bit count wraps. BLOCK whole up to 6, then 7 loses 8 dots, 8 loses 14, 16 loses 11. PACED
+still 64. So loss, its shape and the block threshold all show, and the first block size to lose words moves with bit 25's threshold, as the header says.

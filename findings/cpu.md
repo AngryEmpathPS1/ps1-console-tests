@@ -287,6 +287,9 @@ Evidence: timer-sync (PRESCALER); SCPH-1001, 5501, 7001, 7501, 7502, 9001 (the 5
 **CPU-45. Counting the dot clock against the system clock gives 6.71 MHz on NTSC-board consoles and 6.65 MHz on the PAL SCPH-7502, with the mode forced to NTSC on all of them.** Timer 0 on the dot clock (320-wide), over a 1011-cycle delay loop: 199-201 counts on SCPH-1001, 5000, 5501, 7001, 7501 and 9001; 198-199 on the SCPH-7502 with the mode forced to NTSC. Over 5011 cycles: 991-992 and 982-983. These fit 53.693 MHz / 8 and 53.203 MHz / 8. Timer 2 on system clock/8 counts 126-127 in 1011 cycles and 626-627 in 5011. The ps1-tests author's own console read 198/199 for the first, in his repository; its log starts "Detected NTSC system", so it is the count, not the mode flag, that puts it on the PAL crystal.
 Evidence: timers (ps1-tests); all seven models; 48 runs.
 
+**CPU-51. Timer 2 on system clock / 8 with reset at target laps exactly 8T.** T = 8000h, 1000h, 100h and 10h, polled at any rate, idle, or by IRQ: within 0.25 cycle of 8T over the lap. The value T is held 1.00 system cycle and 0 for 7.00 (DWELL). On the system clock the lap is T+2, the control. psx-spx's dev text has this.
+Evidence: timer2-lap; SCPH-5501 unit 2 only (3 runs).
+
 ## GTE
 
 **CPU-46. After `mtc2` to IRGB, IR1 and IR2 read new from the fourth following instruction and IR3 from the third. Uncached, all three read new from the second.** `mtc2 IRGB; N fillers; mfc2 IRn`, the first N that reads the new value, cached: IRGB to IR1 3, IR2 3, IR3 2; IRGB to ORGB 2 (N = 0 old, N = 1 red and green new but blue old, 2 or more all new); IR1 to ORGB 1; IR3 to ORGB 2; IR1 to IRGB 1. Uncached: every IRn 1, ORGB as cached. The control `mtc2 LZCS; N; mfc2 LZCR` needs 2 cached and 1 uncached. IR3's cached answer is 1 on the first pass through cold code and 2 once warm. Agrees with psx-spx (three and two nops); Sony's developer notes give two for all three, which reads IR1 and IR2 stale.
@@ -313,6 +316,12 @@ Evidence: gte-latch-cached; all seven models; 49 runs, every row identical excep
 
 **CPU-49. A GTE result read waits for the command to finish and never returns the old value.** After `RTPS`, `swc2` or `mfc2` of SXY2 with K nops between costs 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 extra for K = 0-13 and 0 from K = 14; the value read is the new one at every K. As with `mflo`, the step from 2 to 0 skips 1.
 Evidence: cpu-extras; all seven models, both 5501 units; 31 runs.
+
+**CPU-52. A GTE register written is visible two instructions later, one from uncached code, for every register.** mtc2 or ctc2, N NOPs, mfc2 or cfc2: the first N reading the new value is 2 cached, 1 uncached, warm or cold alike. One `lw` from I_STAT in place of the NOPs reads the new value, a slow load being time enough. FLAG (control 31) alone needs 2 cached and uncached, and the load does not help.
+Evidence: gte-write-delay; SCPH-5501 unit 2 only (3 runs).
+
+**CPU-50. The writable bits of SR are F04FFF3Fh over what was tested.** Writing each bit and reading back gives F04DFF3Ch over mask FFFDFFFCh (bits 17, 1 and 0 were left out so nothing could hang an unattended run), equal to psx-spx's dev text. The LSI L64360 manual differs in 00080000h, DuckStation in 02300000h.
+Evidence: sr-mask; SCPH-5501 unit 2 only (3 runs).
 
 ## Not settled
 

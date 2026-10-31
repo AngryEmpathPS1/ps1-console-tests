@@ -1,0 +1,8 @@
+gte/gte-write-delay, before any console (2026-10-30).
+
+psx-spx's dev text (ef3e1fc): every row minN 2 cached, data and control registers alike, old value below it. It gives no uncached
+count; nocash counts cycles, so 1 or 0 uncached. On LZCS (5e3c8b2) one I/O read is enough, so io n/n on the control, and on every
+row if it is one rule. The control itself: minN 2 cached and 1 uncached in all 31 gte-irgb logs here, seven models.
+
+This core at v0.377.223 (SCPH-7501): LZCS->LZCR minN 2 cached, 1 uncached, cold as warm, io o/o cached and n/n uncached. Every other
+row minN 0 in both passes, all n, io n/n: nothing late but LZCS and IRGB/IR1-3 (not in this test: hwtests/gte-irgb).

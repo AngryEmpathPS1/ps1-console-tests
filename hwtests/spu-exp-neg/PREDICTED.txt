@@ -1,0 +1,20 @@
+spu/spu-exp-neg, before any console (2026-10-30).
+
+psx-spx's dev text (5c195d5): an Exponential Decrease from a negative volume stops at -0FFFh (F001h), the scaled step rounding to zero below 1000h
+in magnitude; a positive volume goes on past 0FFFh to 0000h; the Phase bit seems to have no effect in this mode (nocash's words too). The section
+covers the main volume and the voice volumes alike. Taken as arithmetic its own formula stops each rate at -(7FFFh / S), not at one level:
+rate 00h FFFF, 10h FFE1, 20h FE01, 28h F801, 2Ch F001, 2Dh EDB7, 2Eh EAAB, 2Fh E667, 30h F001, 34h F001. From F800h nothing moves, from F000h one
+step. Its controls: Linear Decrease with Phase 1 climbs to 0000h and stops; Exponential Increase with Phase 0 climbs through 0 to 7FFFh, slowing
+at 6000h, with Phase 1 goes down to -8000h.
+
+Mednafen, read from its source, not run: Phase 0 snaps to 0000h, Phase 1 stops as above. Its Exponential Increase with Phase 1 slows below A000h,
+which psx-spx, DuckStation and this core do not.
+
+This core at v0.377.223 (SCPH-7501): every negative start 0000h in one step, at the first tick (rate 30h a sample later, 34h three), either Phase,
+playing, keyed off or main; INSIDE the same. POSITIVE to 0000h, either Phase: 2,076 steps at rate 20h from 4000h, 8,533 at 2Ch. LIN DEC Phase 0
+snaps, Phase 1 climbs to 0000h (last step sample 292 at rate 20h, 2,340 at 2Ch). EXP INC Phase 0 reaches 7FFFh at sample 1,314 and 10,531, Phase 1
+8000h at 255 and 2,047, no slowing. Left and right alike; 50 rows, none timed out.
+
+The instrument on a machine that does it: throwaway copies of this core. Rounding on both Phases read exactly the table above on every row,
+voice playing, keyed off and main, left and right, with F800h never moving and F000h one step to F001h; rate 34h took 30,036 samples, inside the
+limit. Rounding on Phase 1 alone read 0000h on Phase 0 and the table on Phase 1.

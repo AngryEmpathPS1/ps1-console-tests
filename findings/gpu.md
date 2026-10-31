@@ -84,6 +84,9 @@ Evidence: pal-dots; 1001 (6), 5501 (9), 7001 (6), 7501 (10), 7502 (1), 9001 (10)
 **9. GPUSTAT bit 31.** In 240-line mode it flips every scanline and equals (display VRAM Y + line) & 1; the sense reverses with the parity of Y. In vertical blanking it is Y's low bit (0 for even Y, 1 for odd, in all 4 Y values tested): psx-spx says it is always zero there, in all three texts. In 480i it alternates each frame and equals bit 13 for odd Y and its inverse for even Y (on the old GPU bit 13 stays 0 and bit 31 alternates the same way). Timer 1's hblank step leads the flip by 5.8% of a line in the first sessions (5501, 7501, 9001) and 8.7% in every later session on all models; the 7502 shows the complement.
 Evidence: gpustat31; 1001 (6), 5000 (7), 5501 (9), 7001 (6), 7501 (10), 7502 (1), 9001 (10).
 
+**48. GP1(00h) restarts the video timing, and the horizontal with it.** Written in the vertical blanking (0-23 lines after the VBlank edge) the next edge comes 553,19x cycles later, 257 lines, and the one after 1,119,3xx, 520 lines. Written in the picture (24-262 lines after the edge) the VBlank interrupt arrives at once (64 cycles, the poll) and the next edge 553,2xx cycles later, 257 lines. GPUSTAT.31 reads 0 after the write and first flips about 38,7xx cycles later, 18 lines. New beside psx-spx's lines: the next Timer 1 hblank tick is about 1,988-2,013 cycles after the write at any point of the line. All of it fits the beam jumping to the start of the line before line 0.
+Evidence: gp1-reset; SCPH-5501 unit 2 only (3 runs, 54 rows alike).
+
 ## GPUSTAT and command timing
 
 **10. Small commands from the CPU: when bits 28 and 26 return** (first k at which the bit reads set). Identical in every run except the textured rectangle's bit 26.
@@ -175,6 +178,15 @@ Evidence: gpu-dmabs2; 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (2), 7502 (1)
 A stream of small flat triangles is bounded by set-up plus packet delivery, not drawing: legs 8 costs 42.4 in a list while a lone one takes 78 to finish.
 Evidence: gpu-dmastream; 1001 (2), 5000 (7), 5501 (7), 7001 (6), 7501 (2), 7502 (1), 9001 (2); the six new-GPU models agree to about 1 cycle on nine of the twelve rows (semi flat triangle 180.0-181.7, sprite 7Dh 173.3-174.4, semi rectangle 7Ah 297.8-300.1).
 
+**49. DMA does not wait for a full GP0 FIFO: a list node overruns it as the CPU's stores do (finding 17).** One linked-list node of one-pixel dots, GP1(04h)=2, behind a 640x480 fill: all lands up to 18 words. From 19 the newest words overwrite the oldest: `#.#######` at 19, `#...########` at 24 (`#` a dot landed). At 33 nothing lands and the GPU never reads idle: the 5-bit count has wrapped to empty with a command waiting for its word. At 34 the first dot lands and the pattern starts over. 18 is 16 in the FIFO, one in the decoder and one at the FIFO's output, which stays in the count. To an idle GPU a node of 48 to 240 words lands the first two dots, then about one in nine (`##........#........#`), because the words arrive at 1 a cycle and a dot takes about 17 of them; each word read has often just been overwritten, and a dot here and there comes out in another's colour. Block mode, GP1(04h)=1, 128 words behind the fill: blocks of 1 to 10 words land all 64 dots, 12 lose one, 16 lose two (`######..####`).
+Evidence: gp0-overrun; SCPH-5501 unit 2 only (3 runs).
+
+**50. GPUSTAT.25 with GP1(04h)=1 falls at 9 words counted, as nocash says.** "About 11" is words written. Behind a copy, a fill, a triangle or a rectangle it falls at word 10, one word having left the FIFO, rises again at word 33 when the 5-bit count wraps to 0, and falls at word 42. So F 10, W 33, F2 42: T = 9 both ways. It never falls for NOPs, or for words to an idle GPU.
+Evidence: gp0-bit25, gp0-bit25b; SCPH-5501 unit 2 only (3 runs each).
+
+**51. A quad's own words stay counted in the FIFO during its first half: all but one vertex's.** gp0-bit25b's 48 words of E6h behind a long first half wrap the count early: at word 28 flat or semi, 26 gouraud, 25 textured, 23 gouraud-textured, so 4, 6, 7 and 9 words were counted before the first E6h. The quad's 5, 8, 9 and 12 words less 1, 2, 2 and 3, one vertex's. No E6h leaves the FIFO in that time. Every triangle of every kind, rectangle and copy reads 33, none of its own. nocash has "a quad leaves its last vertex"; that would be 1, 2, 2, 3.
+Evidence: gp0-bit25b; SCPH-5501 unit 2 only (3 runs), the gouraud-textured row with F at 1 so read from W alone.
+
 ## Drawing cost
 
 **21. Pixel rates and row costs of triangles, new GPU.** After set-up a flat triangle is drawn at about 0.5 cycle per pixel and a shaded one at about 1.0, with about 1.9 cycles per row and about 11-13 fixed (a fit that reproduces the four sizes within 5 cycles): right triangles with legs 8 / 16 / 32 / 64 take 51 / 115 / 339 / 1,171 (flat) and 63 / 179 / 603 / 2,219 (shaded) cycles after set-up. Semi-transparent flat triangles take 1.55x a flat one (legs 16: 221-229 against 143; legs 64: 1,866-1,891 against 1,201).
@@ -222,6 +234,28 @@ Evidence: gpu-scanout (display-off rows), 1001 (3), 5000 (7), 5501 (7), 7001 (6)
 
 **25. Quads draw as two triangles with the second set-up hidden.** A flat 16x16 quad finishes after 248 cycles against 143 + 148 = 291 for its two lone halves; a 64x64 one after 2,391 against 2,433; 320x16 2,825 against 2,871. A flat quad's bit 28 returns at 132 (16x16) and 1,190 (64x64): about 11 cycles before the first half finishes. The saving is 31-46 cycles for flat quads.
 Evidence: gpu-shape-time3, -time5; models as finding 11.
+
+**52. With E1h.10 clear in 480i a fill pays only for the rows it writes; a copy and an upload write every row.** A 640x480 fill 21,886-21,903 cycles with the bit set, 10,941-10,983 clear, 49%; rectangle 49%, triangle 48%, line 49%, each writing 240 rows of 480. A VRAM copy of 512x240 or 16x240 costs the same either way (99-100%) and writes all 240 rows; copies and CPU uploads at y 0, 1, 40 and 41 write all 16 rows in either field.
+Evidence: gpu-fill-480i, gpu-copy-480i; SCPH-5501 unit 2 only (3 runs each).
+
+**53. A triangle's rows are walked out from its leftmost vertex, and a walk that has passed the drawing area stops.** Rows above the area on a walk going down, below it on a walk going up, or beside it, cost 1 cycle each. So with the leftmost vertex on top a triangle pays its rows above the area and none below; with it at the bottom, none above and all below; in the middle, half each way. Exact on six shapes at four places and two heights: D = S + 6 + rows paid, where S is finding 11's formula. Ties in "leftmost" go as mednafen's DrawTriangle has them, whose walk this is. Rectangles walk down: 64 rows above the area add 68 cycles, 64 below add none. The same holds for rows hidden above and below a shape that does draw (128x128 clipped by the top or the bottom, within 5 cycles of 4,000 on the rule).
+
+| Kind wholly outside, 128 wide | Set-up reading | Row |
+|---|---|---|
+| Flat or semi triangle (top flat) | 37 | 1.00 |
+| Gouraud triangle | 168 | 1.00 |
+| Textured or raw-textured triangle | 135 | 1.00 |
+| Gouraud-textured triangle | 256 | 1.00 |
+| Rectangle: flat / semi / textured | 16 / 15 / 13 | 1.00 |
+
+Readings are at 128 wide with the stores back to back, as `gpu-outside`; `gpu-outside2` and `3` store from a loop and read 3 less. psx-spx's dev text has 0.7 to 1.3 cycles a row and no side; the side is the rule above. A quad is two triangles, the second's set-up running under the first's rows.
+Evidence: gpu-outside (5 runs), gpu-outside2, gpu-outside3 (3 runs each); SCPH-5501 unit 2 only.
+
+**54. Wholly left of the drawing area a primitive pays once for its width.** W / 2 cycles flat or semi, W gouraud or textured, W / 2 for a rectangle of any kind: 8, 16, 32, 64, 128 and 16 to 256 at W 16 to 256, the same at distances of 136 to 512 pixels. A triangle whose leftmost vertex is in the middle has two walks and pays twice. Right of the area, none; above and to the left, none (a walk that meets no row of the area does not pay). A triangle with its left edge upright and its flat side at the bottom reads 3-4 less than this.
+Evidence: gpu-outside, gpu-outside3; SCPH-5501 unit 2 only.
+
+**55. Small rectangles: a list packet costs about 27-30 cycles, whatever it draws.** Cycles per primitive in a DMA2 list, one a packet (slope from 8 to 32): dot 68h 27.5, semi dot 27.5, textured dot 27.8, 60h 1x1 29.6, 2x2 29.9, 4x4 31.1, 16x1 29.6, 1x16 72.6, 70h 8x8 62.0, 60h 8x8 63.0, semi 72h 8x8 88.2, textured 75h 8x8 62.0. Sent in one block instead, so the GPU never waits for a packet, 64 dots take about 15 cycles each (974-1045 to idle). So the 27.5 is the list: finding 10's 13 for bit 28 and about 14 for the next packet to arrive.
+Evidence: gpu-dmastream5, gp0-overrun; SCPH-5501 unit 2 only (3 runs each).
 
 ## Scan-out
 
@@ -334,6 +368,9 @@ Evidence: gpu-semi-shape, gpu-tex-opaque; models as finding 38 and gpu-semi-shap
 
 **40. Semi-transparency on textured draws is tied to the cache lines on the new GPU and is a flat 2 cycles per pixel on the old.** 256x256 15-bit quad, extra over opaque: new GPU +4,400 (6.5%) on one texel and +28,000 (12%) on a full texture; SCPH-1001 +133,600 on both (2.04 cycles per pixel; 190% on one texel).
 Evidence: gpu-semi-shape; models as finding 39.
+
+**56. A cached 0001h texel against 0000h on the new GPU: 0.019 cycle a pixel, not 0.04.** A raw 15-bit 64x64 rectangle, texels cached by a texture window: 0001h 2,206-2,220 cycles, 0000h 2,127; uncached 11,813-11,842 and 10,392-10,417, 0.346 a pixel.
+Evidence: gpu-transp-cached; SCPH-5501 unit 2 only (3 runs).
 
 ## MDEC
 

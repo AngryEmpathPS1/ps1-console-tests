@@ -1,0 +1,15 @@
+spu/spu-statx-tail, before any console (2026-10-30).
+
+psx-spx's dev text (fd70a18): as CHCR clears SPUSTAT shows the mode bits alone, and bits 7 and 9 rise together 1,400-1,700 cycles later, as the
+last write lands; bit 10 never moves in a DMA write; bit 7 polled after CHCR goes idle, then a Stop, keeps every byte. With findings 8, 11 and 12
+that reads: before 02A0h, a fall to 0020h, rise7 = rise9 about +1,400..+1,700 across D (a window a sample wide), bit 10 up in 0, STOP 32 of 32
+and 128 of 128. It says nothing of what happens between blocks.
+
+This core at v0.377.223 (SCPH-7501; the 9001 and 1001 alike): bits 7 and 9 come with the mode bits and stay. 02A0h before and throughout, not one
+change in any DMA row, rise7 and rise9 never, bit 10 up in 0, every row landed whole. CHCR read clear at 118-119 cycles (32 halfwords), 1,055-1,326
+(64), 3,309-3,572 (128), 182-189 (32 at 220931E1h). MANUAL, the control, sees its bit move: 0000h, mode and bit 10 together (0410h) at 255-481
+cycles, clear (0010h) at 1,805-2,031. STOP: bit 7 reads 1 at once (34-69 cycles), so the recipe stops at k = 0 and loses the tail: 0-6 of 32,
+99-106 of 128.
+
+The instrument on a machine that does it: a throwaway copy of this core with bits 7 and 9 down while the write FIFO holds anything, as of
+SPUSTAT's last update, read 02A0h, 0020h, 02A0h with rise7 = rise9 at +1,180..+1,877 across the rows, STOP 32 of 32 and 128 of 128.

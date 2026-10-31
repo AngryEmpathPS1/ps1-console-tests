@@ -1,0 +1,22 @@
+gpu/gpu-fill-480i, before any console (2026-10-30).
+
+psx-spx's dev text (cf1cd39, GPU misc, "Draw to display enable"): with E1h.10 clear in 480i a row whose parity equals GPUSTAT.31 at the moment it
+is drawn is skipped, for polygons, lines, rectangles and GP0(02h), and a fill takes about half as long with the rows skipped. While bit 31 reads 1
+only even rows are written, while it reads 0 only odd. The v0 GPU (an SCPH-1000) gets a fill's first row wrong: when it has the skipped parity it is
+drawn and the row after it skipped instead, rows 0, 3, 5 ..., at widths 16 and 640, from lines 0 and 40, in either field; the v2 GPU does not. Whether
+rectangles and polygons do the same on v0 is not known. Only inside the display area, NTSC.
+
+This core at v0.377.224 (hwtests/run.js, its PAL crystal; hwrunner --emu reads about 1% less):
+A. clear/set at all four places, both GPUs: fill 99-100%, rectangle, triangle and line 48-50%. The fill skips its rows (240 of 480) and pays for them.
+                 SCPH-7501 set / clear          SCPH-1001 set / clear
+  fill, blanking     21,889 / 21,890                23,097 / 23,103
+  fill, picture      24,527 / 24,524                23,097 / 23,096
+  rectangle, picture 168,478 / 84,241              161,252 / 80,645
+  triangle, picture   84,539 / 42,392               82,159 / 41,192
+  line, picture        2,466 / 1,207                 3,458 / 1,724
+CROSS (line 20 of field 1) is one parity all the way down, odd rows 1..479: the core takes the parity once, at the command.
+B. Every row of all three kinds on both GPUs is the plain rule: field 0 odd rows, field 1 even rows, no first-row fault. Y = 0, field 0: .#.#.#.#
+
+Test of the test: a scratch core given psx-spx's rules reads the fill's clear/set 48-49%; on the 1001 y = 0 field 0 #..#.#.#.#.#.#.#, y = 1 field 1
+.#..#.#.#.#.#.#.#, y = 40 field 0 #..#.#.#, column 0 of A "even rows 1 (0..0) odd 239 (3..479)"; and with the parity read a row, CROSS "even rows 106
+(268..478) odd 134 (1..267)". So all three questions show.

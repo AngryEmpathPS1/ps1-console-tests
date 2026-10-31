@@ -1,0 +1,17 @@
+timers/timer2-lap, before any console (2026-10-30).
+
+psx-spx's dev text (814e546): at /8 every row of every T reads 8T exactly, the prescaler undisturbed: T = 8000h 262,144 cycles,
+1000h 32,768, 100h 2,048, 10h 128. Polling does not come into it. The controls: /1 T+2, both wraps 10000h counts.
+
+This core at v0.377.223 (SCPH-7501): polling changes the lap. 8T only under reads every 8 cycles or less, 8T+8 left alone or
+by its IRQ, anything between at other spacings, over 8T:
+    T       IDLE   tight   w=0    w=10   w=100  I_STAT  MODE
+    8000h  +8.14   +0.13  +1.12  +5.01  +7.18  +8.71   +7.92
+    1000h  +8.03   +0.03  +1.66  +6.13  +7.59  +8.00   +5.98
+    0100h  +8.00   -0.05  +2.98  +6.71  +7.37  +8.00   +7.91
+    0010h  +8.11   +0.67  +1.95  +5.45  +7.81  +8.08   +4.20
+(reads every 5.1, 9.0, 29, 209 cycles; the w and MODE columns move from build to build with the code's own timing.)
+DWELL at T = 10h: value T 7.3-7.6 cycles, value 0 1.7-2.6, the rest uneven. Controls as predicted; rulers within 10 cycles.
+
+What a console can read and this core cannot: one lap in every row. A flat 8T also shows in DWELL as how T and 0 share their 8
+cycles; a flat 8T+8 as 8 and 8.

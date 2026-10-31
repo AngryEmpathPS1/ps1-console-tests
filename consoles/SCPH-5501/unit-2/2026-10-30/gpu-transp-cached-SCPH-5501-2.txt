@@ -1,0 +1,15 @@
+
+gpu/gpu-transp-cached
+A raw 15-bit 64x64 rectangle, 0001h texels against 0000h, cached and not. D as gpu-shape-time: the first D with bit 26 set,
+fastest..slowest over eight start points in the blanking. psx-spx: 0.08 / 0.04 a pixel cached (old / new GPU), 0.26 / 0.38 not.
+No assertions.
+
+cached 0001h         2206..2214    rectangle reads 0001 0001 0001 0001
+cached 0000h         2127..2127    rectangle reads 7c1f 7c1f 7c1f 7c1f
+uncached 0001h      11813..11838   rectangle reads 0001 0001 0001 0001
+uncached 0000h      10394..10416   rectangle reads 7c1f 7c1f 7c1f 7c1f
+
+cached: 0001h less 0000h 79 cycles, 0.019 a pixel
+uncached: 0001h less 0000h 1419 cycles, 0.346 a pixel
+
+gpu/gpu-transp-cached: Done.

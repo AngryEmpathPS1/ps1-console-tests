@@ -1,0 +1,15 @@
+gpu/gp0-bit25, before any console (2026-10-30).
+
+psx-spx's dev text (cf1cd39, GPU I/O ports, "GP0 write FIFO"): with GP1(04h)=1 bit 25 reads 0 once about 11 words are queued behind a busy GPU, before the 16
+words are used up, and goes back to 1 as the GPU takes words. GP0(00h) takes no FIFO space, GP0(E6h) does. nocash's text: not-more-than-half-full clears at FIFO
+size 09h..1Fh, the size a 5-bit count that wraps to 0 past 1Fh.
+
+This core at v0.377.224, SCPH-7501 and SCPH-1001 alike (hwtests/run.js), all three runs of each, FAST and SETTLED alike:
+  controls   idle and 24 NOPs behind the copy: bit 25 never falls
+  copy       falls at word 9;  48 words: F 9,  W 32, F2 41, taken 0, T 9
+  fill       falls at word 10; 48 words: F 10, W 33, F2 42, taken 1, T 9 (the first E6h is held: bit 28 reads 1 at word 1)
+  quad       falls at word 10; 48 words: F 10, W 33, F2 42, taken 1, T 9 (bit 28 reads 0 from before the first word to the end)
+So 9 queued on all three, the 9th or 10th written. Bit 26 reads 0 throughout. A quad's last vertex is not queued here; if it stays queued, as nocash's prefetch
+note has it, the quad row reads F 8, W 31, taken -1 on a console, T still 9.
+
+Test of the test: a scratch core with the flag at 11 reads T 11, F 11 on the copy and 12 on the fill and quad, W unmoved. So T is read apart from the word count.

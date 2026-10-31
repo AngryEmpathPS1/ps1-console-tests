@@ -1,0 +1,48 @@
+
+cpu/sr-mask
+SR at entry 0000ff01
+SR with interrupts off 0000fb00, I_MASK was 0000
+
+CACHED (bit, name, its value at entry, what the two writes read back, the verdict)
+31 CU3 entry 0  wrote 1 read 8000fb00  wrote 0 read 0000fb00  holds
+30 CU2 entry 0  wrote 1 read 4000fb00  wrote 0 read 0000fb00  holds
+29 CU1 entry 0  wrote 1 read 2000fb00  wrote 0 read 0000fb00  holds
+28 CU0 entry 0  wrote 1 read 1000fb00  wrote 0 read 0000fb00  holds
+27 -   entry 0  wrote 1 read 0000fb00  wrote 0 read 0000fb00  reads 0
+26 -   entry 0  wrote 1 read 0000fb00  wrote 0 read 0000fb00  reads 0
+25 RE  entry 0  wrote 1 read 0000fb00  wrote 0 read 0000fb00  reads 0
+24 -   entry 0  wrote 1 read 0000fb00  wrote 0 read 0000fb00  reads 0
+23 -   entry 0  wrote 1 read 0000fb00  wrote 0 read 0000fb00  reads 0
+21 TS  entry 0  wrote 1 read 0000fb00  wrote 0 read 0000fb00  reads 0
+20 PE  entry 0  wrote 1 read 0000fb00  wrote 0 read 0000fb00  reads 0
+19 CM  entry 0  wrote 1 read 0008fb00  wrote 0 read 0000fb00  holds
+18 PZ  entry 0  wrote 1 read 0004fb00  wrote 0 read 0000fb00  holds
+15 Im5 entry 1  wrote 1 read 0000fb00  wrote 0 read 00007b00  holds
+14 Im4 entry 1  wrote 1 read 0000fb00  wrote 0 read 0000bb00  holds
+13 Im3 entry 1  wrote 1 read 0000fb00  wrote 0 read 0000db00  holds
+12 Im2 entry 1  wrote 1 read 0000fb00  wrote 0 read 0000eb00  holds
+11 Im1 entry 1  wrote 1 read 0000fb00  wrote 0 read 0000f300  holds
+10 Im0 entry 0  wrote 1 read 0000ff00  wrote 0 read 0000fb00  holds
+ 9 Sw1 entry 1  wrote 1 read 0000fb00  wrote 0 read 0000f900  holds
+ 8 Sw0 entry 1  wrote 1 read 0000fb00  wrote 0 read 0000fa00  holds
+ 7 -   entry 0  wrote 1 read 0000fb00  wrote 0 read 0000fb00  reads 0
+ 6 -   entry 0  wrote 1 read 0000fb00  wrote 0 read 0000fb00  reads 0
+ 5 KUo entry 0  wrote 1 read 0000fb20  wrote 0 read 0000fb00  holds
+ 4 IEo entry 0  wrote 1 read 0000fb10  wrote 0 read 0000fb00  holds
+ 3 KUp entry 0  wrote 1 read 0000fb08  wrote 0 read 0000fb00  holds
+ 2 IEp entry 0  wrote 1 read 0000fb04  wrote 0 read 0000fb00  holds
+ALL cached bits  wrote ffbcfffc read f00cff3c  wrote 00000000 read 00000000
+
+UNCACHED, from KSEG1 (IsC, SwC, BEV: the header says why only here)
+22 BEV entry 0  wrote 1 read 0040fb00  wrote 0 read 0000fb00  holds
+16 IsC entry 0  wrote 1 read 0001fb00  wrote 0 read 0000fb00  holds
+ALL but IEc, KUc wrote fffdfffc read f04dff3c
+
+MASK over the bits tested (fffdfffc)
+this console  f04dff3c
+psx-spx dev   f04dff3c  differs in 00000000
+LSI L64360    f045ff3c  differs in 00080000
+DuckStation   f27dff3c  differs in 02300000
+restore read back right on every row, SR now 0000fb00
+
+Done.

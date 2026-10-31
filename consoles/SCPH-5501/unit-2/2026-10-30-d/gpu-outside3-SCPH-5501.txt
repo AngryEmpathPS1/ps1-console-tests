@@ -1,0 +1,48 @@
+
+gpu/gpu-outside3
+The rows of a primitive outside the drawing area (256,136)-(511,375). D as gpu-shape-time, the fastest of eight start points. No assertions.
+
+A. WIDTH: 16 rows, 8 pixels left of the area, then right of it
+             W 16   32   64  128  256
+rect 60h   L   36   44   60   92  156
+rect 60h   R   28   28   28   28   28
+flat 20h   L   55   64   81  114  179
+flat 20h   R   47   48   49   50   51
+shaded 30h L  194  211  244  309  438
+shaded 30h R  178  179  180  181  182
+tex 24h    L  161  178  211  276  405
+tex 24h    R  145  146  147  148  149
+
+B. WALK: flat, 128 wide; D at H 16, H 128, then cycles a row
+TR  left    114..114     226..226   1.00
+TR  right    50..50      162..162   1.00
+TR  above    50..50      162..162   1.00
+TR  below    34..34       34..34    0.00
+BR  left    118..118     233..233   1.02
+BR  right    54..54      169..169   1.02
+BR  above    38..38       41..41    0.02
+BR  below    54..54      169..169   1.02
+ML  left    181..181     296..296   1.02
+ML  right    53..53      168..168   1.02
+ML  above    45..45      104..104   0.52
+ML  below    45..45      104..104   0.52
+TL  left    114..114     226..226   1.00
+TL  right    50..50      162..162   1.00
+TL  above    50..50      162..162   1.00
+TL  below    34..34       34..34    0.00
+BL  left    109..109     227..227   1.05
+BL  right    49..49      164..164   1.02
+BL  above    33..33       36..36    0.02
+BL  below    49..49      164..164   1.02
+RM  left    117..117     232..232   1.02
+RM  right    53..53      168..168   1.02
+RM  above    53..53      168..168   1.02
+RM  below    37..37       40..40    0.02
+
+C. CLIPPED: 128 x 128 at x 320: inside (y 200), 64 rows above the area (y 72), 64 rows below it (y 311)
+TR    inside  4534..4557  top  1353..1372  bottom  3347..3357 
+BR    inside  4474..4480  top  3290..3296  bottom  1360..1379 
+ML    inside  4532..4551  top  2319..2324  bottom  2322..2327 
+rect  inside  8493..8503  top  4323..4327  bottom  4325..4330 
+
+gpu/gpu-outside3: Done.

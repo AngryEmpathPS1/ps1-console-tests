@@ -112,6 +112,9 @@ Evidence: spu-curvol VWRITE, MWRITE and ENVX rows: current-level rows and ENVX r
 
 ---
 
+**41. After a DMA write SPUSTAT bits 7 and 9 fall, then rise once, and polling bit 7 alone can fail on a short block.** Bits 7 and 9 read 1 with the mode set, fall at the first SPUSTAT refresh with data in the FIFO, and rise together once a transfer: 32 halfwords +1,263 to +1,878 cycles after CHCR clears, by the phase; 64, +1,198 to +1,902; 128, +1,286 to +2,009. Bit 10 is up in none. psx-spx's dev text has 1,400-1,700 and "Polling bit7 after CHCR goes idle and before changing ATTR keeps every byte". On a 32-halfword block CHCR clears in about 40 cycles, so bit 7 may not have fallen yet: at 6 of 8 phases it read 1 at once and a Stop there landed 1 to 7 of the 32 halfwords. At the other two it read 1 at +1,433 and +1,498 and all 32 landed. 128 halfwords landed whole at every phase.
+Evidence: spu-statx-tail; SCPH-5501 unit 2 only (3 runs).
+
 ## SPU interrupt (IRQ9)
 
 **18. IRQ9 timing by trigger.** Times are CPU cycles after the action:
@@ -210,7 +213,8 @@ Open: spu-decode-ahead's first-read column, with an unsynchronised write on voic
 
 B at 4 samples is a function of the run's key-on phase: the 28 runs where the write won all read 6 in the rate-00h linear attack's 0800h column (finding 26), and the 14 where the flag won all read 5 (13 runs) or 7 (1). Per model, write won/flag won: 1001 5/1, 5000 1/5, 5501 6/1, 7001 5/1, 7501 7/1, 7502 1/0, 9001 3/5. Disagrees with nocash's text ("Key ON ... copies Voice Start Address to Voice Repeat Address"); agrees with psx-spx's current text on that point. The current text's rule counts from when the Key On is serviced, on the 2-sample grid, so a 4-sample write falling either side by phase is what it predicts.
 Evidence: spu-regs REPEAT rows, 42 runs.
-Open: the cutoff in samples (a sweep of the write time is not done).
+The column is a correlation in these runs, not the rule: finding 43 reads the flag winning at 4 samples with 6 in the same column at a fixed phase.
+The cutoff in samples: finding 43.
 
 **29. Envelope rates, in samples from the Key On write (the release rows' Key Off is written at sample 40; their counts include those 40 samples).** ENVX read every 256 cycles, first sample reaching each level, ranges over 42 runs on seven models:
 
@@ -237,6 +241,12 @@ Evidence: spu-regs ENVELOPE rows, 42 runs.
 Evidence: spu-regs release rows, 42 runs.
 
 ---
+
+**42. Exponential decrease from a negative level: the Phase bit decides.** With Phase 0 the level goes to 0000h in one step, at every rate tried, from C000h and E000h. With Phase 1 it stops at -(7FFFh / S), S the step: FFFFh, FFE1h, FE01h, F801h, F001h, EDB7h, EAABh, E667h, F001h, F001h at rates 00h, 10h, 20h, 28h, 2Ch, 2Dh, 2Eh, 2Fh, 30h, 34h. A positive level decays to 0 at either Phase. psx-spx's dev text has F001h alone and "seems to have no effect".
+Evidence: spu-exp-neg; SCPH-5501 unit 2 only (3 runs).
+
+**43. A write to the repeat address loses to a loop-start flag up to 4 samples after Key On, and wins from 5.** At a fixed phase of bit 11, n = 0 to 24 samples: the first write that wins is n = 5, 3,877 cycles after the Key On write; at n = 4, 3,127, the flag wins. Six runs alike, all onset 9, E = 6. Whether the other key-on class moves it is not known: it did not turn up in six runs.
+Evidence: spu-lsax-sweep; SCPH-5501 unit 2 only (6 runs).
 
 ## Where a register write takes effect
 

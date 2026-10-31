@@ -1,0 +1,9 @@
+cpu/sr-mask, before any console (2026-10-30).
+
+psx-spx's dev text (dd13185, its SR table): bits 6, 7, 20, 21, 23-27 read 0, every other bit holds, no bit reads 1 after a 0.
+Over the 30 bits tested (0 and 1 left out) a mask of F04FFF3Ch. LSI's L64360 manual has bits 17 and 19 reading 0 too: F045FF3Ch.
+DuckStation's mask has 20, 21 and 25 holding: F27FFF3Ch. CM (19) and SwC (17) are where psx-spx and LSI part.
+
+This core at v0.377.223 (SCPH-7501): every bit holds, mask FFFFFFFCh, others none, every restore right; differs from psx-spx in
+0FB000C0h. SR at entry 00000000 on the bare sideload; under the runner on the virtual console 0000FF01, and 0000FB00 with
+interrupts off, the same table. A console's start will leave its own.

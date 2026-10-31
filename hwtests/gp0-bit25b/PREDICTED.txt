@@ -1,0 +1,89 @@
+
+gpu/gp0-bit25b
+GP1(04h)=1: GPUSTAT.25 and 28 after each of 48 GP0(E6h) words behind a long primitive. Three runs. No assertions.
+
+copy (control), 4 words:
+ run 1: F 9, W 32, F2 41: taken 0, T 9, F-taken 9; before 25/26/28 101, words took 6012, idle 36017
+  25 111111110000000000000000000000011111111100000000
+  28 000000000000000000000000000000010000000000000000
+ run 2: F 9, W 32, F2 41: taken 0, T 9, F-taken 9; before 25/26/28 101, words took 5968, idle 36101
+ run 3: F 9, W 32, F2 41: taken 0, T 9, F-taken 9; before 25/26/28 101, words took 5967, idle 36094
+flat tri 20h, 4 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5969, idle 11191
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5969, idle 11361
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5960, idle 11351
+flat quad 28h, 5 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5973, idle 28913
+  25 111111111000000000000000000000001111111110000000
+  28 000000000000000000000000000000000000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5971, idle 28868
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5973, idle 28865
+semi quad 2Ah, 5 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5978, idle 46640
+  25 111111111000000000000000000000001111111110000000
+  28 000000000000000000000000000000000000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5965, idle 46753
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5966, idle 46644
+shaded tri 30h, 6 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5971, idle 27580
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5960, idle 27533
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5972, idle 27212
+shaded quad 38h, 8 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5976, idle 61099
+  25 111111111000000000000000000000001111111110000000
+  28 000000000000000000000000000000000000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5970, idle 60999
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5964, idle 61109
+tex tri 24h, 7 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5965, idle 95340
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5964, idle 97717
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 6114, idle 97600
+tex quad 2Ch, 9 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 6195, idle 200910
+  25 111111111000000000000000000000001111111110000000
+  28 000000000000000000000000000000000000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5966, idle 201358
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5973, idle 201349
+shaded tex tri 34h, 9 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5972, idle 95451
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5966, idle 97832
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5970, idle 97552
+shaded tex quad 3Ch, 12 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5966, idle 201472
+  25 111111111000000000000000000000001111111110000000
+  28 000000000000000000000000000000000000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5970, idle 201469
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 100, words took 5968, idle 201413
+rect 60h 512x400, 3 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 6184, idle 99536
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 6184, idle 101466
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5968, idle 101362
+tex rect 64h 256, 4 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5969, idle 163926
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5964, idle 163922
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5964, idle 162206
+line 40h 1023, 3 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 549, idle 2356
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000000000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 545, idle 2356
+  25 111111111000000000000000000000001111111110000000
+  28 000000000000000000000000000000000000000000000000
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 545, idle 2359
+  25 111111111000000000000000000000001111111110000000
+  28 000000000000000000000000000000000000000000000000
+
+gpu/gp0-bit25b: Done.
+
