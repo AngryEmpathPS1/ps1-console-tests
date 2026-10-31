@@ -7,8 +7,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | ack-per-device | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | at-split | 3 | 7 | 3 | 1 | 6 | 5 | 1 | 3 | 2 |
 | bios-window | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
-| biu-dram |  |  |  | 2 |  |  |  |  |  |
-| biu-sched |  |  |  | 2 |  |  |  |  |  |
+| biu-dram |  |  |  | 2 |  |  | 2 |  |  |
+| biu-sched |  |  |  | 2 |  |  | 2 |  |  |
 | bus-latch | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | cd-2x-burned | 1 |  | 1 |  | 2 | 1 |  | 1 |  |
 | cd-ack-getloc | 7 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
@@ -330,12 +330,12 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-padding | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-qbias | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-reset | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
-| mdec-reset2 |  |  | 1 | 3 |  |  |  |  |  |
+| mdec-reset2 |  |  | 1 | 3 |  |  | 2 |  |  |
 | mdec-reset3 |  |  |  | 3 |  |  |  |  |  |
-| mdec-reset4 |  |  |  | 2 |  |  |  |  |  |
+| mdec-reset4 |  |  |  | 2 |  |  | 2 |  |  |
 | mdec-reset5 |  |  |  | 2 |  |  |  |  |  |
 | mdec-reset6 |  |  |  | 2 |  |  |  |  |  |
-| mdec-reset7 |  |  |  | 2 |  |  |  |  |  |
+| mdec-reset7 |  |  |  | 2 |  |  | 2 |  |  |
 | mdec-reset8 |  |  |  | 2 |  |  |  |  |  |
 | mdec-reset9 |  |  |  | 2 |  |  |  |  |  |
 | mdec-round | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
@@ -344,7 +344,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-step24 | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-tail |  |  |  |  |  |  | 2 |  |  |
 | mdec-time | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
-| mdec-winddown |  |  |  | 2 |  |  |  |  |  |
+| mdec-winddown |  |  |  | 2 |  |  | 2 |  |  |
 | mem-delay | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | miss-grid | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | movie-browser-depths |  |  |  |  |  |  | 1 |  |  |
