@@ -1,0 +1,8 @@
+gpu/gp1-reset, before any console (2026-10-30).
+
+psx-spx's dev text (11e277d): every write in the blanking: first edge 257 lines after it (about 553,000 cycles), next one a frame
+later. Every write in the display: first edge within 50 cycles, then 257 lines. GPUSTAT.31 reads 0 and first flips about 18 lines
+after the write (about 38,700 cycles). Lines only; it does not say whether the horizontal position restarts.
+
+This core at v0.377.223 (SCPH-7501): no restart. First edge is wherever the old frame's was (d=8: 255 lines, d=250: 13 lines), never
+at once; bit 31 goes on flipping from the first line; RESET and CONTROL rows of HORIZ agree within their own spread.
