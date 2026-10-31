@@ -329,16 +329,27 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-mono-out | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-padding | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-qbias | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
-| mdec-reset | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
+| mdec-reset | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
+| mdec-reset2 |  |  | 1 | 3 |  |  |  |  |  |
+| mdec-reset3 |  |  |  | 3 |  |  |  |  |  |
+| mdec-reset4 |  |  |  | 2 |  |  |  |  |  |
+| mdec-reset5 |  |  |  | 2 |  |  |  |  |  |
+| mdec-reset6 |  |  |  | 2 |  |  |  |  |  |
+| mdec-reset7 |  |  |  | 2 |  |  |  |  |  |
+| mdec-reset8 |  |  |  | 2 |  |  |  |  |  |
+| mdec-reset9 |  |  |  | 2 |  |  |  |  |  |
 | mdec-round | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-scale | 2 | 7 | 2 | 1 | 6 | 6 | 1 | 2 |  |
 | mdec-scale2 | 2 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |
 | mdec-step24 | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
+| mdec-tail |  |  |  |  |  |  | 2 |  |  |
 | mdec-time | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
+| mdec-winddown |  |  |  | 2 |  |  |  |  |  |
 | mem-delay | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | miss-grid | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | movie-browser-depths |  |  |  |  |  |  | 1 |  |  |
 | movie-browser-fixed |  |  |  |  |  |  | 1 |  |  |
+| movie-browser-hang-probe |  |  |  |  |  |  | 1 |  |  |
 | movie-browser-hangs |  |  |  |  |  |  | 1 |  |  |
 | movie-browser-speed |  |  | 1 |  |  |  |  |  |  |
 | movie-browser-timing |  |  |  |  |  |  | 1 |  |  |

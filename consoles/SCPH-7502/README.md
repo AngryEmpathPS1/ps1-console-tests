@@ -23,4 +23,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-24-cd-lid-sweep3-3](2026-10-24-cd-lid-sweep3-3/) | 1 | 1 |
 | [2026-10-24-tick](2026-10-24-tick/) | 7 | 1 |
 | [2026-10-28](2026-10-28/) | 55 | 38 |
-| [2026-10-31-movies](2026-10-31-movies/) | 12 | 12 |
+| [2026-10-31-mdec](2026-10-31-mdec/) | 5 | 1 |
+| [2026-10-31-movies](2026-10-31-movies/) | 13 | 13 |
