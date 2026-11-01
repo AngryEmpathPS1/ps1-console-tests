@@ -327,6 +327,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-in-hang | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | mdec-leftover | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-mono-out | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
+| mdec-pad |  |  |  |  |  |  | 5 |  |  |
+| mdec-pad2 |  |  |  |  |  |  | 2 |  |  |
 | mdec-padding | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-qbias | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-reset | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |

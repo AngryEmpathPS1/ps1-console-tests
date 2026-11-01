@@ -1,0 +1,31 @@
+ResetGraph:itb=80013100,ehk=80013130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-pad
+K blocks of DC d behind a picture, P more words of padding, then a second picture with no reset. 8 tries each. No assertions.
+
+  P    0 K 0 DC 0000: then 8404ffff DMA0 00, settled 8404ffff; second picture done 8 hung 0, then 8404ffff, words off 0
+  P    0 K 1 DC 0dff: then a404ffff DMA0 00, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  P    0 K 1 DC 0000: then a404ffff DMA0 00, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  P    0 K 2 DC 0dff: then e404ffff DMA0 00, settled a400ffff; second picture done 0 hung 8, then a400ffff, words off 0
+  P    0 K 2 DC 0000: then e404ffff DMA0 00, settled a400ffff; second picture done 0 hung 8, then a400ffff, words off 0
+  P   64 K 0 DC 0000: then 8404ffff DMA0 00, settled 8404ffff; second picture done 8 hung 0, then 8404ffff, words off 0
+  P   64 K 1 DC 0dff: then e404001f DMA0 01, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  P   64 K 1 DC 0000: then e404001f DMA0 01, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  P   64 K 2 DC 0dff: then e404003f DMA0 01, settled a400ffff; second picture done 0 hung 8, then a400ffff, words off 0
+  P   64 K 2 DC 0000: then e404003f DMA0 01, settled a400ffff; second picture done 0 hung 8, then a400ffff, words off 0
+  P 1024 K 0 DC 0000: then e404039f DMA0 01, settled 8404ffff; second picture done 8 hung 0, then e404039f, words off 0
+  P 1024 K 1 DC 0dff: then e40403df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40403ff, words off 123
+  P 1024 K 1 DC 0000: then e40403df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40403ff, words off 123
+  P 1024 K 2 DC 0dff: then e40403ff DMA0 01, settled 8400ffff; second picture done 8 hung 0, then e40403ff, words off 204
+  P 1024 K 2 DC 0000: then e40403ff DMA0 01, settled 8400ffff; second picture done 8 hung 0, then e40403ff, words off 204
+  P 6400 K 0 DC 0000: then e404189f DMA0 01, settled 8404ffff; second picture done 8 hung 0, then e404189f, words off 0
+  P 6400 K 1 DC 0dff: then e40418df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40418ff, words off 123
+  P 6400 K 1 DC 0000: then e40418df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40418ff, words off 123
+  P 6400 K 2 DC 0dff: then e40418ff DMA0 01, settled 8400ffff; second picture done 8 hung 0, then e40418ff, words off 204
+  P 6400 K 2 DC 0000: then e40418ff DMA0 01, settled 8400ffff; second picture done 8 hung 0, then e40418ff, words off 204
+
+mdec/mdec-pad: Done.
