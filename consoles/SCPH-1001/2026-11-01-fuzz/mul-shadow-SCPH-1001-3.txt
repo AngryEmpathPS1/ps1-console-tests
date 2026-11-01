@@ -1,0 +1,69 @@
+
+cpu/mul-shadow
+R, D nops, mult, K nops, mflo: cycles over the block with nops for mult and mflo, K = 0..6. No assertions.
+
+rs 1:
+ none     D 0:   6   5   4   3   2  -6   0
+ none     D 1:   0   5   4   3   7   0   0
+ none     D 2:   6   5   4   3   2   0   0
+ none     D 3:   6   5   4   3   2   0   5
+ none     D 4:   0   0  -2   3  -3   0  -5
+ I_STAT   D 0:   4   3   2   0   0   0   0
+ I_STAT   D 1:   4   3   2   0   0   0   0
+ I_STAT   D 2:   4   3   2   0  -5   0   0
+ I_STAT   D 3:   6   3   4   3   2   0   5
+ I_STAT   D 4:   6   3   4   3  -3  -5   0
+ TIMER1   D 0:   4   3   2   0   0   0   0
+ TIMER1   D 1:   4   3   2   0  -1   0   5
+ TIMER1   D 2:   4  -2   2   0   0   0   0
+ TIMER1   D 3:  11   2   4  -2   2   0   0
+ TIMER1   D 4:   4   5  -1  -2   2   0   0
+ SPUSTAT  D 0:   0   0  -5   0   0   0   0
+ SPUSTAT  D 1:   0   0   0   0   0  -5   5
+ SPUSTAT  D 2:   0   0   0   0   0  -5  -5
+ SPUSTAT  D 3:   1   1   1   1   1   0   0
+ SPUSTAT  D 4:   2  -3   2   2   2   0   0
+ RAM      D 0:   4   3   2   1  -5   0   0
+ RAM      D 1:  -1   3   2   1  -5  -5  -5
+ RAM      D 2:   4   3   2   0   0  -5   0
+ RAM      D 3:   4   3   2   0  -5   0   5
+ RAM      D 4:   4   3   2   0   0   0  -1
+ SCRATCH  D 0:   6   5   4   3   2   0   0
+ SCRATCH  D 1:   6   5   4   3   2   0   0
+ SCRATCH  D 2:   6   5  -1   3   2   0   0
+ SCRATCH  D 3:   6   5   4   3   2   0   0
+ SCRATCH  D 4:   6   5  -1   3   2   0   0
+
+rs 100000:
+ none     D 0:  13  12  11   4   9   3   7
+ none     D 1:  13  12  11  10   9   8   7
+ none     D 2:  13  12   5  10   9   8   7
+ none     D 3:  13  12  11  10   9   6   7
+ none     D 4:  13  12  11  10   9   8   7
+ I_STAT   D 0:  11  10   9   8   7   6   5
+ I_STAT   D 1:  11  10   9   8   2   6   0
+ I_STAT   D 2:  11  10   9   8   7   6   0
+ I_STAT   D 3:  13  12  11  10   9   8   7
+ I_STAT   D 4:  13  12  11  10   9   3   7
+ TIMER1   D 0:  11   5   9   8   7   6   5
+ TIMER1   D 1:  11   5   9   8   7   1   5
+ TIMER1   D 2:  11  10   4   8  12   6   5
+ TIMER1   D 3:   8  12  11  10   8   8   7
+ TIMER1   D 4:  13  12  11  10   9   8   7
+ SPUSTAT  D 0:   3   5   5   5   5   5   5
+ SPUSTAT  D 1:   6   6   6   6   6  11   6
+ SPUSTAT  D 2:   2   7   7   7   2   7   7
+ SPUSTAT  D 3:   8   3   8   8   8   8   2
+ SPUSTAT  D 4:   9   9   9   9   4   8   7
+ RAM      D 0:  11  10   9   8   7   6   5
+ RAM      D 1:  11   9   9   8   7   6   5
+ RAM      D 2:  11   5   4   8   7   6   4
+ RAM      D 3:  11  10   4   8   2   6   0
+ RAM      D 4:  11  14   9   8   7   6   5
+ SCRATCH  D 0:  11  12   6  10   4   8   7
+ SCRATCH  D 1:  13  12  11  10   4   3   7
+ SCRATCH  D 2:  12  12  11  10   9   8   7
+ SCRATCH  D 3:  13  12  11  10   9   8   7
+ SCRATCH  D 4:  13   7  11   7   9   8   7
+
+cpu/mul-shadow: Done.

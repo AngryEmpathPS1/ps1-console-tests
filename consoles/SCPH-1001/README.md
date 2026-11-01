@@ -36,3 +36,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-26](2026-10-26/) | 27 | 20 |
 | [2026-10-26-lines](2026-10-26-lines/) | 8 | 5 |
 | [2026-10-28](2026-10-28/) | 43 | 16 |
+| [2026-11-01-fuzz](2026-11-01-fuzz/) | 18 | 5 |

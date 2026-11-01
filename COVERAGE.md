@@ -130,7 +130,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | fix-shadow2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | fix-shadow3 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | fourth-try-stop-polled |  |  | 1 |  |  |  |  |  |  |
-| fuzz-cpu |  |  |  |  |  |  | 3 |  |  |
+| fuzz-cpu | 3 |  |  |  |  |  | 3 |  |  |
 | gp0-bit25 |  |  |  | 3 |  |  | 1 |  |  |
 | gp0-bit25b |  |  |  | 3 |  |  | 1 |  |  |
 | gp0-bit25c |  |  |  | 3 |  |  | 1 |  |  |
@@ -365,8 +365,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | movie-disc-hunt2 |  |  |  |  |  |  | 1 |  |  |
 | movie-disc-hunt3 |  |  |  |  |  |  | 1 |  |  |
 | movie-disc-hunt4 |  |  |  |  |  |  | 1 |  |  |
-| mul-grid |  |  |  |  |  |  | 2 |  |  |
-| mul-shadow |  |  |  |  |  |  | 2 |  |  |
+| mul-grid | 3 |  |  |  |  |  | 2 |  |  |
+| mul-shadow | 3 |  |  |  |  |  | 2 |  |  |
 | muldiv-overlap | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | multitap-modes |  | 1 |  |  |  |  |  |  |  |
 | pad-ack-hist | 6 | 6 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
@@ -427,14 +427,14 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu-lead | 6 | 7 | 8 | 1 | 6 | 11 | 1 | 8 | 2 |
 | spu-lead-phase | 6 | 6 | 6 | 1 | 6 | 8 | 1 | 5 | 2 |
 | spu-lsax-sweep |  |  |  | 6 |  |  | 1 |  |  |
-| spu-noise |  |  |  |  |  |  | 3 |  |  |
+| spu-noise | 3 |  |  |  |  |  | 3 |  |  |
 | spu-path | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | spu-phase | 4 |  | 1 | 1 |  | 6 | 4 | 4 |  |
 | spu-phase2 | 4 |  | 5 | 1 |  | 3 | 4 | 4 |  |
 | spu-phase3 | 4 |  | 1 | 1 |  | 3 | 4 | 4 |  |
 | spu-phase4 |  |  | 4 | 1 |  |  | 1 | 8 |  |
 | spu-phase5 |  |  | 4 | 1 |  |  | 1 | 8 |  |
-| spu-pmon |  |  |  |  |  |  | 3 |  |  |
+| spu-pmon | 3 |  |  |  |  |  | 3 |  |  |
 | spu-read-grid | 1 | 1 | 1 | 1 | 2 | 4 | 1 | 2 | 2 |
 | spu-read-trace | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | spu-rearm | 3 |  | 3 | 1 |  | 3 | 1 | 3 |  |
