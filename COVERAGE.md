@@ -303,6 +303,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gte-irgb | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gte-latch-cached | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gte-sqr-align | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
+| gte-undef |  |  | 1 |  |  |  |  |  |  |
 | gte-write-delay |  |  |  | 3 |  |  | 1 |  |  |
 | gte_test-all | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | hold-read | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
@@ -325,6 +326,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | load-fill6 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | load-pairs | 1 | 6 | 5 | 1 | 6 | 12 | 1 | 6 | 2 |
 | load-use | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
+| loop-cold |  |  | 2 |  |  |  |  |  |  |
 | machine-id | 9 | 7 | 27 | 1 | 6 | 16 | 1 | 13 | 2 |
 | mdec-color | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | mdec-glitch24 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
@@ -378,8 +380,11 @@ How many logs each test has on each console. Generated from the file names in `c
 | pad-config |  |  |  |  |  |  |  | 3 |  |
 | pad-short-exit |  |  | 1 |  |  |  |  |  |  |
 | pair-atlas |  |  | 5 |  |  |  |  |  |  |
+| pair-cdep |  |  | 1 |  |  |  |  |  |  |
 | pair-cold |  |  | 2 |  |  |  |  |  |  |
 | pair-dep |  |  | 2 |  |  |  |  |  |  |
+| pair-mid |  |  | 2 |  |  |  |  |  |  |
+| pair-unc |  |  | 1 |  |  |  |  |  |  |
 | pair-warm |  |  | 2 |  |  |  |  |  |  |
 | pal-dots | 6 |  | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | pal-line | 6 |  | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
@@ -424,7 +429,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu-curvol | 1 | 6 | 2 | 1 | 6 | 4 | 1 | 2 | 2 |
 | spu-decode-ahead | 6 | 6 | 6 | 1 | 6 | 10 | 1 | 6 | 2 |
 | spu-dma | 6 | 6 | 8 | 1 | 6 | 11 | 1 | 7 | 1 |
-| spu-endcut |  |  | 3 |  |  |  |  |  |  |
+| spu-endcut |  |  | 4 |  |  |  |  |  |  |
 | spu-envring |  |  | 2 |  |  |  |  |  |  |
 | spu-exp-neg |  |  |  | 3 |  |  | 1 |  |  |
 | spu-fifo | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |

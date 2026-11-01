@@ -108,12 +108,20 @@ int main() {
     write16(SPU(0x1AA), cnt);
     write16(SPU(0x1AC), 0x0004);
     static const int NS[8] = { 1, 2, 3, 4, 5, 6, 8, 12 };
-    for (int n = 0; n < 8; n++) {
-        gN = NS[n];
-        setFlags(1);
-        for (uint32_t p = 0x800; p <= 0x3000; p += 0x200) run(p, 1);
-        setFlags(3);
-        for (uint32_t p = 0x800; p <= 0x3000; p += 0x200) run(p, 3);
+    for (int cls = 0; cls < 2; cls++) {
+        printf("CLASS %d\n", cls);
+        for (int n = 0; n < 8; n += cls + 1) {
+            gN = NS[n];
+            setFlags(1);
+            for (uint32_t p = 0x800; p <= 0x3000; p += 0x200) run(p, 1);
+            setFlags(3);
+            for (uint32_t p = 0x800; p <= 0x3000; p += 0x200) run(p, 3);
+        }
+        /* a sample with the transfer type not 2 moves the key-on's two-sample cycle (hwtests/spu-latch) */
+        edge(0);
+        write16(SPU(0x1AC), 0x0000);
+        idle(768);
+        write16(SPU(0x1AC), 0x0004);
     }
     write16(SPU(0x18C), 0xFFFF); write16(SPU(0x18E), 0x00FF);
     write32(0x1F801014, spuDelay);

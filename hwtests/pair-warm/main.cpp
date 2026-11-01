@@ -32,7 +32,10 @@
 #ifndef PA_DEP
 #define PA_DEP 0
 #endif
-#define PA_NAME (PA_DEP ? "pair-dep" : PA_COLD ? "pair-cold" : "pair-warm")
+#ifndef PA_UNC
+#define PA_UNC 0
+#endif
+#define PA_NAME (PA_UNC ? "pair-unc" : PA_DEP ? (PA_COLD ? "pair-cdep" : "pair-dep") : PA_COLD ? "pair-cold" : "pair-warm")
 
 extern "C" {
 uint32_t paSandbox[0x2200] __attribute__((aligned(1024)));
@@ -192,13 +195,13 @@ static uint32_t cell() {
     return m;
 #else
     paEvict();
-    return paTrials(paCode, TRIALS);
+    return paTrials(PA_UNC ? (uint32_t*)((uint32_t)paCode | 0xA0000000u) : paCode, TRIALS);
 #endif
 }
 
 int main() {
     printf("\ncpu/%s\n", PA_NAME);
-    printf("T2; a nops; X; b nops; Y; c nops; T2, %s, fastest of %d. P X Y, then A a b and c = 0..%d. No assertions.\n\n", PA_COLD ? "cold" : "warm", TRIALS, CS - 1);
+    printf("T2; a nops; X; b nops; Y; c nops; T2, %s, fastest of %d. P X Y, then A a b and c = 0..%d. No assertions.\n\n", PA_UNC ? "uncached" : PA_COLD ? "cold" : "warm", TRIALS, CS - 1);
     EnterCriticalSection();
     paCop2();
     const uint16_t m2 = read16(T2_MODE);

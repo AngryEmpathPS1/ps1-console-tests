@@ -19,8 +19,12 @@
 #include <io.h>
 
 #define T2_MODE  0x1F801124u
-#define IDS 4096
-#define DETAIL 256
+#ifndef GT_UNDEF
+#define GT_UNDEF 0
+#endif
+#define IDS (GT_UNDEF ? 672 : 4096)
+#define DETAIL (GT_UNDEF ? 672 : 256)
+#define GT_NAME (GT_UNDEF ? "gte-undef" : "fuzz-gte")
 
 extern "C" {
 uint32_t gtCtrl[32], gtData[32], gtOut[64];
@@ -124,10 +128,11 @@ static uint32_t val() {
     return rnd() & 0xFFF;
 }
 static const uint8_t FN[22] = { 0x01, 0x06, 0x0C, 0x10, 0x11, 0x12, 0x13, 0x14, 0x16, 0x1B, 0x1C, 0x1E, 0x20, 0x28, 0x29, 0x2A, 0x2D, 0x2E, 0x30, 0x3D, 0x3E, 0x3F };
-static uint32_t gen() {
+static const uint8_t UNDEF[42] = { 0x00, 0x02, 0x03, 0x04, 0x05, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0D, 0x0E, 0x0F, 0x15, 0x17, 0x18, 0x19, 0x1A, 0x1D, 0x1F, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x2B, 0x2C, 0x2F, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3C };
+static uint32_t gen(int id) {
     for (int i = 0; i < 32; i++) gtCtrl[i] = val();
     for (int i = 0; i < 32; i++) gtData[i] = val();
-    uint32_t fn = rnd() % 10 ? FN[rnd() % 22] : rnd() % 64;
+    uint32_t fn = GT_UNDEF ? UNDEF[id / 16] : rnd() % 10 ? FN[rnd() % 22] : rnd() % 64;
     uint32_t cmd = fn | (rnd() & 0x000FE400u);          /* sf, mx, v, cv, lm */
     if (!(rnd() % 4)) cmd |= rnd() & 0x01F00000u;       /* the fake bits */
     return cmd;
@@ -147,7 +152,7 @@ static void build(uint32_t cmd) {
 static uint32_t hash() { uint32_t h = 2166136261u; for (int i = 0; i < 64; i++) { uint32_t v = gtOut[i]; for (int b = 0; b < 4; b++) { h = (h ^ (v & 255)) * 16777619u; v >>= 8; } } return h; }
 
 int main() {
-    printf("\ncpu/fuzz-gte\n");
+    printf("\ncpu/%s\n", GT_NAME);
     printf("%d ids: G cmd time pre post; the first %d with D, data registers and FLAG. No assertions.\n\n", IDS, DETAIL);
     EnterCriticalSection();
     gtEnable();
@@ -155,7 +160,7 @@ int main() {
     write16(T2_MODE, 0);
     for (int id = 0; id < IDS; id++) {
         rng = 0x9E3779B9u * (uint32_t)(id + 1); rnd(); rnd();
-        const uint32_t cmd = gen();
+        const uint32_t cmd = gen(id);
         build(cmd);
         gtEvict();
         gtLoad();
@@ -172,6 +177,6 @@ int main() {
     }
     write16(T2_MODE, m2);
     ExitCriticalSection();
-    printf("\ncpu/fuzz-gte: Done.\n");
+    printf("\ncpu/%s: Done.\n", GT_NAME);
     for (;;) VSync(0);
 }

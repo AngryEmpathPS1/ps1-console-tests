@@ -30,6 +30,11 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | fuzz-spu | no | random voices: 512 ids of random ADPCM, envelopes, pitches and modulation, voices 1 and 3 read back off their capture rings |
 | spu-envring | no | the envelope as a waveform: voice 1 playing a constant, every attack, decay, sustain and release setting, the capture ring's first eight changes |
 | spu-endcut | no | where a block's end flag lands by pitch: three blocks of a constant, the end with no repeat and with a repeat, 256 pitches |
+| gte-undef | no | the GTE's 42 undefined function codes, 16 random cases each, every register after and the time |
+| pair-cdep | no | pair-dep's kinds with every line cold: load-use, the GTE, lwc2, swc2, a taken branch, mfc0 in code that misses |
+| pair-unc | no | pair-warm's grid with the block run uncached through KSEG1 |
+| pair-mid | no | cold code, X; Y; then two timer reads: 16,464 cells of where the bus was mid-row |
+| loop-cold | no | a small loop entered cold at every alignment, with a read or a store in it: 2,240 cells |
 | fuzz-cpu | no | 4,096 random programs of 16 instructions, the same on every console: cold and warm, fastest and slowest of 4, a hash of the values |
 | spu-noise | no | voice 1 in noise mode off its capture ring: every shift and step, slow rates, level, two voices, the end flag, pitch, NON's latch, SPUCNT reset |
 | spu-pmon | no | the cycles a chain of silent blocks takes at each modulator level and pitch; ENV, VOLUME, SILENT, NOISE, BIT0 |
