@@ -17,6 +17,8 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | gte-write-delay | no | the first N of N nops after mtc2/ctc2 at which mfc2/cfc2 of the same register reads the new value, nine data registers, LZCS and eight control registers, cached and uncached, cold and warm, and with one I/O read as the filler; control LZCS -> LZCR |
 | spu-statx-tail | no | every change of SPUSTAT with its Timer 2 time, from the CHCR write to 4,000 cycles after CHCR clears, for DMA writes of 32, 64 and 128 halfwords at eight phases of the sample at 200931E1h (32 also at 220931E1h), with a manual write as the control, and psx-spx's recipe of polling bit 7 then Stop with what landed |
 | spu-exp-neg | no | the current level (1F801E00h+N*4, 1F801DB8h) read left and right until it stops, after a sweep from a negative fixed volume: Exponential Decrease at ten rates on a playing voice and three each on a keyed-off voice and the main volume, both Phase bits, starts inside the claimed stop, and positive starts, Linear Decrease and Exponential Increase as controls |
+| mul-shadow | no | a read, D nops, mult, K nops, mflo, for six kinds of read |
+| mul-grid | no | mult and multu then mflo for every pair of 13 operand sizes, and at K = 1..3 nops |
 | fuzz-cpu | no | 4,096 random programs of 16 instructions, the same on every console: cold and warm, fastest and slowest of 4, a hash of the values |
 | spu-noise | no | voice 1 in noise mode off its capture ring: every shift and step, slow rates, level, two voices, the end flag, pitch, NON's latch, SPUCNT reset |
 | spu-pmon | no | the cycles a chain of silent blocks takes at each modulator level and pitch; ENV, VOLUME, SILENT, NOISE, BIT0 |

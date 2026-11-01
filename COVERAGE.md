@@ -365,6 +365,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | movie-disc-hunt2 |  |  |  |  |  |  | 1 |  |  |
 | movie-disc-hunt3 |  |  |  |  |  |  | 1 |  |  |
 | movie-disc-hunt4 |  |  |  |  |  |  | 1 |  |  |
+| mul-grid |  |  |  |  |  |  | 2 |  |  |
+| mul-shadow |  |  |  |  |  |  | 2 |  |  |
 | muldiv-overlap | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | multitap-modes |  | 1 |  |  |  |  |  |  |  |
 | pad-ack-hist | 6 | 6 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
