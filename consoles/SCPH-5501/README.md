@@ -123,5 +123,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-01-spud2](2026-11-01-spud2/) | 4 | 1 |
 | [2026-11-01-spud3](2026-11-01-spud3/) | 4 | 1 |
 | [2026-11-01-trail](2026-11-01-trail/) | 5 | 1 |
+| [2026-11-01-tri](2026-11-01-tri/) | 5 | 1 |
 | [2026-11-01-unc](2026-11-01-unc/) | 4 | 1 |
 | [2026-11-01-undef](2026-11-01-undef/) | 4 | 1 |

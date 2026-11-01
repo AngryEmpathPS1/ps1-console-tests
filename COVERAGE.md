@@ -488,6 +488,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | timer-sync | 6 |  | 10 | 1 | 6 | 14 | 1 | 10 | 2 |
 | timer2-lap |  |  |  | 3 |  |  | 1 |  |  |
 | timers_timers | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
+| tri-cold |  |  | 2 |  |  |  |  |  |  |
 | unc-entry | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | unc-entry2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | unc-entry3 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
