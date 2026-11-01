@@ -1,0 +1,24 @@
+
+cpu/cpu-loop-tick9
+The reader of a RAM load behind stores and a read; the delay-slot store. No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  INL-R2      29.33      29.31
+  INL-R3      30.17      30.15
+  INL-R5      30.19      30.15
+  INL-V2      26.54      26.51
+  INL-ALU     32.04      32.00
+  INL-ALU-NT  28.50      28.46
+  INL-ALU-NS  26.19      26.15
+  LD-R2       18.33      18.31
+  SW-LD-R2    18.35      18.31
+  SW-T-LD-R2  19.26      19.23
+  SW-T-LD-R5  20.27      20.24
+  DS-0        13.19      13.15
+  DS-2        13.19      13.15
+  DS-4        15.25      15.21
+  DS-6        17.13      17.09
+  DS-2ST      15.12      15.08
+  DS-FAR      12.56      12.49
+
+cpu/cpu-loop-tick9: Done.

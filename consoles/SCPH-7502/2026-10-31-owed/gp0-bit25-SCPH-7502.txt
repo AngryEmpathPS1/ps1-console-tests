@@ -1,0 +1,98 @@
+
+gpu/gp0-bit25
+GP1(04h)=1: GPUSTAT.25 read after each GP0(E6h) word written behind a busy GPU. Patterns read left to right, word 1 first.
+psx-spx dev: falls at about 11 words queued. nocash and this core: FIFO size 9. No assertions.
+
+CONTROLS: bit 25 must stay 1 through both
+idle, settled, 24 words of E6h:
+ run 1: before 25/26/28 111, words took 3120, bit 25 falls at word 0; then bit 25 set 89, bit 28 set 89, idle 89
+  25 111111111111111111111111
+  26 111111111111111111111111
+  28 111111111111111111111111
+ run 2: before 25/26/28 111, words took 3082, bit 25 falls at word 0; then bit 25 set 49, bit 28 set 49, idle 49
+ run 3: before 25/26/28 111, words took 3122, bit 25 falls at word 0; then bit 25 set 49, bit 28 set 49, idle 49
+copy, settled, 24 words of NOP:
+ run 1: before 25/26/28 101, words took 3104, bit 25 falls at word 0; then bit 25 set 49, bit 28 set 49, idle 40578
+  25 111111111111111111111111
+  26 000000000000000000000000
+  28 111111111111111111111111
+ run 2: before 25/26/28 101, words took 3082, bit 25 falls at word 0; then bit 25 set 49, bit 28 set 49, idle 40634
+ run 3: before 25/26/28 101, words took 3139, bit 25 falls at word 0; then bit 25 set 49, bit 28 set 49, idle 38602
+
+24 WORDS OF E6h BEHIND A BUSY GPU
+copy, fast, 24 words of E6h:
+ run 1: before 25/26/28 101, words took 666, bit 25 falls at word 11; then bit 25 set 43172, bit 28 set 43172, idle 43172
+  25 111111111100000000000000
+  26 000000000000000000000000
+  28 000000000000000000000000
+ run 2: before 25/26/28 101, words took 647, bit 25 falls at word 11; then bit 25 set 43046, bit 28 set 43046, idle 43046
+ run 3: before 25/26/28 101, words took 643, bit 25 falls at word 11; then bit 25 set 41925, bit 28 set 41994, idle 41994
+copy, settled, 24 words of E6h:
+ run 1: before 25/26/28 101, words took 3082, bit 25 falls at word 10; then bit 25 set 40691, bit 28 set 40691, idle 40691
+  25 111111111000000000000000
+  26 000000000000000000000000
+  28 100000000000000000000000
+ run 2: before 25/26/28 101, words took 3082, bit 25 falls at word 10; then bit 25 set 40680, bit 28 set 40680, idle 40680
+ run 3: before 25/26/28 101, words took 3132, bit 25 falls at word 10; then bit 25 set 40617, bit 28 set 40617, idle 40617
+fill, fast, 24 words of E6h:
+ run 1: before 25/26/28 101, words took 643, bit 25 falls at word 11; then bit 25 set 21054, bit 28 set 21054, idle 21054
+  25 111111111100000000000000
+  26 000000000000000000000000
+  28 000000000000000000000000
+ run 2: before 25/26/28 101, words took 652, bit 25 falls at word 11; then bit 25 set 23284, bit 28 set 23284, idle 23284
+ run 3: before 25/26/28 101, words took 640, bit 25 falls at word 11; then bit 25 set 23281, bit 28 set 23281, idle 23281
+fill, settled, 24 words of E6h:
+ run 1: before 25/26/28 101, words took 3082, bit 25 falls at word 10; then bit 25 set 20925, bit 28 set 20925, idle 20925
+  25 111111111000000000000000
+  26 000000000000000000000000
+  28 100000000000000000000000
+ run 2: before 25/26/28 101, words took 3135, bit 25 falls at word 10; then bit 25 set 20919, bit 28 set 20919, idle 20919
+ run 3: before 25/26/28 101, words took 3082, bit 25 falls at word 10; then bit 25 set 20926, bit 28 set 20926, idle 20926
+quad, fast, 24 words of E6h:
+ run 1: before 25/26/28 100, words took 643, bit 25 falls at word 6; then bit 25 set 35269, bit 28 set 35269, idle 35269
+  25 111110000000000000000000
+  26 000000000000000000000000
+  28 000000000000000000000000
+ run 2: before 25/26/28 100, words took 639, bit 25 falls at word 6; then bit 25 set 33200, bit 28 set 33269, idle 33269
+ run 3: before 25/26/28 100, words took 643, bit 25 falls at word 6; then bit 25 set 35281, bit 28 set 35281, idle 35350
+quad, settled, 24 words of E6h:
+ run 1: before 25/26/28 100, words took 3082, bit 25 falls at word 5; then bit 25 set 32844, bit 28 set 32913, idle 32913
+  25 111100000000000000000000
+  26 000000000000000000000000
+  28 000000000000000000000000
+ run 2: before 25/26/28 100, words took 3087, bit 25 falls at word 5; then bit 25 set 32909, bit 28 set 32909, idle 32909
+ run 3: before 25/26/28 100, words took 3137, bit 25 falls at word 5; then bit 25 set 30702, bit 28 set 30702, idle 30702
+
+48 WORDS: THE 5-BIT COUNT WRAPS AT THE 32ND QUEUED WORD
+copy, settled, 48 words of E6h:
+ run 1: before 25/26/28 101, words took 6212, bit 25 falls at word 10; then bit 25 set 37460, bit 28 set 37537, idle 37537
+  25 111111111000000000000000000000001111111110000000
+  26 000000000000000000000000000000000000000000000000
+  28 100000000000000000000000000000001000000000000000
+  F 10, W 33, F2 42: taken 1, T 9, F-taken 9
+ run 2: before 25/26/28 101, words took 6133, bit 25 falls at word 10; then bit 25 set 35580, bit 28 set 35580, idle 35580
+  F 10, W 33, F2 42: taken 1, T 9, F-taken 9
+ run 3: before 25/26/28 101, words took 6143, bit 25 falls at word 10; then bit 25 set 37512, bit 28 set 37512, idle 37512
+  F 10, W 33, F2 42: taken 1, T 9, F-taken 9
+fill, settled, 48 words of E6h:
+ run 1: before 25/26/28 101, words took 6114, bit 25 falls at word 10; then bit 25 set 17814, bit 28 set 17814, idle 17814
+  25 111111111000000000000000000000001111111110000000
+  26 000000000000000000000000000000000000000000000000
+  28 100000000000000000000000000000001000000000000000
+  F 10, W 33, F2 42: taken 1, T 9, F-taken 9
+ run 2: before 25/26/28 101, words took 6091, bit 25 falls at word 10; then bit 25 set 15645, bit 28 set 15645, idle 15645
+  F 10, W 33, F2 42: taken 1, T 9, F-taken 9
+ run 3: before 25/26/28 101, words took 6105, bit 25 falls at word 10; then bit 25 set 17814, bit 28 set 17814, idle 17891
+  F 10, W 33, F2 42: taken 1, T 9, F-taken 9
+quad, settled, 48 words of E6h:
+ run 1: before 25/26/28 100, words took 6091, bit 25 falls at word 5; then bit 25 set 29838, bit 28 set 29838, idle 29838
+  25 111100000000000000000000000111111111000000000000
+  26 000000000000000000000000000000000000000000000000
+  28 000000000000000000000000000100000000000000000000
+  F 5, W 28, F2 37: taken -4, T 9, F-taken 9
+ run 2: before 25/26/28 100, words took 6176, bit 25 falls at word 5; then bit 25 set 29678, bit 28 set 29678, idle 29678
+  F 5, W 28, F2 37: taken -4, T 9, F-taken 9
+ run 3: before 25/26/28 100, words took 6154, bit 25 falls at word 5; then bit 25 set 29832, bit 28 set 29832, idle 29832
+  F 5, W 28, F2 37: taken -4, T 9, F-taken 9
+
+gpu/gp0-bit25: Done.

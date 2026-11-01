@@ -1,0 +1,48 @@
+
+gpu/gpu-outside2
+Primitives 128 wide, H rows, wholly outside the drawing area (256,136)-(511,375). D as gpu-shape-time: the first D with
+bit 26 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+                     H 16          H 128     a row
+flat 20h   left    114..114     226..226   1.00  pixel untouched
+flat 20h   right    50..50      162..162   1.00  pixel untouched
+flat 20h   above    50..50      162..162   1.00  pixel untouched
+flat 20h   below    34..34       34..34    0.00  pixel untouched
+semi 22h   left    114..114     226..226   1.00  pixel untouched
+semi 22h   right    50..50      162..162   1.00  pixel untouched
+semi 22h   above    50..50      162..162   1.00  pixel untouched
+semi 22h   below    34..34       34..34    0.00  pixel untouched
+shaded 30h left    309..309     421..421   1.00  pixel untouched
+shaded 30h right   181..181     293..293   1.00  pixel untouched
+shaded 30h above   181..181     293..293   1.00  pixel untouched
+shaded 30h below   165..165     165..165   0.00  pixel untouched
+tex 24h    left    276..276     388..388   1.00  pixel untouched
+tex 24h    right   148..148     260..260   1.00  pixel untouched
+tex 24h    above   148..148     260..260   1.00  pixel untouched
+tex 24h    below   132..132     132..132   0.00  pixel untouched
+raw 25h    left    276..276     388..388   1.00  pixel untouched
+raw 25h    right   148..148     260..260   1.00  pixel untouched
+raw 25h    above   148..148     260..260   1.00  pixel untouched
+raw 25h    below   132..132     132..132   0.00  pixel untouched
+shtex 34h  left    397..397     509..509   1.00  pixel untouched
+shtex 34h  right   269..269     381..381   1.00  pixel untouched
+shtex 34h  above   269..269     381..381   1.00  pixel untouched
+shtex 34h  below   253..253     253..253   0.00  pixel untouched
+fquad 28h  left    191..193     415..417   2.00  pixel untouched
+fquad 28h  right    71..73      287..289   1.92  pixel untouched
+fquad 28h  above    55..57      161..161   0.94  pixel untouched
+fquad 28h  below    71..73      186..188   1.02  pixel untouched
+stq 3Ch    left    613..617     740..744   1.13  pixel untouched
+stq 3Ch    right   485..489     602..604   1.04  pixel untouched
+stq 3Ch    above   469..473     474..476   0.04  pixel untouched
+stq 3Ch    below   485..489     602..604   1.04  pixel untouched
+semi 62h   left     92..92      204..204   1.00  pixel untouched
+semi 62h   right    28..28      140..140   1.00  pixel untouched
+semi 62h   above    28..28      140..140   1.00  pixel untouched
+semi 62h   below    12..12       12..12    0.00  pixel untouched
+tex 64h    left     90..90      202..202   1.00  pixel untouched
+tex 64h    right    26..26      138..138   1.00  pixel untouched
+tex 64h    above    26..26      138..138   1.00  pixel untouched
+tex 64h    below    10..10       10..10    0.00  pixel untouched
+
+gpu/gpu-outside2: Done.

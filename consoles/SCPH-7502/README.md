@@ -26,3 +26,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-31-biu](2026-10-31-biu/) | 15 | 6 |
 | [2026-10-31-mdec](2026-10-31-mdec/) | 5 | 1 |
 | [2026-10-31-movies](2026-10-31-movies/) | 13 | 13 |
+| [2026-10-31-owed](2026-10-31-owed/) | 59 | 56 |
+| [2026-10-31-pair](2026-10-31-pair/) | 6 | 1 |

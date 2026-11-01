@@ -1,0 +1,168 @@
+
+spu/spu-exp-neg
+Where a volume sweep stops from a negative level: the current level read until it stops moving, left and right,
+the voice's and the main volume's. Levels in hex; a sample is 768 cycles. No assertions.
+
+checks: the level at samples 1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 after the sweep's write
+
+EXP DEC, the claim, from C000h / E000h:
+  voice 1 playing sweep e000 (rate 00, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep e010 (rate 10, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep e020 (rate 20, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep e028 (rate 28, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep e02c (rate 2c, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep e02d (rate 2d, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep e02e (rate 2e, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep e02f (rate 2f, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep e030 (rate 30, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep e034 (rate 34, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep f000 (rate 00, phase 1)
+    L pre c000 -> ffff, last step sample    13, steps    14, checks e000 f000 fc00 ffc0 ffff ffff ffff ffff ffff ffff
+    R pre e000 -> ffff, last step sample    12, steps    13, checks f000 f800 fe00 ffe0 ffff ffff ffff ffff ffff ffff
+  voice 1 playing sweep f010 (rate 10, phase 1)
+    L pre c000 -> ffe1, last step sample   214, steps   215, checks c200 c3f0 c7a1 ce58 d978 e8ca f78e fed6 ffe1 ffe1
+    R pre e000 -> ffe1, last step sample   192, steps   193, checks e100 e1f8 e3d0 e72b ecba f461 fbc2 ff65 ffe1 ffe1
+  voice 1 playing sweep f020 (rate 20, phase 1)
+    L pre c000 -> fe01, last step sample  2059, steps  2060, checks c020 c03f c07d c0f9 c1f1 c3d2 c768 cdf4 d8ce e7da f678 fdf5
+    R pre e000 -> fe01, last step sample  1697, steps  1698, checks e010 e01f e03d e079 e0f1 e1e1 e3a4 e6d9 ec35 f399 fabd fe01
+  voice 1 playing sweep f028 (rate 28, phase 1)
+    L pre c000 -> f801, last step sample  5308, steps  5309, checks c008 c00f c01d c039 c071 c0e1 c1c1 c381 c701 cd26 d7a0 e5c8 f344
+    R pre e000 -> f801, last step sample  3753, steps  3754, checks e004 e007 e00d e019 e031 e061 e0c1 e181 e301 e601 eaac f157 f801
+  voice 1 playing sweep f02c (rate 2c, phase 1)
+    L pre c000 -> f001, last step sample  7508, steps  7509, checks c004 c007 c00d c019 c031 c061 c0c1 c181 c301 c601 cc01 d557 e2ac
+    R pre e000 -> f001, last step sample  4095, steps  4096, checks e002 e003 e005 e009 e011 e021 e041 e081 e101 e201 e401 e801 f001
+  voice 1 playing sweep f02d (rate 2d, phase 1)
+    L pre c000 -> edb7, last step sample  7800, steps  7801, checks c003 c006 c00c c018 c030 c060 c0c0 c180 c300 c600 cb0d d30d df3e edb7
+    R pre e000 -> edb7, last step sample  3510, steps  3511, checks e001 e002 e004 e008 e010 e020 e040 e080 e100 e200 e400 e800 edb7 edb7
+  voice 1 playing sweep f02e (rate 2e, phase 1)
+    L pre c000 -> eaab, last step sample  8190, steps  8191, checks c003 c005 c009 c011 c021 c041 c081 c101 c201 c401 c801 d001 daac eaab
+    R pre e000 -> eaab, last step sample  2730, steps  2731, checks e001 e002 e004 e008 e010 e020 e040 e080 e100 e200 e400 e800 eaab eaab
+  voice 1 playing sweep f02f (rate 2f, phase 1)
+    L pre c000 -> e667, last step sample  8191, steps  8192, checks c002 c004 c008 c010 c020 c040 c080 c100 c200 c400 c800 ce67 d667 e667
+    R pre e000 -> e667, last step sample  1638, steps  1639, checks e001 e002 e004 e008 e010 e020 e040 e080 e100 e200 e400 e667 e667 e667
+  voice 1 playing sweep f030 (rate 30, phase 1)
+    L pre c000 -> f001, last step sample 15017, steps  7509, checks c000 c004 c007 c00d c019 c031 c061 c0c1 c181 c301 c601 cc01 d557 e2ac
+    R pre e000 -> f001, last step sample  8191, steps  4096, checks e000 e002 e003 e005 e009 e011 e021 e041 e081 e101 e201 e401 e801 f001
+  voice 1 playing sweep f034 (rate 34, phase 1)
+    L pre c000 -> f001, last step sample 30032, steps  7509, checks c004 c004 c004 c007 c00d c019 c031 c061 c0c1 c181 c301 c601 cc01 d557 e2ac
+    R pre e000 -> f001, last step sample 16380, steps  4096, checks e002 e002 e002 e003 e005 e009 e011 e021 e041 e081 e101 e201 e401 e801 f001
+  voice 5 keyed off sweep e020 (rate 20, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 5 keyed off sweep e02c (rate 2c, phase 0)
+    L pre c000 -> 0000, last step sample     1, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 5 keyed off sweep e030 (rate 30, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 5 keyed off sweep f020 (rate 20, phase 1)
+    L pre c000 -> fe01, last step sample  2060, steps  2060, checks c020 c03f c07d c0f9 c1f1 c3d2 c768 cdf4 d8ce e7da f678 fdf5
+    R pre e000 -> fe01, last step sample  1697, steps  1698, checks e010 e01f e03d e079 e0f1 e1e1 e3a4 e6d9 ec35 f399 fabd fe01
+  voice 5 keyed off sweep f02c (rate 2c, phase 1)
+    L pre c000 -> f001, last step sample  7508, steps  7509, checks c004 c007 c00d c019 c031 c061 c0c1 c181 c301 c601 cc01 d557 e2ac
+    R pre e000 -> f001, last step sample  4096, steps  4096, checks e002 e003 e005 e009 e011 e021 e041 e081 e101 e201 e401 e801 f001
+  voice 5 keyed off sweep f030 (rate 30, phase 1)
+    L pre c000 -> f001, last step sample 15017, steps  7509, checks c000 c004 c007 c00d c019 c031 c061 c0c1 c181 c301 c601 cc01 d557 e2ac
+    R pre e000 -> f001, last step sample  8192, steps  4096, checks e000 e002 e003 e005 e009 e011 e021 e041 e081 e101 e201 e401 e801 f001
+  main volume sweep e020 (rate 20, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  main volume sweep e02c (rate 2c, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  main volume sweep e030 (rate 30, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  main volume sweep f020 (rate 20, phase 1)
+    L pre c000 -> fe01, last step sample  2059, steps  2060, checks c020 c03f c07d c0f9 c1f1 c3d2 c768 cdf4 d8ce e7da f678 fdf5
+    R pre e000 -> fe01, last step sample  1697, steps  1698, checks e010 e01f e03d e079 e0f1 e1e1 e3a4 e6d9 ec35 f399 fabd fe01
+  main volume sweep f02c (rate 2c, phase 1)
+    L pre c000 -> f001, last step sample  7508, steps  7509, checks c004 c007 c00d c019 c031 c061 c0c1 c181 c301 c601 cc01 d557 e2ac
+    R pre e000 -> f001, last step sample  4095, steps  4096, checks e002 e003 e005 e009 e011 e021 e041 e081 e101 e201 e401 e801 f001
+  main volume sweep f030 (rate 30, phase 1)
+    L pre c000 -> f001, last step sample 15016, steps  7509, checks c004 c004 c007 c00d c019 c031 c061 c0c1 c181 c301 c601 cc01 d557 e2ac
+    R pre e000 -> f001, last step sample  8190, steps  4096, checks e002 e002 e003 e005 e009 e011 e021 e041 e081 e101 e201 e401 e801 f001
+
+INSIDE, from F800h / F000h, Exponential Decrease:
+  voice 1 playing sweep e02c (rate 2c, phase 0)
+    L pre f800 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre f000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep f02c (rate 2c, phase 1)
+    L pre f800 -> f800, last step sample     0, steps     0, checks f800 f800 f800 f800 f800 f800 f800 f800 f800 f800
+    R pre f000 -> f001, last step sample     0, steps     1, checks f001 f001 f001 f001 f001 f001 f001 f001 f001 f001
+
+POSITIVE, from 4000h / 2000h, Exponential Decrease:
+  voice 1 playing sweep e020 (rate 20, phase 0)
+    L pre 4000 -> 0000, last step sample  2075, steps  2076, checks 3fe0 3fc0 3f80 3f00 3e00 3c10 385d 319d 2669 16e7 07c9 001c
+    R pre 2000 -> 0000, last step sample  1729, steps  1730, checks 1ff0 1fe0 1fc0 1f80 1f00 1e00 1c20 18b6 1307 0b28 0384 0000
+  voice 1 playing sweep e02c (rate 2c, phase 0)
+    L pre 4000 -> 0000, last step sample  8532, steps  8533, checks 3ffc 3ff8 3ff0 3fe0 3fc0 3f80 3f00 3e00 3c00 3800 3000 2400 12aa 0155
+    R pre 2000 -> 0000, last step sample  6143, steps  6144, checks 1ffe 1ffc 1ff8 1ff0 1fe0 1fc0 1f80 1f00 1e00 1c00 1800 1000 0800 0000
+  voice 1 playing sweep f020 (rate 20, phase 1)
+    L pre 4000 -> 0000, last step sample  2075, steps  2076, checks 3fe0 3fc0 3f80 3f00 3e00 3c10 385d 319d 2669 16e7 07c9 001c
+    R pre 2000 -> 0000, last step sample  1729, steps  1730, checks 1ff0 1fe0 1fc0 1f80 1f00 1e00 1c20 18b6 1307 0b28 0384 0000
+  voice 1 playing sweep f02c (rate 2c, phase 1)
+    L pre 4000 -> 0000, last step sample  8532, steps  8533, checks 3ffc 3ff8 3ff0 3fe0 3fc0 3f80 3f00 3e00 3c00 3800 3000 2400 12aa 0155
+    R pre 2000 -> 0000, last step sample  6143, steps  6144, checks 1ffe 1ffc 1ff8 1ff0 1fe0 1fc0 1f80 1f00 1e00 1c00 1800 1000 0800 0000
+
+LIN DEC, a control, from C000h / E000h:
+  voice 1 playing sweep a020 (rate 20, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep a02c (rate 2c, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  voice 1 playing sweep b020 (rate 20, phase 1)
+    L pre c000 -> 0000, last step sample   293, steps   294, checks c038 c070 c0e0 c1c0 c380 c700 ce00 dc00 f800 0000
+    R pre e000 -> 0000, last step sample   147, steps   148, checks e038 e070 e0e0 e1c0 e380 e700 ee00 fc00 0000 0000
+  voice 1 playing sweep b02c (rate 2c, phase 1)
+    L pre c000 -> 0000, last step sample  2341, steps  2342, checks c007 c00e c01c c038 c070 c0e0 c1c0 c380 c700 ce00 dc00 f800
+    R pre e000 -> 0000, last step sample  1171, steps  1172, checks e007 e00e e01c e038 e070 e0e0 e1c0 e380 e700 ee00 fc00 0000
+  main volume sweep a020 (rate 20, phase 0)
+    L pre c000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+    R pre e000 -> 0000, last step sample     0, steps     1, checks 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  main volume sweep b020 (rate 20, phase 1)
+    L pre c000 -> 0000, last step sample   293, steps   294, checks c038 c070 c0e0 c1c0 c380 c700 ce00 dc00 f800 0000
+    R pre e000 -> 0000, last step sample   147, steps   148, checks e038 e070 e0e0 e1c0 e380 e700 ee00 fc00 0000 0000
+
+EXP INC, a control, from C000h / E000h:
+  voice 1 playing sweep c020 (rate 20, phase 0)
+    L pre c000 -> 7fff, last step sample  1314, steps  1315, checks c038 c070 c0e0 c1c0 c380 c700 ce00 dc00 f800 3000 7018
+    R pre e000 -> 7fff, last step sample  1167, steps  1168, checks e038 e070 e0e0 e1c0 e380 e700 ee00 fc00 1800 5000 7824
+  voice 1 playing sweep c02c (rate 2c, phase 0)
+    L pre c000 -> 7fff, last step sample 10528, steps  7022, checks c007 c00e c01c c038 c070 c0e0 c1c0 c380 c700 ce00 dc00 f800 3000 7003
+    R pre e000 -> 7fff, last step sample  9360, steps  5852, checks e007 e00e e01c e038 e070 e0e0 e1c0 e380 e700 ee00 fc00 1800 5000 7801
+  voice 1 playing sweep d020 (rate 20, phase 1)
+    L pre c000 -> 8000, last step sample   636, steps   637, checks bfc0 bf80 bf00 be00 bc00 b800 b000 a000 97d0 87d0 8000
+    R pre e000 -> 8000, last step sample   764, steps   765, checks dfc0 df80 df00 de00 dc00 d800 d000 c000 a000 8fd0 8000
+  voice 1 playing sweep d02c (rate 2c, phase 1)
+    L pre c000 -> 8000, last step sample  5116, steps  2048, checks bff8 bff0 bfe0 bfc0 bf80 bf00 be00 bc00 b800 b000 a000 9800 8800
+    R pre e000 -> 8000, last step sample  6140, steps  3072, checks dff8 dff0 dfe0 dfc0 df80 df00 de00 dc00 d800 d000 c000 a000 9000
+  main volume sweep c020 (rate 20, phase 0)
+    L pre c000 -> 7fff, last step sample  1314, steps  1315, checks c038 c070 c0e0 c1c0 c380 c700 ce00 dc00 f800 3000 7018
+    R pre e000 -> 7fff, last step sample  1167, steps  1168, checks e038 e070 e0e0 e1c0 e380 e700 ee00 fc00 1800 5000 7824
+  main volume sweep d020 (rate 20, phase 1)
+    L pre c000 -> 8000, last step sample   636, steps   637, checks bfc0 bf80 bf00 be00 bc00 b800 b000 a000 97d0 87d0 8000
+    R pre e000 -> 8000, last step sample   764, steps   765, checks dfc0 df80 df00 de00 dc00 d800 d000 c000 a000 8fd0 8000
+
+spu/spu-exp-neg: Done.

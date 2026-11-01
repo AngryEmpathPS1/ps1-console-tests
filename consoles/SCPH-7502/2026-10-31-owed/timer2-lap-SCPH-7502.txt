@@ -1,0 +1,58 @@
+
+timers/timer2-lap
+lap = (ruler - tick x counter) / K: Timer 1 on the system clock, Timer 0 beside it. See the header.
+
+CONTROLS, laps already known: reset at target on the system clock T+2 (ps1-tests timers, M104), a wrap 10000h counts
+/1 T=1000 K= 64 x 4 IDLE        lap 4098.00 = T+2.00  spread 0
+/1 T=1000 K= 64 x 4 POLL tight  lap 4098.00 = T+2.00  spread 0  read every 5.13
+/1 T=0010 K= 12 x 4 IDLE        lap 18.06 = T+2.06  spread 3
+/1 T=0010 K= 12 x 4 POLL tight  lap 18.00 = T+2.00  spread 10  read every 8.91
+/1 T=0000 K= 64 x 4 wrap, IDLE  lap 65536.00 = 10000h+0.00  spread 0
+/1 T=0000 K= 64 x 4 wrap, POLL  lap 65536.00 = 10000h+0.00  spread 0  read every 5.13
+/8 T=0000 K=  8 x 4 wrap, IDLE  lap 524287.87 = 80000h-0.12  spread 8
+/8 T=0000 K=  8 x 4 wrap, POLL  lap 524287.85 = 80000h-0.15  spread 5  read every 5.13
+
+THE LAP at /8, reset at target
+/8 T=8000 K= 16 x 4 IDLE        lap 262143.90 = 8T-0.09  spread 15
+/8 T=8000 K= 16 x 4 POLL tight  lap 262143.95 = 8T-0.04  spread 5  read every 5.13
+/8 T=8000 K= 16 x 4 POLL w=0    lap 262143.87 = 8T-0.12  spread 7  read every 9.02
+/8 T=8000 K= 16 x 4 POLL w=10   lap 262143.75 = 8T-0.25  spread 7  read every 29.05
+/8 T=8000 K= 16 x 4 POLL w=100  lap 262144.01 = 8T+0.01  spread 3  read every 209.38
+/8 T=8000 K= 16 x 4 FLAG I_STAT lap 262143.89 = 8T-0.10
+/8 T=8000 K= 16 x 4 FLAG MODE   lap 262144.54 = 8T+0.54
+
+/8 T=1000 K= 64 x 4 IDLE        lap 32768.00 = 8T+0.00  spread 9
+/8 T=1000 K= 64 x 4 POLL tight  lap 32768.00 = 8T+0.00  spread 11  read every 5.13
+/8 T=1000 K= 64 x 4 POLL w=0    lap 32767.97 = 8T-0.02  spread 4  read every 9.02
+/8 T=1000 K= 64 x 4 POLL w=10   lap 32768.02 = 8T+0.02  spread 7  read every 29.05
+/8 T=1000 K= 64 x 4 POLL w=100  lap 32767.97 = 8T-0.02  spread 5  read every 209.39
+/8 T=1000 K= 64 x 4 FLAG I_STAT lap 32767.97 = 8T-0.02
+/8 T=1000 K= 64 x 4 FLAG MODE   lap 32767.94 = 8T-0.05
+
+/8 T=0100 K=128 x 4 IDLE        lap 2048.00 = 8T+0.00  spread 9
+/8 T=0100 K=128 x 4 POLL tight  lap 2048.00 = 8T+0.00  spread 4  read every 5.13
+/8 T=0100 K=128 x 4 POLL w=0    lap 2047.99 = 8T-0.00  spread 14  read every 9.02
+/8 T=0100 K=128 x 4 POLL w=10   lap 2047.96 = 8T-0.03  spread 5  read every 29.06
+/8 T=0100 K=128 x 4 POLL w=100  lap 2048.01 = 8T+0.01  spread 6  read every 209.50
+/8 T=0100 K=128 x 4 FLAG I_STAT lap 2047.98 = 8T-0.01
+/8 T=0100 K=128 x 4 FLAG MODE   lap 2048.05 = 8T+0.05
+
+/8 T=0010 K= 12 x16 IDLE        lap 128.03 = 8T+0.03  spread 8
+/8 T=0010 K= 12 x16 POLL tight  lap 127.98 = 8T-0.01  spread 10  read every 5.72
+/8 T=0010 K= 12 x16 POLL w=0    lap 127.99 = 8T-0.00  spread 13  read every 10.11
+/8 T=0010 K= 12 x16 POLL w=10   lap 127.95 = 8T-0.04  spread 12  read every 30.68
+/8 T=0010 K= 12 x16 POLL w=100  lap 127.96 = 8T-0.03  spread 20  read every 230.07
+/8 T=0010 K= 12 x 4 FLAG I_STAT lap 127.54 = 8T-0.45
+/8 T=0010 K= 12 x 4 FLAG MODE   lap 127.25 = 8T-0.75
+
+DWELL at /8, reset at target: how many of the reads saw each value 0..T
+DWELL T=0010 spacing A, a read every 9.03 cycles
+  7168 8192 8192 8192 8192 8192 8192 8192 8192 8193 8191 8192 8192 8192 8192 8192 1024  above T 0
+  in cycles, the mean value 1..F as 8: value 0 7.00, value T 1.00
+DWELL T=0010 spacing B, a read every 10.03 cycles
+  7232 8192 8192 8192 8192 8192 8192 8192 8192 8192 8192 8192 8192 8192 8192 8192 960  above T 0
+  in cycles, the mean value 1..F as 8: value 0 7.06, value T 0.93
+
+the two rulers agreed within 10 cycles on every row
+
+Done.

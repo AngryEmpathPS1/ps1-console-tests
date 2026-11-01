@@ -1,0 +1,88 @@
+
+gpu/gp0-bit25b
+GP1(04h)=1: GPUSTAT.25 and 28 after each of 48 GP0(E6h) words behind a long primitive. Three runs. No assertions.
+
+copy (control), 4 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 6017, idle 37667
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5970, idle 35706
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5967, idle 37850
+flat tri 20h, 4 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5975, idle 11742
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5972, idle 11739
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5964, idle 10690
+flat quad 28h, 5 words:
+ run 1: F 5, W 28, F2 37: taken -4, T 9, F-taken 9; before 25/26/28 100, words took 5966, idle 29519
+  25 111100000000000000000000000111111111000000000000
+  28 000000000000000000000000000100000000000000000000
+ run 2: F 5, W 28, F2 37: taken -4, T 9, F-taken 9; before 25/26/28 100, words took 5968, idle 29575
+ run 3: F 5, W 28, F2 37: taken -4, T 9, F-taken 9; before 25/26/28 100, words took 5969, idle 29578
+semi quad 2Ah, 5 words:
+ run 1: F 5, W 28, F2 37: taken -4, T 9, F-taken 9; before 25/26/28 100, words took 5971, idle 43760
+  25 111100000000000000000000000111111111000000000000
+  28 000000000000000000000000000100000000000000000000
+ run 2: F 5, W 28, F2 37: taken -4, T 9, F-taken 9; before 25/26/28 100, words took 5968, idle 48627
+ run 3: F 5, W 28, F2 37: taken -4, T 9, F-taken 9; before 25/26/28 100, words took 5968, idle 48677
+shaded tri 30h, 6 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5973, idle 27141
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 6089, idle 27365
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5968, idle 27469
+shaded quad 38h, 8 words:
+ run 1: F 3, W 26, F2 35: taken -6, T 9, F-taken 9; before 25/26/28 100, words took 5967, idle 60930
+  25 110000000000000000000000011111111100000000000000
+  28 000000000000000000000000010000000000000000000000
+ run 2: F 3, W 26, F2 35: taken -6, T 9, F-taken 9; before 25/26/28 100, words took 5969, idle 60937
+ run 3: F 3, W 26, F2 35: taken -6, T 9, F-taken 9; before 25/26/28 100, words took 5965, idle 60939
+tex tri 24h, 7 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5971, idle 101638
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5973, idle 101632
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5972, idle 101638
+tex quad 2Ch, 9 words:
+ run 1: F 2, W 25, F2 34: taken -7, T 9, F-taken 9; before 25/26/28 100, words took 6135, idle 196325
+  25 100000000000000000000000111111111000000000000000
+  28 000000000000000000000000100000000000000000000000
+ run 2: F 2, W 25, F2 34: taken -7, T 9, F-taken 9; before 25/26/28 100, words took 5969, idle 209133
+ run 3: F 2, W 25, F2 34: taken -7, T 9, F-taken 9; before 25/26/28 100, words took 6115, idle 200472
+shaded tex tri 34h, 9 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 000, words took 5966, idle 101851
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 000, words took 5962, idle 93962
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 000, words took 5967, idle 101795
+shaded tex quad 3Ch, 12 words:
+ run 1: F 1, W 23, F2 32: taken -9, T 9, F-taken 10 *** DISAGREE ***; before 25/26/28 000, words took 5970, idle 205885
+  25 000000000000000000000011111111100000000000000000
+  28 000000000000000000000010000000000000000000000000
+ run 2: F 1, W 23, F2 32: taken -9, T 9, F-taken 10 *** DISAGREE ***; before 25/26/28 000, words took 5960, idle 209245
+ run 3: F 1, W 23, F2 32: taken -9, T 9, F-taken 10 *** DISAGREE ***; before 25/26/28 000, words took 5968, idle 199302
+rect 60h 512x400, 3 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5970, idle 103843
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5976, idle 102573
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5971, idle 102628
+tex rect 64h 256, 4 words:
+ run 1: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5971, idle 173247
+  25 111111111000000000000000000000001111111110000000
+  28 100000000000000000000000000000001000000000000000
+ run 2: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5972, idle 167670
+ run 3: F 10, W 33, F2 42: taken 1, T 9, F-taken 9; before 25/26/28 101, words took 5967, idle 173253
+line 40h 1023, 3 words:
+ run 1: F 11, W 34, F2 43: taken 2, T 9, F-taken 9; before 25/26/28 101, words took 654, idle 2243
+  25 111111111100000000000000000000000111111111000000
+  28 100000000000000000000000000000000000000000000000
+ run 2: F 11, W 34, F2 43: taken 2, T 9, F-taken 9; before 25/26/28 101, words took 633, idle 2297
+  25 111111111100000000000000000000000111111111000000
+  28 000000000000000000000000000000000000000000000000
+ run 3: F 11, W 34, F2 43: taken 2, T 9, F-taken 9; before 25/26/28 101, words took 637, idle 2298
+  25 111111111100000000000000000000000111111111000000
+  28 000000000000000000000000000000000000000000000000
+
+gpu/gp0-bit25b: Done.
