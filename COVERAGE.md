@@ -131,6 +131,11 @@ How many logs each test has on each console. Generated from the file names in `c
 | fix-shadow3 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | fourth-try-stop-polled |  |  | 1 |  |  |  |  |  |  |
 | fuzz-cpu | 3 |  | 3 |  |  |  | 3 |  |  |
+| fuzz-gpu |  |  | 2 |  |  |  |  |  |  |
+| fuzz-gte |  |  | 1 |  |  |  |  |  |  |
+| fuzz-mdec |  |  | 8 |  |  |  |  |  |  |
+| fuzz-spu |  |  | 7 |  |  |  |  |  |  |
+| fuzz-trail |  |  | 2 |  |  |  |  |  |  |
 | gp0-bit25 |  |  |  | 3 |  |  | 1 |  |  |
 | gp0-bit25b |  |  |  | 3 |  |  | 1 |  |  |
 | gp0-bit25c |  |  |  | 3 |  |  | 1 |  |  |
@@ -372,6 +377,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | pad-ack-hist | 6 | 6 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | pad-config |  |  |  |  |  |  |  | 3 |  |
 | pad-short-exit |  |  | 1 |  |  |  |  |  |  |
+| pair-atlas |  |  | 5 |  |  |  |  |  |  |
+| pair-cold |  |  | 2 |  |  |  |  |  |  |
+| pair-dep |  |  | 2 |  |  |  |  |  |  |
+| pair-warm |  |  | 2 |  |  |  |  |  |  |
 | pal-dots | 6 |  | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | pal-line | 6 |  | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | pal-probe |  | 1 |  |  |  |  |  |  |  |
@@ -415,6 +424,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu-curvol | 1 | 6 | 2 | 1 | 6 | 4 | 1 | 2 | 2 |
 | spu-decode-ahead | 6 | 6 | 6 | 1 | 6 | 10 | 1 | 6 | 2 |
 | spu-dma | 6 | 6 | 8 | 1 | 6 | 11 | 1 | 7 | 1 |
+| spu-endcut |  |  | 3 |  |  |  |  |  |  |
+| spu-envring |  |  | 2 |  |  |  |  |  |  |
 | spu-exp-neg |  |  |  | 3 |  |  | 1 |  |  |
 | spu-fifo | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | spu-fifo2 | 4 |  | 3 | 1 |  | 4 | 1 | 4 |  |

@@ -19,6 +19,17 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | spu-exp-neg | no | the current level (1F801E00h+N*4, 1F801DB8h) read left and right until it stops, after a sweep from a negative fixed volume: Exponential Decrease at ten rates on a playing voice and three each on a keyed-off voice and the main volume, both Phase bits, starts inside the claimed stop, and positive starts, Linear Decrease and Exponential Increase as controls |
 | mul-shadow | no | a read, D nops, mult, K nops, mflo, for six kinds of read |
 | mul-grid | no | mult and multu then mflo for every pair of 13 operand sizes, and at K = 1..3 nops |
+| fuzz-trail | no | fuzz-cpu's first 1,024 programs stopped after each of 0..16 instructions, warm and cold |
+| pair-atlas | no | every two of 16 kinds of instruction at every spacing: T2 read; a nops; X; b nops; Y; c nops; T2 read, 62,720 cells, warm |
+| fuzz-gte | no | random GTE commands on random registers: 4,096 ids, every register read back, the bracket beside |
+| fuzz-gpu | no | random drawing, read back: 2,048 programs of shapes in a 128 x 128 window, eight band hashes and the time |
+| pair-warm | no | every two of 16 kinds of instruction at every spacing, truly warm: the block in the cache, no other code between trials |
+| pair-cold | no | the same grid with every line of the block cold in every trial |
+| fuzz-mdec | no | random pictures through the MDEC: 1,024 ids, random tables and run-levels at every depth, every word out hashed |
+| pair-dep | no | pair-warm's grid with neighbours that depend on each other: load-use, GTE commands and moves, lwc2 swc2, a taken branch, mfc0 |
+| fuzz-spu | no | random voices: 512 ids of random ADPCM, envelopes, pitches and modulation, voices 1 and 3 read back off their capture rings |
+| spu-envring | no | the envelope as a waveform: voice 1 playing a constant, every attack, decay, sustain and release setting, the capture ring's first eight changes |
+| spu-endcut | no | where a block's end flag lands by pitch: three blocks of a constant, the end with no repeat and with a repeat, 256 pitches |
 | fuzz-cpu | no | 4,096 random programs of 16 instructions, the same on every console: cold and warm, fastest and slowest of 4, a hash of the values |
 | spu-noise | no | voice 1 in noise mode off its capture ring: every shift and step, slow rates, level, two voices, the end flag, pitch, NON's latch, SPUCNT reset |
 | spu-pmon | no | the cycles a chain of silent blocks takes at each modulator level and pitch; ENV, VOLUME, SILENT, NOISE, BIT0 |
