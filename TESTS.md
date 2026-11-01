@@ -36,6 +36,8 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | pair-mid | no | cold code, X; Y; then two timer reads: 16,464 cells of where the bus was mid-row |
 | loop-cold | no | a small loop entered cold at every alignment, with a read or a store in it: 2,240 cells |
 | tri-cold | no | cold code, every three of nop, sw, lw, I_STAT: 17,920 cells |
+| fuzz-dma | no | random DMA transfers: OTC, GPU both ways, linked lists, SPU blocks, chopped bursts, random priorities: 2,048 ids |
+| fuzz-bus | no | random CPU code with a DMA under it: 400 programs x 5 kinds, warm and cold |
 | fuzz-cpu | no | 4,096 random programs of 16 instructions, the same on every console: cold and warm, fastest and slowest of 4, a hash of the values |
 | spu-noise | no | voice 1 in noise mode off its capture ring: every shift and step, slow rates, level, two voices, the end flag, pitch, NON's latch, SPUCNT reset |
 | spu-pmon | no | the cycles a chain of silent blocks takes at each modulator level and pitch; ENV, VOLUME, SILENT, NOISE, BIT0 |
