@@ -159,6 +159,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gp1-reset |  |  |  | 3 |  |  | 1 |  |  |
 | gpu-a0-ready | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu-a0-size | 1 | 7 | 7 | 1 | 6 | 6 | 1 | 4 | 2 |
+| gpu-a0pace |  |  | 1 |  |  |  |  |  |  |
 | gpu-abort | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu-batch | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-batch2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
