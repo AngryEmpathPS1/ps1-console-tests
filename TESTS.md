@@ -52,6 +52,7 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | gpu-gp1scan | no | undocumented GP1 commands, each timed by a flat 8x128; GP1(0Bh) only below 274h (501h stopped a 5501's GPU until RESET, 2026-11-01) |
 | gpu-revive | no | tries to bring back a GPU stopped by GP1(0Bh), by clearing it and resetting |
 | gpu-timectl | no | GP0(03h) "Timing Control": first the drawing as the boot left it, then each of its 16 values against flat rectangles of 13 widths, three heights, a textured rectangle, a fill, a copy and two triangles; leaves the console in the value it found |
+| icache-valid | no | a cold loop run 1, 2, 3 or 8 times around each of seven instructions, then the branch's line overwritten in RAM and entered at each word: what runs is the cached word or the new one |
 | fuzz-cpu | no | 4,096 random programs of 16 instructions, the same on every console: cold and warm, fastest and slowest of 4, a hash of the values |
 | spu-noise | no | voice 1 in noise mode off its capture ring: every shift and step, slow rates, level, two voices, the end flag, pitch, NON's latch, SPUCNT reset |
 | spu-pmon | no | the cycles a chain of silent blocks takes at each modulator level and pitch; ENV, VOLUME, SILENT, NOISE, BIT0 |

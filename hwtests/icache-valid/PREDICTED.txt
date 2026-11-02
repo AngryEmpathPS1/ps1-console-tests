@@ -1,0 +1,35 @@
+icache-valid - PREDICTED before its first console run (2026-11-02): v0.377.251 keeps the whole branch line after any number of passes,
+every X: 0 0 0 0 (the console's loop-cold says its exit after two passes is the first pass's, which this would explain if it is not).
+
+cpu/icache-valid
+The branch's line (words 4-7) after n passes of a cold loop: t9 = the words that came from RAM, entered at 4 5 6 7. V X n.
+X: 0 nop, 1 lw A, 2 lbu A, 3 lhu I_STAT, 4 lhu SPUSTAT, 5 sw A, 6 sw scratchpad. No assertions.
+V 0 1 0 0 0 0
+V 0 2 0 0 0 0
+V 0 3 0 0 0 0
+V 0 8 0 0 0 0
+V 1 1 0 0 0 0
+V 1 2 0 0 0 0
+V 1 3 0 0 0 0
+V 1 8 0 0 0 0
+V 2 1 0 0 0 0
+V 2 2 0 0 0 0
+V 2 3 0 0 0 0
+V 2 8 0 0 0 0
+V 3 1 0 0 0 0
+V 3 2 0 0 0 0
+V 3 3 0 0 0 0
+V 3 8 0 0 0 0
+V 4 1 0 0 0 0
+V 4 2 0 0 0 0
+V 4 3 0 0 0 0
+V 4 8 0 0 0 0
+V 5 1 0 0 0 0
+V 5 2 0 0 0 0
+V 5 3 0 0 0 0
+V 5 8 0 0 0 0
+V 6 1 0 0 0 0
+V 6 2 0 0 0 0
+V 6 3 0 0 0 0
+V 6 8 0 0 0 0
+Done.
