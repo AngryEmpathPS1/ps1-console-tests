@@ -43,12 +43,14 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-pause | 11 | 7 | 12 | 3 | 7 | 17 | 2 | 10 | 3 |
 | cd-queue | 7 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-race | 7 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
+| cd-ramdump |  |  | 3 |  |  |  |  |  |  |
 | cd-readtoc | 7 | 7 | 13 | 3 | 7 | 16 | 2 | 10 | 3 |
 | cd-reann | 7 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
 | cd-scex | 11 | 7 | 12 | 3 | 7 | 17 | 2 | 10 | 3 |
 | cd-scex-hold | 4 | 7 | 4 | 3 | 7 | 7 | 2 | 4 | 3 |
 | cd-scex-play | 2 |  | 2 |  | 2 | 2 |  | 2 |  |
 | cd-seek | 4 | 6 | 6 | 2 | 4 | 8 | 4 | 6 | 2 |
+| cd-seek-cancel |  |  | 1 |  |  |  |  |  |  |
 | cd-seek-cmd | 3 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
 | cd-seek-coast | 7 | 2 | 6 | 3 | 6 | 8 | 7 | 6 |  |
 | cd-seek-hist | 3 | 2 | 3 | 3 | 6 | 2 | 2 | 3 |  |
@@ -119,12 +121,13 @@ How many logs each test has on each console. Generated from the file names in `c
 | dma-chopx |  |  | 1 |  |  |  |  |  |  |
 | dma-contention | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | dma-disp |  |  | 2 |  |  |  |  |  |  |
-| dma-len |  |  | 4 |  |  |  |  |  |  |
-| dma-order |  |  | 2 |  |  |  |  |  |  |
+| dma-len |  |  | 5 |  |  |  |  |  |  |
+| dma-len0 |  |  | 4 |  |  |  |  |  |  |
+| dma-order |  |  | 13 |  |  |  |  |  |  |
 | dma-rates | 6 | 7 | 8 | 1 | 6 | 11 | 1 | 7 | 1 |
-| dma-rows |  |  | 4 |  |  |  |  |  |  |
+| dma-rows |  |  | 5 |  |  |  |  |  |  |
 | dma-setup |  |  | 1 |  |  |  |  |  |  |
-| dma-trace |  |  | 2 |  |  |  |  |  |  |
+| dma-trace |  |  | 3 |  |  |  |  |  |  |
 | dma_chopping | 6 | 6 | 11 | 1 | 6 | 14 | 1 | 10 | 2 |
 | dma_dpcr | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | dma_otc-test | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
@@ -139,7 +142,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | fourth-try-stop-polled |  |  | 1 |  |  |  |  |  |  |
 | fuzz-bus | 2 |  | 2 |  |  |  |  |  |  |
 | fuzz-cpu | 3 |  | 3 |  |  |  | 3 |  |  |
-| fuzz-dma | 2 |  | 2 |  |  |  |  |  |  |
+| fuzz-dma | 2 |  | 3 |  |  |  |  |  |  |
 | fuzz-gpu | 1 |  | 3 |  |  |  |  |  |  |
 | fuzz-gte | 1 |  | 1 |  |  |  |  |  |  |
 | fuzz-mdec | 1 |  | 8 |  |  |  |  |  |  |
@@ -296,15 +299,20 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-tail7 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-tail8 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-tail9 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
+| gpu-tcset |  |  | 1 |  |  |  |  |  |  |
+| gpu-tcwords |  |  | 1 |  |  |  |  |  |  |
 | gpu-tex-opaque | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | gpu-thin | 3 | 7 | 6 | 1 | 6 | 8 | 1 | 3 | 2 |
+| gpu-timectl |  |  | 2 |  |  |  |  |  |  |
 | gpu-transp-cached |  |  |  | 3 |  |  | 1 |  |  |
 | gpu-tri-ready | 3 | 7 | 6 | 1 | 6 | 5 | 1 | 3 | 2 |
 | gpu-vbl | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-vbl2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-vbl3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-version | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
-| gpu-wh |  |  | 1 |  |  |  |  |  |  |
+| gpu-wh |  |  | 3 |  |  |  |  |  |  |
+| gpu-whv |  |  | 1 |  |  |  |  |  |  |
+| gpu-whv2 |  |  | 1 |  |  |  |  |  |  |
 | gpu_bandwidth | 6 | 6 | 9 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu_gp0-e1 | 1 | 6 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu_mask-bit | 1 | 6 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
@@ -315,11 +323,12 @@ How many logs each test has on each console. Generated from the file names in `c
 | gte-irgb | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gte-latch-cached | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gte-sqr-align | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
-| gte-undef | 3 |  | 1 |  |  |  |  |  |  |
+| gte-undef | 3 |  | 2 |  |  |  |  |  |  |
 | gte-write-delay |  |  |  | 3 |  |  | 1 |  |  |
 | gte_test-all | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | hold-read | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | icache-tagmatch | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
+| icache-valid |  |  | 1 |  |  |  |  |  |  |
 | imask-upper | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | io-chain | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | io-pair2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
@@ -392,13 +401,13 @@ How many logs each test has on each console. Generated from the file names in `c
 | pad-config |  |  |  |  |  |  |  | 3 |  |
 | pad-short-exit |  |  | 1 |  |  |  |  |  |  |
 | pair-atlas |  |  | 5 |  |  |  |  |  |  |
-| pair-cdep | 1 |  | 1 |  |  |  |  |  |  |
+| pair-cdep | 1 |  | 2 |  |  |  |  |  |  |
 | pair-cext | 1 |  | 2 |  |  |  |  |  |  |
 | pair-cold | 1 |  | 2 |  |  |  |  |  |  |
 | pair-dep | 1 |  | 2 |  |  |  |  |  |  |
 | pair-ext | 1 |  | 2 |  |  |  |  |  |  |
 | pair-mid | 1 |  | 2 |  |  |  |  |  |  |
-| pair-unc | 1 |  | 1 |  |  |  |  |  |  |
+| pair-unc | 1 |  | 2 |  |  |  |  |  |  |
 | pair-warm | 1 |  | 2 |  |  |  |  |  |  |
 | pal-dots | 6 |  | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | pal-line | 6 |  | 6 | 1 | 6 | 8 | 1 | 6 | 2 |

@@ -52,6 +52,12 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | gpu-gp1scan | no | undocumented GP1 commands, each timed by a flat 8x128; GP1(0Bh) only below 274h (501h stopped a 5501's GPU until RESET, 2026-11-01) |
 | gpu-revive | no | tries to bring back a GPU stopped by GP1(0Bh), by clearing it and resetting |
 | gpu-timectl | no | GP0(03h) "Timing Control": first the drawing as the boot left it, then each of its 16 values against flat rectangles of 13 widths, three heights, a textured rectangle, a fill, a copy and two triangles; leaves the console in the value it found |
+| dma-len0 | no | dma-len as it first ran on 2026-11-01 at 19:46: nothing drains a transfer that lost words, so the next one's wait times out and resets the command buffer (376 TIMEOUTs on the first 5501, right before its slow boot was first read) |
+| dma-len00 | no | dma-len as first built on 2026-11-01 at 19:29: a wait for the GPU that gives up without resetting its command buffer, so a transfer that lost words leaves the GPU in it and the next transfer's words are read as commands (its first runs that evening hung the first 5501 four times, 5 minutes each, before the slow boot was first read) |
+| gpu-tcwords | no | GP0(03h) at 0, at each single bit 4..23, and at the nine 03xxxxxxh words of dma-len's buffer, each against flat, sprite and semi-transparent shapes whose slow-boot price is known; leaves it at 0 |
+| gpu-whv | no | gpu-wh's cycle-exact timing of 44 shapes (flat by width and height, mask-checked, semi-transparent, sprite, copy, triangle) as found and at each GP0(03h) value 0..15; leaves 0 |
+| gpu-whv2 | no | gpu-whv's method at GP0(03h) 0, 4, 8 and 15 on semi-transparent and mask-checked rectangles 1-64 wide, sprites 16 and 32 wide, flat 5 and 7 wide, fills and lines; leaves 0 |
+| gpu-tcset | no | GP0(03h) = 0, one word, GPUSTAT before and after |
 | icache-valid | no | a cold loop run 1, 2, 3 or 8 times around each of seven instructions, then the branch's line overwritten in RAM and entered at each word: what runs is the cached word or the new one |
 | fuzz-cpu | no | 4,096 random programs of 16 instructions, the same on every console: cold and warm, fastest and slowest of 4, a hash of the values |
 | spu-noise | no | voice 1 in noise mode off its capture ring: every shift and step, slow rates, level, two voices, the end flag, pitch, NON's latch, SPUCNT reset |

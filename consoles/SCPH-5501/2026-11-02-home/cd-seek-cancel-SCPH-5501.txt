@@ -1,0 +1,15 @@
+-- sending 12,288 bytes (debug mode: it stays reachable)
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-seek-cancel
+SeekL 00:02:16 -> 20:00:00 at 1x, a command sent during it at a delay, and whether the seek's INT2 still comes.
+none        SeekL INT5 11 at 1 ms; no INT2 in 3 s; Getstat 12
+01 at   5   SeekL INT3 02 at 0 ms; 01: INT3 02 at 5 ms; no INT2 in 3 s; Getstat 02
+01 at  20   SeekL INT3 02 at 1 ms; 01: INT3 42 at 20 ms; no INT2 in 3 s; Getstat 02
+01 at  50   SeekL INT3 02 at 0 ms; 01: INT3 42 at 51 ms; no INT2 in 3 s; Getstat 02
+01 at 100   SeekL INT3 02 at 0 ms; 01: INT3 42 at 100 ms; no INT2 in 3 s; Getstat 02
+01 at 300   SeekL INT3 02 at 0 ms; 01: INT3 42 at 300 ms; no INT2 in 3 s; Getstat 02
+11 at  50   SeekL INT3 02 at 1 ms; 11: INT3 01 at 51 ms; no INT2 in 3 s; Getstat 02
+none        SeekL INT3 02 at 1 ms; then INT2 02 at 1533 ms; Getstat 02
+Done
