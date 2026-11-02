@@ -1,0 +1,9 @@
+cd-seek-cancel - PREDICTED before its first console run (2026-11-02): v0.377.251 as the SCPH-5501, The X-Files Disc 1.
+Both engines say no INT2 once any command goes during the SeekL (psx-spx 'Seek-Busy Phase' quotes a report of the same).
+
+On its program, SC430930 (PSX_CD_FIRMWARE):
+none        SeekL INT3 12 at 0 ms; then INT2 12 at 653 ms; Getstat 12
+01 at   5..300   every one: no INT2 in 3 s; Getstat 02
+11 at  50   no INT2 in 3 s
+
+On the planner: the same, the seek's INT2 at 593 ms.

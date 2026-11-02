@@ -51,6 +51,7 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | gpu-wh | no | a draw's cost by width and height for five kinds, and by place in VRAM |
 | gpu-gp1scan | no | undocumented GP1 commands, each timed by a flat 8x128; GP1(0Bh) only below 274h (501h stopped a 5501's GPU until RESET, 2026-11-01) |
 | gpu-revive | no | tries to bring back a GPU stopped by GP1(0Bh), by clearing it and resetting |
+| gpu-timectl | no | GP0(03h) "Timing Control": first the drawing as the boot left it, then each of its 16 values against flat rectangles of 13 widths, three heights, a textured rectangle, a fill, a copy and two triangles; leaves the console in the value it found |
 | fuzz-cpu | no | 4,096 random programs of 16 instructions, the same on every console: cold and warm, fastest and slowest of 4, a hash of the values |
 | spu-noise | no | voice 1 in noise mode off its capture ring: every shift and step, slow rates, level, two voices, the end flag, pitch, NON's latch, SPUCNT reset |
 | spu-pmon | no | the cycles a chain of silent blocks takes at each modulator level and pitch; ENV, VOLUME, SILENT, NOISE, BIT0 |
@@ -83,6 +84,8 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | cd-lid-sweep3 | **yes**, AND A PERSON at the lid (as cd-lid-sweep: The X-Files Disc 1, OPEN THE LID / SHUT THE LID, under a minute) | cd-lid-sweep2's poll with the program's signal flags beside the samples: 41h (GFS), 4Ch, 42h, 6Bh, the group 106h |
 | cd-lid-sweep4 | **yes**, AND A PERSON at the lid (as cd-lid-sweep3: The X-Files Disc 1, OPEN THE LID / SHUT THE LID, under a minute) | the program's focus state 6Ch, its countdown 61h, 4Ah (bit 5 AGF running, bit 4 AGT), 42h, 41h, 49h from the shut to the sweep |
 | cd-hc05-tick | **yes** (The X-Files Disc 1; ~15 s) | the drive program's tick count (RAM 60h) read every ~20 ms for 5 s idle and 5 s reading, against the console's Timer 2 |
+| cd-ramdump | **yes** (The X-Files Disc 1; ~1 min) | the drive program's RAM 040h-23Fh by 19h,60h in five states: idle after Init, a seek at 1x, after reading and a Pause, a seek at 2x, a Stop from 2x |
+| cd-seek-cancel | **yes** (The X-Files Disc 1; ~40 s) | SeekL 00:02:16 -> 20:00:00 at 1x, alone and with a Getstat at 5-300 ms or a GetlocP at 50 ms sent during it, and whether the seek's INT2 still comes |
 | cd-readtoc | **yes** (The X-Files Disc 1; about 30 s) | ReadTOC (1Eh) from the start, a quarter, a half and nine tenths of the disc's data, twice each, then from nine tenths at double speed and once straight after another: its INT3, its INT2, and where GetlocP says the head was left |
 | cd-speedpause | **yes** (The X-Files Disc 1; about 30 s) | a speed change to double speed with a Pause inside it, then Setloc 00:02:16 and ReadN with a Getstat every frame: the first INT1's time. GAME rows replay Worms Armageddon (Europe)'s own commands (a single-speed read, ReadTOC and GetID as LoadExec sends them, Init, a command a frame, Setmode 80h 79-119 ms after Init, Pause 55 ms later); POLL rows scan Setmode 0-400 ms after an Init |
 | cd-cmds | **yes** | command responses and INT1 timing around MotorOn, Setloc, ReadN and Pause; and (S) the SCEx counters, Test 19h,05h, as the boot left them and after 19h,04h in the data area |
