@@ -60,6 +60,7 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | dma-loss | no | 1,024 numbered words by DMA2 into GP0(A0h) rectangles 16-256 wide, blocks of 8-128 and one burst, three times each; the words still wanted counted, then the rectangle read back |
 | dma-loss2 | no | dma-loss at 64 wide, blocks of 32, 64, 128 and one burst, six times each, every break in the read-back printed |
 | gpu-a0pace | no | numbered words by DMA2 into GP0(A0h): one burst of 32 to 2,048 words into rectangles 1,024 and 64 wide, and blocks of 17 to 128 words, three times each; the words still wanted counted, the rectangle read back |
+| gpu-a0row | no | one 1,024-word burst by DMA2 into GP0(A0h) rectangles 16-128 and 1,024 wide (rows of 8-64 words, and 512), started at 16 places along a scanline (vblank, 40 hblanks, an hblank edge, 0-2,025 cycles), twice each; the words still wanted counted, the rectangle read back |
 | gpu-tcset | no | GP0(03h) = 0, one word, GPUSTAT before and after |
 | icache-valid | no | a cold loop run 1, 2, 3 or 8 times around each of seven instructions, then the branch's line overwritten in RAM and entered at each word: what runs is the cached word or the new one |
 | fuzz-cpu | no | 4,096 random programs of 16 instructions, the same on every console: cold and warm, fastest and slowest of 4, a hash of the values |
