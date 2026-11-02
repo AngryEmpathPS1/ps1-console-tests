@@ -140,7 +140,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | fuzz-bus | 2 |  | 2 |  |  |  |  |  |  |
 | fuzz-cpu | 3 |  | 3 |  |  |  | 3 |  |  |
 | fuzz-dma | 2 |  | 2 |  |  |  |  |  |  |
-| fuzz-gpu | 1 |  | 2 |  |  |  |  |  |  |
+| fuzz-gpu | 1 |  | 3 |  |  |  |  |  |  |
 | fuzz-gte | 1 |  | 1 |  |  |  |  |  |  |
 | fuzz-mdec | 1 |  | 8 |  |  |  |  |  |  |
 | fuzz-spu | 1 |  | 7 |  |  |  |  |  |  |
@@ -153,9 +153,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | gp0-store | 2 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |
 | gp1-reset |  |  |  | 3 |  |  | 1 |  |  |
 | gpu-a0-ready | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
-| gpu-a0-size | 1 | 7 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
+| gpu-a0-size | 1 | 7 | 7 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu-abort | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
-| gpu-batch | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
+| gpu-batch | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-batch2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-batch3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-c0-cold | 3 | 7 | 6 | 1 | 6 | 5 | 1 | 3 | 2 |
@@ -163,12 +163,12 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-c0-datel | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu-c0-gaps | 6 | 6 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu-c0-ready | 1 | 7 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
-| gpu-c0-size | 2 | 7 | 6 | 1 | 6 | 4 | 1 | 2 | 2 |
-| gpu-cmd-ready | 1 | 6 | 6 | 1 | 6 | 4 | 1 | 2 | 2 |
+| gpu-c0-size | 2 | 7 | 7 | 1 | 6 | 4 | 1 | 2 | 2 |
+| gpu-cmd-ready | 1 | 6 | 7 | 1 | 6 | 4 | 1 | 2 | 2 |
 | gpu-copy-480i |  |  |  | 3 |  |  | 1 |  |  |
-| gpu-copy2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
-| gpu-copy3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
-| gpu-copy4 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
+| gpu-copy2 | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
+| gpu-copy3 | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 6 |  |
+| gpu-copy4 | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-cost-sweep | 6 | 7 | 8 | 1 | 6 | 13 | 1 | 8 | 2 |
 | gpu-degen |  |  |  | 3 |  |  | 1 |  |  |
 | gpu-degen2 |  |  |  | 3 |  |  | 1 |  |  |
@@ -183,7 +183,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-fill-480i |  |  |  | 3 |  |  | 1 |  |  |
 | gpu-height | 2 | 7 | 6 | 1 | 6 | 6 | 1 | 6 |  |
 | gpu-irq-chain | 3 | 7 | 6 | 1 | 6 | 5 | 1 | 3 | 2 |
-| gpu-lines | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
+| gpu-lines | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-lines2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-outside |  |  |  | 5 |  |  | 1 |  |  |
 | gpu-outside2 |  |  |  | 3 |  |  | 1 |  |  |
@@ -205,7 +205,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-scanout | 3 | 7 | 6 | 1 | 6 | 8 | 1 | 3 | 2 |
 | gpu-scanout2 | 2 | 7 | 6 | 1 | 6 | 9 | 1 | 6 |  |
 | gpu-semi-shape | 3 | 7 | 6 | 1 | 6 | 5 | 1 | 3 | 2 |
-| gpu-shape-time | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
+| gpu-shape-time | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-shape-time10 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-shape-time11 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-shape-time12 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
@@ -216,7 +216,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-shape-time17 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-shape-time18 | 2 | 7 | 6 | 1 | 6 | 1 | 1 | 2 |  |
 | gpu-shape-time19 | 2 | 7 | 6 | 1 | 6 | 1 | 1 | 2 |  |
-| gpu-shape-time2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
+| gpu-shape-time2 | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-shape-time20 | 2 | 7 | 6 | 1 | 6 | 1 | 1 | 2 |  |
 | gpu-shape-time21 | 2 | 7 | 6 | 1 | 6 | 1 | 1 | 2 |  |
 | gpu-shape-time22 | 2 | 6 | 6 | 1 | 6 | 1 | 1 | 2 |  |
