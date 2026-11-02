@@ -48,6 +48,8 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | dma-setup | no | dma/chopping's set-up a piece at a time under a 64x64 GPU DMA: the library's video, a screen clear, random pixels, malloc |
 | dma-chopx | no | dma/chopping's transfer with its parts changed for ours one at a time |
 | state-peek | no | reads the sticky registers and writes nothing |
+| gpu-wh | no | a draw's cost by width and height for five kinds, and by place in VRAM |
+| gpu-gp1scan | no | undocumented GP1 commands, each timed by a flat 8x128; GP1(0Bh) only below 274h (501h stopped a 5501's GPU until RESET, 2026-11-01) |
 | fuzz-cpu | no | 4,096 random programs of 16 instructions, the same on every console: cold and warm, fastest and slowest of 4, a hash of the values |
 | spu-noise | no | voice 1 in noise mode off its capture ring: every shift and step, slow rates, level, two voices, the end flag, pitch, NON's latch, SPUCNT reset |
 | spu-pmon | no | the cycles a chain of silent blocks takes at each modulator level and pitch; ENV, VOLUME, SILENT, NOISE, BIT0 |

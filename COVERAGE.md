@@ -181,6 +181,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dmastream5 |  |  |  | 3 |  |  | 1 |  |  |
 | gpu-drift | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-fill-480i |  |  |  | 3 |  |  | 1 |  |  |
+| gpu-gp1scan |  |  | 1 |  |  |  |  |  |  |
 | gpu-height | 2 | 7 | 6 | 1 | 6 | 6 | 1 | 6 |  |
 | gpu-irq-chain | 3 | 7 | 6 | 1 | 6 | 5 | 1 | 3 | 2 |
 | gpu-lines | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
@@ -302,6 +303,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-vbl2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-vbl3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-version | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
+| gpu-wh |  |  | 1 |  |  |  |  |  |  |
 | gpu_bandwidth | 6 | 6 | 9 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu_gp0-e1 | 1 | 6 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu_mask-bit | 1 | 6 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
@@ -475,7 +477,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu_memory-transfer | 1 | 6 | 3 | 1 | 6 | 7 | 1 | 4 | 2 |
 | sr-mask |  |  |  | 3 |  |  | 1 |  |  |
 | st-land | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
-| state-peek |  |  | 1 |  |  |  |  |  |  |
+| state-peek |  |  | 2 |  |  |  |  |  |  |
 | store-chain | 1 | 1 | 1 | 1 | 2 | 2 | 1 | 2 | 2 |
 | store-cost | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | store-shadow | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
