@@ -99,6 +99,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-28](2026-10-28/) | 78 | 47 |
 | [2026-10-29](2026-10-29/) | 17 | 4 |
 | [2026-10-31-movies](2026-10-31-movies/) | 8 | 8 |
+| [2026-11-01-afterrev](2026-11-01-afterrev/) | 5 | 2 |
 | [2026-11-01-atlas](2026-11-01-atlas/) | 5 | 1 |
 | [2026-11-01-atlas2](2026-11-01-atlas2/) | 6 | 2 |
 | [2026-11-01-atlas3](2026-11-01-atlas3/) | 13 | 5 |
@@ -129,6 +130,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-01-order](2026-11-01-order/) | 4 | 1 |
 | [2026-11-01-peek](2026-11-01-peek/) | 4 | 1 |
 | [2026-11-01-peek2](2026-11-01-peek2/) | 4 | 1 |
+| [2026-11-01-revive](2026-11-01-revive/) | 4 | 1 |
 | [2026-11-01-rows](2026-11-01-rows/) | 5 | 1 |
 | [2026-11-01-rows2](2026-11-01-rows2/) | 5 | 1 |
 | [2026-11-01-setup](2026-11-01-setup/) | 4 | 1 |

@@ -120,7 +120,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | dma-contention | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | dma-disp |  |  | 2 |  |  |  |  |  |  |
 | dma-len |  |  | 4 |  |  |  |  |  |  |
-| dma-order |  |  | 1 |  |  |  |  |  |  |
+| dma-order |  |  | 2 |  |  |  |  |  |  |
 | dma-rates | 6 | 7 | 8 | 1 | 6 | 11 | 1 | 7 | 1 |
 | dma-rows |  |  | 4 |  |  |  |  |  |  |
 | dma-setup |  |  | 1 |  |  |  |  |  |  |
@@ -181,7 +181,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dmastream5 |  |  |  | 3 |  |  | 1 |  |  |
 | gpu-drift | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-fill-480i |  |  |  | 3 |  |  | 1 |  |  |
-| gpu-gp1scan |  |  | 1 |  |  |  |  |  |  |
+| gpu-gp1scan |  |  | 2 |  |  |  |  |  |  |
 | gpu-height | 2 | 7 | 6 | 1 | 6 | 6 | 1 | 6 |  |
 | gpu-irq-chain | 3 | 7 | 6 | 1 | 6 | 5 | 1 | 3 | 2 |
 | gpu-lines | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
@@ -196,6 +196,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-rect-cached |  |  |  | 3 |  |  | 1 |  |  |
 | gpu-rect-x |  |  |  | 3 |  |  | 1 |  |  |
 | gpu-rect-x2 |  |  |  | 3 |  |  | 1 |  |  |
+| gpu-revive |  |  | 1 |  |  |  |  |  |  |
 | gpu-scan3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-scan4 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-scan5 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
