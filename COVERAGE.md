@@ -123,6 +123,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | dma-disp |  |  | 2 |  |  |  |  |  |  |
 | dma-len |  |  | 5 |  |  |  |  |  |  |
 | dma-len0 |  |  | 4 |  |  |  |  |  |  |
+| dma-loss |  |  | 1 |  |  |  |  |  |  |
+| dma-loss2 |  |  | 1 |  |  |  |  |  |  |
 | dma-order |  |  | 13 |  |  |  |  |  |  |
 | dma-rates | 6 | 7 | 8 | 1 | 6 | 11 | 1 | 7 | 1 |
 | dma-rows |  |  | 5 |  |  |  |  |  |  |

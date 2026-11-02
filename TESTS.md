@@ -57,6 +57,8 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | gpu-tcwords | no | GP0(03h) at 0, at each single bit 4..23, and at the nine 03xxxxxxh words of dma-len's buffer, each against flat, sprite and semi-transparent shapes whose slow-boot price is known; leaves it at 0 |
 | gpu-whv | no | gpu-wh's cycle-exact timing of 44 shapes (flat by width and height, mask-checked, semi-transparent, sprite, copy, triangle) as found and at each GP0(03h) value 0..15; leaves 0 |
 | gpu-whv2 | no | gpu-whv's method at GP0(03h) 0, 4, 8 and 15 on semi-transparent and mask-checked rectangles 1-64 wide, sprites 16 and 32 wide, flat 5 and 7 wide, fills and lines; leaves 0 |
+| dma-loss | no | 1,024 numbered words by DMA2 into GP0(A0h) rectangles 16-256 wide, blocks of 8-128 and one burst, three times each; the words still wanted counted, then the rectangle read back |
+| dma-loss2 | no | dma-loss at 64 wide, blocks of 32, 64, 128 and one burst, six times each, every break in the read-back printed |
 | gpu-tcset | no | GP0(03h) = 0, one word, GPUSTAT before and after |
 | icache-valid | no | a cold loop run 1, 2, 3 or 8 times around each of seven instructions, then the branch's line overwritten in RAM and entered at each word: what runs is the cached word or the new one |
 | fuzz-cpu | no | 4,096 random programs of 16 instructions, the same on every console: cold and warm, fastest and slowest of 4, a hash of the values |

@@ -172,6 +172,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-02-l00-slow-wh](2026-11-02-l00-slow-wh/) | 4 | 1 |
 | [2026-11-02-l00-tcset](2026-11-02-l00-tcset/) | 4 | 1 |
 | [2026-11-02-l00-timectl](2026-11-02-l00-timectl/) | 4 | 1 |
+| [2026-11-02-loss](2026-11-02-loss/) | 4 | 1 |
+| [2026-11-02-loss2](2026-11-02-loss2/) | 4 | 1 |
 | [2026-11-02-normal-wh](2026-11-02-normal-wh/) | 4 | 1 |
 | [2026-11-02-tcwords](2026-11-02-tcwords/) | 4 | 1 |
 | [2026-11-02-whv](2026-11-02-whv/) | 4 | 1 |
