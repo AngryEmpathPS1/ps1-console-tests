@@ -383,8 +383,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | pad-short-exit |  |  | 1 |  |  |  |  |  |  |
 | pair-atlas |  |  | 5 |  |  |  |  |  |  |
 | pair-cdep | 1 |  | 1 |  |  |  |  |  |  |
+| pair-cext | 1 |  |  |  |  |  |  |  |  |
 | pair-cold | 1 |  | 2 |  |  |  |  |  |  |
 | pair-dep | 1 |  | 2 |  |  |  |  |  |  |
+| pair-ext | 1 |  |  |  |  |  |  |  |  |
 | pair-mid | 1 |  | 2 |  |  |  |  |  |  |
 | pair-unc | 1 |  | 1 |  |  |  |  |  |  |
 | pair-warm | 1 |  | 2 |  |  |  |  |  |  |

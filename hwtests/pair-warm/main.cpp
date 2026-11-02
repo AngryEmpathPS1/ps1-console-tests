@@ -35,7 +35,10 @@
 #ifndef PA_UNC
 #define PA_UNC 0
 #endif
-#define PA_NAME (PA_UNC ? "pair-unc" : PA_DEP ? (PA_COLD ? "pair-cdep" : "pair-dep") : PA_COLD ? "pair-cold" : "pair-warm")
+#ifndef PA_EXT
+#define PA_EXT 0
+#endif
+#define PA_NAME (PA_EXT ? (PA_COLD ? "pair-cext" : "pair-ext") : PA_UNC ? "pair-unc" : PA_DEP ? (PA_COLD ? "pair-cdep" : "pair-dep") : PA_COLD ? "pair-cold" : "pair-warm")
 
 extern "C" {
 uint32_t paSandbox[0x2200] __attribute__((aligned(1024)));
@@ -135,6 +138,26 @@ static uint32_t I(uint32_t op, uint32_t rs, uint32_t rt, uint32_t imm) { return 
 #define S3 19u
 #define T0 8u
 static uint32_t kind(int k, uint32_t rt) {
+#if PA_EXT
+    switch (k) {
+        case 1:  return I(0x21, S0, rt, 0x082);     /* lh A+2 */
+        case 2:  return I(0x20, S0, rt, 0x083);     /* lb A+3 */
+        case 3:  return I(0x29, S0, T0, 0x042);     /* sh A */
+        case 4:  return I(0x22, S0, rt, 0x081);     /* lwl */
+        case 5:  return I(0x26, S0, rt, 0x081);     /* lwr */
+        case 6:  return I(0x2A, S0, T0, 0x041);     /* swl */
+        case 7:  return I(0x2E, S0, T0, 0x041);     /* swr */
+        case 8:  return 0x0109001Au;                /* div t0, t1 */
+        case 9:  return 0x00006810u;                /* mfhi t5 */
+        case 10: return 0x01000011u;                /* mthi t0 */
+        case 11: return 0x484CF800u;                /* cfc2 t4, $31 */
+        case 12: return 0x48C8F000u;                /* ctc2 t0, $30 */
+        case 13: return 0x40884800u;                /* mtc0 t0, $9 */
+        case 14: return 0x01000013u;                /* mtlo t0 */
+        case 15: return I(0x24, S1, rt, 0x081);     /* lbu scratchpad */
+    }
+    return 0;
+#endif
 #if PA_DEP
     switch (k) {
         case 1:  return 0x018C6821u;                /* addu t5, t4, t4 */
