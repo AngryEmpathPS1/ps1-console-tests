@@ -40,6 +40,14 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | fuzz-bus | no | random CPU code with a DMA under it: 400 programs x 5 kinds, warm and cold |
 | pair-ext | no | the pair grid over lh, lb, sh, lwl, lwr, swl, swr, div, mfhi, mthi, cfc2, ctc2, mtc0, mtlo, lbu scratchpad, warm |
 | pair-cext | no | pair-ext cold |
+| dma-len | no | GPU DMA of 16..2,048 words by every block size, up and down, cold and warm, polling CHCR and I_STAT |
+| dma-trace | no | GPU DMA of 2,048 words followed block by block, MADR's moves with Timer 2, into the scratchpad |
+| dma-rows | no | GPU DMA of 2,040 words into rectangles 8 to 1,020 pixels wide, up and down |
+| dma-disp | no | GPU DMA with the display off, on at 320x240, on at 640x480i, at four places in VRAM |
+| dma-order | no | GPU DMA of 64x64 with its preparation changed four ways |
+| dma-setup | no | dma/chopping's set-up a piece at a time under a 64x64 GPU DMA: the library's video, a screen clear, random pixels, malloc |
+| dma-chopx | no | dma/chopping's transfer with its parts changed for ours one at a time |
+| state-peek | no | reads the sticky registers and writes nothing |
 | fuzz-cpu | no | 4,096 random programs of 16 instructions, the same on every console: cold and warm, fastest and slowest of 4, a hash of the values |
 | spu-noise | no | voice 1 in noise mode off its capture ring: every shift and step, slow rates, level, two voices, the end flag, pitch, NON's latch, SPUCNT reset |
 | spu-pmon | no | the cycles a chain of silent blocks takes at each modulator level and pitch; ENV, VOLUME, SILENT, NOISE, BIT0 |

@@ -116,9 +116,16 @@ How many logs each test has on each console. Generated from the file names in `c
 | cpu_code-in-io | 1 | 1 | 2 |  | 1 | 2 | 1 | 2 |  |
 | cpu_cop | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | dma-arb | 6 | 6 | 6 | 1 | 6 | 8 | 1 | 5 | 2 |
+| dma-chopx |  |  | 1 |  |  |  |  |  |  |
 | dma-contention | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
+| dma-disp |  |  | 2 |  |  |  |  |  |  |
+| dma-len |  |  | 4 |  |  |  |  |  |  |
+| dma-order |  |  | 1 |  |  |  |  |  |  |
 | dma-rates | 6 | 7 | 8 | 1 | 6 | 11 | 1 | 7 | 1 |
-| dma_chopping | 6 | 6 | 10 | 1 | 6 | 14 | 1 | 10 | 2 |
+| dma-rows |  |  | 4 |  |  |  |  |  |  |
+| dma-setup |  |  | 1 |  |  |  |  |  |  |
+| dma-trace |  |  | 2 |  |  |  |  |  |  |
+| dma_chopping | 6 | 6 | 11 | 1 | 6 | 14 | 1 | 10 | 2 |
 | dma_dpcr | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | dma_otc-test | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | draw-area | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
@@ -130,9 +137,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | fix-shadow2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | fix-shadow3 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | fourth-try-stop-polled |  |  | 1 |  |  |  |  |  |  |
-| fuzz-bus | 2 |  |  |  |  |  |  |  |  |
+| fuzz-bus | 2 |  | 2 |  |  |  |  |  |  |
 | fuzz-cpu | 3 |  | 3 |  |  |  | 3 |  |  |
-| fuzz-dma | 2 |  |  |  |  |  |  |  |  |
+| fuzz-dma | 2 |  | 2 |  |  |  |  |  |  |
 | fuzz-gpu | 1 |  | 2 |  |  |  |  |  |  |
 | fuzz-gte | 1 |  | 1 |  |  |  |  |  |  |
 | fuzz-mdec | 1 |  | 8 |  |  |  |  |  |  |
@@ -165,7 +172,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-cost-sweep | 6 | 7 | 8 | 1 | 6 | 13 | 1 | 8 | 2 |
 | gpu-degen |  |  |  | 3 |  |  | 1 |  |  |
 | gpu-degen2 |  |  |  | 3 |  |  | 1 |  |  |
-| gpu-dmabs | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
+| gpu-dmabs | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmabs2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmastream | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmastream2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
@@ -295,7 +302,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-vbl2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-vbl3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-version | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
-| gpu_bandwidth | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
+| gpu_bandwidth | 6 | 6 | 9 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu_gp0-e1 | 1 | 6 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu_mask-bit | 1 | 6 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpuinfo-latch | 1 | 7 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
@@ -383,10 +390,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | pad-short-exit |  |  | 1 |  |  |  |  |  |  |
 | pair-atlas |  |  | 5 |  |  |  |  |  |  |
 | pair-cdep | 1 |  | 1 |  |  |  |  |  |  |
-| pair-cext | 1 |  |  |  |  |  |  |  |  |
+| pair-cext | 1 |  | 2 |  |  |  |  |  |  |
 | pair-cold | 1 |  | 2 |  |  |  |  |  |  |
 | pair-dep | 1 |  | 2 |  |  |  |  |  |  |
-| pair-ext | 1 |  |  |  |  |  |  |  |  |
+| pair-ext | 1 |  | 2 |  |  |  |  |  |  |
 | pair-mid | 1 |  | 2 |  |  |  |  |  |  |
 | pair-unc | 1 |  | 1 |  |  |  |  |  |  |
 | pair-warm | 1 |  | 2 |  |  |  |  |  |  |
@@ -468,6 +475,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu_memory-transfer | 1 | 6 | 3 | 1 | 6 | 7 | 1 | 4 | 2 |
 | sr-mask |  |  |  | 3 |  |  | 1 |  |  |
 | st-land | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
+| state-peek |  |  | 1 |  |  |  |  |  |  |
 | store-chain | 1 | 1 | 1 | 1 | 2 | 2 | 1 | 2 | 2 |
 | store-cost | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | store-shadow | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
