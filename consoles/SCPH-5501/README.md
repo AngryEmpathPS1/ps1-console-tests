@@ -178,3 +178,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-02-tcwords](2026-11-02-tcwords/) | 4 | 1 |
 | [2026-11-02-whv](2026-11-02-whv/) | 4 | 1 |
 | [2026-11-02-whv2](2026-11-02-whv2/) | 4 | 1 |
+| [2026-11-02-wifi](2026-11-02-wifi/) | 4 | 1 |
