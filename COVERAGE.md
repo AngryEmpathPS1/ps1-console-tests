@@ -160,7 +160,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-a0-ready | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu-a0-size | 1 | 7 | 7 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu-a0pace | 4 |  | 1 |  |  |  |  |  |  |
-| gpu-a0rate | 2 |  |  |  |  |  |  |  |  |
+| gpu-a0rate | 2 |  | 1 |  |  |  |  |  |  |
+| gpu-a0rate2 | 2 |  | 2 |  |  |  |  |  |  |
 | gpu-a0row | 4 |  | 6 |  |  |  |  |  |  |
 | gpu-abort | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu-batch | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
@@ -361,8 +362,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-in-hang | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | mdec-leftover | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-mono-out | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
-| mdec-pad | 2 |  |  |  |  |  | 5 |  |  |
-| mdec-pad2 | 2 |  |  |  |  |  | 2 |  |  |
+| mdec-pad | 2 |  | 1 |  |  |  | 5 |  |  |
+| mdec-pad2 | 2 |  | 1 |  |  |  | 2 |  |  |
 | mdec-padding | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-qbias | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-reset | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
