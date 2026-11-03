@@ -502,6 +502,7 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | mdec-reset22 | no | mdec-reset's one() with the timed span cut to a raw timer read, the CHCR0 store, the 32-word table DMA and a raw poll (no RAM access but the DMA's own); per 4-cycle bin of the start value: count, mean, fewest, most, lost |
 | gpu-dma-refresh | no | a 16-word GPU DMA block (GP0 no-ops, SyncMode 1) alone in a timed span: raw timer read, CHCR2 store, raw poll; per 4-cycle bin of the start value: count, mean, fewest, most, lost |
 | gpu-dma-size | no | gpu-dma-refresh's timed span (raw timer read, CHCR2 store, one SyncMode 1 block of GP0 no-ops, raw poll) at 1, 2, 4, 8, 16, 32 and 64 words, 512 tries a size at every phase: fewest, mean, most, lost |
+| gpu-dma-knee | no | one 16-word GPU block (as gpu-dma-size); N = 0..31 single cycles after CHCR2's store, a raw timer read, then the poll; 64 tries a value of N: fewest and mean to that read and to done |
 | mdec-reset-grid | no | the reset at word 0-3 of a line, 0-10 nops, the enables; cold and warm; kept of 4 per cell |
 | mdec-reset-grid2 | no | mdec-reset-grid with a RAM store (the stack) just ahead of the reset, as mdecReset has |
 | mdec-reset-grid3 | no | mdec-reset-grid2's cells with the fastest call's cycles and MDEC1 read at once after the call |
