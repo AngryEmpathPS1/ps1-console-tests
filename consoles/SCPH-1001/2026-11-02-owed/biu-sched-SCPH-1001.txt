@@ -1,0 +1,52 @@
+
+cpu/biu-sched
+FFFE0130h's switches one at a time, under cold and warm loads (Timer 2 cycles).
+No assertions - compare against your emulator.
+
+BIU as it stands: 0001e988
+
+== as the BIOS leaves it: 0001e988
+  NOPS           4716..4721    above the nops      0  ->  0.00 a load
+  RAM w=0        5247..5252    above the nops    531  ->  4.15 a load
+  RAM w=1        5247..5252    above the nops    531  ->  4.15 a load
+  RAM w=2        5246..5249    above the nops    530  ->  4.14 a load
+  RAM w=3        5249..5253    above the nops    533  ->  4.16 a load
+  I_STAT w=1     4854..4855    above the nops    138  ->  1.08 a load
+  WARM NOPS      2066..2104    above the nops      0  ->  0.00 a load
+  WARM RAM       2322..2362    above the nops    256  ->  2.00 a load
+  lw 10..12; lw; 1 nop 12..12; lw; 2 nops 12..17; lw; 3 nops 12..12; lw; 4 nops 12..12; lw; 7 nops 14..14; T1 24..30; T3 23..28;
+
+== IBLKSZ 0 (two-word refill): 0001e888
+  NOPS           7340..7349    above the nops      0  ->  0.00 a load
+  RAM w=0        7879..7884    above the nops    539  ->  4.21 a load
+  RAM w=1        7879..7886    above the nops    539  ->  4.21 a load
+  RAM w=2        8013..8016    above the nops    673  ->  5.26 a load
+  RAM w=3        8009..8013    above the nops    669  ->  5.23 a load
+  I_STAT w=1     7482..7490    above the nops    142  ->  1.11 a load
+  WARM NOPS      2066..2144    above the nops      0  ->  0.00 a load
+  WARM RAM       2322..2407    above the nops    256  ->  2.00 a load
+  lw 10..12; lw; 1 nop 12..12; lw; 2 nops 12..12; lw; 3 nops 12..12; lw; 4 nops 12..17; lw; 7 nops 14..15; T1 24..30; T3 23..27;
+
+== NOSTR 1 (no streaming): 0003e988
+  NOPS           6773..6774    above the nops      0  ->  0.00 a load
+  RAM w=0        7170..7173    above the nops    397  ->  3.10 a load
+  RAM w=1        7327..7332    above the nops    554  ->  4.33 a load
+  RAM w=2        6772..6777    above the nops     -1  ->  -0.01 a load
+  RAM w=3        6999..7009    above the nops    226  ->  1.77 a load
+  I_STAT w=1     6948..6955    above the nops    175  ->  1.37 a load
+  WARM NOPS      2066..2136    above the nops      0  ->  0.00 a load
+  WARM RAM       2322..2393    above the nops    256  ->  2.00 a load
+  lw 10..11; lw; 1 nop 12..12; lw; 2 nops 12..14; lw; 3 nops 12..12; lw; 4 nops 12..12; lw; 7 nops 14..16; T1 24..30; T3 23..27;
+
+== LDSCH 0 (no load scheduling): 0000e988
+  NOPS           4720..4724    above the nops      0  ->  0.00 a load
+  RAM w=0        5635..5637    above the nops    915  ->  7.15 a load
+  RAM w=1        5500..5506    above the nops    780  ->  6.09 a load
+  RAM w=2        5885..5894    above the nops   1165  ->  9.10 a load
+  RAM w=3        5759..5769    above the nops   1039  ->  8.12 a load
+  I_STAT w=1     5212..5219    above the nops    492  ->  3.84 a load
+  WARM NOPS      2068..2108    above the nops      0  ->  0.00 a load
+  WARM RAM       2860..2900    above the nops    792  ->  6.19 a load
+  lw 12..12; lw; 1 nop 13..15; lw; 2 nops 14..16; lw; 3 nops 15..21; lw; 4 nops 16..20; lw; 7 nops 19..24; T1 26..32; T3 26..32;
+
+cpu/biu-sched: Done.

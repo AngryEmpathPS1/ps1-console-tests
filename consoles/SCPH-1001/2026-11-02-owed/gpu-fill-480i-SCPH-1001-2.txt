@@ -1,0 +1,126 @@
+
+gpu/gpu-fill-480i
+640x480 interlaced, GP0(E1h) bit 10 set against clear. Cycles from the last word to bits 26+28, fastest..slowest of four,
+then the rows written. Field 1 reads GPUSTAT.31 = 1 through the picture, field 0 reads 0. No assertions.
+
+A. TIME, cycles fastest..slowest, and the rows written of column 0
+BLANK line 4, field 1:
+ fill
+  bit set     22969..23016   bit 31 0->0, 13 0->0  even rows 240 (0..478) odd 240 (1..479)
+  bit clear   11505..11522   bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 239 (3..479)
+  clear/set 50%, rows written with the bit clear 240 of 480
+ rectangle
+  bit set   4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   9 (134..150) odd 231 (1..479)
+  bit clear 4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   9 (192..208) odd 231 (1..479)
+  clear/set 0%, rows written with the bit clear 240 of 480
+ triangle
+  bit set   4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   0 (-1..-1) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+ line
+  bit set   4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+CROSS line 20, field 1:
+ fill
+  bit set   4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+ rectangle
+  bit set   4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+ triangle
+  bit set   4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+ line
+  bit set   4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 0->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+PICTURE line 100, field 1:
+ fill
+  bit set   4294967295..4294967295 bit 31 1->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 1->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+ rectangle
+  bit set   4294967295..4294967295 bit 31 1->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 1->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+ triangle
+  bit set   4294967295..4294967295 bit 31 1->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 1->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+ line
+  bit set   4294967295..4294967295 bit 31 1->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 1->0, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+PICTURE line 100, field 0:
+ fill
+  bit set   4294967295..4294967295 bit 31 0->1, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 0->1, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+ rectangle
+  bit set   4294967295..4294967295 bit 31 0->1, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 0->1, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 241 of 480
+ triangle
+  bit set   4294967295..4294967295 bit 31 0->1, 13 0->0  even rows   1 (0..0) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 0->1, 13 0->0  even rows 240 (0..478) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 480 of 480
+ line
+  bit set   4294967295..4294967295 bit 31 0->1, 13 0->0  even rows 240 (0..478) odd 240 (1..479)
+  bit clear 4294967295..4294967295 bit 31 0->1, 13 0->0  even rows 240 (0..478) odd 240 (1..479)
+  clear/set 0%, rows written with the bit clear 480 of 480
+
+B. ROWS, E1h.10 clear, line 100 of each field: # written, . not, ? another colour
+fill      w  16 y  0 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: ####################
+fill      w  16 y  0 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: ####################
+fill      w  16 y  1 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: ####################
+fill      w  16 y  1 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: ####################
+fill      w  16 y 40 field 0: bit 31 0->1, 4294967295 cycles, rows from 38: ####################
+fill      w  16 y 40 field 1: bit 31 1->0, 4294967295 cycles, rows from 38: ####################
+fill      w  16 y 41 field 0: bit 31 0->1, 4294967295 cycles, rows from 39: ####################
+fill      w  16 y 41 field 1: bit 31 1->0, 4294967295 cycles, rows from 39: ####################
+fill      w 640 y  0 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: ####################
+fill      w 640 y  0 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: ####################
+fill      w 640 y  1 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: ####################
+fill      w 640 y  1 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: ####################
+fill      w 640 y 40 field 0: bit 31 0->1, 4294967295 cycles, rows from 38: #..#.#.#.#.#.#.#.#.#  last column ..#..#.#.#.#.#.#.#..
+fill      w 640 y 40 field 1: bit 31 1->0, 4294967295 cycles, rows from 38: ..#..#.#.#.#.#.#.#..  last column ..#.#.#.#.#.#.#.#...
+fill      w 640 y 41 field 0: bit 31 0->1, 4294967295 cycles, rows from 39: ..#.#.#.#.#.#.#.#...
+fill      w 640 y 41 field 1: bit 31 1->0, 4294967295 cycles, rows from 39: ..#.#.#.#.#.#.#.#...  last column ..#..#.#.#.#.#.#.#..
+rectangle w  16 y  0 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: ..#..#.#.#.#.#.#.#..  last column .#.#.#.#.#.#.#.#....
+rectangle w  16 y  0 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: .#.#.#.#.#.#.#.#....  last column #.#.#.#.#.#.#.#.....
+rectangle w  16 y  1 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: #.#.#.#.#.#.#.#.....  last column .#.#.#.#.#.#.#.#....
+rectangle w  16 y  1 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: .#.#.#.#.#.#.#.#....  last column ..#.#.#.#.#.#.#.#...
+rectangle w  16 y 40 field 0: bit 31 0->1, 4294967295 cycles, rows from 38: ..#.#.#.#.#.#.#.#...  last column ...#.#.#.#.#.#.#.#..
+rectangle w  16 y 40 field 1: bit 31 1->0, 4294967295 cycles, rows from 38: ...#.#.#.#.#.#.#.#..  last column ..#.#.#.#.#.#.#.#...
+rectangle w  16 y 41 field 0: bit 31 0->1, 4294967295 cycles, rows from 39: ..#.#.#.#.#.#.#.#...
+rectangle w  16 y 41 field 1: bit 31 1->0, 4294967295 cycles, rows from 39: ..#.#.#.#.#.#.#.#...  last column ...#.#.#.#.#.#.#.#..
+rectangle w 640 y  0 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: ...#.#.#.#.#.#.#.#..  last column .#.#.#.#.#.#.#.#....
+rectangle w 640 y  0 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: .#.#.#.#.#.#.#.#....  last column #.#.#.#.#.#.#.#.....
+rectangle w 640 y  1 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: #.#.#.#.#.#.#.#.....  last column .#.#.#.#.#.#.#.#....
+rectangle w 640 y  1 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: .#.#.#.#.#.#.#.#....  last column ..#.#.#.#.#.#.#.#...
+rectangle w 640 y 40 field 0: bit 31 0->1, 4294967295 cycles, rows from 38: ..#.#.#.#.#.#.#.#...  last column ...#.#.#.#.#.#.#.#..
+rectangle w 640 y 40 field 1: bit 31 1->0, 4294967295 cycles, rows from 38: ...#.#.#.#.#.#.#.#..  last column ..#.#.#.#.#.#.#.#...
+rectangle w 640 y 41 field 0: bit 31 0->1, 4294967295 cycles, rows from 39: ..#.#.#.#.#.#.#.#...
+rectangle w 640 y 41 field 1: bit 31 1->0, 4294967295 cycles, rows from 39: ..#.#.#.#.#.#.#.#...  last column ...#.#.#.#.#.#.#.#..
+triangle  w  16 y  0 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: ...#.#.#.#.#.#.#.#..
+triangle  w  16 y  0 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: .#.#.#.#.#.#.#.#....
+triangle  w  16 y  1 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: #.#.#.#.#.#.#.#.....
+triangle  w  16 y  1 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: .#.#.#.#.#.#.#.#....
+triangle  w  16 y 40 field 0: bit 31 0->1, 4294967295 cycles, rows from 38: ..#.#.#.#.#.#.#.#...
+triangle  w  16 y 40 field 1: bit 31 1->0, 4294967295 cycles, rows from 38: ...#.#.#.#.#.#.#.#..
+triangle  w  16 y 41 field 0: bit 31 0->1, 4294967295 cycles, rows from 39: ..#.#.#.#.#.#.#.#...
+triangle  w  16 y 41 field 1: bit 31 1->0, 4294967295 cycles, rows from 39: ..#.#.#.#.#.#.#.#...
+triangle  w 640 y  0 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: ...#.#.#.#.#.#.#.#..
+triangle  w 640 y  0 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: .#.#.#.#.#.#.#.#....
+triangle  w 640 y  1 field 0: bit 31 0->1, 4294967295 cycles, rows from  0: #.#.#.#.#.#.#.#.....
+triangle  w 640 y  1 field 1: bit 31 1->0, 4294967295 cycles, rows from  0: .#.#.#.#.#.#.#.#....
+triangle  w 640 y 40 field 0: bit 31 0->1, 4294967295 cycles, rows from 38: ..#.#.#.#.#.#.#.#...
+triangle  w 640 y 40 field 1: bit 31 1->0, 4294967295 cycles, rows from 38: ...#.#.#.#.#.#.#.#..
+triangle  w 640 y 41 field 0: bit 31 0->1, 4294967295 cycles, rows from 39: ..#.#.#.#.#.#.#.#...
+triangle  w 640 y 41 field 1: bit 31 1->0, 4294967295 cycles, rows from 39: ..#.#.#.#.#.#.#.#...
+
+gpu/gpu-fill-480i: Done.

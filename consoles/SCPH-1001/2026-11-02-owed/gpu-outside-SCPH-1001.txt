@@ -1,0 +1,42 @@
+
+gpu/gpu-outside
+Flat primitives, 128 wide, H rows, wholly outside the drawing area (256,136)-(511,375). D as gpu-shape-time: the first D with
+bit 26 set, fastest..slowest over eight start points in the blanking. A row: 16 to 128, then 16 to 64. No assertions.
+
+anchor, area (0,0)-(1023,511):
+clip TR 128x16 -192          115..115  
+  gpu-shape-time6 logs: 117 on the new GPU, 115 on the old
+
+                  H 16          H 64          H 128
+inside tri    671..712    2534..2577   5036..5082   a row 38.97 38.81  pixel DRAWN
+inside rect  1130..1171   4571..4613   9130..9174   a row 71.42 71.68  pixel DRAWN
+left   tri    115..115     163..163     227..227    a row 1.00 1.00  pixel untouched
+left   rect    94..94      142..142     206..206    a row 1.00 1.00  pixel untouched
+right  tri     51..51       99..99      163..163    a row 1.00 1.00  pixel untouched
+right  rect    30..30       78..78      142..142    a row 1.00 1.00  pixel untouched
+above  tri     51..51       99..99      163..163    a row 1.00 1.00  pixel untouched
+above  rect    30..30       78..78      142..142    a row 1.00 1.00  pixel untouched
+below  tri     35..35       35..35       35..35     a row 0.00 0.00  pixel untouched
+below  rect    14..14       14..14       14..14     a row 0.00 0.00  pixel untouched
+corner tri     51..51       99..99      163..163    a row 1.00 1.00  pixel untouched
+corner rect    30..30       78..78      142..142    a row 1.00 1.00  pixel untouched
+
+left again, by the left edge's distance from the area (x 120, 0, -64, -256):
+d136   tri    115..115     163..163     227..227    a row 1.00 1.00  pixel untouched
+d256   tri    115..115     163..163     227..227    a row 1.00 1.00  pixel untouched
+d320   tri    115..115     163..163     227..227    a row 1.00 1.00  pixel untouched
+d512   tri    115..115     163..163     227..227    a row 1.00 1.00  pixel untouched
+d136   rect    94..94      142..142     206..206    a row 1.00 1.00  pixel untouched
+d256   rect    94..94      142..142     206..206    a row 1.00 1.00  pixel untouched
+d512   rect    94..94      142..142     206..206    a row 1.00 1.00  pixel untouched
+right far tri     31..31       31..31       31..31     a row 0.00 0.00  pixel untouched
+
+set-up alone and empty rectangles, inside the area:
+triangle no height inside     31..31   
+triangle no height left       31..31   
+rectangle 128 x 0             14..14   
+rectangle 0 x 16              30..30   
+rectangle 0 x 64              78..78   
+rectangle 0 x 128            142..142  
+
+gpu/gpu-outside: Done.

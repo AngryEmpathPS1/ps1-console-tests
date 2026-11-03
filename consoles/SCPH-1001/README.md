@@ -43,3 +43,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-01-tables](2026-11-01-tables/) | 18 | 15 |
 | [2026-11-01-undef](2026-11-01-undef/) | 5 | 1 |
 | [2026-11-02-a0](2026-11-02-a0/) | 11 | 2 |
+| [2026-11-02-owed](2026-11-02-owed/) | 185 | 90 |

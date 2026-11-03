@@ -1,0 +1,47 @@
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-pad2
+K blocks of DC d behind a picture, P more words of padding, then a second picture with no reset. 8 tries each. No assertions.
+
+  MB  2 words   96 P    0 K 1 DC 0dff: then a404ffff DMA0 00, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB  2 words  128 P   32 K 1 DC 0dff: then e404ffff DMA0 00, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB  2 words  160 P   64 K 1 DC 0dff: then e404001f DMA0 01, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB  2 words  192 P   96 K 1 DC 0dff: then e404003f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404005f, words off 38
+  MB  2 words  224 P  128 K 1 DC 0dff: then e404005f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404007f, words off 38
+  MB  2 words  256 P  160 K 1 DC 0dff: then e404007f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404009f, words off 38
+  MB  2 words  288 P  192 K 1 DC 0dff: then e404009f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40400bf, words off 38
+  MB  2 words  352 P  256 K 1 DC 0dff: then e40400df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40400ff, words off 38
+  MB  2 words  608 P  512 K 1 DC 0dff: then e40401df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40401ff, words off 38
+  MB  4 words  160 P    0 K 1 DC 0dff: then a404ffff DMA0 00, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB  4 words  192 P   32 K 1 DC 0dff: then e404ffff DMA0 00, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB  4 words  224 P   64 K 1 DC 0dff: then e404001f DMA0 01, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB  4 words  256 P   96 K 1 DC 0dff: then e404003f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404005f, words off 67
+  MB  4 words  288 P  128 K 1 DC 0dff: then e404005f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404007f, words off 67
+  MB  4 words  320 P  160 K 1 DC 0dff: then e404007f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404009f, words off 67
+  MB  4 words  352 P  192 K 1 DC 0dff: then e404009f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40400bf, words off 67
+  MB  4 words  416 P  256 K 1 DC 0dff: then e40400df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40400ff, words off 67
+  MB  4 words  672 P  512 K 1 DC 0dff: then e40401df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40401ff, words off 67
+  MB  8 words  320 P    0 K 1 DC 0dff: then a404ffff DMA0 00, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB  8 words  352 P   32 K 1 DC 0dff: then e404ffff DMA0 00, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB  8 words  384 P   64 K 1 DC 0dff: then e404001f DMA0 01, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB  8 words  416 P   96 K 1 DC 0dff: then e404003f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404005f, words off 123
+  MB  8 words  448 P  128 K 1 DC 0dff: then e404005f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404007f, words off 123
+  MB  8 words  480 P  160 K 1 DC 0dff: then e404007f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404009f, words off 123
+  MB  8 words  512 P  192 K 1 DC 0dff: then e404009f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40400bf, words off 123
+  MB  8 words  576 P  256 K 1 DC 0dff: then e40400df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40400ff, words off 123
+  MB  8 words  832 P  512 K 1 DC 0dff: then e40401df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40401ff, words off 123
+  MB 16 words  608 P    0 K 1 DC 0dff: then a404ffff DMA0 00, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB 16 words  640 P   32 K 1 DC 0dff: then e404ffff DMA0 00, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB 16 words  672 P   64 K 1 DC 0dff: then e404001f DMA0 01, settled a405ffff; second picture done 0 hung 8, then a405ffff, words off 0
+  MB 16 words  704 P   96 K 1 DC 0dff: then e404003f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404005f, words off 243
+  MB 16 words  736 P  128 K 1 DC 0dff: then e404005f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404007f, words off 243
+  MB 16 words  768 P  160 K 1 DC 0dff: then e404007f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e404009f, words off 243
+  MB 16 words  800 P  192 K 1 DC 0dff: then e404009f DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40400bf, words off 243
+  MB 16 words  864 P  256 K 1 DC 0dff: then e40400df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40400ff, words off 243
+  MB 16 words 1120 P  512 K 1 DC 0dff: then e40401df DMA0 01, settled 8405ffff; second picture done 8 hung 0, then e40401ff, words off 243
+
+mdec/mdec-pad2: Done.

@@ -1,0 +1,31 @@
+
+cpu/cpu-loop-tick13
+A CD / SPU register read by what follows it and what is queued before it. No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  CD-6N       12.09      12.03
+  CD-W1       19.06      19.03
+  CD-R2       19.06      19.03
+  CD-R4       18.07      18.03
+  CD-L1       20.06      20.03
+  CD-L3       20.13      20.10
+  CD-I1       20.06      20.03
+  CD-S1       15.13      15.09
+  CD-S2       17.15      17.09
+  CD-SF       16.27      16.22
+  CD-S3F      22.33      22.28
+  CD-S2W1     24.44      24.40
+  SPU-6N      22.06      22.02
+  SPU-W1      29.07      29.03
+  SPU-R2      29.07      29.03
+  SPU-R4      28.06      28.03
+  SPU-L1      30.17      30.14
+  SPU-L3      30.19      30.14
+  SPU-I1      30.06      30.03
+  SPU-S1      25.64      25.61
+  SPU-S2      27.23      27.17
+  SPU-SF      26.21      26.15
+  SPU-S3F     32.08      32.02
+  SPU-S2W1    34.20      34.16
+
+cpu/cpu-loop-tick13: Done.
