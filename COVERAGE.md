@@ -182,6 +182,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-degen | 2 |  |  | 3 |  |  | 1 |  |  |
 | gpu-degen2 | 2 |  |  | 3 |  |  | 1 |  |  |
 | gpu-dma-knee |  |  | 2 |  |  |  |  |  |  |
+| gpu-dma-quiet |  |  | 2 |  |  |  |  |  |  |
 | gpu-dma-refresh |  |  | 2 |  |  |  |  |  |  |
 | gpu-dma-size |  |  | 2 |  |  |  |  |  |  |
 | gpu-dmabs | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
