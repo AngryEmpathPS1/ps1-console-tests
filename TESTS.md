@@ -490,6 +490,12 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | mdec-reset11 | no | mdec-reset10's pair in 2-cycle bins of the first call's refresh phase, four variants: cold then warm at once, with 200 cycles between, the cold call without its DMA0, and warm then warm |
 | mdec-reset12 | no | a table command and its 32-word DMA0, then from a cached sled the reset W cycles after the DMA's start (W 40-240, every cycle, 4 tries), the enables 20 later, the status, a table command and DMA0 again: lost of 4 and the status |
 | mdec-reset13 | no | the reset behind K stack stores (0, 2, 4, 6), with CHCR0 = 0 last (T) or not (R), the enables 9 or 12 cycles behind it, 256 tries a body over the refresh; lost by phase in bins of 16 |
+| mdec-reset14 | no | mdec-reset11's cold-then-warm (P) and warm-then-warm (C) pairs, 2-cycle bins of the first call's refresh phase, with each call's fewest and most cycles |
+| mdec-reset15 | no | mdec-reset's one() with Timer 2 read on entry, after the status read, after DMA0's start and when DMA0 is seen done; a call after a rest and the call right behind it, 512 pairs, the fewest and most cycles of each segment |
+| mdec-reset16 | no | mdec-reset15 with the call's entry (the call and its stack saves, from the caller's Timer 2 read) and tail (CHCR0 = 0 and the return) timed too, a call after a rest and the call behind it |
+| mdec-reset17 | no | mdec-reset's one() unchanged (its poll through now()), a warm call after a rest and the call behind it, 512 pairs: the whole call from outside, one()'s own DMA time and its poll turns, fewest and most |
+| mdec-reset18 | no | mdec-reset17's pairs, 1,024: each call's own DMA time in 4-cycle bins, and the refresh phases of the first calls under 64 |
+| mdec-reset19 | no | mdec-reset18's pairs, 2,048: first calls with own DMA time under 64 against the rest - the whole call, the caller's read to one()'s own t0, and t0 to done |
 | mdec-reset-grid | no | the reset at word 0-3 of a line, 0-10 nops, the enables; cold and warm; kept of 4 per cell |
 | mdec-reset-grid2 | no | mdec-reset-grid with a RAM store (the stack) just ahead of the reset, as mdecReset has |
 | mdec-reset-grid3 | no | mdec-reset-grid2's cells with the fastest call's cycles and MDEC1 read at once after the call |

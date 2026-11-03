@@ -1,0 +1,14 @@
+ResetGraph:itb=80012914,ehk=80012944
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset15
+mdec-reset's one() timed in segments: a call after a rest, and the call right behind it. No assertions.
+
+call          reset..status   status..DMA start   DMA start..done   whole
+after a rest      50-56           41-41            23990-23990       24081-24087
+behind it         50-56           41-41            23990-23990       24081-24087
+
+mdec/mdec-reset15: Done.

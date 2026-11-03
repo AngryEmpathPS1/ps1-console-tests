@@ -378,6 +378,12 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-reset11 |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset12 |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset13 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset14 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset15 |  |  | 4 |  |  |  |  |  |  |
+| mdec-reset16 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset17 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset18 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset19 |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset2 | 2 |  | 1 | 3 |  |  | 2 |  |  |
 | mdec-reset3 | 2 |  |  | 3 |  |  | 1 |  |  |
 | mdec-reset4 | 2 |  |  | 2 |  |  | 2 |  |  |
