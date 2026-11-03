@@ -181,6 +181,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-cost-sweep | 6 | 7 | 8 | 1 | 6 | 13 | 1 | 8 | 2 |
 | gpu-degen | 2 |  |  | 3 |  |  | 1 |  |  |
 | gpu-degen2 | 2 |  |  | 3 |  |  | 1 |  |  |
+| gpu-dma-refresh |  |  | 2 |  |  |  |  |  |  |
+| gpu-dma-size |  |  | 2 |  |  |  |  |  |  |
 | gpu-dmabs | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmabs2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmastream | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
@@ -385,6 +387,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-reset18 |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset19 |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset2 | 2 |  | 1 | 3 |  |  | 2 |  |  |
+| mdec-reset20 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset21 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset22 |  |  | 4 |  |  |  |  |  |  |
 | mdec-reset3 | 2 |  |  | 3 |  |  | 1 |  |  |
 | mdec-reset4 | 2 |  |  | 2 |  |  | 2 |  |  |
 | mdec-reset5 | 2 |  |  | 2 |  |  | 1 |  |  |
@@ -448,6 +453,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | ram-store-io5 | 2 | 7 | 2 | 1 | 6 | 1 | 1 | 2 |  |
 | ram-store-io6 | 2 | 1 | 2 | 1 | 2 | 1 | 1 | 2 |  |
 | ram-store-io7 | 2 | 1 | 2 | 1 | 2 | 1 | 1 | 2 |  |
+| ram-store-io8 |  |  | 2 |  |  |  |  |  |  |
 | refresh-cold | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | refresh-io | 3 | 7 | 3 | 1 | 6 | 5 | 1 | 3 | 2 |
 | refresh-io2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |

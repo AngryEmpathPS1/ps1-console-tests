@@ -181,6 +181,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-02-whv](2026-11-02-whv/) | 4 | 1 |
 | [2026-11-02-whv2](2026-11-02-whv2/) | 4 | 1 |
 | [2026-11-02-wifi](2026-11-02-wifi/) | 4 | 1 |
+| [2026-11-03-gdr](2026-11-03-gdr/) | 5 | 1 |
+| [2026-11-03-gds](2026-11-03-gds/) | 5 | 1 |
 | [2026-11-03-owed](2026-11-03-owed/) | 8 | 4 |
 | [2026-11-03-reset-align](2026-11-03-reset-align/) | 5 | 1 |
 | [2026-11-03-reset-grid](2026-11-03-reset-grid/) | 5 | 1 |
@@ -201,3 +203,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-03-reset17](2026-11-03-reset17/) | 5 | 1 |
 | [2026-11-03-reset18](2026-11-03-reset18/) | 5 | 1 |
 | [2026-11-03-reset19](2026-11-03-reset19/) | 5 | 1 |
+| [2026-11-03-reset20](2026-11-03-reset20/) | 5 | 1 |
+| [2026-11-03-reset21](2026-11-03-reset21/) | 5 | 1 |
+| [2026-11-03-reset22](2026-11-03-reset22/) | 5 | 1 |
+| [2026-11-03-reset22-firstbuild](2026-11-03-reset22-firstbuild/) | 5 | 1 |
+| [2026-11-03-rsio8](2026-11-03-rsio8/) | 5 | 1 |
