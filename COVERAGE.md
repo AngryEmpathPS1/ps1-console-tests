@@ -370,6 +370,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-reset-align |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset-grid |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset-grid2 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset-grid3 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset-half |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset-tail |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset-tailgrid |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset2 | 2 |  | 1 | 3 |  |  | 2 |  |  |
 | mdec-reset3 | 2 |  |  | 3 |  |  | 1 |  |  |
 | mdec-reset4 | 2 |  |  | 2 |  |  | 2 |  |  |

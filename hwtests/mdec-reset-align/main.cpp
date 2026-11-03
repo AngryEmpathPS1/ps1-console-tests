@@ -1,6 +1,6 @@
 /*
  * mdec/mdec-reset-align - nugget's stock StrPlayer::mdecReset() prologue, cold and warm, at each place in a cache line
- * (2026-11-03 evening, for the SCPH-5501).
+ * (2026-11-03 morning, for the SCPH-5501).
  *
  * WHY. psyqo-paths' StrPlayer::mdecReset() writes the reset (80000000h) and the enables (60000000h) to MDEC1 with three
  * instructions between them (lui, lui, addiu). On this core a GameDay build of THE VAULT (C:/psxsplash-work, stock player)

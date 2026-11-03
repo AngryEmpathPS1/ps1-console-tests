@@ -185,3 +185,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-03-reset-align](2026-11-03-reset-align/) | 5 | 1 |
 | [2026-11-03-reset-grid](2026-11-03-reset-grid/) | 5 | 1 |
 | [2026-11-03-reset-grid2](2026-11-03-reset-grid2/) | 5 | 1 |
+| [2026-11-03-reset-grid3](2026-11-03-reset-grid3/) | 5 | 1 |
+| [2026-11-03-reset-half](2026-11-03-reset-half/) | 5 | 1 |
+| [2026-11-03-reset-tail](2026-11-03-reset-tail/) | 5 | 1 |
+| [2026-11-03-reset-tailgrid](2026-11-03-reset-tailgrid/) | 5 | 1 |

@@ -1,7 +1,7 @@
 /*
  * mdec/mdec-reset-grid2 - hwtests/mdec-reset-grid with a RAM store just ahead of the reset, as StrPlayer::mdecReset has it
  * (sw $ra to the stack), by the reset's word in a cache line and the distance to the enables, cold and warm
- * (2026-11-03 evening, for the SCPH-5501).
+ * (2026-11-03 morning, for the SCPH-5501).
  *
  * WHY THIS ONE. mdec-reset-grid (nops only between the set-up, the reset and the enables) reads the same on the SCPH-5501 and
  * this core in 87 of 88 cells; mdec-reset-align (mdecReset's own prologue) does not: the console keeps or loses its enables

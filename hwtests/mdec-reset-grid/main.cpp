@@ -1,6 +1,6 @@
 /*
  * mdec/mdec-reset-grid - the MDEC reset's deaf window as a store sees it, by where the reset sits in a cache line and how
- * far behind it the enables are, cold and warm (2026-11-03 evening, for the SCPH-5501).
+ * far behind it the enables are, cold and warm (2026-11-03 morning, for the SCPH-5501).
  *
  * WHY. hwtests/mdec-reset-align: the console keeps or loses StrPlayer::mdecReset's enables (three instructions behind the
  * reset) by the word of the line the code starts at, cold and warm alike (word 0 lost both ways, word 3 lost cold and kept
