@@ -486,6 +486,10 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | mdec-reset7 | no | the reset's window from a busy MDEC: a table command waiting for data, part filled, a decode wanting more, a picture nobody reads. Gap 3 + N cycles, N 0 to 63: enables kept, commands taken, the bus or the status. |
 | mdec-reset8 | no | mdec-reset with N 0 all through its table and nothing else: is every N 0 lost, or only the first? |
 | mdec-reset9 | no | mdec-reset's one(), N 0, 4,096 times from every phase of the 256-cycle refresh: calls and lost calls in bins of 4 cycles. Is the lost row the refresh? |
+| mdec-reset10 | no | mdec-reset9's refresh sweep for a COLD call (the instruction cache evicted first), and for the cold call followed by a warm one (mdec-reset's first row); calls, lost and bus-reading calls by the cold call's refresh phase in bins of 8 |
+| mdec-reset11 | no | mdec-reset10's pair in 2-cycle bins of the first call's refresh phase, four variants: cold then warm at once, with 200 cycles between, the cold call without its DMA0, and warm then warm |
+| mdec-reset12 | no | a table command and its 32-word DMA0, then from a cached sled the reset W cycles after the DMA's start (W 40-240, every cycle, 4 tries), the enables 20 later, the status, a table command and DMA0 again: lost of 4 and the status |
+| mdec-reset13 | no | the reset behind K stack stores (0, 2, 4, 6), with CHCR0 = 0 last (T) or not (R), the enables 9 or 12 cycles behind it, 256 tries a body over the refresh; lost by phase in bins of 16 |
 | mdec-reset-grid | no | the reset at word 0-3 of a line, 0-10 nops, the enables; cold and warm; kept of 4 per cell |
 | mdec-reset-grid2 | no | mdec-reset-grid with a RAM store (the stack) just ahead of the reset, as mdecReset has |
 | mdec-reset-grid3 | no | mdec-reset-grid2's cells with the fastest call's cycles and MDEC1 read at once after the call |

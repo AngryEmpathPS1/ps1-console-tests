@@ -366,7 +366,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-pad2 | 2 |  | 1 |  |  |  | 2 |  |  |
 | mdec-padding | 1 | 7 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
 | mdec-qbias | 1 | 6 | 3 | 1 | 6 | 6 | 1 | 4 | 2 |
-| mdec-reset | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
+| mdec-reset | 1 | 6 | 12 | 6 | 6 | 6 | 1 | 4 | 2 |
 | mdec-reset-align |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset-grid |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset-grid2 |  |  | 2 |  |  |  |  |  |  |
@@ -374,6 +374,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-reset-half |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset-tail |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset-tailgrid |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset10 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset11 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset12 |  |  | 2 |  |  |  |  |  |  |
+| mdec-reset13 |  |  | 2 |  |  |  |  |  |  |
 | mdec-reset2 | 2 |  | 1 | 3 |  |  | 2 |  |  |
 | mdec-reset3 | 2 |  |  | 3 |  |  | 1 |  |  |
 | mdec-reset4 | 2 |  |  | 2 |  |  | 2 |  |  |
