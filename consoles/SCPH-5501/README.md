@@ -182,3 +182,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-02-whv2](2026-11-02-whv2/) | 4 | 1 |
 | [2026-11-02-wifi](2026-11-02-wifi/) | 4 | 1 |
 | [2026-11-03-owed](2026-11-03-owed/) | 8 | 4 |
+| [2026-11-03-reset-align](2026-11-03-reset-align/) | 5 | 1 |
+| [2026-11-03-reset-grid](2026-11-03-reset-grid/) | 5 | 1 |
+| [2026-11-03-reset-grid2](2026-11-03-reset-grid2/) | 5 | 1 |

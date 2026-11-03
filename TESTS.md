@@ -486,6 +486,9 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | mdec-reset7 | no | the reset's window from a busy MDEC: a table command waiting for data, part filled, a decode wanting more, a picture nobody reads. Gap 3 + N cycles, N 0 to 63: enables kept, commands taken, the bus or the status. |
 | mdec-reset8 | no | mdec-reset with N 0 all through its table and nothing else: is every N 0 lost, or only the first? |
 | mdec-reset9 | no | mdec-reset's one(), N 0, 4,096 times from every phase of the 256-cycle refresh: calls and lost calls in bins of 4 cycles. Is the lost row the refresh? |
+| mdec-reset-grid | no | the reset at word 0-3 of a line, 0-10 nops, the enables; cold and warm; kept of 4 per cell |
+| mdec-reset-grid2 | no | mdec-reset-grid with a RAM store (the stack) just ahead of the reset, as mdecReset has |
+| mdec-reset-align | no | nugget's stock StrPlayer::mdecReset() prologue (the reset, three instructions, the enables) at each word of a cache line, cold and warm, 8 tries each: kept or lost, and the call's cycles |
 | mdec-winddown | no | a second picture started k cycles behind the first with no reset, as StrPlayer does it: 8 macroblocks, k from 0 to 8,192, at 24 and 15 bits, with bsdec's padding and more. How many finish, how many hang, and the status of a hang. |
 | mdec-tail | no | K blocks behind a picture's last macroblock, then a second picture with no reset: does the MDEC stay busy for the rest of the macroblock and take the next command as data? FF7's hang, on demand. |
 | gpu-c0-datel | no | GPUSTAT bit 27 after a GP0(C0h) sent straight behind a GP0(01h) with no wait, Datel's StoreImage order, 64 NOP counts; and GP0(01h) alone, GPUSTAT bits 26 and 28 at 64 NOP counts |
