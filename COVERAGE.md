@@ -193,6 +193,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dmastream3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmastream4 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmastream5 | 2 |  |  | 3 |  |  | 1 |  |  |
+| gpu-dreq-fill |  |  | 2 |  |  |  |  |  |  |
 | gpu-drift | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-fill-480i | 2 |  |  | 3 |  |  | 1 |  |  |
 | gpu-gp1scan | 2 |  | 2 |  |  |  |  |  |  |

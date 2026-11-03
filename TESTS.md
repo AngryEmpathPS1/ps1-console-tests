@@ -505,6 +505,7 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | gpu-dma-knee | no | one 16-word GPU block (as gpu-dma-size); N = 0..31 single cycles after CHCR2's store, a raw timer read, then the poll; 64 tries a value of N: fewest and mean to that read and to done |
 | gpu-dma-quiet | no | chopping's upload (2,048 words, GP0(A0h), SyncMode 1) at blocks of 4-128, 16 tries each at hblank-locked offsets: timed by a CHCR2 poll, and QUIET (a cached wait with no bus access, then one CHCR2 read, scanned in 8-cycle steps to the first done) |
 | gpu-dma-progress | no | chopping's upload at blocks of 4 and 32, two hblank-locked starts each: CHCR2's store, a cached spin growing 16 cycles a probe across the whole upload, then Timer 2 and BCR2 (its block count): cycles:blocks done per probe |
+| gpu-dreq-fill | no | GP1(04h) = 2, a long fill (1024 x 511), then n = 0..18 words (GP0(A0h), its parameters, data) queued behind it: GPUSTAT bits 25 26 27 28, read twice 40 cycles apart |
 | mdec-reset-grid | no | the reset at word 0-3 of a line, 0-10 nops, the enables; cold and warm; kept of 4 per cell |
 | mdec-reset-grid2 | no | mdec-reset-grid with a RAM store (the stack) just ahead of the reset, as mdecReset has |
 | mdec-reset-grid3 | no | mdec-reset-grid2's cells with the fastest call's cycles and MDEC1 read at once after the call |
