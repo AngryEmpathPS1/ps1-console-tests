@@ -14,7 +14,9 @@
  * READ IT LIKE THIS. L rep kind how bs ba w h t0 t1 t2 p0 p1 p2 e: kind 0 up, 1 down; how 0 CHCR, 1 I_STAT; t cold, warm, warm; p the polls; e of
  * the last one: how 0 I_STAT's bit 3 straight after, how 1 CHCR's busy bit straight after. No assertions - compare against your emulator.
  *
- * THE RULE: run it here first: `node hwtests/run.js dma-len --frames=3000 --quiet=2500`.
+ * THE RULE: run it here first: `node hwtests/run.js dma-len00 --frames=12000 --quiet=2500` (8,541 frames here as the SCPH-5501, 10,100 as the
+ * 1001, v0.377.257; on the consoles it ran past the runner's 5 minutes every time). A HAZARD (CONSOLE-RUN-SHEET.md, --with=hazard): on a new GPU
+ * its lost words leave GP0(03h) at 2 until RESET, every drawing after it slower (STATUS "The first 5501's slow boot is GP0(03h) = 2").
  */
 #include <common.h>
 #include <psxapi.h>

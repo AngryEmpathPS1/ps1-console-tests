@@ -15,7 +15,7 @@
  * the last one, e: how 0 I_STAT's bit 3 straight after, how 1 CHCR's busy bit straight after, and g GPUSTAT straight after. TIMEOUT gpu: a transfer
  * left the GPU unready and the command buffer was reset. No assertions - compare against your emulator.
  *
- * THE RULE: run it here first: `node hwtests/run.js dma-len --frames=3000 --quiet=2500`.
+ * THE RULE: run it here first: `node hwtests/run.js dma-len0 --frames=3000 --quiet=2500` (371 frames here as the SCPH-1001, 363 as the 5501, v0.377.257).
  */
 #include <common.h>
 #include <psxapi.h>
