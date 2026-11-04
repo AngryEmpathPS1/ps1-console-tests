@@ -171,6 +171,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-a0rate | 2 |  |  | 1 |  |  |  |  |  |
 | gpu-a0rate2 | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-a0row | 4 |  |  | 8 |  |  |  |  |  |
+| gpu-a0rowdisp |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0vph |  |  |  | 3 |  |  |  |  |  |
 | gpu-abort | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu-batch | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
