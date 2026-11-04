@@ -224,3 +224,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-03-t0dot2](2026-11-03-t0dot2/) | 12 | 2 |
 | [2026-11-03-t1count](2026-11-03-t1count/) | 7 | 1 |
 | [2026-11-03-t1count2](2026-11-03-t1count2/) | 7 | 1 |
+| [2026-11-04-rowx](2026-11-04-rowx/) | 6 | 1 |
+| [2026-11-04-spread-g](2026-11-04-spread-g/) | 15 | 3 |

@@ -154,7 +154,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gp0-bit25b | 2 |  |  | 3 |  |  | 1 |  |  |
 | gp0-bit25c | 2 |  |  | 3 |  |  | 1 |  |  |
 | gp0-overrun | 2 |  |  | 3 |  |  | 1 |  |  |
-| gp0-poll | 2 | 7 | 2 | 1 | 6 | 2 | 1 | 2 |  |
+| gp0-poll | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gp0-store | 2 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |
 | gp1-reset | 2 |  |  | 3 |  |  | 1 |  |  |
 | gpu-a0-ready | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
@@ -190,6 +190,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-rowlen |  |  | 2 |  |  |  |  |  |  |
 | gpu-dma-rows |  |  | 2 |  |  |  |  |  |  |
 | gpu-dma-rows2 |  |  | 2 |  |  |  |  |  |  |
+| gpu-dma-rowx |  |  | 2 |  |  |  |  |  |  |
 | gpu-dma-size |  |  | 2 |  |  |  |  |  |  |
 | gpu-dmabs | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmabs2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
@@ -276,8 +277,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-shape-time51 | 2 | 6 | 6 | 1 | 6 | 1 | 1 | 2 |  |
 | gpu-shape-time52 | 2 | 6 | 6 | 1 | 6 | 1 | 1 | 2 |  |
 | gpu-shape-time53 | 2 |  | 6 | 1 | 6 | 1 | 1 | 2 |  |
-| gpu-shape-time54 | 2 | 6 | 2 | 1 | 6 | 1 | 1 | 2 |  |
-| gpu-shape-time55 | 2 | 6 | 2 | 1 | 6 | 1 | 1 | 2 |  |
+| gpu-shape-time54 | 2 | 6 | 6 | 1 | 6 | 1 | 1 | 2 |  |
+| gpu-shape-time55 | 2 | 6 | 6 | 1 | 6 | 1 | 1 | 2 |  |
 | gpu-shape-time56 | 2 | 1 | 2 | 1 | 6 | 1 | 1 | 2 |  |
 | gpu-shape-time57 | 2 | 1 | 2 | 1 | 2 | 1 | 1 | 2 |  |
 | gpu-shape-time58 | 2 | 1 | 2 | 1 | 6 | 1 | 1 | 2 |  |
