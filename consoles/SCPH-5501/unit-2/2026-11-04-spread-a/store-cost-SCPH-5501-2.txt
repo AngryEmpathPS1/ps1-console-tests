@@ -1,0 +1,46 @@
+
+cpu/store-cost
+Per-instruction cost above a nop, 100 iterations, baseline subtracted.
+There are no assertions - compare against your emulator.
+
+  baseline loop: 456 cycles for 100 iterations
+
+STORES to RAM (aligned word at storeBuf, offset = byte lane)
+  sw   +0           559 -    456 =    103 over 100  ->  1.03 cycles
+  swl  +0           560 -    456 =    104 over 100  ->  1.04 cycles
+  swl  +1           558 -    456 =    102 over 100  ->  1.02 cycles
+  swl  +2           559 -    456 =    103 over 100  ->  1.03 cycles
+  swl  +3           558 -    456 =    102 over 100  ->  1.02 cycles
+  swr  +0           559 -    456 =    103 over 100  ->  1.03 cycles
+  swr  +1           559 -    456 =    103 over 100  ->  1.03 cycles
+  swr  +2           557 -    456 =    101 over 100  ->  1.01 cycles
+  swr  +3           557 -    456 =    101 over 100  ->  1.01 cycles
+  sb   +0           563 -    456 =    107 over 100  ->  1.07 cycles
+  sh   +0           559 -    456 =    103 over 100  ->  1.03 cycles
+
+LOADS from RAM (access-time only ever loads ALIGNED)
+  lw   +0           965 -    456 =    509 over 100  ->  5.09 cycles
+  lwl  +0           961 -    456 =    505 over 100  ->  5.05 cycles
+  lwl  +1           961 -    456 =    505 over 100  ->  5.05 cycles
+  lwl  +2           961 -    456 =    505 over 100  ->  5.05 cycles
+  lwl  +3           961 -    456 =    505 over 100  ->  5.05 cycles
+  lwr  +0           961 -    456 =    505 over 100  ->  5.05 cycles
+  lwr  +1           961 -    456 =    505 over 100  ->  5.05 cycles
+  lwr  +2           961 -    456 =    505 over 100  ->  5.05 cycles
+  lwr  +3           961 -    456 =    505 over 100  ->  5.05 cycles
+
+IS THE READ REAL? the same full word, where a READ is expensive
+  (sw / swr+0 / swl+3 all write the same 4 bytes - a gap is the mechanism)
+  SPU  sw          1495 -    456 =   1039 over 100  ->  10.39 cycles
+  SPU  swr+0       1495 -    456 =   1039 over 100  ->  10.39 cycles
+  SPU  swl+3       1500 -    456 =   1044 over 100  ->  10.44 cycles
+  EXP2 sw          6248 -    456 =   5792 over 100  ->  57.92 cycles
+  EXP2 swr+0       6248 -    456 =   5792 over 100  ->  57.92 cycles
+  EXP2 swl+3       6248 -    456 =   5792 over 100  ->  57.92 cycles
+
+WRITE BUFFER: a store and a dependent load
+  sw;lw same       1474 -    456 =   1018 over 100  ->  10.18 cycles
+  sw;lw far        1478 -    456 =   1022 over 100  ->  10.22 cycles
+  sw;nop;lw        1477 -    456 =   1021 over 100  ->  10.21 cycles
+
+Done.
