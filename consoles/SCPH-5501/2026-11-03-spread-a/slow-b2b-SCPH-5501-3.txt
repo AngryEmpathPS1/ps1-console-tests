@@ -1,0 +1,21 @@
+
+cpu/slow-b2b
+A ROM load's back-to-back cost: a CPU stall, or a sub-bus recovery? (STATUS M230)
+Per-iteration cost above a loop of nops in the same slots, 100 iterations.
+There are no assertions - compare against your emulator.
+
+ROM LOADS (lbu from BFC00100h, above 8 nops)
+  lbu alone            1551 -   1364 =    187 over 100  ->  1.87 cycles
+  lbu;lbu              2258 -   1364 =    894 over 100  ->  8.94 cycles
+  lbu;nop;lbu          2347 -   1364 =    983 over 100  ->  9.83 cycles
+  lbu;2nop;lbu         2258 -   1364 =    894 over 100  ->  8.94 cycles
+  lbu;3nop;lbu         2150 -   1364 =    786 over 100  ->  7.86 cycles
+  lbu;4nop;lbu         2054 -   1364 =    690 over 100  ->  6.90 cycles
+
+THE QUESTION: a RAM store straight after (above 8 nops)
+  lbu;sb loaded        2154 -   1364 =    790 over 100  ->  7.90 cycles
+  lbu;sb other         2060 -   1364 =    696 over 100  ->  6.96 cycles
+  lbu;3alu;sb loaded   2051 -   1364 =    687 over 100  ->  6.87 cycles
+  sb other alone       1355 -   1364 =      0 over 100  ->  0.00 cycles
+
+Done.

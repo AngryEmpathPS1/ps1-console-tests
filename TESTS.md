@@ -514,6 +514,8 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | t1-count-edge | no | Timer 1 on hblank, its COUNTER written 0 at an exact T0 = s (t1-first-edge2's exact start), swept by one cycle across the line's tick at 320 and 256 wide, three passes; Timer 1 read before the next tick |
 | t1-count-edge2 | no | t1-count-edge at t1-first-edge2's four cases: 320 wide to C60h and to A60h (the display's end ~323 cycles earlier), 256 and 640 wide |
 | t0-dot-write | no | Timer 0 on the dot clock (320 and 256 wide), written 0, read k cached turns later (k 0..39, 64 probes each), Timer 2 around it; the counts binned by elapsed cycles: probes and mean |
+| t0-dot-write2 | no | t0-dot-write with each probe started at a pseudo-random cycle (0-31 cached nops), so every dot phase is met alike on any machine |
+| t0-dot-modewrite | no | t0-dot-write2 with Timer 0's MODE written (0100h, zeroing the counter) in place of its counter |
 | mdec-reset-grid | no | the reset at word 0-3 of a line, 0-10 nops, the enables; cold and warm; kept of 4 per cell |
 | mdec-reset-grid2 | no | mdec-reset-grid with a RAM store (the stack) just ahead of the reset, as mdecReset has |
 | mdec-reset-grid3 | no | mdec-reset-grid2's cells with the fastest call's cycles and MDEC1 read at once after the call |

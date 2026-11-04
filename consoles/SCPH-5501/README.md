@@ -190,6 +190,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-03-gdr2](2026-11-03-gdr2/) | 5 | 1 |
 | [2026-11-03-gdr3](2026-11-03-gdr3/) | 5 | 1 |
 | [2026-11-03-gds](2026-11-03-gds/) | 5 | 1 |
+| [2026-11-03-mdecorder-after](2026-11-03-mdecorder-after/) | 5 | 2 |
+| [2026-11-03-mdecorder-alone](2026-11-03-mdecorder-alone/) | 4 | 1 |
 | [2026-11-03-owed](2026-11-03-owed/) | 8 | 4 |
 | [2026-11-03-reset-align](2026-11-03-reset-align/) | 5 | 1 |
 | [2026-11-03-reset-grid](2026-11-03-reset-grid/) | 5 | 1 |
@@ -217,6 +219,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-03-rowend](2026-11-03-rowend/) | 6 | 1 |
 | [2026-11-03-rowlen](2026-11-03-rowlen/) | 6 | 1 |
 | [2026-11-03-rsio8](2026-11-03-rsio8/) | 5 | 1 |
+| [2026-11-03-spread-a](2026-11-03-spread-a/) | 135 | 44 |
 | [2026-11-03-t0dot](2026-11-03-t0dot/) | 8 | 1 |
+| [2026-11-03-t0dot2](2026-11-03-t0dot2/) | 12 | 2 |
 | [2026-11-03-t1count](2026-11-03-t1count/) | 7 | 1 |
 | [2026-11-03-t1count2](2026-11-03-t1count2/) | 7 | 1 |
