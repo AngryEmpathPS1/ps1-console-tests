@@ -251,7 +251,9 @@ async function startRunner(link, beforeExe = null) {
 
 /* The line a program ends on, where it is not "Done." (tools/consolerun.js END: cdrom/timing's source ends in a loop
  * after its fifth double-speed row, getloc prints "Test passed" or "Test failed"), and whether it uses SIO1 itself. */
-const END_LINE = { timing: { text: 'double-speed timing:', count: 5 }, getloc: { text: 'Test ', count: 1 } };
+// redux-spu (PCSX-Redux's spu test, 2026-11-04): libcester paints its lines, so its verdict line starts with two colour codes; it
+// never returns from main and prints no Done, so the runner ends it there
+const END_LINE = { timing: { text: 'double-speed timing:', count: 5 }, getloc: { text: 'Test ', count: 1 }, 'redux-spu': { text: '[0m[37mSynthesis:', count: 1 } };
 /*
  * THE TESTS STARTED ON THE SPU's CLOCK ('U', runner v3; tools/consolerun.js and tools/consolegrade.js both read this):
  * every hwtests program whose source touches the SPU's registers for its sound or its transfers, and ps1-tests'

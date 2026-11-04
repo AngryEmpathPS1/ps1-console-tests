@@ -111,6 +111,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-04-ifetch](2026-11-04-ifetch/) | 6 | 1 |
 | [2026-11-04-llend](2026-11-04-llend/) | 6 | 1 |
 | [2026-11-04-llstart](2026-11-04-llstart/) | 6 | 1 |
+| [2026-11-04-reduxspu](2026-11-04-reduxspu/) | 6 | 1 |
 | [2026-11-04-rowlen2](2026-11-04-rowlen2/) | 6 | 1 |
 | [2026-11-04-rowx](2026-11-04-rowx/) | 6 | 1 |
 | [2026-11-04-slowcheck](2026-11-04-slowcheck/) | 7 | 2 |
