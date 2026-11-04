@@ -89,6 +89,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-04-a0mode-again](2026-11-04-a0mode-again/) | 4 | 1 |
 | [2026-11-04-a0phase](2026-11-04-a0phase/) | 6 | 1 |
 | [2026-11-04-a0poll](2026-11-04-a0poll/) | 6 | 1 |
+| [2026-11-04-a0poll10](2026-11-04-a0poll10/) | 6 | 1 |
+| [2026-11-04-a0poll11](2026-11-04-a0poll11/) | 6 | 1 |
 | [2026-11-04-a0poll2](2026-11-04-a0poll2/) | 6 | 1 |
 | [2026-11-04-a0poll3](2026-11-04-a0poll3/) | 6 | 1 |
 | [2026-11-04-a0poll4](2026-11-04-a0poll4/) | 6 | 1 |

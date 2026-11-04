@@ -170,6 +170,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-a0pace | 4 |  | 1 | 3 |  |  |  |  |  |
 | gpu-a0phase |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0poll |  |  |  | 3 |  |  |  |  |  |
+| gpu-a0poll10 |  |  |  | 3 |  |  |  |  |  |
+| gpu-a0poll11 |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0poll2 |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0poll3 |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0poll4 |  |  |  | 3 |  |  |  |  |  |
