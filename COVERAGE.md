@@ -206,6 +206,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-gaps2 |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-gaps3 |  |  |  | 3 |  |  |  |  |  |
 | gpu-dma-hold |  |  |  | 3 |  |  |  |  |  |
+| gpu-dma-ifetch |  |  |  | 3 |  |  |  |  |  |
 | gpu-dma-knee |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-pair |  |  |  | 3 |  |  |  |  |  |
 | gpu-dma-progress |  |  |  | 2 |  |  |  |  |  |

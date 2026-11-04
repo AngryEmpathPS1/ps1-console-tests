@@ -108,6 +108,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-04-gaps2](2026-11-04-gaps2/) | 6 | 1 |
 | [2026-11-04-gaps3](2026-11-04-gaps3/) | 6 | 1 |
 | [2026-11-04-gp0overrun](2026-11-04-gp0overrun/) | 6 | 1 |
+| [2026-11-04-ifetch](2026-11-04-ifetch/) | 6 | 1 |
 | [2026-11-04-llend](2026-11-04-llend/) | 6 | 1 |
 | [2026-11-04-llstart](2026-11-04-llstart/) | 6 | 1 |
 | [2026-11-04-rowlen2](2026-11-04-rowlen2/) | 6 | 1 |
