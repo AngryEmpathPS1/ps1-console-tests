@@ -1,0 +1,24 @@
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-dma-rowend
+SyncMode 1 GPU DMA uploads whose rows end with a block, against rows a word shorter and longer, timed QUIET. No assertions.
+
+  B    R    W     N blocks  rows  ends    quiet done: fewest     mean   most   a block   poll fewest   lost
+  4    4    8  2000    500   500   500              7519   7526.6   7531    15.05          7520      0
+  4    8   16  2000    500   250   250              7495   7504.3   7515    15.00          7497      0
+  4    3    6  1524    381   508   127              5720   5723.4   5733    15.02          5728      0
+  4    5   10  2000    500   400   100              7302   7316.3   7338    14.63          7311      0
+ 16   16   32  2000    125   125   125              3475   3494.5   3515    27.95          3478      0
+ 16   32   64  2016    126    63    63              3431   3443.7   3465    27.33          3450      0
+ 16   15   30  2160    135   144     9              3739   3765.4   3785    27.89          3794      0
+ 16   17   34  2176    136   128     8              3751   3801.1   3811    27.94          3832      0
+ 64   64  128  2048     32    32    32              2418   2467.5   2534    77.10          2486      0
+ 64  128  256  2048     32    16    16              2428   2472.6   2523    77.27          2489      0
+ 64   63  126  4032     63    64     1              4854   4903.2   4980    77.82          5009      0
+ 64   65  130  4160     65    64     1              5007   5061.2   5142    77.86          5148      0
+
+gpu/gpu-dma-rowend: Done.

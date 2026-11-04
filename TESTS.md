@@ -509,6 +509,7 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | gpu-dma-rows | no | 2,048 words by SyncMode 1 GPU DMA into rectangles 32, 64, 128 and 256 pixels wide at blocks of 16, 24, 32 and 48, 16 tries each at hblank-locked offsets, timed by a CHCR2 poll: fewest, mean, most |
 | gpu-dma-progress2 | no | gpu-dma-progress's probe (CHCR2's store, a cached spin growing 16 cycles a probe, then Timer 2 and BCR2) for 2,048 words into a rectangle 32 wide and one 256 wide, at blocks of 16 and 32, started 40 cycles after an hblank: cycles:blocks done per probe |
 | gpu-dma-rows2 | no | gpu-dma-rows' sixteen cells timed both ways: its CHCR2 poll, and QUIET (gpu-dma-quiet's cached wait with no bus access, then one CHCR2 read, scanned in 4-cycle steps from 400 under the poll's fewest to the first done) |
+| gpu-dma-rowend | no | SyncMode 1 GPU DMA uploads at blocks of 4, 16 and 64 into rectangles whose rows are B and 2B words (every row ends with a block) and B - 1, B + 1 (the row end moves through the blocks), N words a multiple of both, timed QUIET (gpu-dma-rows2's method), 16 tries each |
 | mdec-reset-grid | no | the reset at word 0-3 of a line, 0-10 nops, the enables; cold and warm; kept of 4 per cell |
 | mdec-reset-grid2 | no | mdec-reset-grid with a RAM store (the stack) just ahead of the reset, as mdecReset has |
 | mdec-reset-grid3 | no | mdec-reset-grid2's cells with the fastest call's cycles and MDEC1 read at once after the call |
