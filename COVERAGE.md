@@ -536,6 +536,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | sw-ioread3 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | sw-ioread4 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | sw-sample | 2 | 1 | 3 | 1 | 2 | 6 | 1 | 2 |  |
+| t0-dot-write |  |  | 3 |  |  |  |  |  |  |
+| t1-count-edge |  |  | 3 |  |  |  |  |  |  |
+| t1-count-edge2 |  |  | 3 |  |  |  |  |  |  |
 | t1-edges | 1 | 7 | 1 | 1 | 6 | 2 | 1 | 2 | 2 |
 | t1-first-edge | 1 | 1 | 1 | 1 |  | 3 | 1 | 1 |  |
 | t1-first-edge2 | 1 | 3 | 1 | 1 |  | 3 | 1 | 1 |  |

@@ -217,3 +217,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-03-rowend](2026-11-03-rowend/) | 6 | 1 |
 | [2026-11-03-rowlen](2026-11-03-rowlen/) | 6 | 1 |
 | [2026-11-03-rsio8](2026-11-03-rsio8/) | 5 | 1 |
+| [2026-11-03-t0dot](2026-11-03-t0dot/) | 8 | 1 |
+| [2026-11-03-t1count](2026-11-03-t1count/) | 7 | 1 |
+| [2026-11-03-t1count2](2026-11-03-t1count2/) | 7 | 1 |

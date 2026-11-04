@@ -511,6 +511,9 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | gpu-dma-rows2 | no | gpu-dma-rows' sixteen cells timed both ways: its CHCR2 poll, and QUIET (gpu-dma-quiet's cached wait with no bus access, then one CHCR2 read, scanned in 4-cycle steps from 400 under the poll's fewest to the first done) |
 | gpu-dma-rowend | no | SyncMode 1 GPU DMA uploads at blocks of 4, 16 and 64 into rectangles whose rows are B and 2B words (every row ends with a block) and B - 1, B + 1 (the row end moves through the blocks), N words a multiple of both, timed QUIET (gpu-dma-rows2's method), 16 tries each |
 | gpu-dma-rowlen | no | gpu-dma-rowend's quiet-timed SyncMode 1 uploads swept by row length: blocks of 4 into rows of 2-16 and 32 words, blocks of 16 into rows of 8, 12 ... 32 and 48 |
+| t1-count-edge | no | Timer 1 on hblank, its COUNTER written 0 at an exact T0 = s (t1-first-edge2's exact start), swept by one cycle across the line's tick at 320 and 256 wide, three passes; Timer 1 read before the next tick |
+| t1-count-edge2 | no | t1-count-edge at t1-first-edge2's four cases: 320 wide to C60h and to A60h (the display's end ~323 cycles earlier), 256 and 640 wide |
+| t0-dot-write | no | Timer 0 on the dot clock (320 and 256 wide), written 0, read k cached turns later (k 0..39, 64 probes each), Timer 2 around it; the counts binned by elapsed cycles: probes and mean |
 | mdec-reset-grid | no | the reset at word 0-3 of a line, 0-10 nops, the enables; cold and warm; kept of 4 per cell |
 | mdec-reset-grid2 | no | mdec-reset-grid with a RAM store (the stack) just ahead of the reset, as mdecReset has |
 | mdec-reset-grid3 | no | mdec-reset-grid2's cells with the fastest call's cycles and MDEC1 read at once after the call |
