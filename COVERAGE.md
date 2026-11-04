@@ -171,6 +171,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-a0phase |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0poll |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0poll2 |  |  |  | 3 |  |  |  |  |  |
+| gpu-a0poll3 |  |  |  | 3 |  |  |  |  |  |
+| gpu-a0poll4 |  |  |  | 3 |  |  |  |  |  |
+| gpu-a0poll5 |  |  |  | 3 |  |  |  |  |  |
+| gpu-a0poll6 |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0rate | 2 |  |  | 1 |  |  |  |  |  |
 | gpu-a0rate2 | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-a0row | 4 |  |  | 8 |  |  |  |  |  |
@@ -197,6 +201,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-gaps |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-gaps2 |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-gaps3 |  |  |  | 3 |  |  |  |  |  |
+| gpu-dma-hold |  |  |  | 3 |  |  |  |  |  |
 | gpu-dma-knee |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-pair |  |  |  | 3 |  |  |  |  |  |
 | gpu-dma-progress |  |  |  | 2 |  |  |  |  |  |
