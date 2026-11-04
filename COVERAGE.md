@@ -159,15 +159,18 @@ How many logs each test has on each console. Generated from the file names in `c
 | gp1-reset | 2 |  |  | 3 |  |  | 1 |  |  |
 | gpu-a0-ready | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu-a0-size | 1 | 7 | 7 | 1 | 6 | 6 | 1 | 4 | 2 |
+| gpu-a0after |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0blk |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0blk2 |  |  |  | 3 |  |  |  |  |  |
-| gpu-a0blk3 |  |  |  | 3 |  |  |  |  |  |
+| gpu-a0blk3 |  |  |  | 5 |  |  |  |  |  |
 | gpu-a0chop |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0fill |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0lsf |  |  |  | 3 |  |  |  |  |  |
-| gpu-a0mode |  |  |  | 4 |  |  |  |  |  |
+| gpu-a0mode |  |  |  | 6 |  |  |  |  |  |
 | gpu-a0pace | 4 |  | 1 | 3 |  |  |  |  |  |
 | gpu-a0phase |  |  |  | 3 |  |  |  |  |  |
+| gpu-a0poll |  |  |  | 3 |  |  |  |  |  |
+| gpu-a0poll2 |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0rate | 2 |  |  | 1 |  |  |  |  |  |
 | gpu-a0rate2 | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-a0row | 4 |  |  | 8 |  |  |  |  |  |
@@ -195,6 +198,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-gaps2 |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-gaps3 |  |  |  | 3 |  |  |  |  |  |
 | gpu-dma-knee |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-pair |  |  |  | 3 |  |  |  |  |  |
 | gpu-dma-progress |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-progress2 |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-quiet |  |  |  | 2 |  |  |  |  |  |

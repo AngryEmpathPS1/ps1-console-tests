@@ -78,6 +78,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-03-t0dot2](2026-11-03-t0dot2/) | 12 | 2 |
 | [2026-11-03-t1count](2026-11-03-t1count/) | 7 | 1 |
 | [2026-11-03-t1count2](2026-11-03-t1count2/) | 7 | 1 |
+| [2026-11-04-a0after](2026-11-04-a0after/) | 6 | 1 |
 | [2026-11-04-a0blk](2026-11-04-a0blk/) | 6 | 1 |
 | [2026-11-04-a0blk2](2026-11-04-a0blk2/) | 6 | 1 |
 | [2026-11-04-a0blk3](2026-11-04-a0blk3/) | 6 | 1 |
@@ -87,9 +88,12 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-04-a0mode](2026-11-04-a0mode/) | 6 | 1 |
 | [2026-11-04-a0mode-again](2026-11-04-a0mode-again/) | 4 | 1 |
 | [2026-11-04-a0phase](2026-11-04-a0phase/) | 6 | 1 |
+| [2026-11-04-a0poll](2026-11-04-a0poll/) | 6 | 1 |
+| [2026-11-04-a0poll2](2026-11-04-a0poll2/) | 6 | 1 |
 | [2026-11-04-a0row](2026-11-04-a0row/) | 5 | 1 |
 | [2026-11-04-a0rowdisp](2026-11-04-a0rowdisp/) | 6 | 1 |
 | [2026-11-04-a0vph](2026-11-04-a0vph/) | 6 | 1 |
+| [2026-11-04-dmapair](2026-11-04-dmapair/) | 6 | 1 |
 | [2026-11-04-fitset](2026-11-04-fitset/) | 9 | 2 |
 | [2026-11-04-gaps](2026-11-04-gaps/) | 6 | 1 |
 | [2026-11-04-gaps2](2026-11-04-gaps2/) | 6 | 1 |
@@ -99,6 +103,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-04-llstart](2026-11-04-llstart/) | 6 | 1 |
 | [2026-11-04-rowlen2](2026-11-04-rowlen2/) | 6 | 1 |
 | [2026-11-04-rowx](2026-11-04-rowx/) | 6 | 1 |
+| [2026-11-04-slowcheck](2026-11-04-slowcheck/) | 7 | 2 |
 | [2026-11-04-spread-a](2026-11-04-spread-a/) | 87 | 42 |
 | [2026-11-04-spread-a2](2026-11-04-spread-a2/) | 4 | 1 |
 | [2026-11-04-spread-g](2026-11-04-spread-g/) | 15 | 3 |
