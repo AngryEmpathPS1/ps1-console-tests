@@ -3,7 +3,7 @@
  * mdec-reset's first row makes (2026-11-03, for the SCPH-5501).
  *
  * WHY. mdec-reset's N 0 is lost in every runner log (30 of 30) and kept in the three from before the runner (Unirom); on the
- * SCPH-5501, 2026-11-03 (console-logs/2026-11-03-SCPH-5501-reset-sweep), the unmodified binary loses it at locked starts of
+ * SCPH-5501, 2026-11-03 (console-logs/2026-11-03-SCPH-5501-u2-reset-sweep), the unmodified binary loses it at locked starts of
  * video 24000, 24256, 25000 and 34000 and keeps it at 24064, 24128 and 24192: offsets 0, 16 and 232 of the 256-cycle refresh
  * lose, 64, 128 and 192 keep. So it is the refresh. mdec-reset9 swept the refresh for a WARM call (4,096 calls, 0 lost); the
  * first row's two calls are the program's first, the first cold. This sweeps the refresh for a cold call, and for the pair.
