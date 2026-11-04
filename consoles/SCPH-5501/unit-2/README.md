@@ -92,6 +92,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-04-fitset](2026-11-04-fitset/) | 9 | 2 |
 | [2026-11-04-gaps](2026-11-04-gaps/) | 6 | 1 |
 | [2026-11-04-gaps2](2026-11-04-gaps2/) | 6 | 1 |
+| [2026-11-04-gp0overrun](2026-11-04-gp0overrun/) | 6 | 1 |
 | [2026-11-04-rowx](2026-11-04-rowx/) | 6 | 1 |
 | [2026-11-04-spread-a](2026-11-04-spread-a/) | 87 | 42 |
 | [2026-11-04-spread-a2](2026-11-04-spread-a2/) | 4 | 1 |

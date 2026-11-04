@@ -153,7 +153,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gp0-bit25 | 2 |  |  | 3 |  |  | 1 |  |  |
 | gp0-bit25b | 2 |  |  | 3 |  |  | 1 |  |  |
 | gp0-bit25c | 2 |  |  | 3 |  |  | 1 |  |  |
-| gp0-overrun | 2 |  |  | 3 |  |  | 1 |  |  |
+| gp0-overrun | 2 |  |  | 6 |  |  | 1 |  |  |
 | gp0-poll | 2 | 7 | 2 | 5 | 6 | 2 | 1 | 2 |  |
 | gp0-store | 2 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |
 | gp1-reset | 2 |  |  | 3 |  |  | 1 |  |  |
