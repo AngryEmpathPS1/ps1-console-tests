@@ -163,6 +163,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-a0blk2 |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0blk3 |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0chop |  |  |  | 3 |  |  |  |  |  |
+| gpu-a0fill |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0lsf |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0mode |  |  |  | 4 |  |  |  |  |  |
 | gpu-a0pace | 4 |  | 1 | 3 |  |  |  |  |  |

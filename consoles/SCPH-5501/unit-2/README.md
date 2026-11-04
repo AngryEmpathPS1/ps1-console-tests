@@ -82,6 +82,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-04-a0blk2](2026-11-04-a0blk2/) | 6 | 1 |
 | [2026-11-04-a0blk3](2026-11-04-a0blk3/) | 6 | 1 |
 | [2026-11-04-a0chop](2026-11-04-a0chop/) | 6 | 1 |
+| [2026-11-04-a0fill](2026-11-04-a0fill/) | 6 | 1 |
 | [2026-11-04-a0lsf](2026-11-04-a0lsf/) | 6 | 1 |
 | [2026-11-04-a0mode](2026-11-04-a0mode/) | 6 | 1 |
 | [2026-11-04-a0mode-again](2026-11-04-a0mode-again/) | 4 | 1 |
