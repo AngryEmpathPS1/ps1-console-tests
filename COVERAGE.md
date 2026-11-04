@@ -187,6 +187,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-quiet |  |  | 2 |  |  |  |  |  |  |
 | gpu-dma-refresh |  |  | 2 |  |  |  |  |  |  |
 | gpu-dma-rowend |  |  | 2 |  |  |  |  |  |  |
+| gpu-dma-rowlen |  |  | 2 |  |  |  |  |  |  |
 | gpu-dma-rows |  |  | 2 |  |  |  |  |  |  |
 | gpu-dma-rows2 |  |  | 2 |  |  |  |  |  |  |
 | gpu-dma-size |  |  | 2 |  |  |  |  |  |  |

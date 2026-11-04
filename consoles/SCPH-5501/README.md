@@ -215,4 +215,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-03-reset22](2026-11-03-reset22/) | 5 | 1 |
 | [2026-11-03-reset22-firstbuild](2026-11-03-reset22-firstbuild/) | 5 | 1 |
 | [2026-11-03-rowend](2026-11-03-rowend/) | 6 | 1 |
+| [2026-11-03-rowlen](2026-11-03-rowlen/) | 6 | 1 |
 | [2026-11-03-rsio8](2026-11-03-rsio8/) | 5 | 1 |
