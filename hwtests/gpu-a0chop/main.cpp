@@ -10,8 +10,8 @@
  * a refill lets through at each rate is the intake's room and the refill's length (STATUS "The bursts' fitting set ran in another
  * display mode"). And the emulator moved a chopped transfer's words at once, as one burst - this says what a chopped one loses.
  *
- * WHAT IT DOES. Interrupts off, no disc, Timer 2 at the system clock, Timer 1 counting hblanks. The display set to what the runner
- * gives (512x240 NTSC 15-bit, the reset's ranges), so a run anywhere has the same refills. Word i's two pixels are i + 1 (0 is what
+ * WHAT IT DOES. Interrupts off, no disc, Timer 2 at the system clock, Timer 1 counting hblanks. The display set to 320x240 NTSC 15-bit
+ * (GP1(08h) 01h, the reset's ranges; meant as the runner's 512x240, which is 02h), so a run anywhere has the same refills, two a line. Word i's two pixels are i + 1 (0 is what
  * the zeros fed after it read as), 1,024 words by DMA2 into GP0(A0h) at (0,256), 1,024 wide (two rows of 512). Each transfer waits
  * for vblank (I_STAT bit 0, polled), 40 hblanks, the next hblank edge, then `phase` cycles (0 or 1,080) before CHCR2's store. Kinds:
  * the burst (CHCR 11000001h); chopped, DMA windows 1, 4, 16, 32, 64 words by CPU windows 1, 4, 16, 64 cycles (11000101h | n << 16
@@ -113,7 +113,7 @@ int main() {
     write32(DPCR, read32(DPCR) | 0x00000800u);
     write32(GP1, 0x06000000u | (0xC00u << 12) | 0x200u);   /* the reset's ranges, as the runner leaves them */
     write32(GP1, 0x07000000u | (0x100u << 10) | 0x010u);
-    write32(GP1, 0x08000001u);                              /* 512x240, NTSC, 15-bit: Unirom's, the runner's */
+    write32(GP1, 0x08000001u);                              /* 320x240, NTSC, 15-bit (the runner's 512x240 would be 02h) */
     write32(GP0, 0xE1000400u); write32(GP0, 0xE2000000u); write32(GP0, 0xE3000000u);
     write32(GP0, 0xE4000000u | (511u << 10) | 1023u); write32(GP0, 0xE5000000u); write32(GP0, 0xE6000000u);
     static const uint32_t PH[2] = { 0, 1080 };

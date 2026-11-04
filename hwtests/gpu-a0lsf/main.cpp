@@ -2,16 +2,15 @@
  * gpu/gpu-a0lsf - the scan-out's line-start fetch as GPU transfer words meet it: which words a transfer loses there and which the
  * GPU reads twice, at five rates, from 14 places before it (2026-11-04, for the SCPH-5501).
  *
- * WHY. hwtests/gpu-a0chop on the second SCPH-5501: at the line-start fetch (~160-240 cycles past an hblank edge in the runner's
- * 512x240) chopped transfers lose by their rate - 16-word DMA windows nothing with 4-cycle CPU windows and 13-16 read twice with
+ * WHY. hwtests/gpu-a0chop on the second SCPH-5501: at the line-start fetch (~160-240 cycles past an hblank edge, in its 320x240) chopped transfers lose by their rate - 16-word DMA windows nothing with 4-cycle CPU windows and 13-16 read twice with
  * one, 32-word windows one wrap of the ring, a burst two - which fits an intake that goes on at ~0.47 words a cycle through ~130
  * cycles, and this emulator loses 32-40 at 16- and 32-word windows (STATUS v0.377.268). Totals say how much; the lost and repeated
  * words' places say when: where the intake stops, how long, and what it takes inside.
  *
- * WHAT IT DOES. Interrupts off, no disc, Timer 2 at the system clock, Timer 1 counting hblanks; the display the runner's (512x240
- * NTSC 15-bit, the reset's ranges). Word i's pixels are i + 1. 384 words by DMA2 into GP0(A0h) at (0,256), 768 wide (one row: no
- * row change), each started 1,760 + 30 k cycles (k = 0..13) past the 40th hblank edge below vblank - just after the line's last
- * refill, so the next line's start fetch is the first thing it meets. Kinds: a burst; chopped SyncMode 0 at 16 words / 1 cycle,
+ * WHAT IT DOES. Interrupts off, no disc, Timer 2 at the system clock, Timer 1 counting hblanks; the display 320x240 (GP1(08h)
+ * 01h, NTSC 15-bit, the reset's ranges, as gpu-a0chop). Word i's pixels are i + 1. 384 words by DMA2 into GP0(A0h) at (0,256), 768 wide (one row: no
+ * row change), each started 1,760 + 30 k cycles (k = 0..13) past the 40th hblank edge below vblank - around the line's second
+ * refill (~1,830 past the edge at 320 wide), then the next line's start fetch. Kinds: a burst; chopped SyncMode 0 at 16 words / 1 cycle,
  * 16 / 2, 32 / 4, 32 / 16, 64 / 16; SyncMode 1 blocks of 32. Twice each. Then 3,000 cycles, zeros until GPUSTAT bit 26, the
  * rectangle read back through GP0(C0h).
  *
