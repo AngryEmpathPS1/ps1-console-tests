@@ -1,0 +1,46 @@
+
+gpu/gpu-a0stall
+S kind o rep steps total base | step@t:time (one 512-word row by the CPU from o cycles past the 40th hblank edge; A a word a step, B four; a step = the words' stores and GPUSTAT read until bit 28; listed: steps over base + 12). No assertions.
+
+S A 0 0 512 29286 57 | 0@0:109
+S A 0 1 512 29234 57 |
+S A 5 0 512 29240 57 |
+S A 5 1 512 29240 57 |
+S A 10 0 512 29240 57 |
+S A 10 1 512 29235 57 |
+S A 15 0 512 29237 57 |
+S A 15 1 512 29234 57 |
+S A 20 0 512 29240 57 |
+S A 20 1 512 29240 57 |
+S A 25 0 512 29237 57 |
+S A 25 1 512 29240 57 |
+S A 30 0 512 29240 57 |
+S A 30 1 512 29240 57 |
+S A 35 0 512 29240 57 |
+S A 35 1 512 29236 57 |
+S A 40 0 512 29240 57 |
+S A 40 1 512 29234 57 |
+S A 45 0 512 29240 57 |
+S A 45 1 512 29239 57 |
+S B 0 0 128 9664 75 | 0@0:97
+S B 0 1 128 9635 75 |
+S B 5 0 128 9644 75 |
+S B 5 1 128 9641 75 |
+S B 10 0 128 9649 75 |
+S B 10 1 128 9639 75 |
+S B 15 0 128 9640 75 |
+S B 15 1 128 9635 75 |
+S B 20 0 128 9642 75 |
+S B 20 1 128 9649 75 |
+S B 25 0 128 9647 75 |
+S B 25 1 128 9640 75 |
+S B 30 0 128 9641 75 |
+S B 30 1 128 9646 75 |
+S B 35 0 128 9640 75 |
+S B 35 1 128 9642 75 |
+S B 40 0 128 9640 75 |
+S B 40 1 128 9635 75 |
+S B 45 0 128 9635 75 |
+S B 45 1 128 9636 75 |
+
+gpu/gpu-a0stall: Done.
