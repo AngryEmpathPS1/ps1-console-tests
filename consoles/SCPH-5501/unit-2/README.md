@@ -124,6 +124,9 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-04-spuenvxd](2026-11-04-spuenvxd/) | 9 | 3 |
 | [2026-11-04-spuenvxd2](2026-11-04-spuenvxd2/) | 12 | 9 |
 | [2026-11-05-burstline](2026-11-05-burstline/) | 6 | 1 |
+| [2026-11-05-burstq](2026-11-05-burstq/) | 5 | 1 |
+| [2026-11-05-burstq2](2026-11-05-burstq2/) | 5 | 1 |
+| [2026-11-05-burstq3](2026-11-05-burstq3/) | 5 | 1 |
 | [2026-11-05-dmaread](2026-11-05-dmaread/) | 6 | 1 |
 | [2026-11-05-dmaread2](2026-11-05-dmaread2/) | 5 | 1 |
 | [2026-11-05-fuzzdma](2026-11-05-fuzzdma/) | 5 | 1 |

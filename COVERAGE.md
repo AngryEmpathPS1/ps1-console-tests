@@ -189,6 +189,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-batch2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-batch3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-burstline |  |  |  | 3 |  |  |  |  |  |
+| gpu-burstq |  |  |  | 2 |  |  |  |  |  |
+| gpu-burstq2 |  |  |  | 2 |  |  |  |  |  |
+| gpu-burstq3 |  |  |  | 2 |  |  |  |  |  |
 | gpu-c0-cold | 3 | 7 | 6 | 1 | 6 | 5 | 1 | 3 | 2 |
 | gpu-c0-cold2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | gpu-c0-datel | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
