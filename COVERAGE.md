@@ -496,6 +496,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | ram-store-io8 |  |  |  | 2 |  |  |  |  |  |
 | redux-spu |  |  |  | 3 |  |  |  |  |  |
 | redux-spuenvx |  |  |  | 3 |  |  |  |  |  |
+| redux-spuenvxd24 |  |  |  | 2 |  |  |  |  |  |
+| redux-spuenvxd48 |  |  |  | 2 |  |  |  |  |  |
+| redux-spuenvxd8 |  |  |  | 2 |  |  |  |  |  |
 | refresh-cold | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | refresh-io | 3 | 7 | 3 | 6 | 6 | 5 | 1 | 3 | 2 |
 | refresh-io2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |

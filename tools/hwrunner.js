@@ -254,7 +254,8 @@ async function startRunner(link, beforeExe = null) {
 // redux-spu (PCSX-Redux's spu test, 2026-11-04): libcester paints its lines, so its verdict line starts with two colour codes; it
 // never returns from main and prints no Done, so the runner ends it there
 const END_LINE = { timing: { text: 'double-speed timing:', count: 5 }, getloc: { text: 'Test ', count: 1 }, 'redux-spu': { text: '[0m[37mSynthesis:', count: 1 },
-  'redux-spuenvx': { text: '[0m[37mSynthesis:', count: 1 } };   // redux-spu's ADSR tests alone, each trace printed (experiments/mkspuenvx.js)
+  'redux-spuenvx': { text: '[0m[37mSynthesis:', count: 1 },
+  'redux-spuenvxd8': { text: '[0m[37mSynthesis:', count: 1 }, 'redux-spuenvxd24': { text: '[0m[37mSynthesis:', count: 1 }, 'redux-spuenvxd48': { text: '[0m[37mSynthesis:', count: 1 } };   // the same, its reads delayed after each bit-11 flip   // redux-spu's ADSR tests alone, each trace printed (experiments/mkspuenvx.js)
 /*
  * THE TESTS STARTED ON THE SPU's CLOCK ('U', runner v3; tools/consolerun.js and tools/consolegrade.js both read this):
  * every hwtests program whose source touches the SPU's registers for its sound or its transfers, and ps1-tests'
