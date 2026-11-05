@@ -144,7 +144,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | fourth-try-stop-polled |  |  | 1 |  |  |  |  |  |  |
 | fuzz-bus | 2 |  | 2 |  |  |  |  |  |  |
 | fuzz-cpu | 3 |  | 3 |  |  |  | 3 |  |  |
-| fuzz-dma | 2 |  | 3 |  |  |  |  |  |  |
+| fuzz-dma | 2 |  | 3 | 2 |  |  |  |  |  |
 | fuzz-gpu | 1 |  | 3 |  |  |  |  |  |  |
 | fuzz-gte | 1 |  | 1 |  |  |  |  |  |  |
 | fuzz-mdec | 1 |  | 8 |  |  |  |  |  |  |
@@ -188,6 +188,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-batch | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-batch2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-batch3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
+| gpu-burstline |  |  |  | 3 |  |  |  |  |  |
 | gpu-c0-cold | 3 | 7 | 6 | 1 | 6 | 5 | 1 | 3 | 2 |
 | gpu-c0-cold2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | gpu-c0-datel | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
