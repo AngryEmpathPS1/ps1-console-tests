@@ -210,6 +210,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-gaps | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-gaps2 | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-gaps3 | 2 |  |  | 3 |  |  |  |  |  |
+| gpu-dma-gapsd | 2 |  |  |  |  |  |  |  |  |
 | gpu-dma-hold | 2 |  |  | 3 |  |  |  |  |  |
 | gpu-dma-ifetch | 2 |  |  | 3 |  |  |  |  |  |
 | gpu-dma-iorun | 2 |  |  | 2 |  |  |  |  |  |
@@ -220,6 +221,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-progress2 | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-quiet | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-refresh | 2 |  |  | 2 |  |  |  |  |  |
+| gpu-dma-rfpace | 2 |  |  |  |  |  |  |  |  |
 | gpu-dma-rowend | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-rowlen | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-rowlen2 | 2 |  |  | 3 |  |  |  |  |  |

@@ -47,3 +47,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-03-a0rate](2026-11-03-a0rate/) | 5 | 1 |
 | [2026-11-03-a0rate2](2026-11-03-a0rate2/) | 5 | 1 |
 | [2026-11-05-owed](2026-11-05-owed/) | 207 | 102 |
+| [2026-11-05-rfpace](2026-11-05-rfpace/) | 7 | 2 |
