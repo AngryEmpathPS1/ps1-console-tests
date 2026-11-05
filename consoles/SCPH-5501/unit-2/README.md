@@ -132,6 +132,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-05-dmaread2](2026-11-05-dmaread2/) | 5 | 1 |
 | [2026-11-05-fuzzdma](2026-11-05-fuzzdma/) | 5 | 1 |
 | [2026-11-05-iorun](2026-11-05-iorun/) | 5 | 1 |
+| [2026-11-05-lasttie](2026-11-05-lasttie/) | 5 | 1 |
 | [2026-11-05-owed4](2026-11-05-owed4/) | 15 | 4 |
 | [2026-11-05-pace](2026-11-05-pace/) | 5 | 1 |
 | [2026-11-05-span](2026-11-05-span/) | 5 | 1 |

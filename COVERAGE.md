@@ -217,6 +217,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-ifetch | 2 |  |  | 3 |  |  |  |  |  |
 | gpu-dma-iorun | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-knee | 2 |  |  | 2 |  |  |  |  |  |
+| gpu-dma-lasttie |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-pace | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-pair | 2 |  |  | 3 |  |  |  |  |  |
 | gpu-dma-progress | 2 |  |  | 2 |  |  |  |  |  |
