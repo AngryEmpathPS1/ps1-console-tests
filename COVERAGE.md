@@ -228,6 +228,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-rowx |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-size |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-span |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-storun |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-turn |  |  |  | 2 |  |  |  |  |  |
 | gpu-dmabs | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
 | gpu-dmabs2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 2 |  |
