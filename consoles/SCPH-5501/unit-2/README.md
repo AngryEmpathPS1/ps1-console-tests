@@ -134,7 +134,13 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-05-iorun](2026-11-05-iorun/) | 5 | 1 |
 | [2026-11-05-pace](2026-11-05-pace/) | 5 | 1 |
 | [2026-11-05-span](2026-11-05-span/) | 5 | 1 |
+| [2026-11-05-stoiter](2026-11-05-stoiter/) | 5 | 1 |
+| [2026-11-05-stoiter2](2026-11-05-stoiter2/) | 5 | 1 |
 | [2026-11-05-stolast](2026-11-05-stolast/) | 5 | 1 |
+| [2026-11-05-stolast2](2026-11-05-stolast2/) | 5 | 1 |
+| [2026-11-05-stolast3](2026-11-05-stolast3/) | 5 | 1 |
+| [2026-11-05-stolast4](2026-11-05-stolast4/) | 5 | 1 |
+| [2026-11-05-stoll](2026-11-05-stoll/) | 5 | 1 |
 | [2026-11-05-storow](2026-11-05-storow/) | 5 | 1 |
 | [2026-11-05-storun](2026-11-05-storun/) | 5 | 1 |
 | [2026-11-05-turn](2026-11-05-turn/) | 5 | 1 |

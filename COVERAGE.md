@@ -228,7 +228,13 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-rowx |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-size |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-span |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-stoiter |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-stoiter2 |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-stolast |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-stolast2 |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-stolast3 |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-stolast4 |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-stoll |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-storow |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-storun |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-turn |  |  |  | 2 |  |  |  |  |  |
