@@ -212,6 +212,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-gaps2 | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-gaps3 | 2 |  |  | 3 |  |  |  |  |  |
 | gpu-dma-gapsd | 6 |  |  |  |  |  |  |  |  |
+| gpu-dma-gapsd2 | 2 |  |  |  |  |  |  |  |  |
 | gpu-dma-hold | 2 |  |  | 3 |  |  |  |  |  |
 | gpu-dma-ifetch | 2 |  |  | 3 |  |  |  |  |  |
 | gpu-dma-iorun | 2 |  |  | 2 |  |  |  |  |  |

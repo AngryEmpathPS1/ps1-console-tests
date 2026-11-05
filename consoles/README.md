@@ -4,7 +4,7 @@ Every log, by console. A session folder is a date and, where a day had several s
 
 | console | BIOS | CD controller | GPU type | sessions | logs |
 |---|---|---|---:|---:|---:|
-| [SCPH-1001](SCPH-1001/README.md) | "System ROM Version 2.1 07/17/95 A" | 95/07/24 version C1 | no answer | 34 | 1654 |
+| [SCPH-1001](SCPH-1001/README.md) | "System ROM Version 2.1 07/17/95 A" | 95/07/24 version C1 | no answer | 35 | 1659 |
 | [SCPH-5000](SCPH-5000/README.md) | "System ROM Version 2.2 12/04/95 J" | 95/07/24 version C1 | no answer | 5 | 1673 |
 | [SCPH-5501](SCPH-5501/README.md) | "System ROM Version 3.0 11/18/96 A" | 97/01/10 version C2 | 2 | 164 | 2436 |
 | [SCPH-5501/unit-2](SCPH-5501/unit-2/README.md) | "System ROM Version 3.0 11/18/96 A" | 97/01/10 version C2 | 2 | 128 | 1581 |
