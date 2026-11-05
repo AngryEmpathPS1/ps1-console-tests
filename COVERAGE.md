@@ -496,7 +496,16 @@ How many logs each test has on each console. Generated from the file names in `c
 | ram-store-io8 |  |  |  | 2 |  |  |  |  |  |
 | redux-spu |  |  |  | 3 |  |  |  |  |  |
 | redux-spuenvx |  |  |  | 3 |  |  |  |  |  |
+| redux-spuenvxd12 |  |  |  | 1 |  |  |  |  |  |
+| redux-spuenvxd16 |  |  |  | 1 |  |  |  |  |  |
+| redux-spuenvxd20 |  |  |  | 1 |  |  |  |  |  |
 | redux-spuenvxd24 |  |  |  | 2 |  |  |  |  |  |
+| redux-spuenvxd28 |  |  |  | 1 |  |  |  |  |  |
+| redux-spuenvxd32 |  |  |  | 1 |  |  |  |  |  |
+| redux-spuenvxd36 |  |  |  | 1 |  |  |  |  |  |
+| redux-spuenvxd4 |  |  |  | 1 |  |  |  |  |  |
+| redux-spuenvxd40 |  |  |  | 1 |  |  |  |  |  |
+| redux-spuenvxd44 |  |  |  | 1 |  |  |  |  |  |
 | redux-spuenvxd48 |  |  |  | 2 |  |  |  |  |  |
 | redux-spuenvxd8 |  |  |  | 2 |  |  |  |  |  |
 | refresh-cold | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |

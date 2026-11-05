@@ -531,6 +531,15 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | redux-spuenvxd8 | no | redux-spuenvx with each capture read 8 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
 | redux-spuenvxd24 | no | redux-spuenvx with each capture read 24 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
 | redux-spuenvxd48 | no | redux-spuenvx with each capture read 48 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
+| redux-spuenvxd4 | no | redux-spuenvx with each capture read 4 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
+| redux-spuenvxd12 | no | redux-spuenvx with each capture read 12 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
+| redux-spuenvxd16 | no | redux-spuenvx with each capture read 16 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
+| redux-spuenvxd20 | no | redux-spuenvx with each capture read 20 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
+| redux-spuenvxd28 | no | redux-spuenvx with each capture read 28 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
+| redux-spuenvxd32 | no | redux-spuenvx with each capture read 32 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
+| redux-spuenvxd36 | no | redux-spuenvx with each capture read 36 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
+| redux-spuenvxd40 | no | redux-spuenvx with each capture read 40 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
+| redux-spuenvxd44 | no | redux-spuenvx with each capture read 44 turns of a volatile loop after its SPUSTAT bit-11 flip (every trace printed); ~40 s |
 | gpu-a0poll3 | no | gpu-a0poll's lone-read loop with every read timed: a CHCR2 read, Timer 2 right behind it, its value stored in the scratchpad, n = 0, 4, 5, 6, 8, 10, 14 nops; 4- and 8-word uploads, twice each; the turns' periods printed |
 | gpu-a0poll4 | no | gpu-a0poll's lone-read loop read turn by turn without a second read: one MADR2 read a turn (16 bytes a 4-word block), its low half kept in the scratchpad, n = 0, 4, 5, 6, 8, 10, 14 nops, until MADR2 reaches the end; 4- and 8-word uploads, twice each |
 | gpu-a0poll5 | no | gpu-a0poll's mode C loop instruction for instruction reading CHCR2 (C) or MADR2 (M, leaving at the end address), 0-16 nops, 4- and 8-word uploads, twice each |

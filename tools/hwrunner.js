@@ -253,6 +253,8 @@ async function startRunner(link, beforeExe = null) {
  * after its fifth double-speed row, getloc prints "Test passed" or "Test failed"), and whether it uses SIO1 itself. */
 // redux-spu (PCSX-Redux's spu test, 2026-11-04): libcester paints its lines, so its verdict line starts with two colour codes; it
 // never returns from main and prints no Done, so the runner ends it there
+/* a name's end line, or its family's: every redux-spuenvx<variant> ends as redux-spuenvx does (experiments/mkspuenvx.js) */
+const endLine = (base) => END_LINE[base] || (/^redux-spuenvx/.test(base) ? END_LINE['redux-spuenvx'] : null);
 const END_LINE = { timing: { text: 'double-speed timing:', count: 5 }, getloc: { text: 'Test ', count: 1 }, 'redux-spu': { text: '[0m[37mSynthesis:', count: 1 },
   'redux-spuenvx': { text: '[0m[37mSynthesis:', count: 1 },
   'redux-spuenvxd8': { text: '[0m[37mSynthesis:', count: 1 }, 'redux-spuenvxd24': { text: '[0m[37mSynthesis:', count: 1 }, 'redux-spuenvxd48': { text: '[0m[37mSynthesis:', count: 1 } };   // the same, its reads delayed after each bit-11 flip   // redux-spu's ADSR tests alone, each trace printed (experiments/mkspuenvx.js)
@@ -277,7 +279,7 @@ async function runTests(r, names, { delay = 1000, timeout = 600, out = null, loc
     for (let tries = 0; ; tries++) {
       await r.load(exe);
       t0 = Date.now();
-      done = await r.run(delay, timeout * 1000, { end: END_LINE[base] || null, stoppable: !USES_SIO1.test(base), lock });
+      done = await r.run(delay, timeout * 1000, { end: endLine(base), stoppable: !USES_SIO1.test(base), lock });
       if (!accept || accept(exe, done) || tries >= 7) break;
       await r.log();
     }

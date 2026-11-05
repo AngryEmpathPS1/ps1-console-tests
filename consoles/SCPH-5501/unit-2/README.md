@@ -120,3 +120,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-04-spread-g](2026-11-04-spread-g/) | 15 | 3 |
 | [2026-11-04-spuenvx](2026-11-04-spuenvx/) | 6 | 1 |
 | [2026-11-04-spuenvxd](2026-11-04-spuenvxd/) | 9 | 3 |
+| [2026-11-04-spuenvxd2](2026-11-04-spuenvxd2/) | 12 | 9 |
