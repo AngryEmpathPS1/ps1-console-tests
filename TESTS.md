@@ -29,6 +29,8 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | pair-dep | no | pair-warm's grid with neighbours that depend on each other: load-use, GTE commands and moves, lwc2 swc2, a taken branch, mfc0 |
 | fuzz-spu | no | random voices: 512 ids of random ADPCM, envelopes, pitches and modulation, voices 1 and 3 read back off their capture rings |
 | spu-envring | no | the envelope as a waveform: voice 1 playing a constant, every attack, decay, sustain and release setting, the capture ring's first eight changes |
+| spu-dmaread | no | voice 1's capture ring DMA4-read 64 halfwords near its write head, ~40 samples after a bit-11 edge, the start swept across a sample (16-cycle steps), blocks of 4 / 8 / 16 words, the read mode switched at the key-on (E) or just before (L) |
+| spu-dmaread2 | no | spu-dmaread with the read started 40 - k ring positions behind the head (k 0, 4 .. 60), so the head falls at each fourth halfword of a 64-halfword DMA4 read; e swept by 32, blocks of 16 and 4 words, modes E and L |
 | spu-endcut | no | where a block's end flag lands by pitch: three blocks of a constant, the end with no repeat and with a repeat, 256 pitches |
 | gte-undef | no | the GTE's 42 undefined function codes, 16 random cases each, every register after and the time |
 | pair-cdep | no | pair-dep's kinds with every line cold: load-use, the GTE, lwc2, swc2, a taken branch, mfc0 in code that misses |

@@ -535,6 +535,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu-curvol | 1 | 6 | 2 | 6 | 6 | 4 | 1 | 2 | 2 |
 | spu-decode-ahead | 6 | 6 | 6 | 1 | 6 | 10 | 1 | 6 | 2 |
 | spu-dma | 6 | 6 | 8 | 1 | 6 | 11 | 1 | 7 | 1 |
+| spu-dmaread |  |  |  | 3 |  |  |  |  |  |
+| spu-dmaread2 |  |  |  | 2 |  |  |  |  |  |
 | spu-endcut | 1 |  | 4 |  |  |  |  |  |  |
 | spu-envring | 1 |  | 2 | 2 |  |  |  |  |  |
 | spu-exp-neg | 2 |  |  | 3 |  |  | 1 |  |  |
@@ -560,7 +562,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu-read-grid | 1 | 1 | 1 | 1 | 2 | 4 | 1 | 2 | 2 |
 | spu-read-trace | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | spu-rearm | 3 |  | 3 | 1 |  | 3 | 1 | 3 |  |
-| spu-regs | 6 | 6 | 8 | 1 | 6 | 11 | 1 | 8 | 2 |
+| spu-regs | 6 | 6 | 8 | 3 | 6 | 11 | 1 | 8 | 2 |
 | spu-reverb | 6 | 6 | 16 | 1 | 6 | 15 | 1 | 10 | 2 |
 | spu-reverb-in | 6 | 6 | 8 | 1 | 6 | 11 | 1 | 8 | 2 |
 | spu-statx-tail | 2 |  |  | 3 |  |  | 1 |  |  |
