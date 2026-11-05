@@ -103,6 +103,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-04-a0vph](2026-11-04-a0vph/) | 6 | 1 |
 | [2026-11-04-dmahold](2026-11-04-dmahold/) | 6 | 1 |
 | [2026-11-04-dmapair](2026-11-04-dmapair/) | 6 | 1 |
+| [2026-11-04-envring](2026-11-04-envring/) | 6 | 2 |
 | [2026-11-04-fitset](2026-11-04-fitset/) | 9 | 2 |
 | [2026-11-04-gaps](2026-11-04-gaps/) | 6 | 1 |
 | [2026-11-04-gaps2](2026-11-04-gaps2/) | 6 | 1 |

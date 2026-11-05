@@ -507,7 +507,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | redux-spuenvxd40 |  |  |  | 1 |  |  |  |  |  |
 | redux-spuenvxd44 |  |  |  | 1 |  |  |  |  |  |
 | redux-spuenvxd48 |  |  |  | 2 |  |  |  |  |  |
-| redux-spuenvxd8 |  |  |  | 2 |  |  |  |  |  |
+| redux-spuenvxd8 |  |  |  | 3 |  |  |  |  |  |
 | refresh-cold | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | refresh-io | 3 | 7 | 3 | 6 | 6 | 5 | 1 | 3 | 2 |
 | refresh-io2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
@@ -536,7 +536,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu-decode-ahead | 6 | 6 | 6 | 1 | 6 | 10 | 1 | 6 | 2 |
 | spu-dma | 6 | 6 | 8 | 1 | 6 | 11 | 1 | 7 | 1 |
 | spu-endcut | 1 |  | 4 |  |  |  |  |  |  |
-| spu-envring | 1 |  | 2 |  |  |  |  |  |  |
+| spu-envring | 1 |  | 2 | 2 |  |  |  |  |  |
 | spu-exp-neg | 2 |  |  | 3 |  |  | 1 |  |  |
 | spu-fifo | 6 | 7 | 6 | 1 | 6 | 8 | 1 | 6 | 2 |
 | spu-fifo2 | 4 |  | 3 | 1 |  | 4 | 1 | 4 |  |
