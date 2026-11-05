@@ -1,0 +1,47 @@
+
+gpu/gpu-dma-span
+S bs K rep P t Q W (K SyncMode 1 blocks of bs words into rows of 256 pixels in vblank; P polled by one CHCR2 read a turn, Q the CPU off the bus W cycles then one read, the first W done). No assertions.
+
+spin: 300 cycles a 100 turns
+S 4 1 0 P 28 Q 1
+S 4 1 1 P 29 Q 1
+S 4 2 0 P 42 Q 1
+S 4 2 1 P 42 Q 1
+S 4 4 0 P 70 Q 4
+S 4 4 1 P 70 Q 4
+S 4 8 0 P 126 Q 42
+S 4 8 1 P 131 Q 36
+S 4 16 0 P 248 Q 154
+S 4 16 1 P 248 Q 150
+S 4 32 0 P 470 Q 376
+S 4 32 1 P 467 Q 382
+S 4 64 0 P 922 Q 838
+S 4 64 1 P 919 Q 832
+S 4 128 0 P 1868 Q 1781
+S 4 128 1 P 1864 Q 1775
+S 4 256 0 P 3674 Q 3613
+S 4 256 1 P 3692 Q 3605
+S 4 512 0 P 7414 Q 7295
+S 4 512 1 P 7392 Q 7303
+S 16 1 0 P 40 Q 1
+S 16 1 1 P 40 Q 1
+S 16 2 0 P 66 Q 2
+S 16 2 1 P 76 Q 2
+S 16 4 0 P 122 Q 7
+S 16 4 1 P 122 Q 7
+S 16 8 0 P 236 Q 115
+S 16 8 1 P 236 Q 123
+S 16 16 0 P 444 Q 325
+S 16 16 1 P 447 Q 339
+S 16 32 0 P 875 Q 756
+S 16 32 1 P 867 Q 757
+S 16 64 0 P 1728 Q 1623
+S 16 64 1 P 1724 Q 1605
+S 16 128 0 P 3481 Q 3374
+S 16 128 1 P 3494 Q 3377
+S 16 256 0 P 6978 Q 6859
+S 16 256 1 P 6994 Q 6887
+S 16 512 0 P 13994 Q 13849
+S 16 512 1 P 13959 Q 13849
+
+gpu/gpu-dma-span: Done.

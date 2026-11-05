@@ -1,0 +1,44 @@
+ResetGraph:itb=80012a00,ehk=80012a30
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-dma-knee
+A 16-word GPU DMA block, N single cycles after CHCR2's store a timer read: fewest and mean cycles by N. No assertions.
+
+ N   tries   read after N: fewest  mean    done: fewest  mean   lost
+ 0      64                   38   38.5             54   54.5     0
+ 1      64                   38   38.6             54   54.6     0
+ 2      64                   38   39.2             54   55.2     0
+ 3      64                   38   38.4             54   54.4     0
+ 4      64                   38   38.7             54   54.7     0
+ 5      64                   38   38.0             54   54.0     0
+ 6      64                   38   38.9             54   54.9     0
+ 7      64                   38   38.2             54   54.2     0
+ 8      64                   38   38.6             54   54.6     0
+ 9      64                   38   38.7             54   54.7     0
+10      64                   38   39.2             54   55.2     0
+11      64                   38   38.3             54   54.3     0
+12      64                   38   38.5             54   54.5     0
+13      64                   38   38.6             54   54.6     0
+14      64                   38   39.0             54   55.0     0
+15      64                   38   38.3             54   54.3     0
+16      64                   39   39.7             55   55.7     0
+17      64                   40   40.2             56   56.2     0
+18      64                   41   41.9             57   57.9     0
+19      64                   42   42.2             58   58.2     0
+20      64                   43   43.0             59   59.0     0
+21      64                   44   44.3             60   60.3     0
+22      64                   45   45.3             61   61.3     0
+23      64                   46   46.0             62   62.0     0
+24      64                   47   47.0             63   63.0     0
+25      64                   48   48.0             64   64.0     0
+26      64                   49   49.0             65   65.0     0
+27      64                   50   50.0             66   66.0     0
+28      64                   51   51.0             67   67.0     0
+29      64                   52   52.0             68   68.0     0
+30      64                   53   53.0             69   69.0     0
+31      64                   54   54.0             70   70.0     0
+
+gpu/gpu-dma-knee: Done.
