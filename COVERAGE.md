@@ -227,6 +227,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-quiet | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-ramrow |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-rdbs |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-rdlen |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-rdlong |  |  |  | 3 |  |  |  |  |  |
 | gpu-dma-rdloop |  |  |  | 3 |  |  |  |  |  |
 | gpu-dma-rdloop2 |  |  |  | 3 |  |  |  |  |  |
