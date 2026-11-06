@@ -425,6 +425,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | io-shadow | 1 | 1 | 1 | 1 | 2 | 4 | 1 | 2 | 2 |
 | io-store-shadow | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | irq-unmask |  |  |  | 3 |  |  |  |  |  |
+| irq-unmask2 |  |  |  | 2 |  |  |  |  |  |
+| irq-unmask3 |  |  |  | 2 |  |  |  |  |  |
 | line-fill | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | line-fill2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | line-split | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
