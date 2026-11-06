@@ -266,6 +266,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-ll-ahead |  |  |  | 4 |  |  |  |  |  |
 | gpu-ll-end | 2 |  |  | 3 |  |  |  |  |  |
 | gpu-ll-start | 2 |  |  | 3 |  |  |  |  |  |
+| gpu-ll-stat |  |  |  | 2 |  |  |  |  |  |
 | gpu-outside | 2 |  |  | 5 |  |  | 1 |  |  |
 | gpu-outside2 | 2 |  |  | 3 |  |  | 1 |  |  |
 | gpu-outside3 | 2 |  |  | 3 |  |  | 1 |  |  |
