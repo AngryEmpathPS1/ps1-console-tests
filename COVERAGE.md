@@ -121,7 +121,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | dma-chopx | 2 |  | 1 |  |  |  |  |  |  |
 | dma-contention | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | dma-disp | 2 |  | 2 |  |  |  |  |  |  |
-| dma-len | 2 |  | 5 |  |  |  |  |  |  |
+| dma-len | 2 |  | 5 | 2 |  |  |  |  |  |
 | dma-len0 | 2 |  | 4 |  |  |  |  |  |  |
 | dma-loss | 2 |  | 1 | 3 |  |  |  |  |  |
 | dma-loss2 | 2 |  | 1 |  |  |  |  |  |  |
@@ -197,9 +197,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-c0-cold | 3 | 7 | 6 | 1 | 6 | 5 | 1 | 3 | 2 |
 | gpu-c0-cold2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | gpu-c0-datel | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
+| gpu-c0-dir3 |  |  |  | 2 |  |  |  |  |  |
 | gpu-c0-gaps | 6 | 6 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu-c0-ready | 1 | 7 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
-| gpu-c0-size | 2 | 7 | 7 | 1 | 6 | 4 | 1 | 2 | 2 |
+| gpu-c0-size | 2 | 7 | 7 | 3 | 6 | 4 | 1 | 2 | 2 |
 | gpu-cmd-ready | 1 | 6 | 7 | 1 | 6 | 4 | 1 | 2 | 2 |
 | gpu-copy-480i | 2 |  |  | 3 |  |  | 1 |  |  |
 | gpu-copy2 | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
@@ -225,6 +226,12 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-progress2 | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-quiet | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-ramrow |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-rdbs |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-rdlong |  |  |  | 3 |  |  |  |  |  |
+| gpu-dma-rdloop |  |  |  | 3 |  |  |  |  |  |
+| gpu-dma-rdloop2 |  |  |  | 3 |  |  |  |  |  |
+| gpu-dma-rdpoll |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-rdpoll2 |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-refctl |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-refresh | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-rfpace | 2 |  |  | 3 |  |  |  |  |  |
@@ -282,7 +289,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-scan3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-scan4 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-scan5 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
-| gpu-scan6 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
+| gpu-scan6 | 2 | 7 | 6 | 4 | 6 | 2 | 1 | 6 |  |
 | gpu-scanline | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-scanline2 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-scanline3 | 2 | 7 | 6 | 1 | 6 | 2 | 1 | 6 |  |
@@ -392,7 +399,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-wh | 2 |  | 3 |  |  |  |  |  |  |
 | gpu-whv | 2 |  | 1 |  |  |  |  |  |  |
 | gpu-whv2 | 2 |  | 1 |  |  |  |  |  |  |
-| gpu_bandwidth | 6 | 6 | 9 | 1 | 6 | 10 | 1 | 8 | 2 |
+| gpu_bandwidth | 6 | 6 | 9 | 4 | 6 | 10 | 1 | 8 | 2 |
 | gpu_gp0-e1 | 1 | 6 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu_mask-bit | 1 | 6 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpuinfo-latch | 1 | 7 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |

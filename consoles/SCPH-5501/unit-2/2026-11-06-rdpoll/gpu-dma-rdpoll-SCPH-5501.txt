@@ -1,0 +1,26 @@
+
+gpu/gpu-dma-rdpoll
+P bs poll, four times (cycles, from CHCR2's store to the poll's end; Timer 2 at the system clock / 8) and the poll's turns, of a
+2,048-word read of 64x64 at (0,256) by DMA2, the display off. Polls: 0 CHCR2 alone, 1 + a Timer 2 read, 2 + a RAM store, 3 + a
+scratchpad store, 4 + a Timer 2 read and two RAM stores, 5 + 40 nops. No assertions.
+
+P 4 0 6320 6272 6272 6272 turns 504 511 511 511
+P 4 1 6304 6272 6272 6280 turns 255 256 256 256
+P 4 2 8488 8472 8472 8472 turns 508 511 511 511
+P 4 3 6272 6272 6280 6272 turns 509 511 511 511
+P 4 4 8488 8480 8480 8480 turns 254 256 256 256
+P 4 5 6392 6320 6320 6312 turns 129 131 131 131
+P 8 0 4208 4224 4224 4216 turns 255 255 255 255
+P 8 1 4224 4216 4216 4224 turns 128 128 128 128
+P 8 2 5296 5304 5296 5304 turns 255 255 255 255
+P 8 3 4216 4224 4216 4224 turns 255 255 255 255
+P 8 4 5304 5304 5296 5312 turns 128 128 128 128
+P 8 5 4256 4256 4256 4248 turns 88 88 88 88
+P 16 0 4448 4440 4440 4448 turns 237 237 238 239
+P 16 1 4456 4456 4448 4464 turns 178 179 178 177
+P 16 2 4440 4432 4456 4448 turns 230 225 231 236
+P 16 3 4464 4432 4448 4448 turns 241 236 239 237
+P 16 4 4352 4352 4368 4352 turns 118 113 118 116
+P 16 5 4496 4488 4496 4488 turns 93 93 93 93
+
+gpu/gpu-dma-rdpoll: Done.

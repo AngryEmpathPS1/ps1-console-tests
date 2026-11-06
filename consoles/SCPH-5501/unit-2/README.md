@@ -155,4 +155,11 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-05-storow](2026-11-05-storow/) | 5 | 1 |
 | [2026-11-05-storun](2026-11-05-storun/) | 5 | 1 |
 | [2026-11-05-turn](2026-11-05-turn/) | 5 | 1 |
+| [2026-11-06-c0dir3](2026-11-06-c0dir3/) | 7 | 2 |
+| [2026-11-06-rdbs](2026-11-06-rdbs/) | 7 | 2 |
+| [2026-11-06-rdlong](2026-11-06-rdlong/) | 9 | 2 |
+| [2026-11-06-rdloop](2026-11-06-rdloop/) | 6 | 1 |
+| [2026-11-06-rdloop2](2026-11-06-rdloop2/) | 9 | 2 |
+| [2026-11-06-rdpoll](2026-11-06-rdpoll/) | 5 | 1 |
+| [2026-11-06-rdpoll2](2026-11-06-rdpoll2/) | 5 | 1 |
 | [2026-11-06-rowdown](2026-11-06-rowdown/) | 5 | 1 |
