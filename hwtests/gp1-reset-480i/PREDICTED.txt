@@ -1,0 +1,11 @@
+gpu/gp1-reset-480i, before any console (2026-11-06).
+
+This core at v0.377.293 (NTSC, hwtests/run.js --ntsc): the 240p rule of gp1-reset in every mode. 240P d=8: edge 553,2xx cy, 257
+lines; d=100: edge 62 cy, then 257 lines. 480I and OFF: a write in the picture (field 0 from d=24, field 1 - the 263-line field -
+from d=30) raises the edge at once (62-72 cy) and the next 257 lines later; in the blanking 257 lines; GPUSTAT.31 reads 0 after
+and first flips ~38,7xx cycles on.
+
+What it decides: MLB 99 (USA) writes GP1(00h) in 480i at line 69 / 167 with the display just off (the OFF rows d=69, 167). If the
+console's 480i rows read "edge ~60 cy" the game's NULL-jump crash is the console's too for nine phases in ten (and the question
+moves to what MLB 99 does differently on a console); if they read 257 lines, 480i does not raise IRQ0 at once, and the core's
+beamRestart must not either in 480i.

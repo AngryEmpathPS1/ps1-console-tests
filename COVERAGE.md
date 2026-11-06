@@ -157,6 +157,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gp0-poll | 2 | 7 | 2 | 5 | 6 | 2 | 1 | 2 |  |
 | gp0-store | 2 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |
 | gp1-reset | 2 |  |  | 3 |  |  | 1 |  |  |
+| gp1-reset-480i |  |  |  | 3 |  |  |  |  |  |
 | gpu-a0-ready | 6 | 6 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
 | gpu-a0-size | 1 | 7 | 7 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu-a0after | 2 |  |  | 3 |  |  |  |  |  |
@@ -423,6 +424,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | io-ram | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | io-shadow | 1 | 1 | 1 | 1 | 2 | 4 | 1 | 2 | 2 |
 | io-store-shadow | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
+| irq-unmask |  |  |  | 3 |  |  |  |  |  |
 | line-fill | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | line-fill2 | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | line-split | 6 | 7 | 8 | 1 | 6 | 10 | 1 | 8 | 2 |
@@ -484,6 +486,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | mdec-time | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | mdec-winddown | 2 |  |  | 2 |  |  | 2 |  |  |
 | mem-delay | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
+| mem-low |  |  |  | 1 |  |  |  |  |  |
 | miss-grid | 3 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | movie-browser-depths |  |  |  |  |  |  | 1 |  |  |
 | movie-browser-fixed |  |  |  |  |  |  | 1 |  |  |

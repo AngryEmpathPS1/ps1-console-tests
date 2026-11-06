@@ -1,0 +1,9 @@
+cpu/irq-unmask, before any console (2026-11-06).
+
+This core at v0.377.293 (NTSC, hwtests/run.js --ntsc), 4 passes: GAME cached at ret+0 (the caller's first instruction), BD 0,
+t5 0; SW / SH at after+0 once warm (after+2 / after+3 on the first, cold, pass); WBUF after+1 (the write buffer's three stores
+first); LW lw.after+0; SW uncached after+0; GAME uncached at setmask+5 (the jr). In MLB 99 (USA)'s own run the GAME shape was
+taken on the jr (EPC 80021184h): which instruction it lands on follows the store's landing time against the fetches here.
+
+What it decides for MLB 99: EPC on the jr (setmask+5) or its slot -> k0 + C80h = 80021E04h, the AdES crash; EPC in the caller
+(ret+0, +1, +2 -> 80020764h, 80020768h) -> a pad-variable function whose jr ra returns into StartPAD: the game runs on.
