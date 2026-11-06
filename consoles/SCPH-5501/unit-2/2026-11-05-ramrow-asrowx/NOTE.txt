@@ -1,0 +1,7 @@
+These two logs are hwtests/gpu-dma-ramrow's first two runs on the second SCPH-5501 (2026-11-05 ~20:50, over USB), made while the
+program was still named gpu-dma-rowx - a name that already belonged to 2026-11-04's test (a GPU upload's row cost against the
+rectangle's place in VRAM, commit c3d4ce1f), whose source was overwritten in the working tree for an hour and then restored from git.
+The program here is gpu-dma-ramrow but for its name strings ("gpu/gpu-dma-rowx" in the log's header and Done line): an upload from a
+buffer O words past a 1 KB row of main RAM, its lines "I O-K try n t:b ...". The files are renamed to gpu-dma-ramrow-*-asrowx so no
+tool counts them as the old test's runs. The runs under the right name are console-logs/2026-11-05-SCPH-5501-u2-ramrow.
+STATUS "The +4s are main RAM's 1 KB rows".
