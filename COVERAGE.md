@@ -208,6 +208,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-cost-sweep | 6 | 7 | 8 | 1 | 6 | 13 | 1 | 8 | 2 |
 | gpu-degen | 2 |  |  | 3 |  |  | 1 |  |  |
 | gpu-degen2 | 2 |  |  | 3 |  |  | 1 |  |  |
+| gpu-dma-blkper |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-gaps | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-gaps2 | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-gaps3 | 2 |  |  | 3 |  |  |  |  |  |
