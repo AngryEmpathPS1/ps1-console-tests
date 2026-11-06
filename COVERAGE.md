@@ -230,6 +230,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-rfpace | 2 |  |  | 3 |  |  |  |  |  |
 | gpu-dma-rfpace2 |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-rowburst |  |  |  | 2 |  |  |  |  |  |
+| gpu-dma-rowdown |  |  |  | 2 |  |  |  |  |  |
 | gpu-dma-rowend | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-rowlen | 2 |  |  | 2 |  |  |  |  |  |
 | gpu-dma-rowlen2 | 2 |  |  | 3 |  |  |  |  |  |
