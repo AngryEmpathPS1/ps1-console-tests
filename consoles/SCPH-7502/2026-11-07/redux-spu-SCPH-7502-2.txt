@@ -1,0 +1,576 @@
+
+
+================
+uC-sdk - booting
+================
+silent: golden is 1 samples but SPU_ONSET_SKIP is 15, so NO sample is compared against hardware - periodicity check only
+sine periodicity broken at sample 486: got 0x0000, want 0x2ea6
+sine_low periodicity broken at sample 402: got 0x0000, want 0xeedf
+sine_high periodicity broken at sample 506: got 0x0000, want 0xfebb
+triangle periodicity broken at sample 486: got 0x0000, want 0x1fe3
+square periodicity broken at sample 486: got 0x0000, want 0x37c6
+loop_t0 periodicity broken at sample 486: got 0x0000, want 0x1fe3
+loop_t1 periodicity broken at sample 486: got 0xc834, want 0xfed7
+OBS spu_adpcm_edge golden adpcm_edge_predictor_0.test.pcm hash=0xf48d2787 first=0x0000 mid=0x01c3 last=0x0000 min=0xf99e max=0x0355
+OBS spu_adpcm_edge golden adpcm_edge_predictor_1.test.pcm hash=0x2ffcc93b first=0xf3e2 mid=0xf8ec last=0xf314 min=0xebaa max=0x0f2c
+OBS spu_adpcm_edge golden adpcm_edge_predictor_2.test.pcm hash=0x97d2f54d first=0xc85e mid=0xd304 last=0xc584 min=0xc066 max=0x656e
+OBS spu_adpcm_edge golden adpcm_edge_predictor_3.test.pcm hash=0x87fec316 first=0x041c mid=0x0f0a last=0x0590 min=0xd50f max=0x1809
+OBS spu_adpcm_edge golden adpcm_edge_predictor_4.test.pcm hash=0xf468be8d first=0xd82a mid=0xda4b last=0xd0d8 min=0xc040 max=0x433c
+OBS spu_adpcm_edge golden adpcm_edge_shift_00_03.test.pcm hash=0x7270622f first=0x0514 mid=0x1918 last=0xf8ec min=0xce75 max=0x28ac
+OBS spu_adpcm_edge golden adpcm_edge_shift_04_07.test.pcm hash=0x10cd6218 first=0x0050 mid=0x0190 last=0xff8e min=0xfce6 max=0x0289
+OBS spu_adpcm_edge golden adpcm_edge_shift_08_11.test.pcm hash=0x86902687 first=0x0004 mid=0x0017 last=0xfff8 min=0xffcd max=0x0026
+OBS spu_adpcm_edge golden adpcm_edge_shift_12_15.test.pcm hash=0x81a61fd0 first=0xffec mid=0xfff7 last=0xffd3 min=0xffd3 max=0x0000
+OBS spu_adpcm_edge golden adpcm_edge_state_carry.test.pcm hash=0x757fe8ba first=0x0ef8 mid=0x3784 last=0x0cdc min=0xe08c max=0x6f8e
+OBS spu_adpcm_edge golden adpcm_edge_saturation_positive.test.pcm hash=0xfb0d4985 first=0x3fbe mid=0x3fbe last=0x3fbe min=0x0000 max=0x7f7d
+OBS spu_adpcm_edge golden adpcm_edge_saturation_negative.test.pcm hash=0x1450544d first=0xc040 mid=0xc040 last=0xc040 min=0x8080 max=0x0000
+OBS spu_adpcm_edge golden adpcm_edge_flag_code2_ignored.test.pcm hash=0x77f84ffa first=0xfc03 mid=0xff98 last=0xfc03 min=0xfc03 max=0x04f9
+OBS spu_adpcm_edge golden adpcm_edge_flag_loop_start_latch.test.pcm hash=0x9dc363b2 first=0x0000 mid=0xfc9c last=0x0000 min=0xfc03 max=0x06f6
+OBS spu_adpcm_edge golden adpcm_edge_flag_end_mute.test.pcm hash=0xdf098754 first=0x0000 mid=0x0000 last=0x0000 min=0xfc03 max=0x06f6
+OBS spu_adpcm_edge golden adpcm_edge_flag_end_repeat.test.pcm hash=0x0f1905d7 first=0x037b mid=0x025e last=0x037b min=0xfc03 max=0x06f6
+OBS spu_adpcm_edge golden adpcm_edge_invalid_predictor_5_7.test.pcm hash=0x0cfad397 first=0x0144 mid=0x01c3 last=0xfe3a min=0xf99e max=0x0355
+sine_pitch_0800 periodicity broken at sample 458: got 0x0000, want 0x1be8
+sine_pitch_2000 periodicity broken at sample 500: got 0x0000, want 0x37c6
+sine_pitch_3000 periodicity broken at sample 486: got 0x0000, want 0x2e9a
+triangle periodicity broken at sample 486: got 0x0000, want 0x1fe3
+triangle periodicity broken at sample 486: got 0x0000, want 0x1fe3
+OBS spu_adsr_edge expected attack_lin_00_FIRST=0x00003800
+OBS spu_adsr_edge expected attack_lin_00_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_lin_00_MINMAX=0x38007ff7
+OBS spu_adsr_edge expected attack_lin_00_HASH=0x6c6bf632
+OBS spu_adsr_edge expected attack_lin_01_FIRST=0x00003000
+OBS spu_adsr_edge expected attack_lin_01_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_lin_01_MINMAX=0x30007ff7
+OBS spu_adsr_edge expected attack_lin_01_HASH=0x6863ee32
+OBS spu_adsr_edge expected attack_lin_02_FIRST=0x00002800
+OBS spu_adsr_edge expected attack_lin_02_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_lin_02_MINMAX=0x28007ff7
+OBS spu_adsr_edge expected attack_lin_02_HASH=0x80a8e632
+OBS spu_adsr_edge expected attack_lin_03_FIRST=0x00002000
+OBS spu_adsr_edge expected attack_lin_03_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_lin_03_MINMAX=0x20007ff7
+OBS spu_adsr_edge expected attack_lin_03_HASH=0xc6c5de32
+OBS spu_adsr_edge expected attack_lin_04_FIRST=0x00001c00
+OBS spu_adsr_edge expected attack_lin_04_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_lin_04_MINMAX=0x1c007ff7
+OBS spu_adsr_edge expected attack_lin_04_HASH=0xf3d11a32
+OBS spu_adsr_edge expected attack_lin_24_FIRST=0x0000001c
+OBS spu_adsr_edge expected attack_lin_24_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_lin_24_MINMAX=0x001c7ff7
+OBS spu_adsr_edge expected attack_lin_24_HASH=0x7ccc3356
+OBS spu_adsr_edge expected attack_lin_28_FIRST=0x0000000e
+OBS spu_adsr_edge expected attack_lin_28_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_lin_28_MINMAX=0x000e7ff7
+OBS spu_adsr_edge expected attack_lin_28_HASH=0x0f608950
+OBS spu_adsr_edge expected attack_lin_2c_FIRST=0x00000007
+OBS spu_adsr_edge expected attack_lin_2c_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_lin_2c_MINMAX=0x00077ff7
+OBS spu_adsr_edge expected attack_lin_2c_HASH=0xc50eb814
+OBS spu_adsr_edge expected attack_lin_30_FIRST=0x00000007
+OBS spu_adsr_edge expected attack_lin_30_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_lin_30_MINMAX=0x00077ff7
+OBS spu_adsr_edge expected attack_lin_30_HASH=0x4cee4c2d
+OBS spu_adsr_edge expected attack_lin_34_FIRST=0x00000007
+OBS spu_adsr_edge expected attack_lin_34_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_lin_34_MINMAX=0x00077ff7
+OBS spu_adsr_edge expected attack_lin_34_HASH=0x8b1ad986
+OBS spu_adsr_edge expected attack_lin_40_FIRST=0x00000007
+OBS spu_adsr_edge expected attack_lin_40_LAST=0x00001b90
+OBS spu_adsr_edge expected attack_lin_40_MINMAX=0x00071b90
+OBS spu_adsr_edge expected attack_lin_40_HASH=0x555a5dc2
+OBS spu_adsr_edge expected attack_lin_60_FIRST=0x00000007
+OBS spu_adsr_edge expected attack_lin_60_LAST=0x0000001c
+OBS spu_adsr_edge expected attack_lin_60_MINMAX=0x0007001c
+OBS spu_adsr_edge expected attack_lin_60_HASH=0x2a6a234e
+spu_adsr_capture: envelope never left zero for adsr=1fdf7fff
+OBS spu_adsr_edge expected attack_lin_7f_FIRST=0x00000000
+OBS spu_adsr_edge expected attack_lin_7f_LAST=0x00000000
+OBS spu_adsr_edge expected attack_lin_7f_MINMAX=0x00000000
+OBS spu_adsr_edge expected attack_lin_7f_HASH=0x22513d45
+OBS spu_adsr_edge expected attack_exp_00_FIRST=0x00003800
+OBS spu_adsr_edge expected attack_exp_00_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_exp_00_MINMAX=0x38007ff7
+OBS spu_adsr_edge expected attack_exp_00_HASH=0x6c6bf632
+OBS spu_adsr_edge expected attack_exp_01_FIRST=0x00003000
+OBS spu_adsr_edge expected attack_exp_01_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_exp_01_MINMAX=0x30007ff7
+OBS spu_adsr_edge expected attack_exp_01_HASH=0x6863ee32
+OBS spu_adsr_edge expected attack_exp_02_FIRST=0x00002800
+OBS spu_adsr_edge expected attack_exp_02_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_exp_02_MINMAX=0x28007ff7
+OBS spu_adsr_edge expected attack_exp_02_HASH=0x80a8e632
+OBS spu_adsr_edge expected attack_exp_03_FIRST=0x00002000
+OBS spu_adsr_edge expected attack_exp_03_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_exp_03_MINMAX=0x20007ff7
+OBS spu_adsr_edge expected attack_exp_03_HASH=0xc6c5de32
+OBS spu_adsr_edge expected attack_exp_04_FIRST=0x00001c00
+OBS spu_adsr_edge expected attack_exp_04_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_exp_04_MINMAX=0x1c007ff7
+OBS spu_adsr_edge expected attack_exp_04_HASH=0xf3d11a32
+OBS spu_adsr_edge expected attack_exp_24_FIRST=0x0000001c
+OBS spu_adsr_edge expected attack_exp_24_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_exp_24_MINMAX=0x001c7ff7
+OBS spu_adsr_edge expected attack_exp_24_HASH=0x1fb75486
+OBS spu_adsr_edge expected attack_exp_28_FIRST=0x0000000e
+OBS spu_adsr_edge expected attack_exp_28_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_exp_28_MINMAX=0x000e7ff7
+OBS spu_adsr_edge expected attack_exp_28_HASH=0x22d3689f
+OBS spu_adsr_edge expected attack_exp_2c_FIRST=0x00000007
+OBS spu_adsr_edge expected attack_exp_2c_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_exp_2c_MINMAX=0x00077ff7
+OBS spu_adsr_edge expected attack_exp_2c_HASH=0x328be200
+OBS spu_adsr_edge expected attack_exp_30_FIRST=0x00000007
+OBS spu_adsr_edge expected attack_exp_30_LAST=0x00007ff7
+OBS spu_adsr_edge expected attack_exp_30_MINMAX=0x00077fff
+OBS spu_adsr_edge expected attack_exp_30_HASH=0x69f63341
+OBS spu_adsr_edge expected attack_exp_34_FIRST=0x00000007
+OBS spu_adsr_edge expected attack_exp_34_LAST=0x00007f1f
+OBS spu_adsr_edge expected attack_exp_34_MINMAX=0x00077f1f
+OBS spu_adsr_edge expected attack_exp_34_HASH=0xa391492c
+OBS spu_adsr_edge expected attack_exp_40_FIRST=0x00000007
+OBS spu_adsr_edge expected attack_exp_40_LAST=0x00001b90
+OBS spu_adsr_edge expected attack_exp_40_MINMAX=0x00071b90
+OBS spu_adsr_edge expected attack_exp_40_HASH=0x555a5dc2
+OBS spu_adsr_edge expected attack_exp_60_FIRST=0x00000007
+OBS spu_adsr_edge expected attack_exp_60_LAST=0x0000001c
+OBS spu_adsr_edge expected attack_exp_60_MINMAX=0x0007001c
+OBS spu_adsr_edge expected attack_exp_60_HASH=0x2a6a234e
+spu_adsr_capture: envelope never left zero for adsr=1fdfffff
+OBS spu_adsr_edge expected attack_exp_7f_FIRST=0x00000000
+OBS spu_adsr_edge expected attack_exp_7f_LAST=0x00000000
+OBS spu_adsr_edge expected attack_exp_7f_MINMAX=0x00000000
+OBS spu_adsr_edge expected attack_exp_7f_HASH=0x22513d45
+OBS spu_adsr_edge expected decay_00_FIRST=0x00003800
+OBS spu_adsr_edge expected decay_00_LAST=0x000007ff
+OBS spu_adsr_edge expected decay_00_MINMAX=0x07ff3800
+OBS spu_adsr_edge expected decay_00_HASH=0xf4126c3a
+OBS spu_adsr_edge expected decay_01_FIRST=0x00003800
+OBS spu_adsr_edge expected decay_01_LAST=0x00000734
+OBS spu_adsr_edge expected decay_01_MINMAX=0x07343800
+OBS spu_adsr_edge expected decay_01_HASH=0x152ca571
+OBS spu_adsr_edge expected decay_02_FIRST=0x00003800
+OBS spu_adsr_edge expected decay_02_LAST=0x000007bd
+OBS spu_adsr_edge expected decay_02_MINMAX=0x07bd3800
+OBS spu_adsr_edge expected decay_02_HASH=0x55072838
+OBS spu_adsr_edge expected decay_08_FIRST=0x00003800
+OBS spu_adsr_edge expected decay_08_LAST=0x000007fe
+OBS spu_adsr_edge expected decay_08_MINMAX=0x07fe3800
+OBS spu_adsr_edge expected decay_08_HASH=0x83f4c941
+OBS spu_adsr_edge expected decay_0a_FIRST=0x00003800
+OBS spu_adsr_edge expected decay_0a_LAST=0x000007ff
+OBS spu_adsr_edge expected decay_0a_MINMAX=0x07ff6350
+OBS spu_adsr_edge expected decay_0a_HASH=0x61d29fb7
+OBS spu_adsr_edge expected decay_0c_FIRST=0x00003800
+OBS spu_adsr_edge expected decay_0c_LAST=0x000007ff
+OBS spu_adsr_edge expected decay_0c_MINMAX=0x07ff781f
+OBS spu_adsr_edge expected decay_0c_HASH=0x9e5e635d
+OBS spu_adsr_edge expected decay_0e_FIRST=0x00003800
+OBS spu_adsr_edge expected decay_0e_LAST=0x00002b37
+OBS spu_adsr_edge expected decay_0e_MINMAX=0x2b377e07
+OBS spu_adsr_edge expected decay_0e_HASH=0x98fd139f
+OBS spu_adsr_edge expected decay_0f_FIRST=0x00003800
+OBS spu_adsr_edge expected decay_0f_LAST=0x00004b67
+OBS spu_adsr_edge expected decay_0f_MINMAX=0x38007f07
+OBS spu_adsr_edge expected decay_0f_HASH=0xe8b7db7d
+OBS spu_adsr_edge expected sustain_level_00_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_00_LAST=0x000007ff
+OBS spu_adsr_edge expected sustain_level_00_MINMAX=0x07ff6350
+OBS spu_adsr_edge expected sustain_level_00_HASH=0x787042ec
+OBS spu_adsr_edge expected sustain_level_01_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_01_LAST=0x00000ffe
+OBS spu_adsr_edge expected sustain_level_01_MINMAX=0x0ffe6343
+OBS spu_adsr_edge expected sustain_level_01_HASH=0x89f0d236
+OBS spu_adsr_edge expected sustain_level_02_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_02_LAST=0x000017fe
+OBS spu_adsr_edge expected sustain_level_02_MINMAX=0x17fe6350
+OBS spu_adsr_edge expected sustain_level_02_HASH=0x92d8db17
+OBS spu_adsr_edge expected sustain_level_03_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_03_LAST=0x00001ffe
+OBS spu_adsr_edge expected sustain_level_03_MINMAX=0x1ffe6350
+OBS spu_adsr_edge expected sustain_level_03_HASH=0x3b7f3aaf
+OBS spu_adsr_edge expected sustain_level_04_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_04_LAST=0x000027fb
+OBS spu_adsr_edge expected sustain_level_04_MINMAX=0x27fb6350
+OBS spu_adsr_edge expected sustain_level_04_HASH=0xbad909c8
+OBS spu_adsr_edge expected sustain_level_05_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_05_LAST=0x00002ffe
+OBS spu_adsr_edge expected sustain_level_05_MINMAX=0x2ffe6350
+OBS spu_adsr_edge expected sustain_level_05_HASH=0x80284357
+OBS spu_adsr_edge expected sustain_level_06_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_06_LAST=0x000037fa
+OBS spu_adsr_edge expected sustain_level_06_MINMAX=0x37fa6350
+OBS spu_adsr_edge expected sustain_level_06_HASH=0xb20dcdb5
+OBS spu_adsr_edge expected sustain_level_07_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_07_LAST=0x00003ffa
+OBS spu_adsr_edge expected sustain_level_07_MINMAX=0x38006350
+OBS spu_adsr_edge expected sustain_level_07_HASH=0x01cb6d17
+OBS spu_adsr_edge expected sustain_level_08_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_08_LAST=0x000047fe
+OBS spu_adsr_edge expected sustain_level_08_MINMAX=0x38006350
+OBS spu_adsr_edge expected sustain_level_08_HASH=0xfe1decf3
+OBS spu_adsr_edge expected sustain_level_09_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_09_LAST=0x00004ff6
+OBS spu_adsr_edge expected sustain_level_09_MINMAX=0x38006350
+OBS spu_adsr_edge expected sustain_level_09_HASH=0xe4510545
+OBS spu_adsr_edge expected sustain_level_0a_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_0a_LAST=0x000057fe
+OBS spu_adsr_edge expected sustain_level_0a_MINMAX=0x38006350
+OBS spu_adsr_edge expected sustain_level_0a_HASH=0x7d0fcc15
+OBS spu_adsr_edge expected sustain_level_0b_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_0b_LAST=0x00005ff6
+OBS spu_adsr_edge expected sustain_level_0b_MINMAX=0x38006350
+OBS spu_adsr_edge expected sustain_level_0b_HASH=0xb5672545
+OBS spu_adsr_edge expected sustain_level_0c_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_0c_LAST=0x000067fc
+OBS spu_adsr_edge expected sustain_level_0c_MINMAX=0x380067fc
+OBS spu_adsr_edge expected sustain_level_0c_HASH=0x84c1db39
+OBS spu_adsr_edge expected sustain_level_0d_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_0d_LAST=0x00006ff8
+OBS spu_adsr_edge expected sustain_level_0d_MINMAX=0x38006ff8
+OBS spu_adsr_edge expected sustain_level_0d_HASH=0xac1d7d7d
+OBS spu_adsr_edge expected sustain_level_0e_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_0e_LAST=0x000077ff
+OBS spu_adsr_edge expected sustain_level_0e_MINMAX=0x380077ff
+OBS spu_adsr_edge expected sustain_level_0e_HASH=0x70ffaf3a
+OBS spu_adsr_edge expected sustain_level_0f_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_level_0f_LAST=0x00007fef
+OBS spu_adsr_edge expected sustain_level_0f_MINMAX=0x38007fef
+OBS spu_adsr_edge expected sustain_level_0f_HASH=0xfb7d86aa
+OBS spu_adsr_edge expected sustain_up_lin_00_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_lin_00_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_lin_00_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_lin_00_HASH=0x4ea9b43a
+OBS spu_adsr_edge expected sustain_up_lin_01_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_lin_01_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_lin_01_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_lin_01_HASH=0x4ea9b43a
+OBS spu_adsr_edge expected sustain_up_lin_02_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_lin_02_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_lin_02_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_lin_02_HASH=0x4ea9b43a
+OBS spu_adsr_edge expected sustain_up_lin_03_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_lin_03_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_lin_03_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_lin_03_HASH=0x4ea9b43a
+OBS spu_adsr_edge expected sustain_up_lin_2c_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_lin_2c_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_lin_2c_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_lin_2c_HASH=0xb6efbd0a
+OBS spu_adsr_edge expected sustain_up_lin_30_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_lin_30_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_lin_30_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_lin_30_HASH=0x0e9c4821
+OBS spu_adsr_edge expected sustain_up_lin_34_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_lin_34_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_lin_34_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_lin_34_HASH=0xe8d7e445
+OBS spu_adsr_edge expected sustain_up_lin_40_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_lin_40_LAST=0x00005b8f
+OBS spu_adsr_edge expected sustain_up_lin_40_MINMAX=0x38005b8f
+OBS spu_adsr_edge expected sustain_up_lin_40_HASH=0xae3dceba
+OBS spu_adsr_edge expected sustain_up_lin_60_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_lin_60_LAST=0x0000401b
+OBS spu_adsr_edge expected sustain_up_lin_60_MINMAX=0x3800401b
+OBS spu_adsr_edge expected sustain_up_lin_60_HASH=0x8e8c92b6
+OBS spu_adsr_edge expected sustain_up_lin_7f_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_lin_7f_LAST=0x00003fff
+OBS spu_adsr_edge expected sustain_up_lin_7f_MINMAX=0x38003fff
+OBS spu_adsr_edge expected sustain_up_lin_7f_HASH=0x3bfcf43a
+OBS spu_adsr_edge expected sustain_up_exp_00_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_exp_00_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_exp_00_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_exp_00_HASH=0x4ea9b43a
+OBS spu_adsr_edge expected sustain_up_exp_01_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_exp_01_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_exp_01_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_exp_01_HASH=0x4ea9b43a
+OBS spu_adsr_edge expected sustain_up_exp_02_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_exp_02_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_exp_02_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_exp_02_HASH=0x4ea9b43a
+OBS spu_adsr_edge expected sustain_up_exp_03_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_exp_03_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_exp_03_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_exp_03_HASH=0x4ea9b43a
+OBS spu_adsr_edge expected sustain_up_exp_2c_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_exp_2c_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_exp_2c_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_exp_2c_HASH=0xef43ca14
+OBS spu_adsr_edge expected sustain_up_exp_30_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_exp_30_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_exp_30_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_exp_30_HASH=0x5cca32e2
+OBS spu_adsr_edge expected sustain_up_exp_34_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_exp_34_LAST=0x00007fff
+OBS spu_adsr_edge expected sustain_up_exp_34_MINMAX=0x38007fff
+OBS spu_adsr_edge expected sustain_up_exp_34_HASH=0x05b98620
+OBS spu_adsr_edge expected sustain_up_exp_40_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_exp_40_LAST=0x00005b8f
+OBS spu_adsr_edge expected sustain_up_exp_40_MINMAX=0x38005b8f
+OBS spu_adsr_edge expected sustain_up_exp_40_HASH=0xae3dceba
+OBS spu_adsr_edge expected sustain_up_exp_60_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_exp_60_LAST=0x0000401b
+OBS spu_adsr_edge expected sustain_up_exp_60_MINMAX=0x3800401b
+OBS spu_adsr_edge expected sustain_up_exp_60_HASH=0x350f3e0e
+OBS spu_adsr_edge expected sustain_up_exp_7f_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_up_exp_7f_LAST=0x00003fff
+OBS spu_adsr_edge expected sustain_up_exp_7f_MINMAX=0x38003fff
+OBS spu_adsr_edge expected sustain_up_exp_7f_HASH=0x3bfcf43a
+OBS spu_adsr_edge expected sustain_down_lin_00_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_00_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_lin_00_MINMAX=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_00_HASH=0x70e14545
+OBS spu_adsr_edge expected sustain_down_lin_01_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_01_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_lin_01_MINMAX=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_01_HASH=0x70e14545
+OBS spu_adsr_edge expected sustain_down_lin_02_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_02_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_lin_02_MINMAX=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_02_HASH=0x70e14545
+OBS spu_adsr_edge expected sustain_down_lin_03_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_03_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_lin_03_MINMAX=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_03_HASH=0x70e14545
+OBS spu_adsr_edge expected sustain_down_lin_2c_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_2c_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_lin_2c_MINMAX=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_2c_HASH=0xe6995a29
+OBS spu_adsr_edge expected sustain_down_lin_30_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_30_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_lin_30_MINMAX=0x00003827
+OBS spu_adsr_edge expected sustain_down_lin_30_HASH=0xb211c955
+OBS spu_adsr_edge expected sustain_down_lin_34_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_34_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_lin_34_MINMAX=0x00003c17
+OBS spu_adsr_edge expected sustain_down_lin_34_HASH=0xc7f9dfad
+OBS spu_adsr_edge expected sustain_down_lin_40_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_40_LAST=0x0000207f
+OBS spu_adsr_edge expected sustain_down_lin_40_MINMAX=0x207f3f7f
+OBS spu_adsr_edge expected sustain_down_lin_40_HASH=0x8e32f73a
+OBS spu_adsr_edge expected sustain_down_lin_60_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_60_LAST=0x00003fdf
+OBS spu_adsr_edge expected sustain_down_lin_60_MINMAX=0x38003fff
+OBS spu_adsr_edge expected sustain_down_lin_60_HASH=0x035504da
+OBS spu_adsr_edge expected sustain_down_lin_7f_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_lin_7f_LAST=0x00003fff
+OBS spu_adsr_edge expected sustain_down_lin_7f_MINMAX=0x38003fff
+OBS spu_adsr_edge expected sustain_down_lin_7f_HASH=0x3bfcf43a
+OBS spu_adsr_edge expected sustain_down_exp_00_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_00_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_exp_00_MINMAX=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_00_HASH=0x70e14545
+OBS spu_adsr_edge expected sustain_down_exp_01_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_01_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_exp_01_MINMAX=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_01_HASH=0x70e14545
+OBS spu_adsr_edge expected sustain_down_exp_02_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_02_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_exp_02_MINMAX=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_02_HASH=0x70e14545
+OBS spu_adsr_edge expected sustain_down_exp_03_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_03_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_exp_03_MINMAX=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_03_HASH=0x70e14545
+OBS spu_adsr_edge expected sustain_down_exp_2c_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_2c_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_exp_2c_MINMAX=0x00003827
+OBS spu_adsr_edge expected sustain_down_exp_2c_HASH=0x1e22ebdb
+OBS spu_adsr_edge expected sustain_down_exp_30_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_30_LAST=0x00000000
+OBS spu_adsr_edge expected sustain_down_exp_30_MINMAX=0x00003c13
+OBS spu_adsr_edge expected sustain_down_exp_30_HASH=0x24f7bf7f
+OBS spu_adsr_edge expected sustain_down_exp_34_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_34_LAST=0x000001d8
+OBS spu_adsr_edge expected sustain_down_exp_34_MINMAX=0x01d83e0b
+OBS spu_adsr_edge expected sustain_down_exp_34_HASH=0x7723f971
+OBS spu_adsr_edge expected sustain_down_exp_40_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_40_LAST=0x0000303f
+OBS spu_adsr_edge expected sustain_down_exp_40_MINMAX=0x303f3fbf
+OBS spu_adsr_edge expected sustain_down_exp_40_HASH=0x2fdde63a
+OBS spu_adsr_edge expected sustain_down_exp_60_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_60_LAST=0x00003fef
+OBS spu_adsr_edge expected sustain_down_exp_60_MINMAX=0x38003fff
+OBS spu_adsr_edge expected sustain_down_exp_60_HASH=0x89baab6a
+OBS spu_adsr_edge expected sustain_down_exp_7f_FIRST=0x00003800
+OBS spu_adsr_edge expected sustain_down_exp_7f_LAST=0x00003fff
+OBS spu_adsr_edge expected sustain_down_exp_7f_MINMAX=0x38003fff
+OBS spu_adsr_edge expected sustain_down_exp_7f_HASH=0x3bfcf43a
+OBS spu_adsr_edge expected release_from_sustain_lin_00_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_lin_00_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_lin_00_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_lin_00_HASH=0xb4ee8b65
+OBS spu_adsr_edge expected release_from_sustain_lin_01_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_lin_01_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_lin_01_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_lin_01_HASH=0xb4ee8b65
+OBS spu_adsr_edge expected release_from_sustain_lin_02_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_lin_02_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_lin_02_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_lin_02_HASH=0xb4ee8b65
+OBS spu_adsr_edge expected release_from_sustain_lin_03_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_lin_03_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_lin_03_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_lin_03_HASH=0xb4ee8b65
+OBS spu_adsr_edge expected release_from_sustain_lin_2c_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_lin_2c_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_lin_2c_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_lin_2c_HASH=0xc1d959f1
+OBS spu_adsr_edge expected release_from_sustain_lin_30_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_lin_30_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_lin_30_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_lin_30_HASH=0x9b89449a
+OBS spu_adsr_edge expected release_from_sustain_lin_34_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_lin_34_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_lin_34_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_lin_34_HASH=0x9af88e1d
+OBS spu_adsr_edge expected release_from_sustain_lin_40_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_lin_40_LAST=0x0000247f
+OBS spu_adsr_edge expected release_from_sustain_lin_40_MINMAX=0x247f3fff
+OBS spu_adsr_edge expected release_from_sustain_lin_40_HASH=0xa1694e3a
+OBS spu_adsr_edge expected release_from_sustain_lin_60_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_lin_60_LAST=0x00003fe7
+OBS spu_adsr_edge expected release_from_sustain_lin_60_MINMAX=0x38003fff
+OBS spu_adsr_edge expected release_from_sustain_lin_60_HASH=0xcc4e0f62
+OBS spu_adsr_edge expected release_from_sustain_lin_7f_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_lin_7f_LAST=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_lin_7f_MINMAX=0x38003fff
+OBS spu_adsr_edge expected release_from_sustain_lin_7f_HASH=0x3bfcf43a
+OBS spu_adsr_edge expected release_from_sustain_exp_00_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_exp_00_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_exp_00_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_exp_00_HASH=0xb4ee8b65
+OBS spu_adsr_edge expected release_from_sustain_exp_01_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_exp_01_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_exp_01_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_exp_01_HASH=0xb4ee8b65
+OBS spu_adsr_edge expected release_from_sustain_exp_02_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_exp_02_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_exp_02_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_exp_02_HASH=0xb4ee8b65
+OBS spu_adsr_edge expected release_from_sustain_exp_03_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_exp_03_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_exp_03_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_exp_03_HASH=0xb4ee8b65
+OBS spu_adsr_edge expected release_from_sustain_exp_2c_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_exp_2c_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_exp_2c_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_exp_2c_HASH=0x09674510
+OBS spu_adsr_edge expected release_from_sustain_exp_30_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_exp_30_LAST=0x00000000
+OBS spu_adsr_edge expected release_from_sustain_exp_30_MINMAX=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_exp_30_HASH=0xb3bacdca
+OBS spu_adsr_edge expected release_from_sustain_exp_34_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_exp_34_LAST=0x000005d6
+OBS spu_adsr_edge expected release_from_sustain_exp_34_MINMAX=0x05d63fff
+OBS spu_adsr_edge expected release_from_sustain_exp_34_HASH=0x2dbf258b
+OBS spu_adsr_edge expected release_from_sustain_exp_40_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_exp_40_LAST=0x0000323f
+OBS spu_adsr_edge expected release_from_sustain_exp_40_MINMAX=0x323f3fff
+OBS spu_adsr_edge expected release_from_sustain_exp_40_HASH=0x451e693a
+OBS spu_adsr_edge expected release_from_sustain_exp_60_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_exp_60_LAST=0x00003fef
+OBS spu_adsr_edge expected release_from_sustain_exp_60_MINMAX=0x38003fff
+OBS spu_adsr_edge expected release_from_sustain_exp_60_HASH=0xc5e8824a
+OBS spu_adsr_edge expected release_from_sustain_exp_7f_FIRST=0x00003800
+OBS spu_adsr_edge expected release_from_sustain_exp_7f_LAST=0x00003fff
+OBS spu_adsr_edge expected release_from_sustain_exp_7f_MINMAX=0x38003fff
+OBS spu_adsr_edge expected release_from_sustain_exp_7f_HASH=0x3bfcf43a
+OBS spu_adsr_edge expected timing_keyon_zero_start_FIRST=0x00003fa7
+OBS spu_adsr_edge expected timing_keyon_zero_start_LAST=0x00006c4e
+OBS spu_adsr_edge expected timing_keyon_zero_start_MINMAX=0x3fa77ec0
+OBS spu_adsr_edge expected timing_keyon_zero_start_HASH=0x16b9a1dd
+OBS spu_adsr_edge expected boundary_attack_peak_FIRST=0x00006b4e
+OBS spu_adsr_edge expected boundary_attack_peak_LAST=0x00006c4e
+OBS spu_adsr_edge expected boundary_attack_peak_MINMAX=0x685e7ec0
+OBS spu_adsr_edge expected boundary_attack_peak_HASH=0x384cbb55
+OBS spu_adsr_edge expected boundary_release_zero_FIRST=0x00006b4e
+OBS spu_adsr_edge expected boundary_release_zero_LAST=0x00006517
+OBS spu_adsr_edge expected boundary_release_zero_MINMAX=0x65177ec0
+OBS spu_adsr_edge expected boundary_release_zero_HASH=0x7a8f5eea
+OBS spu_adsr_edge expected manual_envx_zero_then_attack_FIRST=0x00006417
+OBS spu_adsr_edge expected manual_envx_zero_then_attack_LAST=0x000004d0
+OBS spu_adsr_edge expected manual_envx_zero_then_attack_MINMAX=0x00007ec0
+OBS spu_adsr_edge expected manual_envx_zero_then_attack_HASH=0xd1c4f66e
+OBS spu_adsr_edge expected manual_envx_7fff_then_release_FIRST=0x000003d0
+OBS spu_adsr_edge expected manual_envx_7fff_then_release_LAST=0x00006b6e
+OBS spu_adsr_edge expected manual_envx_7fff_then_release_MINMAX=0x03d07fff
+OBS spu_adsr_edge expected manual_envx_7fff_then_release_HASH=0xd0d37932
+OBS spu_irq aligned_block1 irq=0x02010 fired=1 polls=756 statusFire=0x0040 ackCleared=1 statusAck=0x0000 envx=0x3fff capFirst=12 capLast=33 capCount=22 capSum=0x0000bc17
+OBS spu_irq expected aligned.polls=756
+OBS spu_irq expected aligned.lastNonzero=33
+OBS spu_irq rearm firstFired=1 firstPolls=756 firstStatus=0x0040 firstAck=1 firstStatusAck=0x0000 secondFired=1 secondPolls=1 secondStatus=0x0040 secondAck=1
+OBS spu_irq expected rearm.firstPolls=756
+OBS spu_irq midblock irq=0x02008 hits=2 firstPolls=283
+OBS spu_irq expected midblock.firstPolls=283
+[37m
+[0m[90m  [0m[32mâ [0m[90mtransfer via dma[0m[90m
+[0m[90m  [0m[32mâ [0m[90mtransfer to reserved sdk region[0m[90m
+[0m[90m  [0m[32mâ [0m[90mtransfer to capture region[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm decode silent[0m[90m
+[0m[90m  [0m[31mX [0m[31madpcm decode sinewave[0m[31m
+[0m[90m  [0m[31mX [0m[31madpcm decode sinewave lowpitch[0m[31m
+[0m[90m  [0m[31mX [0m[31madpcm decode sinewave highpitch[0m[31m
+[0m[90m  [0m[31mX [0m[31madpcm decode tranglewave[0m[31m
+[0m[90m  [0m[31mX [0m[31madpcm decode squarewave[0m[31m
+[0m[90m  [0m[31mX [0m[31madpcm decode with loop[0m[31m
+[0m[90m  [0m[32mâ [0m[90madpcm edge predictor 0[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge predictor 1[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge predictor 2[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge predictor 3[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge predictor 4[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge shift 00 03[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge shift 04 07[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge shift 08 11[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge shift 12 15[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge state carry[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge saturation positive[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge saturation negative[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge flag code2 ignored[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge flag loop start latch[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge flag end mute[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge flag end repeat[0m[90m
+[0m[90m  [0m[32mâ [0m[90madpcm edge invalid predictor 5 7[0m[90m
+[0m[90m  [0m[31mX [0m[31mvoice sample rates[0m[31m
+[0m[90m  [0m[32mâ [0m[90mvoice sample rate nondyadic[0m[90m
+[0m[90m  [0m[32mâ [0m[90mvoice sample rate swept index[0m[90m
+[0m[90m  [0m[32mâ [0m[90mvoice sample rate swept index full[0m[90m
+[0m[90m  [0m[31mX [0m[31mvoice volume does not affect capture[0m[31m
+[0m[90m  [0m[32mâ [0m[90madsr attack linear step[0m[90m
+[0m[90m  [0m[31mX [0m[31madsr attack linear shift[0m[31m
+[0m[90m  [0m[32mâ [0m[90madsr attack exponential[0m[90m
+[0m[90m  [0m[31mX [0m[31madsr decay shift[0m[31m
+[0m[90m  [0m[32mâ [0m[90madsr sustain level[0m[90m
+[0m[90m  [0m[31mX [0m[31madsr sustain up linear[0m[31m
+[0m[90m  [0m[32mâ [0m[90madsr sustain down linear[0m[90m
+[0m[90m  [0m[32mâ [0m[90madsr sustain up exponential[0m[90m
+[0m[90m  [0m[32mâ [0m[90madsr sustain down exponential[0m[90m
+[0m[90m  [0m[32mâ [0m[90madsr release linear[0m[90m
+[0m[90m  [0m[32mâ [0m[90madsr release exponential[0m[90m
+[0m[90m  [0m[32mâ [0m[90madsr edge characterization traces[0m[90m
+[0m[90m  [0m[31mX [0m[31mirq voice read pointer block aligned[0m[31m
+[0m[90m  [0m[32mâ [0m[90mirq voice read pointer ack rearms[0m[90m
+[0m[90m  [0m[32mâ [0m[90mirq voice read pointer mid block probe[0m[90m
+[0m[90m  [0m[33mo [0m[90mreverb room impulse work area[0m[33m SKIP [0m[37m
+[0m[90m  [0m[33mo [0m[90mreverb room steady sine work area[0m[33m SKIP [0m[37m
+[0m[37m
+[0m[37m[0m[37m[0m[37m[0m[37m[0m[37mEvaluationError spu-adpcm.c:10: in 'adpcm_decode_sinewave'
+[0m[37mEvaluationError spu-adpcm.c:15: in 'adpcm_decode_sinewave_lowpitch'
+[0m[37mEvaluationError spu-adpcm.c:20: in 'adpcm_decode_sinewave_highpitch'
+[0m[37mEvaluationError spu-adpcm.c:25: in 'adpcm_decode_tranglewave'
+[0m[37mEvaluationError spu-adpcm.c:30: in 'adpcm_decode_squarewave'
+[0m[37mEvaluationError spu-adpcm.c:35: in 'adpcm_decode_with_loop'
+EvaluationError spu-adpcm.c:35: in 'adpcm_decode_with_loop'
+[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37mEvaluationError spu-capture.c:5: in 'voice_sample_rates'
+EvaluationError spu-capture.c:5: in 'voice_sample_rates'
+EvaluationError spu-capture.c:5: in 'voice_sample_rates'
+[0m[37m[0m[37m[0m[37m[0m[37mEvaluationError spu-capture.c:62: in 'voice_volume_does_not_affect_capture'
+EvaluationError spu-capture.c:62: in 'voice_volume_does_not_affect_capture'
+[0m[37m[0m[37mEvaluationError spu-adsr.c:217: in 'adsr_attack_linear_shift'
+[0m[37m[0m[37mEvaluationError spu-adsr.c:334: in 'adsr_decay_shift'
+[0m[37m[0m[37mEvaluationError spu-adsr.c:461: in 'adsr_sustain_up_linear'
+[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37mEvaluationError spu-irq.c:204: in 'irq_voice_read_pointer_block_aligned'
+EvaluationError spu-irq.c:204: in 'irq_voice_read_pointer_block_aligned'
+EvaluationError spu-irq.c:204: in 'irq_voice_read_pointer_block_aligned'
+[0m[37m[0m[37m[0m[37m[0m[37m
+Ran [0m[37m49[0m[37m test(s)
+[0m[37mSynthesis: [0m[31mFAILURE[0m[37m Tests: [0m[33m49[0m[37m | Passing: [0m[32m35[0m[37m | Failing: [0m[31m12[0m[37m | Skipped: [0m[33m2[0m[37m

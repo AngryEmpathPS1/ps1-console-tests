@@ -1,0 +1,19 @@
+ResetGraph:itb=80015100,ehk=80015130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset-tail
+mdecReset's prologue at each word, cold and warm, with what follows the enables changed. Kept of 8, fastest call. No assertions.
+
+ var   word 0 cold  warm   word 1 cold  warm   word 2 cold  warm   word 3 cold  warm
+  A       0/8 127 1/8  67     8/8 128 0/8  70     8/8 137 8/8  70     0/8 136 8/8  70
+  B       8/8 120 0/8  67     8/8 120 8/8 107     8/8 135 0/8 120     8/8 129 0/8  63
+  C       8/8 128 0/8  67     8/8 128 0/8  70     8/8 137 7/8  69     0/8 136 8/8  70
+  D       8/8 125 0/8  65     8/8 125 0/8  65     8/8 134 0/8  67     0/8 133 0/8  67
+  E       8/8 128 0/8  67     8/8 137 8/8  70     8/8 136 8/8  70     0/8 136 0/8  71
+  F       8/8 137 0/8  68     8/8 136 7/8  70     8/8 136 0/8  71     8/8 137 0/8  71
+  G       8/8 122 0/8  67     8/8 125 0/8  68     8/8 132 0/8  69     8/8 131 0/8  70
+
+mdec/mdec-reset-tail: Done.

@@ -34,3 +34,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-01-fuzz](2026-11-01-fuzz/) | 6 | 1 |
 | [2026-11-01-mul](2026-11-01-mul/) | 7 | 2 |
 | [2026-11-01-spu](2026-11-01-spu/) | 9 | 2 |
+| [2026-11-07](2026-11-07/) | 355 | 175 |

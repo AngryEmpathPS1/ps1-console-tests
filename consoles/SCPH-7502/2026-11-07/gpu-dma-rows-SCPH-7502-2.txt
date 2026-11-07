@@ -1,0 +1,28 @@
+ResetGraph:itb=80012a3c,ehk=80012a6c
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-dma-rows
+2,048 words by SyncMode 1 GPU DMA into rectangles of four widths at four block sizes, timed by a CHCR2 poll. No assertions.
+
+width words/row  bs  blocks   fewest    mean    most
+   32        16  16    128     3580   3603.7   3647
+   32        16  24     85     3108   3157.7   3224
+   32        16  32     64     2923   2978.0   3027
+   32        16  48     42     2595   2681.6   2804
+   64        32  16    128     3508   3533.6   3562
+   64        32  24     85     3085   3116.5   3171
+   64        32  32     64     2854   2893.8   2944
+   64        32  48     42     2553   2638.8   2723
+  128        64  16    128     3472   3489.0   3528
+  128        64  24     85     3042   3081.0   3146
+  128        64  32     64     2810   2874.5   2923
+  128        64  48     42     2523   2609.8   2706
+  256       128  16    128     3471   3499.6   3525
+  256       128  24     85     3032   3071.8   3126
+  256       128  32     64     2816   2864.8   2924
+  256       128  48     42     2513   2596.5   2680
+
+gpu/gpu-dma-rows: Done.
