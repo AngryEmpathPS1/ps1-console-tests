@@ -156,6 +156,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-05-storun](2026-11-05-storun/) | 5 | 1 |
 | [2026-11-05-turn](2026-11-05-turn/) | 5 | 1 |
 | [2026-11-06-c0dir3](2026-11-06-c0dir3/) | 7 | 2 |
+| [2026-11-06-gamemlb99](2026-11-06-gamemlb99/) | 3 | 0 |
 | [2026-11-06-gp480i](2026-11-06-gp480i/) | 6 | 1 |
 | [2026-11-06-irqunmask](2026-11-06-irqunmask/) | 6 | 1 |
 | [2026-11-06-irqunmask2](2026-11-06-irqunmask2/) | 5 | 1 |
