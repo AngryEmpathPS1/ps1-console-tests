@@ -10,17 +10,17 @@ How many logs each test has on each console. Generated from the file names in `c
 | biu-dram | 2 |  |  | 2 |  |  | 2 |  |  |
 | biu-sched | 2 |  |  | 2 |  |  | 2 |  |  |
 | bus-latch | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
-| cd-2x-burned | 1 |  | 1 |  | 2 | 1 |  | 1 |  |
+| cd-2x-burned | 1 |  | 1 |  | 2 | 1 | 4 | 1 |  |
 | cd-ack-getloc | 7 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-ack-times | 7 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-ack-window | 7 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
-| cd-adpbusy | 1 |  | 1 |  | 2 | 1 |  | 1 |  |
+| cd-adpbusy | 1 |  | 1 |  | 2 | 1 | 2 | 1 |  |
 | cd-boot-read | 4 | 2 | 3 | 3 | 3 | 4 | 2 | 3 |  |
 | cd-boot-steps | 7 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
 | cd-cmds | 7 | 7 | 13 | 3 | 7 | 16 | 2 | 10 | 3 |
-| cd-da-capture | 1 |  | 1 |  | 2 | 1 |  | 1 |  |
+| cd-da-capture | 1 |  | 1 |  | 2 | 1 | 2 | 1 |  |
 | cd-game-steps | 7 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
-| cd-gameday | 2 |  | 2 |  | 2 | 2 |  | 2 |  |
+| cd-gameday | 2 |  | 2 |  | 2 | 2 | 2 | 2 |  |
 | cd-getlocl-seek | 3 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
 | cd-hc05-tick | 3 | 2 | 4 | 3 | 4 | 5 | 4 | 3 |  |
 | cd-head | 7 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
@@ -48,7 +48,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-reann | 7 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
 | cd-scex | 11 | 7 | 12 | 3 | 7 | 17 | 2 | 10 | 3 |
 | cd-scex-hold | 4 | 7 | 4 | 3 | 7 | 7 | 2 | 4 | 3 |
-| cd-scex-play | 2 |  | 2 |  | 2 | 2 |  | 2 |  |
+| cd-scex-play | 2 |  | 2 |  | 2 | 2 | 2 | 2 |  |
 | cd-seek | 4 | 6 | 6 | 2 | 4 | 8 | 4 | 6 | 2 |
 | cd-seek-cancel | 3 |  | 1 |  |  |  | 3 |  |  |
 | cd-seek-cmd | 3 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
@@ -79,8 +79,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-spinup-trend | 3 | 3 | 3 | 3 | 3 | 5 | 3 | 3 |  |
 | cd-spunup | 4 | 6 | 4 | 2 | 4 | 6 | 1 | 4 | 2 |
 | cd-store | 1 | 1 | 2 | 2 | 2 | 4 | 1 | 2 | 2 |
-| cd-xa | 1 |  | 2 |  | 2 | 3 |  | 3 |  |
-| cd-xa-switch | 1 |  | 1 |  | 2 | 3 |  | 2 |  |
+| cd-xa | 1 |  | 2 |  | 2 | 3 | 2 | 3 |  |
+| cd-xa-switch | 1 |  | 1 |  | 2 | 3 | 2 | 2 |  |
 | cd-xa-switch2x | 7 |  | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-xa-switch2x-ff7 |  | 6 |  |  |  |  |  |  |  |
 | cd-xa-switch2x-ff7eu |  |  |  |  |  |  | 2 |  |  |

@@ -247,15 +247,21 @@ int main() {
     /* The disc's length: GetTD(0), the lead-out's minute and second. */
     row(); { const uint8_t p0[1] = { 0x00 }; cmd(0x14, p0, 1); }
     const uint32_t leadout = (lastType == 3 && lastN >= 3) ? (unbcd(lastResp[1]) * 60 + unbcd(lastResp[2])) * 75 - 150 : 0;
-    /* The disc check: 00:02:16's marker at single speed. */
-    row(); setmode(0x00); setloc(16); cmd(0x06); pump(now() + MS(3000), false, 1); pause();
+    /* The disc check: 00:02:16's marker at single speed, in the first FIVE sectors (2026-11-07: one sector was the check until
+     * then, and the SCPH-7502 - its lead-out at 72:00, so the right disc - answered it twice with a first sector of four zero
+     * bytes, as the 7001's first run had with another; the check now takes D16 to D20 anywhere in the five and always prints
+     * what it read, so a first sector that is not the one asked for is a row, not a refusal). */
+    row(); setmode(0x00); setloc(16); cmd(0x06); pump(now() + MS(3000), false, 5); pause();
     bool marked = false;
-    for (int k = 0; k < nev; k++) if (evs[k].kind == 1 && (evs[k].mark & 0xFF) == 'D' && (evs[k].mark >> 8) == 16) marked = true;
+    for (int k = 0; k < nev; k++) if (evs[k].kind == 1) {
+        const uint32_t ms[2] = { evs[k].mark, evs[k].mark2 };
+        for (int i = 0; i < 2; i++) if ((ms[i] & 0xFF) == 'D' && (ms[i] >> 8) >= 16 && (ms[i] >> 8) <= 20) marked = true;
+    }
     printf("disc: lead-out at LBA %u (%u:%02u), 00:02:16 %s\n", (unsigned)leadout, (unsigned)((leadout + 150) / 4500),
-           (unsigned)(((leadout + 150) / 75) % 60), marked ? "marked D16" : "NOT marked");
+           (unsigned)(((leadout + 150) / 75) % 60), marked ? "marked D16-D20" : "NOT marked");
+    show("disc check");
     if (!marked) {
-        printf("THIS IS NOT THE DOUBLE-SPEED DISC (or the games disc), or the drive refused it - the check read:\n");
-        show("disc check");
+        printf("THIS IS NOT THE DOUBLE-SPEED DISC (or the games disc), or the drive refused it.\n");
     } else {
         nev = 0;
         int use[NPLACE], nuse = 0;

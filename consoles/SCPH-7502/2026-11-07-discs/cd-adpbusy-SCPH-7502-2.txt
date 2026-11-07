@@ -1,0 +1,26 @@
+
+cdrom/cd-adpbusy
+ADPBUSY's edges around an XA sector's playback, to the sample. Needs cd-xa's disc. Cycles at the system clock.
+
+drive region: for Europe - unlocking
+
+18,900 Hz (LBA 2000):
+  ADPBUSY changes (cycles from ReadN, ring position):
+    rise 16666766 p114, fall 23892090 p306
+  interrupts: INT3 78535 INT1 16781487 INT1 17248735 INT1 17674761 INT1 18132763 INT1 18585579 INT1 19032924 INT1 19487467 INT1 19940141 INT1 20385176 INT1 20839290 INT1 21301323 (+28)
+  playback: first sample 16428071 (ring 315), last sample 23903142 (ring 320)
+  first rise 238695 cycles from the first sample, last fall -11052 cycles from the last sample
+
+37,800 Hz (LBA 3000):
+  ADPBUSY changes (cycles from ReadN, ring position):
+    rise 7207099 p300, fall 10819852 p396
+  interrupts: INT3 43284 INT1 7319648 INT1 7775703 INT1 8215273 INT1 8670970 INT1 9123781 INT1 9573430 INT1 10025961 INT1 10480504 INT1 10927067 INT1 11379286 INT1 11849639 (+20)
+  playback: first sample 6968481 (ring 501), last sample 10830839 (ring 410)
+  first rise 238618 cycles from the first sample, last fall -10987 cycles from the last sample
+
+STREAM (LBA 1000-1039, twenty silent 37,800 Hz mono sectors, every other one):
+  ADPBUSY changes (cycles from ReadN, ring position):
+    rise 9111842 p338, fall 27175225 p306
+  interrupts: INT3 45504 INT1 9222771 INT1 10122589 INT1 11022649 INT1 11943065 INT1 12835157 INT1 13743513 INT1 14636516 INT1 15539523 INT1 16444245 INT1 17363978 INT1 18254589 (+55)
+
+cdrom/cd-adpbusy: Done.
