@@ -3,6 +3,7 @@
 Timing and behaviour tests for the original PlayStation, and what they read on real consoles. This is still being actively worked on and updated: more tests, consoles and findings are on the way.
 
 - **`consoles/`**: the logs, one folder per console, then one per session. Each console has a page saying what it reported about itself.
+- **`two-consoles/`**: sessions with two consoles joined by a software link cable (a Pico in the middle recording every byte): each console's log and the relay's record.
 - **`hwtests/`**: the test programs, each a folder with its source, beside a ready-to-run PS-EXE in `hwtests/build/`.
 - **`findings/`**: what the logs show, by subsystem, each claim with the tests and consoles behind it.
 - **`TESTS.md`**: what each test measures.
@@ -49,7 +50,7 @@ None of this happens without other people's work: [psx-spx](https://psx-spx.cons
 ## Licences
 
 - **Tests** (`hwtests/`): MIT, in `LICENSE`.
-- **Logs and documents** (`consoles/`, `comparisons/`, `findings/`, `TESTS.md`, `COVERAGE.md`): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), in `LICENSE-DATA`. Use them for anything; credit **AngryEmpathPS1**.
+- **Logs and documents** (`consoles/`, `two-consoles/`, `comparisons/`, `findings/`, `TESTS.md`, `COVERAGE.md`): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), in `LICENSE-DATA`. Use them for anything; credit **AngryEmpathPS1**.
 - The test programs link [PSn00bSDK](https://github.com/Lameguy64/PSn00bSDK) (MPL 2.0, unmodified) and the `common` library of ps1-tests (MIT). Their notices are in `NOTICE`.
 
 Corrections are welcome: open an issue and say how you know.

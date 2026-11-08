@@ -1,0 +1,28 @@
+
+sio1/sio1-rates
+SIO1 between two chips: a rate or a format the receiver does not expect.
+role B: each row: the sender's MODE/BAUD -> the receiver's, then every byte taken as XX and its flags (P parity, O overrun, F bad stop, . none)
+row  0  4E/18 -> 4E/18: 16: 00. FF. 55. AA. 0F. F0. 01. 80. 7F. FE. 33. CC. 81. 7E. 3C. C3.
+row  1  4E/15 -> 4E/18: 12: 00. 29F D9. 84. 01F B0. FD. 1BF B3F 98. 79. E3.
+row  2  4E/16 -> 4E/18: 12: 80F ADF 75. 00. 81F 60. F9. 93F 66. 30. 79F E3.
+row  3  4E/17 -> 4E/18: 15: 00F FFF A5F D6F 87F F8F 40F A0. F9. 33. CCF C1F BEF 9EF F8.
+row  4  4E/19 -> 4E/18: 16: 00F FF. 55F AA. 0FF F0. 01F 80. 7FF FE. 33F CC. 81. 7EF 3CF C3.
+row  5  4E/20 -> 4E/18: 16: 00F FF. ADF 5A. 1FF E0. 01F 00. FFF FE. 63F 9C. 01. FEF 7CF 83.
+row  6  4E/21 -> 4E/18: 18: 00F FD. A9F 59. F7F 18F 7E. 80F 00. FFF F9. 67F 61F 37F 18. E1. 36F FE.
+row  7  CE/18 -> 4E/18: 16: 00. FF. 55. AA. 0F. F0. 01. 80. 7F. FE. 33. CC. 81. 7E. 3C. C3.
+row  8  4E/18 -> CE/18: 16: 00. FF. 55. AA. 0F. F0. 01. 80. 7F. FE. 33. CC. 81. 7E. 3C. C3.
+row  9  4E/18 -> CE/18 spaced: 16: 00. FF. 55. AA. 0F. F0. 01. 80. 7F. FE. 33. CC. 81. 7E. 3C. C3.
+row 10  4E/18 -> 8E/18: 16: 00. FF. 55. AA. 0F. F0. 01. 80. 7F. FE. 33. CC. 81. 7E. 3C. C3.
+row 11  5E/18 -> 4E/18: 16: 00. FF. 55. AA. 0F. F0. 01F 80F 7FF FEF 33. CC. 81. 7E. 3C. C3.
+row 12  7E/18 -> 4E/18: 16: 00F FFF 55F AAF 0FF F0F 01. 80. 7F. FE. 33F CCF 81F 7EF 3CF C3F
+row 13  5E/18 -> 5E/18: 16: 00. FF. 55. AA. 0F. F0. 01. 80. 7F. FE. 33. CC. 81. 7E. 3C. C3.
+row 14  5E/18 -> 7E/18: 16: 00P FFP 55P AAP 0FP F0P 01P 80P 7FP FEP 33P CCP 81P 7EP 3CP C3P
+row 15  4E/18 -> 5E/18: 12: 00F 55F D5. 08. 01PF C0P F9. 33F E6. 60P F1F C3.
+row 16  4A/18 -> 4E/18: 12: 80F D5F 55. 04. 81F 40. FEF 16. 16F F2. BCF F8.
+row 17  4A/18 -> 4E/18 spaced: 16: 80. FF. D5. AA. 8F. F0. 81. 80. FF. FE. B3. CC. 81. FE. BC. C3.
+row 18  4E/18 -> 4A/18: 16: 00F 7F. 55F 2A. 0FF 70. 01F 00. 7FF 7E. 33F 4C. 01. 7EF 3CF 43.
+row 19  4E/18 -> 4D/288: 16: 00. FF. 55. AA. 0F. F0. 01. 80. 7F. FE. 33. CC. 81. 7E. 3C. C3.
+row 20  4E/18 -> 4E/18 burst: 1: C3.
+row 21  4E/18 -> 4E/18 spaced: 16: 00. FF. 55. AA. 0F. F0. 01. 80. 7F. FE. 33. CC. 81. 7E. 3C. C3.
+go received, role B
+sio1/sio1-rates: Done.

@@ -1,0 +1,27 @@
+
+sio1/sio1-cannon
+Bursts into a receiver that is not reading: what SIO1 keeps, which bytes, and its flags.
+role B: 21 bursts (sent N back to back while not reading; STAT bits: 1 RX ready, 3 parity, 4 OVERRUN, 5 framing)
+N  1: STAT 2987 -> got  1: 01 | after 2185
+N  1: STAT 2187 -> got  1: 0b | after 2185
+N  1: STAT 4987 -> got  1: 15 | after 2985
+N  4: STAT 2187 -> got  4: 1f 20 21 22 | after 0985
+N  4: STAT 1187 -> got  4: 29 2a 2b 2c | after 1185
+N  4: STAT 0987 -> got  4: 33 34 35 36 | after 2985
+N  7: STAT 3987 -> got  7: 3d 3e 3f 40 41 42 43 | after 3985
+N  7: STAT 2187 -> got  7: 47 48 49 4a 4b 4c 4d | after 1985
+N  7: STAT 3987 -> got  7: 51 52 53 54 55 56 57 | after 2185
+N  8: STAT 3187 -> got  8: 5b 5c 5d 5e 5f 60 61 62 | after 3185
+N  8: STAT 0987 -> got  8: 65 66 67 68 69 6a 6b 6c | after 1985
+N  8: STAT 3987 -> got  8: 6f 70 71 72 73 74 75 76 | after 1985
+N  9: STAT 3197 -> got  8: 79 7a 7b 7c 7d 7e 7f 81 | after 1195 OVERRUN
+N  9: STAT 3997 -> got  8: 83 84 85 86 87 88 89 8b | after 4195 OVERRUN
+N  9: STAT 2997 -> got  8: 8d 8e 8f 90 91 92 93 95 | after 4995 OVERRUN
+N 12: STAT 2997 -> got  8: 97 98 99 9a 9b 9c 9d a2 | after 4195 OVERRUN
+N 12: STAT 1197 -> got  8: a1 a2 a3 a4 a5 a6 a7 ac | after 1195 OVERRUN
+N 12: STAT 2197 -> got  8: ab ac ad ae af b0 b1 b6 | after 2195 OVERRUN
+N 16: STAT 2997 -> got  8: b5 b6 b7 b8 b9 ba bb c4 | after 3195 OVERRUN
+N 16: STAT 4197 -> got  8: bf c0 c1 c2 c3 c4 c5 ce | after 1995 OVERRUN
+N 16: STAT 2197 -> got  8: c9 ca cb cc cd ce cf d8 | after 4995 OVERRUN
+go received, role B
+sio1/sio1-cannon: Done.
