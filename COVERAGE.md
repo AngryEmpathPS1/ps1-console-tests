@@ -77,6 +77,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-sled | 3 | 2 | 3 | 3 | 2 | 7 | 7 | 7 |  |
 | cd-small-reads | 7 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-speed | 4 | 6 | 6 | 2 | 4 | 8 | 4 | 6 | 2 |
+| cd-speedack |  |  |  | 5 |  | 5 |  |  |  |
+| cd-speedack2 |  |  |  | 3 |  | 3 |  |  |  |
 | cd-speedpause | 4 | 6 | 6 | 2 | 4 | 8 | 4 | 6 | 2 |
 | cd-spinup-phase | 3 | 2 | 3 | 3 | 6 | 7 | 7 | 7 |  |
 | cd-spinup-state | 3 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |

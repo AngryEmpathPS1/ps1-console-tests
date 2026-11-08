@@ -1,0 +1,29 @@
+
+cdrom/cd-speedack
+Setmode and Setloc's answers after a paused read, by its speed and the Setmode's.
+Cycles at the system clock (1 ms = 33,869) from each command's write to its INT3, its stat beside it. No assertions - compare against your emulator.
+A  2X read, 430k: Setmode 05h, Setloc: 23136 (00) 0 (01)
+B  2X read, 430k: Setmode 85h, Setloc: 22055 (00) 0 (01)
+C  2X read, 430k: Getstat, Setmode 05h, Setloc: 20201 (00) 32880 (00) 0 (01)
+D  1X read, 430k: Setmode 05h, Setloc: 26858 (00) 0 (01)
+E  2X read, 3.0M: Setmode 05h, Setloc: 30063 (00) 0 (01)
+F  2X read, 430k: Setmode 05h, 430k, Setloc: 29798 (00) 0 (01)
+A  2X read, 430k: Setmode 05h, Setloc: 28994 (00) 0 (01)
+B  2X read, 430k: Setmode 85h, Setloc: 23714 (00) 0 (01)
+C  2X read, 430k: Getstat, Setmode 05h, Setloc: 21901 (00) 32933 (00) 0 (01)
+D  1X read, 430k: Setmode 05h, Setloc: 25096 (00) 0 (01)
+E  2X read, 3.0M: Setmode 05h, Setloc: 25902 (00) 0 (01)
+F  2X read, 430k: Setmode 05h, 430k, Setloc: 22545 (00) 0 (01)
+A  2X read, 430k: Setmode 05h, Setloc: 29846 (00) 0 (01)
+B  2X read, 430k: Setmode 85h, Setloc: 22481 (00) 0 (01)
+C  2X read, 430k: Getstat, Setmode 05h, Setloc: 20613 (00) 32938 (00) 0 (01)
+D  1X read, 430k: Setmode 05h, Setloc: 24189 (00) 0 (01)
+E  2X read, 3.0M: Setmode 05h, Setloc: 24630 (00) 0 (01)
+F  2X read, 430k: Setmode 05h, 430k, Setloc: 24939 (00) 0 (01)
+A  2X read, 430k: Setmode 05h, Setloc: 21899 (00) 0 (01)
+B  2X read, 430k: Setmode 85h, Setloc: 30123 (00) 0 (01)
+C  2X read, 430k: Getstat, Setmode 05h, Setloc: 20613 (00) 31392 (00) 0 (01)
+D  1X read, 430k: Setmode 05h, Setloc: 29578 (00) 0 (01)
+E  2X read, 3.0M: Setmode 05h, Setloc: 22383 (00) 0 (01)
+F  2X read, 430k: Setmode 05h, 430k, Setloc: 29787 (00) 0 (01)
+cdrom/cd-speedack: Done.

@@ -91,4 +91,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-07-clut](2026-11-07-clut/) | 21 | 6 |
 | [2026-11-07-envmove](2026-11-07-envmove/) | 7 | 2 |
 | [2026-11-07-owed](2026-11-07-owed/) | 491 | 244 |
+| [2026-11-07-speedack](2026-11-07-speedack/) | 8 | 1 |
+| [2026-11-07-speedack2](2026-11-07-speedack2/) | 6 | 1 |
 | [2026-11-07-xfcd](2026-11-07-xfcd/) | 20 | 4 |
