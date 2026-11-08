@@ -182,3 +182,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-08-pausehold](2026-11-08-pausehold/) | 8 | 1 |
 | [2026-11-08-speedack](2026-11-08-speedack/) | 8 | 1 |
 | [2026-11-08-speedack2](2026-11-08-speedack2/) | 6 | 1 |
+| [2026-11-08-spindown](2026-11-08-spindown/) | 7 | 1 |

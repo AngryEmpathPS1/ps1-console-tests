@@ -95,3 +95,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-07-speedack](2026-11-07-speedack/) | 8 | 1 |
 | [2026-11-07-speedack2](2026-11-07-speedack2/) | 6 | 1 |
 | [2026-11-07-xfcd](2026-11-07-xfcd/) | 20 | 4 |
+| [2026-11-08-spindown](2026-11-08-spindown/) | 8 | 1 |
