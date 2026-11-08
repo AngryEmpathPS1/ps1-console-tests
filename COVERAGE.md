@@ -43,18 +43,18 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-lid-sweep4 |  |  |  |  | 3 |  |  |  |  |
 | cd-pastend | 2 | 1 | 3 | 1 | 1 | 3 | 1 | 3 |  |
 | cd-pause | 11 | 7 | 12 | 3 | 7 | 17 | 2 | 10 | 3 |
-| cd-playagain | 4 |  |  | 4 |  |  | 4 |  |  |
-| cd-playagain2 | 4 |  |  | 10 |  |  | 4 |  |  |
+| cd-playagain | 4 |  |  | 4 |  | 4 | 4 |  |  |
+| cd-playagain2 | 4 |  |  | 10 |  | 4 | 4 |  |  |
 | cd-queue | 7 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-race | 7 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
-| cd-ramdump | 3 |  | 3 |  |  |  | 3 |  |  |
+| cd-ramdump | 3 |  | 3 |  |  | 4 | 3 |  |  |
 | cd-readtoc | 7 | 7 | 13 | 3 | 7 | 16 | 2 | 10 | 3 |
 | cd-reann | 7 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
 | cd-scex | 11 | 7 | 12 | 3 | 7 | 17 | 2 | 10 | 3 |
 | cd-scex-hold | 4 | 7 | 4 | 3 | 7 | 7 | 2 | 4 | 3 |
 | cd-scex-play | 2 |  | 2 |  | 2 | 2 | 2 | 2 |  |
 | cd-seek | 4 | 6 | 6 | 2 | 4 | 8 | 4 | 6 | 2 |
-| cd-seek-cancel | 3 |  | 1 |  |  |  | 3 |  |  |
+| cd-seek-cancel | 3 |  | 1 |  |  | 4 | 3 |  |  |
 | cd-seek-cmd | 3 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
 | cd-seek-coast | 7 | 2 | 6 | 3 | 6 | 8 | 7 | 6 |  |
 | cd-seek-hist | 3 | 2 | 3 | 3 | 6 | 2 | 2 | 3 |  |
@@ -206,6 +206,11 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-c0-gaps | 6 | 6 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu-c0-ready | 1 | 7 | 6 | 1 | 6 | 6 | 1 | 4 | 2 |
 | gpu-c0-size | 2 | 7 | 7 | 3 | 6 | 4 | 1 | 2 | 2 |
+| gpu-clut-dma |  |  |  | 3 |  | 3 |  |  |  |
+| gpu-clut-ready |  |  |  | 3 |  | 3 |  |  |  |
+| gpu-clut-ready2 |  |  |  | 3 |  | 3 |  |  |  |
+| gpu-clut-ready3 |  |  |  | 3 |  | 3 |  |  |  |
+| gpu-clut-ready4 |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-cmd-ready | 1 | 6 | 7 | 1 | 6 | 4 | 1 | 2 | 2 |
 | gpu-copy-480i | 2 |  |  | 3 |  | 2 | 1 |  |  |
 | gpu-copy2 | 2 | 7 | 7 | 1 | 6 | 2 | 1 | 2 |  |
@@ -289,6 +294,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-phase | 2 | 6 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-phase2 | 2 | 6 | 6 | 1 | 6 | 2 | 1 | 6 |  |
 | gpu-rect-cached | 2 |  |  | 3 |  | 2 | 1 |  |  |
+| gpu-rect-gap |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-rect-x | 2 |  |  | 3 |  | 2 | 1 |  |  |
 | gpu-rect-x2 | 2 |  |  | 3 |  | 2 | 1 |  |  |
 | gpu-revive | 2 |  | 1 |  |  | 2 | 2 |  |  |

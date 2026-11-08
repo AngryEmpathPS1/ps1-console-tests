@@ -1,0 +1,54 @@
+hwtests/gpu-clut-ready - PREDICTED, written before its first console run (2026-11-07 14:43; the SCPH-5501 unit 2 ran it at 14:45).
+
+== this core, v0.377.299 (node hwtests/run.js gpu-clut-ready --ntsc): a reload moves bit 26 alone
+s4c 4-bit sprite 8x8, CLUT cached:
+  28: 0@2 1@13   (set from k=13)
+  26: 0@2 1@74   (set from k=74)
+s4r 4-bit sprite 8x8, CLUT reloaded:
+  28: 0@2 1@13   (set from k=13)
+  26: 0@2 1@98   (set from k=98)
+s8c 8-bit sprite 8x8, CLUT cached:
+  28: 0@2 1@13   (set from k=13)
+  26: 0@2 1@74   (set from k=74)
+s8r 8-bit sprite 8x8, CLUT reloaded:
+  28: 0@2 1@13   (set from k=13)
+  26: 0@2 1@338   (set from k=338)
+t4c 4-bit triangle legs 8, CLUT cached:
+  28: 0@2 1@122   (set from k=122)
+  26: 0@2 1@186   (set from k=186)
+t4r 4-bit triangle legs 8, CLUT reloaded:
+  28: 0@2 1@122   (set from k=122)
+  26: 0@2 1@210   (set from k=210)
+t8c 8-bit triangle legs 8, CLUT cached:
+  28: 0@2 1@122   (set from k=122)
+  26: 0@2 1@186   (set from k=186)
+t8r 8-bit triangle legs 8, CLUT reloaded:
+  28: 0@2 1@122   (set from k=122)
+  26: 0@2 1@456   (set from k=456)
+
+== the first knob core (experiments/_mkclut28.js as first written: a sprite's words held in the FIFO to start + reload)
+s4c 4-bit sprite 8x8, CLUT cached:
+  28: 0@2 1@13   (set from k=13)
+  26: 0@2 1@74   (set from k=74)
+s4r 4-bit sprite 8x8, CLUT reloaded:
+  28: 0@2 1@23   (set from k=23)
+  26: 0@2 1@98   (set from k=98)
+s8c 8-bit sprite 8x8, CLUT cached:
+  28: 0@2 1@13   (set from k=13)
+  26: 0@2 1@74   (set from k=74)
+s8r 8-bit sprite 8x8, CLUT reloaded:
+  28: 0@2 1@263   (set from k=263)
+  26: 0@2 1@338   (set from k=338)
+t4c 4-bit triangle legs 8, CLUT cached:
+  28: 0@2 1@122   (set from k=122)
+  26: 0@2 1@186   (set from k=186)
+t4r 4-bit triangle legs 8, CLUT reloaded:
+  28: 0@2 1@122   (set from k=122)
+  26: 0@2 1@210   (set from k=210)
+t8c 8-bit triangle legs 8, CLUT cached:
+  28: 0@2 1@122   (set from k=122)
+  26: 0@2 1@186   (set from k=186)
+t8r 8-bit triangle legs 8, CLUT reloaded:
+  28: 0@2 1@122   (set from k=122)
+  26: 0@2 1@456   (set from k=456)
+

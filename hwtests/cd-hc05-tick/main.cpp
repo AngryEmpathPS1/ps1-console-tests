@@ -7,6 +7,8 @@
  * here - a sample every second tick; the work has no wait on hardware and the signal holds (STATUS). If the console's tick is
  * slower, that is it. Read 60h every ~20 ms for 5 s (idle, then reading), each with the console's own Timer 2 time: the tick
  * rate is the count's slope (60h wraps at 256 - unwrapped here).
+ * Run here first: `node hwtests/run.js cd-hc05-tick --disc=xfiles` (the disc its prediction and the consoles ran with; tools/consolegrade.js
+ * takes a reference's arguments from this line - without one, its references ran with an empty drive, 2026-11-07).
  */
 #include <common.h>
 #include <psxapi.h>

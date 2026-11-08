@@ -1,0 +1,37 @@
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-clut-ready
+A CLUT reload against GPUSTAT 28 and 26: one command from the CPU, k cycles, one GPUSTAT read. No assertions.
+
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=fb00
+s4c 4-bit sprite 8x8, CLUT cached:
+  28: 0@2 1@12   (set from k=12)
+  26: 0@2 1@74   (set from k=74)
+s4r 4-bit sprite 8x8, CLUT reloaded:
+  28: 0@2 1@36   (set from k=36)
+  26: 0@2 1@98   (set from k=98)
+s8c 8-bit sprite 8x8, CLUT cached:
+  28: 0@2 1@12   (set from k=12)
+  26: 0@2 1@74   (set from k=74)
+s8r 8-bit sprite 8x8, CLUT reloaded:
+  28: 0@2 1@283   (set from k=283)
+  26: 0@2 1@343   (set from k=343)
+t4c 4-bit triangle legs 8, CLUT cached:
+  28: 0@2 1@122   (set from k=122)
+  26: 0@2 1@186   (set from k=186)
+t4r 4-bit triangle legs 8, CLUT reloaded:
+  28: 0@2 1@134   (set from k=134)
+  26: 0@2 1@194   (set from k=194)
+t8c 8-bit triangle legs 8, CLUT cached:
+  28: 0@2 1@122   (set from k=122)
+  26: 0@2 1@186   (set from k=186)
+t8r 8-bit triangle legs 8, CLUT reloaded:
+  28: 0@2 1@378   (set from k=378)
+  26: 0@2 1@448   (set from k=448)
+
+gpu/gpu-clut-ready: Done.

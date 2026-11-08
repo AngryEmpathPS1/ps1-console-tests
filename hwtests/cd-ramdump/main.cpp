@@ -14,7 +14,8 @@
  *
  * There are no assertions - compare against your emulator.
  *
- * THE RULE: run it here first: `node hwtests/run.js cd-ramdump`.
+ * THE RULE: run it here first: `node hwtests/run.js cd-ramdump --disc=xfiles` (the disc its prediction ran
+ * with: until 2026-11-07 this line named none and the grader ran its references with an empty drive).
  */
 #include <common.h>
 #include <psxapi.h>

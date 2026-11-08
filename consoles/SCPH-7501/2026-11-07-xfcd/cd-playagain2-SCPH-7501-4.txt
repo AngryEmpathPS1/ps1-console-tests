@@ -1,0 +1,18 @@
+
+cdrom/cd-playagain2
+The read before a Play at double speed or single: when the seek bit (40h) and play (80h) first show.
+Cycles at the system clock (1 ms = 33,869), from the first Play's write. No assertions - compare against your emulator.
+2X   the read before at double speed: 1 Play; 40h at 12024175 (11862008 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 1206224 (1024673 after its Play); 80h at 12702435 (12520884 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 446562 (315251 after its Play); 80h at 22318412 (22187101 after its Play); first report 0; last stat 82
+1X   the read before at single speed: 1 Play; 40h at 1215557 (1038504 after its Play); 80h at 12667205 (12490152 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 454346 (313065 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 1214132 (1024538 after its Play); 80h at 12667798 (12478204 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 12046678 (11913355 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 1191557 (1014014 after its Play); 80h at 12687224 (12509681 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 451670 (312687 after its Play); 80h at 22173752 (22034769 after its Play); first report 0; last stat 82
+1X   the read before at single speed: 1 Play; 40h at 1201055 (1012145 after its Play); 80h at 12623705 (12434795 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 449835 (313953 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 747690 (537343 after its Play); 80h at 12727804 (12517457 after its Play); first report 0; last stat 82
+
+cdrom/cd-playagain2: Done.

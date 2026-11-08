@@ -14,6 +14,8 @@
  * INT5 when no header is held).
  *
  * READ IT LIKE THIS. Per row: speed, origin, the seek's start, then "P t:v" and "L t:v" in time order.
+ * Run here first: `node hwtests/run.js cd-hold-locl --disc=xfiles` (the disc its prediction and the consoles ran with; tools/consolegrade.js
+ * takes a reference's arguments from this line - without one, its references ran with an empty drive, 2026-11-07).
  */
 #include <common.h>
 #include <psxapi.h>

@@ -1,0 +1,58 @@
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-clut-ready2
+When a CLUT reload starts: a gap among the words, k cycles after the last, one GPUSTAT read. No assertions.
+
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=fb00
+s4 B 0:
+  28: 0@2 1@31   (set from k=31)
+  26: 0@2 1@94   (set from k=94)
+s4 B 4:
+  28: 0@2 1@20   (set from k=20)
+  26: 0@2 1@80   (set from k=80)
+s4 B 8:
+  28: 0@2 1@12   (set from k=12)
+  26: 0@2 1@72   (set from k=72)
+s4 B 16:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@66   (set from k=66)
+s8 B 0:
+  28: 0@2 1@278   (set from k=278)
+  26: 0@2 1@338   (set from k=338)
+s8 B 4:
+  28: 0@2 1@267   (set from k=267)
+  26: 0@2 1@327   (set from k=327)
+s8 B 8:
+  28: 0@2 1@259   (set from k=259)
+  26: 0@2 1@319   (set from k=319)
+s8 B 16:
+  28: 0@2 1@243   (set from k=243)
+  26: 0@2 1@303   (set from k=303)
+s8 B 32:
+  28: 0@2 1@211   (set from k=211)
+  26: 0@2 1@271   (set from k=271)
+s8 A 16:
+  28: 0@2 1@276   (set from k=276)
+  26: 0@2 1@336   (set from k=336)
+t4 B 16:
+  28: 0@2 1@126   (set from k=126)
+  26: 0@2 1@189   (set from k=189)
+t8 B 16:
+  28: 0@2 1@373   (set from k=373)
+  26: 0@2 1@440   (set from k=440)
+t4 C 16:
+  28: 0@2 1@126   (set from k=126)
+  26: 0@2 1@189   (set from k=189)
+t8 C 16:
+  28: 0@2 1@373   (set from k=373)
+  26: 0@2 1@440   (set from k=440)
+t8 A 16:
+  28: 0@2 1@373   (set from k=373)
+  26: 0@2 1@440   (set from k=440)
+
+gpu/gpu-clut-ready2: Done.
