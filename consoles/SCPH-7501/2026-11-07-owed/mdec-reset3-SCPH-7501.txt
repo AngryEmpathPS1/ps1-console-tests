@@ -1,0 +1,77 @@
+ResetGraph:itb=80014100,ehk=80014130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset3
+The reset's window over 24 tries each, cache warm, N nops behind the reset. No assertions.
+
+read       N  0: 80040000x24
+read       N  1: 80040000x24
+read       N  2: 000378c4x1 00037ab7x1 00037cc4x1 00037ef7x1 +20 more
+read       N  3: 80040000x24
+read       N  4: ad091824x1 00000000x1 80040000x22
+read       N  5: 80040000x24
+read       N  6: 80040000x24
+read       N  7: 80040000x24
+read       N  8: 80040000x24
+read       N  9: 80040000x24
+read       N 10: 80040000x24
+read       N 11: 80040000x24
+read       N 12: 80040000x24
+read       N 13: 80040000x24
+read       N 14: 80040000x24
+read       N 15: 80040000x24
+read(rd1st) N  0: 80040000x24
+read(rd1st) N  1: 80040000x24
+read(rd1st) N  2: 0003e67cx1 0003e864x1 0003ea64x1 0003ec78x1 +20 more
+read(rd1st) N  3: 0005aab7x1 0005aca3x1 0005aea5x1 0005b0b6x1 +20 more
+read(rd1st) N  4: 000775f4x1 000777e1x1 000779e1x1 00077bf4x1 +20 more
+read(rd1st) N  5: 00093232x1 0009341fx1 00093626x1 00093845x1 +20 more
+read(rd1st) N  6: 80040000x24
+read(rd1st) N  7: 80040000x24
+read(rd1st) N  8: 80040000x24
+read(rd1st) N  9: 80040000x24
+read(rd1st) N 10: 80040000x24
+read(rd1st) N 11: 80040000x24
+read(rd1st) N 12: 80040000x24
+read(rd1st) N 13: 80040000x24
+read(rd1st) N 14: 80040000x24
+read(rd1st) N 15: 80040000x24
+wr+rd      N  0: 60000000x24
+wr+rd      N  1: 60000000x24
+wr+rd      N  2: 60000000x24
+wr+rd      N  3: 60000000x24
+wr+rd      N  4: 80040000x23 60000000x1
+wr+rd      N  5: 80040000x24
+wr+rd      N  6: 80040000x24
+wr+rd      N  7: 80040000x24
+wr+rd      N  8: 80040000x24
+wr+rd      N  9: 80040000x24
+wr+rd      N 10: 80040000x24
+wr+rd      N 11: 80040000x24
+wr+rd      N 12: 80040000x24
+wr+rd      N 13: 80040000x24
+wr+rd      N 14: 80040000x24
+wr+rd      N 15: 80040000x24
+
+Enables kept, of 24: N, plain, with a Timer 2 read between, with a RAM store between
+ 0  24   0   1
+ 1   0  21   2
+ 2  24  21   0
+ 3   0  21   4
+ 4   0  21   0
+ 5   0  21  22
+ 6  24  23  21
+ 7  21  23  24
+ 8  21  24  24
+ 9  23  24  24
+10  24  24  24
+11  24  24  24
+12  24  24  24
+13  24  24  24
+14  24  24  24
+15  24  24  24
+
+mdec/mdec-reset3: Done.

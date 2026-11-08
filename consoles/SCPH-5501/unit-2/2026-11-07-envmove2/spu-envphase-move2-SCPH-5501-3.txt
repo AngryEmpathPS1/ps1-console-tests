@@ -1,0 +1,18 @@
+
+spu/spu-envphase-move2
+The envelope ruler's phase c against the capture ring, measured after each action. No assertions.
+
+M0  c 245 agree     start                              15/23 19/35 27/59 43/107 75/203 139/395 11/-1
+M1  c 246 agree     xfer 0000h 1 sample                14/22 18/34 26/58 42/106 74/202 138/394 10/-1
+M2  c  -1 DISAGREE  xfer 0000h 10 samples              12/20 8/24 16/48 32/96 64/192 128/384 -1/-1
+M3  c 294 agree     xfer 0000h 37 samples              14/22 18/34 10/42 58/122 26/154 90/346 474/-1
+M4  c 394 agree     xfer 0000h 100 samples             10/18 14/30 38/70 22/86 54/182 246/502 374/-1
+M5  c 495 agree     xfer 0002h (Fill, bits 2-3 clear) 100 13/21 9/25 33/65 49/113 81/209 145/401 273/-1
+M6  c  33 agree     xfer 0006h (Rep2) 100              11/19 23/39 15/47 63/127 31/159 95/351 223/-1
+M7  c 109 agree     xfer 0008h (Rep4) 100              15/23 11/27 35/67 51/115 83/211 19/275 147/-1
+M8  c 209 agree     xfer 000Ch (Fill, bits 2-3 set) 100 11/19 23/39 31/63 15/79 111/239 175/431 47/-1
+M9  c 310 agree     xfer 000Eh (Fill) 100              14/22 18/34 26/58 42/106 10/138 74/330 458/-1
+M10 c 410 agree     xfer 0001h (bit 0 only) 100        10/18 14/30 22/54 70/134 38/166 230/486 358/-1
+M11 c 199 agree     xfer 0000h 300 samples             13/21 17/33 9/41 25/89 121/249 185/441 57/-1
+
+spu/spu-envphase-move2: Done.

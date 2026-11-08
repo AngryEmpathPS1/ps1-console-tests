@@ -1,0 +1,13 @@
+
+gpu/gpu-rect-x
+Cached textured rectangles 64 rows tall by where they start in x. D as gpu-shape-time. No assertions.
+
+raw textured 65h, 64 rows, D fastest by x
+          x     0     1     2     3     4     6     8    12    15    16    24
+W 4           338   338   338   338   338   338   338   338   338   338   338
+W 8           404   404   404   404   404   404   404   404   404   404   404
+W 16          662   662   662   662   662   662   662   662   662   662   662
+W 32         1178  1178  1178  1178  1178  1178  1178  1178  1178  1178  1178
+the edge's places, W 8, 64 rows:  x 496 404  x 504 436  x 508 436
+
+gpu/gpu-rect-x: Done.

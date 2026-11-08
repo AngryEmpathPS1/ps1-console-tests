@@ -51,3 +51,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-05-gapsd2](2026-11-05-gapsd2/) | 5 | 1 |
 | [2026-11-05-owed](2026-11-05-owed/) | 207 | 102 |
 | [2026-11-05-rfpace](2026-11-05-rfpace/) | 7 | 2 |
+| [2026-11-07-newcd](2026-11-07-newcd/) | 19 | 4 |

@@ -38,3 +38,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-07-2x](2026-11-07-2x/) | 5 | 1 |
 | [2026-11-07-2xb](2026-11-07-2xb/) | 5 | 1 |
 | [2026-11-07-discs](2026-11-07-discs/) | 15 | 6 |
+| [2026-11-07-firstread](2026-11-07-firstread/) | 7 | 1 |
+| [2026-11-07-firstread2](2026-11-07-firstread2/) | 7 | 1 |
+| [2026-11-07-playagain](2026-11-07-playagain/) | 7 | 1 |
+| [2026-11-07-playagain2](2026-11-07-playagain2/) | 7 | 1 |

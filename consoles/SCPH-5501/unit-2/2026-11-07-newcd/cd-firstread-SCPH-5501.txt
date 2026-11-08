@@ -1,0 +1,41 @@
+
+cdrom/cd-firstread
+The first sectors after an Init: INT1 to DRQSTS, and which sector each is. Needs the double-speed disc (any data disc runs).
+Cycles at the system clock (1 ms = 33,869) from the ReadN's write. No assertions - compare against your emulator.
+A Init, Demute, GetTD, mode 00h, 00:02:16:
+  INT1 #1 +  4616171 stat 22  DRQSTS set +   103  bytes 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT1 #2 +  5062424 stat 22  DRQSTS set +    60  bytes 44 11 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT1 #3 +  5517315 stat 22  DRQSTS set +    60  bytes 44 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT1 #4 +  5963695 stat 22  DRQSTS set +    60  bytes 44 13 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT3 +81018 stat 02
+  Pause to its INT2
+B Init, Demute, GetTD, mode 20h, 00:02:16:
+  INT1 #1 +  4586487 stat 22  DRQSTS set +    59  bytes 00 02 16 02 00 00 08 00 00 00 08 00 44 10 00 00
+  INT1 #2 +  5033693 stat 22  DRQSTS set +    60  bytes 00 02 17 02 00 00 08 00 00 00 08 00 44 11 00 00
+  INT1 #3 +  5487232 stat 22  DRQSTS set +    58  bytes 00 02 18 02 00 00 08 00 00 00 08 00 44 12 00 00
+  INT1 #4 +  5942636 stat 22  DRQSTS set +    60  bytes 00 02 19 02 00 00 08 00 00 00 08 00 44 13 00 00
+  INT3 +33653 stat 02
+  Pause to its INT2
+C after a Pause, no Init, mode 00h, 00:02:16:
+  INT1 #1 +  3750499 stat 22  DRQSTS set +    60  bytes 44 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT1 #2 +  4170120 stat 22  DRQSTS set +    60  bytes 44 11 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT1 #3 +  4635313 stat 22  DRQSTS set +    60  bytes 44 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT1 #4 +  5074774 stat 22  DRQSTS set +    60  bytes 44 13 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT3 +43361 stat 02
+  Pause to its INT2
+D Init, mode 00h, 00:02:16, read at once (no DRQSTS wait):
+  INT1 #1 +  4712740 stat 22  DRQSTS set +    36  bytes 44 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT1 #2 +  5140853 stat 22  DRQSTS set +    36  bytes 44 11 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT1 #3 +  5596165 stat 22  DRQSTS set +    36  bytes 44 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT1 #4 +  6039444 stat 22  DRQSTS set +    36  bytes 44 13 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  INT3 +52513 stat 02
+  Pause to its INT2
+E Init, mode 20h, 40:00:00:
+  INT1 #1 + 30616761 stat 22  DRQSTS set +    60  bytes 40 00 00 02 00 00 08 00 00 00 08 00 44 8a be 02
+  INT1 #2 + 31068270 stat 22  DRQSTS set +    60  bytes 40 00 01 02 00 00 08 00 00 00 08 00 44 8b be 02
+  INT1 #3 + 31518616 stat 22  DRQSTS set +    60  bytes 40 00 02 02 00 00 08 00 00 00 08 00 44 8c be 02
+  INT1 #4 + 31968846 stat 22  DRQSTS set +    60  bytes 40 00 03 02 00 00 08 00 00 00 08 00 44 8d be 02
+  INT3 +52523 stat 02
+  Pause to its INT2
+
+cdrom/cd-firstread: Done.

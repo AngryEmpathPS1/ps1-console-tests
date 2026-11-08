@@ -1,0 +1,23 @@
+
+cpu/cpu-loop-tick17
+tick16's open uncached rows taken apart: scratchpad loads, a store two on. No assertions.
+
+  variant     cold        hot     uncached   (cycles an iteration)
+  CTRL        14.31      14.26      46.00
+  RAM-ALONE    9.22       9.18      40.86
+  SP-ALONE     6.09       6.04      36.71
+  SP-RD2       6.09       6.04      36.71
+  SP-SP        6.07       6.04      36.71
+  SPF-NR       9.22       9.18      40.86
+  SPF-RD3      9.22       9.18      47.00
+  SP-FIRST     9.23       9.18      40.86
+  SPS-NR      11.21      11.17      41.81
+  SPS-RD3     12.28      12.22      47.99
+  SP-SECOND   12.26      12.23      41.81
+  SW1         14.31      14.27      48.12
+  SW-OTHER    18.37      18.34      52.08
+  SW-SP       17.16      17.11      47.01
+  SW-RD3      20.41      20.36      57.03
+  SWDATA      19.47      19.43      52.08
+
+cpu/cpu-loop-tick17: Done.

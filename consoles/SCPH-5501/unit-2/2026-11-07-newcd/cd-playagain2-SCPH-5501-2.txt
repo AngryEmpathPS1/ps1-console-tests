@@ -1,0 +1,18 @@
+
+cdrom/cd-playagain2
+The read before a Play at double speed or single: when the seek bit (40h) and play (80h) first show.
+Cycles at the system clock (1 ms = 33,869), from the first Play's write. No assertions - compare against your emulator.
+2X   the read before at double speed: 1 Play; 40h at 147003 (60821 after its Play); 80h at 24440927 (24354745 after its Play); first report 0; last stat 82
+1X   the read before at single speed: 1 Play; 40h at 859860 (684940 after its Play); 80h at 17050294 (16875374 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 191377 (61728 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 860446 (702007 after its Play); 80h at 17465236 (17306797 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 225655 (93446 after its Play); 80h at 24374398 (24242189 after its Play); first report 0; last stat 82
+1X   the read before at single speed: 1 Play; 40h at 1042303 (977180 after its Play); 80h at 16448119 (16382996 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 201590 (60747 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 857870 (683468 after its Play); 80h at 16934230 (16759828 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 256219 (133013 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 150533 (60249 after its Play); 80h at 19976957 (19886673 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 234186 (82141 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 1284620 (1121800 after its Play); 80h at 16986078 (16823258 after its Play); first report 0; last stat 82
+
+cdrom/cd-playagain2: Done.

@@ -1,0 +1,20 @@
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-dma-quiet
+2,048 words by SyncMode 1 GPU DMA blocks, timed by a CHCR2 poll and QUIET (a cached wait, then one read). No assertions.
+
+ bs  blocks   poll: fewest   mean   most    quiet done: fewest   mean   most   not done: mean   lost
+  4    512         7274  7279.6   7288               7274  7280.3   7295             7269.6      0
+ 16    128         3510  3541.1   3572               3481  3513.1   3540             3496.0      0
+ 17    120         3390  3456.6   3508               3385  3430.8   3480             3417.1      0
+ 24     85         3084  3116.0   3189               3047  3091.7   3140             3070.2      0
+ 32     64         2854  2917.2   2971               2815  2858.3   2911             2829.3      0
+ 48     42         2631  2679.2   2771               2557  2613.6   2658             2566.9      0
+ 64     32         2540  2592.6   2685               2461  2521.3   2644             2462.1      0
+128     16         2259  2348.9   2460               2249  2269.1   2305             2162.6      0
+
+gpu/gpu-dma-quiet: Done.

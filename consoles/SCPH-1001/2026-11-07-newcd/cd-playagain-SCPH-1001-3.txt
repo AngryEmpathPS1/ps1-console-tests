@@ -1,0 +1,14 @@
+
+cdrom/cd-playagain
+A Play sent again during a Play's seek (K-1 Grand Prix's loading screen): when 40h and 80h first show.
+Cycles at the system clock (1 ms = 33,869), from the first Play's write. No assertions - compare against your emulator.
+ONE  one Play to 32:03:00: 1 Play; 40h at 189833 (105378 after its Play); 80h never; first report 0; last stat 42
+SAME K-1's restarts to 32:03:00: 1 Play; 40h at 143152 (63900 after its Play); 80h never; first report 0; last stat 42
+ALT  restarts alternating 32:03:00 / 40:00:00: 1 Play; 40h at 142634 (64401 after its Play); 80h never; first report 0; last stat 42
+ONCE one restart to 40:00:00 at +146k: 2 Plays; 40h at 161673 (70807 after its Play); 80h never; first report 0; last stat 42
+ONE  one Play to 32:03:00: 1 Play; 40h at 305286 (222675 after its Play); 80h never; first report 0; last stat 42
+SAME K-1's restarts to 32:03:00: 1 Play; 40h at 303370 (64184 after its Play); 80h never; first report 0; last stat 42
+ALT  restarts alternating 32:03:00 / 40:00:00: 1 Play; 40h at 172594 (84867 after its Play); 80h never; first report 0; last stat 42
+ONCE one restart to 40:00:00 at +146k: 2 Plays; 40h at 176425 (86017 after its Play); 80h never; first report 0; last stat 42
+
+cdrom/cd-playagain: Done.

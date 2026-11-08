@@ -1,0 +1,126 @@
+
+
+================
+uC-sdk - booting
+================
+TRACE adsr=1fc0320f n=4: 0005 04ec 09ec 0eec
+TRACE adsr=1fc0330f n=4: 0004 03f0 07f0 0bf0
+TRACE adsr=1fc0620f n=48: 0005 0005 0005 0005 0005 0005 0005 0005 0005 0005 0005 0005 0005 0005 0005 0005 0005 000a 000a 000a 000a 000a 000a 000a 000a 000a 000a 000a 000a 000a 000a 000a 000a 000f 000f 000f 000f 000f 000f 000f 000f 000f 000f 000f 000f 000f 000f 000f
+TRACE adsr=1fc0630f n=48: 0004 0004 0004 0004 0004 0004 0004 0004 0004 0004 0004 0004 0004 0004 0004 0004 0004 0008 0008 0008 0008 0008 0008 0008 0008 0008 0008 0008 0008 0008 0008 0008 0008 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c
+TRACE adsr=1fc0000f n=1: 3800
+TRACE adsr=1fc0010f n=1: 3000
+TRACE adsr=1fc02c0f n=4: 0007 0dcf 1bcf 29d6
+TRACE adsr=1fc02d0f n=4: 0006 0bd6 17dc 23d6
+TRACE adsr=1fc0300f n=32: 0007 06e4 0de4 14e4 1be4 22e4 29e4 30e4 37e4 3ee4 45eb 4ce4 53e4 5ae4 61e4 68e4 6fe4 76eb 7de4 3fff 3fff 3fff 3fff 3fff 3fff 3fff 3fff 3fff 3fff 3fff 3fff 3fff
+TRACE adsr=1fc0310f n=4: 0006 05e8 0be8 11e8
+TRACE adsr=1fc05c0f n=48: 0007 0007 0007 0007 0007 0007 0007 0007 0007 000e 000e 000e 000e 000e 000e 000e 000e 0015 0015 0015 0015 0015 0015 0015 0015 001c 001c 001c 001c 001c 001c 001c 001c 0023 0023 0023 0023 0023 0023 0023 0023 002a 002a 002a 002a 002a 002a 002a
+TRACE adsr=1fc05d0f n=48: 0006 0006 0006 0006 0006 0006 0006 0006 0006 000c 000c 000c 000c 000c 000c 000c 000c 0012 0012 0012 0012 0012 0012 0012 0012 0018 0018 0018 0018 0018 0018 0018 0018 001e 001e 001e 001e 001e 001e 001e 001e 0024 0024 0024 0024 0024 0024 0024
+TRACE adsr=1fc0600f n=48: 0007 0007 0007 0007 0007 0007 0007 0007 0007 0007 0007 0007 0007 0007 0007 0007 0007 000e 000e 000e 000e 000e 000e 000e 000e 000e 000e 000e 000e 000e 000e 000e 000e 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015
+TRACE adsr=1fc0610f n=48: 0006 0006 0006 0006 0006 0006 0006 0006 0006 0006 0006 0006 0006 0006 0006 0006 0006 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 000c 0012 0012 0012 0012 0012 0012 0012 0012 0012 0012 0012 0012 0012 0012 0012
+TRACE adsr=1fc0b00f n=32: 0007 06e4 0de4 14e4 1be4 22eb 29e4 30e4 37e4 3ee4 45e4 4ce4 53e4 5ae4 6078 6238 63f8 65b8 6778 6938 6af8 6cb8 6e78 7038 71f8 73b8 7578 7738 78f8 7ab8 7c78 7e38
+TRACE adsr=402004a0 n=16: 1c00 6377 4c9a 3ac2 2cf2 221f 19b2 1345 0e2e 0a2e 0000 0000 0000 0000 0000 0000
+TRACE adsr=402004c0 n=32: 1c00 782f 7027 6929 6229 5bda 55da 4fe0 4ae0 45e0 40e0 3cb3 38b3 34b3 30b3 2d86 2a86 2786 2486 2183 1f04 1d04 1b04 1904 1704 1504 1302 1104 0f82 0e82 0d82 0c82
+TRACE adsr=402004e0 n=32: 1c00 7e0f 7c0f 7a0f 780f 760f 740f 720f 700f 6e4d 6c8d 6acd 690d 674d 658d 63cd 620d 604d 5ec2 5d42 5bc2 5a42 58c2 5742 55c2 5442 52c2 5142 4fcc 4e8c 4d4c 4c0c
+TRACE adsr=5fe004a0 n=16: 1c00 6377 4c90 3aca 2cf2 221f 19b2 1345 0e2e 0a2c 07ff 07ff 07ff 07ff 07ff 07ff
+TRACE adsr=5fe004a7 n=16: 1c00 636a 4c9a 3ffa 3ffa 3ffa 3ffa 3ffa 3ffa 3ffa 3ffa 3ffa 3ffa 3ffa 3ffa 3ffa
+TRACE adsr=5fe004ab n=16: 1c00 6377 5ff6 5ff6 5ff6 5ff6 5ff6 5ff6 5ff6 5ff6 5ff6 5ff6 5ff6 5ff6 5ff6 5ff6
+TRACE adsr=5fe004ae n=16: 1c00 77ff 77ff 77ff 77ff 77ff 77ff 77ff 77ff 77ff 77ff 77ff 77ff 77ff 77ff 77ff
+TRACE adsr=5fe004af n=16: 1c00 7fef 7fef 7fef 7fef 7fef 7fef 7fef 7fef 7fef 7fef 7fef 7fef 7fef 7fef 7fef
+TRACE adsr=0a20040f n=8: 1c00 5b49 7749 7fff 7fff 7fff 7fff 7fff
+TRACE adsr=0ae0040f n=8: 1c00 4f97 5f97 6f97 7f97 7fff 7fff 7fff
+TRACE adsr=0c20040f n=16: 1c00 46ce 4dce 54ce 5bce 62ce 69ce 70ce 77ce 7ece 7fff 7fff 7fff 7fff 7fff 7fff
+TRACE adsr=0e20040f n=32: 1c00 41b1 4371 4531 46f1 48b1 4a71 4c31 4df1 4fb1 5171 5331 54f1 56b1 5871 5a31 5bf1 5db1 5f71 6131 62f1 64b1 6671 6831 69f1 6bb1 6d71 6f31 70f1 72b1 7471 7631
+TRACE adsr=1020040f n=32: 1c00 406f 40df 414f 41bf 422f 429f 430f 437f 43ef 445f 44cf 453f 45af 461f 468f 46ff 476f 47df 484f 48bf 492f 499f 4a0f 4a7f 4aef 4b5f 4bcf 4c3f 4caf 4d1f 4d8f
+TRACE adsr=4ae0040f n=8: 1c00 2c81 1881 0481 0000 0000 0000 0000
+TRACE adsr=4c20040f n=16: 1c00 3837 3037 2837 2037 1837 1037 0837 0037 0000 0000 0000 0000 0000 0000 0000
+TRACE adsr=4e20040f n=32: 1c00 3e0f 3c0f 3a0f 380f 360f 340f 320f 300f 2e0f 2c0f 2a0f 280f 260f 240f 220f 200f 1e0f 1c0f 1a0f 180f 160f 140f 120f 100f 0e0f 0c0f 0a0f 080f 060f 040f 020f
+TRACE adsr=5020040f n=32: 1c00 3f7f 3eff 3e7f 3dff 3d7f 3cff 3c7f 3bff 3b7f 3aff 3a7f 39ff 397f 38ff 387f 37ff 377f 36ff 367f 35ff 357f 34ff 347f 33ff 337f 32ff 327f 31ff 317f 30ff 307f
+TRACE adsr=8c20040f n=24: 1c00 46ce 4dce 54ce 5bce 60b3 6273 6433 65f3 67b3 6973 6b33 6cf3 6eb3 7073 7233 73f3 75b3 7773 7933 7af3 7cb3 7e73 7fff
+TRACE adsr=8e20040f n=32: 1c00 41b1 4371 4531 46f1 48b1 4a71 4c31 4df1 4fb1 5171 5331 54f1 56b1 5871 5a31 5bf1 5db1 5f71 6051 60c1 6131 61a1 6211 6281 62f1 6361 63d1 6441 64b1 6521 6591
+TRACE adsr=cc20040f n=32: 1c00 3c1b 381b 3417 301b 2d14 2a14 2714 2414 2114 1eb8 1cb8 1ab8 18b8 16b8 14b8 12b8 10b8 0f5c 0e5c 0d5b 0c5c 0b5c 0a5c 095c 085c 075c 065b 055c 045c 035c 025c
+TRACE adsr=1fcc04ff n=4: 1c00 7ff7 7ff7 7ff7
+TRACE adsr=1fce04ff n=4: 1c00 7ff7 7ff7 7ff7
+TRACE adsr=1fd004ff n=4: 1c00 7ff7 7ff7 7ff7
+TRACE adsr=1fec04ff n=3: 1c00 7ff7 7ff7
+[37m
+[0m[90m  [0m[32mâ [0m[90madsr attack linear step[0m[90m
+[0m[90m  [0m[32mâ [0m[90madsr attack linear shift[0m[90m
+[0m[90m  [0m[32mâ [0m[90madsr attack exponential[0m[90m
+[0m[90m  [0m[31mX [0m[31madsr decay shift[0m[31m
+[0m[90m  [0m[32mâ [0m[90madsr sustain level[0m[90m
+[0m[90m  [0m[32mâ [0m[90madsr sustain up linear[0m[90m
+[0m[90m  [0m[31mX [0m[31madsr sustain down linear[0m[31m
+[0m[90m  [0m[32mâ [0m[90madsr sustain up exponential[0m[90m
+[0m[90m  [0m[32mâ [0m[90madsr sustain down exponential[0m[90m
+[0m[90m  [0m[31mX [0m[31madsr release linear[0m[31m
+[0m[90m  [0m[31mX [0m[31madsr release exponential[0m[31m
+[0m[37m
+[0m[37m[0m[37m[0m[37m[0m[37mEvaluationError spu-adsr.c:338: in 'adsr_decay_shift'
+EvaluationError spu-adsr.c:338: in 'adsr_decay_shift'
+EvaluationError spu-adsr.c:338: in 'adsr_decay_shift'
+EvaluationError spu-adsr.c:338: in 'adsr_decay_shift'
+EvaluationError spu-adsr.c:338: in 'adsr_decay_shift'
+[0m[37m[0m[37m[0m[37mEvaluationError spu-adsr.c:514: in 'adsr_sustain_down_linear'
+EvaluationError spu-adsr.c:514: in 'adsr_sustain_down_linear'
+EvaluationError spu-adsr.c:514: in 'adsr_sustain_down_linear'
+EvaluationError spu-adsr.c:514: in 'adsr_sustain_down_linear'
+EvaluationError spu-adsr.c:514: in 'adsr_sustain_down_linear'
+EvaluationError spu-adsr.c:514: in 'adsr_sustain_down_linear'
+EvaluationError spu-adsr.c:514: in 'adsr_sustain_down_linear'
+EvaluationError spu-adsr.c:514: in 'adsr_sustain_down_linear'
+EvaluationError spu-adsr.c:514: in 'adsr_sustain_down_linear'
+EvaluationError spu-adsr.c:514: in 'adsr_sustain_down_linear'
+[0m[37m[0m[37m[0m[37mEvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+EvaluationError spu-adsr.c:640: in 'adsr_release_linear'
+[0m[37mEvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+EvaluationError spu-adsr.c:699: in 'adsr_release_exponential'
+[0m[37m[0m[37m
+Ran [0m[37m11[0m[37m test(s)
+[0m[37mSynthesis: [0m[31mFAILURE[0m[37m Tests: [0m[33m11[0m[37m | Passing: [0m[32m7[0m[37m | Failing: [0m[31m4[0m[37m

@@ -169,3 +169,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-06-rdpoll](2026-11-06-rdpoll/) | 5 | 1 |
 | [2026-11-06-rdpoll2](2026-11-06-rdpoll2/) | 5 | 1 |
 | [2026-11-06-rowdown](2026-11-06-rowdown/) | 5 | 1 |
+| [2026-11-07-envmove](2026-11-07-envmove/) | 6 | 1 |
+| [2026-11-07-envmove2](2026-11-07-envmove2/) | 6 | 1 |
+| [2026-11-07-newcd](2026-11-07-newcd/) | 19 | 4 |
+| [2026-11-07-playxf](2026-11-07-playxf/) | 9 | 1 |

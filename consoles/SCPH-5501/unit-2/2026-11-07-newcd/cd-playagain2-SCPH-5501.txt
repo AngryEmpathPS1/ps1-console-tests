@@ -1,0 +1,18 @@
+
+cdrom/cd-playagain2
+The read before a Play at double speed or single: when the seek bit (40h) and play (80h) first show.
+Cycles at the system clock (1 ms = 33,869), from the first Play's write. No assertions - compare against your emulator.
+2X   the read before at double speed: 1 Play; 40h at 498528 (389442 after its Play); 80h never; first report 125061; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 884697 (725185 after its Play); 80h at 17021047 (16861535 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 234663 (60798 after its Play); 80h at 24378099 (24204234 after its Play); first report 0; last stat 82
+1X   the read before at single speed: 1 Play; 40h at 1086602 (1019775 after its Play); 80h at 16432104 (16365277 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 207652 (112349 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 1050759 (980206 after its Play); 80h at 16452011 (16381458 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 202409 (114091 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 881374 (722451 after its Play); 80h at 17033848 (16874925 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 234625 (60824 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 1245977 (1092496 after its Play); 80h at 16967172 (16813691 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 194106 (114059 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 854329 (685485 after its Play); 80h at 17004253 (16835409 after its Play); first report 0; last stat 82
+
+cdrom/cd-playagain2: Done.

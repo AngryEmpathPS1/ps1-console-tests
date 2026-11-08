@@ -1,0 +1,52 @@
+
+spu/spu-lsax-sweep
+When a write to the repeat address wins over a loop-start block's flag: written n samples after the Key On write,
+n = 0 to 24, the Key On at a fixed phase of SPUSTAT bit 11, tied to the run's key-on class. No assertions.
+
+1F801014h 200931e1, Key On 96 cycles after bit 11 falls
+
+CLASS: ENVX, the sample from the Key On write at which it first reached each level (rate 00h), and the ring onset:
+                           0800   1000   2000   4000   6000   7000   7FFF
+ before the sweep: onset 9
+  regs (unsynchronised)       5      5      5      6      6      7      7
+  fixed (the phase)           6      7      7      8      8      8      9
+ half way the sweep: onset 9
+  regs (unsynchronised)       6      6      7      7      8      8      8
+  fixed (the phase)           6      7      7      8      8      8      9
+ after the sweep: onset 9
+  regs (unsynchronised)       6      6      7      7      8      8      8
+  fixed (the phase)           6      7      7      8      8      8      9
+
+CONTROL no write (must read 1fde and 0208):
+  1fde 1fde 1fde 1fde    0208 0208 0208 0208
+
+SWEEP n, the write's cycles after the Key On write, levels (2fce write won, 1fde flag won), 1F801C1Eh (0202, 0208):
+  n  0:   122    80    80    80   1fde 1fde 1fde 1fde   0208 0208 0208 0208  flag
+  n  1:   805   803   803   803   1fde 1fde 1fde 1fde   0208 0208 0208 0208  flag
+  n  2:  1589  1589  1589  1589   1fde 1fde 1fde 1fde   0208 0208 0208 0208  flag
+  n  3:  2339  2339  2339  2339   1fde 1fde 1fde 1fde   0208 0208 0208 0208  flag
+  n  4:  3125  3125  3125  3125   1fde 1fde 1fde 1fde   0208 0208 0208 0208  flag
+  n  5:  3875  3875  3875  3875   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n  6:  4661  4661  4661  4661   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n  7:  5411  5411  5411  5411   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n  8:  6197  6197  6197  6197   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n  9:  6947  6947  6947  6947   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 10:  7733  7733  7733  7733   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 11:  8483  8483  8483  8483   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 12:  9269  9269  9269  9269   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 13: 10019 10019 10019 10019   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 14: 10805 10805 10805 10805   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 15: 11555 11555 11555 11555   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 16: 12341 12341 12341 12341   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 17: 13091 13091 13091 13091   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 18: 13877 13877 13877 13877   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 19: 14627 14627 14627 14627   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 20: 15413 15413 15413 15413   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 21: 16163 16163 16163 16163   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 22: 16949 16949 16949 16949   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 23: 17699 17699 17699 17699   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+  n 24: 18485 18485 18485 18485   2fce 2fce 2fce 2fce   0202 0202 0202 0202  write
+
+CUT: the flag won last at n = 4, the write won every try from n = 5; onset 9 9 9; 0 levels neither
+
+spu/spu-lsax-sweep: Done.

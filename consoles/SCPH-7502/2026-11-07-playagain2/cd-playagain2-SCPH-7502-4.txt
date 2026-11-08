@@ -1,0 +1,18 @@
+
+cdrom/cd-playagain2
+The read before a Play at double speed or single: when the seek bit (40h) and play (80h) first show.
+Cycles at the system clock (1 ms = 33,869), from the first Play's write. No assertions - compare against your emulator.
+2X   the read before at double speed: 1 Play; 40h at 277718 (115815 after its Play); 80h at 21240270 (21078367 after its Play); first report 0; last stat 82
+1X   the read before at single speed: 1 Play; 40h at 1038588 (961998 after its Play); 80h at 16514986 (16438396 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 10301273 (10221641 after its Play); 80h at 24633407 (24553775 after its Play); first report 0; last stat 82
+1X   the read before at single speed: 1 Play; 40h at 889975 (720854 after its Play); 80h at 16955849 (16786728 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 231593 (82960 after its Play); 80h at 24654589 (24505956 after its Play); first report 0; last stat 82
+1X   the read before at single speed: 1 Play; 40h at 887811 (724502 after its Play); 80h at 16988218 (16824909 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 10868071 (10792184 after its Play); 80h at 25045049 (24969162 after its Play); first report 0; last stat 82
+1X   the read before at single speed: 1 Play; 40h at 868878 (687652 after its Play); 80h at 16974982 (16793756 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 200198 (64210 after its Play); 80h never; first report 0; last stat 42
+1X   the read before at single speed: 1 Play; 40h at 892374 (708375 after its Play); 80h at 16562262 (16378263 after its Play); first report 0; last stat 82
+2X   the read before at double speed: 1 Play; 40h at 10708262 (10569283 after its Play); 80h at 24817784 (24678805 after its Play); first report 0; last stat 82
+1X   the read before at single speed: 1 Play; 40h at 1086132 (1005507 after its Play); 80h at 16527418 (16446793 after its Play); first report 0; last stat 82
+
+cdrom/cd-playagain2: Done.

@@ -1,0 +1,24 @@
+
+cdrom/cd-firstread2
+A sector left part-read with BFRD set: the next ReadN's first sector. Needs the double-speed disc.
+No assertions - compare against your emulator.
+F 1 byte of LBA 40000, Init, ReadN 00:02:16, BFRD 1 again:
+  LBA 40000's first bytes taken: 44
+  00:02:16's INT1: DRQSTS before set, after set; bytes 40 9c 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  Pause to its INT2
+G 1 byte, no Init, ReadN, BFRD 1 again:
+  LBA 40000's first bytes taken: 44
+  00:02:16's INT1: DRQSTS before set, after set; bytes 40 9c 00 00 f3 f1 00 0e d7 44 5e 58 43 56 d7 b5
+  Pause to its INT2
+H 1 byte, Init, ReadN, BFRD 0 then 1:
+  LBA 40000's first bytes taken: 44
+  00:02:16's INT1: DRQSTS before set, after set; bytes 44 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  Pause to its INT2
+I 2048 bytes (read out), Init, ReadN, BFRD 1 again:
+  no INT1 at LBA 40000
+J 1 byte, Init, ReadN, no BFRD write:
+  LBA 40000's first bytes taken: 44
+  00:02:16's INT1: DRQSTS before set, after set; bytes 40 9c 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  Pause to its INT2
+
+cdrom/cd-firstread2: Done.
