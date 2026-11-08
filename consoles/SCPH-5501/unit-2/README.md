@@ -179,3 +179,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-07-newcd](2026-11-07-newcd/) | 19 | 4 |
 | [2026-11-07-playxf](2026-11-07-playxf/) | 10 | 1 |
 | [2026-11-07-rectgap](2026-11-07-rectgap/) | 6 | 1 |
+| [2026-11-08-pausehold](2026-11-08-pausehold/) | 8 | 1 |
+| [2026-11-08-speedack](2026-11-08-speedack/) | 8 | 1 |
+| [2026-11-08-speedack2](2026-11-08-speedack2/) | 6 | 1 |

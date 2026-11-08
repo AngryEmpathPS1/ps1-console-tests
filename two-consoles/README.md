@@ -17,3 +17,7 @@ Sessions with two consoles joined as a link cable joins them, through the bridge
 | [2026-11-07-transfer-swap](2026-11-07-transfer-swap/) | sio1-transfer | 2 | yes |
 | [2026-11-07-transfer2](2026-11-07-transfer2/) | sio1-transfer2 | 2 | yes |
 | [2026-11-07-transfer2-swap](2026-11-07-transfer2-swap/) | sio1-transfer2 | 2 | yes |
+| [2026-11-08-transfer2-drain](2026-11-08-transfer2-drain/) | sio1-transfer2 | 2 | yes |
+| [2026-11-08-transfer2-drain-swap](2026-11-08-transfer2-drain-swap/) | sio1-transfer2 | 2 | yes |
+| [2026-11-08-transfer2-edge](2026-11-08-transfer2-edge/) | sio1-transfer2 | 2 | yes |
+| [2026-11-08-transfer2-edge-swap](2026-11-08-transfer2-edge-swap/) | sio1-transfer2 | 2 | yes |
