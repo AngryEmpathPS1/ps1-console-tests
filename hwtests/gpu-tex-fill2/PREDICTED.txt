@@ -1,0 +1,118 @@
+hwtests/gpu-tex-fill2 - PREDICTED, written before its first console run (2026-11-08 00:30).
+
+== this core: v0.377.303 (branch claude/hungry-ardinghelli-1c1c61); node hwtests/run.js gpu-tex-fill2 --ntsc --frames=30000 --quiet=20000
+gpu/gpu-tex-fill2
+A 15-bit triangle clipped to W x 32, every texel cached but the evicted lines (one fill a row at 4j, or 8j at W 64):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant          bit 26's D
+a u0 0 base       1219..1219 
+a fill at  4      1508..1525 
+a fill at  8      1508..1508 
+a fill at 12      1508..1513 
+a fill at 16      1508..1512 
+a fill at 20      1508..1509 
+a fill at 24      1508..1510 
+a fill at 28      1508..1511 
+a u0 1 base       1187..1187 
+a fill at  3      1476..1476 
+a fill at  7      1476..1476 
+a fill at 11      1476..1476 
+a fill at 15      1476..1476 
+a fill at 19      1476..1476 
+a fill at 23      1476..1476 
+a fill at 27      1476..1476 
+a u0 2 base       1155..1155 
+a fill at  2      1444..1444 
+a fill at  6      1444..1444 
+a fill at 10      1444..1444 
+a fill at 14      1444..1444 
+a fill at 18      1444..1444 
+a fill at 22      1444..1444 
+a fill at 26      1444..1444 
+a u0 3 base       1123..1123 
+a fill at  1      1412..1412 
+a fill at  5      1412..1412 
+a fill at  9      1412..1412 
+a fill at 13      1412..1412 
+a fill at 17      1412..1412 
+a fill at 21      1412..1412 
+a fill at 25      1412..1412 
+b W 18 base        770..771  
+b W 18 base u0 2   770..770  
+b W 18 fill at 2  1059..1059 
+b W 18 fill at 4  1059..1059 
+b W 18 fill at 6  1059..1059 
+b W 20 base        834..834  
+b W 20 base u0 2   834..834  
+b W 20 fill at 2  1123..1123 
+b W 20 fill at 4  1123..1123 
+b W 20 fill at 6  1123..1123 
+b W 22 base        898..898  
+b W 22 base u0 2   898..898  
+b W 22 fill at 2  1187..1187 
+b W 22 fill at 4  1187..1187 
+b W 22 fill at 6  1187..1187 
+b W 24 base        962..964  
+b W 24 base u0 2   962..963  
+b W 24 fill at 2  1251..1252 
+b W 24 fill at 4  1251..1251 
+b W 24 fill at 6  1251..1251 
+b W 26 base       1026..1037 
+b W 26 base u0 2  1026..1026 
+b W 26 fill at 2  1315..1315 
+b W 26 fill at 4  1315..1315 
+b W 26 fill at 6  1315..1316 
+b W 28 base       1091..1091 
+b W 28 base u0 2  1091..1091 
+b W 28 fill at 2  1379..1379 
+b W 28 fill at 4  1379..1379 
+b W 28 fill at 6  1379..1379 
+b W 30 base       1155..1155 
+b W 30 base u0 2  1155..1155 
+b W 30 fill at 2  1444..1444 
+b W 30 fill at 4  1444..1444 
+b W 30 fill at 6  1444..1444 
+c u0 0 base       2246..2246 
+c fill at  8      2535..2535 
+c fill at 16      2535..2535 
+c fill at 24      2535..2535 
+c fill at 32      2535..2535 
+c fill at 40      2535..2535 
+c fill at 48      2535..2535 
+c fill at 56      2535..2535 
+c u0 1 base       2182..2182 
+c fill at  6      2470..2470 
+c fill at 14      2470..2470 
+c fill at 22      2470..2470 
+c fill at 30      2470..2470 
+c fill at 38      2470..2470 
+c fill at 46      2470..2470 
+c fill at 54      2470..2470 
+c u0 2 base       2118..2118 
+c fill at  4      2406..2406 
+c fill at 12      2406..2406 
+c fill at 20      2406..2406 
+c fill at 28      2406..2406 
+c fill at 36      2406..2406 
+c fill at 44      2406..2406 
+c fill at 52      2406..2406 
+c u0 3 base       2053..2058 
+c fill at  2      2342..2355 
+c fill at 10      2342..2348 
+c fill at 18      2342..2345 
+c fill at 26      2342..2343 
+c fill at 34      2342..2350 
+c fill at 42      2342..2354 
+c fill at 50      2342..2343 
+d fills 0 and 4   1771..1771 
+d fills 0 and 8   1771..1771 
+d fills 4 and 8   1797..1797 
+d fills 4 and 12  1797..1812 
+d fills 8 and 12  1797..1803 
+
+gpu/gpu-tex-fill2: Done.
+
+Fill places checked on a logging core (FILLTEST=gpu-tex-fill2 experiments/fill1check.js, core from experiments/_mkfilllog.js): a at
+pixels 4j - u0 (1..28), b at 2 / 4 / 6 for every W, c at 8j - 2 u0 (2..56), d as named; 32 fills a fill a row.

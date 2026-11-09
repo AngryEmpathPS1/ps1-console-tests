@@ -1,0 +1,251 @@
+
+spu/spu-noise
+The noise generator off voice 1's capture ring (44.1 kHz samples, 256 a half). No assertions.
+
+RATE: shift step: flips of 1024, lowest, highest, then the sign bits of 512 samples:
+ shift  0 step 0: flips    0  lo  -1491 hi  -1491
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  0 step 1: flips    4  lo  -2982 hi      0
+00000000 00000000 00000000 00000007 ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  0 step 2: flips    4  lo  -2982 hi      0
+00000000 00000000 00000000 00007fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  0 step 3: flips    4  lo  -2982 hi      0
+00000000 00000000 00000000 00001fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  1 step 0: flips    4  lo  -2982 hi      0
+00000000 00000000 00000000 00001fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  1 step 1: flips    5  lo  -2982 hi      0
+00000000 00000000 00000000 00001fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  1 step 2: flips    4  lo  -5964 hi      0
+00000000 00000000 00000000 00007fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  1 step 3: flips    4  lo  -5964 hi      0
+00000000 00000000 00000000 00007fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  2 step 0: flips    4  lo  -5964 hi      0
+00000000 00000000 00000000 00007fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  2 step 1: flips    4  lo  -5964 hi      0
+00000000 00000000 00000000 00001fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  2 step 2: flips    4  lo  -5964 hi      0
+00000000 00000000 00000000 00007fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  2 step 3: flips    4  lo  -5964 hi      0
+00000000 00000000 00000000 00007fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  3 step 0: flips    4  lo  -5964 hi      0
+00000000 00000000 00000000 00007fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  3 step 1: flips    5  lo  -5964 hi      0
+00000000 00000000 00000000 00001fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  3 step 2: flips    5  lo -11927 hi      0
+00000000 00000000 00000000 00007fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  3 step 3: flips    4  lo -23853 hi      0
+00000000 00000000 00000000 00001fff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  4 step 0: flips    5  lo -14938 hi  17829
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+ shift  4 step 1: flips    5  lo -29876 hi   2892
+00000000 00000000 00001fff ffffffff ffffffff ffffffff ffffffff ffffffff
+ffffffff fffff000 00000000 00000000 00000000 00000000 00000000 00000000
+ shift  4 step 2: flips    4  lo      0 hi  11570
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+ shift  4 step 3: flips    5  lo      0 hi  11570
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+ shift  5 step 0: flips    5  lo -19249 hi  13518
+00000000 00000000 00007fff ffffffff ffffffff ffffffff ffffffff ffffffff
+ffffffff fffff000 00000000 00000000 00000000 00000000 00000000 00000000
+ shift  5 step 1: flips    5  lo -11460 hi      0
+00000000 00000000 00000000 01ffffff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  5 step 2: flips    5  lo -13068 hi  19698
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+00000000 00000fff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  5 step 3: flips    6  lo  -6244 hi  13261
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+ shift  6 step 0: flips    5  lo -12488 hi      0
+00000000 00000000 00001fff ffffffff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  6 step 1: flips    6  lo  -3195 hi  31169
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+ shift  6 step 2: flips    6  lo -25554 hi  14428
+00000000 00000000 00001fff ffffffff ffffffff ffffffff ffffffff ffffffff
+ffffffff fffff000 00000000 00000000 00000000 00000000 00000000 00000000
+ shift  6 step 3: flips    7  lo -31272 hi   5986
+00000000 00000000 00000000 01ffffff ffffffff ffffffff ffffffff ffffffff
+ffffffff fffff000 00000000 00000000 00000000 00000000 00000000 00000000
+ shift  7 step 0: flips    8  lo -17642 hi  15125
+00000000 00000000 00000000 07ffffff ffffffff fffff000 00000000 00000000
+00000000 00000000 00000000 00000000 00000000 00000fff ffffffff ffffffff
+ shift  7 step 1: flips    9  lo -14957 hi  11422
+00000000 00000000 00000000 7fffffff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff fffff000 00000000 00000000
+ shift  7 step 2: flips    9  lo -27651 hi  16346
+00000000 00000000 00000000 00007fff ffffffff fffff000 00000000 00000000
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+ shift  7 step 3: flips   10  lo  -9416 hi  13935
+00000000 00000000 0000007f ffffffff ffffffff ffffffff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+ shift  8 step 0: flips   11  lo -16052 hi  14376
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+00000000 00000000 00000000 00000fff ffffffff ffffffff ffffffff ffffffff
+ shift  8 step 1: flips   14  lo -16231 hi  19464
+00000000 00000000 00000000 00000fff ffffffff ffffffff ffffffff fffff000
+00000000 00000000 00000000 00000000 00000000 00000fff ffffffff ffffffff
+ shift  8 step 2: flips   16  lo -15820 hi   9250
+00000000 00000000 00000000 07ffffff ffffffff fffff000 00000000 00000000
+00000000 00000000 00000000 00000fff ffffffff fffff000 00000000 00000000
+ shift  8 step 3: flips   17  lo -14861 hi  15504
+00000000 00000000 00000000 00000000 00000000 00000fff ffffffff ffffffff
+ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff fffff000
+ shift  9 step 0: flips   18  lo -25690 hi  14950
+00000000 00000000 00000000 0001ffff fffff000 00000000 00000000 00000000
+00000fff ffffffff ffffffff ffffffff fffff000 00000000 00000fff ffffffff
+ shift  9 step 1: flips   22  lo -15438 hi  15141
+00000000 00000000 00000000 01ffffff fffff000 00000000 00000000 00000000
+00000000 00000000 00000000 00000fff ffffffff ffffffff ffffffff ffffffff
+ shift  9 step 2: flips   26  lo -15817 hi  27329
+00000000 00000000 00000000 00000fff ffffffff ffffffff fffff000 00000fff
+fffff000 00000000 00000fff fffff000 00000fff ffffffff ffffffff fffff000
+ shift  9 step 3: flips   30  lo -13825 hi  16362
+00000000 00000000 00000000 001fffff ffffffff ffffffff fffff000 00000fff
+fffff000 00000000 00000fff ffffffff fffff000 00000fff fffff000 00000000
+ shift 10 step 0: flips   32  lo -15034 hi  16009
+00000000 00000000 00000000 00000000 00000000 0fffffff f0000000 00000000
+0fffffff ffffffff f0000000 00000000 0fffffff f0000000 0fffffff ffffffff
+ shift 10 step 1: flips   39  lo -19202 hi  16270
+00000000 00000000 00000000 001fffff f0000000 0fffffff fffff000 0fffffff
+f0000000 00000000 0fffffff ffffffff ffffffff ffffffff ffffffff f0000000
+ shift 10 step 2: flips   46  lo -14955 hi  16291
+00000000 00000000 00000000 00007fff fffff000 00000000 00000fff f0000000
+0fffffff f0000000 00000fff f0000000 0ffff000 0fffffff ffffffff ffffffff
+ shift 10 step 3: flips   54  lo -16049 hi  16069
+00000000 00000000 00000000 0007ffff f0000000 00000000 0ffff000 00000000
+00000000 0fffffff f0000fff ffffffff ffffffff f0000000 0fffffff f0000000
+ shift 11 step 0: flips   61  lo -26865 hi  15621
+00000000 00000000 00000000 0007fff0 0000000f fff0000f ffffffff fff00000
+00000000 000fffff ffffffff fff0000f fff00000 00000000 0000000f fffffff0
+ shift 11 step 1: flips   75  lo -17934 hi  16304
+00000000 00000000 00000000 0070000f fffffff0 0000000f ffffffff fffffff0
+000ffff0 00000000 0ff0000f fff00000 000fffff ffffffff fff0000f fffffff0
+ shift 11 step 2: flips   89  lo -20125 hi  16379
+00000000 00000000 00000000 0007fff0 0ffffff0 0000000f f00fffff f0000000
+0fffffff ffffffff ffffffff ffffffff f0000000 000fffff ffffffff fffffff0
+ shift 11 step 3: flips  103  lo -29021 hi  16071
+00000000 00000000 00000000 00007ff0 00000fff fff0000f f00ff000 000fffff
+f0000fff fff0000f f0000000 0ff00000 000fffff fffffff0 0ffff000 0ff00000
+ shift 12 step 0: flips  117  lo -15997 hi  16206
+00000000 00000000 00000000 0001ffff 00ffffff 00ffff00 00ffff00 0000ff00
+ff0000ff 00000000 ffffffff 0000ff00 ffffffff ff0000ff ffffff00 ff00ff00
+ shift 12 step 1: flips  146  lo -16337 hi  22482
+00000000 00000000 00000000 0000ff0f 00ffffff ff00ff00 ffffff00 ff00000f
+ffffffff 00ffffff 00000000 ff00000f ffffff00 0000000f 0000000f ff00000f
+ shift 12 step 2: flips  175  lo -16107 hi  16309
+00000000 00000000 00000000 000fff00 000fffff ffff00ff 00ff0000 fff00000
+00f0ffff 00f0ff00 000fff00 fff0ff00 ffffff00 000f00ff fff0fff0 00f0fff0
+ shift 12 step 3: flips  202  lo -16197 hi  16189
+00000000 00000000 00000000 0001000f ffff000f f00ffff0 00ff0000 00ff000f
+0f0f0000 ff00ff00 ff00000f 00ff00f0 0f0f0000 f0f0fff0 000000ff 0f0ffff0
+ shift 13 step 0: flips  231  lo -16371 hi  16298
+00000000 00000000 00000000 00003ffc 03fc3c3f c3fc3c03 c003c3c0 03fc3fc3
+fc00003f fc03c3fc 003c3c3f c3ffffff c3c3c3ff c3fc03c3 fc003c03 c3c3ffff
+ shift 13 step 1: flips  286  lo -16336 hi  16370
+00000000 00000000 00000000 00001fc3 c3ffc03c 03003fc3 fc03fc03 fc3ffcc3
+fcc003ff c0c03c00 03fffc3f fc3c003f c3c3ffff fffc03fc 3fffc3c3 ff3fc000
+ shift 13 step 2: flips  342  lo -16242 hi  27039
+00000000 00000000 00000000 000004fc c0fcc000 3fc33cc3 3cff3fff ff00c3c3
+fcc3ffc3 c3c03c00 033ffcfc c0fcfc00 3fc3c3c0 3cfc033f fffffffc c3ffffc0
+ shift 13 step 3: flips  399  lo -16327 hi  16257
+00000000 00000000 00000000 0000000f 003f00f3 3f30c3c0 c0f0fffc 3c03033f
+ffc00333 c3003ccc 3cc0c3cc 000ffc33 3cc3ff0f fcfcff33 03333f33 00fcc030
+ shift 14 step 0: flips  458  lo -20275 hi  19801
+00000000 00000000 00000000 000019e0 1e1e7e7e 01f99807 9f987ffe 7ff8781e
+6781e781 fe7e7e06 19981e00 78066079 99801e1f 861e079f 9879fe7f e7fe1e01
+ shift 14 step 1: flips  569  lo -16982 hi  21242
+00000000 00000000 00000000 0000019f 9d9a7803 fbe26219 e19999fc 607dfffd
+e67e0187 f801e183 9dfa1e1d ffe47e79 fe618406 187fe3e0 1b9c01fa 799be399
+ shift 14 step 2: flips  682  lo -16353 hi  16313
+00000000 00000000 00000000 00000001 a63c5b9d c5c3a5fd c620203e 06239e3a
+0645bfb8 4407c3c4 645e5b99 ddddb998 1dc79fa3 a5be47c6 7e79f822 5c40267d
+ shift 14 step 3: flips  795  lo -16370 hi  16382
+00000000 00000000 00000000 00000142 1a1ba1b9 c3a323f8 dca5da78 dbc583e7
+b81e3959 44d85aa6 bfd82664 7c583b84 fc631a81 e6448599 bf65e001 c3e52025
+ shift 15 step 0: flips  906  lo -16369 hi  24236
+00000000 00000000 00000000 000001b0 cedc7189 2b8841b9 9f208fc2 0a4c4a9c
+1bc1fe11 d247d301 e4d3eaf0 b3979b5e 607894d8 1b65e557 cf9347aa 0ae450f6
+ shift 15 step 1: flips  905  lo -16383 hi  16377
+00000000 00000000 00000000 000007f4 066b6115 a5a998b0 3fca3b80 d06ea7da
+e0001ffd 1f981624 fe2cd7e2 156ebad8 656e4ace 1662f0fb 9812241a 39d0afb5
+ shift 15 step 2: flips  907  lo -16366 hi  31699
+00000000 00000000 00000000 000000f7 a93aabef c86bff0b e968e642 87d1c184
+1a99cb0d bdf3ccd7 02008de2 7f666100 a6e4dceb 97835c38 068775da c2074d5f
+ shift 15 step 3: flips  906  lo -16379 hi  16279
+00000000 00000000 00000000 0000039b 9273975b 4ca38809 b6165af5 834e3be4
+d9eb4a93 1aa6ceda 711f340c aac9f6d8 09660709 510316b7 e1752cd4 e25e6178
+
+SLOW: shift step 0: the sample numbers of the first flips:
+ shift 0: 1 2 3 4 5 6 7 8
+ shift 1: 3840 12032 20224 28416 36608 44800 52992 61184
+ shift 2: 1792 5888 9984 14080 18176 22272 26368 30464
+ shift 3: 768 2816 4864 6912 8960 11008 13056 15104
+
+LEVEL: sustain level, envelope, lowest, highest:
+ level F: env 3fff lo -16383 hi  16368
+ level 7: env 3fff lo -16298 hi  16348
+
+TWO: voices 1 and 3 differ at 0 of 256 samples
+
+ADPCM: a one-block sample with the end flag, after 300 samples: ENDX bit 1, envelope, flips of 256:
+ ADPCM: ENDX 1 env 0000 flips 0
+ noise: ENDX 1 env 3fff flips 255
+
+PITCH: voice 1's pitch: flips of 1024 at shift 12 step 0:
+ pitch 0000: flips 127
+ pitch 1000: flips 127
+ pitch 4000: flips 127
+
+NON: D, the write's measured cycles after the edge, the ring index of the first sample off DC, two runs:
+ D   0: 114  75  first   0   0
+ D  64: 137 110  first   0   0
+ D 128: 199 172  first   0   0
+ D 192: 261 265  first   0   0
+ D 256: 323 330  first   0   0
+ D 320: 385 392  first   0   0
+ D 384: 447 454  first   0   0
+ D 448: 518 516  first   0   0
+ D 512: 580 577  first   0   0
+ D 576: 642 639  first   0   0
+ D 640: 703 701  first   0   0
+ D 704: 771 763  first   0   0
+
+RESET: the sign bits of 256 samples at shift 15 step 3:
+ after SPUCNT 0:
+5dff2dee de51fc01 a3dd04ba 027587ce c3737e4f 5ed46042 91d2c7cf 83443a5e
+2efe ddff 3bfd f7fc eff9 dff3 3fe4 ffcb ff96 ff2d fe5b fcb7 f96f f2de e5bd cb7c
+ after SPUCNT 0:
+05933da1 41688e4a 2e0381a8 5c9b1d6e 72cb6eb4 d93b5bc0 be269656 74b3f392
+02c9 0592 0b25 164c 2c98 d934 3266 e4cf c99f 133d 267a ccf7 19ec 33d9 e7b4 cf68
+ after SPUCNT 0:
+c7e785ac b86a0f24 9f258f1f 1a0ad454 46c53be7 d9a04551 6f1efa26 324d32ae
+e3f3 c7e8 0fce 1f9d 3f3b fe78 fcf0 f9e1 f3c2 e785 cf0b 1e16 3c2c f85a f0b5 e16b
+ without:
+00000000 00000000 00000000 00000004 ecef277f 7b6385c8 b1efe26d 65835e38
+0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+ without:
+00000000 00000000 0000000e 96be6098 813b43c2 e65885fb b5141188 4bb82500
+0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+
+spu/spu-noise: Done.

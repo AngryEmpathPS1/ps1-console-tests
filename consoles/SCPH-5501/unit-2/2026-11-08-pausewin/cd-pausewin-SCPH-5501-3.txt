@@ -1,0 +1,11 @@
+
+cdrom/cd-pausewin
+The busy windows after a Pause from inside: GetlocP back to back for 1.2M cycles after a paused read's INT2.
+Cycles at the system clock (1 ms = 33,869) from the Pause's INT2; t/wait:d for answers over 70,000; t:d for changes of position (sectors from 05:00:00). No assertions - compare against your emulator.
+2X: 17 polls; slow 320k/158k:9 413k/93k:9 703k/124k:0 920k/108k:1 1089k/102k:2; moves 37k:8 320k:9 703k:0 920k:1 1089k:2
+1X: 20 polls; slow 571k/203k:9 1289k/112k:0; moves 42k:8 571k:9 1289k:0
+2X: 16 polls; slow 126k/83k:8 284k/158k:9 374k/89k:9 677k/122k:0 890k/102k:1 1119k/114k:2; moves 42k:8 284k:9 677k:0 890k:1 1119k:2
+1X: 20 polls; slow 571k/203k:9 1295k/113k:0; moves 42k:8 571k:9 1295k:0
+2X: 16 polls; slow 125k/70k:8 339k/159k:9 431k/92k:9 723k/126k:0 934k/102k:1 1005k/71k:1 1108k/102k:2; moves 55k:8 339k:9 723k:0 934k:1 1108k:2
+1X: 20 polls; slow 571k/203k:9 1177k/70k:9 1290k/112k:0; moves 42k:8 571k:9 1290k:0
+cdrom/cd-pausewin: Done.

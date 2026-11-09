@@ -1,0 +1,63 @@
+hwtests/gpu-tex-stride3 - PREDICTED, written before its first console run (2026-11-07 23:27).
+
+== this core: v0.377.303 (branch claude/hungry-ardinghelli-1c1c61 at 40640f89, cd-rebuild's v0.377.303 merged); node hwtests/run.js gpu-tex-stride3 --ntsc --frames=36000 --quiet=30000
+gpu/gpu-tex-stride3
+Textured 64x64 quads, a fill every N pixels, the display ONE LINE tall (V) and 320x240 (D), rows started at x 0..8:
+cycles from the first word to bits 28 and 26, fastest..slowest of four, each try 53 lines after the VBlank. No assertions.
+
+V (display one line):
+  flat quad 64x64                        5 words   bit 28    1322..1329     bit 26     2506..2554
+  15-bit N  1  U 255  +0       9 words   bit 28   19762..19777    bit 26    38696..38708
+  15-bit N  2  U 128  +0       9 words   bit 28   11988..11992    bit 26    23249..23292
+  15-bit N  3  U  85  +0       9 words   bit 28    8914..8929     bit 26    17550..17563
+  15-bit N  4  U  64  +0       9 words   bit 28    7378..7391     bit 26    14115..14126
+  15-bit N  5  U  51  +0       9 words   bit 28    6420..6426     bit 26    12342..12353
+  15-bit N  6  U  42  +0       9 words   bit 28    5698..5711     bit 26    11126..11141
+  15-bit N  7  U  36  +0       9 words   bit 28    5220..5224     bit 26     9924..9931
+  15-bit N  8  U  32  +0       9 words   bit 28    4884..4893     bit 26     9858..9872
+  15-bit N  9  U  28  +0       9 words   bit 28    4595..4607     bit 26     9266..9299
+  15-bit N 10  U  25  +0       9 words   bit 28    4358..4360     bit 26     8701..8702
+  15-bit N 11  U  23  +0       9 words   bit 28    4211..4221     bit 26     8110..8146
+  15-bit N 12  U  21  +0       9 words   bit 28    4066..4079     bit 26     8107..8146
+  15-bit N 14  U  18  +0       9 words   bit 28    3876..3880     bit 26     7542..7549
+  15-bit N 16  U  16  +0       9 words   bit 28    3730..3745     bit 26     7528..7546
+  15-bit N 32  U   8  +0       9 words   bit 28    3155..3167     bit 26     6373..6417
+  15-bit N  4  U  64  +1       9 words   bit 28    7378..7384     bit 26    14115..14121
+  15-bit N  4  U  64  +2       9 words   bit 28    7378..7391     bit 26    14115..14126
+  15-bit N  4  U  64  +5       9 words   bit 28    7382..7391     bit 26    14119..14126
+  15-bit N  4  U  64  +8       9 words   bit 28    7378..7391     bit 26    14115..14126
+  15-bit N  8  U  32  +1       9 words   bit 28    4883..4897     bit 26     9857..9874
+  15-bit N  8  U  32  +2       9 words   bit 28    4884..4888     bit 26     9858..9864
+  15-bit N  8  U  32  +5       9 words   bit 28    4882..4897     bit 26     9856..9872
+  15-bit N  8  U  32  +8       9 words   bit 28    4883..4897     bit 26     9857..9874
+  15-bit N 16  U  16  +1       9 words   bit 28    3734..3736     bit 26     7536..7539
+  15-bit N 16  U  16  +2       9 words   bit 28    3730..3745     bit 26     7528..7546
+  15-bit N 16  U  16  +5       9 words   bit 28    3730..3743     bit 26     7528..7546
+  15-bit N 16  U  16  +8       9 words   bit 28    3734..3736     bit 26     7535..7539
+   8-bit N  2  U 255  +0       9 words   bit 28   11855..11890    bit 26    23279..23296
+   8-bit N  3  U 170  +0       9 words   bit 28    8870..8915     bit 26    16963..16969
+   8-bit N  4  U 128  +0       9 words   bit 28    7378..7384     bit 26    14115..14121
+   8-bit N  5  U 102  +0       9 words   bit 28    6418..6433     bit 26    12343..12358
+   8-bit N  6  U  85  +0       9 words   bit 28    5748..5752     bit 26    11132..11137
+   8-bit N  7  U  73  +0       9 words   bit 28    5218..5233     bit 26    10469..10510
+   8-bit N  8  U  64  +0       9 words   bit 28    4835..4849     bit 26     9272..9285
+   8-bit N 10  U  51  +0       9 words   bit 28    4356..4360     bit 26     8700..8702
+   8-bit N 12  U  42  +0       9 words   bit 28    4067..4079     bit 26     8141..8152
+   8-bit N 16  U  32  +0       9 words   bit 28    3683..3695     bit 26     7530..7543
+   8-bit N 32  U  16  +0       9 words   bit 28    3108..3112     bit 26     6411..6421
+   8-bit N  8  U  64  +1       9 words   bit 28    4834..4849     bit 26     9268..9285
+   8-bit N  8  U  64  +8       9 words   bit 28    4835..4847     bit 26     9264..9276
+D (display 320x240):
+  flat quad 64x64                        5 words   bit 28    1370..1427     bit 26     2637..2694
+  15-bit N  2  U 128  +0       9 words   bit 28   12755..12760    bit 26    24734..24739
+  15-bit N  4  U  64  +0       9 words   bit 28    7810..7825     bit 26    14921..14952
+  15-bit N  7  U  36  +0       9 words   bit 28    5510..5512     bit 26    10442..10486
+  15-bit N  8  U  32  +0       9 words   bit 28    5128..5174     bit 26    10370..10382
+  15-bit N 12  U  21  +0       9 words   bit 28    4258..4271     bit 26     8514..8523
+  15-bit N 16  U  16  +0       9 words   bit 28    3876..3880     bit 26     7902..7910
+   8-bit N  8  U  64  +0       9 words   bit 28    5074..5089     bit 26     9737..9793
+   8-bit N 32  U  16  +0       9 words   bit 28    3202..3256     bit 26     6608..6694
+
+gpu/gpu-tex-stride3: Done.
+
+Read against the console: V's rows against D's at the same N; the +1 / +2 / +5 / +8 rows against +0 (this core: all within its own few cycles).

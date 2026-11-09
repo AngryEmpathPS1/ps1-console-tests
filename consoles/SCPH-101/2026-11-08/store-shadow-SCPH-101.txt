@@ -1,0 +1,32 @@
+
+cpu/store-shadow
+Per-iteration cost above a loop of 8 nops, 100 iterations. No assertions - compare against your emulator.
+
+RAM: lw t1, then a store of another register at position p (8 slots in all)
+  lw alone                 1558 -   1361 =    197 over 100  ->  1.97 cycles
+  p=1                      1897 -   1361 =    536 over 100  ->  5.36 cycles
+  p=2                      1971 -   1361 =    610 over 100  ->  6.10 cycles
+  p=3                      1874 -   1361 =    513 over 100  ->  5.13 cycles
+  p=4                      1787 -   1361 =    426 over 100  ->  4.26 cycles
+  p=5                      1670 -   1361 =    309 over 100  ->  3.09 cycles
+  p=6                      1578 -   1361 =    217 over 100  ->  2.17 cycles
+  p=7                      1576 -   1361 =    215 over 100  ->  2.15 cycles
+  p=1 storing t1           1967 -   1361 =    606 over 100  ->  6.06 cycles
+  store alone              1369 -   1361 =      8 over 100  ->  0.08 cycles
+
+SCRATCHPAD store after a RAM load
+  p=1                      1892 -   1361 =    531 over 100  ->  5.31 cycles
+  p=3                      1881 -   1361 =    520 over 100  ->  5.20 cycles
+  p=5                      1657 -   1361 =    296 over 100  ->  2.96 cycles
+
+ROM: lbu t1 (BFC00100h), then sb of another register to RAM at position p
+  lbu alone                1566 -   1361 =    205 over 100  ->  2.05 cycles
+  p=1                      2070 -   1361 =    709 over 100  ->  7.09 cycles
+  p=2                      2159 -   1361 =    798 over 100  ->  7.98 cycles
+  p=3                      2067 -   1361 =    706 over 100  ->  7.06 cycles
+  p=4                      1971 -   1361 =    610 over 100  ->  6.10 cycles
+  p=5                      1866 -   1361 =    505 over 100  ->  5.05 cycles
+  p=6                      1763 -   1361 =    402 over 100  ->  4.02 cycles
+  p=7                      1665 -   1361 =    304 over 100  ->  3.04 cycles
+
+Done.

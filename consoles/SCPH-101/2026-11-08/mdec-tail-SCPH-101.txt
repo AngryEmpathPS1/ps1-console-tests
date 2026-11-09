@@ -1,0 +1,29 @@
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-tail
+K blocks behind a picture's last macroblock, then a second picture with no reset. 8 tries each. No assertions.
+
+24 bits
+  K 0: then 8404ffff, 2000 on 8404ffff; second picture done 8 hung 0  status 00000000  BCR0 00000000 BCR1 00000000
+  K 1: then a404ffff, 2000 on a405ffff; second picture done 0 hung 8  status a405ffff  BCR0 00050020 BCR1 00300020
+  K 2: then e404ffff, 2000 on a400ffff; second picture done 0 hung 8  status a400ffff  BCR0 00050020 BCR1 00300020
+  K 3: then e404ffff, 2000 on 2c01ffff; second picture done 8 hung 0  status 00000000  BCR0 00000000 BCR1 00000000
+  K 4: then e404ffff, 2000 on 2c01ffff; second picture done 0 hung 8  status 8402ffff  BCR0 00050020 BCR1 002d0020
+  K 5: then e404ffff, 2000 on 2c01ffff; second picture done 0 hung 8  status 8403ffff  BCR0 00050020 BCR1 002b0020
+  K 6: then e404ffff, 2000 on 6c01ffff; second picture done 0 hung 8  status 8404ffff  BCR0 00050020 BCR1 002a0020
+  K 7: then e404ffff, 2000 on 6c01ffff; second picture done 0 hung 8  status a405ffff  BCR0 00050020 BCR1 002a0020
+15 bits
+  K 0: then 8604ffff, 2000 on 8604ffff; second picture done 8 hung 0  status 00000000  BCR0 00000000 BCR1 00000000
+  K 1: then a604ffff, 2000 on a605ffff; second picture done 0 hung 8  status a605ffff  BCR0 00050020 BCR1 00200020
+  K 2: then e604ffff, 2000 on a600ffff; second picture done 0 hung 8  status a600ffff  BCR0 00050020 BCR1 00200020
+  K 3: then e604ffff, 2000 on 2e01ffff; second picture done 8 hung 0  status 00000000  BCR0 00000000 BCR1 00000000
+  K 4: then e604ffff, 2000 on 2e01ffff; second picture done 0 hung 8  status 8602ffff  BCR0 00050020 BCR1 001e0020
+  K 5: then e604ffff, 2000 on 2e01ffff; second picture done 0 hung 8  status 8603ffff  BCR0 00050020 BCR1 001d0020
+  K 6: then e604ffff, 2000 on 6e01ffff; second picture done 0 hung 8  status 8604ffff  BCR0 00050020 BCR1 001c0020
+  K 7: then e604ffff, 2000 on 6e01ffff; second picture done 0 hung 8  status a605ffff  BCR0 00050020 BCR1 001c0020
+
+mdec/mdec-tail: Done.

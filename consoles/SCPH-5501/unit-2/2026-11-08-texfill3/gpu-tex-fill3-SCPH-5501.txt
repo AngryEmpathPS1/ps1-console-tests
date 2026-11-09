@@ -1,0 +1,57 @@
+
+gpu/gpu-tex-fill3
+A 15-bit triangle clipped to W x 32, every texel cached but the evicted lines (one fill a row at 4j, or 8j at W 64):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant          bit 26's D
+W64 x 128 base    2248..2248 
+W64 x 128 fill at  8  2597..2615 
+W64 x 128 fill at 16  2504..2522 
+W64 x 128 fill at 24  2504..2515 
+W64 x 128 fill at 32  2504..2510 
+W64 x 128 fill at 40  2725..2741 
+W64 x 128 fill at 48  2538..2558 
+W64 x 128 fill at 56  2538..2557 
+W64 x 136 base    2248..2248 
+W64 x 136 fill at  8  2597..2626 
+W64 x 136 fill at 16  2505..2533 
+W64 x 136 fill at 24  2504..2522 
+W64 x 136 fill at 32  2504..2522 
+W64 x 136 fill at 40  2725..2731 
+W64 x 136 fill at 48  2538..2557 
+W64 x 136 fill at 56  2538..2557 
+W64 x 144 base    2248..2248 
+W64 x 144 fill at  8  2597..2626 
+W64 x 144 fill at 16  2506..2525 
+W64 x 144 fill at 24  2504..2511 
+W64 x 144 fill at 32  2504..2509 
+W64 x 144 fill at 40  2726..2738 
+W64 x 144 fill at 48  2538..2553 
+W64 x 144 fill at 56  2538..2555 
+W64 x 152 base    2248..2248 
+W64 x 152 fill at  8  2597..2618 
+W64 x 152 fill at 16  2505..2508 
+W64 x 152 fill at 24  2504..2522 
+W64 x 152 fill at 32  2504..2512 
+W64 x 152 fill at 40  2725..2744 
+W64 x 152 fill at 48  2538..2559 
+W64 x 152 fill at 56  2538..2557 
+W32 x 136 base    1226..1226 
+W32 x 136 fill at  4  1759..1783 
+W32 x 136 fill at  8  1637..1654 
+W32 x 136 fill at 12  1513..1525 
+W32 x 136 fill at 16  1482..1502 
+W32 x 136 fill at 20  1482..1498 
+W32 x 136 fill at 24  1482..1501 
+W32 x 136 fill at 28  1482..1501 
+W32 x 144 base    1226..1226 
+W32 x 144 fill at  4  1759..1766 
+W32 x 144 fill at  8  1636..1653 
+W32 x 144 fill at 12  1513..1531 
+W32 x 144 fill at 16  1482..1503 
+W32 x 144 fill at 20  1482..1501 
+W32 x 144 fill at 24  1482..1497 
+W32 x 144 fill at 28  1482..1501 
+
+gpu/gpu-tex-fill3: Done.

@@ -1,0 +1,34 @@
+
+gpu/gp0-store
+The CPU behind its own GP0 stores (cached; Timer 2 cycles, fastest..slowest of 16 over the refresh).
+A n: lhu T2; n NOP stores to GP0; lhu T2.  B k: 3 NOP stores, k nops.  C: 3 NOP stores, a GPUSTAT read.
+R: a 1x1 rectangle (3 words).  RS: and a GPUSTAT read.  T k: an 8-bit 16x16 textured rectangle reloading its
+CLUT, k nops.  TC: its CLUT cached. There are no assertions - compare against your emulator.
+
+  A0       4..4   
+  A1       6..6   
+  A2       6..6   
+  A3       8..8   
+  A4       8..8   
+  A6      10..10  
+  A8      14..14  
+  A12     22..22  
+  A16     30..30  
+  B0       8..8   
+  B4      11..11  
+  B8      15..15  
+  B16     23..23  
+  B24     31..31  
+  B32     55..59  
+  B48     90..106 
+  C       14..14  
+  R        8..8   
+  RS      28..31  
+  T0       8..8   
+  T32     40..40  
+  T128   136..136 
+  T256   264..264 
+  T384   392..392 
+  TC       8..8   
+
+gpu/gp0-store: Done.

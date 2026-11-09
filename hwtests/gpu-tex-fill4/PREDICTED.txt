@@ -1,0 +1,64 @@
+hwtests/gpu-tex-fill4 - PREDICTED, written before its first console run (2026-11-08 00:54).
+
+== this core: v0.377.303 (branch claude/hungry-ardinghelli-1c1c61); node hwtests/run.js gpu-tex-fill4 --ntsc --frames=20000 --quiet=15000
+gpu/gpu-tex-fill4
+A 15-bit triangle clipped to W x 32, every texel cached but the evicted lines (one fill a row at 4j, or 8j at W 64):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant          bit 26's D
+a u0 2 base       1155..1155 
+a fills 2 and 6   1732..1732 
+a fills 2 and 10  1732..1732 
+a fills 2 and 14  1732..1732 
+a u0 3 base       1123..1123 
+a fills 1 and 5   1700..1700 
+a fills 1 and 9   1700..1700 
+a fills 1 and 13  1700..1700 
+a u0 1 base       1187..1187 
+a fills 3 and 7   1764..1764 
+a fills 3 and 11  1764..1764 
+a fills 3 and 15  1764..1764 
+a u0 0 base       1219..1219 
+a fills 0 and 12  1771..1771 
+a fills 0 and 16  1771..1771 
+a fills 0 and 20  1771..1771 
+b W 6 base         385..388  
+b W 6 fill at 4    673..677  
+b W 8 base         449..470  
+b W 8 fill at 4    738..757  
+b W 10 base        513..513  
+b W 10 fill at 4   802..802  
+b W 12 base        577..577  
+b W 12 fill at 4   866..866  
+b W 14 base        641..641  
+b W 14 fill at 4   930..930  
+b W 16 base        706..710  
+b W 16 fill at 4   994..994  
+c u0 0 base       2246..2246 
+c fills 32 and 40  2823..2823 
+c fills 32 and 48  2823..2823 
+c fills 24 and 40  2823..2823 
+c fills 40 and 48  2823..2823 
+c u0 1 base       2182..2182 
+c fills 30 and 38  2759..2759 
+c fills 30 and 46  2759..2759 
+c u0 2 base       2118..2118 
+c fills 36 and 44  2695..2695 
+c fills 28 and 36  2695..2695 
+c u0 3 base       2053..2058 
+c fills 34 and 42  2631..2637 
+c fills 26 and 34  2631..2651 
+d W48 base        1731..1731 
+d W48 fill line 1  2020..2020 
+d W48 fill line 2  2020..2020 
+d W48 fill line 3  2020..2020 
+d W48 fill line 4  2020..2020 
+d W48 fill line 5  2020..2020 
+d W48 fill line 6  2020..2020 
+d W48 fill line 7  2020..2020 
+
+gpu/gpu-tex-fill4: Done.
+
+Fill places checked on a logging core (FILLTEST=gpu-tex-fill4 experiments/fill1check.js): the pairs as named, b at pixel 4, d (W 48, 2/3 of a
+texel a pixel) at pixels 6, 12, ..., 42; 32 fills a fill a row.

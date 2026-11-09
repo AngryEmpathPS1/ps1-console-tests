@@ -1,0 +1,46 @@
+hwtests/gpu-tex-fill5 - PREDICTED, written before its first console run (2026-11-08 01:04).
+
+== this core: v0.377.303 (branch claude/hungry-ardinghelli-1c1c61); node hwtests/run.js gpu-tex-fill5 --ntsc --frames=12000 --quiet=9000
+gpu/gpu-tex-fill5
+A 15-bit triangle clipped to W x 32, every texel cached but the evicted lines (one fill a row at 4j, or 8j at W 64):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant          bit 26's D
+s 1 W 8 base       446..450  
+s 1 W 8 all       2594..2596 
+s 1 W 8 odd lines  1601..1601 
+s 1 W 8 even lines  1575..1575 
+s 2 W 16 base      705..717  
+s 2 W 16 all      2989..2989 
+s 2 W 16 odd lines  1860..1860 
+s 2 W 16 even lines  1834..1836 
+s 3 W 24 base      961..961  
+s 3 W 24 all      3246..3246 
+s 3 W 24 odd lines  2116..2116 
+s 3 W 24 even lines  2091..2111 
+s 4 W 32 base     1219..1219 
+s 4 W 32 all      3504..3504 
+s 4 W 32 odd lines  2374..2375 
+s 4 W 32 even lines  2348..2350 
+s 5 W 40 base     1476..1476 
+s 5 W 40 all      3760..3760 
+s 5 W 40 odd lines  2631..2644 
+s 5 W 40 even lines  2605..2607 
+s 6 W 48 base     1732..1732 
+s 6 W 48 all      4017..4017 
+s 6 W 48 odd lines  2887..2896 
+s 6 W 48 even lines  2862..2869 
+s 7 W 56 base     1989..1989 
+s 7 W 56 all      4274..4274 
+s 7 W 56 odd lines  3144..3144 
+s 7 W 56 even lines  3119..3119 
+s 8 W 64 base     2246..2246 
+s 8 W 64 all      4530..4531 
+s 8 W 64 odd lines  3401..3401 
+s 8 W 64 even lines  3375..3375 
+
+gpu/gpu-tex-fill5: Done.
+
+Fill places checked on a logging core (FILLTEST=gpu-tex-fill5 experiments/fill1check.js): a fill every s pixels (all), every 2 s from s (odd
+lines) and from 0 (even lines), 256 / 128 / 128 fills a variant.

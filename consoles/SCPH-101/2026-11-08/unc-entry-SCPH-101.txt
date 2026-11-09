@@ -1,0 +1,32 @@
+
+cpu/unc-entry
+N uncached nops from cached code, the Timer 2 reads around them (CU), entry only (CE), inside (UU);
+Timer 2 cycles, fastest..slowest of 16 spread over the refresh, against the same stub cached.
+There are no assertions - compare against your emulator.
+
+  CU N=0   uncached   17..17    cached    8..8     difference 9
+  CE N=0   uncached   18..18    cached    6..6     difference 12
+  UU N=0   uncached    8..8     cached    4..4     difference 4
+  CU N=1   uncached   23..28    cached    9..9     difference 14
+  CE N=1   uncached   24..24    cached    6..6     difference 18
+  UU N=1   uncached   12..16    cached    6..6     difference 6
+  CU N=2   uncached   29..29    cached   10..10    difference 19
+  CE N=2   uncached   30..35    cached    7..7     difference 23
+  UU N=2   uncached   18..23    cached    6..6     difference 12
+  CU N=3   uncached   35..39    cached   11..11    difference 24
+  CE N=3   uncached   36..41    cached    8..8     difference 28
+  UU N=3   uncached   24..30    cached    6..6     difference 18
+  CU N=4   uncached   41..45    cached   12..12    difference 29
+  CE N=4   uncached   42..47    cached    9..9     difference 33
+  UU N=4   uncached   30..30    cached    7..7     difference 23
+  CU N=8   uncached   65..70    cached   16..16    difference 49
+  CE N=8   uncached   66..70    cached   13..13    difference 53
+  UU N=8   uncached   54..59    cached   11..11    difference 43
+  CU N=16  uncached  113..119   cached   24..24    difference 89
+  CE N=16  uncached  114..120   cached   21..21    difference 93
+  UU N=16  uncached  102..107   cached   19..19    difference 83
+  CU N=32  uncached  209..215   cached   40..40    difference 169
+  CE N=32  uncached  210..216   cached   37..37    difference 173
+  UU N=32  uncached  198..204   cached   35..35    difference 163
+
+Done.

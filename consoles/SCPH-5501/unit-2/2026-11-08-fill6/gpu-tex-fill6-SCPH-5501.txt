@@ -1,0 +1,41 @@
+
+gpu/gpu-tex-fill6
+A 15-bit triangle clipped to W x 32 from x 128, u and v 1:1 (every 4: a fill every 4 pixels) or u 1:2 (every 8):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant          bit 26's D
+W 64 base         2245..2245 
+W 64 every 4      6869..6896 
+W 72 base         2495..2495 
+W 72 every 4      7705..7725 
+W 80 base         2753..2753 
+W 80 every 4      8554..8562 
+W 96 base         3269..3269 
+W 96 every 4     10227..10249
+W 100 base        3394..3394 
+W 100 every 4    10597..10617
+W 112 base        3777..3777 
+W 112 every 4    11894..11924
+W 120 base        4035..4035 
+W 120 every 4    12725..12746
+W 128 base        4293..4294 
+W 128 every 4    13575..13600
+W 144 base        4801..4821 
+W 144 every 4    15250..15266
+W 160 base        5317..5318 
+W 160 every 4    16924..16951
+W 176 base        5825..5825 
+W 176 every 4    18615..18634
+W 192 base        6341..6341 
+W 192 every 4    20286..20312
+W 208 base        6849..6849 
+W 208 every 4    21964..21991
+W 128 every 8     9601..9633 
+W 144 every 8    10772..10786
+W 160 every 8    11908..11946
+W 176 every 8    13077..13106
+W 192 every 8    14249..14279
+W 208 every 8    15405..15445
+
+gpu/gpu-tex-fill6: Done.

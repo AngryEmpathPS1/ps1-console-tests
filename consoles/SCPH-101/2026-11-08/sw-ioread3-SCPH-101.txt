@@ -1,0 +1,39 @@
+
+cpu/sw-ioread3
+The next access behind an on-die read behind a RAM store, warm code (Timer 2 cycles, fastest..slowest of 16).
+There are no assertions - compare against your emulator.
+
+  NM0   no store, JOY_STAT lbu, 0 nops, RAM lw               cold  22..22   warm  22..22   miss 0
+  NM1   no store, JOY_STAT lbu, 1 nop, RAM lw                cold  24..24   warm  24..24   miss 0
+  NM2   no store, JOY_STAT lbu, 2 nops, RAM lw               cold  24..24   warm  24..24   miss 0
+  NM3   no store, JOY_STAT lbu, 3 nops, RAM lw               cold  24..24   warm  24..24   miss 0
+  NM4   no store, JOY_STAT lbu, 4 nops, RAM lw               cold  25..25   warm  25..25   miss 0
+  RM0   RAM sw, JOY_STAT lbu, 0 nops, RAM lw                 cold  24..24   warm  24..24   miss 0
+  RM1   RAM sw, JOY_STAT lbu, 1 nop, RAM lw                  cold  26..31   warm  26..31   miss 0
+  RM2   RAM sw, JOY_STAT lbu, 2 nops, RAM lw                 cold  26..26   warm  26..26   miss 0
+  RM3   RAM sw, JOY_STAT lbu, 3 nops, RAM lw                 cold  26..26   warm  26..26   miss 0
+  RM4   RAM sw, JOY_STAT lbu, 4 nops, RAM lw                 cold  26..26   warm  26..26   miss 0
+  NJ0   no store, JOY_STAT lbu, 0 nops, JOY_STAT lbu         cold  22..22   warm  22..22   miss 0
+  NJ1   no store, JOY_STAT lbu, 1 nop, JOY_STAT lbu          cold  24..24   warm  24..24   miss 0
+  NJ2   no store, JOY_STAT lbu, 2 nops, JOY_STAT lbu         cold  24..24   warm  24..24   miss 0
+  NJ3   no store, JOY_STAT lbu, 3 nops, JOY_STAT lbu         cold  24..24   warm  24..24   miss 0
+  NJ4   no store, JOY_STAT lbu, 4 nops, JOY_STAT lbu         cold  25..25   warm  25..25   miss 0
+  RJ0   RAM sw, JOY_STAT lbu, 0 nops, JOY_STAT lbu           cold  24..24   warm  24..24   miss 0
+  RJ1   RAM sw, JOY_STAT lbu, 1 nop, JOY_STAT lbu            cold  26..32   warm  26..32   miss 0
+  RJ2   RAM sw, JOY_STAT lbu, 2 nops, JOY_STAT lbu           cold  26..26   warm  26..26   miss 0
+  RJ3   RAM sw, JOY_STAT lbu, 3 nops, JOY_STAT lbu           cold  26..27   warm  26..27   miss 0
+  RJ4   RAM sw, JOY_STAT lbu, 4 nops, JOY_STAT lbu           cold  26..26   warm  26..26   miss 0
+  NO0   no store, JOY_STAT lbu, 0 nops, ROM lw               cold  37..37   warm  37..37   miss 0
+  NO1   no store, JOY_STAT lbu, 1 nop, ROM lw                cold  39..39   warm  39..39   miss 0
+  NO2   no store, JOY_STAT lbu, 2 nops, ROM lw               cold  39..39   warm  39..39   miss 0
+  NO3   no store, JOY_STAT lbu, 3 nops, ROM lw               cold  39..39   warm  39..39   miss 0
+  NO4   no store, JOY_STAT lbu, 4 nops, ROM lw               cold  40..40   warm  40..40   miss 0
+  RO0   RAM sw, JOY_STAT lbu, 0 nops, ROM lw                 cold  39..43   warm  39..43   miss 0
+  RO1   RAM sw, JOY_STAT lbu, 1 nop, ROM lw                  cold  41..47   warm  41..47   miss 0
+  RO2   RAM sw, JOY_STAT lbu, 2 nops, ROM lw                 cold  41..44   warm  41..44   miss 0
+  RO3   RAM sw, JOY_STAT lbu, 3 nops, ROM lw                 cold  41..47   warm  41..47   miss 0
+  RO4   RAM sw, JOY_STAT lbu, 4 nops, ROM lw                 cold  41..46   warm  41..46   miss 0
+  NX0   no store, JOY_STAT lbu, 0 nops, nothing              cold  19..19   warm  19..19   miss 0
+  RX0   RAM sw, JOY_STAT lbu, 0 nops, nothing                cold  19..19   warm  19..19   miss 0
+
+Done.

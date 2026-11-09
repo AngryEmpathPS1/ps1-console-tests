@@ -1,0 +1,36 @@
+ResetGraph:itb=80015100,ehk=80015130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset-grid3
+A RAM store, the reset at word K+1, N nops, the enables; cold and warm; kept of 4, fastest call, status at once.
+
+ K  run    N:    0    1    2    3    4    5    6    7    8    9   10
+ 0  cold kept    0    0    0    0    4    4    4    4    4    4    4
+ 0  cold cyc   104  104  104  104  113  113  113  112  122  122  127
+ 0  cold st   8004 8004 8004 8004 8004 8004 8004 8004 8004 8004 8004
+ 0  warm kept    0    0    0    0    0    0    0    0    4    4    4
+ 0  warm cyc    46   46   47   48   49   50   51   52   77   97  106
+ 0  warm st   8004 8004 8004 8004 8004 8004 8004 8004 8004 8004 8004
+ 1  cold kept    0    0    0    4    4    4    4    4    4    4    4
+ 1  cold cyc   104  104  104  113  113  113  112  122  122  122  121
+ 1  cold st   8004 8004 8004 8004 8004 8004 8004 8004 8004 8004 8004
+ 1  warm kept    0    0    0    0    0    0    0    0    4    4    4
+ 1  warm cyc    46   47   48   49   50   51   52   53   54   55   56
+ 1  warm st   8004 8004 8004 8004 8004 8004 8004 8004 8004 8004 8004
+ 2  cold kept    0    0    0    0    0    0    4    4    4    4    4
+ 2  cold cyc   102  102  113  113  113  113  122  122  122  121  131
+ 2  cold st   8004 8004 8004 8004 8004 8004 8004 8004 8004 8004 8004
+ 2  warm kept    0    0    0    0    0    0    0    0    0    0    0
+ 2  warm cyc    47   48   50   50   51   52   53   54   55   56   57
+ 2  warm st   8004 8004 8004 8004 8004 8004 8004 8004 8004 8004 8004
+ 3  cold kept    0    0    0    0    0    4    4    4    4    4    4
+ 3  cold cyc   102  113  113  113  113  122  122  122  121  131  131
+ 3  cold st   8004 8004 8004 8004 8004 8004 8004 8004 8004 8004 8004
+ 3  warm kept    0    0    0    0    0    0    0    0    0    0    4
+ 3  warm cyc    48   50   50   51   52   53   54   55   56   57   58
+ 3  warm st   8004 8004 8004 8004 8004 8004 8004 8004 8004 8004 8004
+
+mdec/mdec-reset-grid3: Done.

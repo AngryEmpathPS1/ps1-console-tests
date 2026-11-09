@@ -1,0 +1,15 @@
+
+cpu/seq-miss2
+A cold line by a jump or a fall-through, nothing else cold (Timer 2 cycles, fastest..slowest of 16; cold / warm).
+There are no assertions - compare against your emulator.
+
+  J0  jal to word 0 of C                         cold  17..23   warm  12..12   miss 5
+  J1  jal to word 1 of C                         cold  16..16   warm  11..11   miss 5
+  J2  jal to word 2 of C                         cold  15..17   warm  10..10   miss 5
+  J3  jal to word 3 of C                         cold  14..14   warm   9..9    miss 5
+  S   fall from warm W (entered at word 0) into C cold  21..21   warm  16..16   miss 5
+  S3  fall from warm W (entered at word 3) into C cold  18..19   warm  13..13   miss 5
+  WC  W and C both cold, entered at W word 0     cold  26..26   warm  16..16   miss 10
+  JD  jal to word 0 of C, D after it cold too    cold  25..25   warm  12..12   miss 13
+
+Done.

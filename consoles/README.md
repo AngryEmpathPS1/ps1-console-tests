@@ -5,11 +5,12 @@ Every log, by console. A session folder is a date and, where a day had several s
 | console | BIOS | CD controller | GPU type | sessions | logs |
 |---|---|---|---:|---:|---:|
 | [SCPH-1001](SCPH-1001/README.md) | "System ROM Version 2.1 07/17/95 A" | 95/07/24 version C1 | no answer | 36 | 1678 |
+| [SCPH-101](SCPH-101/README.md) | "System ROM Version 4.5 05/25/00 A" | a1/03/06 version C3 | 2 | 2 | 567 |
 | [SCPH-5000](SCPH-5000/README.md) | "System ROM Version 2.2 12/04/95 J" | 95/07/24 version C1 | no answer | 5 | 1673 |
 | [SCPH-5501](SCPH-5501/README.md) | "System ROM Version 3.0 11/18/96 A" | 97/01/10 version C2 | 2 | 164 | 2436 |
-| [SCPH-5501/unit-2](SCPH-5501/unit-2/README.md) | "System ROM Version 3.0 11/18/96 A" | 97/01/10 version C2 | 2 | 167 | 1837 |
+| [SCPH-5501/unit-2](SCPH-5501/unit-2/README.md) | "System ROM Version 3.0 11/18/96 A" | 97/01/10 version C2 | 2 | 184 | 2394 |
 | [SCPH-7001](SCPH-7001/README.md) | "System ROM Version 4.1 12/16/97 A" | 97/08/14 version C2 | 2 | 11 | 1686 |
-| [SCPH-7501](SCPH-7501/README.md) | "System ROM Version 4.1 12/16/97 A" | 98/06/10 version C3 | 2 | 80 | 2626 |
+| [SCPH-7501](SCPH-7501/README.md) | "System ROM Version 4.1 12/16/97 A" | 98/06/10 version C3 | 2 | 88 | 3303 |
 | [SCPH-7502](SCPH-7502/README.md) | "System ROM Version 4.1 12/16/97 E" | 98/06/10 version C3 | 2 | 26 | 1119 |
 | [SCPH-9001](SCPH-9001/README.md) | "System ROM Version 4.1 12/16/97 A" | 99/02/01 version C3 | 2 | 35 | 1588 |
 | [SCPH-9001/borrowed-1](SCPH-9001/borrowed-1/README.md) | "System ROM Version 4.1 12/16/97 A" | 99/02/01 version C3 | 2 | 1 | 388 |

@@ -1,0 +1,41 @@
+
+gpu/gpu-tex-fill5
+A 15-bit triangle clipped to W x 32, every texel cached but the evicted lines (one fill a row at 4j, or 8j at W 64):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant          bit 26's D
+s 1 W 8 base       449..449  
+s 1 W 8 all       2638..2662 
+s 1 W 8 odd lines  1565..1585 
+s 1 W 8 even lines  1565..1584 
+s 2 W 16 base      709..709  
+s 2 W 16 all      2928..2949 
+s 2 W 16 odd lines  1825..1843 
+s 2 W 16 even lines  1826..1845 
+s 3 W 24 base      967..967  
+s 3 W 24 all      3217..3239 
+s 3 W 24 odd lines  2284..2293 
+s 3 W 24 even lines  2087..2106 
+s 4 W 32 base     1226..1226 
+s 4 W 32 all      3507..3532 
+s 4 W 32 odd lines  2538..2564 
+s 4 W 32 even lines  2355..2374 
+s 5 W 40 base     1476..1476 
+s 5 W 40 all      3727..3745 
+s 5 W 40 odd lines  2601..2626 
+s 5 W 40 even lines  2690..2720 
+s 6 W 48 base     1732..1732 
+s 6 W 48 all      4178..4204 
+s 6 W 48 odd lines  3047..3072 
+s 6 W 48 even lines  3112..3144 
+s 7 W 56 base     1990..1990 
+s 7 W 56 all      4289..4300 
+s 7 W 56 odd lines  3212..3234 
+s 7 W 56 even lines  3184..3207 
+s 8 W 64 base     2248..2248 
+s 8 W 64 all      4545..4558 
+s 8 W 64 odd lines  3660..3674 
+s 8 W 64 even lines  3318..3338 
+
+gpu/gpu-tex-fill5: Done.

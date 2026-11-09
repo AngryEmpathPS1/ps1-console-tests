@@ -1,0 +1,44 @@
+
+gpu/gpu-shape-time63
+A shape's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape               bit 26        bit 28
+tilt 1x64,4          158..158       19..19   
+tilt 2x64,4          298..298      158..158  
+tilt 3x64,4          436..436      297..297  
+tilt 4x64,4          528..534      389..394  
+tilt 1x64,8          169..169       19..19   
+tilt 2x64,8          321..321      170..170  
+tilt 3x64,8          471..478      321..321  
+tilt 4x64,8          577..581      429..430  
+tilt 1x64,16         186..186       19..19   
+tilt 2x64,16         356..356      188..188  
+tilt 3x64,16         524..524      357..357  
+tilt 4x64,16         648..652      483..484  
+tilt 1x64,32         219..219       19..19   
+tilt 2x64,32         422..422      221..221  
+tilt 3x64,32         623..623      423..423  
+tilt 4x64,32         782..784      579..583  
+tilt 1x64,48         252..273       19..19   
+tilt 2x64,48         488..493      254..254  
+tilt 3x64,48         722..741      489..489  
+tilt 4x64,48         915..923      680..682  
+tilt 1x128,8         294..294       19..19   
+tilt 2x128,8         570..570      294..294  
+tilt 3x128,8         844..844      569..569  
+tilt 4x128,8        1075..1078     798..802  
+tilt 1x32,16         123..123       19..19   
+tilt 2x32,16         230..242      125..125  
+tilt 3x32,16         335..335      231..231  
+tilt 4x32,16         399..402      294..295  
+level 1x128,0        161..161       19..19   
+level 2x128,0        300..300      158..158  
+level 3x128,0        439..451      297..297  
+level 4x128,0        534..536      391..394  
+steep 1x16,32        172..172       19..19   
+steep 2x16,32        318..341      142..142  
+steep 3x16,32        465..487      269..292  
+steep 4x16,32        567..592      374..397  
+
+gpu/gpu-shape-time63: Done.

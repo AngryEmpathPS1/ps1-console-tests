@@ -1,0 +1,18 @@
+ResetGraph:itb=80013260,ehk=80013290
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gp0-e1
+pass - testWriteZerosToE1
+pass - testWriteOnesToE1
+pass - testWriteOnesToE1WithTextureDisable
+pass - testTexturedPolygons
+pass - testTexturedPolygonsTextureDisable
+pass - testTexturedPolygonsDoesNotChangeOtherBits
+pass - testTextureDisableBitIsIgnoredWhenNotAllowed
+pass - testTextureDisableBitIsWrittenWhenAllowed
+pass - testUnsetAllowTextureDisablePreservesBit
+pass - testUnsetAllowTextureDisableClearsBitAfterWrite
+Done.

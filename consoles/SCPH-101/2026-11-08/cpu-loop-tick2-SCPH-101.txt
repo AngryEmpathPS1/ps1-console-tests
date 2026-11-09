@@ -1,0 +1,16 @@
+
+cpu/cpu-loop-tick2
+A Timer 2 read in a loop: the branch's or the spacing's (cycles a read). No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  T2+0n       9.07       9.03
+  T2+1n      10.05      10.02
+  T2+2n      11.05      11.02
+  T2+3n      12.06      12.02
+  T2+4n      13.05      13.02
+  NOP,T2     10.05      10.02
+  T2,NOPDS    7.04       7.02
+  UNROLL4    39.07      39.02
+  T2+1LD     14.27      14.24
+
+cpu/cpu-loop-tick2: Done.

@@ -1,0 +1,33 @@
+
+cdrom/cd-spinup-trend
+Twenty-four spin-ups in a row (Stop, 2 s idle, MotorOn): seconds since the first, MotorOn's INT2 from its write
+(the spin-up), and Stop's INT2 (the spin-down). Run it FIRST after a cold power-on. No assertions.
+
+ 1     4s  MotorOn INT2  61150424   Stop INT2  16835344
+ 2     8s  MotorOn INT2  59745696   Stop INT2  18043816
+ 3    13s  MotorOn INT2  63925744   Stop INT2  18421064
+ 4    17s  MotorOn INT2  56951096   Stop INT2  17494576
+ 5    21s  MotorOn INT2  61569472   Stop INT2  17152328
+ 6    25s  MotorOn INT2  59607824   Stop INT2  17992960
+ 7    30s  MotorOn INT2  61732936   Stop INT2  16828120
+ 8    34s  MotorOn INT2  61171096   Stop INT2  17391768
+ 9    38s  MotorOn INT2  62171088   Stop INT2  17623272
+10    43s  MotorOn INT2  63566368   Stop INT2  18320840
+11    47s  MotorOn INT2  61386296   Stop INT2  16697176
+12    51s  MotorOn INT2  61555536   Stop INT2  17604888
+13    56s  MotorOn INT2  62481352   Stop INT2  17642864
+14    60s  MotorOn INT2  61040488   Stop INT2  17376352
+15    64s  MotorOn INT2  62060712   Stop INT2  17659424
+16    69s  MotorOn INT2  62642200   Stop INT2  17657384
+17    73s  MotorOn INT2  62269728   Stop INT2  17552224
+18    78s  MotorOn INT2  61321944   Stop INT2  18194560
+19    82s  MotorOn INT2  69275536   Stop INT2  17338352
+20    87s  MotorOn INT2  66685608   Stop INT2  18208872
+21    91s  MotorOn INT2  60798504   Stop INT2  19031952
+22    96s  MotorOn INT2  69193416   Stop INT2  17561712
+23   100s  MotorOn INT2  62262752   Stop INT2  17721344
+24   104s  MotorOn INT2  61044216   Stop INT2  17666936
+
+waits that ran out: 0
+
+cdrom/cd-spinup-trend: Done.

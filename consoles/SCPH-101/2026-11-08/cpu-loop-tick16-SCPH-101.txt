@@ -1,0 +1,21 @@
+
+cpu/cpu-loop-tick16
+tick14's rows cached and UNCACHED (each loop through its KSEG1 alias). No assertions.
+
+  variant     cold        hot     uncached   (cycles an iteration)
+  CTRL        14.31      14.26      46.00
+  ADDU        15.29      15.24      45.99
+  JR          15.29      15.25      52.02
+  BEQ         15.29      15.25      52.03
+  SWDATA      19.48      19.43      52.08
+  ADDR        21.42      21.37      51.34
+  POS2        14.31      14.26      52.03
+  SAME        16.24      16.20      48.89
+  SP-FIRST     9.22       9.18      40.87
+  SP-SECOND   12.27      12.23      41.81
+  IO-FIRST    13.22      13.17      42.80
+  IO-SECOND   14.29      14.26      41.81
+  THREE       20.40      20.36      57.03
+  EPILOG      15.29      15.24      52.03
+
+cpu/cpu-loop-tick16: Done.

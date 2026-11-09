@@ -1,0 +1,19 @@
+
+cpu/wr-stream
+16 x (sw, K nops) then G nops a pass, 256 passes back to back: cycles a pass above the same with nops, G = 0..8.
+There are no assertions - compare against your emulator.
+
+  one word, K = 0            14.29 13.30 14.33 15.01 14.13 13.01 12.95 13.38 12.99
+  one word, K = 1            1.18 1.03 0.66 0.41 0.57 0.66 0.73 0.70 0.27
+  one word, K = 2            0.30 0.34 0.37 0.31 0.64 0.21 0.31 0.18 0.13
+  16 words, K = 0            14.30 13.33 14.31 15.03 14.01 13.06 12.92 13.34 12.99
+  16 words, K = 1            1.18 1.03 0.66 0.42 0.58 0.65 0.72 0.69 0.23
+  16 words, K = 2            0.30 0.35 0.44 0.30 0.64 0.24 0.26 0.21 0.13
+  one store a pass           0.01 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
+
+  cycles a pass, as DIAG prints them (its loop is this one at G = 0):
+  one word, K = 0            33.31 33.35 35.31 37.05 37.03 37.02 37.96 39.40 40.01
+  one word, K = 1            36.23 37.05 37.65 38.45 39.62 40.66 41.72 42.75 43.24
+  one store a pass           4.02 5.02 6.02 7.02 8.02 9.02 10.02 11.02 12.02
+
+Done.

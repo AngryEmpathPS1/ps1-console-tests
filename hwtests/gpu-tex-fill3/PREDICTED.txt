@@ -1,0 +1,61 @@
+hwtests/gpu-tex-fill3 - PREDICTED, written before its first console run (2026-11-08 00:41).
+
+== this core: v0.377.303 (branch claude/hungry-ardinghelli-1c1c61); node hwtests/run.js gpu-tex-fill3 --ntsc --frames=20000 --quiet=15000
+gpu/gpu-tex-fill3
+A 15-bit triangle clipped to W x 32, every texel cached but the evicted lines (one fill a row at 4j, or 8j at W 64):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant          bit 26's D
+W64 x 128 base    2246..2246 
+W64 x 128 fill at  8  2535..2535 
+W64 x 128 fill at 16  2535..2535 
+W64 x 128 fill at 24  2535..2535 
+W64 x 128 fill at 32  2535..2535 
+W64 x 128 fill at 40  2535..2535 
+W64 x 128 fill at 48  2535..2535 
+W64 x 128 fill at 56  2535..2535 
+W64 x 136 base    2246..2246 
+W64 x 136 fill at  8  2535..2535 
+W64 x 136 fill at 16  2535..2535 
+W64 x 136 fill at 24  2535..2535 
+W64 x 136 fill at 32  2535..2535 
+W64 x 136 fill at 40  2535..2535 
+W64 x 136 fill at 48  2535..2535 
+W64 x 136 fill at 56  2535..2535 
+W64 x 144 base    2246..2246 
+W64 x 144 fill at  8  2535..2535 
+W64 x 144 fill at 16  2535..2535 
+W64 x 144 fill at 24  2535..2535 
+W64 x 144 fill at 32  2535..2535 
+W64 x 144 fill at 40  2535..2535 
+W64 x 144 fill at 48  2535..2535 
+W64 x 144 fill at 56  2535..2535 
+W64 x 152 base    2246..2246 
+W64 x 152 fill at  8  2535..2535 
+W64 x 152 fill at 16  2535..2535 
+W64 x 152 fill at 24  2535..2535 
+W64 x 152 fill at 32  2535..2535 
+W64 x 152 fill at 40  2535..2535 
+W64 x 152 fill at 48  2535..2535 
+W64 x 152 fill at 56  2535..2535 
+W32 x 136 base    1219..1219 
+W32 x 136 fill at  4  1508..1508 
+W32 x 136 fill at  8  1508..1508 
+W32 x 136 fill at 12  1508..1509 
+W32 x 136 fill at 16  1508..1512 
+W32 x 136 fill at 20  1508..1509 
+W32 x 136 fill at 24  1508..1515 
+W32 x 136 fill at 28  1508..1510 
+W32 x 144 base    1219..1219 
+W32 x 144 fill at  4  1508..1516 
+W32 x 144 fill at  8  1508..1508 
+W32 x 144 fill at 12  1508..1525 
+W32 x 144 fill at 16  1508..1511 
+W32 x 144 fill at 20  1508..1510 
+W32 x 144 fill at 24  1508..1517 
+W32 x 144 fill at 28  1508..1508 
+
+gpu/gpu-tex-fill3: Done.
+
+Fill places checked on a logging core (FILLTEST=gpu-tex-fill3 experiments/fill1check.js): 32 fills a variant at the pixel named, every start.

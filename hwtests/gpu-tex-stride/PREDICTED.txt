@@ -1,0 +1,51 @@
+hwtests/gpu-tex-stride - PREDICTED, written before its first console run (2026-11-07 21:45).
+
+== this core: v0.377.302 with the CLUT proposal applied; node hwtests/run.js gpu-tex-stride --ntsc --frames=20000 --quiet=15000
+  flat quad 64x64                        5 words   bit 28    1388..1440     bit 26     2648..2673
+   4-bit 64x64 over U  16 x 64          9 words   bit 28    2539..3172     bit 26     4807..6023
+   4-bit 64x64 over U  32 x 64          9 words   bit 28    2539..2587     bit 26     4805..5488
+   4-bit 64x64 over U  64 x 64          9 words   bit 28    2542..2738     bit 26     4805..5495
+   4-bit 64x64 over U  96 x 64          9 words   bit 28    2880..4039     bit 26     6091..7389
+   4-bit 64x64 over U 128 x 64          9 words   bit 28    4565..5431     bit 26     8642..9952
+   4-bit 64x64 over U 192 x 64          9 words   bit 28    6667..6674     bit 26    12499..12507
+   4-bit 64x64 over U 255 x 64          9 words   bit 28    7918..7924     bit 26    15016..15059
+   8-bit 64x64 over U  16 x 64          9 words   bit 28    3259..3787     bit 26     6699..7228
+   8-bit 64x64 over U  32 x 64          9 words   bit 28    3559..3886     bit 26     7586..7921
+   8-bit 64x64 over U  64 x 64          9 words   bit 28    4610..5090     bit 26     9314..9792
+   8-bit 64x64 over U  96 x 64          9 words   bit 28    5906..6487     bit 26    11829..12415
+   8-bit 64x64 over U 128 x 64          9 words   bit 28    7687..7831     bit 26    14833..14959
+   8-bit 64x64 over U 192 x 64          9 words   bit 28   10219..10226    bit 26    19891..19903
+   8-bit 64x64 over U 255 x 64          9 words   bit 28   12624..12629    bit 26    24738..24746
+  15-bit 64x64 over U  16 x 64          9 words   bit 28    3883..4171     bit 26     7910..8149
+  15-bit 64x64 over U  32 x 64          9 words   bit 28    4711..5179     bit 26     9961..10393
+  15-bit 64x64 over U  64 x 64          9 words   bit 28    7154..7826     bit 26    14252..14967
+  15-bit 64x64 over U  96 x 64          9 words   bit 28   10315..10327    bit 26    19894..19913
+  15-bit 64x64 over U 128 x 64          9 words   bit 28   12763..12775    bit 26    24739..24752
+  15-bit 64x64 over U 192 x 64          9 words   bit 28   16898..16942    bit 26    33260..33304
+  15-bit 64x64 over U 255 x 64          9 words   bit 28   21120..21127    bit 26    41277..41284
+
+gpu/gpu-tex-stride: Done.
+
+== its counts (experiments/texcountprobe.js gpu-tex-stride), each row's last try
+28 d2 pix 4096 rows 127 fills 0 row 0 after 0 busy 2543
+2c d0 pix 4096 rows 127 fills 0 row 0 after 0 busy 4599
+2c d0 pix 4096 rows 127 fills 0 row 0 after 0 busy 4600
+2c d0 pix 4096 rows 127 fills 0 row 0 after 0 busy 4601
+2c d0 pix 4096 rows 127 fills 256 row 67 after 0 busy 7181
+2c d0 pix 4096 rows 127 fills 512 row 71 after 0 busy 9761
+2c d0 pix 4096 rows 127 fills 768 row 75 after 0 busy 12291
+2c d0 pix 4096 rows 127 fills 1024 row 79 after 0 busy 14842
+2c d1 pix 4096 rows 127 fills 192 row 96 after 1 busy 6490
+2c d1 pix 4096 rows 127 fills 320 row 97 after 2 busy 7705
+2c d1 pix 4096 rows 127 fills 512 row 99 after 3 busy 9568
+2c d1 pix 4096 rows 127 fills 785 row 101 after 5 busy 12207
+2c d1 pix 4096 rows 127 fills 1048 row 103 after 7 busy 14751
+2c d1 pix 4096 rows 127 fills 1556 row 107 after 11 busy 19702
+2c d1 pix 4096 rows 127 fills 2064 row 111 after 15 busy 24559
+2c d2 pix 4096 rows 127 fills 320 row 97 after 2 busy 7704
+2c d2 pix 4096 rows 127 fills 576 row 99 after 4 busy 10178
+2c d2 pix 4096 rows 127 fills 1048 row 103 after 7 busy 14750
+2c d2 pix 4096 rows 127 fills 1556 row 107 after 11 busy 19701
+2c d2 pix 4096 rows 127 fills 2064 row 111 after 15 busy 24559
+2c d2 pix 4096 rows 127 fills 3080 row 119 after 1961 busy 33086
+2c d2 pix 4096 rows 127 fills 4033 row 127 after 3844 busy 41099

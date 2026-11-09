@@ -1,0 +1,47 @@
+
+gte/gte-write-delay
+mtc2 poison; 26 nops; mtc2 value; N nops; mfc2 (ctc2/cfc2 on the ctc2 rows). psx-spx: minN 2 cached.
+minN = the first N that reads the new value, warm. Letters: N = 0..8, n new, o old, ? neither.
+io = one lw from I_STAT in place of the nops, warm/cold. There are no assertions - compare against your emulator.
+
+C LZCS->LZCR (control)  minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C VXY0                  minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C VZ0                   minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C RGBC                  minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C OTZ                   minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C IR0                   minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C SXY0                  minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C SZ0                   minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C RGB0                  minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C MAC0                  minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C LZCS                  minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C ctc2 R11R12           minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C ctc2 TRX              minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C ctc2 L11L12           minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C ctc2 RFC              minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C ctc2 OFX              minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C ctc2 H                minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C ctc2 ZSF3             minN= 2  warm oonnnnnnn  cold oonnnnnnn  io n/n
+C ctc2 FLAG             minN= 2  warm oonnnnnnn  cold oonnnnnnn  io o/o
+
+U LZCS->LZCR (control)  minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U VXY0                  minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U VZ0                   minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U RGBC                  minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U OTZ                   minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U IR0                   minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U SXY0                  minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U SZ0                   minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U RGB0                  minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U MAC0                  minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U LZCS                  minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U ctc2 R11R12           minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U ctc2 TRX              minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U ctc2 L11L12           minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U ctc2 RFC              minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U ctc2 OFX              minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U ctc2 H                minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U ctc2 ZSF3             minN= 1  warm onnnnnnnn  cold onnnnnnnn  io n/n
+U ctc2 FLAG             minN= 2  warm oonnnnnnn  cold oonnnnnnn  io o/o
+
+Done.

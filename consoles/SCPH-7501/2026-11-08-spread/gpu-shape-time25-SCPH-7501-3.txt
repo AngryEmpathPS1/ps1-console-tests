@@ -1,0 +1,50 @@
+
+gpu/gpu-shape-time25
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+semi TL 16x16           221..221       28..28   
+semi BR 16x16           219..219       32..32   
+semi TR 16x16           233..254       28..28   
+semi BL 16x16           206..206       30..30   
+semi TLu 16x16          219..219       32..32   
+semi BLd 16x16          201..201       32..32   
+semi TL 64x16           526..551       30..30   
+semi BR 64x16           480..505       34..34   
+semi TR 64x16           526..551       30..30   
+semi BL 64x16           474..499       30..30   
+semi TLu 64x16          526..551       34..34   
+semi BLd 64x16          473..497       34..34   
+semi TL 64x64          1866..1891      30..30   
+semi BR 64x64          1866..1891      36..36   
+semi TR 64x64          1912..1937      30..30   
+semi BL 64x64          1816..1841      32..32   
+semi TLu 64x64         1866..1891      36..36   
+semi BLd 64x64         1813..1838      36..36   
+semi TL 16x64           760..782       28..28   
+semi BR 16x64           739..761       34..34   
+semi TR 16x64           750..773       28..28   
+semi BL 16x64           746..769       32..32   
+semi TLu 16x64          760..782       34..34   
+semi BLd 16x64          741..764       34..34   
+semi TL 2x128           994..1016      26..26   
+semi BR 2x128           577..599       33..33   
+semi TR 2x128           577..599       26..26   
+semi BL 2x128           994..1016      33..33   
+semi TLu 2x128         1001..1023      33..33   
+semi BLd 2x128          993..1015      33..33   
+stex 16 u0              320..339      115..115  
+stex 16 u15             321..339      116..116  
+stex 16 u63             935..957      118..118  
+stex 16 u255           1526..1547     120..120  
+stex 64 u0             2370..2393     117..117  
+stex 64 u15            2371..2394     118..118  
+stex 64 u63            6785..6803     120..120  
+stex 64 u255          20702..20735    122..122  
+tex 64 u0              2336..2356     117..117  
+tex 64 u15             2337..2358     118..118  
+tex 64 u63             6046..6077     120..120  
+tex 64 u255           19588..19608    122..122  
+
+gpu/gpu-shape-time25: Done.

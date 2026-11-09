@@ -1,0 +1,21 @@
+hwtests/gpu-tex-scale - PREDICTED, written before its first console run (2026-11-07 21:35).
+
+== this core: v0.377.302 with the CLUT proposal applied; node hwtests/run.js gpu-tex-scale --ntsc --frames=20000 --quiet=15000
+  flat quad 256x256                           5 words   bit 28   17952..18000    bit 26    35883..35896
+   4-bit 1:1        128x128 from 128x128     9 words   bit 28   14779..14791    bit 26    28619..28665
+   4-bit magnified  256x256 from  64x64      9 words   bit 28   34747..35659    bit 26    69994..71806
+   4-bit minified    64x64  from 255x255     9 words   bit 28    7490..7970     bit 26    14815..15340
+   4-bit u-stretch  256x64  from  64x64      9 words   bit 28    9415..9890     bit 26    18583..19475
+   4-bit v-stretch   64x256 from  64x64      9 words   bit 28    9451..9989     bit 26    18355..18851
+   8-bit 1:1        128x128 from 128x128     9 words   bit 28   19630..19867    bit 26    38519..38758
+   8-bit magnified  256x256 from  64x64      9 words   bit 28   36528..36816    bit 26    73622..73910
+   8-bit minified    64x64  from 255x255     9 words   bit 28   12475..12631    bit 26    24682..24838
+   8-bit u-stretch  256x64  from  64x64      9 words   bit 28   11467..11623    bit 26    23083..23242
+   8-bit v-stretch   64x256 from  64x64      9 words   bit 28   11808..11810    bit 26    23063..23069
+  15-bit 1:1        128x128 from 128x128     9 words   bit 28   28800..29527    bit 26    57450..58204
+  15-bit magnified  256x256 from  64x64      9 words   bit 28   48581..48619    bit 26    98322..98331
+  15-bit minified    64x64  from 255x255     9 words   bit 28   21115..21122    bit 26    41273..41279
+  15-bit u-stretch  256x64  from  64x64      9 words   bit 28   14448..14455    bit 26    28598..28639
+  15-bit v-stretch   64x256 from  64x64      9 words   bit 28   23083..23095    bit 26    44681..44693
+
+gpu/gpu-tex-scale: Done.

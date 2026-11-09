@@ -1,0 +1,59 @@
+
+gpu/gpu-tex-fill4
+A 15-bit triangle clipped to W x 32, every texel cached but the evicted lines (one fill a row at 4j, or 8j at W 64):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant          bit 26's D
+a u0 2 base       1161..1161 
+a fills 2 and 6   1858..1879 
+a fills 2 and 10  1734..1747 
+a fills 2 and 14  1641..1663 
+a u0 3 base       1129..1129 
+a fills 1 and 5   1826..1840 
+a fills 1 and 9   1702..1724 
+a fills 1 and 13  1609..1624 
+a u0 1 base       1193..1193 
+a fills 3 and 7   2046..2065 
+a fills 3 and 11  2046..2063 
+a fills 3 and 15  2040..2067 
+a u0 0 base       1226..1226 
+a fills 0 and 12  1738..1760 
+a fills 0 and 16  1738..1755 
+a fills 0 and 20  1738..1760 
+b W 6 base         387..387  
+b W 6 fill at 4    767..783  
+b W 8 base         452..470  
+b W 8 fill at 4    832..846  
+b W 10 base        516..516  
+b W 10 fill at 4   927..948  
+b W 12 base        581..581  
+b W 12 fill at 4   992..1010 
+b W 14 base        645..645  
+b W 14 fill at 4  1085..1103 
+b W 16 base        710..710  
+b W 16 fill at 4  1149..1173 
+c u0 0 base       2248..2248 
+c fills 32 and 40  2894..2909 
+c fills 32 and 48  2796..2814 
+c fills 24 and 40  2988..3007 
+c fills 40 and 48  2983..3021 
+c u0 1 base       2183..2183 
+c fills 30 and 38  2985..2996 
+c fills 30 and 46  2731..2752 
+c u0 2 base       2119..2124 
+c fills 36 and 44  2984..3013 
+c fills 28 and 36  2985..2996 
+c u0 3 base       2054..2059 
+c fills 34 and 42  2696..2714 
+c fills 26 and 34  2568..2595 
+d W48 base        1731..1731 
+d W48 fill line 1  2049..2064 
+d W48 fill line 2  1987..2006 
+d W48 fill line 3  1987..2006 
+d W48 fill line 4  1987..2000 
+d W48 fill line 5  1987..2006 
+d W48 fill line 6  2341..2362 
+d W48 fill line 7  2146..2159 
+
+gpu/gpu-tex-fill4: Done.

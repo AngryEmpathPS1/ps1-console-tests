@@ -1,0 +1,25 @@
+
+cpu/store-stall
+A store in a streaming line and the stream's closing stall (Timer 2 cycles, fastest..slowest of 16; cold / warm).
+There are no assertions - compare against your emulator.
+
+  N-S  no store (a nop) at word 0, then nops               cold  21..21   warm  16..16   miss 5
+  N-L  no store (a nop) at word 0, JOY_STAT lbu at word 1  cold  23..26   warm  18..18   miss 5
+  N-3  no store (a nop) at word 3                          cold  21..21   warm  16..16   miss 5
+  T0-S Timer 0 target at word 0, then nops                 cold  21..21   warm  16..16   miss 5
+  T0-L Timer 0 target at word 0, JOY_STAT lbu at word 1    cold  23..26   warm  18..18   miss 5
+  T0-3 Timer 0 target at word 3                            cold  21..24   warm  16..16   miss 5
+  T1-S Timer 1 target at word 0, then nops                 cold  21..21   warm  16..16   miss 5
+  T1-L Timer 1 target at word 0, JOY_STAT lbu at word 1    cold  23..24   warm  18..18   miss 5
+  T1-3 Timer 1 target at word 3                            cold  21..21   warm  16..16   miss 5
+  IM-S I_MASK, its own value at word 0, then nops          cold  21..21   warm  16..16   miss 5
+  IM-L I_MASK, its own value at word 0, JOY_STAT lbu at word 1 cold  23..25   warm  18..18   miss 5
+  IM-3 I_MASK, its own value at word 3                     cold  21..21   warm  16..16   miss 5
+  DP-S DPCR, its own value at word 0, then nops            cold  21..21   warm  16..16   miss 5
+  DP-L DPCR, its own value at word 0, JOY_STAT lbu at word 1 cold  23..24   warm  18..18   miss 5
+  DP-3 DPCR, its own value at word 3                       cold  21..21   warm  16..16   miss 5
+  RM-S RAM word (the slot's own) at word 0, then nops      cold  21..23   warm  16..16   miss 5
+  RM-L RAM word (the slot's own) at word 0, JOY_STAT lbu at word 1 cold  23..23   warm  18..18   miss 5
+  RM-3 RAM word (the slot's own) at word 3                 cold  21..21   warm  16..16   miss 5
+
+Done.

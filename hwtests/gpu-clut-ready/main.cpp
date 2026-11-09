@@ -9,8 +9,10 @@
  * clut-cost's DrawSync and cost-sweep's poll are too coarse to say where the hold ends against the reload, by depth, and
  * neither draws a textured POLYGON that reloads.
  *
- * WHAT IT DOES. Interrupts off, DMA off, the vertical display range EMPTY (no line is shown, so the scan-out fetches
- * nothing), each probe ~300 cycles after Timer 1's hblank tick (clear of the new GPU's line-start hold). A probe: one
+ * WHAT IT DOES. Interrupts off, DMA off, the vertical display range set EMPTY (GP1(07h) Y1 = Y2 - meant to stop the fetches;
+ * hwtests/gpu-tex-noscan later found it reads as a 320x240 display on the console and here, so it does not: what keeps the
+ * scan-out out of these probes is their place in the line, burst-free on both machines, gpu-clut-ready4), each probe ~300
+ * cycles after Timer 1's hblank tick (clear of the new GPU's line-start hold). A probe: one
  * command written to GP0 from the CPU, a delay of k cycles (a cached loop), one GPUSTAT read. Before each probe the same
  * command is drawn with the OTHER CLUT (rows "reload": the probe's CLUT is not in the cache) or the SAME one (rows "cached")
  * and the GPU waited for; each probe three times and the last kept (a warm instruction cache). k = 2..65 by 1, 66..238 by

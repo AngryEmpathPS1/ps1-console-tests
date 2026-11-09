@@ -1,0 +1,21 @@
+
+spu/spu-envphase-move
+The envelope ruler's phase c against the capture ring, measured after each action. No assertions.
+
+M0  c 141 agree     start                              15/23 11/27 35/67 19/83 51/179 243/499 115/-1
+M1  c 141 agree     none (control)                     15/23 11/27 35/67 19/83 51/179 243/499 115/-1
+M2  c 141 agree     2 s of nothing                     15/23 11/27 35/67 19/83 51/179 243/499 115/-1
+M3  c 141 agree     SPU off 1 sample                   15/23 11/27 35/67 19/83 51/179 243/499 115/-1
+M4  c 141 agree     SPU off 10 samples                 15/23 11/27 35/67 19/83 51/179 243/499 115/-1
+M5  c 141 agree     SPU off 100 samples                15/23 11/27 35/67 19/83 51/179 243/499 115/-1
+M6  c 141 agree     SPU off 300 samples                15/23 11/27 35/67 19/83 51/179 243/499 115/-1
+M7  c 141 agree     SPU off 301 samples                15/23 11/27 35/67 19/83 51/179 243/499 115/-1
+M8  c 141 agree     SPUCNT 0000h 100 samples           15/23 11/27 35/67 19/83 51/179 243/499 115/-1
+M9  c 141 agree     mute 100 samples                   15/23 11/27 35/67 19/83 51/179 243/499 115/-1
+M10 c 242 agree     transfer control 0 100 samples     10/18 22/38 30/62 46/110 78/206 142/398 14/-1
+M11 c 242 agree     reverb master on 100 samples       10/18 22/38 30/62 46/110 78/206 142/398 14/-1
+M12 c 242 agree     1 KB DMA write                     10/18 22/38 30/62 46/110 78/206 142/398 14/-1
+M13 c 242 agree     SPU off 100 samples again          10/18 22/38 30/62 46/110 78/206 142/398 14/-1
+M14 c 242 agree     SPU off 100 samples a third time   10/18 22/38 30/62 46/110 78/206 142/398 14/-1
+
+spu/spu-envphase-move: Done.

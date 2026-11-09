@@ -1,0 +1,16 @@
+
+gpu/gpu-dmabs
+A 128x64 transfer (4,096 words) by DMA2 by block size, in the blanking, fastest of four, cycles to CHCR bit 24
+clear. No assertions.
+
+block   blocks     down       up
+    4     1024    15153    15162
+    8      512    10266    10208
+   16      256     8956     7342
+   32      128     6195   40000066
+   64       64     5393   40000062
+  128       32     4935   40000066
+
+16-word blocks, the poll slowed by 64 nops: down 8984, up 40000062
+
+gpu/gpu-dmabs: Done.

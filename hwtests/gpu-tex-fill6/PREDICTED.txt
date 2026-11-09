@@ -1,0 +1,82 @@
+hwtests/gpu-tex-fill6 - PREDICTED, written before its first console run (2026-11-08 13:55).
+
+== this core: v0.377.303 (branch claude/hungry-ardinghelli-1c1c61); node hwtests/run.js gpu-tex-fill6 --ntsc --frames=40000 --quiet=35000
+gpu/gpu-tex-fill6
+A 15-bit triangle clipped to W x 32 from x 128, u and v 1:1 (every 4: a fill every 4 pixels) or u 1:2 (every 8):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant          bit 26's D
+W 64 base         2243..2243 
+W 64 every 4      6842..6842 
+W 72 base         2500..2500 
+W 72 every 4      7677..7677 
+W 80 base         2756..2756 
+W 80 every 4      8511..8511 
+W 96 base         3270..3270 
+W 96 every 4     10179..10195
+W 100 base        3398..3398 
+W 100 every 4    10596..10596
+W 112 base        3783..3783 
+W 112 every 4    11848..11848
+W 120 base        4040..4040 
+W 120 every 4    12682..12682
+W 128 base        4297..4297 
+W 128 every 4    13516..13516
+W 144 base        4810..4831 
+W 144 every 4    15185..15185
+W 160 base        5323..5330 
+W 160 every 4    16853..16853
+W 176 base        5837..5855 
+W 176 every 4    18522..18532
+W 192 base        6350..6350 
+W 192 every 4    20190..20190
+W 208 base        6864..6864 
+W 208 every 4    21859..21859
+W 128 every 8     9184..9184 
+W 144 every 8    10275..10275
+W 160 every 8    11366..11366
+W 176 every 8    12457..12457
+W 192 every 8    13548..13548
+W 208 every 8    14639..14639
+
+gpu/gpu-tex-fill6: Done.
+
+
+== the proposal's knob core (experiments/_mkfillwb.js on v0.377.303, its defaults; STATUS "## Proposed: a texture fill waits for
+   the row's frame-buffer writes"), PSX_MODEL=SCPH-5501: the same command
+variant          bit 26's D
+W 64 base         2243..2243 
+W 64 every 4      6850..6850 
+W 72 base         2500..2500 
+W 72 every 4      7704..7704 
+W 80 base         2756..2756 
+W 80 every 4      8536..8556 
+W 96 base         3270..3270 
+W 96 every 4     10261..10261
+W 100 base        3398..3398 
+W 100 every 4    10646..10646
+W 112 base        3783..3783 
+W 112 every 4    11947..11947
+W 120 base        4040..4040 
+W 120 every 4    12810..12810
+W 128 base        4297..4297 
+W 128 every 4    13672..13682
+W 144 base        4810..4816 
+W 144 every 4    15358..15358
+W 160 base        5324..5334 
+W 160 every 4    17083..17083
+W 176 base        5837..5846 
+W 176 every 4    18769..18783
+W 192 base        6350..6350 
+W 192 every 4    20494..20494
+W 208 base        6864..6864 
+W 208 every 4    22180..22180
+W 128 every 8     9618..9624 
+W 144 every 8    10846..10846
+W 160 every 8    11965..11965
+W 176 every 8    13193..13193
+W 192 every 8    14312..14312
+W 208 every 8    15540..15550
+
+(the header line of both runs was gpu-tex-fill5's, fixed before the console run; the timed code is the same)

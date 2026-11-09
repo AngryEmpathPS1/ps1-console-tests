@@ -95,4 +95,12 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-07-speedack](2026-11-07-speedack/) | 8 | 1 |
 | [2026-11-07-speedack2](2026-11-07-speedack2/) | 6 | 1 |
 | [2026-11-07-xfcd](2026-11-07-xfcd/) | 20 | 4 |
+| [2026-11-08-cardfetch2](2026-11-08-cardfetch2/) | 6 | 1 |
+| [2026-11-08-cdspread](2026-11-08-cdspread/) | 34 | 16 |
+| [2026-11-08-pausewin](2026-11-08-pausewin/) | 7 | 1 |
 | [2026-11-08-spindown](2026-11-08-spindown/) | 8 | 1 |
+| [2026-11-08-spindown-xfiles](2026-11-08-spindown-xfiles/) | 7 | 1 |
+| [2026-11-08-spindown2](2026-11-08-spindown2/) | 7 | 1 |
+| [2026-11-08-spread](2026-11-08-spread/) | 580 | 267 |
+| [2026-11-08-texfill](2026-11-08-texfill/) | 21 | 6 |
+| [2026-11-08-texfill2](2026-11-08-texfill2/) | 15 | 4 |

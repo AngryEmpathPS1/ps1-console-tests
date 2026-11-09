@@ -1,0 +1,24 @@
+
+cpu/fix-shadow3
+A load's cycles in a streaming line against what the sequence does next (Timer 2 cycles, fastest..slowest of 16; cold / warm).
+There are no assertions - compare against your emulator.
+
+  N-A-S   no load at C word 1, C alone, falls into warm D                    cold  21..21   warm  16..16   miss 5
+  J-A-S   JOY_STAT lbu at C word 1, C alone, falls into warm D               cold  23..23   warm  18..18   miss 5
+  N-A-BX  no load at C word 1, C alone, branch at word 2 to a far warm line  cold  21..21   warm  16..16   miss 5
+  J-A-BX  JOY_STAT lbu at C word 1, C alone, branch at word 2 to a far warm line cold  23..24   warm  18..18   miss 5
+  N-A-LC  no load at C word 1, C alone, a two-turn loop back to its own word 0 cold  25..25   warm  20..20   miss 5
+  J-A-LC  JOY_STAT lbu at C word 1, C alone, a two-turn loop back to its own word 0 cold  30..30   warm  25..25   miss 5
+  N-P-S   no load at C word 1, P then C, falls into warm D                   cold  27..27   warm  17..17   miss 10
+  J-P-S   JOY_STAT lbu at C word 1, P then C, falls into warm D              cold  29..35   warm  19..19   miss 10
+  N-P-BX  no load at C word 1, P then C, branch at word 2 to a far warm line cold  27..31   warm  17..17   miss 10
+  J-P-BX  JOY_STAT lbu at C word 1, P then C, branch at word 2 to a far warm line cold  29..31   warm  19..19   miss 10
+  N-P-LP  no load at C word 1, P then C, a two-turn loop back to P word 3 (cold-bracket's shape) cold  32..37   warm  22..22   miss 10
+  J-P-LP  JOY_STAT lbu at C word 1, P then C, a two-turn loop back to P word 3 (cold-bracket's shape) cold  36..40   warm  26..26   miss 10
+  N-P-LC  no load at C word 1, P then C, a two-turn loop back to C word 0    cold  31..31   warm  21..21   miss 10
+  J-P-LC  JOY_STAT lbu at C word 1, P then C, a two-turn loop back to C word 0 cold  36..41   warm  26..26   miss 10
+  T-J1    Timer 2 read at a cold stub's word 0 opening the window, jr ra at word 1 cold   9..9    warm   7..7    miss 2
+  T-J3    Timer 2 read at a cold stub's word 0 opening the window, jr ra at word 2 cold   8..8    warm   8..8    miss 0
+  T-S     Timer 2 read at a cold line's word 0 opening the window, falls into warm D cold  14..14   warm  14..14   miss 0
+
+Done.

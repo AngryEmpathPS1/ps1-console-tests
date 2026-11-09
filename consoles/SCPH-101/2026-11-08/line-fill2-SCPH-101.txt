@@ -1,0 +1,15 @@
+
+cpu/line-fill2
+N lines filled back to back, nothing else cold (Timer 2 cycles, fastest..slowest of 16; cold / warm).
+There are no assertions - compare against your emulator.
+
+  N=1    cold    15..15     warm    10..10     cold-warm 5
+  N=2    cold    24..28     warm    14..14     cold-warm 10
+  N=4    cold    42..46     warm    22..22     cold-warm 20
+  N=8    cold    78..84     warm    38..38     cold-warm 40
+  N=16   cold   150..155    warm    70..70     cold-warm 80
+  N=32   cold   298..304    warm   134..134    cold-warm 164
+  N=64   cold   590..596    warm   262..262    cold-warm 328
+  N=128  cold  1174..1180   warm   518..518    cold-warm 656
+
+Done.

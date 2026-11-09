@@ -1,0 +1,19 @@
+ResetGraph:itb=80012804,ehk=80012834
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-dma-size
+One GPU DMA block of 1-64 words alone in the timed span: fewest, mean and most cycles by size. No assertions.
+
+words   tries  fewest   mean   most  lost
+    1     512      24   24.0     30     0
+    2     512      25   25.0     30     0
+    4     512      27   27.1     37     0
+    8     512      31   31.2     41     0
+   16     512      39   39.7     49     0
+   32     512      55   56.2     65     0
+   64     512      87   89.3     97     0
+
+gpu/gpu-dma-size: Done.

@@ -1,0 +1,63 @@
+hwtests/gpu-tex-stride2 - PREDICTED, written before its first console run (2026-11-07 21:50).
+
+== this core: v0.377.302 with the CLUT proposal applied; node hwtests/run.js gpu-tex-stride2 --ntsc --frames=20000 --quiet=15000
+  flat quad 64x64                        5 words   bit 28    1383..1441     bit 26     2654..2670
+  15-bit N  1  U 255           9 words   bit 28   21118..21122    bit 26    41275..41279
+  15-bit N  2  U 128           9 words   bit 28   12766..12772    bit 26    24742..24751
+  15-bit N  3  U  85           9 words   bit 28    9463..9499     bit 26    18631..18642
+  15-bit N  4  U  64           9 words   bit 28    7819..7829     bit 26    14928..14967
+  15-bit N  5  U  51           9 words   bit 28    6768..6866     bit 26    13010..13154
+  15-bit N  6  U  42           9 words   bit 28    6052..6144     bit 26    11749..11847
+  15-bit N  7  U  36           9 words   bit 28    5479..5707     bit 26    10446..10633
+  15-bit N  8  U  32           9 words   bit 28    5136..5374     bit 26    10377..10579
+  15-bit N  9  U  28           9 words   bit 28    4800..5042     bit 26     9774..10013
+  15-bit N 10  U  25           9 words   bit 28    4603..4759     bit 26     9175..9328
+  15-bit N 12  U  21           9 words   bit 28    4267..4517     bit 26     8521..8770
+  15-bit N 16  U  16           9 words   bit 28    3888..4130     bit 26     7916..8110
+  15-bit N  4  U  64  +5       9 words   bit 28    6247..7831     bit 26    13435..14959
+  15-bit N  8  U  32  +5       9 words   bit 28    5141..5419     bit 26    10379..10666
+   8-bit N  2  U 255           9 words   bit 28   12190..12626    bit 26    24351..24741
+   8-bit N  3  U 170           9 words   bit 28    9451..9461     bit 26    18040..18052
+   8-bit N  4  U 128           9 words   bit 28    7819..7831     bit 26    14928..14959
+   8-bit N  5  U 102           9 words   bit 28    6763..6869     bit 26    13046..13115
+   8-bit N  6  U  85           9 words   bit 28    6046..6192     bit 26    11745..11844
+   8-bit N  7  U  73           9 words   bit 28    5525..5719     bit 26    11125..11284
+   8-bit N  8  U  64           9 words   bit 28    5083..5323     bit 26     9742..10027
+   8-bit N 10  U  51           9 words   bit 28    4606..4846     bit 26     9176..9368
+   8-bit N 12  U  42           9 words   bit 28    4226..4466     bit 26     8521..8719
+   8-bit N 16  U  32           9 words   bit 28    3845..4087     bit 26     7910..8112
+   8-bit N 32  U  16           9 words   bit 28    3211..3509     bit 26     6651..6812
+   8-bit N  4  U 128  +5       9 words   bit 28    5762..7828     bit 26    12863..14969
+   8-bit N  8  U  64  +5       9 words   bit 28    5083..5335     bit 26     9746..10045
+
+gpu/gpu-tex-stride2: Done.
+
+== its counts (experiments/texcountprobe.js gpu-tex-stride2), each row's last try
+28 d2 pix 4096 rows 127 fills 0 row 0 after 0 busy 2535
+2c d2 pix 4096 rows 127 fills 4033 row 127 after 3844 busy 41099
+2c d2 pix 4096 rows 127 fills 2064 row 111 after 15 busy 24559
+2c d2 pix 4096 rows 127 fills 1428 row 105 after 10 busy 18423
+2c d2 pix 4096 rows 127 fills 1048 row 103 after 7 busy 14750
+2c d2 pix 4096 rows 127 fills 851 row 101 after 6 busy 12833
+2c d2 pix 4096 rows 127 fills 717 row 100 after 5 busy 11560
+2c d2 pix 4096 rows 127 fills 583 row 99 after 4 busy 10267
+2c d2 pix 4096 rows 127 fills 576 row 99 after 4 busy 10178
+2c d2 pix 4096 rows 127 fills 512 row 98 after 4 busy 9566
+2c d2 pix 4096 rows 127 fills 448 row 98 after 3 busy 8997
+2c d2 pix 4096 rows 127 fills 384 row 97 after 3 busy 8321
+2c d2 pix 4096 rows 127 fills 320 row 97 after 2 busy 7704
+2c d2 pix 4096 rows 127 fills 1048 row 103 after 7 busy 14750
+2c d2 pix 4096 rows 127 fills 576 row 99 after 4 busy 10178
+2c d1 pix 4096 rows 127 fills 2064 row 111 after 15 busy 24559
+2c d1 pix 4096 rows 127 fills 1365 row 105 after 9 busy 17850
+2c d1 pix 4096 rows 127 fills 1048 row 103 after 7 busy 14751
+2c d1 pix 4096 rows 127 fills 851 row 101 after 6 busy 12864
+2c d1 pix 4096 rows 127 fills 717 row 100 after 5 busy 11561
+2c d1 pix 4096 rows 127 fills 646 row 99 after 5 busy 10932
+2c d1 pix 4096 rows 127 fills 512 row 99 after 3 busy 9568
+2c d1 pix 4096 rows 127 fills 448 row 98 after 3 busy 8998
+2c d1 pix 4096 rows 127 fills 384 row 97 after 3 busy 8322
+2c d1 pix 4096 rows 127 fills 320 row 97 after 2 busy 7705
+2c d1 pix 4096 rows 127 fills 192 row 96 after 1 busy 6510
+2c d1 pix 4096 rows 127 fills 1048 row 103 after 7 busy 14751
+2c d1 pix 4096 rows 127 fills 512 row 99 after 3 busy 9568

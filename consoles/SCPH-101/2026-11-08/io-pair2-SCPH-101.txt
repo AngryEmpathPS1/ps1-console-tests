@@ -1,0 +1,39 @@
+
+cpu/io-pair2
+I_STAT pairs at word 2 with what follows, a not-taken branch, and cold-bracket's JOY/Timer 2 shape.
+Timer 2, fastest..slowest of four. There are no assertions - compare against your emulator.
+
+  I3 I+3 n           5212..5220    above the nops    496  ->  3.88 a unit
+  I3 I+3 I3          5836..5841    above the nops   1120  ->  8.75 a unit
+  I3 I+3 R           6131..6137    above the nops   1415  ->  11.05 a unit
+  I3 I+3 S           6269..6273    above the nops   1553  ->  12.13 a unit
+  I3 I+3 A           5210..5216    above the nops    494  ->  3.86 a unit
+  I3 I+3 M           5838..5840    above the nops   1122  ->  8.77 a unit
+  I3 I+3 br n        5209..5222    above the nops    493  ->  3.85 a unit
+  I3 I+3 br I3       5838..5840    above the nops   1122  ->  8.77 a unit
+  I3 I+3 br M        5840..5842    above the nops   1124  ->  8.78 a unit
+  J3 T+3 n           5209..5218    above the nops    493  ->  3.85 a unit
+  J3 T+3 M           5840..5842    above the nops   1124  ->  8.78 a unit
+  J3 T+3 I3          5836..5847    above the nops   1120  ->  8.75 a unit
+  J3 T+3 br n        5209..5214    above the nops    493  ->  3.85 a unit
+  J3 T+3 br M        5838..5845    above the nops   1122  ->  8.77 a unit
+  J3 T+3 br I3       5837..5847    above the nops   1121  ->  8.76 a unit
+  I3 T+3 br n        5209..5218    above the nops    493  ->  3.85 a unit
+  I3 T+3 br M        5838..5845    above the nops   1122  ->  8.77 a unit
+  J3 I+3 br n        5209..5219    above the nops    493  ->  3.85 a unit
+  J3 I+3 br M        5837..5842    above the nops   1121  ->  8.76 a unit
+  I0 I+2 n           5213..5216    above the nops    497  ->  3.88 a unit
+  I0 I+2 I3          5836..5846    above the nops   1120  ->  8.75 a unit
+  I0 I+2 R           6134..6136    above the nops   1418  ->  11.08 a unit
+  I0 I+2 S           6269..6278    above the nops   1553  ->  12.13 a unit
+  I0 I+2 A           5209..5219    above the nops    493  ->  3.85 a unit
+  I0 I+2 M           5836..5839    above the nops   1120  ->  8.75 a unit
+  J0 T+2 n           5208..5219    above the nops    492  ->  3.84 a unit
+  J0 T+2 M           5836..5846    above the nops   1120  ->  8.75 a unit
+  I1 I+1 n           5078..5088    above the nops    362  ->  2.83 a unit
+  I1 I+1 I3          5733..5739    above the nops   1017  ->  7.95 a unit
+  I1 I+1 R           5992..5999    above the nops   1276  ->  9.97 a unit
+  I1 I+1 S           6142..6149    above the nops   1426  ->  11.14 a unit
+  I1 I+1 M           5733..5739    above the nops   1017  ->  7.95 a unit
+
+Done.

@@ -1,0 +1,113 @@
+
+gpu/gpu-tex-fill2
+A 15-bit triangle clipped to W x 32, every texel cached but the evicted lines (one fill a row at 4j, or 8j at W 64):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant          bit 26's D
+a u0 0 base       1226..1226 
+a fill at  4      1759..1783 
+a fill at  8      1637..1655 
+a fill at 12      1513..1531 
+a fill at 16      1482..1501 
+a fill at 20      1482..1501 
+a fill at 24      1482..1496 
+a fill at 28      1482..1496 
+a u0 1 base       1193..1193 
+a fill at  3      1785..1807 
+a fill at  7      1665..1670 
+a fill at 11      1542..1557 
+a fill at 15      1449..1467 
+a fill at 19      1449..1461 
+a fill at 23      1449..1467 
+a fill at 27      1449..1461 
+a u0 2 base       1161..1161 
+a fill at  2      1385..1397 
+a fill at  6      1664..1678 
+a fill at 10      1541..1561 
+a fill at 14      1417..1433 
+a fill at 18      1417..1431 
+a fill at 22      1417..1432 
+a fill at 26      1417..1431 
+a u0 3 base       1129..1129 
+a fill at  1      1353..1363 
+a fill at  5      1630..1654 
+a fill at  9      1509..1531 
+a fill at 13      1385..1408 
+a fill at 17      1385..1404 
+a fill at 21      1385..1398 
+a fill at 25      1385..1397 
+b W 18 base        774..777  
+b W 18 base u0 2   774..776  
+b W 18 fill at 2   998..1018 
+b W 18 fill at 4  1247..1249 
+b W 18 fill at 6  1185..1199 
+b W 20 base        839..839  
+b W 20 base u0 2   839..839  
+b W 20 fill at 2  1063..1082 
+b W 20 fill at 4  1310..1326 
+b W 20 fill at 6  1250..1268 
+b W 22 base        903..903  
+b W 22 base u0 2   903..903  
+b W 22 fill at 2  1127..1137 
+b W 22 fill at 4  1407..1413 
+b W 22 fill at 6  1345..1363 
+b W 24 base        968..968  
+b W 24 base u0 2   968..968  
+b W 24 fill at 2  1192..1199 
+b W 24 fill at 4  1472..1490 
+b W 24 fill at 6  1410..1419 
+b W 26 base       1032..1032 
+b W 26 base u0 2  1032..1035 
+b W 26 fill at 2  1256..1269 
+b W 26 fill at 4  1566..1584 
+b W 26 fill at 6  1505..1519 
+b W 28 base       1097..1097 
+b W 28 base u0 2  1097..1097 
+b W 28 fill at 2  1321..1335 
+b W 28 fill at 4  1630..1642 
+b W 28 fill at 6  1570..1586 
+b W 30 base       1161..1161 
+b W 30 base u0 2  1161..1161 
+b W 30 fill at 2  1385..1403 
+b W 30 fill at 4  1727..1747 
+b W 30 fill at 6  1665..1673 
+c u0 0 base       2248..2248 
+c fill at  8      2597..2615 
+c fill at 16      2505..2523 
+c fill at 24      2504..2519 
+c fill at 32      2504..2510 
+c fill at 40      2727..2750 
+c fill at 48      2538..2558 
+c fill at 56      2538..2557 
+c u0 1 base       2183..2183 
+c fill at  6      2620..2635 
+c fill at 14      2440..2454 
+c fill at 22      2444..2457 
+c fill at 30      2439..2445 
+c fill at 38      2725..2750 
+c fill at 46      2474..2481 
+c fill at 54      2473..2486 
+c u0 2 base       2119..2123 
+c fill at  4      2591..2603 
+c fill at 12      2375..2394 
+c fill at 20      2375..2392 
+c fill at 28      2377..2393 
+c fill at 36      2719..2744 
+c fill at 44      2471..2481 
+c fill at 52      2409..2422 
+c u0 3 base       2054..2054 
+c fill at  2      2309..2322 
+c fill at 10      2340..2363 
+c fill at 18      2312..2322 
+c fill at 26      2310..2322 
+c fill at 34      2310..2316 
+c fill at 42      2470..2486 
+c fill at 50      2344..2347 
+d fills 0 and 4   1955..1972 
+d fills 0 and 8   1831..1853 
+d fills 4 and 8   2017..2037 
+d fills 4 and 12  2017..2036 
+d fills 8 and 12  1893..1915 
+
+gpu/gpu-tex-fill2: Done.
