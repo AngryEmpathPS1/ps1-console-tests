@@ -1,0 +1,39 @@
+hwtests/gpu-tex-ilace - PREDICTED, written before its first console run (2026-11-08 18:00).
+
+== this core: v0.377.306 (cd-rebuild a61a6564 + experiments/land_fillwb.js, the main session's gated core scratch/_cores/v0.377.306);
+   PSX_MODEL=SCPH-5501 node tools/hwrunner.js gpu-tex-ilace --emu --bios=<scph5501.bin> --raw (the runner's start)
+
+gpu/gpu-tex-ilace
+A 15-bit triangle clipped to 128 x 32 from (128,128), v 1:1, a fill every 4 / 8 pixels or none (base), in 240p and in 480i
+with GP0(E1h) bit 10 set and clear, and with every other texel row 0000h: its last four words stored back to back, D
+cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points, the display one line tall.
+Then which of rows 128..131 a 480i draw wrote, by bit 10. No assertions.
+
+variant                         bit 26's D
+every 4 240p                    13583..13583
+every 4 480i E1.10=1            13583..13583
+every 4 480i E1.10=0            11499..11507
+every 4 480i 1, odd rows 0      13041..13041
+every 4 480i 1, even rows 0     13036..13036
+every 8 240p                     9567..9567 
+every 8 480i E1.10=1             9567..9567 
+every 8 480i E1.10=0             7483..7484 
+every 8 480i 1, odd rows 0       9111..9118 
+every 8 480i 1, even rows 0      9109..9109 
+base 240p                        4297..4297 
+base 480i E1.10=1                4297..4297 
+base 480i E1.10=0                2213..2213 
+base 480i 1, odd rows 0          4297..4297 
+base 480i 1, even rows 0         4297..4297 
+
+480i read-back (rows 128 129 130 131: 1 drawn):
+  E1.10=0  GPUSTAT.31 0   0 1 0 1
+  E1.10=1  GPUSTAT.31 0   1 1 1 1
+  E1.10=0  GPUSTAT.31 0   0 1 0 1
+  E1.10=1  GPUSTAT.31 0   1 1 1 1
+  E1.10=0  GPUSTAT.31 0   0 1 0 1
+  E1.10=1  GPUSTAT.31 0   1 1 1 1
+  E1.10=0  GPUSTAT.31 0   0 1 0 1
+  E1.10=1  GPUSTAT.31 0   1 1 1 1
+
+gpu/gpu-tex-ilace: Done.

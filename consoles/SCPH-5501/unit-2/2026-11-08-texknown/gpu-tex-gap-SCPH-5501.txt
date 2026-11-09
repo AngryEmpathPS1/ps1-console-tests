@@ -1,0 +1,16 @@
+
+gpu/gpu-tex-gap
+gpu-cost-sweep's 256-wide textured polygons (at (0,0), the page at X 512, the CLUT at (0,480)): as found, then with the
+display on (512x240 over them) or one line tall, the texture all drawn (1234h) or all 0000h: its last four words stored
+back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points.
+No assertions.
+
+found: CLUT entries 0000h 16/16 (4-bit) 256/256 (8-bit); page texels 0000h 15-bit 65536/65536, 8-bit 65536/65536, 4-bit 65536/65536
+
+polygon            as found              line, drawn          line, 0000h          on, drawn            on, 0000h
+ 8-bit quad 256    141991..142185    145424..145474    134494..134560    153473..153626    142101..142218 
+15-bit quad 256    213929..214070    217130..217203    200409..200432    232063..232208    213917..214077 
+ 4-bit quad 256    105180..105409    107019..107083    101108..101265    111152..111383    105157..105381 
+ 8-bit tri L 256    70204..70297      71423..71502      67420..67457      74446..74569      70124..70291  
+
+gpu/gpu-tex-gap: Done.

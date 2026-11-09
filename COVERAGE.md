@@ -46,7 +46,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-pastend | 2 |  | 1 | 3 | 1 | 1 | 4 | 1 | 3 |  |
 | cd-pause | 11 |  | 7 | 12 | 3 | 7 | 17 | 2 | 10 | 3 |
 | cd-pausehold |  |  |  |  | 5 |  | 6 |  |  |  |
-| cd-pausewin |  |  |  |  | 4 |  | 6 |  |  |  |
+| cd-pausewin |  |  |  |  | 8 |  | 6 |  |  |  |
 | cd-playagain | 4 |  |  |  | 4 |  | 4 | 4 |  |  |
 | cd-playagain2 | 4 |  |  |  | 10 |  | 4 | 4 |  |  |
 | cd-queue | 7 |  | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
@@ -414,8 +414,12 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-tex-fill4 |  |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-fill5 |  |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-fill6 |  |  |  |  | 3 |  |  |  |  |  |
+| gpu-tex-gap |  |  |  |  | 3 |  |  |  |  |  |
+| gpu-tex-ilace |  |  |  |  | 3 |  |  |  |  |  |
 | gpu-tex-noscan |  | 1 |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-opaque | 6 | 1 | 7 | 6 | 3 | 6 | 8 | 1 | 6 | 2 |
+| gpu-tex-part |  |  |  |  | 3 |  |  |  |  |  |
+| gpu-tex-part2 |  |  |  |  | 3 |  |  |  |  |  |
 | gpu-tex-scale |  | 1 |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-stride |  | 1 |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-stride2 |  | 1 |  |  | 3 |  | 3 |  |  |  |

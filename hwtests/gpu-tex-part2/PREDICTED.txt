@@ -1,0 +1,49 @@
+hwtests/gpu-tex-part2 - PREDICTED, written before its first console run (2026-11-08 20:07).
+
+== v0.377.306 (src, merged from cd-rebuild); PSX_MODEL=SCPH-5501 node tools/hwrunner.js gpu-tex-part2 --emu --bios=<scph5501.bin> --raw
+
+gpu/gpu-tex-part2
+A 15-bit triangle clipped to 96 x 32 from x 128, u and v 1:1 (a fill every 4 pixels), leading texels 0000h or all but
+one; a raw 128x32 sprite (65h) in 240p and in 480i by GP0(E1h) bit 10, and over 0000h columns: its last four words stored back to
+back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points in the blanking,
+the display one line tall. No assertions.
+
+variant                       bit 26's D
+opaque                        10217..10236
+row all                        9419..9419 
+lead block 0                   9925..9925 
+lead blocks 0-1                9636..9639 
+lead 0-15                     10217..10217
+only first texel               9898..9898 
+only last texel                9636..9642 
+only texel 40                  9770..9770 
+mid all                       10053..10053
+sprite 240p                   11716..11738
+sprite 480i E1.10=1           11716..11738
+sprite 480i E1.10=0           10653..10675
+sprite 480i 1, odd rows 0     11021..11043
+sprite lead block 0           11368..11391
+sprite mid all                11368..11391
+
+gpu/gpu-tex-part2: Done.
+
+== the knob core experiments/_mkfillrow.js on v0.377.306 (FWBRW 1: a row writes from its first drawn texel on; ILNF 1: a 480i-skipped
+   polygon row not walked - sprites untouched), the same command
+variant                       bit 26's D
+opaque                        10217..10236
+row all                        9419..9419 
+lead block 0                   9925..9925 
+lead blocks 0-1                9636..9639 
+lead 0-15                     10217..10217
+only first texel              10217..10217
+only last texel                9636..9636 
+only texel 40                  9925..9945 
+mid all                       10217..10220
+sprite 240p                   11716..11738
+sprite 480i E1.10=1           11716..11738
+sprite 480i E1.10=0           10653..10675
+sprite 480i 1, odd rows 0     11021..11043
+sprite lead block 0           11368..11391
+sprite mid all                11368..11391
+
+The third reading, a row writing whole once any texel is drawn: every variant with a texel drawn as opaque (10,217), "row all" 9,419.

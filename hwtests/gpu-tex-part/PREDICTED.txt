@@ -1,0 +1,31 @@
+hwtests/gpu-tex-part - PREDICTED, written before its first console run (2026-11-08 18:00).
+
+== this core: v0.377.306 (cd-rebuild a61a6564 + experiments/land_fillwb.js, the main session's gated core scratch/_cores/v0.377.306);
+   PSX_MODEL=SCPH-5501 node tools/hwrunner.js gpu-tex-part --emu --bios=<scph5501.bin> --raw (the runner's start)
+
+gpu/gpu-tex-part
+A 15-bit triangle clipped to 96 x 32 from x 128, u and v 1:1 (a fill every 4 pixels), some texels 0000h in the row's
+middle 32-pixel block (pixels 32-63, its write asked at 64) or its end block (64-95): its last four words stored back to
+back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points in the blanking,
+the display one line tall. No assertions.
+
+variant              bit 26's D
+opaque               10217..10217
+mid all              10053..10053
+mid one at 32        10217..10217
+mid one at 63        10217..10217
+mid first 16         10217..10217
+mid last 16          10217..10217
+mid first 4          10217..10217
+mid last 4           10217..10217
+mid every other      10217..10217
+mid ends             10217..10217
+end all              10062..10062
+end one at 64        10217..10217
+end one at 95        10217..10217
+end first 16         10217..10217
+end last 16          10217..10217
+end every other      10217..10217
+mid+end one each     10217..10217
+
+gpu/gpu-tex-part: Done.

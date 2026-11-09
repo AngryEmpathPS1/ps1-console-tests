@@ -1,0 +1,25 @@
+
+gpu/gpu-tex-part2
+A 15-bit triangle clipped to 96 x 32 from x 128, u and v 1:1 (a fill every 4 pixels), leading texels 0000h or all but
+one; a raw 128x32 sprite (65h) in 240p and in 480i by GP0(E1h) bit 10, and over 0000h columns: its last four words stored back to
+back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points in the blanking,
+the display one line tall. No assertions.
+
+variant                       bit 26's D
+opaque                        10216..10251
+row all                        9456..9479 
+lead block 0                   9991..10016
+lead blocks 0-1                9736..9767 
+lead 0-15                     10118..10147
+only first texel              10221..10250
+only last texel                9458..9485 
+only texel 40                  9930..9957 
+mid all                       10226..10246
+sprite 240p                   11719..11747
+sprite 480i E1.10=1           11726..11747
+sprite 480i E1.10=0            5874..5901 
+sprite 480i 1, odd rows 0     11054..11074
+sprite lead block 0           11403..11426
+sprite mid all                11722..11750
+
+gpu/gpu-tex-part2: Done.

@@ -200,3 +200,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-08-texfill3](2026-11-08-texfill3/) | 6 | 1 |
 | [2026-11-08-texfill4](2026-11-08-texfill4/) | 6 | 1 |
 | [2026-11-08-texfill5](2026-11-08-texfill5/) | 6 | 1 |
+| [2026-11-08-texknown](2026-11-08-texknown/) | 12 | 3 |
+| [2026-11-08-texpart2](2026-11-08-texpart2/) | 6 | 1 |
+| [2026-11-09-pausewin](2026-11-09-pausewin/) | 9 | 1 |

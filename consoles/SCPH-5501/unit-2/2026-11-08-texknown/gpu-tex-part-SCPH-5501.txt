@@ -1,0 +1,27 @@
+
+gpu/gpu-tex-part
+A 15-bit triangle clipped to 96 x 32 from x 128, u and v 1:1 (a fill every 4 pixels), some texels 0000h in the row's
+middle 32-pixel block (pixels 32-63, its write asked at 64) or its end block (64-95): its last four words stored back to
+back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points in the blanking,
+the display one line tall. No assertions.
+
+variant              bit 26's D
+opaque               10221..10246
+mid all              10221..10248
+mid one at 32        10221..10244
+mid one at 63        10224..10244
+mid first 16         10228..10248
+mid last 16          10225..10248
+mid first 4          10221..10248
+mid last 4           10224..10244
+mid every other      10216..10248
+mid ends             10224..10248
+end all              10221..10247
+end one at 64        10227..10249
+end one at 95        10221..10245
+end first 16         10224..10244
+end last 16          10225..10245
+end every other      10227..10247
+mid+end one each     10225..10249
+
+gpu/gpu-tex-part: Done.

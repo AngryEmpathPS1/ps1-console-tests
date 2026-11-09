@@ -1,0 +1,20 @@
+hwtests/gpu-tex-gap - PREDICTED, written before its first console run (2026-11-08 18:02).
+
+== this core: v0.377.306 (cd-rebuild a61a6564 + experiments/land_fillwb.js, the main session's gated core scratch/_cores/v0.377.306);
+   PSX_MODEL=SCPH-5501 node tools/hwrunner.js gpu-tex-gap --emu --bios=<scph5501.bin> --raw (the runner's start: its VRAM all 0000h here)
+
+gpu/gpu-tex-gap
+gpu-cost-sweep's 256-wide textured polygons (at (0,0), the page at X 512, the CLUT at (0,480)): as found, then with the
+display on (512x240 over them) or one line tall, the texture all drawn (1234h) or all 0000h: its last four words stored
+back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points.
+No assertions.
+
+found: CLUT entries 0000h 16/16 (4-bit) 256/256 (8-bit); page texels 0000h 15-bit 65536/65536, 8-bit 65536/65536, 4-bit 65536/65536
+
+polygon            as found              line, drawn          line, 0000h          on, drawn            on, 0000h
+ 8-bit quad 256    141673..141816    144588..144594    134153..134153    152848..152992    141673..141816 
+15-bit quad 256    212771..212934    217406..217406    199430..199443    232154..232309    212773..212934 
+ 4-bit quad 256    105498..105625    106114..106130    101273..101289    110616..110735    105498..105628 
+ 8-bit tri L 256    69951..70096      70946..70953      67280..67280      73903..74030      69951..70094  
+
+gpu/gpu-tex-gap: Done.
