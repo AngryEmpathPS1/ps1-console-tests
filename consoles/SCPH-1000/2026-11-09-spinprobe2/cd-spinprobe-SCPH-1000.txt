@@ -1,0 +1,15 @@
+
+cdrom/cd-spinprobe
+The drive's status every 50 ms across Init, MotorOn and ReadTOC; every response byte.
+       1 ms  Getstat          INT3 00
+       2 ms  Test 20h         INT3 94 09 19 C0
+     128 ms  Init             INT3 00
+   10128 ms  Init, second     INT0 00
+   10191 ms  status           INT3 00
+   18172 ms  MotorOn          INT3 00
+   28172 ms  MotorOn, second  INT0 00
+   28280 ms  status           INT3 00
+   36328 ms  ReadTOC          INT5 01 40
+   36329 ms  status           INT3 00
+   44356 ms  GetTN            INT5 01 80
+cdrom/cd-spinprobe: Done.

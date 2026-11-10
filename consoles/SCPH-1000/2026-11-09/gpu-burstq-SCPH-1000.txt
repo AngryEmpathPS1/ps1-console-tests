@@ -1,0 +1,41 @@
+
+gpu/gpu-burstq
+P d t (CHCR2 polled) / Q d W (the CPU off the bus W cycles, then one read: the first done). No assertions.
+
+spin: 300 cycles a 100 turns
+P 0 3721
+Q 0 3606
+P 128 3690
+Q 128 3596
+P 256 3694
+Q 256 3596
+P 384 3699
+Q 384 3600
+P 512 3718
+Q 512 3593
+P 640 3733
+Q 640 3625
+P 768 3738
+Q 768 3640
+P 896 3724
+Q 896 3643
+P 1024 3719
+Q 1024 3625
+P 1152 3729
+Q 1152 3640
+P 1280 3722
+Q 1280 3625
+P 1408 3739
+Q 1408 3634
+P 1536 3733
+Q 1536 3631
+P 1664 3744
+Q 1664 3634
+P 1792 3743
+Q 1792 3631
+P 1920 3742
+Q 1920 3640
+P 2048 3739
+Q 2048 3631
+
+gpu/gpu-burstq: Done.

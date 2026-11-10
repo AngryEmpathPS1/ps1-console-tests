@@ -1,0 +1,35 @@
+
+gpu/gpu-tex-maskpart
+A 15-bit triangle clipped to 96 x 32 (24h opaque / 26h semi) and a raw 128x32 sprite (65h / 67h), texels 1:1 (a fill every
+4 pixels), 1234h with columns 0000h, the frame buffer 0000h or columns 8000h, the mask check (E6h bit 1) on or
+off: its last four words stored back to
+back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points in the blanking,
+the display one line tall. No assertions.
+
+variant                               bit 26's D
+opaque, 1234h                         10227..10247
+check, 1234h                          11484..11510
+check, row all 0000h                   9454..9483 
+check, lead block 0000h               10875..10886
+check, mid block 0000h                11485..11511
+check, every other 0000h              11485..11508
+check, fb all masked                  11484..11505
+check, fb lead block masked           11485..11506
+check, fb mid block masked            11485..11511
+semi, 1234h                           11484..11510
+semi + check, 1234h                   11484..11504
+semi + check, mid block 0000h         11485..11510
+sprite opaque, 1234h                  11724..11747
+sprite check, 1234h                   13640..13667
+sprite check, row all 0000h           10358..10378
+sprite check, lead block 0000h        12844..12872
+sprite check, mid block 0000h         13638..13662
+sprite check, every other 0000h       13638..13662
+sprite check, fb all masked           13638..13667
+sprite check, fb lead block masked    13633..13667
+sprite check, fb mid block masked     13638..13667
+sprite semi, 1234h                    13633..13662
+sprite semi + check, 1234h            13637..13667
+sprite semi + check, mid block 0000h  13636..13662
+
+gpu/gpu-tex-maskpart: Done.

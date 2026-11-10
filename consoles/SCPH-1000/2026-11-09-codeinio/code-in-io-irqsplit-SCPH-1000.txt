@@ -1,0 +1,20 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cpu/code-in-io-irqsplit
+code-in-io's interrupt-controller case in steps; each line printed when its step is back.
+
+step 0 - read I_STAT 1F801070h: 00000004, 0 exceptions
+step 1 - read I_MASK 1F801074h: 1f800101, 0 exceptions
+step 2 - read the hole 1F801078h: 5eedf00d, 1 exception
+    #0 cause  7 EPC 800103b8 BadVaddr ffffffff ra 80010284
+step 3 - read the hole 1F80107Ch: 5eedf00d, 1 exception
+    #0 cause  7 EPC 800103b8 BadVaddr ffffffff ra 80010284
+step 4 - jump to the hole 1F801078h, nothing copied: back, 1 exception
+    #0 cause  7 EPC 00000c9c BadVaddr ffffffff ra 80010394
+step 5 - I_MASK 0, jump to 1F801074h, nothing copied: back, 1 exception
+    #0 cause  7 EPC 00000c9c BadVaddr ffffffff ra 80010394
+step 6 - case 4 as written: the copy, a jump to 1F801070h: back, 1 exception
+    #0 cause  7 EPC 00000c9c BadVaddr ffffffff ra 80010394
+
+cpu/code-in-io-irqsplit: Done.

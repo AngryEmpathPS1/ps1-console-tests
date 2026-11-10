@@ -1,0 +1,16 @@
+
+cpu/cold-window
+at-split's window (counter reset to read), its loop line L1 and the line after it L2 cold or warm;
+Timer 2 cycles, fastest..slowest of 16 over the refresh.
+There are no assertions - compare against your emulator.
+
+  loop 100, both warm     405..405 
+  loop 100, L1 cold       410..410 
+  loop 100, L2 cold       412..412 
+  loop 100, both cold     417..422 
+  loop 1, both warm         9..9   
+  loop 1, L1 cold          14..14  
+  loop 1, L2 cold          16..20  
+  loop 1, both cold        21..21  
+
+Done.

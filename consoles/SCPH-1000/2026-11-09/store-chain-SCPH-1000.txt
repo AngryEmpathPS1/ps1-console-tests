@@ -1,0 +1,26 @@
+
+cpu/store-chain
+Per-iteration cost above a loop of 12 nops, 100 iterations. No assertions - compare against your emulator.
+
+ONE RAM load
+  lw alone                         1958 -   1760 =    198 over 100  ->  1.98 cycles
+  lw; sw NEAR at 1                 2274 -   1760 =    514 over 100  ->  5.14 cycles
+  lw; sw FAR at 1                  2288 -   1760 =    528 over 100  ->  5.28 cycles
+  lw; sh NEAR at 1                 2279 -   1760 =    519 over 100  ->  5.19 cycles
+  lw; sw, sh NEAR at 1, 2          2285 -   1760 =    525 over 100  ->  5.25 cycles
+  lw; sw, sh FAR at 1, 2           2284 -   1760 =    524 over 100  ->  5.24 cycles
+  lw; nop; sw, sh NEAR at 2, 3     2388 -   1760 =    628 over 100  ->  6.28 cycles
+
+TWO RAM loads
+  2 lw alone                       2454 -   1760 =    694 over 100  ->  6.94 cycles
+  2 lw; sw FAR at 1                2781 -   1760 =   1021 over 100  ->  10.21 cycles
+
+FOUR RAM loads (edge()'s lw s3/s2/s1/s0)
+  4 lw alone                       3495 -   1760 =   1735 over 100  ->  17.35 cycles
+  4 lw; sw NEAR at 1               3794 -   1760 =   2034 over 100  ->  20.34 cycles
+  4 lw; sw FAR at 1                3792 -   1760 =   2032 over 100  ->  20.32 cycles
+  4 lw; sw, sh FAR at 1, 2         3814 -   1760 =   2054 over 100  ->  20.54 cycles
+  4 lw; sw, sh FAR; branch         3803 -   1760 =   2043 over 100  ->  20.43 cycles
+  4 lw; branch alone               3503 -   1760 =   1743 over 100  ->  17.43 cycles
+
+Done.

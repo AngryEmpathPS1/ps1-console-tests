@@ -202,4 +202,10 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-08-texfill5](2026-11-08-texfill5/) | 6 | 1 |
 | [2026-11-08-texknown](2026-11-08-texknown/) | 12 | 3 |
 | [2026-11-08-texpart2](2026-11-08-texpart2/) | 6 | 1 |
+| [2026-11-09-codeinio](2026-11-09-codeinio/) | 12 | 3 |
+| [2026-11-09-fuzz](2026-11-09-fuzz/) | 12 | 3 |
 | [2026-11-09-pausewin](2026-11-09-pausewin/) | 9 | 1 |
+| [2026-11-09-spin](2026-11-09-spin/) | 11 | 2 |
+| [2026-11-09-texmask](2026-11-09-texmask/) | 6 | 1 |
+| [2026-11-09-texsemi](2026-11-09-texsemi/) | 6 | 1 |
+| [2026-11-09-xfiles](2026-11-09-xfiles/) | 11 | 2 |

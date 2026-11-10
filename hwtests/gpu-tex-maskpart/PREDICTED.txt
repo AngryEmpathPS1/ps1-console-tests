@@ -1,0 +1,38 @@
+hwtests/gpu-tex-maskpart - PREDICTED, written before its first console run (2026-11-09 16:09).
+
+== v0.377.312's GPU (scratch/_cores/fsland310 = src at v0.377.310 + experiments/land_fillsemi.js; v0.377.311 touched only the CD); v0.377.310 prints the same. PSX_MODEL=SCPH-5501 node tools/hwrunner.js gpu-tex-maskpart --emu --bios=<scph5501.bin> --raw
+
+gpu/gpu-tex-maskpart
+A 15-bit triangle clipped to 96 x 32 (24h opaque / 26h semi) and a raw 128x32 sprite (65h / 67h), texels 1:1 (a fill every
+4 pixels), 1234h with columns 0000h, the frame buffer 0000h or columns 8000h, the mask check (E6h bit 1) on or
+off: its last four words stored back to
+back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points in the blanking,
+the display one line tall. No assertions.
+
+variant                               bit 26's D
+opaque, 1234h                         10217..10217
+check, 1234h                          11430..11438
+check, row all 0000h                   9382..9383 
+check, lead block 0000h               10747..10747
+check, mid block 0000h                10747..10748
+check, every other 0000h              10406..10412
+check, fb all masked                  11430..11438
+check, fb lead block masked           11430..11430
+check, fb mid block masked            11430..11450
+semi, 1234h                           11430..11443
+semi + check, 1234h                   11430..11439
+semi + check, mid block 0000h         10747..10756
+sprite opaque, 1234h                  11716..11738
+sprite check, 1234h                   13614..13639
+sprite check, row all 0000h           10303..10328
+sprite check, lead block 0000h        12773..12798
+sprite check, mid block 0000h         12773..12798
+sprite check, every other 0000h       11958..11983
+sprite check, fb all masked           13614..13639
+sprite check, fb lead block masked    13614..13639
+sprite check, fb mid block masked     13614..13639
+sprite semi, 1234h                    13614..13639
+sprite semi + check, 1234h            13614..13639
+sprite semi + check, mid block 0000h  12773..12798
+
+gpu/gpu-tex-maskpart: Done.

@@ -1,0 +1,59 @@
+
+gpu/gpu-shape-time42
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+semi gour Q 1x16        355..355      334..334  
+semi gour Q 2x16        422..457      337..338  
+semi gour Q 3x16        480..520      364..376  
+semi gour Q 4x16        538..580      385..405  
+semi gour Q 6x16        639..675      439..481  
+semi gour Q 8x16        741..783      482..523  
+semi gour Q 12x16       933..975      590..627  
+semi gour Q 16x16      1131..1173     675..715  
+semi gour Q 24x16      1515..1557     891..933  
+semi gour Q 32x16      1901..1943    1084..1125 
+semi gour Q 64x16      3482..3523    1901..1943 
+semi gour Q 256x16    13087..13098   6922..6965 
+opaq gour Q 1x16        355..355      334..334  
+opaq gour Q 2x16        403..433      334..334  
+opaq gour Q 3x16        420..444      334..334  
+opaq gour Q 4x16        439..476      334..335  
+opaq gour Q 6x16        458..495      334..334  
+opaq gour Q 8x16        485..522      338..362  
+opaq gour Q 12x16       549..583      374..379  
+opaq gour Q 16x16       619..651      403..413  
+opaq gour Q 24x16       747..788      475..513  
+opaq gour Q 32x16       877..918      540..581  
+opaq gour Q 64x16      1392..1433     813..854  
+opaq gour Q 256x16     4715..4762    2488..2495 
+semi gour TL 4x64      1031..1073     167..167  
+semi gour TL 8x64      1416..1458     168..168  
+semi gour TL 32x64     3763..3805     170..170  
+opaq gour TL 4x64       711..750      167..167  
+opaq gour TL 8x64       840..880      168..168  
+opaq gour TL 32x64     1610..1651     170..170  
+semi spr4 16x8          249..288        8..8    
+semi spr4 64x8          825..867        8..8    
+semi spr4 256x8        4830..4873       8..8    
+opaq spr4 16x8          121..121        8..8    
+opaq spr4 64x8          313..354        8..8    
+opaq spr4 256x8        2742..2785       8..8    
+semi spr8 16x8          249..290        8..8    
+semi spr8 64x8          825..867        8..8    
+semi spr8 256x8        6531..6537       8..8    
+opaq spr8 16x8          121..121        8..8    
+opaq spr8 64x8          313..354        8..8    
+opaq spr8 256x8        4442..4452       8..8    
+semi spr15S 16x8        249..290        8..8    
+semi spr15S 64x8       2486..2525       8..8    
+semi spr15S 256x8      9901..9954       8..8    
+semi spr4S 16x8         249..269        8..8    
+semi spr4S 64x8         825..866        8..8    
+semi spr4S 256x8       4831..4870       8..8    
+opaq spr15S 256x8      7807..7847       8..8    
+semi tex4 TL 128x32    7730..7778     123..123  
+opaq tex4 TL 128x32    3424..3470     123..123  
+
+gpu/gpu-shape-time42: Done.

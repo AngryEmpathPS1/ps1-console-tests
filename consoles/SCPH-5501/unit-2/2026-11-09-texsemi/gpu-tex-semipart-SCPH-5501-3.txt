@@ -1,0 +1,28 @@
+
+gpu/gpu-tex-semipart
+A 15-bit triangle clipped to 96 x 32 (24h opaque / 26h semi) and a raw 128x32 sprite (65h / 67h), texels 1:1 (a fill every
+4 pixels), 1234h or 9234h (bit 15: semi blends) with columns 0000h or 1234h: its last four words stored back to
+back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points in the blanking,
+the display one line tall. No assertions.
+
+variant                               bit 26's D
+opaque, 1234h                         10224..10246
+semi, 1234h (no bit 15)               11481..11507
+semi, 9234h                           11483..11512
+semi, row all 0000h                    9452..9480 
+semi, lead block 0000h                10872..10888
+semi, mid block 0000h                 11485..11508
+semi, every other 0000h               11487..11518
+semi, lead block 1234h                11484..11505
+semi, mid block 1234h                 11485..11509
+sprite opaque, 1234h                  11724..11744
+sprite semi, 1234h (no bit 15)        13638..13663
+sprite semi, 9234h                    13633..13667
+sprite semi, row all 0000h            10357..10378
+sprite semi, lead block 0000h         12851..12868
+sprite semi, mid block 0000h          13636..13662
+sprite semi, every other 0000h        13638..13662
+sprite semi, lead block 1234h         13633..13658
+sprite semi, mid block 1234h          13637..13663
+
+gpu/gpu-tex-semipart: Done.

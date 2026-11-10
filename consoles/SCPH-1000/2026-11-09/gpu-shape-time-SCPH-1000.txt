@@ -1,0 +1,42 @@
+
+gpu/gpu-shape-time
+A lone primitive's words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set and with
+bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape               bit 26        bit 28
+flat 68h 1x1          16..16         9..9    
+flat 60h 1x1          16..16         9..9    
+flat 60h 2x2          24..35         9..9    
+flat 60h 4x4          42..45         9..9    
+flat 70h 8x8          90..108        9..9    
+flat 60h 8x8          90..90         9..9    
+flat 78h 16x16       234..246        9..9    
+flat 60h 16x16       234..267        9..9    
+flat 60h 32x32       714..755        9..9    
+flat 60h 64x4        162..162        9..9    
+flat 60h 4x64        522..558        9..9    
+flat 60h 64x16       618..659        9..9    
+flat 60h 16x64       906..947        9..9    
+flat 60h 64x64      2478..2524       9..9    
+flat 60h 128x8       570..611        9..9    
+flat 60h 8x128      1290..1331       9..9    
+flat 60h 256x2       278..319        9..9    
+flat 60h 2x256      1802..1839       9..9    
+semi 62h 1x1          18..23         9..9    
+semi 62h 8x8         154..159        9..9    
+semi 7Ah 16x16       490..531        9..9    
+semi 62h 16x16       490..532        9..9    
+semi 62h 64x4        418..459        9..9    
+semi 62h 4x64        778..818        9..9    
+semi 62h 64x16      1642..1684       9..9    
+sprite 7Dh 16x16     233..246        8..8    
+sprite 65h 8x8        89..89         8..8    
+sprite 65h 16x16     233..263        8..8    
+sprite 65h 64x4      974..1011       8..8    
+sprite 65h 4x64     1034..1075       8..8    
+fill 16x16           138..138        9..9    
+fill 64x4             54..70         9..9    
+fill 16x64           522..564        9..9    
+fill 64x64           714..753        9..9    
+
+gpu/gpu-shape-time: Done.

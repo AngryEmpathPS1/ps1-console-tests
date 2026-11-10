@@ -1,0 +1,31 @@
+hwtests/gpu-tex-semipart - PREDICTED, written before its first console run (2026-11-09 06:50).
+
+== v0.377.309 (src, cd-rebuild ff4a3590 merged); PSX_MODEL=SCPH-5501 node tools/hwrunner.js gpu-tex-semipart --emu --bios=<scph5501.bin> --raw
+
+gpu/gpu-tex-semipart
+A 15-bit triangle clipped to 96 x 32 (24h opaque / 26h semi) and a raw 128x32 sprite (65h / 67h), texels 1:1 (a fill every
+4 pixels), 1234h or 9234h (bit 15: semi blends) with columns 0000h or 1234h: its last four words stored back to
+back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points in the blanking,
+the display one line tall. No assertions.
+
+variant                               bit 26's D
+opaque, 1234h                         10217..10217
+semi, 1234h (no bit 15)               11430..11432
+semi, 9234h                           11430..11430
+semi, row all 0000h                    9382..9384 
+semi, lead block 0000h                10747..10748
+semi, mid block 0000h                 10747..10747
+semi, every other 0000h               10406..10407
+semi, lead block 1234h                11430..11440
+semi, mid block 1234h                 11430..11432
+sprite opaque, 1234h                  11716..11738
+sprite semi, 1234h (no bit 15)        13614..13639
+sprite semi, 9234h                    13614..13639
+sprite semi, row all 0000h            10303..10328
+sprite semi, lead block 0000h         12773..12798
+sprite semi, mid block 0000h          12773..12798
+sprite semi, every other 0000h        11958..11983
+sprite semi, lead block 1234h         13614..13639
+sprite semi, mid block 1234h          13614..13639
+
+gpu/gpu-tex-semipart: Done.

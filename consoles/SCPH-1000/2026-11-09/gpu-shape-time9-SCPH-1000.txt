@@ -1,0 +1,38 @@
+
+gpu/gpu-shape-time9
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape               bit 26        bit 28
+tex u2 255           484..525      123..123  
+tex u2 1             348..388      116..116  
+tex v only          1952..1988     115..115  
+tex u12 255         1965..2001     128..128  
+tex u 255->0        1946..1982     120..120  
+tex4 u12 255        1731..1771     128..128  
+tex4 u2 255          476..517      123..123  
+tex vert u1 15       354..391      118..118  
+gtex u1 255         2073..2109     247..247  
+gtex u2 255          608..647      247..247  
+gtex u0              479..519      247..247  
+gtex R2 u12         2092..2129     255..255  
+gtex raw R1          484..524      252..252  
+gour 320 R1         3025..3066     168..168  
+gour BR R1           384..423      168..168  
+gour R1 -1           391..432      159..159  
+gour R2 +1           392..433      160..160  
+gour 80 FF 00        403..436      171..171  
+gour semi R12        676..712      172..172  
+gquad same           609..649      393..408  
+gquad R3             609..647      393..408  
+gquad R1             614..650      398..418  
+tquad u3 255        2084..2089     475..512  
+tquad same           568..606      352..379  
+gline same           150..150       79..79   
+gline R 255          150..150       79..79   
+gline G 255          150..150       79..79   
+line flat             88..88        17..17   
+flat TL              188..188       28..28   
+gour TL              391..432      159..159  
+
+gpu/gpu-shape-time9: Done.

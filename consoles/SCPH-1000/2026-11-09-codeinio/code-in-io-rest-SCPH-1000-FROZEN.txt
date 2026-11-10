@@ -1,0 +1,14 @@
+# hwtests/code-in-io-rest on the SCPH-1000 under Unirom's debug mode, 2026-11-09 ~10:25 - FROZEN (prints only at its end): the screen
+# showed bars 1-3 green (RAM, scratchpad, MDEC back) and bar 4 red - testCodeInSPU (code at 1F801C00h) never returned within the
+# 2-minute limit; PING no answer after. Copied from scratch/console-run-SCPH-1000-codeinio-rest.log.
+1/1  code-in-io-rest
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cpu/code-in-io-rest
+code-in-io-safe without the interrupt controller's five cases: RAM, scratchpad, MDEC, SPU, DMA0, DMA control.
+
+... still measuring: 1:01 so far, usually about 1 min, limit 2 min
+  code-in-io-rest: timeout.
+  PING: no answer
+>>> The console stopped answering. On the console: RESET, choose MEMORY CARD, wait for Unirom's READY. Then press Enter to send this test again (s to skip it, q to stop):

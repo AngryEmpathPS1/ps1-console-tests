@@ -1,0 +1,29 @@
+ResetGraph:itb=80012e30,ehk=80012e60
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-clut-dma
+A CLUT reload in a GPU linked list: GPUSTAT, CHCR2 and MADR2 read back to back from the kick. No assertions.
+
+ResetGraph:itb=80012e30,ehk=80012e60
+ResetGraph:SR=fb00
+4-bit r H : 34:15:1 68:8:1 121:13:6 159:7:?
+4-bit r N1: 34:15:1 71:8:1 108:8:4 154:13:6 191:8:9 218:7:?
+4-bit r N4: 34:15:1 74:8:1 117:8:4 167:8:6 207:8:8 241:8:? 268:7:?
+4-bit r S : 35:15:1 75:8:1 102:8:9 164:8:? 191:5:? 245:7:?
+4-bit c H : 34:15:1 79:13:4 129:13:9 156:7:?
+4-bit c N1: 34:15:1 72:8:3 118:13:5 155:8:8 189:7:?
+4-bit c N4: 34:15:1 78:8:3 118:8:5 158:8:7 204:8:9 231:7:?
+4-bit c S : 34:15:1 66:8:9 151:5:? 232:7:?
+8-bit r H : 34:15:1 61:8:1 318:8:2 369:13:7 401:7:?
+8-bit r N1: 34:15:1 61:8:1 315:8:2 361:13:4 398:8:7 441:15:9 468:7:?
+8-bit r N4: 34:15:1 61:8:1 318:8:2 358:8:4 400:8:6 440:8:8 474:8:? 501:7:?
+8-bit r S : 39:15:1 66:8:1 323:8:9 412:4:? 439:5:? 493:7:?
+8-bit c H : 34:15:1 79:13:4 129:13:9 156:7:?
+8-bit c N1: 34:15:1 72:8:3 118:13:5 155:8:8 189:7:?
+8-bit c N4: 34:15:1 78:8:3 118:8:5 158:8:7 208:8:9 235:7:?
+8-bit c S : 34:15:1 66:8:9 151:5:? 232:7:?
+
+gpu/gpu-clut-dma: Done.

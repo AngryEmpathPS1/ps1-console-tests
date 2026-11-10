@@ -1,0 +1,118 @@
+ResetGraph:itb=80013170,ehk=800131a0
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-rect-gap
+A rectangle's words spaced out: a gap before one word, k cycles after the last, one GPUSTAT read. No assertions.
+
+ResetGraph:itb=80013170,ehk=800131a0
+ResetGraph:SR=fb00
+s W2 0:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W2 4:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W2 8:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W2 16:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W2 32:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W3 0:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W3 4:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W3 8:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W3 16:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W3 32:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W4 0:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W4 4:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W4 8:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W4 16:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+s W4 32:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+r W2 0:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@88   (set from k=88)
+r W2 4:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@88   (set from k=88)
+r W2 8:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@88   (set from k=88)
+r W2 16:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@88   (set from k=88)
+r W2 32:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@88   (set from k=88)
+r W3 0:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@88   (set from k=88)
+r W3 4:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+r W3 8:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+r W3 16:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+r W3 32:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@87   (set from k=87)
+f W2 0:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@72   (set from k=72)
+f W2 4:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@72   (set from k=72)
+f W2 8:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@72   (set from k=72)
+f W2 16:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@72   (set from k=72)
+f W2 32:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@72   (set from k=72)
+f W3 0:
+  28: 0@2 1@7   (set from k=7)
+  26: 0@2 1@72   (set from k=72)
+f W3 4:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@72   (set from k=72)
+f W3 8:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@71   (set from k=71)
+f W3 16:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@72   (set from k=72)
+f W3 32:
+  28: 0@2 1@6   (set from k=6)
+  26: 0@2 1@71   (set from k=71)
+
+gpu/gpu-rect-gap: Done.

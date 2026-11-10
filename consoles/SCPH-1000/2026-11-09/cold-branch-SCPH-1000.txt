@@ -1,0 +1,48 @@
+
+cpu/cold-branch
+A taken branch out of a streaming line: cold and warm counters, lowest..highest of four.
+There are no assertions - compare against your emulator.
+
+  block          COLD        WARM      COLD-WARM
+  beq T0 b0      14..14       7..7        7
+  beq T0 b1      14..14       8..8        6
+  beq T0 b2      13..13       9..9        4
+  beq T0 b3      23..23      10..10      13
+  beq T2 b0      16..16       9..9        7
+  beq T2 b1      16..16      10..10       6
+  beq T2 b2      15..15      11..11       4
+  beq T2 b3      25..25      12..12      13
+  j T0 b0        14..14       7..7        7
+  j T0 b1        14..14       8..8        6
+  j T0 b2        13..13       9..9        4
+  j T0 b3        23..23      10..10      13
+  j T2 b0        16..16       9..9        7
+  j T2 b1        16..16      10..10       6
+  j T2 b2        15..15      11..11       4
+  j T2 b3        25..29      12..12      13
+  jr T0 b0       14..14       7..7        7
+  jr T0 b1       14..14       8..8        6
+  jr T0 b2       13..13       9..9        4
+  jr T0 b3       23..23      10..10      13
+  jr T2 b0       16..16       9..9        7
+  jr T2 b1       16..16      10..10       6
+  jr T2 b2       15..15      11..11       4
+  jr T2 b3       25..25      12..12      13
+  bnez T0 b0     14..14       7..7        7
+  bnez T0 b1     14..16       8..8        6
+  bnez T0 b2     13..13       9..9        4
+  bnez T0 b3     23..23      10..10      13
+  bnez T2 b0     16..16       9..9        7
+  bnez T2 b1     16..16      10..10       6
+  bnez T2 b2     15..15      11..11       4
+  bnez T2 b3     25..25      12..12      13
+  ret T0 b0      14..14       7..7        7
+  ret T0 b1      14..14       8..8        6
+  ret T0 b2      13..13       9..9        4
+  ret T0 b3      23..23      10..10      13
+  ret T2 b0      16..16       9..9        7
+  ret T2 b1      16..16      10..10       6
+  ret T2 b2      15..15      11..11       4
+  ret T2 b3      25..25      12..12      13
+
+Done.

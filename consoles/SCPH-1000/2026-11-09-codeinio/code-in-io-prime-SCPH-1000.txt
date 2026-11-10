@@ -1,0 +1,13 @@
+
+cpu/code-in-io-prime
+What the hole after the interrupt controller hands a fetch, by priming the bus; the SPU's read-back.
+
+step 0 - the SPU, the copy read back: 03e00008 00000000
+step 1 - the hole 1F801078h, the bus primed with BREAK (cause 9): 1 exception
+    first: cause  7 EPC 00000c9c BadVaddr ffffffff ra 8001042c
+step 2 - the hole 1F801078h, the bus primed with a reserved instruction (cause 10): 1 exception
+    first: cause  7 EPC 00000c9c BadVaddr ffffffff ra 8001048c
+step 3 - the hole 1F80107Ch, the bus primed with BREAK (cause 9): 1 exception
+    first: cause  7 EPC 00000c9c BadVaddr ffffffff ra 8001042c
+
+cpu/code-in-io-prime: Done.

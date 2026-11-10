@@ -1,0 +1,15 @@
+
+cpu/t2-path
+measure() taken apart: Timer 2 cycles from the reset to the read (cached, the second call).
+There are no assertions - compare against your emulator.
+
+  A  sh T2; read                                     0
+  B  sh T2; jal stub; nop; read                      4
+  C  sh T2; jal loop10; nop; read                   45
+  D  lhu MODE; sh T2; jal loop10; nop; read         45
+  E  sw; sw; lhu MODE; sh T2; jal loop10; read      45
+  F  sh T2; loop10 inline; read                     40
+  G  measure() around a 10-turn nop lambda          17
+  H  measure() around a 100-turn nop lambda        408
+
+Done.

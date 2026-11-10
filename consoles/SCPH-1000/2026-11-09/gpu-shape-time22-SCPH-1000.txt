@@ -1,0 +1,62 @@
+
+gpu/gpu-shape-time22
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+gour TL 16x16           401..428      169..169  
+gour BR 16x16           389..425      173..173  
+gour TR 16x16           401..441      169..169  
+gour BL 16x16           386..424      171..171  
+gour TLu 16x16          409..443      173..173  
+gour BLd 16x16          388..414      173..173  
+gour TL 64x16           811..851      171..171  
+gour BR 64x16           754..795      175..175  
+gour TR 64x16           811..852      171..171  
+gour BL 64x16           746..787      171..171  
+gour TLu 64x16          819..860      175..175  
+gour BLd 64x16          750..791      175..175  
+gour TL 64x64          2676..2717     171..171  
+gour BR 64x64          2616..2658     177..177  
+gour TR 64x64          2673..2714     171..171  
+gour BL 64x64          2610..2625     173..173  
+gour TLu 64x64         2683..2727     177..177  
+gour BLd 64x64         2613..2658     177..177  
+gour TL 16x64          1097..1138     169..169  
+gour BR 16x64          1024..1065     175..175  
+gour TR 16x64          1035..1076     169..169  
+gour BL 16x64          1084..1125     173..173  
+gour TLu 16x64         1107..1148     175..175  
+gour BLd 16x64         1086..1127     175..175  
+gour TL 4x64            711..752      167..167  
+gour BR 4x64            578..619      173..173  
+gour TR 4x64            577..613      167..167  
+gour BL 4x64            712..751      173..173  
+gour TLu 4x64           721..761      173..173  
+gour BLd 4x64           712..748      173..173  
+gour TL 2x128          1127..1168     167..167  
+gour BR 2x128           691..727      174..174  
+gour TR 2x128           687..723      167..167  
+gour BL 2x128          1131..1170     174..174  
+gour TLu 2x128         1138..1178     174..174  
+gour BLd 2x128         1131..1170     174..174  
+tex TL 16x16            347..388      115..115  
+tex BR 16x16            335..370      119..119  
+tex TR 16x16            347..388      115..115  
+tex BL 16x16            332..368      117..117  
+tex TLu 16x16           355..396      119..119  
+tex BLd 16x16           334..373      119..119  
+tex TL 64x64           2617..2663     117..117  
+tex BR 64x64           2564..2601     123..123  
+tex TR 64x64           2618..2663     117..117  
+tex BL 64x64           2559..2597     119..119  
+tex TLu 64x64          2632..2669     123..123  
+tex BLd 64x64          2558..2604     123..123  
+tex TL 2x128           1073..1114     113..113  
+tex BR 2x128            637..672      120..120  
+tex TR 2x128            633..669      113..113  
+tex BL 2x128           1077..1116     120..120  
+tex TLu 2x128          1084..1122     120..120  
+tex BLd 2x128          1077..1118     120..120  
+
+gpu/gpu-shape-time22: Done.

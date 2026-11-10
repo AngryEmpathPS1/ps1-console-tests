@@ -1,0 +1,35 @@
+
+gpu/gpu-tail3
+A primer at a place, bits 28+26 set, N idle cycles, then a 256x32 probe at (0,16) timed to bits 28+26:
+fastest..slowest of eight and how many were cheap (flat under 4,420, semi under 6,600). No assertions.
+
+  none (the last probe)  N     0  flat  4436..4470  cheap 0 of 8
+  none (the last probe)  N 20000  flat  4399..4444  cheap 7 of 8
+  the probe itself       N     0  flat  4396..4440  cheap 4 of 8
+  the probe itself       N 20000  flat  4395..4441  cheap 3 of 8
+  256x32 at (0,300)      N     0  flat  4398..4441  cheap 2 of 8
+  256x32 at (0,300)      N 20000  flat  4396..4440  cheap 3 of 8
+  256x256 at (0,256)     N     0  flat  4398..4437  cheap 3 of 8
+  256x256 at (0,256)     N 20000  flat  4396..4438  cheap 2 of 8
+  16x16 at (0,300)       N     0  flat  4393..4438  cheap 3 of 8
+  16x16 at (0,300)       N 20000  flat  4396..4440  cheap 3 of 8
+  256x32 at (0,48)       N     0  flat  4396..4444  cheap 6 of 8
+  256x32 at (0,48)       N 20000  flat  4396..4440  cheap 3 of 8
+  256x32 at (512,16)     N     0  flat  4398..4440  cheap 4 of 8
+  256x32 at (512,16)     N 20000  flat  4392..4440  cheap 4 of 8
+  none (the last probe)  N     0  semi  12746..12803  cheap 0 of 8
+  none (the last probe)  N 20000  semi  12748..12798  cheap 0 of 8
+  the probe itself       N     0  semi  12752..12797  cheap 0 of 8
+  the probe itself       N 20000  semi  12753..12798  cheap 0 of 8
+  256x32 at (0,300)      N     0  semi  12759..12797  cheap 0 of 8
+  256x32 at (0,300)      N 20000  semi  12754..12796  cheap 0 of 8
+  256x256 at (0,256)     N     0  semi  12753..12789  cheap 0 of 8
+  256x256 at (0,256)     N 20000  semi  12748..12796  cheap 0 of 8
+  16x16 at (0,300)       N     0  semi  12750..12796  cheap 0 of 8
+  16x16 at (0,300)       N 20000  semi  12793..12796  cheap 0 of 8
+  256x32 at (0,48)       N     0  semi  12753..12799  cheap 0 of 8
+  256x32 at (0,48)       N 20000  semi  12753..12753  cheap 0 of 8
+  256x32 at (512,16)     N     0  semi  12753..12799  cheap 0 of 8
+  256x32 at (512,16)     N 20000  semi  12753..12754  cheap 0 of 8
+
+gpu/gpu-tail3: Done.

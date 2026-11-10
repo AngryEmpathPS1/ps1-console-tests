@@ -1,0 +1,39 @@
+
+cpu/load-use
+Per-iteration cost above a loop of nops in the same slots, 100 iterations.
+There are no assertions - compare against your emulator.
+
+READER: lw t1 + 7 slots, `addu t5,t1,t1` in slot p (above 8 nops)
+  no reader          1547 -   1345 =    202 over 100  ->  2.02 cycles
+  reader p=2         1952 -   1345 =    607 over 100  ->  6.07 cycles
+  reader p=3         1956 -   1345 =    611 over 100  ->  6.11 cycles
+  reader p=4         1871 -   1345 =    526 over 100  ->  5.26 cycles
+  reader p=5         1750 -   1345 =    405 over 100  ->  4.05 cycles
+  reader p=6         1646 -   1345 =    301 over 100  ->  3.01 cycles
+  reader p=7         1550 -   1345 =    205 over 100  ->  2.05 cycles
+
+SHADOW: lw + s independent nops (above 1 + s nops)
+  s=0                 955 -    630 =    325 over 100  ->  3.25 cycles
+  s=1                 943 -    744 =    199 over 100  ->  1.99 cycles
+  s=2                1044 -    836 =    208 over 100  ->  2.08 cycles
+  s=3                1151 -    935 =    216 over 100  ->  2.16 cycles
+  s=4                1243 -   1040 =    203 over 100  ->  2.03 cycles
+  s=5                1342 -   1141 =    201 over 100  ->  2.01 cycles
+  s=6                1442 -   1248 =    194 over 100  ->  1.94 cycles
+  s=7                1548 -   1345 =    203 over 100  ->  2.03 cycles
+
+PAIRS: two loads (above the same count of nops)
+  lw;lw              1463 -    744 =    719 over 100  ->  7.19 cycles
+  lw;nop;lw          1667 -    836 =    831 over 100  ->  8.31 cycles
+  lw;2nop;lw         1662 -    935 =    727 over 100  ->  7.27 cycles
+
+DRAIN: sw then lw of the same word, d nops apart (above d + 2 nops)
+  sw;lw same         1452 -    744 =    708 over 100  ->  7.08 cycles
+  sw;1;lw same       1466 -    836 =    630 over 100  ->  6.30 cycles
+  sw;2;lw same       1460 -    935 =    525 over 100  ->  5.25 cycles
+  sw;3;lw same       1468 -   1040 =    428 over 100  ->  4.28 cycles
+  sw;4;lw same       1475 -   1141 =    334 over 100  ->  3.34 cycles
+  sw;5;lw same       1474 -   1248 =    226 over 100  ->  2.26 cycles
+  sw;lw other        1461 -    744 =    717 over 100  ->  7.17 cycles
+
+Done.

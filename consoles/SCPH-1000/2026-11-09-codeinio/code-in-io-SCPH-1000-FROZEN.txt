@@ -1,0 +1,38 @@
+# cpu/code-in-io (ps1-tests' original) on the SCPH-1000 under Unirom's debug mode, 2026-11-09 ~10:10 - FROZEN: no line after
+# 'pass - testCodeInMDEC' within the 2-minute limit (case 4, testCodeInInterrupts, never printed); copied from
+# scratch/console-run-SCPH-1000-codeinio.log. code-in-io-safe froze the same console in the same case twice (its red bar 4).
+1/1  cpu/code-in-io
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+cpu/code-in-io
+Test code execution from Scratchpad and various IO ports
+pass - testCodeInRam
+pass - testCodeInScratchpad
+pass - testCodeInMDEC
+... still measuring: 1:01 so far, usually about 1 min, limit 2 min
+  cpu/code-in-io: timeout.
+  PING: PONG
+r0 42000400   at fffe0000   v0 1f801070   v1 00000000
+  a0 00000002   a1 00000000   a2 801ffbd5   a3 0000002a
+  The console still answers: sending it once more.
+
+1/1  cpu/code-in-io, attempt 2
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+cpu/code-in-io
+Test code execution from Scratchpad and various IO ports
+pass - testCodeInRam
+pass - testCodeInScratchpad
+pass - testCodeInMDEC
