@@ -1,0 +1,74 @@
+ResetGraph:itb=80013354,ehk=80013384
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-tex-noscan
+Textured rectangles and quads with the vertical display range empty (E) and the display on (D320, D512): cycles
+from the first word to bits 28 and 26, fastest..slowest of four, each try 53 lines after the VBlank. No assertions.
+
+E (range empty):
+  flat rectangle 256x256     3 words   bit 28     139..145      bit 26    35107..35131
+   4-bit rectangle  64x64      4 words   bit 28     139..183      bit 26     2635..5712
+   4-bit rectangle 128x128     4 words   bit 28     139..139      bit 26    19085..22200
+   4-bit rectangle 256x256     4 words   bit 28     139..139      bit 26    88012..88021
+   4-bit quad       64x64      9 words   bit 28    2848..4661     bit 26     5292..8345
+   4-bit quad      128x128     9 words   bit 28   13483..16484    bit 26    28957..32022
+   4-bit quad      256x256     9 words   bit 28   62804..62880    bit 26   124698..124751
+   8-bit rectangle  64x64      4 words   bit 28     139..438      bit 26     9088..9343
+   8-bit rectangle 128x128     4 words   bit 28     139..144      bit 26    35666..35701
+   8-bit rectangle 256x256     4 words   bit 28     139..139      bit 26   142362..142405
+   8-bit quad       64x64      9 words   bit 28    5920..6330     bit 26    11574..12003
+   8-bit quad      128x128     9 words   bit 28   22315..23248    bit 26    44746..45757
+   8-bit quad      256x256     9 words   bit 28   89774..89815    bit 26   178958..179005
+  15-bit rectangle  64x64      4 words   bit 28     139..139      bit 26    15865..15880
+  15-bit rectangle 128x128     4 words   bit 28     139..145      bit 26    62802..62848
+  15-bit rectangle 256x256     4 words   bit 28     139..139      bit 26   250375..250390
+  15-bit quad       64x64      9 words   bit 28    9714..9744     bit 26    18666..18671
+  15-bit quad      128x128     9 words   bit 28   36825..36864    bit 26    72654..72669
+  15-bit quad      256x256     9 words   bit 28  143730..143802   bit 26   286945..286992
+D320 (display on, 320x240):
+  flat rectangle 256x256     3 words   bit 28     139..144      bit 26    35110..35115
+   4-bit rectangle  64x64      4 words   bit 28     139..145      bit 26     2631..5673
+   4-bit rectangle 128x128     4 words   bit 28     139..139      bit 26    19087..22190
+   4-bit rectangle 256x256     4 words   bit 28     139..145      bit 26    87984..88018
+   4-bit quad       64x64      9 words   bit 28    2843..4650     bit 26     5290..8333
+   4-bit quad      128x128     9 words   bit 28   13486..16487    bit 26    28960..31988
+   4-bit quad      256x256     9 words   bit 28   62841..62874    bit 26   124701..124743
+   8-bit rectangle  64x64      4 words   bit 28     139..144      bit 26     9044..9108
+   8-bit rectangle 128x128     4 words   bit 28     139..140      bit 26    35697..35710
+   8-bit rectangle 256x256     4 words   bit 28     139..144      bit 26   142360..142377
+   8-bit quad       64x64      9 words   bit 28    5925..6330     bit 26    11580..12003
+   8-bit quad      128x128     9 words   bit 28   22318..23250    bit 26    44749..45759
+   8-bit quad      256x256     9 words   bit 28   89769..89803    bit 26   178962..179005
+  15-bit rectangle  64x64      4 words   bit 28     139..144      bit 26    15820..15882
+  15-bit rectangle 128x128     4 words   bit 28     139..144      bit 26    62802..62818
+  15-bit rectangle 256x256     4 words   bit 28     139..139      bit 26   250378..250422
+  15-bit quad       64x64      9 words   bit 28    9707..9744     bit 26    18659..18712
+  15-bit quad      128x128     9 words   bit 28   36834..36869    bit 26    72663..72719
+  15-bit quad      256x256     9 words   bit 28  143733..143810   bit 26   286949..286997
+D512 (display on, 512x240):
+  flat rectangle 256x256     3 words   bit 28     139..142      bit 26    35110..35118
+   4-bit rectangle  64x64      4 words   bit 28     139..145      bit 26     2632..5667
+   4-bit rectangle 128x128     4 words   bit 28     139..140      bit 26    19079..22200
+   4-bit rectangle 256x256     4 words   bit 28     139..145      bit 26    88013..88021
+   4-bit quad       64x64      9 words   bit 28    2848..4709     bit 26     5292..8349
+   4-bit quad      128x128     9 words   bit 28   13488..16487    bit 26    29007..31991
+   4-bit quad      256x256     9 words   bit 28   62805..62885    bit 26   124703..124753
+   8-bit rectangle  64x64      4 words   bit 28     139..144      bit 26     9088..9097
+   8-bit rectangle 128x128     4 words   bit 28     139..145      bit 26    35698..35707
+   8-bit rectangle 256x256     4 words   bit 28     139..139      bit 26   142360..142369
+   8-bit quad       64x64      9 words   bit 28    5925..6341     bit 26    11580..12009
+   8-bit quad      128x128     9 words   bit 28   22322..23252    bit 26    44750..45759
+   8-bit quad      256x256     9 words   bit 28   89771..89783    bit 26   178962..179003
+  15-bit rectangle  64x64      4 words   bit 28     139..139      bit 26    15835..15873
+  15-bit rectangle 128x128     4 words   bit 28     139..145      bit 26    62805..62854
+  15-bit rectangle 256x256     4 words   bit 28     139..139      bit 26   250393..250431
+  15-bit quad       64x64      9 words   bit 28    9707..9758     bit 26    18659..18680
+  15-bit quad      128x128     9 words   bit 28   36830..36858    bit 26    72658..72669
+  15-bit quad      256x256     9 words   bit 28  143730..143774   bit 26   286943..287004
+ResetGraph:itb=80013354,ehk=80013384
+ResetGraph:SR=fb00
+
+gpu/gpu-tex-noscan: Done.

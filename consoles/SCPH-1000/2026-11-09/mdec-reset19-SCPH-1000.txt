@@ -1,0 +1,14 @@
+ResetGraph:itb=80012a2c,ehk=80012a5c
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset19
+mdec-reset's one(), first calls with a short own DMA time against the rest: whole call, caller to t0, t0 to done. No assertions.
+
+group            count     whole        caller..t0     t0..done
+own DMA < 64          0       0-0           0-0           0-0    
+own DMA >= 64      2025     304-327       120-140        76-86   
+
+mdec/mdec-reset19: Done.

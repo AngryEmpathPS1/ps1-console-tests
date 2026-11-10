@@ -18,6 +18,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 |---|---:|---:|
 | [2026-11-08](2026-11-08/) | 698 | 632 |
 | [2026-11-09-fuzz](2026-11-09-fuzz/) | 43 | 8 |
+| [2026-11-09-pause-doom](2026-11-09-pause-doom/) | 12 | 2 |
 | [2026-11-09-pausewin-doom](2026-11-09-pausewin-doom/) | 10 | 1 |
 | [2026-11-09-spinprobe](2026-11-09-spinprobe/) | 4 | 1 |
 | [2026-11-09-spinprobe2](2026-11-09-spinprobe2/) | 4 | 1 |

@@ -204,6 +204,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-08-texpart2](2026-11-08-texpart2/) | 6 | 1 |
 | [2026-11-09-codeinio](2026-11-09-codeinio/) | 12 | 3 |
 | [2026-11-09-fuzz](2026-11-09-fuzz/) | 12 | 3 |
+| [2026-11-09-pause](2026-11-09-pause/) | 9 | 1 |
 | [2026-11-09-pausewin](2026-11-09-pausewin/) | 9 | 1 |
 | [2026-11-09-spin](2026-11-09-spin/) | 11 | 2 |
 | [2026-11-09-texmask](2026-11-09-texmask/) | 6 | 1 |

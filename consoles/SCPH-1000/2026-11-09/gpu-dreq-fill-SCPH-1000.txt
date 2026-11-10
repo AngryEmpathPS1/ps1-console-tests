@@ -1,0 +1,31 @@
+ResetGraph:itb=80012734,ehk=80012764
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-dreq-fill
+GP1(04h) = 2, a long fill, then n words queued behind it: GPUSTAT bits 25 26 27 28, read twice 40 cycles apart. No assertions.
+
+  n   read 1 (25 26 27 28)   read 2
+  0   1001                   1001
+  1   1001                   1001
+  2   0000                   0000
+  3   0000                   0000
+  4   0000                   0000
+  5   0000                   0000
+  6   0000                   0000
+  7   0000                   0000
+  8   0000                   0000
+  9   0000                   0000
+ 10   0000                   0000
+ 11   0000                   0000
+ 12   0000                   0000
+ 13   0000                   0000
+ 14   0000                   0000
+ 15   0000                   0000
+ 16   0000                   0000
+ 17   0000                   0000
+ 18   0000                   0000
+
+gpu/gpu-dreq-fill: Done.

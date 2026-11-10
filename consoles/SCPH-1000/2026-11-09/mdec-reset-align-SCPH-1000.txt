@@ -1,0 +1,20 @@
+ResetGraph:itb=800154dc,ehk=8001550c
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset-align
+StrPlayer::mdecReset's prologue at each word of a cache line, cold and warm. No assertions.
+
+ word  run   kept  status (8 tries)                                                      cycles in the call
+  0    cold  0/8  a004001f a004001f a004001f a004001f a004001f a004001f a004001f a004001f   135 140 135 135 140 135 135 140
+  0    warm  0/8  a004001f a004001f a004001f a004001f a004001f a004001f a004001f a004001f   67 67 67 67 67 67 67 67
+  1    cold  8/8  b004001f b004001f b004001f b004001f b004001f b004001f b004001f b004001f   136 141 136 136 141 136 136 141
+  1    warm  0/8  a004001f a004001f a004001f a004001f a004001f a004001f a004001f a004001f   70 70 70 75 75 75 75 75
+  2    cold  8/8  b004001f b004001f b004001f b004001f b004001f b004001f b004001f b004001f   145 145 150 145 145 150 145 145
+  2    warm  6/8  b004001f b004001f a004001f b004001f b004001f b004001f a004001f b004001f   70 70 69 70 70 70 69 70
+  3    cold  0/8  a004001f a004001f a004001f a004001f a004001f a004001f a004001f a004001f   149 149 144 149 144 146 150 144
+  3    warm  7/8  b004001f b004001f a004001f b004001f b004001f b004001f b004001f b004001f   70 70 75 70 70 74 70 70
+
+mdec/mdec-reset-align: Done.

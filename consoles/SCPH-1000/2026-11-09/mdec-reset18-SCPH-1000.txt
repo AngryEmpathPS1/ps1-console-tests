@@ -1,0 +1,17 @@
+ResetGraph:itb=800129ac,ehk=800129dc
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset18
+mdec-reset's one(), a call after a rest and the call behind it: its own DMA time as a histogram. No assertions.
+
+own DMA time   after a rest   behind it
+   40- 43          14            2
+   76- 79         856          816
+   80- 83          44           44
+   84- 87         110          162
+first calls under 64, by phase /16: 0 0 0 0 0 0 0 0 0 0 14 0 0 0 0 0
+
+mdec/mdec-reset18: Done.

@@ -1,0 +1,44 @@
+ResetGraph:itb=8001559c,ehk=800155cc
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset10
+mdec-reset's one(), N 0, cold and cold-then-warm, by the refresh phase of the cold call. No assertions.
+
+phase   cold: calls lost bus   pair (the warm call): calls lost bus
+  0          88    0    0             16    0    0
+  8          24    0    0             56    0    0
+ 16          64    0    0            113    0    0
+ 24          16    0    0             16   16    0
+ 32          32    0    0             55    0    0
+ 40          80    0    0             94    0    0
+ 48           0    0    0             24    0    0
+ 56          32    0    0              0    0    0
+ 64          32    0    0            127    0    0
+ 72         176    0    0             24    0    0
+ 80           0    0    0             63    0    0
+ 88          56    0    0            119    0    0
+ 96          88    0    0             24    0    0
+104          81    0    0             40    0    0
+112           7    0    0            103    0    0
+120           0    0    0              0    0    0
+128         208    0    0             96    0    0
+136          96    0    0             17    0    0
+144          56    0    0            121    0    0
+152         224    0    0             84    0    0
+160          24    0    0             94    0    0
+168          56    0    0             32    0    0
+176           1    0    0              8    0    0
+184          87    0    0            116    0    0
+192          48    0    0             96    0    0
+200          80    0    0             78    0    0
+208         112    0    0              0    0    0
+216          56    0    0             65    0    0
+224          72    0    0            126    0    0
+232           8    0    0            105    0    0
+240         128    0    0             40    0    0
+248          16    0    0             96    0    0
+
+mdec/mdec-reset10: Done.

@@ -9,7 +9,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | bios-window | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | biu-dram | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
 | biu-sched | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| bus-latch |  | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
+| bus-latch | 1 | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | card-fetch | 1 |  | 1 |  |  | 3 |  |  |  |  |  |
 | card-fetch2 | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
 | cd-2x-burned |  | 1 |  |  | 1 |  | 2 | 1 | 4 | 1 |  |
@@ -26,7 +26,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-game-steps |  | 7 | 2 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
 | cd-gameday |  | 2 |  |  | 2 |  | 2 | 2 | 2 | 2 |  |
 | cd-getlocl-seek |  | 3 | 2 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
-| cd-hc05-tick |  | 3 | 2 | 2 | 4 | 3 | 4 | 7 | 4 | 3 |  |
+| cd-hc05-tick | 3 | 3 | 2 | 2 | 4 | 3 | 4 | 7 | 4 | 3 |  |
 | cd-head |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-hold-after |  | 3 | 2 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
 | cd-hold-loc |  | 3 | 2 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
@@ -36,7 +36,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-init-args |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-init-far |  | 3 | 2 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
 | cd-int1-spread |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
-| cd-irq-glitch |  | 1 | 1 | 1 | 2 | 2 | 2 | 4 | 1 | 2 | 2 |
+| cd-irq-glitch | 1 | 1 | 1 | 1 | 2 | 2 | 2 | 4 | 1 | 2 | 2 |
 | cd-leadout |  | 4 | 1 | 1 | 4 | 1 | 1 | 5 | 1 | 3 |  |
 | cd-lid |  |  |  |  |  |  |  | 3 |  |  |  |
 | cd-lid-sweep |  |  |  |  |  |  |  | 3 |  |  |  |
@@ -44,9 +44,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-lid-sweep3 |  |  |  |  |  |  | 3 | 3 | 3 | 3 |  |
 | cd-lid-sweep4 |  |  |  |  |  |  | 3 |  |  |  |  |
 | cd-pastend |  | 2 | 1 | 1 | 3 | 1 | 1 | 4 | 1 | 3 |  |
-| cd-pause |  | 11 | 2 | 7 | 12 | 3 | 7 | 17 | 2 | 10 | 3 |
+| cd-pause |  | 11 | 6 | 7 | 12 | 8 | 7 | 17 | 2 | 10 | 3 |
 | cd-pausehold |  |  | 2 |  |  | 5 |  | 6 |  |  |  |
-| cd-pausewin |  |  | 7 |  |  | 12 |  | 6 |  |  |  |
+| cd-pausewin |  |  | 10 |  |  | 12 |  | 6 |  |  |  |
 | cd-playagain |  | 4 | 2 |  |  | 4 |  | 4 | 4 |  |  |
 | cd-playagain2 |  | 4 | 2 |  |  | 10 |  | 4 | 4 |  |  |
 | cd-queue |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
@@ -130,10 +130,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | cpu-loop-tick7 | 1 | 2 | 1 |  | 2 | 1 |  | 2 | 1 | 2 |  |
 | cpu-loop-tick8 | 1 | 2 | 1 |  | 2 | 1 |  | 2 | 1 | 2 |  |
 | cpu-loop-tick9 | 1 | 2 | 1 |  | 2 | 1 |  | 2 | 1 | 2 |  |
-| cpu_access-time |  | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
+| cpu_access-time | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | cpu_code-in-io | 1 | 1 |  | 1 | 2 |  | 1 | 2 | 1 | 2 |  |
-| cpu_cop |  | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
-| dma-arb |  | 6 | 1 | 6 | 6 | 3 | 6 | 8 | 1 | 5 | 2 |
+| cpu_cop | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
+| dma-arb | 1 | 6 | 1 | 6 | 6 | 3 | 6 | 8 | 1 | 5 | 2 |
 | dma-chopx | 1 | 2 | 1 |  | 1 | 3 |  | 4 | 2 |  |  |
 | dma-contention | 1 | 6 | 1 | 7 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
 | dma-disp | 1 | 2 | 1 |  | 2 | 3 |  | 4 | 2 |  |  |
@@ -146,9 +146,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | dma-rows | 1 | 2 | 1 |  | 5 | 3 |  | 4 | 2 |  |  |
 | dma-setup | 1 | 2 | 1 |  | 1 | 3 |  | 4 | 2 |  |  |
 | dma-trace | 1 | 2 | 1 |  | 3 | 3 |  | 4 | 2 |  |  |
-| dma_chopping |  | 6 | 1 | 6 | 11 | 3 | 6 | 14 | 1 | 10 | 2 |
-| dma_dpcr |  | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
-| dma_otc-test |  | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
+| dma_chopping | 1 | 6 | 1 | 6 | 11 | 3 | 6 | 14 | 1 | 10 | 2 |
+| dma_dpcr | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
+| dma_otc-test | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | draw-area | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | fifo-burst | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | fill-gap | 1 | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
@@ -174,35 +174,35 @@ How many logs each test has on each console. Generated from the file names in `c
 | gp0-store | 1 | 2 | 1 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |
 | gp1-reset | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
 | gp1-reset-480i | 1 |  | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0-ready |  | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
+| gpu-a0-ready | 1 | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
 | gpu-a0-size | 1 | 1 | 1 | 7 | 7 | 3 | 6 | 6 | 1 | 4 | 2 |
-| gpu-a0after |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0blk |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0blk2 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0blk3 |  | 2 | 1 |  |  | 5 |  | 4 | 2 |  |  |
-| gpu-a0chop |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0fill |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0lsf |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0mode |  | 2 | 1 |  |  | 6 |  | 4 | 2 |  |  |
+| gpu-a0after | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0blk | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0blk2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0blk3 | 1 | 2 | 1 |  |  | 5 |  | 4 | 2 |  |  |
+| gpu-a0chop | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0fill | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0lsf | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0mode | 1 | 2 | 1 |  |  | 6 |  | 4 | 2 |  |  |
 | gpu-a0pace | 1 | 4 | 1 |  | 1 | 3 |  | 4 | 2 |  |  |
-| gpu-a0phase |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0poll |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0poll10 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0poll11 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0poll2 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0poll3 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0poll4 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0poll5 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0poll6 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0poll7 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0poll9 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0phase | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0poll | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0poll10 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0poll11 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0poll2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0poll3 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0poll4 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0poll5 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0poll6 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0poll7 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0poll9 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0pollbs | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-a0rate | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0rate2 | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-a0row | 1 | 4 | 1 |  |  | 8 |  | 4 | 2 |  |  |
-| gpu-a0rowdisp |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0rowdisp | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0stall | 1 | 3 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-a0vph |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-a0vph | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-abort | 1 | 6 | 1 | 7 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
 | gpu-batch | 1 | 2 | 1 | 7 | 7 | 3 | 6 | 4 | 1 | 2 |  |
 | gpu-batch2 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 2 |  |
@@ -213,16 +213,16 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-burstq3 | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-c0-cold | 1 | 3 | 1 | 7 | 6 | 3 | 6 | 5 | 1 | 3 | 2 |
 | gpu-c0-cold2 | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
-| gpu-c0-datel |  | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
+| gpu-c0-datel | 1 | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
 | gpu-c0-dir3 | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-c0-gaps |  | 6 | 1 | 6 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
+| gpu-c0-gaps | 1 | 6 | 1 | 6 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
 | gpu-c0-ready | 1 | 1 | 1 | 7 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
 | gpu-c0-size | 1 | 2 | 1 | 7 | 7 | 3 | 6 | 4 | 1 | 2 | 2 |
 | gpu-clut-dma | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
 | gpu-clut-ready | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
 | gpu-clut-ready2 | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
 | gpu-clut-ready3 | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
-| gpu-clut-ready4 |  |  | 1 |  |  | 3 |  | 3 |  |  |  |
+| gpu-clut-ready4 | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
 | gpu-cmd-ready | 1 | 1 | 1 | 6 | 7 | 3 | 6 | 4 | 1 | 2 | 2 |
 | gpu-copy-480i | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
 | gpu-copy2 | 1 | 2 | 1 | 7 | 7 | 3 | 6 | 4 | 1 | 2 |  |
@@ -232,21 +232,21 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-degen | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
 | gpu-degen2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
 | gpu-dma-blkper | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-gaps |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-gaps2 |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-gaps3 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-dma-gaps | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-dma-gaps2 | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-dma-gaps3 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-dma-gapsd | 1 | 6 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-dma-gapsd2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-dma-hold |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-dma-ifetch |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-dma-hold | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-dma-ifetch | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-dma-iorun | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-knee |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-dma-knee | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-dma-lasttie | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-dma-pace | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-pair |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-dma-progress |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-progress2 |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-quiet |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-dma-pair | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-dma-progress | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-dma-progress2 | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-dma-quiet | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-dma-ramrow | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-dma-rdbs | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-dma-rdlen | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
@@ -256,18 +256,18 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dma-rdpoll | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-dma-rdpoll2 | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-dma-refctl | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-refresh |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| gpu-dma-refresh | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
 | gpu-dma-rfpace | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-dma-rfpace2 | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-dma-rowburst | 1 |  | 1 |  |  | 2 |  | 2 | 2 |  |  |
 | gpu-dma-rowdown | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-rowend |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-rowlen |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-rowlen2 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| gpu-dma-rows |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-rows2 |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-rowx |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| gpu-dma-size |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| gpu-dma-rowend | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-dma-rowlen | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-dma-rowlen2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-dma-rows | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-dma-rows2 | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-dma-rowx | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-dma-size | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
 | gpu-dma-span | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-dma-stoiter | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-dma-stoiter2 | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
@@ -286,7 +286,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-dmastream3 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 2 |  |
 | gpu-dmastream4 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 2 |  |
 | gpu-dmastream5 | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
-| gpu-dreq-fill |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| gpu-dreq-fill | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
 | gpu-drift | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 6 |  |
 | gpu-fill-480i | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
 | gpu-gp1scan | 1 | 2 | 1 |  | 2 | 3 |  | 4 | 2 |  |  |
@@ -295,8 +295,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-lines | 1 | 2 | 1 | 7 | 7 | 3 | 6 | 4 | 1 | 2 |  |
 | gpu-lines2 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 2 |  |
 | gpu-ll-ahead | 1 |  | 1 |  |  | 4 |  | 4 | 2 |  |  |
-| gpu-ll-end |  | 2 | 1 |  |  | 3 |  | 2 | 2 |  |  |
-| gpu-ll-start |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| gpu-ll-end | 1 | 2 | 1 |  |  | 3 |  | 2 | 2 |  |  |
+| gpu-ll-start | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-ll-stat | 1 |  | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-outside | 1 | 2 | 1 |  |  | 5 |  | 4 | 1 |  |  |
 | gpu-outside2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
@@ -420,14 +420,14 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-tex-gap |  |  |  |  |  | 3 |  |  |  |  |  |
 | gpu-tex-ilace |  |  |  |  |  | 3 |  |  |  |  |  |
 | gpu-tex-maskpart |  |  |  |  |  | 3 |  |  |  |  |  |
-| gpu-tex-noscan |  |  | 1 |  |  | 3 |  | 3 |  |  |  |
+| gpu-tex-noscan | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-opaque | 1 | 6 | 1 | 7 | 6 | 3 | 6 | 8 | 1 | 6 | 2 |
 | gpu-tex-part |  |  |  |  |  | 3 |  |  |  |  |  |
 | gpu-tex-part2 |  |  |  |  |  | 3 |  |  |  |  |  |
-| gpu-tex-scale |  |  | 1 |  |  | 3 |  | 3 |  |  |  |
+| gpu-tex-scale | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-semipart |  |  |  |  |  | 3 |  |  |  |  |  |
-| gpu-tex-stride |  |  | 1 |  |  | 3 |  | 3 |  |  |  |
-| gpu-tex-stride2 |  |  | 1 |  |  | 3 |  | 3 |  |  |  |
+| gpu-tex-stride | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
+| gpu-tex-stride2 | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-stride3 |  |  |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-thin | 1 | 3 | 1 | 7 | 6 | 3 | 6 | 8 | 1 | 3 | 2 |
 | gpu-timectl | 1 | 2 | 1 |  | 2 | 3 |  | 4 | 2 |  |  |
@@ -440,26 +440,26 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-wh | 1 | 2 | 1 |  | 3 | 3 |  | 4 | 2 |  |  |
 | gpu-whv | 1 | 2 | 1 |  | 1 | 3 |  | 4 | 2 |  |  |
 | gpu-whv2 | 1 | 2 | 1 |  | 1 | 3 |  | 4 | 2 |  |  |
-| gpu_bandwidth |  | 6 | 1 | 6 | 9 | 4 | 6 | 10 | 1 | 8 | 2 |
-| gpu_gp0-e1 |  | 1 | 1 | 6 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
-| gpu_mask-bit |  | 1 | 1 | 6 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
+| gpu_bandwidth | 1 | 6 | 1 | 6 | 9 | 4 | 6 | 10 | 1 | 8 | 2 |
+| gpu_gp0-e1 | 1 | 1 | 1 | 6 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
+| gpu_mask-bit | 1 | 1 | 1 | 6 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
 | gpuinfo-latch | 1 | 1 | 1 | 7 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
-| gpustat |  | 1 | 1 | 6 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
+| gpustat | 1 | 1 | 1 | 6 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
 | gpustat31 | 1 | 6 | 1 | 7 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
 | gte-hold | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | gte-irgb | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | gte-latch-cached | 1 | 6 | 1 | 7 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
-| gte-sqr-align |  | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
+| gte-sqr-align | 1 | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | gte-undef | 1 | 3 | 1 |  | 2 | 3 |  | 4 | 2 |  |  |
 | gte-write-delay | 1 | 2 | 1 |  |  | 3 |  | 2 | 1 |  |  |
-| gte_test-all |  | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
+| gte_test-all | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | hold-read | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | icache-tagmatch | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | icache-valid | 1 | 2 | 1 |  | 1 |  |  | 2 | 2 |  |  |
 | imask-upper | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | io-chain | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | io-pair2 | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
-| io-pairs |  | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
+| io-pairs | 1 | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | io-ram | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | io-shadow | 1 | 1 | 1 | 1 | 1 | 1 | 2 | 4 | 1 | 2 | 2 |
 | io-store-shadow | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
@@ -481,51 +481,51 @@ How many logs each test has on each console. Generated from the file names in `c
 | machine-id | 1 | 9 | 1 | 7 | 27 | 3 | 6 | 16 | 1 | 13 | 2 |
 | mdec-color | 1 | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | mdec-glitch24 | 1 | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
-| mdec-idct |  | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
+| mdec-idct | 2 | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
 | mdec-idct2 | 1 | 2 | 1 | 1 | 2 | 1 | 2 | 6 | 1 | 2 |  |
 | mdec-in-hang | 1 | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | mdec-leftover | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
-| mdec-mono-out |  | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
+| mdec-mono-out | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | mdec-pad | 1 | 2 | 1 |  |  | 3 |  | 4 | 5 |  |  |
 | mdec-pad2 | 1 | 2 | 1 |  |  | 1 |  | 2 | 2 |  |  |
 | mdec-padding | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | mdec-qbias | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
-| mdec-reset |  | 1 | 1 | 6 | 3 | 15 | 6 | 6 | 1 | 4 | 2 |
-| mdec-reset-align |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset-grid |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset-grid2 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset-grid3 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset-half |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset-tail |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset-tailgrid |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset10 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset11 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset12 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset13 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset14 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset15 |  | 2 | 1 |  |  | 4 |  | 4 | 2 |  |  |
-| mdec-reset16 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset17 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset18 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset19 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset2 |  | 2 | 1 |  | 1 | 3 |  | 2 | 2 |  |  |
-| mdec-reset20 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset21 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset22 |  | 2 | 1 |  |  | 4 |  | 4 | 2 |  |  |
-| mdec-reset3 |  | 2 | 1 |  |  | 3 |  | 2 | 1 |  |  |
-| mdec-reset4 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset5 |  | 2 | 1 |  |  | 2 |  | 2 | 1 |  |  |
-| mdec-reset6 |  | 2 | 1 |  |  | 2 |  | 2 | 1 |  |  |
-| mdec-reset7 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| mdec-reset8 |  | 2 | 1 |  |  | 2 |  | 2 | 1 |  |  |
-| mdec-reset9 |  | 2 | 1 |  |  | 2 |  | 2 | 1 |  |  |
+| mdec-reset | 1 | 1 | 1 | 6 | 3 | 15 | 6 | 6 | 1 | 4 | 2 |
+| mdec-reset-align | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset-grid | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset-grid2 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset-grid3 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset-half | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset-tail | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset-tailgrid | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset10 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset11 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset12 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset13 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset14 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset15 | 1 | 2 | 1 |  |  | 4 |  | 4 | 2 |  |  |
+| mdec-reset16 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset17 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset18 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset19 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset2 | 1 | 2 | 1 |  | 1 | 3 |  | 2 | 2 |  |  |
+| mdec-reset20 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset21 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset22 | 1 | 2 | 1 |  |  | 4 |  | 4 | 2 |  |  |
+| mdec-reset3 | 1 | 2 | 1 |  |  | 3 |  | 2 | 1 |  |  |
+| mdec-reset4 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset5 | 1 | 2 | 1 |  |  | 2 |  | 2 | 1 |  |  |
+| mdec-reset6 | 1 | 2 | 1 |  |  | 2 |  | 2 | 1 |  |  |
+| mdec-reset7 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-reset8 | 1 | 2 | 1 |  |  | 2 |  | 2 | 1 |  |  |
+| mdec-reset9 | 1 | 2 | 1 |  |  | 2 |  | 2 | 1 |  |  |
 | mdec-round | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | mdec-scale | 1 | 2 | 1 | 7 | 2 | 6 | 6 | 6 | 1 | 2 |  |
 | mdec-scale2 | 1 | 2 | 1 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |
 | mdec-step24 | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
-| mdec-tail |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-tail | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
 | mdec-time | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
-| mdec-winddown |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| mdec-winddown | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
 | mem-delay | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | mem-low | 1 |  | 1 |  |  | 1 |  | 2 | 2 |  |  |
 | miss-grid | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
@@ -548,7 +548,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | mul-shadow | 1 | 3 | 1 |  | 3 |  |  | 2 | 2 |  |  |
 | muldiv-overlap | 1 | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | multitap-modes |  |  |  | 1 |  |  |  |  |  |  |  |
-| pad-ack-hist |  | 6 | 1 | 6 | 6 | 6 | 6 | 8 | 1 | 6 | 2 |
+| pad-ack-hist | 1 | 6 | 1 | 6 | 6 | 6 | 6 | 8 | 1 | 6 | 2 |
 | pad-config |  |  |  |  |  |  |  |  |  | 3 |  |
 | pad-short-exit |  |  |  |  | 1 |  |  |  |  |  |  |
 | pair-atlas | 1 | 2 | 1 |  | 5 | 3 |  | 4 | 2 |  |  |
@@ -560,8 +560,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | pair-mid | 1 | 1 | 1 |  | 2 |  |  | 2 | 2 |  |  |
 | pair-unc | 1 | 1 | 1 |  | 2 |  |  | 2 | 2 |  |  |
 | pair-warm | 1 | 1 | 1 |  | 2 |  |  | 2 | 2 |  |  |
-| pal-dots |  | 6 | 1 |  | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
-| pal-line |  | 6 | 1 |  | 6 | 3 | 6 | 8 | 1 | 6 | 2 |
+| pal-dots | 1 | 6 | 1 |  | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
+| pal-line | 1 | 6 | 1 |  | 6 | 3 | 6 | 8 | 1 | 6 | 2 |
 | pal-probe |  |  |  | 1 |  |  |  |  |  |  |  |
 | pal-probe2 |  |  |  | 1 |  |  |  |  |  |  |  |
 | pocket-cmds |  |  |  |  | 6 |  |  | 1 |  |  |  |
@@ -577,20 +577,20 @@ How many logs each test has on each console. Generated from the file names in `c
 | ram-store-io6 | 1 | 2 | 1 | 1 | 2 | 1 | 2 | 1 | 1 | 2 |  |
 | ram-store-io7 | 1 | 2 | 1 | 1 | 2 | 1 | 2 | 1 | 1 | 2 |  |
 | ram-store-io8 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| redux-spu |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| redux-spuenvx |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| redux-spuenvxd12 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| redux-spuenvxd16 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| redux-spuenvxd20 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| redux-spuenvxd24 |  | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
-| redux-spuenvxd28 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| redux-spuenvxd32 |  | 2 | 1 |  |  | 1 |  | 2 | 2 |  |  |
-| redux-spuenvxd36 |  | 2 | 1 |  |  | 1 |  | 2 | 2 |  |  |
-| redux-spuenvxd4 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| redux-spuenvxd40 |  | 2 | 1 |  |  | 1 |  | 2 | 2 |  |  |
-| redux-spuenvxd44 |  | 2 | 1 |  |  | 1 |  | 2 | 2 |  |  |
-| redux-spuenvxd48 |  | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
-| redux-spuenvxd8 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| redux-spu | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| redux-spuenvx | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| redux-spuenvxd12 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| redux-spuenvxd16 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| redux-spuenvxd20 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| redux-spuenvxd24 | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| redux-spuenvxd28 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| redux-spuenvxd32 | 1 | 2 | 1 |  |  | 1 |  | 2 | 2 |  |  |
+| redux-spuenvxd36 | 1 | 2 | 1 |  |  | 1 |  | 2 | 2 |  |  |
+| redux-spuenvxd4 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| redux-spuenvxd40 | 1 | 2 | 1 |  |  | 1 |  | 2 | 2 |  |  |
+| redux-spuenvxd44 | 1 | 2 | 1 |  |  | 1 |  | 2 | 2 |  |  |
+| redux-spuenvxd48 | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| redux-spuenvxd8 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | refresh-cold | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | refresh-io | 1 | 3 | 1 | 7 | 3 | 6 | 6 | 5 | 1 | 3 | 2 |
 | refresh-io2 | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
@@ -615,8 +615,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | sio1-mismatch |  |  |  |  |  |  |  | 1 |  |  |  |
 | slow-b2b | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | spu-busy | 1 | 6 | 1 | 6 | 6 | 3 | 6 | 9 | 1 | 6 | 2 |
-| spu-curvol |  | 1 | 1 | 6 | 2 | 6 | 6 | 6 | 1 | 2 | 2 |
-| spu-decode-ahead |  | 6 | 1 | 6 | 6 | 3 | 6 | 10 | 1 | 6 | 2 |
+| spu-curvol | 1 | 1 | 1 | 6 | 2 | 6 | 6 | 6 | 1 | 2 | 2 |
+| spu-decode-ahead | 1 | 6 | 1 | 6 | 6 | 3 | 6 | 10 | 1 | 6 | 2 |
 | spu-dma | 1 | 6 | 1 | 6 | 8 | 3 | 6 | 11 | 1 | 7 | 1 |
 | spu-dmaread | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | spu-dmaread2 | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
@@ -651,10 +651,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu-reverb | 1 | 6 | 1 | 6 | 16 | 3 | 6 | 15 | 1 | 10 | 2 |
 | spu-reverb-in | 1 | 6 | 1 | 6 | 8 | 3 | 6 | 11 | 1 | 8 | 2 |
 | spu-statx-tail | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
-| spu-unk-1dbc |  | 1 | 1 | 6 | 1 | 6 | 6 | 4 | 1 | 2 | 2 |
-| spu-unk-kill |  | 1 | 1 | 6 | 1 | 6 | 6 | 4 | 1 | 2 | 2 |
+| spu-unk-1dbc | 1 | 1 | 1 | 6 | 1 | 6 | 6 | 4 | 1 | 2 | 2 |
+| spu-unk-kill | 1 | 1 | 1 | 6 | 1 | 6 | 6 | 4 | 1 | 2 | 2 |
 | spu-xfer | 1 | 6 | 1 | 7 | 8 | 3 | 6 | 12 | 1 | 8 | 2 |
-| spu_memory-transfer |  | 1 | 1 | 6 | 3 | 6 | 6 | 7 | 1 | 4 | 2 |
+| spu_memory-transfer | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 7 | 1 | 4 | 2 |
 | sr-mask | 1 | 2 | 1 |  |  | 3 |  | 2 | 1 |  |  |
 | st-land | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | state-peek | 1 | 2 | 1 |  | 2 | 3 |  | 4 | 2 |  |  |
@@ -668,11 +668,11 @@ How many logs each test has on each console. Generated from the file names in `c
 | sw-ioread3 | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | sw-ioread4 | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | sw-sample | 1 | 2 | 1 | 1 | 3 | 1 | 2 | 6 | 1 | 2 |  |
-| t0-dot-modewrite |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| t0-dot-write |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| t0-dot-write2 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| t1-count-edge |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| t1-count-edge2 |  | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| t0-dot-modewrite | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| t0-dot-write | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| t0-dot-write2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| t1-count-edge | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| t1-count-edge2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | t1-edges | 1 | 1 | 1 | 7 | 1 | 6 | 6 | 4 | 1 | 2 | 2 |
 | t1-first-edge | 1 | 1 | 1 | 1 | 1 | 1 |  | 3 | 1 | 1 |  |
 | t1-first-edge2 | 1 | 1 | 1 | 3 | 1 | 3 |  | 3 | 1 | 1 |  |
@@ -684,9 +684,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | t1-toggle | 1 | 6 | 1 | 7 | 6 | 3 | 6 | 8 | 1 | 6 | 2 |
 | t2-path | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | third-try-stop-500ms |  |  |  |  | 1 |  |  |  |  |  |  |
-| timer-sync |  | 6 | 1 |  | 10 | 3 | 6 | 14 | 1 | 10 | 2 |
+| timer-sync | 1 | 6 | 1 |  | 10 | 3 | 6 | 14 | 1 | 10 | 2 |
 | timer2-lap | 1 | 2 | 1 |  |  | 3 |  | 2 | 1 |  |  |
-| timers_timers |  | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
+| timers_timers | 1 | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
 | tri-cold | 1 | 1 | 1 |  | 2 |  |  | 2 | 2 |  |  |
 | unc-entry | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | unc-entry2 | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
