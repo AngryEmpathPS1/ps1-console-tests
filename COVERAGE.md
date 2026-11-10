@@ -399,6 +399,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-shape-time76 | 1 | 1 | 1 | 1 | 1 | 3 |  | 4 | 1 | 1 |  |
 | gpu-shape-time77 | 1 | 1 | 1 | 1 | 1 | 3 |  | 3 | 1 | 1 |  |
 | gpu-shape-time78 | 1 | 1 | 1 |  | 1 | 3 |  | 4 | 1 | 1 |  |
+| gpu-shape-time79 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-shape-time8 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 2 |  |
 | gpu-shape-time9 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 2 |  |
 | gpu-tail | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 3 | 1 | 6 |  |
