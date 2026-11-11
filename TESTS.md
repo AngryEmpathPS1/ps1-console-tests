@@ -286,6 +286,7 @@ What each test measures, and whether it needs a disc in the drive. The header of
 | t1-hres | no | the tick against the IRQ at every display width, the display off, and the GPU reset's range |
 | t1-hsweep | no | the tick against the IRQ at six X2 and four X1 |
 | t1-toggle | no | the tick against bit 31's toggle within each line (tight dithered waits, ~600 lines a case): NTSC controls, an X1 off the dot grid, display ends near and past the line's end, empty ranges, the display off, PAL lines |
+| t0-hreset | no | per line, Timer 0 (sync mode 1, reset at hblank: system clock 0003h, dot clock 0103h, free 0000h) read just after Timer 1's tick (A) and just after GPUSTAT bit 31's toggle (B), the toggle - tick (C) and the reset - tick (D) on Timer 2; NTSC at the five dot clocks 260h..C60h and 512 at 260h..A60h |
 | t1-first-edge | no | Timer 1 (hblank) has its mode written at an exact cycle of a line (Timer 0 reset at the line's start, gpu-shape-time69's delay) and is read three line starts later, the write swept across a whole line, four passes |
 | t1-first-edge2 | no | t1-first-edge swept by ONE cycle across its step, three passes each: 320 wide at 260h..C60h and 260h..A60h, 256 and 640 wide at 260h..C60h |
 | spu-health | no | voice 1 keyed on (its envelope) as found and after the SPU is switched off and on; the reverb's settings; sound RAM watched at 1000h, 40000h and 7E000h for 300,000 cycles |

@@ -679,6 +679,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | t0-dot-modewrite | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | t0-dot-write | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | t0-dot-write2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
+| t0-hreset |  |  |  |  |  | 6 |  |  |  |  |  |
 | t1-count-edge | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | t1-count-edge2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | t1-edges | 1 | 1 | 1 | 7 | 1 | 6 | 6 | 4 | 1 | 2 | 2 |
