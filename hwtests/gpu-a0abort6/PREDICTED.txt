@@ -1,0 +1,24 @@
+gpu-a0abort6 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED: which line starts around the vertical blanking hold an upload - both ends of it, by Timer 1's count - and how
+Timer 1's count sits against GPUSTAT bit 31 and Timer 0 there (STATUS "gpu-a0abort5 on the second SCPH-5501 and the PSone": the
+row started on Timer 1 = 236 lost nothing on either console, where this emulator loses 109 words).
+
+TWO CORES, both under tools/hwrunner.js --emu with the SCPH-5501's BIOS, 153 R rows each (51 lines x 3):
+  A. the proposal's landed copy (src at v0.377.322 + experiments/land_intake.js)   experiments/knot/abort6_r_land322.txt
+  B. A + experiments/knot/_mkvbn.js (the fetch near a line's end is the NEXT line's) experiments/knot/abort6_r_vbn.txt
+
+                                   A                      B
+  rows that lose nothing           L 237 .. 259 (23)      L 236 .. 258 (23)
+  every other row                  93 / 109 words (125 in 8: each pass's first rows)       the same
+
+T rows, both cores alike: Timer 1 changes with Timer 0 at 1,629-1,647 on every line but its reset: 261 -> 262 at 1,636 with
+bit 31 = 1, then 0 at Timer 0 = 1,831-1,834 (the count 262 lasts ~200 cycles), 1 at 1,638-1,645. Bit 31 reads 0 at every change
+from 238 to 261 and alternates elsewhere. The row asked for L 262 starts with ln 0.
+
+WHAT WOULD SAY WHAT. The console's free rows L 236 .. 258: B, the fetch belongs to the line it fills, at both ends. 236 .. 259
+(24): no fetch before a blanked line AND none on the last blanked line - the first displayed line's is not fetched ahead (or is
+later than this start reaches). 237 .. 259: A - and gpu-a0abort5's L 236 row is something else. Another run of ~23: the blanking
+against Timer 1 sits elsewhere than here; the T rows say where bit 31 stands still by the same count.
+The T rows on the console with no 262 at all, or 0 arriving sooner after 262 than ~200 cycles: Timer 1's reset is nearer the
+hblank's tick than this emulator's (the main session's; gpu-a0abort5 never read 262 on either console).

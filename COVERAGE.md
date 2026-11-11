@@ -17,6 +17,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-ack-times |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-ack-window |  | 7 | 2 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
 | cd-adpbusy |  | 1 |  |  | 1 |  | 2 | 1 | 2 | 1 |  |
+| cd-audiodisc |  |  |  |  |  | 7 |  |  |  |  |  |
 | cd-boot-read |  | 4 | 2 | 2 | 3 | 3 | 3 | 6 | 2 | 3 |  |
 | cd-boot-steps |  | 7 | 2 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
 | cd-cmds |  | 7 | 2 | 7 | 13 | 3 | 7 | 16 | 2 | 10 | 3 |
@@ -86,7 +87,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-speedack2 |  |  | 2 |  |  | 3 |  | 5 |  |  |  |
 | cd-speedpause |  | 4 | 1 | 6 | 6 | 2 | 4 | 8 | 4 | 6 | 2 |
 | cd-spindown |  |  | 2 |  |  | 8 |  | 8 |  |  |  |
-| cd-spindown2 |  |  | 2 |  |  | 4 |  | 4 |  |  |  |
+| cd-spindown2 |  |  | 2 |  |  | 9 |  | 4 |  |  |  |
 | cd-spinprobe | 2 |  | 2 |  |  | 3 |  |  |  |  |  |
 | cd-spinup-phase |  | 3 | 2 | 2 | 3 | 3 | 6 | 7 | 7 | 7 |  |
 | cd-spinup-state |  | 3 | 2 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
@@ -180,6 +181,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-a0abort |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-a0abort2 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-a0abort3 |  |  |  |  |  | 6 |  |  |  |  |  |
+| gpu-a0abort4 |  |  | 6 |  |  | 6 |  |  |  |  |  |
+| gpu-a0abort5 |  |  | 6 |  |  | 6 |  |  |  |  |  |
+| gpu-a0abort6 |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | gpu-a0after | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0blk | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0blk2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |

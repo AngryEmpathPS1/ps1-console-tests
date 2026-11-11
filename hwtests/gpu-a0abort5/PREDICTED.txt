@@ -1,0 +1,14 @@
+gpu-a0abort5 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED: on which of the frame's lines an upload is held at the line start (STATUS "gpu-a0abort4 on the second SCPH-5501
+and the PSone": rows 0-3 hblanks after the vblank lose as mid-frame rows do, the display on or off).
+
+THE CORE: the proposal's landed copy (src at v0.377.322 + experiments/land_intake.js), tools/hwrunner.js --emu, the SCPH-5501's
+BIOS; 198 rows. A burst of 480 words loses 93 or 109 words (top - cnt) at EVERY line it could be started on, the display on or
+off; chopped 16 + 1 loses 0-32. This core's Timer 1 never reads 238-260 in the wait (its rows asked for those lines start at
+261), so it says nothing about them: a Timer 1 question for the main session if the console's rows start where they were asked.
+
+WHAT WOULD SAY WHAT. The console's burst losing ~64-110 on every L: the holds are on every line of the frame - not the visible
+display's fetches (or the scan-out reads all 263 lines), and GPU.scanWins' "no window in the blanking" is wrong for uploads.
+Losing nothing over a run of ~20-25 lines: those are the lines without the holds - by their ln, the blanking as the GPU has it.
+The display off differing from on at some lines: GP1(03h) stops part of it there.

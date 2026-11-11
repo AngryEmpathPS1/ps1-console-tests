@@ -24,3 +24,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-09-spinprobe2](2026-11-09-spinprobe2/) | 4 | 1 |
 | [2026-11-10-qlag](2026-11-10-qlag/) | 3 | 0 |
 | [2026-11-10-qlag-xfiles](2026-11-10-qlag-xfiles/) | 18 | 2 |
+| [2026-11-11-a0abort4](2026-11-11-a0abort4/) | 9 | 1 |
+| [2026-11-11-a0abort5](2026-11-11-a0abort5/) | 9 | 1 |
+| [2026-11-11-a0abort6](2026-11-11-a0abort6/) | 9 | 1 |

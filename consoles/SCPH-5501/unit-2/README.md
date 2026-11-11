@@ -219,5 +219,11 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-11-a0abort](2026-11-11-a0abort/) | 9 | 1 |
 | [2026-11-11-a0abort2](2026-11-11-a0abort2/) | 9 | 1 |
 | [2026-11-11-a0abort3](2026-11-11-a0abort3/) | 9 | 1 |
+| [2026-11-11-a0abort4](2026-11-11-a0abort4/) | 9 | 1 |
+| [2026-11-11-a0abort5](2026-11-11-a0abort5/) | 9 | 1 |
+| [2026-11-11-a0abort6](2026-11-11-a0abort6/) | 9 | 1 |
+| [2026-11-11-audiodisc-metallica](2026-11-11-audiodisc-metallica/) | 7 | 1 |
+| [2026-11-11-audiodisc2-metallica](2026-11-11-audiodisc2-metallica/) | 6 | 1 |
 | [2026-11-11-burstrow2](2026-11-11-burstrow2/) | 9 | 1 |
+| [2026-11-11-spindown2-metallica](2026-11-11-spindown2-metallica/) | 8 | 1 |
 | [2026-11-11-t0hreset](2026-11-11-t0hreset/) | 9 | 1 |

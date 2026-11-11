@@ -1,0 +1,31 @@
+gpu-a0abort4 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED (STATUS "The upload intake by width, and gpu-a0abort3 read again", and the proposal after it): (1) which of
+gpu-a0abort3's rows ran in the vertical blanking - ln, Timer 1's hblanks since the vblank, is on every row now; (2) whether the line
+start's holds are the scan-out's fetches or something that goes on with the display off (GP1(03h) = 1; a lead,
+unsourced: an SGRAM's refresh, a row every ~15.6 us, would want ~4 a line whoever asks); (3) where between a burst
+(17 cycles a 16 words) and chopped 16 + 1 (23) the holds change: chopped 64 + 1, 32 + 1, 16 + 2, 8 + 1, and 16 + 1 at three starts.
+
+THE CORE: the proposal's landed copy (src at v0.377.322 + experiments/land_intake.js), tools/hwrunner.js --emu, the SCPH-5501's BIOS.
+607 rows. Rows with fill < n (words not stored at the cut) and rows whose GPUSTAT is not 12h, of the kind's rows:
+  K 0 burst            D 0: 30 / 20 of 41     D 1: 30 / 21 of 41
+  K 1 chopped 16 + 1   D 0: 83 / 37 of 123    D 1: 30 / 12 of 41
+  K 3 blocks of 16     D 0: 1 / 6 of 98       D 1: 0 / 3 of 98
+  K 8 chopped 64 + 1   31 / 25 of 41          K 5 chopped 32 + 1   32 / 13 of 41
+  K 9 chopped 16 + 2   21 / 6 of 41           K 7 chopped 8 + 1    0 / 0 of 41
+About one row in four of this core's starts at ln 261 (the frame's last lines), where its line start is in the blanking.
+
+WHAT WOULD SAY WHAT.
+- THE DISPLAY OFF. This core holds the VRAM for the scan-out whatever GP1(03h) says: D 1 = D 0. If the console's D 1 rows of the
+  burst store every word (as its blanking rows do), the holds are the scan-out's and GP1(03h) stops them: the model needs that
+  (one line). If they lose words as with the display on, the scan-out goes on fetching a blanked display - or the holds are not
+  fetches. If they lose FEWER (one hold of two, or shorter), part of the line start is not the display's: refresh.
+- THE LINE. The console's rows that store every word between rows that lose 16-32 should be the ones with ln in the blanking
+  (about 240 of 263 lines show); if they are spread over visible lines, they are something else and gpu-a0abort3's reading of
+  them is wrong.
+- BETWEEN A BURST AND 16 + 1. This core serves a fetch in idle slots a 6.5-cycle piece fits: 64 + 1 and 32 + 1 leave the port
+  6 cycles in most units and read as the burst (31-32 of 41 rows short), 16 + 2 reads between (21), 8 + 1 loses nothing. If the
+  console's 32 + 1 reads as 16 + 1 rather than as the burst, it is the PAUSE in the words that lets the scan-out in, not the
+  port's idle time.
+- 16 + 1 AT THREE STARTS: the first word lost moves 16 words with the start if a unit's phase against the first hold's end
+  decides it (gpu-a0abort3's rows at 307 / 323).
