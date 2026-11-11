@@ -1,0 +1,42 @@
+ResetGraph:itb=80012da0,ehk=80012dd0
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-tex-stride2
+Textured 64x64 quads, a fill every N pixels (N = 1..32), the display on at 320x240: cycles from the first word
+to bits 28 and 26, fastest..slowest of four, each try 53 lines after the VBlank. No assertions.
+
+  flat quad 64x64                        5 words   bit 28    1339..1396     bit 26     2650..2672
+  15-bit N  1  U 255           9 words   bit 28   21020..21026    bit 26    41265..41276
+  15-bit N  2  U 128           9 words   bit 28   12380..12391    bit 26    24138..24175
+  15-bit N  3  U  85           9 words   bit 28    9360..9365     bit 26    18399..18405
+  15-bit N  4  U  64           9 words   bit 28    7728..7783     bit 26    14919..14974
+  15-bit N  5  U  51           9 words   bit 28    6720..6823     bit 26    13098..13156
+  15-bit N  6  U  42           9 words   bit 28    6052..6242     bit 26    11935..12031
+  15-bit N  7  U  36           9 words   bit 28    5378..5660     bit 26    10487..10728
+  15-bit N  8  U  32           9 words   bit 28    5180..5378     bit 26    10481..10760
+  15-bit N  9  U  28           9 words   bit 28    4944..5189     bit 26     9968..10253
+  15-bit N 10  U  25           9 words   bit 28    4604..4800     bit 26     9310..9460
+  15-bit N 12  U  21           9 words   bit 28    4368..4663     bit 26     8714..9046
+  15-bit N 16  U  16           9 words   bit 28    3844..4034     bit 26     7963..8108
+  15-bit N  4  U  64  +5       9 words   bit 28    6332..7778     bit 26    13565..14968
+  15-bit N  8  U  32  +5       9 words   bit 28    5132..5330     bit 26    10472..10712
+   8-bit N  2  U 255           9 words   bit 28   11861..12242    bit 26    23708..24132
+   8-bit N  3  U 170           9 words   bit 28    9308..9317     bit 26    17861..17905
+   8-bit N  4  U 128           9 words   bit 28    7724..7778     bit 26    14920..14967
+   8-bit N  5  U 102           9 words   bit 28    6772..6818     bit 26    13101..13148
+   8-bit N  6  U  85           9 words   bit 28    6094..6284     bit 26    11973..12119
+   8-bit N  7  U  73           9 words   bit 28    5420..5618     bit 26    11164..11318
+   8-bit N  8  U  64           9 words   bit 28    4992..5239     bit 26     9833..10080
+   8-bit N 10  U  51           9 words   bit 28    4562..4848     bit 26     9310..9505
+   8-bit N 12  U  42           9 words   bit 28    4316..4663     bit 26     8702..9001
+   8-bit N 16  U  32           9 words   bit 28    3796..4034     bit 26     7960..8153
+   8-bit N 32  U  16           9 words   bit 28    3214..3500     bit 26     6744..6850
+   8-bit N  4  U 128  +5       9 words   bit 28    5810..7783     bit 26    12995..14974
+   8-bit N  8  U  64  +5       9 words   bit 28    4994..5237     bit 26     9793..10078
+ResetGraph:itb=80012da0,ehk=80012dd0
+ResetGraph:SR=fb00
+
+gpu/gpu-tex-stride2: Done.

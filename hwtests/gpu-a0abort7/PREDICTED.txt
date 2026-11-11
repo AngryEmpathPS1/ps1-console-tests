@@ -1,0 +1,18 @@
+gpu-a0abort7 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED: gpu-a0abort6's question on a PAL console (SCPH-7502, 314 lines): which line starts around the vertical blanking
+hold an upload, at both of its ends.
+
+THE CORE: src at v0.377.323 + experiments/knot/_mkvbn.js (the fetch near a line's end is the next line's - the follow-up proposed
+as v0.377.324), tools/hwrunner.js --emu.
+  PAL, the SCPH-7502's BIOS (experiments/knot/abort7_r_pal.txt): M 313; the rows L 236 .. 309 lose nothing (74 line starts, 3 of 3
+    each); L 226 .. 235, 310 .. 313, 0 .. 12 and 100 lose 93-125 words (109 in 74 of 84). The row asked for L 313 starts with ln 0;
+    the row asked for 314 never finds its line (a timeout: whatever it reads is no measurement).
+  NTSC, the SCPH-5501's BIOS (experiments/knot/abort7_r_ntsc.txt): M 262; free L 236 .. 258, as gpu-a0abort6 measured on two consoles.
+  gpu-a0abort5 on the PAL core (experiments/knot/abort5_r_pal.txt): a burst loses 77 or 93 words (NTSC: 93 or 109) at every line
+    it can start on but L 236 (0); the rows asked for L 238 .. 262 start at ln 312.
+
+WHAT WOULD SAY WHAT. Free 236 .. 309: the scanWins follow-up holds on a PAL frame too. 237 .. 310: the fetch is by the line it
+sits in after all on this console. Free rows ending elsewhere than 309: the PAL blanking against Timer 1 is not where this core has
+it (the T rows show bit 31 and Timer 1's reset: the main session's). M 312 with 313 never read: the PAL twin of the NTSC consoles'
+261 -> 0.

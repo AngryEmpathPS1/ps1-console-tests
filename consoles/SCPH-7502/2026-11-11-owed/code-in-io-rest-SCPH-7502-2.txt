@@ -1,0 +1,14 @@
+
+cpu/code-in-io-rest
+code-in-io-safe without the interrupt controller's five cases: RAM, scratchpad, MDEC, SPU, DMA0, DMA control.
+
+pass - testCodeInRam: 0 exceptions, read back after 03e00008 00000000
+pass - testCodeInScratchpad: 1 exception, read back after 03e00008 00000000
+    #0 cause  6 EPC 1f800000 BadVaddr ffffffff ra 800105c8
+pass - testCodeInMDEC: 1 exception, read back after 17010000 80840008
+    #0 cause  6 EPC 1f801828 BadVaddr ffffffff ra 800103d4  (ra moved: a jal fetched)
+pass - testCodeInSPU: 0 exceptions, read back after 03e00008 00000000
+pass - testCodeInDMA0: 0 exceptions, read back after 03e00008 00000000
+pass - testCodeInDMAControl: 0 exceptions, read back after 03e00008 00000000
+
+cpu/code-in-io-rest: Done.

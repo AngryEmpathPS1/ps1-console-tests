@@ -1,0 +1,63 @@
+gpu-shape-time81 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED: where an 8- or 4-bit textured row's cost falls short of the console's (gpu-shape-time80 on the second SCPH-5501
+against v0.377.324: 8-bit T1 +1 / -10 / -17 / -35 at W 64 / 128 / 160 / 256, 4-bit -19 at 256; gpu-shape-time79's 8-bit quads
+-51 / +28 / -48 at 128 / 160 / 256), by width in steps of 16; and where a semi 15-bit row's premium (+16 / +34 at 160 / 256) begins.
+
+THE CORE: v0.377.326's frozen core (src as it lands: v0.377.324's GPU drawing, unchanged since v0.377.321),
+`node hwtests/run.js gpu-shape-time81 --ntsc --frames=60000 --quiet=60000`, the SCPH-5501's BIOS. Bit 26's D, fastest..slowest:
+
+opaq tex8 T1 80x16       932..932
+opaq tex8 Q 80x16        2116..2120
+opaq tex8 T1 96x16       1241..1247
+opaq tex8 Q 96x16        2898..2898
+opaq tex8 T1 112x16      1576..1576
+opaq tex8 Q 112x16       3708..3708
+opaq tex8 T1 128x16      1881..1881
+opaq tex8 Q 128x16       4464..4464
+opaq tex8 T1 144x16      2282..2318
+opaq tex8 Q 144x16       5131..5131
+opaq tex8 T1 160x16      2634..2634
+opaq tex8 Q 160x16       5725..5728
+opaq tex8 T1 176x16      2969..2985
+opaq tex8 Q 176x16       6320..6342
+opaq tex8 T1 192x16      3266..3266
+opaq tex8 Q 192x16       6905..6907
+opaq tex8 T1 208x16      3603..3603
+opaq tex8 Q 208x16       7493..7493
+opaq tex8 T1 224x16      3927..3945
+opaq tex8 Q 224x16       8062..8062
+opaq tex8 T1 240x16      4255..4262
+opaq tex8 Q 240x16       8662..8662
+opaq tex8 T1 256x16      4475..4487
+opaq tex8 Q 256x16       9064..9064
+opaq tex4 T1 128x16      1589..1604
+opaq tex4 Q 128x16       3423..3423
+opaq tex4 T1 160x16      2091..2091
+opaq tex4 Q 160x16       4311..4311
+opaq tex4 T1 192x16      2532..2532
+opaq tex4 Q 192x16       5196..5196
+opaq tex4 T1 224x16      2995..3001
+opaq tex4 Q 224x16       6034..6048
+opaq tex4 T1 256x16      3346..3348
+opaq tex4 Q 256x16       6670..6670
+opaq tex8 T1 128x32      3568..3568
+opaq tex8 T1 256x32      8538..8538
+opaq tex15 T1 96x16      2474..2474
+opaq tex15 T1 192x16     5307..5307
+opaq tex15 T1 224x16     6267..6267
+semi tex15 T1 64x16      1495..1510
+semi tex15 T1 96x16      2751..2751
+semi tex15 T1 128x16     3821..3821
+semi tex15 T1 192x16     5937..5937
+semi tex15 T1 224x16     7022..7023
+
+WHAT WOULD SAY WHAT (console - this, by width):
+ - a shortfall growing smoothly with W on T1 (as -10 / -17 / -35 suggest): a cost this core lacks per fill, per frame-buffer write
+   or per pixel of a paletted row - which, by its slope against the fills (W/8 a row at 8-bit, W/16 at 4-bit) and by the 4-bit rows
+   (half the fills of the 8-bit ones at the same W: a per-fill cost halves, a per-write or per-pixel one does not).
+ - a shortfall that jumps at some widths and not at their neighbours (128 and 256 against 144 and 240, as the quads hint): the
+   texture cache keeps different texels than this core's at those widths - a redrawn shape's fills are counted wrong there.
+ - T1 W x 32 short by twice W x 16's: it follows the rows (or the fills, which double too); by the same: once a shape.
+ - the 15-bit controls off by more than ~5: the shortfall is not the palette's.
+ - the semi rows: the premium's first width, and whether it grows with the row's blocks (64: two, 96: three, 128: four ...).

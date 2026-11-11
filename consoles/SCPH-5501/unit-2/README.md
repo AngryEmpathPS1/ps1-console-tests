@@ -225,5 +225,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-11-audiodisc-metallica](2026-11-11-audiodisc-metallica/) | 7 | 1 |
 | [2026-11-11-audiodisc2-metallica](2026-11-11-audiodisc2-metallica/) | 6 | 1 |
 | [2026-11-11-burstrow2](2026-11-11-burstrow2/) | 9 | 1 |
+| [2026-11-11-gst81](2026-11-11-gst81/) | 9 | 1 |
 | [2026-11-11-spindown2-metallica](2026-11-11-spindown2-metallica/) | 8 | 1 |
 | [2026-11-11-t0hreset](2026-11-11-t0hreset/) | 9 | 1 |

@@ -1,0 +1,30 @@
+ResetGraph:itb=80012d8c,ehk=80012dbc
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-tex-scale
+Textured quads scaled (1:1, magnified, minified, stretched), the display on at 320x240: cycles from the first word
+to bits 28 and 26, fastest..slowest of four, each try 53 lines after the VBlank. No assertions.
+
+  flat quad 256x256                           5 words   bit 28   17989..18043    bit 26    35884..35944
+   4-bit 1:1        128x128 from 128x128     9 words   bit 28   14354..14450    bit 26    28544..28687
+   4-bit magnified  256x256 from  64x64      9 words   bit 28   34796..35765    bit 26    70181..72137
+   4-bit minified    64x64  from 255x255     9 words   bit 28    7198..7682     bit 26    14481..14962
+   4-bit u-stretch  256x64  from  64x64      9 words   bit 28    9548..10087    bit 26    18723..19807
+   4-bit v-stretch   64x256 from  64x64      9 words   bit 28    9266..9938     bit 26    18080..18713
+   8-bit 1:1        128x128 from 128x128     9 words   bit 28   19495..19833    bit 26    39144..39450
+   8-bit magnified  256x256 from  64x64      9 words   bit 28   36628..37154    bit 26    74401..75113
+   8-bit minified    64x64  from 255x255     9 words   bit 28   12055..12242    bit 26    23989..24221
+   8-bit u-stretch  256x64  from  64x64      9 words   bit 28   11522..11710    bit 26    23679..23822
+   8-bit v-stretch   64x256 from  64x64      9 words   bit 28   11852..11863    bit 26    23209..23255
+  15-bit 1:1        128x128 from 128x128     9 words   bit 28   28850..29522    bit 26    57722..58443
+  15-bit magnified  256x256 from  64x64      9 words   bit 28   47911..47996    bit 26    99643..99652
+  15-bit minified    64x64  from 255x255     9 words   bit 28   21022..21026    bit 26    41222..41231
+  15-bit u-stretch  256x64  from  64x64      9 words   bit 28   14156..14215    bit 26    28887..28994
+  15-bit v-stretch   64x256 from  64x64      9 words   bit 28   23278..23328    bit 26    45326..45338
+ResetGraph:itb=80012d8c,ehk=80012dbc
+ResetGraph:SR=fb00
+
+gpu/gpu-tex-scale: Done.

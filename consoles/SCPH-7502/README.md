@@ -42,3 +42,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-07-firstread2](2026-11-07-firstread2/) | 7 | 1 |
 | [2026-11-07-playagain](2026-11-07-playagain/) | 7 | 1 |
 | [2026-11-07-playagain2](2026-11-07-playagain2/) | 7 | 1 |
+| [2026-11-11-a0abort57](2026-11-11-a0abort57/) | 15 | 2 |
+| [2026-11-11-owed](2026-11-11-owed/) | 54 | 17 |
+| [2026-11-11-xfcards](2026-11-11-xfcards/) | 37 | 9 |

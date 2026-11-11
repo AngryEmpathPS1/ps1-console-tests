@@ -10,8 +10,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | biu-dram | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
 | biu-sched | 1 | 2 | 1 |  |  | 2 |  | 2 | 2 |  |  |
 | bus-latch | 1 | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
-| card-fetch | 1 |  | 1 |  |  | 3 |  |  |  |  |  |
-| card-fetch2 | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
+| card-fetch | 1 |  | 1 |  |  | 3 |  |  | 3 |  |  |
+| card-fetch2 | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
 | cd-2x-burned |  | 1 |  |  | 1 |  | 2 | 1 | 4 | 1 |  |
 | cd-ack-getloc |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-ack-times |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
@@ -46,11 +46,11 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-lid-sweep4 |  |  |  |  |  |  | 3 |  |  |  |  |
 | cd-pastend |  | 2 | 1 | 1 | 3 | 1 | 1 | 4 | 1 | 3 |  |
 | cd-pause |  | 11 | 6 | 7 | 12 | 8 | 7 | 17 | 2 | 10 | 3 |
-| cd-pausehold |  |  | 2 |  |  | 5 |  | 6 |  |  |  |
-| cd-pausewin |  |  | 16 |  |  | 25 |  | 6 |  |  |  |
+| cd-pausehold |  |  | 2 |  |  | 5 |  | 6 | 4 |  |  |
+| cd-pausewin |  |  | 16 |  |  | 25 |  | 6 | 4 |  |  |
 | cd-playagain |  | 4 | 2 |  |  | 4 |  | 4 | 4 |  |  |
 | cd-playagain2 |  | 4 | 2 |  |  | 10 |  | 4 | 4 |  |  |
-| cd-qlag |  |  | 6 |  |  | 13 |  |  |  |  |  |
+| cd-qlag |  |  | 6 |  |  | 13 |  |  | 4 |  |  |
 | cd-queue |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-race |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-ramdump |  | 3 | 2 |  | 3 |  |  | 6 | 3 |  |  |
@@ -83,12 +83,12 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-sled |  | 3 | 2 | 2 | 3 | 3 | 2 | 7 | 7 | 7 |  |
 | cd-small-reads |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-speed |  | 4 | 1 | 6 | 6 | 5 | 4 | 8 | 4 | 6 | 2 |
-| cd-speedack |  |  | 2 |  |  | 5 |  | 7 |  |  |  |
-| cd-speedack2 |  |  | 2 |  |  | 3 |  | 5 |  |  |  |
+| cd-speedack |  |  | 2 |  |  | 5 |  | 7 | 4 |  |  |
+| cd-speedack2 |  |  | 2 |  |  | 3 |  | 5 | 4 |  |  |
 | cd-speedpause |  | 4 | 1 | 6 | 6 | 2 | 4 | 8 | 4 | 6 | 2 |
-| cd-spindown |  |  | 2 |  |  | 8 |  | 8 |  |  |  |
+| cd-spindown |  |  | 2 |  |  | 8 |  | 8 | 4 |  |  |
 | cd-spindown2 |  |  | 2 |  |  | 9 |  | 4 |  |  |  |
-| cd-spinprobe | 2 |  | 2 |  |  | 3 |  |  |  |  |  |
+| cd-spinprobe | 2 |  | 2 |  |  | 3 |  |  | 3 |  |  |
 | cd-spinup-phase |  | 3 | 2 | 2 | 3 | 3 | 6 | 7 | 7 | 7 |  |
 | cd-spinup-state |  | 3 | 2 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
 | cd-spinup-trend |  | 3 | 2 | 3 | 3 | 3 | 3 | 7 | 3 | 3 |  |
@@ -102,9 +102,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | cdrom_getloc |  | 1 | 1 |  | 2 | 1 | 1 | 2 |  | 2 |  |
 | cdrom_timing |  | 7 | 2 | 4 | 9 | 2 | 7 | 13 | 2 | 10 | 3 |
 | clut-cost | 1 | 6 | 1 | 7 | 10 | 3 | 6 | 12 | 1 | 8 | 2 |
-| code-in-io-irqsplit | 1 |  |  |  |  | 3 |  |  |  |  |  |
-| code-in-io-prime | 1 |  |  |  |  | 3 |  |  |  |  |  |
-| code-in-io-rest | 1 |  |  |  |  | 3 |  |  |  |  |  |
+| code-in-io-irqsplit | 1 |  |  |  |  | 3 |  |  | 3 |  |  |
+| code-in-io-prime | 1 |  |  |  |  | 3 |  |  | 3 |  |  |
+| code-in-io-rest | 1 |  |  |  |  | 3 |  |  | 3 |  |  |
 | code-in-io-safe |  | 6 | 1 | 7 | 6 | 3 | 6 | 8 | 1 | 6 | 2 |
 | cold-bracket | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | cold-branch | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
@@ -182,8 +182,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-a0abort2 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-a0abort3 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-a0abort4 |  |  | 6 |  |  | 6 |  |  |  |  |  |
-| gpu-a0abort5 |  |  | 6 |  |  | 6 |  |  |  |  |  |
-| gpu-a0abort6 |  |  | 6 |  |  | 6 |  |  |  |  |  |
+| gpu-a0abort5 |  |  | 6 |  |  | 6 |  |  | 6 |  |  |
+| gpu-a0abort6 |  |  | 6 |  |  | 6 |  |  | 3 |  |  |
+| gpu-a0abort7 |  |  |  |  |  |  |  |  | 6 |  |  |
 | gpu-a0after | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0blk | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0blk2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
@@ -228,11 +229,11 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-c0-gaps | 1 | 6 | 1 | 6 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
 | gpu-c0-ready | 1 | 1 | 1 | 7 | 6 | 3 | 6 | 6 | 1 | 4 | 2 |
 | gpu-c0-size | 1 | 2 | 1 | 7 | 7 | 3 | 6 | 4 | 1 | 2 | 2 |
-| gpu-clut-dma | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
-| gpu-clut-ready | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
-| gpu-clut-ready2 | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
-| gpu-clut-ready3 | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
-| gpu-clut-ready4 | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
+| gpu-clut-dma | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
+| gpu-clut-ready | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
+| gpu-clut-ready2 | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
+| gpu-clut-ready3 | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
+| gpu-clut-ready4 | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
 | gpu-cmd-ready | 1 | 1 | 1 | 6 | 7 | 3 | 6 | 4 | 1 | 2 | 2 |
 | gpu-copy-480i | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
 | gpu-copy2 | 1 | 2 | 1 | 7 | 7 | 3 | 6 | 4 | 1 | 2 |  |
@@ -316,7 +317,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-phase | 1 | 2 | 1 | 6 | 6 | 3 | 6 | 4 | 1 | 6 |  |
 | gpu-phase2 | 1 | 2 | 1 | 6 | 6 | 3 | 6 | 4 | 1 | 6 |  |
 | gpu-rect-cached | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
-| gpu-rect-gap | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
+| gpu-rect-gap | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
 | gpu-rect-x | 1 | 2 | 1 |  |  | 3 |  | 2 | 1 |  |  |
 | gpu-rect-x2 | 1 | 2 | 1 |  |  | 3 |  | 2 | 1 |  |  |
 | gpu-revive | 1 | 2 | 1 |  | 1 |  |  | 2 | 2 |  |  |
@@ -411,6 +412,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-shape-time79 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-shape-time8 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 2 |  |
 | gpu-shape-time80 |  |  |  |  |  | 6 |  |  |  |  |  |
+| gpu-shape-time81 |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | gpu-shape-time9 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 2 |  |
 | gpu-tail | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 3 | 1 | 6 |  |
 | gpu-tail2 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 6 |  |
@@ -432,14 +434,14 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-tex-gap |  |  |  |  |  | 3 |  |  |  |  |  |
 | gpu-tex-ilace |  |  |  |  |  | 3 |  |  |  |  |  |
 | gpu-tex-maskpart |  |  |  |  |  | 3 |  |  |  |  |  |
-| gpu-tex-noscan | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
+| gpu-tex-noscan | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
 | gpu-tex-opaque | 1 | 6 | 1 | 7 | 6 | 3 | 6 | 8 | 1 | 6 | 2 |
 | gpu-tex-part |  |  |  |  |  | 3 |  |  |  |  |  |
 | gpu-tex-part2 |  |  |  |  |  | 3 |  |  |  |  |  |
-| gpu-tex-scale | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
+| gpu-tex-scale | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
 | gpu-tex-semipart |  |  |  |  |  | 3 |  |  |  |  |  |
-| gpu-tex-stride | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
-| gpu-tex-stride2 | 1 |  | 1 |  |  | 3 |  | 3 |  |  |  |
+| gpu-tex-stride | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
+| gpu-tex-stride2 | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
 | gpu-tex-stride3 |  |  |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-thin | 1 | 3 | 1 | 7 | 6 | 3 | 6 | 8 | 1 | 3 | 2 |
 | gpu-timectl | 1 | 2 | 1 |  | 2 | 3 |  | 4 | 2 |  |  |
@@ -633,8 +635,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | spu-dmaread | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | spu-dmaread2 | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | spu-endcut | 1 | 1 | 1 |  | 4 | 3 |  | 4 | 2 |  |  |
-| spu-envphase-move | 1 |  | 1 |  |  | 3 |  | 4 |  |  |  |
-| spu-envphase-move2 | 1 |  | 1 |  |  | 3 |  | 4 |  |  |  |
+| spu-envphase-move | 1 |  | 1 |  |  | 3 |  | 4 | 3 |  |  |
+| spu-envphase-move2 | 1 |  | 1 |  |  | 3 |  | 4 | 3 |  |  |
 | spu-envring | 1 | 1 | 1 |  | 2 | 2 |  | 4 | 2 |  |  |
 | spu-exp-neg | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
 | spu-fifo | 1 | 6 | 1 | 7 | 6 | 3 | 6 | 8 | 1 | 6 | 2 |
@@ -683,7 +685,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | t0-dot-modewrite | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | t0-dot-write | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | t0-dot-write2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
-| t0-hreset |  |  |  |  |  | 6 |  |  |  |  |  |
+| t0-hreset |  |  |  |  |  | 6 |  |  | 3 |  |  |
 | t1-count-edge | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | t1-count-edge2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | t1-edges | 1 | 1 | 1 | 7 | 1 | 6 | 6 | 4 | 1 | 2 | 2 |

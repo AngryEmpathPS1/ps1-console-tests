@@ -1,0 +1,13 @@
+
+cdrom/cd-pausehold
+Where the head is after a Pause: GetlocP every ~25k cycles for 1.5M cycles after a paused read's INT2.
+Cycles at the system clock (1 ms = 33,869) from the Pause's INT2; positions in sectors from 20:57:19. No assertions - compare against your emulator.
+2X: slowest answer 137238 at 313k; 80k:7 313k:8 760k:-4 1017k:-3 1208k:-2 1421k:-1
+1X: slowest answer 162355 at 527k; 42k:7 527k:8 1525k:-4
+2X: slowest answer 217500 at 381k; 68k:7 381k:8 735k:-4 990k:-3 1243k:-2 1428k:-1
+1X: slowest answer 161401 at 534k; 36k:7 534k:8 1510k:-4
+2X: slowest answer 137769 at 294k; 68k:7 294k:8 800k:-4 967k:-3 1212k:-2 1483k:-1
+1X: slowest answer 189388 at 568k; 42k:7 568k:8 1514k:-4
+2X: slowest answer 218029 at 382k; 68k:7 382k:8 736k:-4 996k:-3 1241k:-2 1426k:-1
+1X: slowest answer 136169 at 543k; 52k:7 543k:8 1543k:-4
+cdrom/cd-pausehold: Done.
