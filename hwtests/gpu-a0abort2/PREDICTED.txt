@@ -1,0 +1,56 @@
+gpu-a0abort2 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED (STATUS "gpu-a0abort on the second SCPH-5501"): the line start's second hold of the VRAM reads ~25 cycles (40 GPU
+ticks) for chopped feeders and SyncMode 1 blocks and 35-38 (55-60 ticks) for a burst - the burst's read off its gap sizes, not
+off a clock. Here each row carries Timer 0's count at its start (ph), so ph + t is where its cut fell in the line, and a burst's
+two stands can be read in cycles: the span of ph + t over which fill stays at the first stop, and at the first stop + 16.
+
+THE CORES (tools/hwrunner.js --emu, the SCPH-5501's BIOS; node experiments/knot/abort2sum.js <out>):
+  M60   the count core (experiments/intake/_mkcnt.js on v0.377.321), line start 85 + 60 ticks - what a burst's gap sizes fit
+  M40   the same, 85 + 40 - what the chopped feeders and SyncMode 1 fit
+  v321  v0.377.321
+A core's own fetch windows move ~12 cycles between rows (its line place is computed from the last sync), so its stands smear;
+the console's should not. What each says:
+
+== M60
+K 0 a burst: 273 rows, 195 lost a word; first loss at x 1899
+   fill  386 (row word 2):  20 rows, x 1884..1917 (33 cycles), n 388..418 (32 words came), s1 00 12
+   fill  402 (row word 18):  28 rows, x 1889..1972 (83 cycles), n 404..466 (64 words came), s1 00 12
+K 1 chopped 16 + 1: 162 rows, 137 lost a word; first loss at x 1914
+K 3 SyncMode 1, blocks of 16: 154 rows; request down over an empty FIFO in 13, x 1927..1993 (the last 12h before 1917, the first after 2014; 12h inside: 1940 1951)
+   down at x: 1927 1930 1932 1933 1935 1938 1938 1941 1941 1946 1976 1986 1993
+   cut with the intake behind: 14 - x:n-fill(s1) 1917:6(00) 1919:5(00) 1920:5(00) 1923:2(00) 1971:3(00) 1971:3(00) 1971:3(00) 1972:2(00) 1972:2(00) 1972:2(00) 1972:2(00) 1975:3(00) 1978:4(00) 1980:4(0
+K 4 SyncMode 1, blocks of 32: 77 rows; request down over an empty FIFO in 0, x NaN..NaN (the last 12h before -, the first after -; 12h inside: none)
+   down at x: 
+   cut with the intake behind: 16 - x:n-fill(s1) 1896:14(00) 1898:14(00) 1909:8(00) 1913:4(00) 1916:8(00) 1931:13(00) 1932:13(00) 1938:13(00) 1941:13(00) 1941:13(00) 1947:13(00) 1949:13(00) 1977:8(00)
+== M40
+K 0 a burst: 273 rows, 195 lost a word; first loss at x 1899
+   fill  386 (row word 2):  20 rows, x 1884..1917 (33 cycles), n 388..418 (32 words came), s1 00 12
+   fill  402 (row word 18):  14 rows, x 1889..1940 (51 cycles), n 404..442 (40 words came), s1 00 12
+K 1 chopped 16 + 1: 162 rows, 98 lost a word; first loss at x 1914
+K 3 SyncMode 1, blocks of 16: 154 rows; request down over an empty FIFO in 12, x 1927..1980 (the last 12h before 1917, the first after 1982; 12h inside: 1940 1971 1971 1971 1971 1972 1972 1972 1972 19
+   down at x: 1927 1930 1932 1933 1935 1938 1938 1941 1941 1946 1978 1980
+   cut with the intake behind: 3 - x:n-fill(s1) 1919:5(00) 1920:5(00) 1923:2(00); lost a word: 0
+K 4 SyncMode 1, blocks of 32: 77 rows; request down over an empty FIFO in 0, x NaN..NaN (the last 12h before -, the first after -; 12h inside: none)
+   down at x: 
+   cut with the intake behind: 12 - x:n-fill(s1) 1898:14(00) 1910:8(00) 1913:4(00) 1916:8(00) 1917:17(00) 1928:13(00) 1932:13(00) 1941:13(00) 1944:8(00) 1947:8(00) 1949:8(00) 1950:8(00); lost a word: 
+== v321
+K 0 a burst: 273 rows, 172 lost a word; first loss at x 1909
+   fill  413 (row word 29):  11 rows, x 1922..1953 (31 cycles), n 420..448 (35 words came), s1 00
+   fill  429 (row word 45):  37 rows, x 1921..1981 (60 cycles), n 432..476 (47 words came), s1 00
+K 1 chopped 16 + 1: 162 rows, 98 lost a word; first loss at x 1976
+K 3 SyncMode 1, blocks of 16: 154 rows; request down over an empty FIFO in 2, x 1975..1983 (the last 12h before 1973, the first after 1988; 12h inside: 1978 1981)
+   down at x: 1975 1983
+   cut with the intake behind: 0; lost a word: 0
+K 4 SyncMode 1, blocks of 32: 77 rows; request down over an empty FIFO in 0, x NaN..NaN (the last 12h before -, the first after -; 12h inside: none)
+   down at x: 
+   cut with the intake behind: 9 - x:n-fill(s1) 1955:3(00) 1956:3(00) 1957:3(00) 1963:3(00) 1966:1(00) 1972:7(00) 1976:3(00) 1979:7(00) 1989:2(00); lost a word: 14, the first at x 1972
+
+WHAT TO READ ON THE CONSOLE
+  K 0: the stand at the first stop S (a row word 2, 18, 34, 51 ...: the count) and at S + 16. M60: the second stand's span is the
+       longer (83 cycles of ph + t here, smeared; 49 by its constants: 60 ticks + a unit's 11 cycles); M40: 51 smeared, 36 by its
+       constants. A second stand of ~36 cycles on the console = the second hold is 40 ticks for a burst too and the gap sizes are
+       the ring's doing; ~49 = a burst does wait a unit's write longer than the other feeders.
+  K 3: the request's window on the row's own clock: gpu-a0abort put it at block ends 2,256-2,276 after the LINE edge, 25-30 cycles.
+       M60 leaves words in the FIFO at 14 cuts, M40 at 3, the console (gpu-a0abort) at none.
+  K 1, K 4: as gpu-a0abort, on the clock.

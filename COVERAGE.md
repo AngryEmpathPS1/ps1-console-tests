@@ -178,6 +178,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-a0-ready | 1 | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
 | gpu-a0-size | 1 | 1 | 1 | 7 | 7 | 3 | 6 | 6 | 1 | 4 | 2 |
 | gpu-a0abort |  |  |  |  |  | 6 |  |  |  |  |  |
+| gpu-a0abort2 |  |  |  |  |  | 6 |  |  |  |  |  |
+| gpu-a0abort3 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-a0after | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0blk | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0blk2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
