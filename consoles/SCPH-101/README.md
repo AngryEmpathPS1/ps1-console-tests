@@ -22,3 +22,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-09-pausewin-doom](2026-11-09-pausewin-doom/) | 10 | 1 |
 | [2026-11-09-spinprobe](2026-11-09-spinprobe/) | 4 | 1 |
 | [2026-11-09-spinprobe2](2026-11-09-spinprobe2/) | 4 | 1 |
+| [2026-11-10-qlag](2026-11-10-qlag/) | 3 | 0 |
+| [2026-11-10-qlag-xfiles](2026-11-10-qlag-xfiles/) | 18 | 2 |

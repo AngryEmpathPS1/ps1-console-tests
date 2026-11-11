@@ -6,7 +6,7 @@ Every log, by console. A session folder is a date and, where a day had several s
 |---|---|---|---:|---:|---:|
 | [SCPH-1000](SCPH-1000/README.md) | "(no version string at BFC7FF32h)" | 94/09/19 version C0 | no answer | 6 | 596 |
 | [SCPH-1001](SCPH-1001/README.md) | "System ROM Version 2.1 07/17/95 A" | 95/07/24 version C1 | no answer | 36 | 1678 |
-| [SCPH-101](SCPH-101/README.md) | "System ROM Version 4.5 05/25/00 A" | a1/03/06 version C3 | 2 | 6 | 771 |
+| [SCPH-101](SCPH-101/README.md) | "System ROM Version 4.5 05/25/00 A" | a1/03/06 version C3 | 2 | 8 | 792 |
 | [SCPH-5000](SCPH-5000/README.md) | "System ROM Version 2.2 12/04/95 J" | 95/07/24 version C1 | no answer | 5 | 1673 |
 | [SCPH-5501](SCPH-5501/README.md) | "System ROM Version 3.0 11/18/96 A" | 97/01/10 version C2 | 2 | 164 | 2436 |
 | [SCPH-5501/unit-2](SCPH-5501/unit-2/README.md) | "System ROM Version 3.0 11/18/96 A" | 97/01/10 version C2 | 2 | 198 | 2535 |

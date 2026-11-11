@@ -1,0 +1,14 @@
+THE DISC IN THIS RUN WAS THE X-FILES DISC 1, NOT DOOM (the console's owner, 2026-11-10 evening: "Doom was in the 5501. x-files was in the PSOne").
+
+discid.txt here says Doom (tracks 1-8, lead-out 27:30) because the PSone's drive still held Doom's table of contents: the discs were
+swapped earlier in the day and its program did not read the new one. tools/consolerun.js's disc check trusts that table, so it
+stopped a first window that expected The X-Files (console-logs/2026-11-10-SCPH-101-qlag holds only that window's discid.txt) and
+the run was started again naming Doom (experiments/run101qlagdoom.ps1; the folder was first written as ...-qlag-doom and renamed).
+
+What the drive read agrees with The X-Files: cd-qlag's Q less the sector reads 1 then 2 (a lag of 1.5 sectors, as on the second
+SCPH-5501 with this disc the same day; Doom there read 2 then 3), with this disc's weak subcode frames at the same samples, and
+cd-pausewin flickers 7,8 / 6,7 / 6,8 / 8,9. scratch/fable-cd/NOTES.md section 14.
+
+The owner confirmed 2026-11-10 night: The X-Files in the PSone, Doom in the 5501 - he had swapped the discs earlier that day because a
+session asked him to, and the PSone's drive never saw it.
+So: after any disc swap on the PSone, open and close the lid once with the console on before a run.

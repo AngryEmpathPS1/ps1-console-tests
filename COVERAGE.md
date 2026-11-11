@@ -46,10 +46,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-pastend |  | 2 | 1 | 1 | 3 | 1 | 1 | 4 | 1 | 3 |  |
 | cd-pause |  | 11 | 6 | 7 | 12 | 8 | 7 | 17 | 2 | 10 | 3 |
 | cd-pausehold |  |  | 2 |  |  | 5 |  | 6 |  |  |  |
-| cd-pausewin |  |  | 10 |  |  | 25 |  | 6 |  |  |  |
+| cd-pausewin |  |  | 16 |  |  | 25 |  | 6 |  |  |  |
 | cd-playagain |  | 4 | 2 |  |  | 4 |  | 4 | 4 |  |  |
 | cd-playagain2 |  | 4 | 2 |  |  | 10 |  | 4 | 4 |  |  |
-| cd-qlag |  |  |  |  |  | 13 |  |  |  |  |  |
+| cd-qlag |  |  | 6 |  |  | 13 |  |  |  |  |  |
 | cd-queue |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-race |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-ramdump |  | 3 | 2 |  | 3 |  |  | 6 | 3 |  |  |

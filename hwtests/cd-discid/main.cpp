@@ -98,6 +98,31 @@ int main() {
             const uint8_t p[1] = { (uint8_t)(((t / 10) << 4) | (t % 10)) };
             if (cmd(0x14, p, 1, false, 0) == 3 && nrb >= 3) { starts[ns][0] = rb[1]; starts[ns][1] = rb[2]; ns++; }
         }
+    /* THE DISC ITSELF (2026-11-10): sector 16 (00:02:16, the volume descriptor), read off the disc, its 2048 bytes hashed (FNV-1a).
+     * A table of contents can be stale: the PSone PM-41(2) was handed The X-Files and still answered Doom's TOC (its lid switch
+     * not seen at the swap), and the check passed a run on the wrong disc (console-logs/2026-11-10-SCPH-101-qlag-doom). A data
+     * sector cannot be stale. tools/consolerun.js compares the hash with the image's sector 16. Setmode 0 (2048 bytes, 1X), Setloc,
+     * ReadN to its first INT1, the sector through the data FIFO, Pause. Every wait bounded. */
+    uint32_t pvd = 0; int pvdOk = 0; char vol[33]; vol[0] = 0;
+    if (ft == 3 && fl == 3) {
+        const uint8_t m0[1] = { 0x00 }; cmd(0x0E, m0, 1, false, 0);
+        const uint8_t loc[3] = { 0x00, 0x02, 0x16 }; cmd(0x02, loc, 3, false, 0);
+        if (cmd(0x06, 0, 0, false, 0) == 3) {
+            uint8_t g = 0; const uint32_t t0 = now();
+            do { g = take(MS(5000)); } while (g != 1 && g != 5 && g != 0 && now() - t0 < MS(5000));
+            if (g == 1) {
+                idx(0); *CD3 = 0x00; *CD3 = 0x80;              /* BFRD: the sector to the data FIFO */
+                const uint32_t t1 = now(); while (!(*CD0 & 0x40) && now() - t1 < MS(100)) {}
+                uint32_t h = 2166136261u; static uint8_t sec[2048];
+                for (int i = 0; i < 2048; i++) { sec[i] = *CD2; h = (h ^ sec[i]) * 16777619u; }
+                idx(0); *CD3 = 0x00;
+                pvd = h; pvdOk = 1;
+                int n = 0; for (int i = 40; i < 72; i++) { const uint8_t c = sec[i]; vol[n++] = (c >= 0x21 && c < 0x7F) ? (char)c : (c == 0x20 ? 0 : '?'); if (!vol[n - 1]) { n--; break; } }
+                vol[n] = 0;
+            }
+            uint8_t p2 = 0; cmd(0x09, 0, 0, true, &p2);         /* Pause to its INT2 */
+        }
+    }
     ExitCriticalSection();
     /* "discid-wait:", not "discid:" - tools/consolerun.js takes the first line with "discid:" as the answer */
     printf("discid-wait: Getstat %02X after %d polls; GetTN tries %d", gs, polls, tries + 1);
@@ -110,6 +135,8 @@ int main() {
         for (int i = 0; i < ns; i++) printf(" %02d:%02d", unbcd(starts[i][0]), unbcd(starts[i][1]));
         printf("\n");
     }
+    if (pvdOk) printf("discid-pvd: fnv %08X vol '%s'\n", (unsigned)pvd, vol);
+    else printf("discid-pvd: not read\n");
     printf("cdrom/cd-discid: Done.\n");
     return 0;
 }
