@@ -1,0 +1,139 @@
+gpu-burstrow - PREDICTED (2026-11-10, the GPU session), written before any console ran it.
+
+What is known (hwtests/gpu-burstline, the second SCPH-5501, three runs, 476 gaps; hwtests/gpu-a0lsf, three runs): a burst's overrun
+lands at VRAM row words 2, 18, 34, 51, 67, 83, 99, 115 of a 128-word row at x 0 - two words past a 16-word boundary through word
+47, three past from word 48 - and in a 384-word row stays three past to word 355. Losses come 16 words at a time (GP0's ring).
+
+What each reading of that step predicts here (a gap's row word = its position mod W; scratch/knot/browsum.js prints the tally):
+  c 0 (gpu-burstline's own configuration): 2, 18, 34, 51, 67, 83, 99, 115 again, under every reading - the control.
+  H1, the row's place (units counted from the row's first word, the step at word 48, however the words arrive):
+      c 1-4 (x0 32, 16, 2, 1): c 0's row words.   c 5 (W 64): 2 18 34 51.   c 6, 7 (W 48, 40): 2 18 34.   c 8 (W 32): 2 18.
+      c 9 (W 96): 2 18 34 51 67 83.   c 10, 11 (W 256, 512): 2 18 34 then 51, 67 ... every 16 to the row's end.
+      c 12-14 (the first 8 / 24 / 64 words by hand): c 0's row words in every row, the first too.
+      c 15-17 (chopped): fewer gaps, the same row words.
+  H2, VRAM's x (units on VRAM's 32-pixel grid): c 1 (x0 32, one unit) as c 0; c 2 (x0 16 = half a unit) its row words moved by 8
+      against c 0's (10, 26, 42 ... or 58 ...); c 3 (x0 2 = one word) moved by 15 (1, 17, 33 ...); c 4 (x0 1) by 15 or 16.
+      Widths and the hand-fed kinds as H1.
+  H3, time (the intake's writer runs behind for ~48 cycles after a row starts and catches up): c 1-11 as H1 - but the hand-fed kinds
+      differ in their FIRST row, whose start was long before the burst's: c 12 shows 19, 35 (three past) where H1 has 18, 34, c 13
+      shows 35 for 34, and from the second row on both read as c 0. A chopped feed that rests the writer may show three past in a
+      row's first units too (c 16, c 17: a 2- and 8-cycle rest every 32 / 64 words).
+  The odd-x row (c 4) is also psx-spx's odd case ("store 16+1 ... drain 15"): a first unit one word short or long would show as
+  every row word moved by one against c 0.
+  Neither core below has the step, so neither is expected right on c 0; they are here as what the present models say.
+
+On the SCPH-5501 (tools/hwrunner.js --emu, PSX_MODEL=SCPH-5501, scph5501.bin, --lock=0 --video=24000):
+
+v0.377.319 as landed (scratch/_cores/v319; bash scratch/knot/blrun.sh v319 gpu-burstrow with CORE=scratch/_cores/v319/psx.js) -
+its intake stops 13 words into a unit (A0_AHEAD 13) and 3 at a row's start:
+c  0  W 128 x0  0 burst     n 68  lost in 68, stored twice in 28, gaps 134, mean t 1125.8, mean lost 44.2; sizes 16:103 32:8 48:23
+      past a 16-word boundary: row words 0-47 -> 3:25 13:35   |   48 on -> 13:74
+      row word: 3:25 13:8 29:16 45:11 61:11 77:17 93:16 109:15 125:15
+c  1  W 128 x0 32 burst     n 68  lost in 67, stored twice in 23, gaps 147, mean t 1125.1, mean lost 45.9; sizes 16:117 32:13 48:16 64:1
+      past a 16-word boundary: row words 0-47 -> 3:26 13:45   |   48 on -> 13:76
+      row word: 3:26 13:11 29:15 45:19 61:14 77:16 93:22 109:12 125:12
+c  2  W 128 x0 16 burst     n 68  lost in 68, stored twice in 24, gaps 143, mean t 1125.6, mean lost 45.2; sizes 16:112 32:14 48:16 64:1
+      past a 16-word boundary: row words 0-47 -> 3:24 13:39   |   48 on -> 13:80
+      row word: 3:24 13:13 29:12 45:14 61:21 77:12 93:22 109:13 125:12
+c  3  W 128 x0  2 burst     n 68  lost in 67, stored twice in 29, gaps 136, mean t 1125.5, mean lost 44.5; sizes 16:105 32:9 48:22
+      past a 16-word boundary: row words 0-47 -> 3:21 13:40   |   48 on -> 13:75
+      row word: 3:21 13:11 29:12 45:17 61:13 77:23 93:15 109:15 125:9
+c  4  W 128 x0  1 burst     n 68  lost in 66, stored twice in 20, gaps 148, mean t 1125.4, mean lost 46.1; sizes 16:118 32:13 48:16 64:1
+      past a 16-word boundary: row words 0-47 -> 3:24 13:42   |   48 on -> 13:82
+      row word: 3:24 13:11 29:17 45:14 61:16 77:17 93:17 109:16 125:16
+c  5  W  64 x0  0 burst     n 68  lost in 68, stored twice in 31, gaps 176, mean t 1124.8, mean lost 52.9; sizes 16:145 32:14 48:16 64:1
+      past a 16-word boundary: row words 0-47 -> 3:44 13:92   |   48 on -> 13:40
+      row word: 3:44 13:22 29:37 45:33 61:40
+c  6  W  48 x0  0 burst     n 68  lost in 68, stored twice in 36, gaps 180, mean t 1108.9, mean lost 53.6; sizes 16:150 32:13 48:16 64:1
+      past a 16-word boundary: row words 0-47 -> 3:53 13:127   |   48 on -> -
+      row word: 3:53 13:35 29:53 45:39
+c  7  W  40 x0  0 burst     n 68  lost in 68, stored twice in 41, gaps 178, mean t 1100.2, mean lost 57.2; sizes 16:148 32:2 48:21 64:7
+      past a 16-word boundary: row words 0-47 -> 3:63 8:19 13:96   |   48 on -> -
+      row word: 3:63 8:19 13:47 29:49
+c  8  W  32 x0  0 burst     n 68  lost in 68, stored twice in 45, gaps 225, mean t 1125.6, mean lost 63.8; sizes 16:195 32:15 48:14 64:1
+      past a 16-word boundary: row words 0-47 -> 3:99 13:126   |   48 on -> -
+      row word: 3:99 13:63 29:63
+c  9  W  96 x0  0 burst     n 68  lost in 67, stored twice in 22, gaps 146, mean t 1058.4, mean lost 44.7; sizes 16:117 32:16 48:11 64:2
+      past a 16-word boundary: row words 0-47 -> 3:28 13:64   |   48 on -> 13:54
+      row word: 3:28 13:28 29:18 45:18 61:16 77:17 93:21
+c 10  W 256 x0  0 burst     n 68  lost in 68, stored twice in 34, gaps 129, mean t 1124.8, mean lost 42.4; sizes 16:98 32:11 48:20
+      past a 16-word boundary: row words 0-47 -> 3:15 13:20   |   48 on -> 13:94
+      row word: 3:15 13:6 29:8 45:6 61:7 77:4 93:16 109:4 125:5 141:7 157:4 173:5 189:13 205:8 221:6 237:5 253:10
+c 11  W 512 x0  0 burst     n 68  lost in 67, stored twice in 34, gaps 116, mean t 1125.6, mean lost 39.5; sizes 16:88 32:4 48:24
+      past a 16-word boundary: row words 0-47 -> 3:6 13:5   |   48 on -> 13:105
+      row word: 3:6 13:2 29:1 45:2 77:4 93:8 109:3 125:2 141:1 157:4 173:4 189:4 205:3 221:4 237:4 253:3 269:5 285:5 301:4 317:4 333:3 349:5 365:5 381:3 397:4 413:1 429:3 445:5 461:6 477:4 509:4
+c 12  W 128 x0  0 pre 8     n 68  lost in 67, stored twice in 23, gaps 143, mean t 1116.6, mean lost 45.9; sizes 16:112 32:12 48:17 64:2
+      past a 16-word boundary: row words 0-47 -> 3:23 13:40   |   48 on -> 13:80
+      row word: 3:23 13:13 29:13 45:14 61:18 77:15 93:22 109:11 125:14
+c 13  W 128 x0  0 pre 24    n 68  lost in 68, stored twice in 32, gaps 230, mean t 1098.9, mean lost 83.8; sizes 16:167 32:17 48:37 64:4 80:4 128:1
+      past a 16-word boundary: row words 0-47 -> 3:27 13:78   |   48 on -> 13:125
+      row word: 3:27 13:28 29:27 45:23 61:19 77:29 93:24 109:23 125:30
+c 14  W 128 x0  0 pre 64    n 68  lost in 68, stored twice in 31, gaps 243, mean t 1058.0, mean lost 93.9; sizes 16:191 32:17 48:16 64:5 80:4 96:1 112:2 128:3 144:1 160:1 176:1 192:1
+      past a 16-word boundary: row words 0-47 -> 3:24 13:81   |   48 on -> 13:138
+      row word: 3:24 13:27 29:23 45:31 61:32 77:26 93:34 109:24 125:22
+c 15  W 128 x0  0 chop 4 0  n 68  lost in 38, stored twice in 38, gaps 38, mean t 1584.8, mean lost 8.9; sizes 16:38
+      past a 16-word boundary: row words 0-47 -> 13:12   |   48 on -> 13:26
+      row word: 13:4 29:3 45:5 61:5 77:8 93:4 109:4 125:5
+c 16  W 128 x0  0 chop 5 1  n 68  lost in 53, stored twice in 24, gaps 65, mean t 1387.9, mean lost 21.6; sizes 16:38 32:27
+      past a 16-word boundary: row words 0-47 -> 3:11 13:22   |   48 on -> 13:32
+      row word: 3:11 13:8 29:6 45:8 61:3 77:11 93:5 109:9 125:4
+c 17  W 128 x0  0 chop 6 3  n 68  lost in 65, stored twice in 41, gaps 102, mean t 1360.2, mean lost 28.5; sizes 16:86 32:13 48:3
+      past a 16-word boundary: row words 0-47 -> 3:24 13:24   |   48 on -> 13:54
+      row word: 3:24 13:8 29:8 45:8 61:8 77:13 93:15 109:14 125:4
+
+The two-buffer knob core (experiments/intake/_mkb18.js, PSX_CB_B18=1 PSX_CB_B18PP=1: a unit's 16 words written while the next
+fills, three words of pipe; bash scratch/knot/blrun.sh ppf gpu-burstrow PSX_CB_B18PP=1) - three past everywhere:
+c  0  W 128 x0  0 burst     n 68  lost in 68, stored twice in 63, gaps 158, mean t 1125.2, mean lost 50.6; sizes 16:111 32:37 48:10
+      past a 16-word boundary: row words 0-47 -> 3:56   |   48 on -> 3:102
+      row word: 3:20 19:21 35:15 51:25 67:19 83:23 99:21 115:14
+c  1  W 128 x0 32 burst     n 68  lost in 67, stored twice in 62, gaps 153, mean t 1125.4, mean lost 48.5; sizes 7:1 9:1 16:108 32:32 48:11
+      past a 16-word boundary: row words 0-47 -> 3:57   |   48 on -> 3:96
+      row word: 3:25 19:15 35:17 51:25 67:16 83:20 99:18 115:17
+c  2  W 128 x0 16 burst     n 68  lost in 67, stored twice in 62, gaps 158, mean t 1124.9, mean lost 49.3; sizes 8:1 16:114 32:34 48:9
+      past a 16-word boundary: row words 0-47 -> 3:60   |   48 on -> 3:98
+      row word: 3:25 19:21 35:14 51:27 67:19 83:19 99:20 115:13
+c  3  W 128 x0  2 burst     n 68  lost in 68, stored twice in 63, gaps 153, mean t 1125.8, mean lost 47.8; sizes 16:109 32:38 48:6
+      past a 16-word boundary: row words 0-47 -> 3:54   |   48 on -> 3:99
+      row word: 3:16 19:19 35:19 51:25 67:15 83:21 99:21 115:17
+c  4  W 128 x0  1 burst     n 68  lost in 67, stored twice in 62, gaps 158, mean t 1125.1, mean lost 50.8; sizes 16:112 32:34 48:12
+      past a 16-word boundary: row words 0-47 -> 3:60   |   48 on -> 3:98
+      row word: 3:24 19:19 35:17 51:25 67:23 83:19 99:17 115:14
+c  5  W  64 x0  0 burst     n 68  lost in 68, stored twice in 64, gaps 197, mean t 1124.9, mean lost 57.5; sizes 7:4 8:1 13:1 15:1 16:146 23:1 32:36 48:7
+      past a 16-word boundary: row words 0-47 -> 3:160   |   48 on -> 3:37
+      row word: 3:80 19:42 35:38 51:37
+c  6  W  48 x0  0 burst     n 68  lost in 68, stored twice in 64, gaps 217, mean t 1107.7, mean lost 65.5; sizes 7:2 10:1 11:1 16:159 23:1 25:1 32:42 48:10
+      past a 16-word boundary: row words 0-47 -> 3:217   |   48 on -> -
+      row word: 3:114 19:52 35:51
+c  7  W  40 x0  0 burst     n 68  lost in 68, stored twice in 44, gaps 197, mean t 1099.9, mean lost 66.5; sizes 10:1 16:119 32:68 48:9
+      past a 16-word boundary: row words 0-47 -> 3:197   |   48 on -> -
+      row word: 3:97 19:48 35:52
+c  8  W  32 x0  0 burst     n 68  lost in 68, stored twice in 58, gaps 203, mean t 1125.6, mean lost 64.5; sizes 1:2 6:1 7:12 9:1 16:112 22:1 23:1 29:1 32:65 48:7
+      past a 16-word boundary: row words 0-47 -> 3:203   |   48 on -> -
+      row word: 3:126 19:77
+c  9  W  96 x0  0 burst     n 68  lost in 64, stored twice in 60, gaps 154, mean t 1058.3, mean lost 46.3; sizes 4:1 14:1 16:115 23:1 32:29 48:7
+      past a 16-word boundary: row words 0-47 -> 3:82   |   48 on -> 3:72
+      row word: 3:39 19:23 35:20 51:29 67:23 83:20
+c 10  W 256 x0  0 burst     n 68  lost in 68, stored twice in 62, gaps 158, mean t 1125.2, mean lost 50.2; sizes 16:112 32:36 36:1 48:9
+      past a 16-word boundary: row words 0-47 -> 3:29   |   48 on -> 3:129
+      row word: 3:9 19:9 35:11 51:12 67:9 83:8 99:11 115:10 131:10 147:13 163:11 179:13 195:9 211:6 227:11 243:6
+c 11  W 512 x0  0 burst     n 68  lost in 68, stored twice in 64, gaps 153, mean t 1124.9, mean lost 47.8; sizes 2:1 16:109 32:35 48:8
+      past a 16-word boundary: row words 0-47 -> 3:10   |   48 on -> 3:143
+      row word: 3:4 19:2 35:4 51:7 67:5 83:5 99:4 115:4 131:3 147:9 163:8 179:4 195:1 211:6 227:9 243:4 259:2 275:6 291:7 307:5 323:6 339:4 355:3 371:5 387:7 403:4 419:4 435:4 451:6 467:5 483:5 499:1
+c 12  W 128 x0  0 pre 8     n 68  lost in 68, stored twice in 61, gaps 159, mean t 1117.4, mean lost 51.3; sizes 15:1 16:111 32:34 34:1 48:12
+      past a 16-word boundary: row words 0-47 -> 3:65   |   48 on -> 3:94
+      row word: 3:30 19:21 35:14 51:24 67:17 83:21 99:18 115:14
+c 13  W 128 x0  0 pre 24    n 68  lost in 67, stored twice in 62, gaps 156, mean t 1100.8, mean lost 46.7; sizes 7:1 12:1 16:119 32:26 39:1 48:8
+      past a 16-word boundary: row words 0-47 -> 3:65   |   48 on -> 3:91
+      row word: 3:27 19:16 35:22 51:19 67:17 83:19 99:17 115:19
+c 14  W 128 x0  0 pre 64    n 68  lost in 66, stored twice in 61, gaps 144, mean t 1058.1, mean lost 43.9; sizes 16:110 32:25 39:1 48:8
+      past a 16-word boundary: row words 0-47 -> 3:57   |   48 on -> 3:87
+      row word: 3:21 19:14 35:22 51:13 67:19 83:19 99:17 115:19
+c 15  W 128 x0  0 chop 4 0  n 68  lost in 39, stored twice in 37, gaps 40, mean t 1583.3, mean lost 9.7; sizes 3:1 16:37 32:2
+      past a 16-word boundary: row words 0-47 -> 3:12   |   48 on -> 3:28
+      row word: 3:4 19:2 35:6 51:5 67:6 83:5 99:7 115:5
+c 16  W 128 x0  0 chop 5 1  n 68  lost in 44, stored twice in 21, gaps 53, mean t 1387.5, mean lost 18.4; sizes 16:22 19:7 32:24
+      past a 16-word boundary: row words 0-47 -> 3:21   |   48 on -> 3:32
+      row word: 3:7 19:7 35:7 51:5 67:11 83:4 99:6 115:6
+c 17  W 128 x0  0 chop 6 3  n 68  lost in 47, stored twice in 27, gaps 62, mean t 1359.9, mean lost 22.0; sizes 16:29 19:7 32:22 48:4
+      past a 16-word boundary: row words 0-47 -> 3:24   |   48 on -> 3:38
+      row word: 3:4 19:5 35:15 51:9 67:8 83:5 99:8 115:8

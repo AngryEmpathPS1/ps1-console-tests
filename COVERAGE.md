@@ -177,6 +177,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gp1-reset-480i | 1 |  | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0-ready | 1 | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
 | gpu-a0-size | 1 | 1 | 1 | 7 | 7 | 3 | 6 | 6 | 1 | 4 | 2 |
+| gpu-a0abort |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-a0after | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0blk | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0blk2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
@@ -212,6 +213,8 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-burstq | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-burstq2 | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
 | gpu-burstq3 | 1 | 2 | 1 |  |  | 2 |  | 4 | 2 |  |  |
+| gpu-burstrow |  |  |  |  |  | 6 |  |  |  |  |  |
+| gpu-burstrow2 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-c0-cold | 1 | 3 | 1 | 7 | 6 | 3 | 6 | 5 | 1 | 3 | 2 |
 | gpu-c0-cold2 | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | gpu-c0-datel | 1 | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
@@ -401,6 +404,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-shape-time78 | 1 | 1 | 1 |  | 1 | 3 |  | 4 | 1 | 1 |  |
 | gpu-shape-time79 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-shape-time8 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 2 |  |
+| gpu-shape-time80 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-shape-time9 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 2 |  |
 | gpu-tail | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 3 | 1 | 6 |  |
 | gpu-tail2 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 6 |  |

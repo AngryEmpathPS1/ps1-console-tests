@@ -211,6 +211,10 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-09-texmask](2026-11-09-texmask/) | 6 | 1 |
 | [2026-11-09-texsemi](2026-11-09-texsemi/) | 6 | 1 |
 | [2026-11-09-xfiles](2026-11-09-xfiles/) | 11 | 2 |
+| [2026-11-10-burstrow](2026-11-10-burstrow/) | 9 | 1 |
 | [2026-11-10-gst79](2026-11-10-gst79/) | 9 | 1 |
+| [2026-11-10-gst80](2026-11-10-gst80/) | 9 | 1 |
 | [2026-11-10-qlag](2026-11-10-qlag/) | 18 | 2 |
 | [2026-11-10-qlag-doom](2026-11-10-qlag-doom/) | 17 | 2 |
+| [2026-11-11-a0abort](2026-11-11-a0abort/) | 9 | 1 |
+| [2026-11-11-burstrow2](2026-11-11-burstrow2/) | 9 | 1 |

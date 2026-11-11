@@ -1,0 +1,52 @@
+gpu-a0abort - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED (STATUS "The count as a knob core ..."): a burst, and a burst chopped 16 words + 1 cycle, meet two long holds of the VRAM
+at a line's start with one 16-word unit written between them; SyncMode 1 blocks of 16-32 take the time of the first hold only. With
+the request "FIFO empty" and 35 words held ahead of VRAM both cannot be. This cuts each kind of transfer after n words and reads
+back what the GPU stored: fill (the words stored, in order), pre (in place), and GPUSTAT at the cut.
+
+THE THREE CORES (tools/hwrunner.js --emu, the SCPH-5501's BIOS; node experiments/knot/abortsum.js <out>; every row's start has the
+line-edge poll's jitter of a few cycles, so a row is a draw and the DIGEST is the prediction):
+  M        the count (experiments/intake/_mkcnt.js: a unit written as GPU_FILL_WB writes a block; line start 85 + 60 ticks, one unit
+           between; refill 50) - what the bursts' gap lists fit
+  M_noF2   M without the line start's second burst - what SyncMode 1's totals fit
+  v319     v0.377.319
+No core holds pixels back: each writes a word to VRAM as its intake takes it, so K 5 reads n - fill = 0 on all three. ON THE CONSOLE
+K 5 decides what "fill" is: 0 = GP1(01h) lets the buffered words be written (fill is the intake's count, as here); 13..29 = it drops
+them (fill is the WRITER's count, which stands still through each hold and steps 16 between them - then read K 0-4 as the writer).
+
+== M
+K 5 the control                rows   6  behind   0  lost a word   0  s1 not 12h   0  n - fill: -
+K 0 a burst                    rows 162  behind  86  lost a word 128  s1 not 12h  46  n - fill: 1:4 2:3 5:1 12:1 14:2 17:1 18:1 20+:73
+K 1 chopped 16 + 1             rows 101  behind  62  lost a word  95  s1 not 12h  14  n - fill: 1:1 6:1 8:1 9:2 13:2 16:2 17:2 20+:51
+K 2 chopped 16 + 4             rows 101  behind   5  lost a word  64  s1 not 12h   9  n - fill: 2:1 6:1 7:1 10:2
+K 3 SyncMode 1, blocks of 16   rows 147  behind   6  lost a word   0  s1 not 12h   9  n - fill: 4:2 5:3 7:1
+K 4 SyncMode 1, blocks of 32   rows 176  behind  15  lost a word 107  s1 not 12h  15  n - fill: 6:1 8:6 12:1 13:6 14:1
+== M_noF2
+K 5 the control                rows   6  behind   0  lost a word   0  s1 not 12h   0  n - fill: -
+K 0 a burst                    rows 162  behind  86  lost a word 128  s1 not 12h  36  n - fill: 1:4 2:3 5:1 12:1 13:1 14:1 17:1 18:1 20+:73
+K 1 chopped 16 + 1             rows 101  behind   2  lost a word  73  s1 not 12h   4  n - fill: 8:1 13:1
+K 2 chopped 16 + 4             rows 101  behind   0  lost a word   0  s1 not 12h   0  n - fill: -
+K 3 SyncMode 1, blocks of 16   rows 147  behind   1  lost a word   0  s1 not 12h   3  n - fill: 7:1
+K 4 SyncMode 1, blocks of 32   rows 176  behind  12  lost a word  70  s1 not 12h  12  n - fill: 8:1 9:1 12:4 13:3 14:1 15:1 16:1
+== v319
+K 5 the control                rows   6  behind   0  lost a word   0  s1 not 12h   0  n - fill: -
+K 0 a burst                    rows 162  behind 110  lost a word 119  s1 not 12h  79  n - fill: 1:4 3:4 4:1 5:4 6:4 7:4 8:2 9:3 11:1 15:1 19:1 20+:81
+K 1 chopped 16 + 1             rows 101  behind  51  lost a word  51  s1 not 12h  68  n - fill: 1:6 2:4 3:7 4:4 5:10 6:5 7:4 8:6 9:4 12:1
+K 2 chopped 16 + 4             rows 101  behind   0  lost a word   0  s1 not 12h   8  n - fill: -
+K 3 SyncMode 1, blocks of 16   rows 147  behind   0  lost a word   0  s1 not 12h   0  n - fill: -
+K 4 SyncMode 1, blocks of 32   rows 176  behind  11  lost a word  42  s1 not 12h  11  n - fill: 2:1 3:5 7:2 13:1 14:2
+
+WHAT EACH OUTCOME MEANS
+  K 3 (SyncMode 1, 16): M cuts 6 of 147 rows with the intake behind (4-7 words left in the FIFO, GPUSTAT 00h: no request) - the blocks
+      that end inside the second hold - and M_noF2 one, v319 none. The console's totals say none or one. If the console shows them
+      as M does and still takes M_noF2's time (t at n 480: M 885-913, M_noF2 868-896), the request is not "FIFO empty" in a
+      transfer's data; if it shows none, the second hold gives way to these blocks (or they are held elsewhere).
+  K 4 (SyncMode 1, 32): every core LOSES WORDS here (a 32-word block meets a stopped intake: 16 fit the FIFO); hwtests/dma-len says a
+      console's blocks of 32 never lose one. No loss on the console = its request waits for room the cores do not model.
+  K 2 (chopped 16 + 4): M loses a lap at the line start, M_noF2 and v319 nothing; hwtests/gpu-a0chop says the console loses nothing
+      at this pace. A blind feeder at 0.75 words a cycle that rides the line start says the second hold is not there for it either.
+  K 1 (chopped 16 + 1) and K 0 (a burst): the stops of gpu-burstrow2 again, with the FIFO's words visible at each cut: n - fill grows
+      to 16 while the intake stands, then the lap is lost.
+  GPUSTAT at the cut: 12h (bits 28 and 25) with the FIFO empty; 00h while words wait in it. A row with fill < n and 12h would be the
+      request up over a FIFO that is not empty.

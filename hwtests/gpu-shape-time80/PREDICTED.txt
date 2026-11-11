@@ -1,0 +1,116 @@
+gpu-shape-time80 - PREDICTED (2026-11-10, the GPU session), written before any console ran it.
+
+On the SCPH-5501 (tools/hwrunner.js --emu, PSX_MODEL=SCPH-5501, scph5501.bin), bit 26's fastest D:
+  v317   v0.377.317 as landed (scratch/_cores/fwbrec = src + a recorder of FillWB's calls, which changes no timing: its
+         gpu-shape-time79 run printed v317's to the cycle)
+  walk   v317's run replayed through FillWB (experiments/gst80pred.js, scratch/fwbreplay.js) with a row's walk - the pixels its
+         start moved right since the row drawn before - delaying its timeline 0.5 cycles a pixel (gpu-shape-time79's opaque
+         rows 34.0 -> 21.0 RMS; gpu-tex-stride3 42.3 -> 40.0)
+  f1     the same with a fill at a row's pixel 1-2 costing 8 (GPU_FILL_WB.F1 7; gpu-tex-stride3 42.3 -> 30.1, gpu-tex-fill2 14.1 -> 15.8)
+To rebuild: node scratch/mkfwbrec.js (the recorder core), then PSX_CORE=scratch/_cores/fwbrec/psx.js PSX_FWBREC=scratch/fwbrec/gpu-shape-time80.jsonl
+node tools/hwrunner.js gpu-shape-time80 --emu --raw > scratch/fwbrec/gpu-shape-time80.txt (PSX_MODEL=SCPH-5501), then node experiments/gst80pred.js.
+The replay on gpu-tex-fill6 at F 9 / dl 3 printed what a knob core ran, 32 rows to the cycle.
+
+How to read it: Q is gpu-shape-time79's quad again (its console median there: 15-bit Q 64 3455, 128 6976, 160 8649, 256 13743;
+8-bit 64 1285, 128 4510, 160 5761, 256 9126; 4-bit 256 6718; semi 15-bit 160 9649, 256 15329). If the console's T1 and T2 read
+as v317's and Q does not, the fault is the quad's halves together; if T2 reads off, it is the diagonal start or the walk.
+
+shape                  bit 26:  v317    walk      f1
+opaq tex15 Q 64x16            3397    3413    3398
+opaq tex15 T1 64x16           1358    1358    1358
+opaq tex15 T2 64x16           1219    1219    1219
+opaq tex15 QF 64x16           3387    3402    3387
+opaq tex15 Q 128x16           6966    6987    6967
+opaq tex15 T1 128x16          3421    3421    3421
+opaq tex15 T2 128x16          3206    3224    3206
+opaq tex15 QF 128x16          6950    6970    6951
+opaq tex15 Q 160x16           8715    8684    8717
+opaq tex15 T1 160x16          4412    4412    4412
+opaq tex15 T2 160x16          4090    4077    4094
+opaq tex15 QF 160x16          8680    8656    8682
+opaq tex15 Q 256x16          13813   13782   13813
+opaq tex15 T1 256x16          7131    7131    7131
+opaq tex15 T2 256x16          6618    6591    6618
+opaq tex15 QF 256x16         13793   13762   13793
+opaq tex8 Q 64x16             1284    1284    1284
+opaq tex8 T1 64x16             707     707     707
+opaq tex8 T2 64x16             705     705     705
+opaq tex8 QF 64x16            1284    1284    1284
+opaq tex8 Q 128x16            4459    4509    4463
+opaq tex8 T1 128x16           1881    1881    1881
+opaq tex8 T2 128x16           1741    1767    1741
+opaq tex8 QF 128x16           4457    4510    4461
+opaq tex8 Q 160x16            5789    5749    5792
+opaq tex8 T1 160x16           2634    2634    2634
+opaq tex8 T2 160x16           2547    2546    2549
+opaq tex8 QF 160x16           5746    5708    5749
+opaq tex8 Q 256x16            9078    9089    9081
+opaq tex8 T1 256x16           4475    4475    4475
+opaq tex8 T2 256x16           4266    4262    4266
+opaq tex8 QF 256x16           9068    9076    9071
+opaq tex4 Q 256x16            6670    6695    6677
+opaq tex4 T1 256x16           3346    3346    3346
+opaq tex4 T2 256x16           3286    3285    3286
+opaq tex4 QF 256x16           6678    6698    6684
+semi tex15 Q 160x16           9753    9719    9754
+semi tex15 T1 160x16          4936    4936    4936
+semi tex15 T2 160x16          4558    4545    4562
+semi tex15 QF 160x16          9710    9680    9711
+semi tex15 Q 256x16          15477   15448   15477
+semi tex15 T1 256x16          7997    7997    7997
+semi tex15 T2 256x16          7389    7363    7389
+semi tex15 QF 256x16         15452   15423   15452
+
+== v317, the run (bit 26 and bit 28, fastest..slowest):
+
+gpu/gpu-shape-time80
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+opaq tex15 Q 64x16     3397..3397    1835..1835 
+opaq tex15 T1 64x16    1358..1358     120..120  
+opaq tex15 T2 64x16    1219..1231     124..124  
+opaq tex15 QF 64x16    3387..3387    1888..1888 
+opaq tex15 Q 128x16    6966..6966    3688..3688 
+opaq tex15 T1 128x16   3421..3421     122..122  
+opaq tex15 T2 128x16   3206..3206     126..126  
+opaq tex15 QF 128x16   6950..6950    3800..3800 
+opaq tex15 Q 160x16    8715..8718    4628..4635 
+opaq tex15 T1 160x16   4412..4429     123..123  
+opaq tex15 T2 160x16   4090..4090     127..127  
+opaq tex15 QF 160x16   8680..8680    4697..4702 
+opaq tex15 Q 256x16   13813..13826   7264..7266 
+opaq tex15 T1 256x16   7131..7140     124..124  
+opaq tex15 T2 256x16   6618..6636     128..128  
+opaq tex15 QF 256x16  13793..13793   7486..7488 
+opaq tex8 Q 64x16      1284..1284     703..703  
+opaq tex8 T1 64x16      707..713      120..120  
+opaq tex8 T2 64x16      705..711      124..124  
+opaq tex8 QF 64x16     1284..1284     763..763  
+opaq tex8 Q 128x16     4459..4460    2372..2372 
+opaq tex8 T1 128x16    1881..1881     122..122  
+opaq tex8 T2 128x16    1741..1744     126..126  
+opaq tex8 QF 128x16    4457..4460    2483..2483 
+opaq tex8 Q 160x16     5789..5789    3029..3029 
+opaq tex8 T1 160x16    2634..2634     123..123  
+opaq tex8 T2 160x16    2547..2552     127..127  
+opaq tex8 QF 160x16    5746..5757    3176..3180 
+opaq tex8 Q 256x16     9078..9078    4751..4751 
+opaq tex8 T1 256x16    4475..4475     124..124  
+opaq tex8 T2 256x16    4266..4266     128..128  
+opaq tex8 QF 256x16    9068..9068    4981..4981 
+opaq tex4 Q 256x16     6670..6670    3475..3475 
+opaq tex4 T1 256x16    3346..3350     124..124  
+opaq tex4 T2 256x16    3286..3286     128..128  
+opaq tex4 QF 256x16    6678..6678    3715..3715 
+semi tex15 Q 160x16    9753..9753    5177..5178 
+semi tex15 T1 160x16   4936..4936     123..123  
+semi tex15 T2 160x16   4558..4558     127..127  
+semi tex15 QF 160x16   9710..9710    5243..5243 
+semi tex15 Q 256x16   15477..15483   8145..8145 
+semi tex15 T1 256x16   7997..7997     124..124  
+semi tex15 T2 256x16   7389..7391     128..128  
+semi tex15 QF 256x16  15452..15458   8364..8364 
+
+gpu/gpu-shape-time80: Done.
