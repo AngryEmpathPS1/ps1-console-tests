@@ -1,0 +1,35 @@
+
+timer/timer1-vsync
+Which sync inputs the timers honour: Timer1's v-blank on the system clock and on hblanks, Timer0's hblank on the
+system clock and on the dot clock. No assertions.
+  GPUSTAT 94142000
+
+T1 SYS (Timer1 MODE 0000h + sync, set just after a v-blank starts; before = the value just before the next v-blank
+starts, then 40 samples a line (2,152 cycles) apart from it: the first, then the deltas, value x count):
+  mode 0 pause in vblank        before 61439, first 61455, deltas 0x39   MODE 1C01
+  mode 1 reset at vblank        before 61440, first 61573, deltas 2141x2 2146 2141 2181 2143 2141 2146 2172 2150 2143 2141 2177 2141 2150 2143 2177 2141x2 2150 2174 2146 2141x2 2181 2143 2146 2141 2172 2150 2143 2146 2172 2141 2150 2143 2177 2141x2   MODE 1C03
+  mode 2 reset, count in vblank before    13, first   139, deltas 2120 2179 2141 2150 2143 2172 2146 2141 2181 2143 2141 2146 2141 2181 2143 2141 2146 2172 2150 2143 2141 2177 2141 2150 2143 2177 2141x2 2150 2174 2146 2141x2 2181 2143 2146 2141 2172 2150   MODE 1C05
+  mode 3 wait once, then free   before 61453, first 61579, deltas 2145 2141x2 2150 2174 2146 2141 2172 2150 2143 2146 2141 2172 2150 2143 2177 2141x2 2150 2143 2177 2141x2 2150 2174 2146 2141 2181 2143 2141 2146 2172 2150 2143 2141 2146 2172 2150 2143   MODE 1C07
+
+T1 HBL (Timer1 MODE 0100h + sync, set just after a v-blank starts; before = the value just before the next v-blank
+starts, then 40 samples a line (2,152 cycles) apart from it: the first, then the deltas, value x count):
+  mode 0 pause in vblank        before   238, first   238, deltas 1 0x38   MODE 1D01
+  mode 1 reset at vblank        before   237, first   237, deltas 1x19 0 1x19   MODE 0D03
+  mode 2 reset, count in vblank before     0, first     0, deltas 0 1x18 0 1x19   MODE 0D05
+  mode 3 wait once, then free   before   238, first   238, deltas 1x17 0 1x21   MODE 0D07
+
+T0 SYS (Timer0 MODE 0000h + sync, sampled every 64 cycles for 16 lines, 538 samples):
+  free (no sync)            downs   0  stalls   0  largest 34433
+  mode 0 pause in hblank     downs   0  stalls 116  largest 25815   MODE 1C01
+  mode 1 reset at hblank     downs  16  stalls   0  largest  2161   MODE 1C03
+  mode 2 reset, count in hblank downs  16  stalls 386  largest   537   MODE 0C05
+  mode 3 wait once, then free downs   0  stalls  11  largest 33611   MODE 0C07
+
+T0 DOT (Timer0 MODE 0100h + sync, sampled every 64 cycles for 16 lines, 538 samples):
+  free (no sync)            downs   0  stalls   0  largest 10816
+  mode 0 pause in hblank     downs   0  stalls 122  largest  8096   MODE 1D01
+  mode 1 reset at hblank     downs  16  stalls   0  largest   678   MODE 1D03
+  mode 2 reset, count in hblank downs  16  stalls 389  largest   167   MODE 0D05
+  mode 3 wait once, then free downs   0  stalls  11  largest 10566   MODE 0D07
+
+timer/timer1-vsync: Done.
