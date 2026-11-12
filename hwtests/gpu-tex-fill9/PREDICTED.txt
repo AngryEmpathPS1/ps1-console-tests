@@ -1,0 +1,49 @@
+gpu-tex-fill9 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED: what a fill pays behind a row's mid-row writes when fills are 1, 2 or 3 pixels apart (STATUS "gpu-tex-fill8 on the
+second SCPH-5501 and the PSone": at 8 apart the first fill after the write pays ~1 once; FillWB's 0.5 a fill is that spread over
+fills 4 apart).
+
+TWO CORES, `node hwtests/run.js gpu-tex-fill9 --ntsc --frames=40000 --quiet=35000`, the SCPH-5501's BIOS; bit 26's fastest D:
+  A  v0.377.326                                                       experiments/knot/fill9_v326.txt
+  B  A + experiments/knot/land_fwbtr.js (tr 1.05 once, mt 0.125, a pushed write starts at c)   experiments/knot/fill9_fwbtr.txt
+
+variant              A        B
+W 16 base           703      703
+W 24 base           959      959
+W 32 base          1216     1216
+W 40 base          1473     1473
+W 48 base          1729     1729
+W 54 base          1922     1922
+W 64 base          2243     2243
+W 80 base          2756     2756
+W 96 base          3270     3270
+W 108 base         3655     3655
+W 128 base         4297     4297
+W 160 base         5324     5324
+W 16 every 1       4988     4988
+W 24 every 1       7354     7354
+W 32 every 1       9721     9721
+W 40 every 1      12225    12222
+W 48 every 1      14720    14620
+W 54 every 1      16607    16435
+W 16 every 2        707      707
+W 32 every 2       5563     5563
+W 40 every 2       6947     6991
+W 48 every 2       8354     8350
+W 64 every 2      11168    11068
+W 80 every 2      13960    13855
+W 96 every 2      16722    16572
+W 108 every 2     18825    18680
+W 32 every 3       3005     3005
+W 48 every 3       6228     6260
+W 64 every 3       8498     8458
+W 96 every 3      12427    12370
+W 128 every 3     16622    16543
+W 160 every 3     20817    20715
+
+WHAT WOULD SAY WHAT. A row's fills behind its first mid-row write: (W 40 - W 32) at every 1, (W 48 - W 32 ...) at every 2 and 3,
+less the bases' difference. A charges each such fill 0.5 (0.3 past the second write) on top of its waits, B 0.125 and ~1 once a
+write. The console between them at every 1 and 2: the fills that dense pay something of their own a fill (B's remainder is too
+small there and A's too large or too small by the spacing). The console on B at every 3: the remainder is right down to 3 apart.
+The rows of 16-32 pixels (no mid-row write) say nothing of that and should read as both cores (A = B there).

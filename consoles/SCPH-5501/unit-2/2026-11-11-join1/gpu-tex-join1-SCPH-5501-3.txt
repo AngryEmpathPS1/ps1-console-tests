@@ -1,0 +1,66 @@
+
+gpu/gpu-tex-join1
+A 15-bit raw-textured triangle or quad inside W x 16 at (128,128), u a texel a pixel, v 1:1. fresh: an untimed draw of the same
+shape from the texture page beside it first (every entry it touches misses); base: u 0 (no fill). Its last four words stored back to back,
+D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points in the blanking, the display
+one line tall; for the quads bit 28's too. No assertions.
+
+variant            bit 26's D     bit 28's D
+TA 64 fresh         1913..1935 
+TB 64 fresh         1708..1730 
+TC 64 fresh         1817..1837 
+TD 64 fresh         2032..2053 
+Q 64 fresh          3622..3645     1911..1933 
+QF 64 fresh         3627..3647     2023..2043 
+TA 128 fresh        3701..3725 
+TB 128 fresh        3286..3311 
+TC 128 fresh        3408..3430 
+TD 128 fresh        3826..3846 
+Q 128 fresh         6993..7013     3697..3721 
+QF 128 fresh        6984..7016     3816..3839 
+TA 160 fresh        4630..4652 
+TB 160 fresh        4099..4121 
+TC 160 fresh        4216..4233 
+TD 160 fresh        4742..4765 
+Q 160 fresh         8648..8665     4629..4636 
+QF 160 fresh        8716..8732     4732..4746 
+S0 64 fresh         3492..3513 
+S1 64 fresh         3193..3213 
+S2 64 fresh         2786..2814 
+S4 64 fresh         2040..2056 
+S8 64 fresh         1197..1217 
+S0 128 fresh        6855..6878 
+S1 128 fresh        6558..6570 
+S2 128 fresh        6139..6156 
+S4 128 fresh        5387..5409 
+S8 128 fresh        3930..3950 
+TA 64 base           703..704  
+TB 64 base           638..638  
+TC 64 base           702..702  
+TD 64 base           763..763  
+Q 64 base           1282..1282      701..701  
+QF 64 base          1286..1286      761..761  
+TA 128 base         1249..1253 
+TB 128 base         1119..1119 
+TC 128 base         1247..1250 
+TD 128 base         1369..1369 
+Q 128 base          2371..2371     1246..1246 
+QF 128 base         2370..2370     1366..1366 
+TA 160 base         1521..1531 
+TB 160 base         1359..1359 
+TC 160 base         1519..1525 
+TD 160 base         1671..1671 
+Q 160 base          2915..2915     1518..1518 
+QF 160 base         2911..2911     1668..1668 
+S0 64 base          1189..1189 
+S1 64 base          1080..1080 
+S2 64 base           979..987  
+S4 64 base           764..764  
+S8 64 base           500..500  
+S0 128 base         2213..2213 
+S1 128 base         2104..2104 
+S2 128 base         2001..2002 
+S4 128 base         1790..1798 
+S8 128 base         1369..1369 
+
+gpu/gpu-tex-join1: Done.

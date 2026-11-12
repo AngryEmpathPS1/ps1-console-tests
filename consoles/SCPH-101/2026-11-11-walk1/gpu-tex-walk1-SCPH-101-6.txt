@@ -1,0 +1,70 @@
+
+gpu/gpu-tex-walk1
+A 15-bit raw-textured triangle (0,128),(W,128),(d K,128 + K) clipped to 16 rows: each row starts d pixels further right, W wide
+within 4 pixels. none: every texel cached; one: a fill a row, at its first pixel; dense: a fill every 4 pixels. Its last four words
+stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points in the
+blanking, the display one line tall. No assertions.
+
+variant            bit 26's D
+W24 d0 none          540..540  
+W24 d1 none          556..556  
+W24 d2 none          570..570  
+W24 d3 none          586..586  
+W24 d4 none          599..599  
+W24 d5 none          613..613  
+W24 d6 none          624..624  
+W24 d8 none          647..647  
+W24 d12 none         696..709  
+W24 d16 none         742..742  
+W60 d0 none         1100..1100 
+W60 d1 none         1115..1115 
+W60 d2 none         1130..1130 
+W60 d3 none         1145..1145 
+W60 d4 none         1157..1157 
+W60 d5 none         1166..1166 
+W60 d6 none         1172..1172 
+W60 d8 none         1184..1184 
+W60 d12 none        1215..1216 
+W60 d16 none        1238..1238 
+W24 d0 one           668..686  
+W24 d1 one           684..701  
+W24 d2 one           698..704  
+W24 d3 one           714..719  
+W24 d4 one           862..883  
+W24 d5 one           856..871  
+W24 d6 one           857..864  
+W24 d8 one           850..852  
+W24 d12 one          834..843  
+W24 d16 one          870..886  
+W60 d0 one          1243..1256 
+W60 d1 one          1258..1271 
+W60 d2 one          1273..1282 
+W60 d3 one          1288..1306 
+W60 d4 one          1401..1407 
+W60 d5 one          1394..1408 
+W60 d6 one          1383..1390 
+W60 d8 one          1362..1369 
+W60 d12 one         1343..1349 
+W60 d16 one         1366..1368 
+W24 d0 dense        1381..1400 
+W24 d1 dense        1399..1418 
+W24 d2 dense        1411..1431 
+W24 d3 dense        1429..1447 
+W24 d4 dense        1504..1525 
+W24 d5 dense        1503..1521 
+W24 d6 dense        1499..1517 
+W24 d8 dense        1492..1510 
+W24 d12 dense       1460..1480 
+W24 d16 dense       1464..1486 
+W60 d0 dense        3252..3270 
+W60 d1 dense        3268..3287 
+W60 d2 dense        3278..3300 
+W60 d3 dense        3295..3319 
+W60 d4 dense        3372..3400 
+W60 d5 dense        3341..3363 
+W60 d6 dense        3314..3337 
+W60 d8 dense        3267..3292 
+W60 d12 dense       3178..3201 
+W60 d16 dense       3114..3136 
+
+gpu/gpu-tex-walk1: Done.

@@ -1,0 +1,89 @@
+gpu-tex-walk1 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED: what a row's first fill pays after the left edge has moved d pixels (STATUS "gpu-tex-join1 on the second SCPH-5501
+and the PSone": rows from the diagonal read ~2 cycles a row dearer than the FillWB candidate at steps of 4-10 pixels, ~1 at 2).
+
+WHAT THE CORES SAY (one - none and dense - none over 16 rows, by d):
+                                   d              0    1    2    3    4    5    6    8   12   16
+walk1_v327.txt                     W24 one      128  128  128  245  237  215  207  177  128  128
+walk1_v327.txt                     W24 dense    845  845  845  887  879  857  849  819  754  722
+walk1_v327.txt                     W60 one      135  135  135  245  237  213  203  170  135  136
+walk1_v327.txt                     W60 dense   2150 2150 2150 2200 2192 2142 2115 2057 1963 1887
+walk1_fwbtr.txt                    W24 one      128  128  128  245  237  215  207  177  128  128
+walk1_fwbtr.txt                    W24 dense    845  845  845  887  879  857  849  819  754  722
+walk1_fwbtr.txt                    W60 one      145  145  145  239  231  207  197  164  130  130
+walk1_fwbtr.txt                    W60 dense   2153 2153 2154 2175 2167 2118 2092 2035 1944 1871
+
+Both cores start a row 2 + d cycles after the row before's end and ask that row's last frame-buffer write 4.25 after it: at d 0-2
+the fill goes first (8 cycles a fill, nothing waited), at d 3 the write does and the fill waits its whole length (+7.3 a row at W
+24), less each pixel more of walk, nothing from d 12. If the console's step is elsewhere than between d 2 and 3, the write is
+asked at another time; if its rows cost ~2 more than these at EVERY d past the step - d 12 and 16 too, where nothing waits here -
+a fill after a walk costs more of itself; if only where the fill waits, it is the write's length or its turnaround.
+
+TWO CORES, `node hwtests/run.js gpu-tex-walk1 --ntsc --frames=40000 --quiet=35000`, the SCPH-5501's BIOS; bit 26's fastest D:
+  A  v0.377.327                                                                               experiments/knot/walk1_v327.txt
+  B  A + experiments/knot/land_fwbtr.js (tr 1.05 once, mt 0.125, a pushed write starts at c)   experiments/knot/walk1_fwbtr.txt
+
+variant                   A        B
+W24 d0 none             536      536
+W24 d1 none             551      551
+W24 d2 none             566      566
+W24 d3 none             581      581
+W24 d4 none             595      595
+W24 d5 none             608      608
+W24 d6 none             620      620
+W24 d8 none             643      643
+W24 d12 none            693      693
+W24 d16 none            740      740
+W60 d0 none            1099     1099
+W60 d1 none            1114     1114
+W60 d2 none            1129     1129
+W60 d3 none            1144     1144
+W60 d4 none            1156     1156
+W60 d5 none            1165     1165
+W60 d6 none            1172     1172
+W60 d8 none            1184     1184
+W60 d12 none           1216     1216
+W60 d16 none           1240     1240
+W24 d0 one              664      664
+W24 d1 one              679      679
+W24 d2 one              694      694
+W24 d3 one              826      826
+W24 d4 one              832      832
+W24 d5 one              823      823
+W24 d6 one              827      827
+W24 d8 one              820      820
+W24 d12 one             821      821
+W24 d16 one             868      868
+W60 d0 one             1234     1244
+W60 d1 one             1249     1259
+W60 d2 one             1264     1274
+W60 d3 one             1389     1383
+W60 d4 one             1393     1387
+W60 d5 one             1378     1372
+W60 d6 one             1375     1369
+W60 d8 one             1354     1348
+W60 d12 one            1351     1346
+W60 d16 one            1376     1370
+W24 d0 dense           1381     1381
+W24 d1 dense           1396     1396
+W24 d2 dense           1411     1411
+W24 d3 dense           1468     1468
+W24 d4 dense           1474     1474
+W24 d5 dense           1465     1465
+W24 d6 dense           1469     1469
+W24 d8 dense           1462     1462
+W24 d12 dense          1447     1447
+W24 d16 dense          1462     1462
+W60 d0 dense           3249     3252
+W60 d1 dense           3264     3267
+W60 d2 dense           3279     3283
+W60 d3 dense           3344     3319
+W60 d4 dense           3348     3323
+W60 d5 dense           3307     3283
+W60 d6 dense           3287     3264
+W60 d8 dense           3241     3219
+W60 d12 dense          3179     3160
+W60 d16 dense          3127     3111
+
+Read with `node experiments/knot/walk1tab.js <core output> --con=<console-logs folder>`.

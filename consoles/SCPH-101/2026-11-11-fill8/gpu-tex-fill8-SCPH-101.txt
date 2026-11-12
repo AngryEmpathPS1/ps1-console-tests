@@ -1,0 +1,63 @@
+
+gpu/gpu-tex-fill8
+A 15-bit triangle clipped to W x 32, every texel cached but the evicted lines (one fill a row at 4j, or 8j at W 64):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant          bit 26's D
+e W40 base          1476..1476 
+e W40 fill 0        1918..1924 
+e W40 fill 8        1732..1748 
+e W40 fill 16       1732..1745 
+e W40 fills 0 8     2174..2187 
+e W40 fills 0 16    2175..2190 
+e W40 fills 0 24    2175..2194 
+e W40 fills 8 16    1988..2008 
+e W48 base          1732..1732 
+e W48 fill 0        2019..2028 
+e W48 fill 8        1988..2005 
+e W48 fill 16       1988..2003 
+e W48 fills 0 8     2283..2295 
+e W48 fills 0 16    2277..2293 
+e W48 fills 0 24    2277..2293 
+e W48 fills 8 16    2248..2260 
+e W56 base          1990..1990 
+e W56 fill 0        2277..2298 
+e W56 fill 8        2308..2322 
+e W56 fill 16       2246..2263 
+e W56 fills 0 8     2566..2585 
+e W56 fills 0 16    2535..2553 
+e W56 fills 0 24    2538..2551 
+e W56 fills 8 16    2564..2598 
+e W64 base          2248..2248 
+e W64 fill 0        2535..2551 
+e W64 fill 8        2594..2603 
+e W64 fill 16       2504..2516 
+e W64 fills 0 8     2884..2914 
+e W64 fills 0 16    2794..2826 
+e W64 fills 0 24    2793..2814 
+e W64 fills 8 16    2858..2873 
+f u0 0 base         2248..2248 
+f fill 32           2504..2516 
+f fill 40           2730..2744 
+f fill 48           2540..2557 
+f fills 32 56       2796..2815 
+f fills 24 32       2761..2785 
+f fills 32 40 48    3146..3189 
+f fills 32 48 56    3058..3075 
+f fills 24 32 40    3147..3187 
+f u0 3 base         2054..2064 
+f fill 34           2310..2315 
+f fills 34 50       2600..2618 
+f fills 26 34 42    2954..2973 
+f u0 1 base         2183..2183 
+f fills 38 46       2985..2991 
+f fills 30 38 46    3241..3283 
+g W48 base          1731..1731 
+g lines 5 6         2597..2615 
+g lines 5 7         2413..2428 
+g lines 6 7         2597..2612 
+g lines 4 5         2246..2263 
+g lines 4 6         2597..2610 
+
+gpu/gpu-tex-fill8: Done.

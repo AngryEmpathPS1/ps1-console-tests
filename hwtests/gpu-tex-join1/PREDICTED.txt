@@ -1,0 +1,76 @@
+gpu-tex-join1 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED: which of a textured quad's halves reads short of the console once the cache is out of it. gpu-shape-time80 by bit 28
+(STATUS "gpu-shape-time80's quads by their halves"): the quad's first half (every row from x 0, the widest first) within 5 cycles,
+its second (rows from the diagonal, drawn from the bottom up) 36 short at W 64 and 128; the other diagonal's quad both halves
+short. Each lone triangle there met its own last draw's cache. Here every timed draw misses on every entry (fresh) or on none
+(base), so TA + TC against Q and TD + TB against QF are like for like, and S0-S8 put the left edge's move beside dense fills.
+
+WHAT THE CORES SAY: a quad is its two triangles (Q - (TA + TC) of the fills: -1 / -6 at W 64 / 128; -74 at 160; QF - (TD + TB)
+-17 / -18 / -16). If the console agrees on the lone triangles and reads the quads dearer, the join is the quad's own; if TB, TC
+or TD alone read dearer than here, it is the triangle's rows (their order, their start), not the quad.
+
+TWO CORES, `node hwtests/run.js gpu-tex-join1 --ntsc --frames=40000 --quiet=35000`, the SCPH-5501's BIOS; the fastest D, bit 26's
+and for the quads bit 28's:
+  A  v0.377.327                                                                               experiments/knot/join1_v327.txt
+  B  A + experiments/knot/land_fwbtr.js (tr 1.05 once, mt 0.125, a pushed write starts at c)   experiments/knot/join1_fwbtr.txt
+
+variant              A bit 26  bit 28     B bit 26  bit 28
+TA 64 fresh              1910                 1917        
+TB 64 fresh              1703                 1710        
+TC 64 fresh              1792                 1789        
+TD 64 fresh              2008                 2003        
+Q 64 fresh               3575    1906         3578    1913
+QF 64 fresh              3572    1997         3572    1992
+TA 128 fresh             3701                 3704        
+TB 128 fresh             3283                 3286        
+TC 128 fresh             3391                 3376        
+TD 128 fresh             3814                 3797        
+Q 128 fresh              6960    3697         6949    3700
+QF 128 fresh             6958    3802         6942    3785
+TA 160 fresh             4630                 4630        
+TB 160 fresh             4106                 4107        
+TC 160 fresh             4207                 4190        
+TD 160 fresh             4733                 4714        
+Q 160 fresh              8637    4626         8623    4626
+QF 160 fresh             8702    4721         8682    4702
+S0 64 fresh              3489                 3487        
+S1 64 fresh              3194                 3202        
+S2 64 fresh              2751                 2768        
+S4 64 fresh              2011                 2006        
+S8 64 fresh              1186                 1183        
+S0 128 fresh             6855                 6847        
+S1 128 fresh             6596                 6588        
+S2 128 fresh             6130                 6129        
+S4 128 fresh             5371                 5345        
+S8 128 fresh             3915                 3898        
+TA 64 base                704                  704        
+TB 64 base                638                  638        
+TC 64 base                702                  702        
+TD 64 base                764                  764        
+Q 64 base                1280     700         1280     700
+QF 64 base               1280     760         1280     760
+TA 128 base              1250                 1250        
+TB 128 base              1119                 1119        
+TC 128 base              1244                 1244        
+TD 128 base              1370                 1370        
+Q 128 base               2368    1246         2368    1246
+QF 128 base              2368    1366         2368    1366
+TA 160 base              1523                 1523        
+TB 160 base              1360                 1360        
+TC 160 base              1515                 1515        
+TD 160 base              1673                 1673        
+Q 160 base               2912    1519         2912    1519
+QF 160 base              2912    1669         2912    1669
+S0 64 base               1186                 1186        
+S1 64 base               1081                 1081        
+S2 64 base                975                  975        
+S4 64 base                765                  765        
+S8 64 base                497                  497        
+S0 128 base              2213                 2213        
+S1 128 base              2107                 2107        
+S2 128 base              2002                 2002        
+S4 128 base              1792                 1792        
+S8 128 base              1370                 1370        
+
+Read with `node experiments/knot/join1tab.js <core output> --con=<console-logs folder> --rows`.

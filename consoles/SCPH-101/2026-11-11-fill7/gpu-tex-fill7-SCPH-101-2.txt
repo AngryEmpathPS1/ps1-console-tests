@@ -1,0 +1,53 @@
+
+gpu/gpu-tex-fill7
+A triangle clipped to W x 32 from x 128, 15-bit at half a texel a pixel or 8-bit at a texel a pixel (a fill every 8 pixels), or u span 0 (base):
+its last four words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest
+over eight start points in the blanking, the display one line tall. No assertions.
+
+variant              bit 26's D
+W 128 15b base        4293..4295 
+W 128 15b every 8     9605..9654 
+W 128 8b base         4293..4294 
+W 128 8b every 8      8940..8965 
+W 136 15b base        4543..4551 
+W 136 15b every 8    10243..10265
+W 136 8b base         4543..4553 
+W 136 8b every 8      9428..9456 
+W 144 15b base        4801..4807 
+W 144 15b every 8    10763..10793
+W 144 8b base         4801..4804 
+W 144 8b every 8      9974..9994 
+W 152 15b base        5059..5080 
+W 152 15b every 8    11332..11369
+W 152 8b base         5059..5059 
+W 152 8b every 8     10518..10548
+W 160 15b base        5317..5334 
+W 160 15b every 8    11905..11923
+W 160 8b base         5317..5326 
+W 160 8b every 8     11131..11162
+W 168 15b base        5567..5567 
+W 168 15b every 8    12582..12604
+W 168 8b base         5567..5567 
+W 168 8b every 8     11611..11632
+W 176 15b base        5825..5832 
+W 176 15b every 8    13084..13107
+W 176 8b base         5825..5825 
+W 176 8b every 8     12164..12194
+W 184 15b base        6083..6083 
+W 184 15b every 8    13663..13687
+W 184 8b base         6083..6083 
+W 184 8b every 8     12704..12736
+W 192 15b base        6341..6341 
+W 192 15b every 8    14244..14274
+W 192 8b base         6341..6341 
+W 192 8b every 8     13312..13343
+W 200 15b base        6591..6591 
+W 200 15b every 8    14883..14919
+W 200 8b base         6591..6591 
+W 200 8b every 8     13803..13823
+W 208 15b base        6849..6849 
+W 208 15b every 8    15390..15445
+W 208 8b base         6849..6849 
+W 208 8b every 8     14346..14381
+
+gpu/gpu-tex-fill7: Done.

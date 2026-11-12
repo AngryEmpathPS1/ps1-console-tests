@@ -1,0 +1,54 @@
+gpu-tex-fill10 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED: does the first fill after EACH mid-row write pay its ~1 cycle (the candidate's tr, measured by gpu-tex-fill7/8 at
+fills to 8 pixels apart) when the fills are 16 or 32 pixels apart? gpu-tex-scale's quads with fills that sparse read 145-700
+cycles dearer on the candidate than on its console (polled, under the display); split in the replay, that is tr.
+
+WHAT THE CORES SAY (a variant less its base over 32 rows, by W):
+                                   W             48    64    96   128   160   208
+fill10_v327.txt                    every 8     2076  2681  3976  5270  6565  8560
+fill10_v327.txt                    every 16    1067  1338  1877  2416  2957  3769
+fill10_v327.txt                    every 32     530   801  1067  1332  1599  1864
+fill10_v327.txt                    base        1729  2243  3270  4297  5323  6864
+fill10_fwbtr.txt                   every 8     2066  2705  4003  5300  6599  8553
+fill10_fwbtr.txt                   every 16    1069  1328  1882  2435  2990  3836
+fill10_fwbtr.txt                   every 32     551   811  1105  1398  1693  2018
+fill10_fwbtr.txt                   base        1729  2243  3270  4297  5323  6864
+
+A charges 0.5 on the fills behind a row's first mid-row write and 0.3 on those behind the later ones; B 1.05 once behind each
+write and 0.125 a fill. They part where fills are few a write: at every 32, W 208, by 154 cycles (0.8 a write). If the console
+reads B's rows, tr holds at any spacing and gpu-tex-scale's rows are its display's or its instrument's; if A's, tr fades with
+the fill's distance from the write and the candidate needs that before it is proposed.
+
+TWO CORES, `node hwtests/run.js gpu-tex-fill10 --ntsc --frames=40000 --quiet=35000`, the SCPH-5501's BIOS; bit 26's fastest D:
+  A  v0.377.327                                                                               experiments/knot/fill10_v327.txt
+  B  A + experiments/knot/land_fwbtr.js (tr 1.05 once, mt 0.125, a pushed write starts at c)   experiments/knot/fill10_fwbtr.txt
+  (B + experiments/knot/land_fwbwalk.js reads as B on every row: no row here is walked.)
+
+variant                   A        B
+W 48 base              1729     1729
+W 64 base              2243     2243
+W 96 base              3270     3270
+W 128 base             4297     4297
+W 160 base             5323     5323
+W 208 base             6864     6864
+W 48 every 8           3805     3795
+W 64 every 8           4924     4948
+W 96 every 8           7246     7273
+W 128 every 8          9567     9597
+W 160 every 8         11888    11922
+W 208 every 8         15424    15417
+W 48 every 16          2796     2798
+W 64 every 16          3581     3571
+W 96 every 16          5147     5152
+W 128 every 16         6713     6732
+W 160 every 16         8280     8313
+W 208 every 16        10633    10700
+W 48 every 32          2259     2280
+W 64 every 32          3044     3054
+W 96 every 32          4337     4375
+W 128 every 32         5629     5695
+W 160 every 32         6922     7016
+W 208 every 32         8728     8882
+
+Read with `node experiments/knot/fill10tab.js <core output> --con=<console-logs folder>`.

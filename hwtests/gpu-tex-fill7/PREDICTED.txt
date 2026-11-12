@@ -1,0 +1,66 @@
+gpu-tex-fill7 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED: whether a paletted textured row's shortfall (hwtests/gpu-shape-time81: ~2 cycles a row dearer on the consoles
+from ~96 pixels) is the palette's or the fills' spacing - an 8-bit row at a texel a pixel against a 15-bit row at half a texel a
+pixel, both a fill every 8 pixels, at 11 widths, each beside its fill-free base.
+
+THE CORE: v0.377.326 (src), `node hwtests/run.js gpu-tex-fill7 --ntsc --frames=40000 --quiet=35000`, the SCPH-5501's BIOS.
+Bit 26's fastest D:
+
+W 128 15b base        4297..4297 
+W 128 15b every 8     9567..9567 
+W 128 8b base         4297..4297 
+W 128 8b every 8      8838..8853 
+W 136 15b base        4553..4553 
+W 136 15b every 8    10259..10259
+W 136 8b base         4553..4553 
+W 136 8b every 8      9351..9354 
+W 144 15b base        4810..4811 
+W 144 15b every 8    10782..10782
+W 144 8b base         4810..4828 
+W 144 8b every 8      9938..9942 
+W 152 15b base        5067..5081 
+W 152 15b every 8    11304..11304
+W 152 8b base         5067..5077 
+W 152 8b every 8     10460..10460
+W 160 15b base        5324..5332 
+W 160 15b every 8    11888..11888
+W 160 8b base         5324..5344 
+W 160 8b every 8     11014..11014
+W 168 15b base        5580..5588 
+W 168 15b every 8    12581..12583
+W 168 8b base         5580..5580 
+W 168 8b every 8     11527..11532
+W 176 15b base        5837..5839 
+W 176 15b every 8    13103..13105
+W 176 8b base         5837..5840 
+W 176 8b every 8     12114..12114
+W 184 15b base        6094..6098 
+W 184 15b every 8    13625..13625
+W 184 8b base         6094..6094 
+W 184 8b every 8     12636..12636
+W 192 15b base        6350..6350 
+W 192 15b every 8    14210..14217
+W 192 8b base         6350..6350 
+W 192 8b every 8     13189..13189
+W 200 15b base        6607..6607 
+W 200 15b every 8    14902..14902
+W 200 8b base         6607..6607 
+W 200 8b every 8     13702..13702
+W 208 15b base        6864..6864 
+W 208 15b every 8    15424..15424
+W 208 8b base         6864..6864 
+W 208 8b every 8     14289..14289
+
+A variant less its base (32 rows), this core:   W: 15-bit every 8 | 8-bit every 8
+  128: 5270 | 4541   136: 5706 | 4798   144: 5972 | 5128   152: 6237 | 5393   160: 6564 | 5690   168: 7001 | 5947
+  176: 7266 | 6277   184: 7531 | 6542   192: 7860 | 6839   200: 8295 | 7095   208: 8560 | 7425
+(this core's 8-bit rows cost ~23 cycles a row less than its 15-bit ones at the same spacing: its count of what each misses.)
+
+WHAT WOULD SAY WHAT.
+ - The console's 15-bit column off this core's as gpu-tex-fill6's was (short at W a multiple of 32 by ~1 a row, dear between) and
+   its 8-bit column off by the SAME amounts: the spacing - FillWB's fit to fills every 4 pixels - and no palette term.
+ - The 8-bit column dearer than the 15-bit one's error by ~2 a row (~64 a variant): a paletted fill or row costs more of itself.
+ - The two columns apart by something else than this core's ~23 a row: the cache holds other lines than this core's at 8-bit
+   (which entries u and u + 64 share) - the fills are counted wrong, not priced wrong.
+ - The bases: an 8-bit row with every texel cached against a 15-bit one - equal here; a difference is the palette's a pixel.

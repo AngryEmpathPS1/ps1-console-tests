@@ -1,0 +1,82 @@
+gpu-tex-fill8 - PREDICTED, written 2026-11-11 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED: how long a fill waits behind (e) the row-end write by its size when a fill at the row's first pixel has pushed
+it, and (f, g) a mid-row write a fill has pushed - the places an 8-bit row's fills have (STATUS "gpu-tex-fill7 ...", "Working
+notes on FillWB after gpu-tex-fill7").
+
+THE CORE: v0.377.326 (the recorder core, which prints src's values), `node hwtests/run.js gpu-tex-fill8 --ntsc --frames=20000
+--quiet=15000`, the SCPH-5501's BIOS. Bit 26's fastest D:
+
+e W40 base          1476..1476 
+e W40 fill 0        1879..1879 
+e W40 fill 8        1732..1732 
+e W40 fill 16       1732..1732 
+e W40 fills 0 8     2135..2135 
+e W40 fills 0 16    2135..2135 
+e W40 fills 0 24    2135..2135 
+e W40 fills 8 16    1988..1988 
+e W48 base          1732..1732 
+e W48 fill 0        2004..2004 
+e W48 fill 8        1988..1988 
+e W48 fill 16       1988..1988 
+e W48 fills 0 8     2260..2260 
+e W48 fills 0 16    2260..2260 
+e W48 fills 0 24    2260..2260 
+e W48 fills 8 16    2244..2244 
+e W56 base          1989..1989 
+e W56 fill 0        2261..2261 
+e W56 fill 8        2299..2299 
+e W56 fill 16       2245..2245 
+e W56 fills 0 8     2517..2517 
+e W56 fills 0 16    2517..2517 
+e W56 fills 0 24    2517..2517 
+e W56 fills 8 16    2555..2555 
+e W64 base          2246..2246 
+e W64 fill 0        2517..2517 
+e W64 fill 8        2618..2620 
+e W64 fill 16       2502..2502 
+e W64 fills 0 8     2804..2804 
+e W64 fills 0 16    2773..2773 
+e W64 fills 0 24    2773..2773 
+e W64 fills 8 16    2874..2874 
+f u0 0 base         2246..2246 
+f fill 32           2518..2518 
+f fill 40           2718..2718 
+f fill 48           2518..2518 
+f fills 32 56       2790..2790 
+f fills 24 32       2774..2774 
+f fills 32 40 48    3142..3144 
+f fills 32 48 56    3062..3062 
+f fills 24 32 40    3126..3126 
+f u0 3 base         2053..2055 
+f fill 34           2325..2328 
+f fills 34 50       2597..2609 
+f fills 26 34 42    2933..2933 
+f u0 1 base         2182..2182 
+f fills 38 46       2990..2990 
+f fills 30 38 46    3246..3246 
+g W48 base          1731..1731 
+g lines 5 6         2588..2588 
+g lines 5 7         2395..2395 
+g lines 6 7         2604..2607 
+g lines 4 5         2243..2243 
+g lines 4 6         2588..2588 
+
+This core's waits a row (a variant less its base, over 32 rows, less 8 a fill):
+  e W40 (last block 8):  fill 0 4.59 | 8 0 | 16 0 | (0,8) 4.59 | (0,16) 4.59 | (0,24) 4.59 | (8,16) 0
+  e W48 (16):            fill 0 0.50 | 8 0 | 16 0 | (0,8) 0.50 | (0,16) 0.50 | (0,24) 0.50 | (8,16) 0
+  e W56 (24):            fill 0 0.50 | 8 1.69 | 16 0 | (0,8) 0.50 | (0,16) 0.50 | (0,24) 0.50 | (8,16) 1.69
+  e W64 (32):            fill 0 0.47 | 8 3.63 | 16 0 | (0,8) 1.44 | (0,16) 0.47 | (0,24) 0.47 | (8,16) 3.63
+  f: fill 32 0.50 | 40 6.75 | 48 0.50 | (32,56) 1.00 | (24,32) 0.50 | (32,40,48) 4.00 | (32,48,56) 1.50 | (24,32,40) 3.50 |
+     34 0.50 | (34,50) 1.00 | (26,34,42) 3.50 | (38,46) 9.25 | (30,38,46) 9.25
+  g: lines (5,6) 10.78 | (5,7) 4.75 | (6,7) 11.28 | (4,5) 0 | (4,6) 10.78
+
+WHAT WOULD SAY WHAT.
+ e: a lone fill at 8 or 16 gives the row-end write's end when nothing pushes it (this core: over by pixel 8 at 8 / 16
+    halfwords, 1.69 / 3.63 past it at 24 / 32). The pairs (0,8) and (0,16) against them give the PUSHED write's end: gpu-tex-fill7's
+    15-bit rows read as if it ran 1.5 longer than here at 24 / 32 halfwords ((0,8) at W56 ~2, at W64 ~3-4, where this core has 0.5 /
+    1.44). (0,8) = (0,16) = fill 0 alone at every W: the pushed write is over before pixel 8 - then the shortfall is not here.
+ f: a lone fill at 32 against 0.5 here (mt): what the fill ON the boundary pays of itself. (32,56) and (32,48,56) against
+    gpu-tex-fill4's (32,48) = 1.1: a wait that follows the SECOND fill wherever it is (the first fill's own, or the write
+    restarted), or one only at 16 pixels' distance. (32,40,48): the third fill behind the second's wait - 4.06 again, or more.
+ g: at lines 6 pixels apart, the same boundary met at other distances: (5,6) fills at ~31 and ~37, (5,7) ~31 and ~43.

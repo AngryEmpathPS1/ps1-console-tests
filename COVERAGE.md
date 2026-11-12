@@ -427,13 +427,18 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-tcset | 1 | 2 | 1 |  | 1 |  |  | 2 | 2 |  |  |
 | gpu-tcwords | 1 | 2 | 1 |  | 1 | 3 |  | 4 | 2 |  |  |
 | gpu-tex-fill1 |  |  |  |  |  | 3 |  | 3 |  |  |  |
+| gpu-tex-fill10 |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | gpu-tex-fill2 |  |  |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-fill3 |  |  |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-fill4 |  |  |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-fill5 |  |  |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-fill6 |  |  |  |  |  | 3 |  |  |  |  |  |
+| gpu-tex-fill7 |  |  | 6 |  |  | 6 |  |  |  |  |  |
+| gpu-tex-fill8 |  |  | 6 |  |  | 6 |  |  |  |  |  |
+| gpu-tex-fill9 |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | gpu-tex-gap |  |  |  |  |  | 3 |  |  |  |  |  |
 | gpu-tex-ilace |  |  |  |  |  | 3 |  |  |  |  |  |
+| gpu-tex-join1 |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | gpu-tex-maskpart |  |  |  |  |  | 3 |  |  |  |  |  |
 | gpu-tex-noscan | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
 | gpu-tex-opaque | 1 | 6 | 1 | 7 | 6 | 3 | 6 | 8 | 1 | 6 | 2 |
@@ -444,6 +449,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-tex-stride | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
 | gpu-tex-stride2 | 1 |  | 1 |  |  | 3 |  | 3 | 3 |  |  |
 | gpu-tex-stride3 |  |  |  |  |  | 3 |  | 3 |  |  |  |
+| gpu-tex-walk1 |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | gpu-thin | 1 | 3 | 1 | 7 | 6 | 3 | 6 | 8 | 1 | 3 | 2 |
 | gpu-timectl | 1 | 2 | 1 |  | 2 | 3 |  | 4 | 2 |  |  |
 | gpu-transp-cached | 1 | 2 | 1 |  |  | 3 |  | 4 | 1 |  |  |
