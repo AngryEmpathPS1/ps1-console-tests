@@ -1,0 +1,47 @@
+
+timer/t0-hreset
+Timer 0's reset by hblank against Timer 1's tick and GPUSTAT bit 31's toggle, cycles. No assertions.
+
+  found: GPUSTAT 14042000
+  NTSC 512  260h..C60h  sysclk reset       T0_MODE 0003  GPUSTAT 94042000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1627.75, median 1628, 1622..1633
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1767.43, median 1768, 1762..1772
+    C toggle - tick (T2):  under 1000 300: mean 139.70, median 139, 139..152 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 535.97, median 536, 528..536 | from 1000 none
+  NTSC 512  260h..A60h  sysclk reset       T0_MODE 0003  GPUSTAT 94042000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1312.10, median 1312, 1307..1317
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1767.21, median 1767, 1762..1772
+    C toggle - tick (T2):  under 1000 300: mean 455.10, median 458, 447..458 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 850.56, median 848, 848..860 | from 1000 none
+  NTSC 256  260h..C60h  sysclk reset       T0_MODE 0003  GPUSTAT 94002000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1627.51, median 1628, 1622..1633
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1754.45, median 1755, 1749..1760
+    C toggle - tick (T2):  under 1000 300: mean 126.93, median 128, 117..128 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 536.00, median 536, 536..536 | from 1000 none
+  NTSC 320  260h..C60h  sysclk reset       T0_MODE 0003  GPUSTAT 94022000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1626.82, median 1627, 1622..1632
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1755.26, median 1755, 1750..1761
+    C toggle - tick (T2):  under 1000 300: mean 128.44, median 128, 128..139 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 536.00, median 536, 536..536 | from 1000 none
+  NTSC 368  260h..C60h  sysclk reset       T0_MODE 0003  GPUSTAT 94012000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1637.66, median 1638, 1632..1643
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1762.54, median 1763, 1757..1768
+    C toggle - tick (T2):  under 1000 300: mean 124.88, median 128, 117..128 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 525.24, median 524, 524..536 | from 1000 none
+  NTSC 640  260h..C60h  sysclk reset       T0_MODE 0003  GPUSTAT 94062000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1626.97, median 1627, 1622..1633
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1768.09, median 1768, 1763..1774
+    C toggle - tick (T2):  under 1000 300: mean 141.12, median 139, 139..150 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 536.00, median 536, 536..536 | from 1000 none
+  NTSC 320  260h..C60h  dotclk reset       T0_MODE 0103  GPUSTAT 94022000  (0 waits timed out)
+    A T0 at the tick:      under 1000 300: mean 319.37, median 319, 318..320 | from 1000 none
+    B T0 at the toggle:    under 1000 300: mean 344.31, median 344, 343..345 | from 1000 none
+    C toggle - tick (T2):  under 1000 300: mean 128.40, median 128, 128..139 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 541.72, median 548, 128..548 | from 1000 none
+  NTSC 320  260h..C60h  free (control)     T0_MODE 0000  GPUSTAT 94022000  (155 waits timed out)
+    A T0 at the tick:      under 1000 34: mean 658.88, median 715, 216..983 | from 1000 261: mean 31038.60, median 52341, 1020..62483
+    B T0 at the toggle:    under 1000 28: mean 728.39, median 802, 344..997 | from 1000 267: mean 29904.86, median 52233, 1001..65264
+    C toggle - tick (T2):  under 1000 285: mean 128.65, median 128, 128..139 | from 1000 10: mean 23806.60, median 23800, 4440..41026
+    D reset - tick (T2):   under 1000 1: mean 920.00, median 920, 920..920 | from 1000 149: mean 11476.45, median 10256, 2168..45008
+
+timer/t0-hreset: Done.

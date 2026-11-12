@@ -1,0 +1,31 @@
+t1-vedges - PREDICTED, written 2026-11-12 before any console run (the main session), v0.377.327, node hwtests/run.js t1-vedges --ntsc --frames=6000
+The question: where inside a line Timer 1's v-blank sync edges fall on the system clock (modes 0-3), against the v-blank IRQ's read.
+Here: mode 0 stops at the IRQ (-4.9) and resumes 49,503; mode 1 resets 49,499 (t1-edges, v0.377.50, dated it); mode 2 resets and stops 49,523,
+resumes at the IRQ; mode 3 frees at 49,504. The -12,13x stops are the loop's start (the timer already paused), not an edge.
+
+timer/t1-vedges
+Timer 1's v-blank-sync edges on the system clock - reset, stop, resume - in cycles after the v-blank IRQ. No assertions.
+
+  GPUSTAT 94802000
+  sysclk free              T1_MODE 0000  64 frames  (0 without an IRQ)
+    reset   none
+    stop    none
+    resume  none
+  sysclk 0 pause in vb     T1_MODE 0001  64 frames  (0 without an IRQ)
+    reset   none
+    stop    [64: mean -4.86, median -4, -22..11]
+    resume  [64: mean 49503.15, median 49504, 49486..49519]
+  sysclk 1 reset at vb     T1_MODE 0003  64 frames  (0 without an IRQ)
+    reset   [64: mean 49498.73, median 49501, 49482..49519]
+    stop    none
+    resume  none
+  sysclk 2 count in vb     T1_MODE 0005  64 frames  (0 without an IRQ)
+    reset   [64: mean 49522.56, median 49514, 49500..49549]
+    stop    [64: mean -12144.74, median -12131, -12173..-12131] [64: mean 49522.56, median 49514, 49500..49549]
+    resume  [64: mean -1.91, median 0, -18..10]
+  sysclk 3 wait, free      T1_MODE 0007  64 frames  (0 without an IRQ)
+    reset   none
+    stop    [64: mean -12143.43, median -12131, -12167..-12131]
+    resume  [64: mean 49503.79, median 49504, 49488..49518]
+
+timer/t1-vedges: Done.

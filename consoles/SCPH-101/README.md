@@ -28,3 +28,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-11-a0abort5](2026-11-11-a0abort5/) | 9 | 1 |
 | [2026-11-11-a0abort6](2026-11-11-a0abort6/) | 9 | 1 |
 | [2026-11-11-gst81](2026-11-11-gst81/) | 9 | 1 |
+| [2026-11-12-t0edges](2026-11-12-t0edges/) | 15 | 2 |
+| [2026-11-12-t1vedges](2026-11-12-t1vedges/) | 9 | 1 |
