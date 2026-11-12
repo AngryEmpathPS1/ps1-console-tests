@@ -1,0 +1,25 @@
+
+dma/dma1-start
+DMA1 (MDEC.OUT, SyncMode 1, CHCR 01000200h) with the output ready: CHCR1 stored, N nops, one raw Timer 2 read.
+Cycles at the system clock, t - N fastest..slowest of 4 tries a N. No assertions - compare against your emulator.
+
+CONTROL (CHCR1 = 0): t - N
+  N 0-319:9
+1 x 32 words: t - N
+  N 0-319:9
+4 x 32 words: t - N
+  N 0-319:9
+
+first read of CHCR1 after the store (K ALU ops), then polled with K a turn:
+  CONTROL K = 0   first read idle at   12   total    12   turns 0
+  1 x 32  K = 0   first read BUSY at   12   total 655351   turns 32767
+  4 x 32  K = 0   first read BUSY at   12   total 655364   turns 32767
+  CONTROL K = 16  first read idle at   27   total    27   turns 0
+  1 x 32  K = 16  first read BUSY at   47   total 1179658   turns 32767
+  4 x 32  K = 16  first read BUSY at   27   total 1179638   turns 32767
+
+output ready on every try: NO
+  (11 tries found the output FIFO empty after the wait)
+first words out: 4a314a31 4a314a31
+
+dma/dma1-start: Done.

@@ -1,0 +1,21 @@
+
+dma/dma1-drq2
+dma1-drq's case A against dma1-start's DPCR (80h) and its sled store, then the start timed where it moves. No assertions.
+
+DPCR at entry 08009899
+  A1  Busy cleared      0  MADR1 +  16  wrote  32 words, first 4a314a31
+  A2  Busy STUCK        MADR1 +   0  wrote   0 words, first a5a5a5a5
+  A3  Busy STUCK        MADR1 +   0  wrote   0 words, first a5a5a5a5
+  G1  Busy STUCK        MADR1 +   0  wrote   0 words, first a5a5a5a5
+  G2  Busy STUCK        MADR1 +   0  wrote   0 words, first a5a5a5a5
+  G3  Busy STUCK        MADR1 +   0  wrote   0 words, first a5a5a5a5
+  H1  Busy STUCK        MADR1 +   0  wrote   0 words, first a5a5a5a5
+  H2  Busy STUCK        MADR1 +   0  wrote   0 words, first a5a5a5a5
+  H3  Busy STUCK        MADR1 +   0  wrote   0 words, first a5a5a5a5
+  I1  Busy STUCK        MADR1 +   0  wrote   0 words, first a5a5a5a5
+  I2  Busy STUCK        MADR1 +   0  wrote   0 words, first a5a5a5a5
+  I3  Busy STUCK        MADR1 +   0  wrote   0 words, first a5a5a5a5
+
+neither H nor I moved on every try: no timing rows
+
+dma/dma1-drq2: Done.

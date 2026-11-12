@@ -1,0 +1,24 @@
+
+sio/pad-ack-hist
+Port 1's controller, 01 42 00 00: cycles from each byte's write to /ACK and to RX, 256 polls each, 8-cycle bins.
+No assertions - compare against your emulator, and say which controller was in port 1.
+
+/ACK byte 1: 256 polls, mean 1739.12
+  1672:1 1728:78 1736:20 1744:157
+/ACK byte 2: 256 polls, mean 1733.33
+  1640:1 1712:6 1720:15 1728:159 1736:3 1744:72
+/ACK byte 3: 256 polls, mean 1743.56
+  1728:25 1736:4 1744:214 1752:11 1760:2
+/ACK byte 4: 256 polls, mean 1743.05
+  1728:41 1736:8 1744:187 1752:20
+
+RX byte 1: 256 polls, mean 1421.69
+  1352:1 1416:241 1424:14
+RX byte 2: 256 polls, mean 1443.00
+  1424:4 1432:124 1440:2 1448:126
+RX byte 3: 256 polls, mean 1455.28
+  1440:2 1448:156 1456:2 1464:96
+RX byte 4: 256 polls, mean 1453.69
+  1448:187 1456:6 1464:63
+
+sio/pad-ack-hist: Done.

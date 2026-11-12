@@ -1,0 +1,29 @@
+dma1-drq2 - PREDICTED, written 2026-11-12 before any console run (the sio-dma side session), v0.377.331 (src), node hwtests/run.js dma1-drq2
+The question: why dma1-start hung on the 5501 (u2) and the PSone where dma1-drq's case A moved - DPCR's DMA0 enable (G, I) or the sled's store (H, I) - and then DMA_SM1_START timed where the start moves.
+The proposal: experiments/proposals/sio-dma-refit.md.
+
+
+dma/dma1-drq2
+dma1-drq's case A against dma1-start's DPCR (80h) and its sled store, then the start timed where it moves. No assertions.
+
+DPCR at entry 07654321
+  A1  Busy cleared    666  MADR1 + 128  wrote  32 words, first 42104210
+  A2  Busy cleared    763  MADR1 + 128  wrote  32 words, first 42104210
+  A3  Busy cleared    763  MADR1 + 128  wrote  32 words, first 42104210
+  G1  Busy cleared    763  MADR1 + 128  wrote  32 words, first 42104210
+  G2  Busy cleared    763  MADR1 + 128  wrote  32 words, first 42104210
+  G3  Busy cleared    763  MADR1 + 128  wrote  32 words, first 42104210
+  H1  Busy cleared    703  MADR1 + 128  wrote  32 words, first 42104210
+  H2  Busy cleared    763  MADR1 + 128  wrote  32 words, first 42104210
+  H3  Busy cleared    763  MADR1 + 128  wrote  32 words, first 42104210
+  I1  Busy cleared    763  MADR1 + 128  wrote  32 words, first 42104210
+  I2  Busy cleared    763  MADR1 + 128  wrote  32 words, first 42104210
+  I3  Busy cleared    763  MADR1 + 128  wrote  32 words, first 42104210
+
+the start timed (case H's DPCR, the sled): t - N fastest..slowest of 4, and the most words moved
+  CONTROL  N0:9  N8:9  N16:9  N32:9  N64:9  N128:9  N192:9  N256:9  N319:9
+  1 x 32   N0:239/32  N8:239/32  N16:239/32  N32:239/32  N64:239/32  N128:239/32  N192:239/32  N256:239/32  N319:239/32
+  4 x 32   N0:239/128  N8:239/128  N16:239/128  N32:239/128  N64:239/128  N128:239/128  N192:239/128  N256:239/128  N319:239/128
+
+dma/dma1-drq2: Done.
+

@@ -1,0 +1,32 @@
+code-in-io-time - PREDICTED, written 2026-11-12 before any console run (the sio-dma side session's test; the file by the main session),
+v0.377.331, PSX_MODEL=SCPH-5501 node tools/hwrunner.js code-in-io-time --emu --bios=<scph5501.bin> --lock=0 --video=24000 --raw
+The question: MEM_IO 2 (instrument audit flag #16; cited to a pass / fail test). Here 3.00 a further I/O fetch (1 + MEM_IO), every segment alike. If KUSEG / KSEG0 read as cached RAM does, the I-cache fills a line from I/O (a new rule). NOT the SCPH-1000 (code-in-io-safe froze it).
+The proposal: experiments/proposals/sio-dma-refit.md.
+
+
+cpu/code-in-io-time
+64 calls of `jr $ra; nop` from cached code: in the DMA0 registers (BCR0 entry: 2 I/O fetches, MADR0 entry: 3), and in RAM.
+Cycles a call at the system clock, fastest..slowest of 8 phases x 4 passes. No assertions - compare against your emulator.
+
+  empty bracket (64 x 2 nops)    2.06 .. 2.06   (64 calls 132..132)
+  RAM cached, jr; nop            4.06 .. 4.06   (64 calls 260..260; one cold call 14)
+  RAM cached, nop; jr; nop       5.06 .. 5.06   (64 calls 324..324; one cold call 14)
+  RAM KSEG1, jr; nop             14.21 .. 14.35   (64 calls 910..919; one cold call 22)
+  RAM KSEG1, nop; jr; nop        20.35 .. 20.48   (64 calls 1303..1311; one cold call 28)
+  I/O KSEG1 BCR0 (2 fetches)     8.07 .. 8.07   (64 calls 517..517; one cold call 11)
+  I/O KSEG1 MADR0 (3 fetches)    11.07 .. 11.07   (64 calls 709..709; one cold call 19)
+  I/O KUSEG BCR0 (2 fetches)     8.07 .. 8.07   (64 calls 517..517; one cold call 16)
+  I/O KUSEG MADR0 (3 fetches)    11.07 .. 11.07   (64 calls 709..709; one cold call 19)
+  I/O KSEG0 BCR0 (2 fetches)     8.07 .. 8.07   (64 calls 517..517; one cold call 16)
+  I/O KSEG0 MADR0 (3 fetches)    11.07 .. 11.07   (64 calls 709..709; one cold call 19)
+
+per extra fetch (3-word entry less the 2-word one, fastest), cycles:
+  RAM cached, nop; jr; nop       1.00
+  RAM KSEG1, nop; jr; nop        6.14
+  I/O KSEG1 MADR0 (3 fetches)    3.00
+  I/O KUSEG MADR0 (3 fetches)    3.00
+  I/O KSEG0 MADR0 (3 fetches)    3.00
+
+read back after: MADR0 00000000 BCR0 03e00008 CHCR0 00000000
+
+cpu/code-in-io-time: Done.

@@ -1,0 +1,30 @@
+dma1-drq - PREDICTED, written 2026-11-12 before any console run (the sio-dma side session), v0.377.331 (src), node hwtests/run.js dma1-drq
+The question: why DMA1 took nothing in dma1-start on the 5501 (u2) and the PSone. This core moves every case; D (a movie's path) must move 128 words on a console too.
+The proposal: experiments/proposals/sio-dma-refit.md.
+
+
+dma/dma1-drq
+DMA1 (MDEC.OUT, CHCR 01000200h) and an MDEC output: which order and path lets DMA1 take it. No assertions.
+s0 = MDEC1 after the parameters, s1 = before DMA1 armed (C, D: after the reset, before the data), s2 = after.
+
+  A1  s0 6e01ffff  s1 6e01ffff  Busy cleared    794  s2 2e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  A2  s0 6e01ffff  s1 6e01ffff  Busy cleared    760  s2 2e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  A3  s0 6e01ffff  s1 6e01ffff  Busy cleared    756  s2 2e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  B1  s0 6e01ffff  s1 6e01ffff  Busy cleared    756  s2 2e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  B2  s0 6e01ffff  s1 6e01ffff  Busy cleared    756  s2 2e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  B3  s0 6e01ffff  s1 6e01ffff  Busy cleared    794  s2 2e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  C1  s0 6e01ffff  s1 80040000  Busy cleared    720  s2 2e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  C2  s0 6e01ffff  s1 80040000  Busy cleared    789  s2 2e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  C3  s0 6e01ffff  s1 80040000  Busy cleared    788  s2 2e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  D1  s0 6e01ffff  s1 80040000  Busy cleared   3031  s2 8604ffff  MADR1 + 512  wrote 128 words, first 42104210
+  D2  s0 6e01ffff  s1 80040000  Busy cleared   3057  s2 8604ffff  MADR1 + 512  wrote 128 words, first 42104210
+  D3  s0 6e01ffff  s1 80040000  Busy cleared   3057  s2 8604ffff  MADR1 + 512  wrote 128 words, first 42104210
+  E1  s0 6e01ffff  s1 6e01ffff  Busy cleared    760  s2 6e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  E2  s0 6e01ffff  s1 6e01ffff  Busy cleared    756  s2 6e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  E3  s0 6e01ffff  s1 6e01ffff  Busy cleared    798  s2 6e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  F1  s0 6e01ffff  s1 6e01ffff  Busy cleared    756  s2 6e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  F2  s0 6e01ffff  s1 6e01ffff  Busy cleared    796  s2 6e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+  F3  s0 6e01ffff  s1 6e01ffff  Busy cleared    756  s2 6e02ffff  MADR1 + 128  wrote  32 words, first 42104210
+
+dma/dma1-drq: Done.
+

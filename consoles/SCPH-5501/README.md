@@ -31,7 +31,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-08-v5check](2026-10-08-v5check/) | 15 | 6 |
 | [2026-10-08-x2sweep](2026-10-08-x2sweep/) | 6 | 0 |
 | [2026-10-09-burned](2026-10-09-burned/) | 4 | 1 |
-| [2026-10-09-gameday](2026-10-09-gameday/) | 12 | 5 |
+| [2026-10-09-gameday](2026-10-09-gameday/) | 13 | 5 |
 | [2026-10-10-afternoon](2026-10-10-afternoon/) | 34 | 10 |
 | [2026-10-10-late](2026-10-10-late/) | 20 | 6 |
 | [2026-10-11-day](2026-10-11-day/) | 39 | 12 |

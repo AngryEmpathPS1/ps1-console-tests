@@ -1,0 +1,25 @@
+
+dma/dma1-drq
+DMA1 (MDEC.OUT, CHCR 01000200h) and an MDEC output: which order and path lets DMA1 take it. No assertions.
+s0 = MDEC1 after the parameters, s1 = before DMA1 armed (C, D: after the reset, before the data), s2 = after.
+
+  A1  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  A2  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  A3  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  B1  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  B2  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  B3  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  C1  s0 e604ffff  s1 80040000  Busy cleared   1903  s2 e601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  C2  s0 e604ffff  s1 80040000  Busy cleared   1858  s2 e601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  C3  s0 e604ffff  s1 80040000  Busy cleared   1858  s2 e601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  D1  s0 e604ffff  s1 80040000  Busy cleared   3341  s2 8604ffff  MADR1 + 512  wrote 128 words, first 4a314a31
+  D2  s0 e604ffff  s1 80040000  Busy cleared   3431  s2 8604ffff  MADR1 + 512  wrote 128 words, first 4a314a31
+  D3  s0 e604ffff  s1 80040000  Busy cleared   3431  s2 8604ffff  MADR1 + 512  wrote 128 words, first 4a314a31
+  E1  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  E2  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  E3  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  F1  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  F2  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+  F3  s0 e604ffff  s1 6e01ffff  Busy cleared      0  s2 6601ffff  MADR1 +  16  wrote  32 words, first 4a314a31
+
+dma/dma1-drq: Done.

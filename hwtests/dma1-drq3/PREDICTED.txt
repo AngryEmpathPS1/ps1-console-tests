@@ -1,0 +1,79 @@
+dma1-drq3 - PREDICTED, written 2026-11-12 before any console run (the sio-dma side session), PSX_VERSION = '0.377.333' (src), node hwtests/run.js dma1-drq3
+The question: dma1-drq moved every try on the consoles, dma1-drq2 only its first. Which of R (params from RAM), MDEC1 reads 0 / 1 / 2, D (DPCR rewritten) is it, or does the channel wedge? This core moves all 64.
+The proposal: experiments/proposals/sio-dma-refit.md.
+
+
+dma/dma1-drq3
+DMA1 1 x 32 from an MDEC output, 64 tries in the order run: R params from RAM, 0 / 1 / 2 MDEC1 read after the params /
+before the arm / after the transfer, D DPCR written again. No assertions.
+
+DPCR at entry 07654321
+  # 1  -----  cleared    746  wrote  32  MADR1 +128
+  # 2  R----  cleared    757  wrote  32  MADR1 +128
+  # 3  -0---  cleared    757  wrote  32  MADR1 +128
+  # 4  R0---  cleared    757  wrote  32  MADR1 +128
+  # 5  --1--  cleared    757  wrote  32  MADR1 +128
+  # 6  R-1--  cleared    757  wrote  32  MADR1 +128
+  # 7  -01--  cleared    757  wrote  32  MADR1 +128
+  # 8  R01--  cleared    757  wrote  32  MADR1 +128
+  # 9  ---2-  cleared    757  wrote  32  MADR1 +128
+  #10  R--2-  cleared    757  wrote  32  MADR1 +128
+  #11  -0-2-  cleared    757  wrote  32  MADR1 +128
+  #12  R0-2-  cleared    757  wrote  32  MADR1 +128
+  #13  --12-  cleared    757  wrote  32  MADR1 +128
+  #14  R-12-  cleared    757  wrote  32  MADR1 +128
+  #15  -012-  cleared    757  wrote  32  MADR1 +128
+  #16  R012-  cleared    757  wrote  32  MADR1 +128
+  #17  ----D  cleared    757  wrote  32  MADR1 +128
+  #18  R---D  cleared    757  wrote  32  MADR1 +128
+  #19  -0--D  cleared    757  wrote  32  MADR1 +128
+  #20  R0--D  cleared    757  wrote  32  MADR1 +128
+  #21  --1-D  cleared    757  wrote  32  MADR1 +128
+  #22  R-1-D  cleared    757  wrote  32  MADR1 +128
+  #23  -01-D  cleared    757  wrote  32  MADR1 +128
+  #24  R01-D  cleared    757  wrote  32  MADR1 +128
+  #25  ---2D  cleared    757  wrote  32  MADR1 +128
+  #26  R--2D  cleared    757  wrote  32  MADR1 +128
+  #27  -0-2D  cleared    757  wrote  32  MADR1 +128
+  #28  R0-2D  cleared    757  wrote  32  MADR1 +128
+  #29  --12D  cleared    757  wrote  32  MADR1 +128
+  #30  R-12D  cleared    757  wrote  32  MADR1 +128
+  #31  -012D  cleared    757  wrote  32  MADR1 +128
+  #32  R012D  cleared    757  wrote  32  MADR1 +128
+  #33  -----  cleared    757  wrote  32  MADR1 +128
+  #34  R----  cleared    757  wrote  32  MADR1 +128
+  #35  -0---  cleared    757  wrote  32  MADR1 +128
+  #36  R0---  cleared    757  wrote  32  MADR1 +128
+  #37  --1--  cleared    757  wrote  32  MADR1 +128
+  #38  R-1--  cleared    757  wrote  32  MADR1 +128
+  #39  -01--  cleared    757  wrote  32  MADR1 +128
+  #40  R01--  cleared    757  wrote  32  MADR1 +128
+  #41  ---2-  cleared    757  wrote  32  MADR1 +128
+  #42  R--2-  cleared    757  wrote  32  MADR1 +128
+  #43  -0-2-  cleared    757  wrote  32  MADR1 +128
+  #44  R0-2-  cleared    757  wrote  32  MADR1 +128
+  #45  --12-  cleared    757  wrote  32  MADR1 +128
+  #46  R-12-  cleared    757  wrote  32  MADR1 +128
+  #47  -012-  cleared    757  wrote  32  MADR1 +128
+  #48  R012-  cleared    757  wrote  32  MADR1 +128
+  #49  ----D  cleared    757  wrote  32  MADR1 +128
+  #50  R---D  cleared    757  wrote  32  MADR1 +128
+  #51  -0--D  cleared    757  wrote  32  MADR1 +128
+  #52  R0--D  cleared    757  wrote  32  MADR1 +128
+  #53  --1-D  cleared    757  wrote  32  MADR1 +128
+  #54  R-1-D  cleared    757  wrote  32  MADR1 +128
+  #55  -01-D  cleared    757  wrote  32  MADR1 +128
+  #56  R01-D  cleared    757  wrote  32  MADR1 +128
+  #57  ---2D  cleared    757  wrote  32  MADR1 +128
+  #58  R--2D  cleared    757  wrote  32  MADR1 +128
+  #59  -0-2D  cleared    757  wrote  32  MADR1 +128
+  #60  R0-2D  cleared    757  wrote  32  MADR1 +128
+  #61  --12D  cleared    757  wrote  32  MADR1 +128
+  #62  R-12D  cleared    757  wrote  32  MADR1 +128
+  #63  -012D  cleared    757  wrote  32  MADR1 +128
+  #64  R012D  cleared    757  wrote  32  MADR1 +128
+
+64 of 64 tries moved
+
+dma/dma1-drq3: Done.
+

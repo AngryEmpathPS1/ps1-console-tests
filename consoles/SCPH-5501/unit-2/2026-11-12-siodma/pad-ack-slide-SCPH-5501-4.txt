@@ -1,0 +1,29 @@
+
+sio/pad-ack-slide
+/ACK low (JOY_STAT bit 7) seen by a tight loop, then N nops and ONE read: tries still low at N, per device and byte.
+No assertions - compare against your emulator, and say what was in each port and slot.
+
+the rise loop's turn: 11.29 cycles (64 passes 723)
+
+port 1 controller:
+  byte 1 01h: 48 tries a N; all low to N=81, 82:47 83:41 84:36 85:34 86:25 87:22 88:21 89:18 90:13 91:5 92:6, none from N=93
+  byte 2 42h: 48 tries a N; all low to N=81, 82:46 83:39 84:38 85:33 86:28 87:26 88:20 89:10 90:14 91:5 92:6, none from N=93
+  byte 3 00h: 48 tries a N; all low to N=82, 83:40 84:36 85:28 86:29 87:29 88:24 89:15 90:7 91:6 92:1, none from N=93
+  byte 4 00h: 48 tries a N; all low to N=81, 82:44 83:38 84:33 85:29 86:29 87:27 88:22 89:20 90:14 91:4 92:2, none from N=93
+port 1 card:
+  byte 1 81h: 16 tries a N; all low to N=67, 68:14 69:12 70:9 71:6 72:7 73:7 74:4 75:3 76:3, none from N=77
+  byte 2 52h: 16 tries a N; all low to N=66, 67:13 68:13 69:14 70:10 71:8 72:6 73:3 74:5 75:3, none from N=76
+  byte 3 00h: 16 tries a N; all low to N=66, 67:15 68:13 69:11 70:10 71:11 72:7 73:7 74:5, none from N=75
+  byte 4 00h: 16 tries a N; all low to N=66, 67:14 68:11 69:11 70:9 71:8 72:7 73:9 74:4 75:2 76:2, none from N=77
+port 2 controller:
+  byte 1 01h: 48 tries a N; all low to N=81, 82:42 83:38 84:36 85:31 86:29 87:27 88:16 89:12 90:9 91:4 92:2, none from N=93
+  byte 2 42h: 48 tries a N; all low to N=81, 82:44 83:42 84:39 85:32 86:26 87:25 88:22 89:15 90:10 91:5 92:1, none from N=93
+  byte 3 00h: 48 tries a N; all low to N=81, 82:43 83:39 84:36 85:31 86:28 87:22 88:21 89:15 90:12 91:8 92:2, none from N=93
+  byte 4 00h: 48 tries a N; all low to N=81, 82:42 83:41 84:34 85:29 86:34 87:24 88:22 89:15 90:14 91:8 92:3, none from N=93
+port 2 card:
+  byte 1 81h: none
+  byte 2 52h: none
+  byte 3 00h: none
+  byte 4 00h: none
+
+sio/pad-ack-slide: Done.

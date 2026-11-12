@@ -33,8 +33,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-08-v5check](2026-10-08-v5check/) | 15 | 6 |
 | [2026-10-09](2026-10-09/) | 10 | 0 |
 | [2026-10-09-burned](2026-10-09-burned/) | 4 | 1 |
-| [2026-10-09-gameday](2026-10-09-gameday/) | 14 | 6 |
-| [2026-10-09-motocross](2026-10-09-motocross/) | 7 | 2 |
+| [2026-10-09-gameday](2026-10-09-gameday/) | 15 | 6 |
+| [2026-10-09-motocross](2026-10-09-motocross/) | 8 | 2 |
 | [2026-10-09-probe](2026-10-09-probe/) | 5 | 2 |
 | [2026-10-10-late](2026-10-10-late/) | 20 | 6 |
 | [2026-10-10-morning](2026-10-10-morning/) | 21 | 6 |

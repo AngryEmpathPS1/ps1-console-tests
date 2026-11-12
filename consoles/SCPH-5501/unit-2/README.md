@@ -236,6 +236,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-11-walk1](2026-11-11-walk1/) | 9 | 1 |
 | [2026-11-12-lockstate](2026-11-12-lockstate/) | 7 | 1 |
 | [2026-11-12-lockstate-reset](2026-11-12-lockstate-reset/) | 5 | 1 |
+| [2026-11-12-padack](2026-11-12-padack/) | 9 | 2 |
+| [2026-11-12-siodma](2026-11-12-siodma/) | 25 | 7 |
 | [2026-11-12-t0edges](2026-11-12-t0edges/) | 9 | 1 |
 | [2026-11-12-t1vedges](2026-11-12-t1vedges/) | 9 | 1 |
 | [2026-11-12-t1vsync](2026-11-12-t1vsync/) | 6 | 1 |

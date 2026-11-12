@@ -1,0 +1,60 @@
+
+sio/pad-ack-hist-analog
+Port 1's DualShock put in analog mode by command, then 01 42 + 7 bytes: cycles from each byte's write to /ACK and to RX,
+256 polls each, 8-cycle bins. No assertions - say which pad was in port 1.
+
+set-up (replies):
+  43h enter config: ff 41 5a ff ff  (5 bytes acknowledged)
+  44h analog, locked: ff f3 5a 00 00 00 00 00 00  (9 bytes acknowledged)
+  43h exit config: ff f3 5a 00 00 00 00 00 00  (9 bytes acknowledged)
+  42h poll (ID 73h = analog): ff 73 5a fb ff 7b 7d 8f 7f  (9 bytes acknowledged)
+
+/ACK byte 1: 256 polls, mean 1692.68
+  1552:4 1560:3 1568:33 1576:1 1584:39 1592:12 1600:4 1608:10 1624:9 1752:2 1760:44 1768:2
+  1776:48 1784:9 1792:36
+/ACK byte 2: 256 polls, mean 1716.15
+  1704:138 1712:26 1720:91 1872:1
+/ACK byte 3: 256 polls, mean 1732.27
+  1720:99 1728:15 1736:142
+/ACK byte 4: 256 polls, mean 1722.38
+  1456:2 1464:2 1472:6 1712:3 1720:82 1728:15 1736:144 1744:2
+/ACK byte 5: 256 polls, mean 1664.52
+  1480:10 1488:4 1496:59 1712:1 1720:88 1728:9 1736:85
+/ACK byte 6: 256 polls, mean 1673.71
+  1480:6 1488:3 1496:51 1504:4 1712:2 1720:71 1728:13 1736:106
+/ACK byte 7: 256 polls, mean 1695.58
+  1480:3 1488:2 1496:33 1504:2 1712:1 1720:84 1728:19 1736:106 1744:6
+/ACK byte 8: 256 polls, mean 1685.48
+  1480:6 1488:1 1496:43 1504:1 1712:2 1720:81 1728:9 1736:113
+
+RX byte 1: 256 polls, mean 1398.58
+  1360:1 1384:48 1392:25 1400:182
+RX byte 2: 256 polls, mean 1391.88
+  1344:25 1352:4 1360:45 1368:44 1384:24 1400:15 1416:40 1424:40 1432:2 1440:17
+RX byte 3: 256 polls, mean 1419.34
+  1344:2 1368:24 1376:7 1384:44 1392:3 1400:44 1416:17 1424:16 1432:3 1440:31 1448:1 1456:43
+  1464:3 1472:18
+RX byte 4: 256 polls, mean 1418.53
+  1344:21 1384:46 1392:3 1400:50 1408:1 1416:32 1424:12 1432:1 1440:16 1448:3 1456:38 1464:5
+  1472:28
+RX byte 5: 256 polls, mean 1415.48
+  1344:35 1352:3 1360:10 1384:5 1392:1 1400:48 1408:2 1416:46 1424:30 1440:17 1448:1 1456:21
+  1464:3 1472:34
+RX byte 6: 256 polls, mean 1419.04
+  1328:1 1336:1 1344:30 1360:6 1368:36 1376:5 1384:3 1408:1 1416:15 1424:45 1432:1 1440:39
+  1448:3 1456:43 1464:2 1472:25
+RX byte 7: 256 polls, mean 1422.52
+  1336:3 1344:60 1352:2 1360:7 1416:1 1424:34 1432:2 1440:48 1448:2 1456:56 1464:1 1472:40
+ 
+RX byte 8: 256 polls, mean 1438.59
+  1336:2 1344:37 1360:3 1424:8 1432:1 1440:48 1448:2 1456:109 1464:4 1472:42
+RX byte 9: 256 polls, mean 1441.49
+  1336:3 1344:39 1360:2 1440:30 1448:4 1456:101 1472:77
+
+put back (replies):
+  43h enter config: ff 73 5a fb ff 7b 7d 91 7f  (9 bytes acknowledged)
+  44h digital, unlocked: ff f3 5a 00 00 00 00 00 00  (9 bytes acknowledged)
+  43h exit config: ff f3 5a 00 00 00 00 00 00  (9 bytes acknowledged)
+  42h poll (ID 41h = digital): ff 41 5a ff ff  (5 bytes acknowledged)
+
+sio/pad-ack-hist-analog: Done.

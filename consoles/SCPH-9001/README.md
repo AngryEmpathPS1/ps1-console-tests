@@ -21,7 +21,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-06-motoracer](2026-10-06-motoracer/) | 2 | 2 |
 | [2026-10-06-seven](2026-10-06-seven/) | 13 | 8 |
 | [2026-10-08-v5check](2026-10-08-v5check/) | 15 | 6 |
-| [2026-10-09-gameday](2026-10-09-gameday/) | 7 | 2 |
+| [2026-10-09-gameday](2026-10-09-gameday/) | 8 | 2 |
 | [2026-10-09-runner](2026-10-09-runner/) | 554 | 136 |
 | [2026-10-10-afternoon](2026-10-10-afternoon/) | 34 | 10 |
 | [2026-10-10-evening](2026-10-10-evening/) | 20 | 6 |

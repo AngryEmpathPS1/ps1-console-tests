@@ -1,0 +1,30 @@
+dma1-start - PREDICTED, written 2026-11-12 before any console run (the sio-dma side session's test; the file by the main session),
+v0.377.331, PSX_MODEL=SCPH-5501 node tools/hwrunner.js dma1-start --emu --bios=<scph5501.bin> --lock=0 --video=24000 --raw
+The question: DMA_SM1_START 230 at a DMA1 (MDEC.OUT) start (instrument audit flag #1; M39's fit, never measured on DMA1). Here t - N 239 at every N: the CPU stopped 230 at the store. On a console: flat at ~9 + a few = no start stall; flat at 9 + S + ~32-40 to a knee = the CPU stopped while the block moved (the refit is that S). Its "total" row says whether a decoded macroblock waits for DMA1 here (~800) or is released ahead (~40-80).
+The proposal: experiments/proposals/sio-dma-refit.md.
+
+
+dma/dma1-start
+DMA1 (MDEC.OUT, SyncMode 1, CHCR 01000200h) with the output ready: CHCR1 stored, N nops, one raw Timer 2 read.
+Cycles at the system clock, t - N fastest..slowest of 4 tries a N. No assertions - compare against your emulator.
+
+CONTROL (CHCR1 = 0): t - N
+  N 0-319:9
+1 x 32 words: t - N
+  N 0-319:239
+4 x 32 words: t - N
+  N 0-319:239
+
+first read of CHCR1 after the store (K ALU ops), then polled with K a turn:
+  CONTROL K = 0   first read idle at   12   total    12   turns 0
+  1 x 32  K = 0   first read BUSY at  241   total  1052   turns 39
+  4 x 32  K = 0   first read BUSY at  241   total  3361   turns 149
+  CONTROL K = 16  first read idle at   27   total    27   turns 0
+  1 x 32  K = 16  first read BUSY at  276   total  1063   turns 21
+  4 x 32  K = 16  first read BUSY at  257   total  3372   turns 83
+
+output ready on every try: NO
+  (29 tries found the output FIFO empty after the wait)
+first words out: 42104210 42104210
+
+dma/dma1-start: Done.

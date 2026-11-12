@@ -34,5 +34,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-11-gst81](2026-11-11-gst81/) | 9 | 1 |
 | [2026-11-11-join1](2026-11-11-join1/) | 9 | 1 |
 | [2026-11-11-walk1](2026-11-11-walk1/) | 9 | 1 |
+| [2026-11-12-padack](2026-11-12-padack/) | 9 | 1 |
+| [2026-11-12-siodma](2026-11-12-siodma/) | 25 | 7 |
 | [2026-11-12-t0edges](2026-11-12-t0edges/) | 15 | 2 |
 | [2026-11-12-t1vedges](2026-11-12-t1vedges/) | 9 | 1 |

@@ -107,6 +107,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | code-in-io-prime | 1 |  |  |  |  | 3 |  |  | 3 |  |  |
 | code-in-io-rest | 1 |  |  |  |  | 3 |  |  | 3 |  |  |
 | code-in-io-safe |  | 6 | 1 | 7 | 6 | 3 | 6 | 8 | 1 | 6 | 2 |
+| code-in-io-time |  |  | 2 |  |  | 2 |  |  |  |  |  |
 | cold-bracket | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | cold-branch | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | cold-window | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
@@ -149,6 +150,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | dma-rows | 1 | 2 | 1 |  | 5 | 3 |  | 4 | 2 |  |  |
 | dma-setup | 1 | 2 | 1 |  | 1 | 3 |  | 4 | 2 |  |  |
 | dma-trace | 1 | 2 | 1 |  | 3 | 3 |  | 4 | 2 |  |  |
+| dma1-drq |  |  | 2 |  |  | 2 |  |  |  |  |  |
+| dma1-drq2 |  |  | 2 |  |  | 2 |  |  |  |  |  |
+| dma1-drq3 |  |  | 2 |  |  | 2 |  |  |  |  |  |
+| dma1-start |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | dma_chopping | 1 | 6 | 1 | 6 | 11 | 3 | 6 | 14 | 1 | 10 | 2 |
 | dma_dpcr | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | dma_otc-test | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
@@ -569,7 +574,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | mul-shadow | 1 | 3 | 1 |  | 3 |  |  | 2 | 2 |  |  |
 | muldiv-overlap | 1 | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | multitap-modes |  |  |  | 1 |  |  |  |  |  |  |  |
-| pad-ack-hist | 1 | 6 | 1 | 6 | 6 | 6 | 6 | 8 | 1 | 6 | 2 |
+| pad-ack-gap |  |  | 2 |  |  | 2 |  |  |  |  |  |
+| pad-ack-hist | 1 | 6 | 7 | 6 | 6 | 9 | 6 | 8 | 1 | 6 | 2 |
+| pad-ack-hist-analog |  |  |  |  |  | 3 |  |  |  |  |  |
+| pad-ack-slide |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | pad-config |  |  |  |  |  |  |  |  |  | 3 |  |
 | pad-short-exit |  |  |  |  | 1 |  |  |  |  |  |  |
 | pair-atlas | 1 | 2 | 1 |  | 5 | 3 |  | 4 | 2 |  |  |

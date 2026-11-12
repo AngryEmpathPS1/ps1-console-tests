@@ -18,8 +18,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 |---|---:|---:|
 | [2026-10-09](2026-10-09/) | 3 | 1 |
 | [2026-10-09-burned](2026-10-09-burned/) | 7 | 4 |
-| [2026-10-09-gameday](2026-10-09-gameday/) | 12 | 5 |
-| [2026-10-09-motocross](2026-10-09-motocross/) | 8 | 3 |
+| [2026-10-09-gameday](2026-10-09-gameday/) | 13 | 5 |
+| [2026-10-09-motocross](2026-10-09-motocross/) | 9 | 3 |
 | [2026-10-09-motoracer](2026-10-09-motoracer/) | 6 | 3 |
 | [2026-10-09-runner](2026-10-09-runner/) | 494 | 136 |
 | [2026-10-10-afternoon](2026-10-10-afternoon/) | 39 | 11 |

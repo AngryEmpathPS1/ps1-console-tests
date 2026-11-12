@@ -1,0 +1,34 @@
+pad-ack-slide - PREDICTED, written 2026-11-12 before any console run (the sio-dma side session's test; the file by the main session),
+v0.377.331, PSX_MODEL=SCPH-5501 node tools/hwrunner.js pad-ack-slide --emu --bios=<scph5501.bin> --lock=0 --video=24000 --raw
+The question: SIO_ACK_PULSE 96, CARD_TIMING pulse 56 / 80, POCKET_ACK_PULSE 42 (instrument audit flag #19; widths at the loop's own resolution). A width reads as the halving point + ~14.5 here (pads: halving ~81.5 for 96).
+The proposal: experiments/proposals/sio-dma-refit.md.
+
+
+sio/pad-ack-slide
+/ACK low (JOY_STAT bit 7) seen by a tight loop, then N nops and ONE read: tries still low at N, per device and byte.
+No assertions - compare against your emulator, and say what was in each port and slot.
+
+the rise loop's turn: 11.29 cycles (64 passes 723)
+
+port 1 controller:
+  byte 1 01h: 48 tries a N; all low to N=78, 79:33 80:33 81:29 82:3 83:3 84:2, none from N=85
+  byte 2 42h: 48 tries a N; all low to N=78, 79:26 80:24 81:19 82:14 83:12 84:6, none from N=85
+  byte 3 00h: 48 tries a N; all low to N=78, 79:28 80:32 81:24 82:19 83:11 84:5, none from N=85
+  byte 4 00h: 48 tries a N; all low to N=78, 79:26 80:17 81:15 82:14 83:11 84:5, none from N=85
+port 1 card:
+  byte 1 81h: 16 tries a N; all low to N=38, 39:10 40:9 41:8 42:9 43:4 44:3, none from N=45
+  byte 2 52h: 16 tries a N; all low to N=38, 39:14 40:14 41:5 42:3 43:3 44:1, none from N=45
+  byte 3 00h: 16 tries a N; all low to N=38, 39:10 40:8 41:9 42:12 43:2 44:2, none from N=45
+  byte 4 00h: 16 tries a N; all low to N=38, 39:15 40:10 41:8 42:4 43:6 44:3, none from N=45
+port 2 controller:
+  byte 1 01h: none
+  byte 2 42h: none
+  byte 3 00h: none
+  byte 4 00h: none
+port 2 card:
+  byte 1 81h: none
+  byte 2 52h: none
+  byte 3 00h: none
+  byte 4 00h: none
+
+sio/pad-ack-slide: Done.

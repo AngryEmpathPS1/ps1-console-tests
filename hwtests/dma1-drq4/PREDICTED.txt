@@ -1,0 +1,39 @@
+dma1-drq4 - PREDICTED, written 2026-11-12 before any console run (the sio-dma side session), PSX_VERSION = '0.377.333' (src), node hwtests/run.js dma1-drq4
+The question: the consoles' DMA1 wedges after one MDEC transfer (dma1-drq2 1/12, dma1-drq3 1/64) unless dma1-drq's recipe (18/18). Which factor of it keeps the channel free, and what frees a wedged one? This core never wedges.
+The proposal: experiments/proposals/sio-dma-refit.md.
+
+
+dma/dma1-drq4
+DMA1 1 x 32 from an MDEC output: dma1-drq's whole recipe, then one factor dropped at a time, then ways out of a wedge.
+Factors: R params from RAM, 0 / 1 / 2 MDEC1 read after the params / before the arm / after the transfer. No assertions.
+
+DPCR at entry 07654321, DICR 00000000
+  # 1  whole          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  # 2  whole          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  # 3  whole          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  # 4  whole          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  # 5  drop 2         R01-  moved   wrote  32  MADR1 +128  DICR 00000000
+  # 6  drop 2         R01-  moved   wrote  32  MADR1 +128  DICR 00000000
+  # 7  probe          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  # 8  probe          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  # 9  drop 0         R-12  moved   wrote  32  MADR1 +128  DICR 00000000
+  #10  drop 0         R-12  moved   wrote  32  MADR1 +128  DICR 00000000
+  #11  probe          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  #12  probe          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  #13  drop R         -012  moved   wrote  32  MADR1 +128  DICR 00000000
+  #14  drop R         -012  moved   wrote  32  MADR1 +128  DICR 00000000
+  #15  probe          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  #16  probe          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  #17  drop 1         R0-2  moved   wrote  32  MADR1 +128  DICR 00000000
+  #18  drop 1         R0-2  moved   wrote  32  MADR1 +128  DICR 00000000
+  #19  probe          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  #20  probe          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  #21  none           ----  moved   wrote  32  MADR1 +128  DICR 00000000
+  #22  none           ----  moved   wrote  32  MADR1 +128  DICR 00000000
+  #23  probe          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+  #24  probe          R012  moved   wrote  32  MADR1 +128  DICR 00000000
+
+24 of 24 tries moved; it never wedged
+
+dma/dma1-drq4: Done.
+
