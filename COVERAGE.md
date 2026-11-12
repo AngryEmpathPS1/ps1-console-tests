@@ -44,6 +44,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-lid-sweep2 |  |  |  |  |  |  |  | 3 |  |  |  |
 | cd-lid-sweep3 |  |  |  |  |  |  | 3 | 3 | 3 | 3 |  |
 | cd-lid-sweep4 |  |  |  |  |  |  | 3 |  |  |  |  |
+| cd-lockstate |  |  |  |  |  | 6 |  |  |  |  |  |
 | cd-pastend |  | 2 | 1 | 1 | 3 | 1 | 1 | 4 | 1 | 3 |  |
 | cd-pause |  | 11 | 6 | 7 | 12 | 8 | 7 | 17 | 2 | 10 | 3 |
 | cd-pausehold |  |  | 2 |  |  | 5 |  | 6 | 4 |  |  |

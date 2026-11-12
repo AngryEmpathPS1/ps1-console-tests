@@ -7,9 +7,10 @@
  * Unlock Commands": 50h, 51h "Licensed by", 52h "Sony", 53h "Computer", 54h "Entertainment", 55h <region>, 56h; the
  * region from Test 19h,22h - "of America" on a US drive, "(Europe)" on a European one; drives vC1 and up; Japanese
  * drives ignore it). psx-spx: unlocked, ReadN/ReadS read "imported CDROMs from other regions", and the state survives
- * opening the lid but not the drive's Reset (1Ch) or the HCRISD bit - nor a console RESET, which resets the controller.
- * So tools/consolerun.js --unlock sends this through the runner before EVERY program that reads the disc (a revived
- * console comes back locked), and the 7502 then reads the 7501's own disc, sector for sector: the twin boards compare
+ * opening the lid but not the drive's Reset (1Ch) or the HCRISD bit. A console RESET keeps it: MEASURED, cd-lockstate on the
+ * second SCPH-5501 after RESET -> MEMORY CARD -> Unirom (2026-11-12) found the drive still unlocked - the RESET does not reach
+ * the drive's HC05, whose own reset clears 9Fh (SC430930 1016h). Only a power cycle relocks it. tools/consolerun.js --unlock
+ * still sends this through the runner before EVERY program that reads the disc (a power-cycled console comes back locked), and the 7502 then reads the 7501's own disc, sector for sector: the twin boards compare
  * with only PAL between them. Not in CONSOLE-RUN-SHEET.md's table: no console owes a log of it, nothing grades it.
  * What the unlock cannot change (psx-spx): GetID still calls the disc unlicensed, and Test 19h,05h's SCEx counters.
  *

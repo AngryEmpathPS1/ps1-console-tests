@@ -1,0 +1,26 @@
+reset-read - PREDICTED, written 2026-11-12 before any console run (the main session), v0.377.328, as the SCPH-7502 with its own drive program:
+PSX_MODEL=SCPH-7502 PSX_CD_FIRMWARE=CDROM-firmware/SC430939.bin node hwtests/run.js reset-read --disc=xfiles --frames=3000 --quiet=3000
+Run alone here it reads a POWER-ON (this emulator's RESET is one - the page's boot()): nothing kept, the drive locked (40h). On a console after reset-mark and a RESET, what it keeps is the question; the drive kept its unlock through a RESET on the second 5501 (STATUS "A console RESET does not relock the CD drive").
+
+hwtests/reset-read
+What a RESET kept of reset-mark's markers, and the drive's lock. No assertions.
+
+  SPUCNT as found 0000
+  main RAM 0 of 88 kept, 80030000h-8012C000h then 80190000h-801EC000h, 16 KB a character:
+    xxxxxxxxxxxxxxxxxxxxxxxxxxzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+    zzzzzzzzzzzzzzzzzzzzzzzz
+    80030000: 27BDFFE8 AFBF0014 0C016A34 00000000
+    80034000: 26100001 0203082B 1420FFF2 26310004
+    80038000: 00037880 00AFC021 8F040000 3C018008
+    8003C000: AC20A450 24020080 3C018008 1000009A
+    80040000: 24050020 0C0151C4 27A61030 27A40030
+    80044000: 87A9003C 3C018008 87AA003E AC298310
+  VRAM 0 of 16 kept (x 64 + 256i, y 16 + 128j, row by row): zzzzzzzzzzzzzzzz
+  sound RAM 0 of 8 kept (1000h, 10000h ... 7E000h): xxxxxxxx
+  Getstat first: 12
+  GetID                          INT5 03 80
+  Setmode 00h                    INT3 02
+  Setloc 00:02:16 (LBA 16)       INT3 02
+  ReadN LBA 16, as found         INT5 03 40
+
+hwtests/reset-read: Done.

@@ -1,0 +1,18 @@
+reset-mark - PREDICTED, written 2026-11-12 before any console run (the main session), v0.377.328, as the SCPH-7502 with its own drive program:
+PSX_MODEL=SCPH-7502 PSX_CD_FIRMWARE=CDROM-firmware/SC430939.bin node hwtests/run.js reset-mark --disc=xfiles --frames=3000 --quiet=3000
+
+hwtests/reset-mark
+Markers for a RESET: main RAM 88, VRAM 16, sound RAM 8, and the drive unlocked. No assertions.
+
+  SPUCNT as found 0000
+  sound RAM read shift 1 halfwords
+  marked: main RAM 88 of 88, VRAM 16 of 16, sound RAM 8 of 8 (read back at once)
+  Init                           INT3 12 | INT2 12 after 335630778 cycles
+  region INT3 "for Europe": (Europe); unlock answers INT5 40h 7 of 7
+  GetID                          INT3 12 | INT5 1A 80 20 00 00 00 00 00 after 57764 cycles
+  Setmode 00h                    INT3 12
+  Setloc 00:02:16 (LBA 16)       INT3 12
+  ReadN LBA 16, unlocked         INT3 12 | INT1 32 after 3214963 cycles
+
+Now RESET -> MEMORY CARD -> Unirom's READY, then hwtests/reset-read.
+hwtests/reset-mark: Done.

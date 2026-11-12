@@ -228,6 +228,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-11-gst81](2026-11-11-gst81/) | 9 | 1 |
 | [2026-11-11-spindown2-metallica](2026-11-11-spindown2-metallica/) | 8 | 1 |
 | [2026-11-11-t0hreset](2026-11-11-t0hreset/) | 9 | 1 |
+| [2026-11-12-lockstate](2026-11-12-lockstate/) | 7 | 1 |
+| [2026-11-12-lockstate-reset](2026-11-12-lockstate-reset/) | 5 | 1 |
 | [2026-11-12-t0edges](2026-11-12-t0edges/) | 9 | 1 |
 | [2026-11-12-t1vedges](2026-11-12-t1vedges/) | 9 | 1 |
 | [2026-11-12-t1vsync](2026-11-12-t1vsync/) | 6 | 1 |
