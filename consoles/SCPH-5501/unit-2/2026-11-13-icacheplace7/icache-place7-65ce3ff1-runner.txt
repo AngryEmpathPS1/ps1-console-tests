@@ -1,0 +1,12 @@
+
+cpu/icache-place7
+nops           cold min 1195 max 1199  warm min 568 max 574
+A sw;lw        cold min 1788 max 1800  warm min 972 max 986
+B sw;nop;lw    cold min 1790 max 1800  warm min 972 max 986
+C lw..3 sw     cold min 1979 max 1986  warm min 1042 max 1048
+D lw..2 sw     cold min 1976 max 1986  warm min 985 max 999
+E lw..4 sw     cold min 1790 max 1800  warm min 1025 max 1038
+F lw..3 sw2    cold min 1788 max 1795  warm min 967 max 983
+G sw|lw        cold min 1789 max 1794  warm min 968 max 987
+
+Done.

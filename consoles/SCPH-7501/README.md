@@ -16,7 +16,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 
 | session | logs | programs |
 |---|---:|---:|
-| [2026-10-05](2026-10-05/) | 187 | 87 |
+| [2026-10-05](2026-10-05/) | 188 | 87 |
 | [2026-10-06-extra](2026-10-06-extra/) | 3 | 2 |
 | [2026-10-06-games](2026-10-06-games/) | 1 | 1 |
 | [2026-10-06-games-1x](2026-10-06-games-1x/) | 1 | 1 |
@@ -24,7 +24,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-06-rerun](2026-10-06-rerun/) | 10 | 4 |
 | [2026-10-06-seven](2026-10-06-seven/) | 12 | 7 |
 | [2026-10-08-night](2026-10-08-night/) | 4 | 0 |
-| [2026-10-08-runner](2026-10-08-runner/) | 389 | 99 |
+| [2026-10-08-runner](2026-10-08-runner/) | 390 | 99 |
 | [2026-10-08-runner-cd](2026-10-08-runner-cd/) | 166 | 28 |
 | [2026-10-08-t1edges](2026-10-08-t1edges/) | 8 | 0 |
 | [2026-10-08-toggle](2026-10-08-toggle/) | 8 | 0 |
@@ -41,7 +41,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-10-night](2026-10-10-night/) | 13 | 3 |
 | [2026-10-12](2026-10-12/) | 109 | 35 |
 | [2026-10-13](2026-10-13/) | 19 | 8 |
-| [2026-10-13-night](2026-10-13-night/) | 487 | 219 |
+| [2026-10-13-night](2026-10-13-night/) | 488 | 219 |
 | [2026-10-14](2026-10-14/) | 47 | 22 |
 | [2026-10-19](2026-10-19/) | 85 | 64 |
 | [2026-10-20](2026-10-20/) | 74 | 14 |
@@ -95,7 +95,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-07-speedack](2026-11-07-speedack/) | 8 | 1 |
 | [2026-11-07-speedack2](2026-11-07-speedack2/) | 6 | 1 |
 | [2026-11-07-xfcd](2026-11-07-xfcd/) | 20 | 4 |
-| [2026-11-08-cardfetch2](2026-11-08-cardfetch2/) | 6 | 1 |
+| [2026-11-08-cardfetch2](2026-11-08-cardfetch2/) | 7 | 1 |
 | [2026-11-08-cdspread](2026-11-08-cdspread/) | 34 | 16 |
 | [2026-11-08-pausewin](2026-11-08-pausewin/) | 7 | 1 |
 | [2026-11-08-spindown](2026-11-08-spindown/) | 8 | 1 |

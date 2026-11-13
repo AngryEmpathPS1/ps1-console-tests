@@ -16,7 +16,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 
 | session | logs | programs |
 |---|---:|---:|
-| [2026-10-22](2026-10-22/) | 451 | 318 |
+| [2026-10-22](2026-10-22/) | 452 | 318 |
 | [2026-10-24](2026-10-24/) | 59 | 7 |
 | [2026-10-24-cd-lid-sweep3-1](2026-10-24-cd-lid-sweep3-1/) | 1 | 1 |
 | [2026-10-24-cd-lid-sweep3-2](2026-10-24-cd-lid-sweep3-2/) | 1 | 1 |
@@ -44,5 +44,9 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-07-playagain2](2026-11-07-playagain2/) | 7 | 1 |
 | [2026-11-11-a0abort57](2026-11-11-a0abort57/) | 15 | 2 |
 | [2026-11-11-owed](2026-11-11-owed/) | 54 | 17 |
-| [2026-11-11-xfcards](2026-11-11-xfcards/) | 37 | 9 |
+| [2026-11-11-xfcards](2026-11-11-xfcards/) | 38 | 9 |
+| [2026-11-12-chop](2026-11-12-chop/) | 8 | 1 |
 | [2026-11-12-timers](2026-11-12-timers/) | 18 | 3 |
+| [2026-11-13-gputests](2026-11-13-gputests/) | 6 | 0 |
+| [2026-11-13-icacheplace10](2026-11-13-icacheplace10/) | 1 | 0 |
+| [2026-11-13-icacheplace12](2026-11-13-icacheplace12/) | 1 | 0 |

@@ -1,0 +1,33 @@
+gpu-a0abort10 - PREDICTED, written 2026-11-12 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED (the main session, after v0.377.334). hwtests/gpu-a0abort9 showed four instructions run behind the store to CHCR
+before an unchopped RAM-to-GPU burst takes the bus, and the CPU runs on under it. Does a CHOPPED SyncMode 0 transfer, a SyncMode 1
+transfer, an ordering-table clear start the same way? (A burst chopped 16 + 1 runs a constant 16-20 cycles longer on this core
+than on either console, hwtests/gpu-a0abort8; with the line start's fetch behind the burst a chopped 16 + 4 loses a word in 17
+rows where the consoles lose one in 26.)
+
+THE CORE: src at v0.377.334 (it prints the main session's frozen core's rows), tools/hwrunner.js --emu, the SCPH-5501's BIOS and
+model, --lock=0 --video=24000. 320 R rows and 64 O rows. Reader: experiments/intake/abort10sum.js.
+
+Per kind, K = the nops between the store to CHCR and the cut; fill = the words stored; tc = cycles from t0 to behind the cut's
+store; t = to the transfer's end (the commonest value of four; a refresh pause in the transfer reads 10 more or less):
+  k 0  one burst, 200 words          K 0-3 fill 0 (the cut before the burst), K 4-15 fill 200; tc 256 at every K (243 at K 15,
+                                     the switch's shorter arm), t 284                       [v0.377.334's own model: the control]
+  k 1  chopped 16 + 1, 200 words     fill 200 at EVERY K - the cut lands behind the whole transfer; tc 263 + K (265 at K 15),
+                                     t 361 + K
+  k 2  chopped 16 + 4, 200 words     fill 200 at every K; tc 263 + K, t 403 + K
+  k 3  SyncMode 1, 12 blocks of 16   K 0-3 fill 0, K 4-15 fill 15; tc 57 at every K (44 at K 15), t 371-372
+  k 4  SyncMode 1, 6 blocks of 32    K 0-3 fill 0, K 4-15 fill 31; tc 73 at every K (60 at K 15), t 311-312
+  O    DMA6, 200 entries             tc 253 at every K (240 at K 15), t 282
+
+WHAT EACH ANSWER WOULD MEAN.
+- k 1 / k 2 with fill 0 at small K and ~16 from some K on: a chopped transfer takes the bus some instructions behind its store as a
+  burst does, and the CPU's store goes out in the transfer's first gap - this core runs none of the CPU's instructions before the
+  chopped transfer's end (fill 200, tc a cycle a nop). The K at which fill leaves 0 is the start's latency; tc there, and how it
+  moves with K, is where the first gap falls and whether the nops ran under the first 16 words.
+- k 3 / k 4: this core already starts a block four instructions late and cuts behind the first block (15 / 31 words stored). The
+  consoles' K boundary and their fill (15, 16 or 17; 31, 32) say whether that is right to the word.
+- O: tc flat in K here. A cycle a nop on the consoles would mean the CPU stands still under DMA6 where it does not under a burst.
+- k 0 is gpu-a0abort9's block again: both consoles read fill 0 at K 0-3, 200 from K 4, t - n 68 (here tc - n 56 with the Timer 2
+  read moved behind the cut; the consoles' is not predicted to the cycle - v0.377.334's KNOWN-OPEN 2).
+Nothing is modelled from one run: six runs on each console first (rule 3).

@@ -1,0 +1,70 @@
+PS1-DOS: an 8086 PC on a PlayStation
+C: image 177152 bytes embedded (346 sectors)
+bench reg : 196610 instructions in 83.817 ms, 2368000 per second
+bench mem : 98308 instructions in 79.459 ms, 1244000 per second
+bench call: 57346 instructions in 62.000 ms, 924000 per second
+[BIOS: booting C: (MBR at 0000:7C00)]
+.........................123
+FreeDOS kernel 2046 (build 2046 OEM:0xfd) [compiled Jun 29 2026]
+Kernel compatibility 6.22 - WATCOMC - 808x compatible
+
+(C) Copyright 1995-2023 Pasquale J. Villani and The FreeDOS Project.
+All Rights Reserved. This is free software and comes with ABSOLUTELY NO
+WARRANTY; you can redistribute it and/or modify it under the terms of the
+GNU General Public License as published by the Free Software Foundation;
+either version 2, or (at your option) any later version.
+C: HD1, Pri[ 1], CHS=    0-1-1, start=     0 MB, size=     3 MB
+Press F8 to trace or F5 to skip CONFIG.SYS/AUTOEXEC.BAT                                                                               
+FreeCom version 0.86 - WATCOMC - XMS_Swap [Dec 30 2024 22:10:51]
+Welcome to FreeDOS on a PlayStation (ps1-dos)
+C:\>
+[at the C:\> prompt: 5.213 s from power-on, 2312000 8086 instructions]
+ver
+
+FreeCom version 0.86 - WATCOMC - XMS_Swap [Dec 30 2024 22:10:51]
+C:\>dir
+ Volume in drive C is PS1DOS
+ Volume Serial Number is 5053-1D05
+ Directory of C:\
+
+KERNEL   SYS        46,298  11-12-26  3:19p
+COMMAND  COM        87,772  11-12-26  3:19p
+FDCONFIG SYS            22  11-12-26  3:19p
+AUTOEXEC BAT            86  11-12-26  3:19p
+         4 file(s)        134,178 bytes
+         0 dir(s)       4,014,080 bytes free
+C:\>
+
+PS1-DOS report
+boot, power-on to the first C:\> prompt: 5.213 s, 2312000 instructions (FreeDOS's 2 s F5/F8 wait included)
+8086 instructions per second, boot: 443000 (insn / ms * 1000)
+whole run: 3055000 instructions in 7.305 s, 0.000 s halted; busy rate 418000 per second
+timer IRQs 132, disk reads 318, writes 0, overlay sectors 0, frames 436
+translator: 241 blocks made, entered 5864 times, found changed 0, 8086 instructions run in them 1537070, jit_try called 5657, heads left to the interpreter 22
+screen:
+|
+|(C) Copyright 1995-2023 Pasquale J. Villani and The FreeDOS Project.
+|All Rights Reserved. This is free software and comes with ABSOLUTELY NO
+|WARRANTY; you can redistribute it and/or modify it under the terms of the
+|GNU General Public License as published by the Free Software Foundation;
+|either version 2, or (at your option) any later version.
+|C: HD1, Pri[ 1], CHS=    0-1-1, start=     0 MB, size=     3 MB
+|
+|FreeCom version 0.86 - WATCOMC - XMS_Swap [Dec 30 2024 22:10:51]
+|Welcome to FreeDOS on a PlayStation (ps1-dos)
+|C:\>ver
+|
+|FreeCom version 0.86 - WATCOMC - XMS_Swap [Dec 30 2024 22:10:51]
+|C:\>dir
+| Volume in drive C is PS1DOS
+| Volume Serial Number is 5053-1D05
+| Directory of C:\
+|
+|KERNEL   SYS        46,298  11-12-26  3:19p
+|COMMAND  COM        87,772  11-12-26  3:19p
+|FDCONFIG SYS            22  11-12-26  3:19p
+|AUTOEXEC BAT            86  11-12-26  3:19p
+|         4 file(s)        134,178 bytes
+|         0 dir(s)       4,014,080 bytes free
+|C:\>
+Done.

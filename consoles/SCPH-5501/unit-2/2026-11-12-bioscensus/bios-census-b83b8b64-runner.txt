@@ -1,0 +1,105 @@
+
+system/bios-census
+BIOS: "System ROM Version 3.0 11/18/96 A"
+BIOS delay/size 0013243F COM_DELAY 00031125
+null (the stub alone)              @00000000: min 7 max 7
+A(44h) FlushCache                  @BFC01920: min 37620 max 37625
+X FlushCache body, RAM KSEG1       @00000000: min 8787 max 8793
+X FlushCache body, no stores       @00000000: min 8774 max 8780
+A(57h) return 0                    @BFC06FDC: min 74 max 74
+A(73h) return 0                    @BFC06FDC: min 74 max 75
+C(0Eh) return 0                    @000035A4: min 25 max 25
+A(0Ah) todigit('7')                @BFC022C0: min 452 max 453
+A(0Eh) abs(-5)                     @BFC02918: min 126 max 131
+A(0Fh) labs(-5)                    @BFC02934: min 126 max 131
+A(25h) toupper('a')                @BFC02EA0: min 420 max 423
+A(26h) tolower('A')                @BFC02EDC: min 420 max 420
+A(10h) atoi("12345")               @BFC02950: min 5443 max 5452
+A(11h) atol("-12345")              @BFC02AF0: min 5790 max 5803
+A(0Ch) strtoul("1A2B3C",16)        @BFC025B0: min 7956 max 7960
+A(0Dh) strtol("-12345",10)         @BFC02738: min 6480 max 6490
+A(12h) atob("12345")               @BFC02B10: min 6698 max 6716
+A(13h) SaveState                   @BFC02240: min 430 max 435
+A(1Bh) strlen 0                    @BFC03494: min 235 max 235
+A(1Bh) strlen 16                   @BFC03494: min 2005 max 2015
+A(1Bh) strlen 256                  @BFC03494: min 28330 max 28342
+A(1Bh) strlen 2048                 @BFC03494: min 224928 max 224944 x8
+A(17h) strcmp 16 equal             @BFC03288: min 3451 max 3459
+A(17h) strcmp 256 equal            @BFC03288: min 49521 max 49533
+A(18h) strncmp 256,200             @BFC03310: min 54269 max 54286
+A(19h) strcpy 16                   @BFC033C8: min 2491 max 2507
+A(19h) strcpy 256                  @BFC033C8: min 34548 max 34560
+A(1Ah) strncpy 256,256             @BFC03418: min 54318 max 54328
+A(15h) strcat 16+16                @BFC03190: min 4344 max 4355
+A(16h) strncat 16+16,8             @BFC03200: min 4061 max 4077
+A(1Ch) index 256 absent            @BFC034D0: min 48251 max 48261
+A(1Dh) rindex 256 absent           @BFC03514: min 76456 max 76472 x8
+A(1Eh) strchr 256 absent           @BFC0357C: min 48251 max 48261
+A(1Fh) strrchr 256 absent          @BFC035C0: min 76456 max 76472 x8
+A(20h) strpbrk 21,3                @BFC03628: min 11617 max 11623
+A(21h) strspn 17,1                 @BFC03694: min 6683 max 6700
+A(22h) strcspn 21,3                @BFC036FC: min 13470 max 13484
+A(23h) strtok first                @BFC03764: min 6804 max 6818
+A(24h) strstr 64 absent            @BFC03894: min 17518 max 17530
+A(27h) bcopy 16                    @BFC01A90: min 2748 max 2758
+A(27h) bcopy 256                   @BFC01A90: min 40939 max 40953
+A(28h) bzero 16                    @BFC01ACC: min 1936 max 1942
+A(28h) bzero 256                   @BFC01ACC: min 27223 max 27244
+A(28h) bzero 2048                  @BFC01ACC: min 216120 max 216136 x8
+A(29h) bcmp 256 equal              @BFC01B08: min 55961 max 55970
+A(2Ah) memcpy 0                    @BFC02B50: min 204 max 204
+A(2Ah) memcpy 16                   @BFC02B50: min 2748 max 2763
+A(2Ah) memcpy 256                  @BFC02B50: min 40938 max 40953
+A(2Ah) memcpy 2048                 @BFC02B50: min 326112 max 326128 x8
+A(2Bh) memset 16                   @BFC02B8C: min 1936 max 1946
+A(2Bh) memset 256                  @BFC02B8C: min 27225 max 27244
+A(2Bh) memset 2048                 @BFC02B8C: min 216120 max 216136 x8
+A(2Ch) memmove 256 up              @BFC02BC8: min 41331 max 41346
+A(2Dh) memcmp 256 equal            @BFC02C50: min 55961 max 55970
+A(2Eh) memchr 256 absent           @BFC02CC0: min 41511 max 41523
+A(30h) srand(1)                    @BFC02230: min 102 max 102
+A(2Fh) rand                        @BFC02200: min 338 max 338
+A(31h) qsort 16 reversed           @BFC03098: min 129104 max 129144 x8
+A(36h) bsearch 64                  @BFC02DAC: min 3611 max 3611
+A(35h) lsearch 32 found            @BFC02D20: min 6933 max 6942
+A(39h) InitHeap 64K                @BFC01E24: min 392 max 397
+A(33h) malloc 64                   @BFC01E5C: min 3038 max 3052
+A(34h) free                        @BFC020F0: min 159 max 159
+A(37h) calloc 16x4                 @BFC021A0: min 10567 max 10584
+A(38h) realloc 64->128             @BFC02104: min 2291 max 2297
+A(4Dh) GetGPUStatus                @BFC04120: min 206 max 206
+A(4Eh) gpu_sync                    @BFC04138: min 578 max 578
+A(49h) GPU_cw(GP0 00h)             @BFC03FAC: min 953 max 958
+A(9Dh) GetConf                     @BFC06728: min 301 max 305
+A(B4h) GetSystemInfo(0)            @BFC0D4F0: min 566 max 566
+A(B4h) GetSystemInfo(2)            @BFC0D4F0: min 464 max 464
+B(00h) alloc_kernel_memory 16      @00001174: min 127 max 153
+B(01h) free_kernel_memory          @00001408: min 36 max 40
+B(03h) get_timer(0)                @000016AC: min 43 max 43
+B(07h) DeliverEvent unopened       @00001B44: min 363 max 368
+B(20h) UnDeliverEvent unopened     @00001C5C: min 305 max 311
+B(08h) OpenEvent                   @00001D8C: min 252 max 261
+B(09h) CloseEvent                  @00001E1C: min 39 max 43
+B(0Bh) TestEvent                   @00001EC8: min 49 max 55
+B(0Ch) EnableEvent                 @00001F10: min 50 max 55
+B(0Dh) DisableEvent                @00001F4C: min 50 max 55
+B(0Eh) OpenThread                  @00002018: min 248 max 258
+B(0Fh) CloseThread                 @000020A8: min 44 max 49
+B(51h) Krom2RawAdd(8140h)          @000065E0: min 199 max 205
+B(53h) Krom2Offset(8140h)          @00006670: min 142 max 147
+B(54h) GetLastError                @00002EEC: min 32 max 32
+B(55h) GetLastFileError(0)         @00002E98: min 70 max 76
+B(56h) GetC0Table                  @0000065C: min 26 max 28
+B(57h) GetB0Table                  @00000668: min 26 max 31
+B(58h) get_bu_callback_port        @00005E30: min 42 max 42
+C(04h) get_free_EvCB_slot          @00001D00: min 151 max 155
+C(05h) get_free_TCB_slot           @00001F88: min 152 max 158
+C(02h) SysEnqIntRP(3)              @00001420: min 48 max 51
+C(03h) SysDeqIntRP(3)              @00001444: min 57 max 59
+C(1Dh) get_card_find_mode          @00003E68: min 32 max 32
+C(1Ah) set_card_find_mode(0)       @00003E5C: min 28 max 31
+SYS(00h) NoFunction                @00000000: min 479 max 494
+SYS(01h) EnterCriticalSection      @00000000: min 511 max 523
+SYS(02h) ExitCriticalSection       @00000000: min 499 max 510
+
+Done.

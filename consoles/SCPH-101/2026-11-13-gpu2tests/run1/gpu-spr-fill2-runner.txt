@@ -1,0 +1,45 @@
+
+gpu/gpu-spr-fill2
+A raw drawn 4-bit sprite W x 16, its last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. G / X: after a 64 x 16 sprite from u 0 has
+finished, at x 0 / x 16. R: no priming, drawn again and again. No assertions.
+
+row                    bit 26        bit 28
+G u0 w16                182..182        8..8    
+G u0 w32                314..330        8..8    
+G u0 w48                438..444        8..8    
+G u0 w64                568..579        8..8    
+G u0 w80                836..852        8..8    
+G u0 w96               1162..1178       8..8    
+G u16 w16               182..183        8..8    
+G u16 w32               314..327        8..8    
+G u16 w48               438..444        8..8    
+G u16 w64               810..825        8..8    
+G u16 w80              1060..1077       8..8    
+G u16 w96              1383..1407       8..8    
+G u32 w16               182..182        8..8    
+G u32 w32               314..327        8..8    
+G u32 w48               564..581        8..8    
+G u32 w64               890..912        8..8    
+G u32 w80              1140..1159       8..8    
+G u32 w96              1466..1486       8..8    
+G u48 w16               182..183        8..8    
+G u48 w32               517..523        8..8    
+G u48 w48               692..708        8..8    
+G u48 w64              1093..1110       8..8    
+G u48 w80              1268..1287       8..8    
+G u48 w96              1669..1690       8..8    
+G u64 w16               310..326        8..8    
+G u64 w32               615..636        8..8    
+G u64 w48               865..887        8..8    
+G u64 w64              1191..1213       8..8    
+G u64 w80              1441..1463       8..8    
+G u64 w96              1767..1789       8..8    
+X u0 w80 x16            836..858        8..8    
+X u48 w80 x16          1268..1285       8..8    
+X u64 w80 x16          1441..1463       8..8    
+R 96x16                1463..1482       8..8    
+R 160x16               2931..2956       8..8    
+R 192x16               3510..3535       8..8    
+
+gpu/gpu-spr-fill2: Done.

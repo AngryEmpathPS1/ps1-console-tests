@@ -1,0 +1,19 @@
+bustap-sub1
+Sub-bus accesses between EXP1 markers, for the parallel-port tap (docs/BUSTAP.md).
+No assertions - the tap's capture is the measurement; Timer 2 gives each block's total.
+
+  as the kernel left them: EXP1=0013243f BIOS=0013243f SPU=200931e1 CD=00020843 COM=00031125
+
+  block 0  markers 1F000000h/04h    399 cycles  kernel, cached, cold I-cache
+  block 1  markers 1F000010h/14h    328 cycles  kernel, cached, warm
+  block 2  markers 1F000020h/24h    350 cycles  COM 1325 CD 20943 (FF7)
+  block 3  markers 1F000030h/34h    436 cycles  COM 132C CD 20943 (FF7)
+  block 4  markers 1F000040h/44h    344 cycles  COM 1323 CD 20843
+  block 5  markers 1F000050h/54h    388 cycles  BIOS 0013247F SPU 220931E1
+  block 6  markers 1F000060h/64h    508 cycles  kernel, UNCACHED (KSEG1)
+  block 7  markers 1F000070h/74h    328 cycles  kernel, cached, warm again
+
+  restored: BIOS=0013243f SPU=200931e1 CD=00020843 COM=00031125
+
+Done.
+

@@ -1,0 +1,159 @@
+PS1-DOS: an 8086 PC on a PlayStation
+C: image 146432 bytes embedded (286 sectors)
+bench reg : 196610 instructions in 84.893 ms, 2340000 per second
+bench mem : 98308 instructions in 80.105 ms, 1228000 per second
+bench call: 57346 instructions in 62.196 ms, 924000 per second
+[BIOS: booting C: (MBR at 0000:7C00)]
+.........................123
+FreeDOS kernel 2046 (build 2046 OEM:0xfd) [compiled Jun 29 2026]
+Kernel compatibility 6.22 - WATCOMC - 808x compatible
+
+(C) Copyright 1995-2023 Pasquale J. Villani and The FreeDOS Project.
+All Rights Reserved. This is free software and comes with ABSOLUTELY NO
+WARRANTY; you can redistribute it and/or modify it under the terms of the
+GNU General Public License as published by the Free Software Foundation;
+either version 2, or (at your option) any later version.
+C: HD1, Pri[ 1], CHS=    0-1-1, start=     0 MB, size=     3 MB
+Press F8 to trace or F5 to skip CONFIG.SYS/AUTOEXEC.BAT                                                                               
+[run: SPEED200.C at 4375 ms]
+
+[screen: SPEED200.C after 15 s, before Esc]
+|
+|        ###     THE LANDMARK CPU SPEED TEST:  SPEED Version 2.00     ###
+|                      Copyright 1987 Landmark Software
+|                             1142 Pomegranate Court
+|                               Sunnyvale CA 94087
+|                                  408-733-4035
+|
+|  This system is performing like an IBM AT running at:
+|   MHz      2         3      4     5   6   7  8  9 10  12  14 16 18 20  24
+|   #########################################################################
+|
+|  #
+|  #
+|  ############################################
+|  #
+|  #                                          4.0x
+|
+|  Performance relative to 4.77 Mhz PC or XT:
+|   #########################################################################
+|            1x               2x        3x     4x    5x  6x  7x 8x   10x 12x
+|
+|   Current time:  00:00:17    Elapsed time since starting program:  00:00:14
+|   Current test:  17          Elapsed time for the latest test:     127 ms
+|
+|      F1  HELP   Q  TOGGLE QUIET MODE   C  TOGGLE COLOR   ESC  EXIT TO DOS
+
+[screen: SPEED200.C at 19840 ms]
+|
+|        ###     THE LANDMARK CPU SPEED TEST:  SPEED Version 2.00     ###
+|                      Copyright 1987 Landmark Software
+|                             1142 Pomegranate Court
+|                               Sunnyvale CA 94087
+|                                  408-733-4035
+|
+|  This system is performing like an IBM AT running at:
+|   MHz      2         3      4     5   6   7  8  9 10  12  14 16 18 20  24
+|   #########################################################################
+|
+|  #                                         7.8 MHz
+|  #
+|  ############################################
+|  #
+|  #                                         4.0x
+|
+|  Performance relative to 4.77 Mhz PC or XT:
+|   #########################################################################
+|            1x               2x        3x     4x    5x  6x  7x 8x   10x 12x
+|
+|   Current time:  00:00:18    Elapsed time since starting program:  00:00:15
+|   Current test:  18          Elapsed time for the latest test:     128 ms
+|
+|
+
+[run: SI.EXE at 19851 ms]
+SI-System Information, Advanced Edition, (C) Copr 1987, Peter Norton
+
+     Operating System:  DOS 6.22
+  Built-in BIOS dated:  Friday, November 12, 1926
+       Main Processor:  NEC V20                  Serial Ports:  1
+         Co-Processor:  None                   Parallel Ports:  0
+Video Display Adapter:  Color/Graphics
+   Current Video Mode:  Text, 80 x 25 Color
+Available Disk Drives:  3, A: - C:
+
+DOS reports 640 K-bytes of memory:
+    61 K-bytes used by DOS and resident programs
+   579 K-bytes available for application programs
+A search for active memory finds:
+   640 K-bytes main memory     (at hex 0000-A000)
+   127 K-bytes display memory  (at hex A040-C000)
+
+  Computing Index (CI), relative to IBM/XT: Testing...          2.2
+       Disk Index (DI), relative to IBM/XT: Not computed. No drive specified.
+
+Performance Index (PI), relative to IBM/XT: Not computed. 
+
+[screen: SI.EXE at 25719 ms]
+|SI-System Information, Advanced Edition, (C) Copr 1987, Peter Norton
+|
+|     Operating System:  DOS 6.22
+|  Built-in BIOS dated:  Friday, November 12, 1926
+|       Main Processor:  NEC V20                  Serial Ports:  1
+|         Co-Processor:  None                   Parallel Ports:  0
+|Video Display Adapter:  Color/Graphics
+|   Current Video Mode:  Text, 80 x 25 Color
+|Available Disk Drives:  3, A: - C:
+|
+|DOS reports 640 K-bytes of memory:
+|    61 K-bytes used by DOS and resident programs
+|   579 K-bytes available for application programs
+|A search for active memory finds:
+|   640 K-bytes main memory     (at hex 0000-A000)
+|   127 K-bytes display memory  (at hex A040-C000)
+|
+|  Computing Index (CI), relative to IBM/XT: 2.2
+|       Disk Index (DI), relative to IBM/XT: Not computed. No drive specified.
+|
+|Performance Index (PI), relative to IBM/XT: Not computed.
+|
+|
+|
+|
+
+[benchmarks done at 25726 ms]
+
+
+PS1-DOS report
+boot, power-on to the first C:\> prompt: 0.000 s, 0 instructions (FreeDOS's 2 s F5/F8 wait included)
+8086 instructions per second, boot: 0 (insn / ms * 1000)
+whole run: 9612000 instructions in 25.722 s, 0.000 s halted; busy rate 373000 per second
+timer IRQs 467, disk reads 246, writes 0, overlay sectors 0, frames 1539
+translator: 233 blocks made, entered 12309 times, found changed 0, 8086 instructions run in them 4756449, jit_try called 12122, heads left to the interpreter 35
+screen:
+|SI-System Information, Advanced Edition, (C) Copr 1987, Peter Norton
+|
+|     Operating System:  DOS 6.22
+|  Built-in BIOS dated:  Friday, November 12, 1926
+|       Main Processor:  NEC V20                  Serial Ports:  1
+|         Co-Processor:  None                   Parallel Ports:  0
+|Video Display Adapter:  Color/Graphics
+|   Current Video Mode:  Text, 80 x 25 Color
+|Available Disk Drives:  3, A: - C:
+|
+|DOS reports 640 K-bytes of memory:
+|    61 K-bytes used by DOS and resident programs
+|   579 K-bytes available for application programs
+|A search for active memory finds:
+|   640 K-bytes main memory     (at hex 0000-A000)
+|   127 K-bytes display memory  (at hex A040-C000)
+|
+|  Computing Index (CI), relative to IBM/XT: 2.2
+|       Disk Index (DI), relative to IBM/XT: Not computed. No drive specified.
+|
+|Performance Index (PI), relative to IBM/XT: Not computed.
+|
+|
+|
+|
+Done.

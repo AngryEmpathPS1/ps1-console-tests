@@ -1,0 +1,22 @@
+
+dma/dma1-drq4
+DMA1 1 x 32 from an MDEC output: dma1-drq's whole recipe, then one factor dropped at a time, then ways out of a wedge.
+Factors: R params from RAM, 0 / 1 / 2 MDEC1 read after the params / before the arm / after the transfer. No assertions.
+
+DPCR at entry 08009899, DICR 00840000
+  # 1  whole          R012  moved   wrote  32  MADR1 +16   DICR 00840000
+  # 2  whole          R012  STUCK   wrote   0  MADR1 +0    DICR 00840000
+  # 3  whole          R012  STUCK   wrote   0  MADR1 +0    DICR 00840000
+  # 4  whole          R012  STUCK   wrote   0  MADR1 +0    DICR 00840000
+  # 5  drop 2         R01-  moved   wrote  32  MADR1 +16   DICR 00840000
+  # 6  drop 2         R01-  STUCK   wrote   0  MADR1 +0    DICR 00840000
+  # 7  probe          R012  STUCK   wrote   0  MADR1 +0    DICR 00840000
+  # 8  probe          R012  STUCK   wrote   0  MADR1 +0    DICR 00840000
+  # 9  after U1 DPCR  R012  STUCK   wrote   0  MADR1 +0    DICR 00840000
+  #10  after U2 drain R012  STUCK   wrote   0  MADR1 +0    DICR 00840000
+  #11  after U3 DICR  R012  STUCK   wrote   0  MADR1 +0    DICR 00840000
+  #12  after U4 SM0   R012  STUCK   wrote   0  MADR1 +0    DICR 00840000
+
+2 of 12 tries moved; the channel wedged (see the drop before the hung probes)
+
+dma/dma1-drq4: Done.

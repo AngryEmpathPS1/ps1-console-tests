@@ -1,0 +1,36 @@
+gpu-a0abort8 - PREDICTED, written 2026-11-12 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. The upload intake (GPU_A0, v0.377.323) has the line start's two fetches read to the cycle off gpu-a0abort2 - 7.
+A 512-wide line's three REFILLS were never cut that way: their length (lr 48 GPU ticks = 30.3 cycles), place (roff) and early
+service (aheadR 12) come from a burst's words lost in hwtests/gpu-burstrow2. There the model sits on an edge - a refill stalls a
+burst's intake 17-21 cycles against the 16 words the FIFO takes - and 256-wide bursts lose at 61-78% of the refills they meet where
+the second SCPH-5501 loses at 84-95%. So: (1) of the bursts cut AFTER a refill, how many lost words; (2) at which cut x the loss
+begins, and over which x GPUSTAT reads the request down before the cut (the stall's own span); (3) whether a burst cut inside the
+stall has words unstored (fill < n); (4) whether a slower feeder (chopped 16 + 1, 16 + 4, blocks of 16 and 32) is held at all.
+
+THE CORE: src at v0.377.330 with GPU_A0's numbers as knobs (experiments/intake/mka0knob.js; with no knob set it prints v0.377.330's
+rows), tools/hwrunner.js --emu, the SCPH-5501's BIOS, --lock=0 --video=24000. 1,618 rows, 1,412 of them on displayed lines (ln 20-255;
+experiments/intake/abort8sum.js leaves the others out). The refills sit at x ~378-408, 782-812 and 1,186-1,216 here.
+
+K 0, the burst (x = ph + t; its t is n + 71 on every row here), per refill r = 1 / 2 / 3:
+                                        rows       lost words      loss from x    fill < n     GPUSTAT 00h before the cut
+  v0.377.330 (lr 48, aheadR 12)      142/140/136   50 / 53 / 46    440/840/1240   0 / 0 / 0    53 / 53 / 47
+  aheadR 0 (no refill served early)  142/140/136   54 / 56 / 48    440/840/1240   0 / 0 / 0    55 / 56 / 49
+  lr 54.2 (the drawing side's)       141/141/137   58 / 56 / 54    420/820/1220   10 / 9 / 8   52 / 40 / 50
+  lr 54.2, aheadR 0                  141/141/137   59 / 55 / 58    420/820/1220   9 / 6 / 10   54 / 50 / 53
+  At refill 1 on v0.377.330, in bins of 10 cycles of x from 420 (rows / lost / request down): 420 11/0/2, 430 6/0/3, 440 7/3/6,
+  450 9/1/2, 460 9/7/7, 470 11/6/6, 480 8/5/4, 490 8/5/5, 500 9/6/4, 510 8/4/4, 520 11/10/8, 530 3/3/2 - of the 84 rows cut from
+  x 440 on, 50 lost words (60%); nothing lost and the request up on every row before x 420.
+
+K 1 - K 4 (chopped 16 + 1, 16 + 4, SyncMode 1 blocks of 16 and of 32): on every setting above NO row loses a word, none is cut with
+words unstored, none reads the request down, and the mean t is the same to 0.5 of a cycle (427.1 / 461.8 / 435.2 / 402.1): this
+core holds no slower feeder at a refill that the cut can see.
+
+WHAT EACH ANSWER WOULD MEAN.
+- Bursts cut after a refill losing in ~60% of rows: the edge is real and the console's 84-95% in gpu-burstrow2 has another cause.
+  In ~85% or more: the refill holds a burst longer than 17-21 cycles - and the x where the loss begins and the span over which the
+  request reads down say whether it starts sooner, ends later, or is not served early.
+- fill < n in rows cut inside the stall: the hold outlasts what this core's 48 ticks give (it has none; 54.2 ticks ~9 a refill).
+- A slower feeder's request down, words unstored, or t stepping up across a refill: the refill is not absorbed in its idle cycles
+  as this core has it (pieces of 6.5 cycles asked 12 ahead).
+Nothing here is modelled from one run: six runs first (rule 3).

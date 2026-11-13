@@ -1,0 +1,51 @@
+gpu-a0abort9 - PREDICTED, written 2026-11-12 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED (STATUS "gpu-a0abort8 on the second SCPH-5501 and the PSone ..."). How long a scan-out refill holds a burst's
+intake, at every start of the burst, where the hold begins, and whether a part of the refill is served early in the port's idle
+cycles. gpu-a0abort8's cut came ~27 cycles behind the burst's last word and showed the hold only at three starts in seventeen;
+three candidate changes each fitted one test and lost another. Here the cut is the store that starts the burst, K nops, GP1(01h).
+
+THE CORE: src at v0.377.333, tools/hwrunner.js --emu, the SCPH-5501's BIOS and model, --lock=0 --video=24000, at EIGHT refresh
+phases (--refresh-phase=0 .. 224 by 32: a burst's fate goes by where its DRAM-refresh pauses fall; a console's six runs sample
+theirs). 1,504 rows a run. "unstored" = n - fill. Readers: experiments/intake/abort9sum.js (every class), abort9u.js (C 1 by the
+burst's place in its 16-word unit).
+
+C 0 (no fetch near, n 200, K 0 .. 15): NOTHING unstored at any K - this core has every word out of the intake by the time the CPU's
+next store lands. t - n = 63 + K with one refresh pause in the burst, 53 + K with none; K 15 reads 13 less (the switch's default
+arm is reached sooner), K 0's first row 23 more.
+  If the consoles hold words in flight (gpu-a0abort3: "the last word is taken ~18 cycles before the cut"), C 0 will show a count
+  that falls a word a nop - that IS the intake's pipe, and every C 1 / C 2 count is read less C 0's at the same K.
+
+C 1 (a burst through a refill; rows on displayed lines, ln <= 236, with t - n within 4 of the commonest):
+                                           K 5: mean unstored / rows that lost a word     K 9                K -1 (the old cut)
+  v0.377.333 (lr 48, roff -3, aheadR 12)        5.97 / 73%                                3.15 / 76%         0.00 / 77%
+  roff 1                                        5.84 / 72%                                3.54 / 81%         0.00 / 78%
+  lr 50, roff 1, aheadR 0                       7.33 / 76%                                4.96 / 85%         0.00 / 85%
+  lr 54.2, roff 1, aheadR 0                     9.93 / 84%                                7.02 / 88%         0.00 / 83%
+  pre 3.5 (a fetch takes the port from a write
+  in its first 3.5 cycles), roff 1, aheadR 0    7.24 / 84%                                4.67 / 87%         0.00 / 84%
+  (the four below v0.377.333 on the knob core, experiments/intake/mka0knob.js, four refresh phases each)
+  By the burst's place in its unit, u = (ph - 403.7 (r - 1)) mod 16.69, K 5, v0.377.333 - the mean / the most unstored:
+  u 0 6.7/12, 1 4.1/11, 2 4.8/16, 3 5.3/15, 4 6.9/15, 5 7.3/15, 6 5.1/14, 7 2.6/12, 8 5.6/12, 9 3.9/12, 10 4.4/11, 11 5.8/11,
+  12 7.2/11, 13 8.5/12, 14 7.4/12, 15 6.2/12, 16 6.6/11. The most, by setting: lr 54.2 15-20; pre 3.5 11-19 with its peak (17-19)
+  at u 1-5; lr 50 13-17; v0.377.333 11-16.
+  A word unstored is a cycle of hold (less 16 a lap): the mean says the hold's common length to a fraction of a cycle (a tick of
+  the refill's length moves it 0.64), the most and where it sits its peak and shape.
+
+C 2 (the burst's end swept across a refill, K 5): nothing unstored while the burst's last word falls before the hold; the first
+count above C 0's at ph + n = 354 / 764 / 1,163 (refills 1 / 2 / 3), then a word more for each word later, to 11-16 and a lap.
+  The consoles' refill comes ~2.5 cycles later (gpu-a0abort8): 356-357 / 766-767 / 1,165-1,166 if that is all.
+
+EARLY SERVICE. Timer 2 is never rewritten after the program's first lines, so t0 mod 256 places every row on the DRAM-refresh grid
+up to one constant a run (found from where t - n steps by 10 against t0 + n). The rows whose pause fell in the ~15 cycles before
+the refill: on this core one or two pieces of the refill (6.5 cycles each) are served in the pause, so such a row's count
+unstored falls by about as many words against its neighbours'; with aheadR 0 it does not. Not tabulated before the run: the
+constant is the run's own.
+
+WHAT EACH ANSWER WOULD MEAN.
+- C 1's mean near 6 at K 5 and 3 at K 9 (less C 0's): the hold's common length is this core's, and gpu-a0abort8's three starts are
+  a peak on top of it (the take-over, or another shape). Near 10 and 7: the refill is the drawing side's 54 ticks and gpu-burstrow2's
+  wide rows lose too many words for another reason.
+- The peak's place and height by u: pre's 17-19 at u 1-5 against a flat 11-16.
+- A count that does not fall when a pause sits just before the refill: no early service (aheadR 0); one that does: the piece.
+Nothing is modelled from one run: six runs on each console first (rule 3).

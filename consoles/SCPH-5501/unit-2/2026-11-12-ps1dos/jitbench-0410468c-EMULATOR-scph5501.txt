@@ -1,0 +1,12 @@
+jitbench: the translator's pieces in system clock cycles
+flushcache: 16 x, 578904 cycles, min 36178, max 36185
+store burst 1024 words: 16 x, 65682 cycles, min 4102, max 4118
+4 stores then a load: 64 x, 1533 cycles, min 23, max 44
+code write 62 words: 64 x, 16797 cycles, min 259, max 278
+code run cold: 64 x, 11668 cycles, min 177, max 221
+code run warm: 64 x, 6362 cycles, min 92, max 164
+jit_enter round trip: 256 x, 20164 cycles, min 75, max 136
+bench reg : reset 202904, chunk 0 47280, chunk 1 14816, the rest 195 x 2781800 (min 9656, max 14392), all 2843896 cycles, 196610 instructions
+bench mem : reset 202912, chunk 0 69864, chunk 1 27568, the rest 97 x 2604304 (min 9616, max 27344), all 2701736 cycles, 98308 instructions
+bench call: reset 202904, chunk 0 91048, chunk 1 35944, the rest 56 x 1979952 (min 13672, max 35792), all 2106944 cycles, 57346 instructions
+Done.

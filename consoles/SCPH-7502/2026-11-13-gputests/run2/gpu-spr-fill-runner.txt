@@ -1,0 +1,45 @@
+
+gpu/gpu-spr-fill
+A raw 4- / 8-bit sprite W x 16, its last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. drawn / clear: its CLUT draws every texel /
+is all 0000h. A: drawn again and again. B: after a 64 x 16 sprite from u 0 has finished. No assertions.
+
+row                    bit 26        bit 28
+4 drawn A 64x16         568..577        8..8    
+4 drawn A 128x16       2355..2369       8..8    
+4 drawn A 256x16       4674..4702       8..8    
+4 drawn A 320x16       5223..5244       8..8    
+4 drawn B u0 w64        568..577        8..8    
+4 drawn B u0 w80        836..849        8..8    
+4 drawn B u48 w80      1268..1290       8..8    
+4 drawn B u64 w64      1191..1213       8..8    
+4 drawn B u64 w80      1441..1463       8..8    
+4 clear A 64x16         543..543        8..8    
+4 clear A 128x16       2091..2099       8..8    
+4 clear A 256x16       4143..4164       8..8    
+4 clear A 320x16       4653..4686       8..8    
+4 clear B u0 w64        543..543        8..8    
+4 clear B u0 w80        799..812        8..8    
+4 clear B u48 w80      1183..1196       8..8    
+4 clear B u64 w64      1055..1072       8..8    
+4 clear B u64 w80      1311..1330       8..8    
+8 drawn A 64x16         568..578        8..8    
+8 drawn A 128x16       3638..3659       8..8    
+8 drawn A 256x16       7255..7283       8..8    
+8 drawn B u0 w64        568..576        8..8    
+8 drawn B u0 w72        772..783        8..8    
+8 drawn B u56 w72      1840..1862       8..8    
+8 drawn B u64 w64      1827..1849       8..8    
+8 clear A 64x16         543..543        8..8    
+8 clear A 128x16       3118..3141       8..8    
+8 clear A 256x16       6207..6226       8..8    
+8 clear B u0 w64        543..543        8..8    
+8 clear B u0 w72        735..750        8..8    
+8 clear B u56 w72      1631..1651       8..8    
+8 clear B u64 w64      1567..1589       8..8    
+4 clear C 64h 256x16   4137..4159       8..8    
+4 clear C 67h 256x16   4146..4160       8..8    
+4 clear C 66h 256x16   4138..4158       8..8    
+4 drawn C 64h 256x16   4680..4696       8..8    
+
+gpu/gpu-spr-fill: Done.

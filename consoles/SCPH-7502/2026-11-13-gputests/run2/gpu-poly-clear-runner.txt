@@ -1,0 +1,33 @@
+
+gpu/gpu-poly-clear
+A lone polygon or line's last words stored back to back, D cycles, one GPUSTAT read: the first D with bit 26 set
+and with bit 28 set, fastest..slowest over eight start points in the blanking. No assertions.
+
+shape                  bit 26        bit 28
+Q4 drawn 64x16         1286..1286     705..705  
+Q4 drawn 128x16        3528..3557    1857..1877 
+Q4 drawn 192x16        5269..5301    2720..2747 
+Q4 clear 64x16         1255..1255     689..689  
+Q4 clear 128x16        3371..3406    1811..1822 
+Q4 clear 192x16        4986..5016    2646..2667 
+Q8 drawn 64x16         1286..1286     705..705  
+Q8 drawn 128x16        4684..4700    2460..2485 
+Q8 drawn 192x16        7015..7040    3662..3679 
+Q8 clear 64x16         1255..1255     689..689  
+Q8 clear 128x16        4416..4429    2333..2343 
+Q8 clear 192x16        6532..6564    3454..3477 
+Q15 drawn 64x16        3611..3644    1911..1931 
+Q15 drawn 128x16       6992..7024    3699..3723 
+Q15 clear 64x16        3320..3343    1777..1798 
+Q15 clear 128x16       6477..6500    3427..3448 
+T4 drawn 128x32        3008..3017     123..123  
+T4 clear 128x32        2913..2929     123..123  
+T8 drawn 128x32        3600..3632     123..123  
+T8 clear 128x32        3425..3458     123..123  
+S15 drawn 64x16        2959..2985       8..8    
+S15 drawn 256x16      11674..11697      8..8    
+S15 clear 64x16        2608..2625       8..8    
+S15 clear 256x16      10346..10369      8..8    
+Q4 clear semi 128x16   3372..3398    1811..1826 
+
+gpu/gpu-poly-clear: Done.

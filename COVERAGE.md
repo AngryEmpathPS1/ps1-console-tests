@@ -111,6 +111,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cold-bracket | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | cold-branch | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | cold-window | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
+| con386-113db21d |  |  | 1 |  |  | 1 |  |  |  |  |  |
 | concurrent-dma | 1 | 6 | 1 | 7 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
 | counter-bracket | 1 | 1 | 1 | 7 | 5 | 6 | 6 | 10 | 1 | 6 | 2 |
 | counter-store | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
@@ -153,8 +154,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | dma1-drq |  |  | 2 |  |  | 2 |  |  |  |  |  |
 | dma1-drq2 |  |  | 2 |  |  | 2 |  |  |  |  |  |
 | dma1-drq3 |  |  | 2 |  |  | 2 |  |  |  |  |  |
+| dma1-drq4 |  |  | 2 |  |  | 2 |  |  |  |  |  |
+| dma1-drq5 |  |  | 2 |  |  | 2 |  |  |  |  |  |
 | dma1-start |  |  | 6 |  |  | 6 |  |  |  |  |  |
-| dma_chopping | 1 | 6 | 1 | 6 | 11 | 3 | 6 | 14 | 1 | 10 | 2 |
+| dma_chopping | 1 | 6 | 6 | 6 | 11 | 3 | 6 | 14 | 6 | 10 | 2 |
 | dma_dpcr | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | dma_otc-test | 1 | 1 | 1 | 6 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | draw-area | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
@@ -185,12 +188,15 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-a0-ready | 1 | 6 | 1 | 6 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
 | gpu-a0-size | 1 | 1 | 1 | 7 | 7 | 3 | 6 | 6 | 1 | 4 | 2 |
 | gpu-a0abort |  |  |  |  |  | 6 |  |  |  |  |  |
+| gpu-a0abort10 |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | gpu-a0abort2 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-a0abort3 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-a0abort4 |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | gpu-a0abort5 |  |  | 6 |  |  | 6 |  |  | 6 |  |  |
 | gpu-a0abort6 |  |  | 6 |  |  | 6 |  |  | 3 |  |  |
 | gpu-a0abort7 |  |  |  |  |  |  |  |  | 6 |  |  |
+| gpu-a0abort8 |  |  | 6 |  |  | 6 |  |  |  |  |  |
+| gpu-a0abort9 |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | gpu-a0after | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0blk | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
 | gpu-a0blk2 | 1 | 2 | 1 |  |  | 3 |  | 4 | 2 |  |  |
@@ -420,6 +426,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-shape-time80 |  |  |  |  |  | 6 |  |  |  |  |  |
 | gpu-shape-time81 |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | gpu-shape-time9 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 2 |  |
+| gpu-spr-fill |  |  | 6 |  |  |  |  |  |  |  |  |
 | gpu-tail | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 3 | 1 | 6 |  |
 | gpu-tail2 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 6 |  |
 | gpu-tail3 | 1 | 2 | 1 | 7 | 6 | 3 | 6 | 4 | 1 | 6 |  |
@@ -433,6 +440,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | gpu-tcwords | 1 | 2 | 1 |  | 1 | 3 |  | 4 | 2 |  |  |
 | gpu-tex-fill1 |  |  |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-fill10 |  |  | 6 |  |  | 6 |  |  |  |  |  |
+| gpu-tex-fill10p-cmdprobe |  |  | 3 |  |  | 3 |  |  |  |  |  |
 | gpu-tex-fill2 |  |  |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-fill3 |  |  |  |  |  | 3 |  | 3 |  |  |  |
 | gpu-tex-fill4 |  |  |  |  |  | 3 |  | 3 |  |  |  |
@@ -492,6 +500,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | irq-unmask | 1 |  | 1 |  |  | 3 |  | 2 | 2 |  |  |
 | irq-unmask2 | 1 |  | 1 |  |  | 2 |  | 2 | 2 |  |  |
 | irq-unmask3 | 1 |  | 1 |  |  | 2 |  | 2 | 2 |  |  |
+| jitbench-0410468c |  |  | 1 |  |  | 1 |  |  |  |  |  |
 | line-fill | 1 | 1 | 1 | 7 | 3 | 6 | 6 | 6 | 1 | 4 | 2 |
 | line-fill2 | 1 | 3 | 1 | 1 | 3 | 1 | 2 | 5 | 1 | 3 | 2 |
 | line-split | 1 | 6 | 1 | 7 | 8 | 3 | 6 | 10 | 1 | 8 | 2 |
@@ -574,12 +583,13 @@ How many logs each test has on each console. Generated from the file names in `c
 | mul-shadow | 1 | 3 | 1 |  | 3 |  |  | 2 | 2 |  |  |
 | muldiv-overlap | 1 | 1 | 1 | 1 | 2 | 1 | 2 | 4 | 1 | 2 | 2 |
 | multitap-modes |  |  |  | 1 |  |  |  |  |  |  |  |
-| pad-ack-gap |  |  | 2 |  |  | 2 |  |  |  |  |  |
-| pad-ack-hist | 1 | 6 | 7 | 6 | 6 | 9 | 6 | 8 | 1 | 6 | 2 |
+| pad-ack-gap |  |  | 2 |  |  | 4 |  |  |  |  |  |
+| pad-ack-hist | 1 | 6 | 7 | 6 | 6 | 11 | 6 | 8 | 1 | 6 | 2 |
 | pad-ack-hist-analog |  |  |  |  |  | 3 |  |  |  |  |  |
 | pad-ack-slide |  |  | 6 |  |  | 6 |  |  |  |  |  |
 | pad-config |  |  |  |  |  |  |  |  |  | 3 |  |
 | pad-short-exit |  |  |  |  | 1 |  |  |  |  |  |  |
+| pad-short-exit-ackprobe |  |  | 3 |  |  | 3 |  |  |  |  |  |
 | pair-atlas | 1 | 2 | 1 |  | 5 | 3 |  | 4 | 2 |  |  |
 | pair-cdep | 1 | 1 | 1 |  | 2 |  |  | 2 | 2 |  |  |
 | pair-cext | 1 | 1 | 1 |  | 2 |  |  | 2 | 2 |  |  |
@@ -593,10 +603,25 @@ How many logs each test has on each console. Generated from the file names in `c
 | pal-line | 1 | 6 | 1 |  | 6 | 3 | 6 | 8 | 1 | 6 | 2 |
 | pal-probe |  |  |  | 1 |  |  |  |  |  |  |  |
 | pal-probe2 |  |  |  | 1 |  |  |  |  |  |  |  |
+| pm386-181f38e9 |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| pmsplit-aa7e7c12 |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| pmsplit-os-27aff7a9 |  |  | 1 |  |  | 1 |  |  |  |  |  |
 | pocket-cmds |  |  |  |  | 6 |  |  | 1 |  |  |  |
 | pocket-protect |  |  |  |  | 1 |  |  |  |  |  |  |
 | pocket-start |  |  |  |  | 1 |  |  |  |  |  |  |
 | pocket-write |  |  |  |  | 2 |  |  |  |  |  |  |
+| ps1dos-bench1-98fd527f |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| ps1dos-bench2-c4df6ea8 |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| ps1dos-test |  |  |  |  |  | 1 |  |  |  |  |  |
+| ps1dos-test-05231d60 |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| ps1dos-test-0946e8f4 |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| ps1dos-test-0c61e460 |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| ps1dos-test-2021f7e3 |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| ps1dos-test-5895f479 |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| ps1dos-test-64f1a6a3 |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| ps1dos-test-87b85983 |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| ps1dos-test-ae314228 |  |  | 1 |  |  | 1 |  |  |  |  |  |
+| ps1dos-test-b2649dad |  |  | 1 |  |  | 1 |  |  |  |  |  |
 | ram-banks | 1 | 2 | 1 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |
 | ram-store-io | 1 | 2 | 1 | 7 | 2 | 6 | 6 | 4 | 1 | 2 |  |
 | ram-store-io2 | 1 | 2 | 1 | 1 | 2 | 1 | 2 | 2 | 1 | 2 |  |

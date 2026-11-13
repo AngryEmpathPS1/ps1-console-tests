@@ -22,7 +22,7 @@
  *   Setmode 00h, Setloc 20:00:00, SeekL, both responses (up to 10 s), then Getstat; SeekP the same, x2 each.
  * Last Init, so the drive is left spun up for what follows.
  *
- * THE RULE: run it here first: `node hwtests/run.js cd-audiodisc` with a music CD's image.
+ * THE RULE: run it here first: `node hwtests/run.js cd-audiodisc --disc=music` (run.js's music disc, Metallica ReLoad's shape).
  */
 #include <common.h>
 #include <psxapi.h>

@@ -16,7 +16,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 
 | session | logs | programs |
 |---|---:|---:|
-| [2026-11-08](2026-11-08/) | 698 | 632 |
+| [2026-11-08](2026-11-08/) | 699 | 632 |
 | [2026-11-09-fuzz](2026-11-09-fuzz/) | 43 | 8 |
 | [2026-11-09-pause-doom](2026-11-09-pause-doom/) | 12 | 2 |
 | [2026-11-09-pausewin-doom](2026-11-09-pausewin-doom/) | 10 | 1 |
@@ -34,7 +34,24 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-11-gst81](2026-11-11-gst81/) | 9 | 1 |
 | [2026-11-11-join1](2026-11-11-join1/) | 9 | 1 |
 | [2026-11-11-walk1](2026-11-11-walk1/) | 9 | 1 |
-| [2026-11-12-padack](2026-11-12-padack/) | 9 | 1 |
-| [2026-11-12-siodma](2026-11-12-siodma/) | 25 | 7 |
+| [2026-11-12-a0abort10](2026-11-12-a0abort10/) | 9 | 1 |
+| [2026-11-12-a0abort8](2026-11-12-a0abort8/) | 9 | 1 |
+| [2026-11-12-a0abort9](2026-11-12-a0abort9/) | 9 | 1 |
+| [2026-11-12-bioscensus](2026-11-12-bioscensus/) | 1 | 0 |
+| [2026-11-12-chop](2026-11-12-chop/) | 8 | 1 |
+| [2026-11-12-padack](2026-11-12-padack/) | 10 | 1 |
+| [2026-11-12-probes](2026-11-12-probes/) | 10 | 2 |
+| [2026-11-12-ps1dos](2026-11-12-ps1dos/) | 18 | 16 |
+| [2026-11-12-siodma](2026-11-12-siodma/) | 30 | 9 |
 | [2026-11-12-t0edges](2026-11-12-t0edges/) | 15 | 2 |
 | [2026-11-12-t1vedges](2026-11-12-t1vedges/) | 9 | 1 |
+| [2026-11-13-gpu2tests](2026-11-13-gpu2tests/) | 3 | 0 |
+| [2026-11-13-icacheplace](2026-11-13-icacheplace/) | 1 | 0 |
+| [2026-11-13-icacheplace2](2026-11-13-icacheplace2/) | 1 | 0 |
+| [2026-11-13-icacheplace3](2026-11-13-icacheplace3/) | 1 | 0 |
+| [2026-11-13-icacheplace4](2026-11-13-icacheplace4/) | 1 | 0 |
+| [2026-11-13-icacheplace5](2026-11-13-icacheplace5/) | 1 | 0 |
+| [2026-11-13-icacheplace6](2026-11-13-icacheplace6/) | 1 | 0 |
+| [2026-11-13-icacheplace7](2026-11-13-icacheplace7/) | 1 | 0 |
+| [2026-11-13-icacheplace8](2026-11-13-icacheplace8/) | 1 | 0 |
+| [2026-11-13-sprfill](2026-11-13-sprfill/) | 6 | 1 |

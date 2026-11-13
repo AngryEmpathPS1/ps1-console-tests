@@ -1,0 +1,57 @@
+console-v31-split: where the 386 core's time goes, phase by phase, to lay a console beside the emulator (main,
+2026-11-13: v30's pm386 ran 0.40-0.48% more cycles on the 5501 and the PSone than on the emulator, identical on
+both consoles, while con386 agreed to 0.004%). tests/pmsplit.c runs tests/pm/split.asm (16 phases between OUT EAh
+markers; its log matches Bochs's, 18 lines) and times each phase on Timer 2. Both hand the console back.
+
+pmsplit.exe (aa7e7c12): the core built -O2, as pm386.exe's.  pmsplit-os.exe (27aff7a9): the core built -Os, as
+con386.exe's. The same C, two layouts: a gap that follows the build is the code's (where it falls in the I-cache,
+its calls); one that follows a phase is that phase's work (RAM spread, page walks, table loads, gates, V86).
+
+Found already, on the emulator: this core's speed is its I-cache layout. Changing pmsplit.c alone (a few hundred
+bytes, before the core in the link) moved phase 1 of the -O2 build from 1509.5 to 1532.7 cycles an instruction.
+
+On this repo's emulator (tools/hwrunner.js --emu --lock=0 --video=24000 --raw, scph5501 and scph1001: identical):
+pmsplit: the 386 core's time on a PS1 by the phases of tests/pm/split.asm (core built -O2)
+pmsplit:  1 registers        25008 instructions   38329376 cycles  1532.7 an instruction
+pmsplit:  2 near reads       25007 instructions   45448216 cycles  1817.4 an instruction
+pmsplit:  3 spread reads     25007 instructions   46728120 cycles  1868.6 an instruction
+pmsplit:  4 near writes      25006 instructions   45446704 cycles  1817.4 an instruction
+pmsplit:  5 spread writes    25006 instructions   46726696 cycles  1868.6 an instruction
+pmsplit:  6 rep stosd          155 instructions    1108960 cycles  7154.6 an instruction
+pmsplit:  7 seg loads        20006 instructions   36630704 cycles  1831.0 an instruction
+pmsplit:  8 out 80h          15005 instructions   20165200 cycles  1343.9 an instruction
+pmsplit:  9 int/iretd r0      5005 instructions   14985400 cycles  2994.1 an instruction
+pmsplit: 10 paged regs       25008 instructions   42910120 cycles  1715.9 an instruction
+pmsplit: 11 paged spread     25007 instructions   53859232 cycles  2153.8 an instruction
+pmsplit: 12 page walks       30007 instructions   71395840 cycles  2379.3 an instruction
+pmsplit: 13 r3 int/iretd      5022 instructions   23522600 cycles  4683.9 an instruction
+pmsplit: 14 r3 call gate      2022 instructions    9057432 cycles  4479.4 an instruction
+pmsplit: 15 v86              27027 instructions   52994144 cycles  1960.8 an instruction
+pmsplit: 16 task switches     1254 instructions    1823696 cycles  1454.3 an instruction
+pmsplit: all phases 280552 instructions 551132440 cycles; the ROM 288201 instructions to its HLT, 18 log lines (Bochs's: 18)
+Done.
+pmsplit: the 386 core's time on a PS1 by the phases of tests/pm/split.asm (core built -Os)
+pmsplit:  1 registers        25008 instructions   42650968 cycles  1705.5 an instruction
+pmsplit:  2 near reads       25007 instructions   53129592 cycles  2124.6 an instruction
+pmsplit:  3 spread reads     25007 instructions   54459528 cycles  2177.8 an instruction
+pmsplit:  4 near writes      25006 instructions   51738040 cycles  2069.0 an instruction
+pmsplit:  5 spread writes    25006 instructions   53148216 cycles  2125.4 an instruction
+pmsplit:  6 rep stosd          155 instructions    1075968 cycles  6941.7 an instruction
+pmsplit:  7 seg loads        20006 instructions   41008208 cycles  2049.8 an instruction
+pmsplit:  8 out 80h          15005 instructions   23196264 cycles  1545.9 an instruction
+pmsplit:  9 int/iretd r0      5005 instructions   17616496 cycles  3519.8 an instruction
+pmsplit: 10 paged regs       25008 instructions   48532080 cycles  1940.7 an instruction
+pmsplit: 11 paged spread     25007 instructions   62450544 cycles  2497.3 an instruction
+pmsplit: 12 page walks       30007 instructions   82716824 cycles  2756.6 an instruction
+pmsplit: 13 r3 int/iretd      5022 instructions   25993952 cycles  5176.0 an instruction
+pmsplit: 14 r3 call gate      2022 instructions   10088576 cycles  4989.4 an instruction
+pmsplit: 15 v86              27027 instructions   59373760 cycles  2196.8 an instruction
+pmsplit: 16 task switches     1254 instructions    3388400 cycles  2702.1 an instruction
+pmsplit: all phases 280552 instructions 630567416 cycles; the ROM 288201 instructions to its HLT, 18 log lines (Bochs's: 18)
+Done.
+
+The instruction counts and the 18 log lines must be the same on a console (they are the core's, not timing). Each
+phase's console/emulator cycle ratio is the finding: the same ~1.0045 everywhere in the -O2 run and ~1.0000 in the
+-Os one would put the gap in how the emulator charges this layout's code (I-cache refills, or the 0.47% call-bench
+pattern); a ratio that stands out in one phase points at that phase's work. Each run is ~16 s (-O2) / ~19 s (-Os).
+tests/handback.js: pmsplit then pmsplit-os through a second session - kernel, Unirom, stack, scratchpad as they were.

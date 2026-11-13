@@ -16,7 +16,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 
 | session | logs | programs |
 |---|---:|---:|
-| [2026-10-05](2026-10-05/) | 195 | 87 |
+| [2026-10-05](2026-10-05/) | 196 | 87 |
 | [2026-10-05-motoracer](2026-10-05-motoracer/) | 2 | 2 |
 | [2026-10-06-rerun](2026-10-06-rerun/) | 10 | 4 |
 | [2026-10-06-reverb](2026-10-06-reverb/) | 2 | 1 |
@@ -25,7 +25,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-06-seven](2026-10-06-seven/) | 12 | 7 |
 | [2026-10-08-drift](2026-10-08-drift/) | 30 | 1 |
 | [2026-10-08-reuse](2026-10-08-reuse/) | 5 | 1 |
-| [2026-10-08-runner](2026-10-08-runner/) | 508 | 136 |
+| [2026-10-08-runner](2026-10-08-runner/) | 509 | 136 |
 | [2026-10-08-t1edges](2026-10-08-t1edges/) | 6 | 0 |
 | [2026-10-08-toggle](2026-10-08-toggle/) | 8 | 0 |
 | [2026-10-08-v5check](2026-10-08-v5check/) | 15 | 6 |
@@ -98,7 +98,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-25-pocketverify](2026-10-25-pocketverify/) | 3 | 0 |
 | [2026-10-28](2026-10-28/) | 78 | 47 |
 | [2026-10-29](2026-10-29/) | 17 | 4 |
-| [2026-10-31-movies](2026-10-31-movies/) | 8 | 8 |
+| [2026-10-31-movies](2026-10-31-movies/) | 9 | 8 |
 | [2026-11-01-afterrev](2026-11-01-afterrev/) | 5 | 2 |
 | [2026-11-01-atlas](2026-11-01-atlas/) | 5 | 1 |
 | [2026-11-01-atlas2](2026-11-01-atlas2/) | 6 | 2 |
