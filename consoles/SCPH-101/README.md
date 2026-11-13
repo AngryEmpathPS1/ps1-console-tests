@@ -45,6 +45,9 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-12-siodma](2026-11-12-siodma/) | 30 | 9 |
 | [2026-11-12-t0edges](2026-11-12-t0edges/) | 15 | 2 |
 | [2026-11-12-t1vedges](2026-11-12-t1vedges/) | 9 | 1 |
+| [2026-11-13-doom-discid](2026-11-13-doom-discid/) | 1 | 0 |
+| [2026-11-13-doomfeed](2026-11-13-doomfeed/) | 2 | 0 |
+| [2026-11-13-doomprobe3](2026-11-13-doomprobe3/) | 2 | 0 |
 | [2026-11-13-gpu2tests](2026-11-13-gpu2tests/) | 3 | 0 |
 | [2026-11-13-gpudmaarm](2026-11-13-gpudmaarm/) | 2 | 0 |
 | [2026-11-13-icacheplace](2026-11-13-icacheplace/) | 1 | 0 |
@@ -75,4 +78,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-13-sprfill](2026-11-13-sprfill/) | 6 | 1 |
 | [2026-11-13-spulatch2](2026-11-13-spulatch2/) | 2 | 0 |
 | [2026-11-13-spureadback](2026-11-13-spureadback/) | 2 | 0 |
-| [2026-11-13-spuwritetail](2026-11-13-spuwritetail/) | 1 | 0 |
+| [2026-11-13-spureadbacksmall](2026-11-13-spureadbacksmall/) | 2 | 0 |
+| [2026-11-13-spureadtime](2026-11-13-spureadtime/) | 2 | 0 |
+| [2026-11-13-spuwritetail](2026-11-13-spuwritetail/) | 2 | 0 |

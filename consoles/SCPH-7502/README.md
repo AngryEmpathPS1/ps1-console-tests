@@ -68,7 +68,10 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-13-pmsplitreplaystk](2026-11-13-pmsplitreplaystk/) | 1 | 0 |
 | [2026-11-13-pmsplitsp-again](2026-11-13-pmsplitsp-again/) | 1 | 0 |
 | [2026-11-13-ps1dos-again](2026-11-13-ps1dos-again/) | 3 | 0 |
+| [2026-11-13-screencolor](2026-11-13-screencolor/) | 1 | 0 |
 | [2026-11-13-sio1speed-fast](2026-11-13-sio1speed-fast/) | 2 | 0 |
 | [2026-11-13-spulatch2](2026-11-13-spulatch2/) | 2 | 0 |
 | [2026-11-13-spureadback](2026-11-13-spureadback/) | 2 | 0 |
-| [2026-11-13-spuwritetail](2026-11-13-spuwritetail/) | 1 | 0 |
+| [2026-11-13-spureadbacksmall](2026-11-13-spureadbacksmall/) | 2 | 0 |
+| [2026-11-13-spureadtime](2026-11-13-spureadtime/) | 2 | 0 |
+| [2026-11-13-spuwritetail](2026-11-13-spuwritetail/) | 2 | 0 |

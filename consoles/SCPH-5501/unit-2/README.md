@@ -251,6 +251,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-13-cdstop](2026-11-13-cdstop/) | 1 | 0 |
 | [2026-11-13-copymodes](2026-11-13-copymodes/) | 4 | 0 |
 | [2026-11-13-copymodes3](2026-11-13-copymodes3/) | 2 | 0 |
+| [2026-11-13-doomfeed](2026-11-13-doomfeed/) | 2 | 0 |
 | [2026-11-13-doomprobe](2026-11-13-doomprobe/) | 3 | 0 |
 | [2026-11-13-doomprobe2](2026-11-13-doomprobe2/) | 1 | 0 |
 | [2026-11-13-doomprobe2b](2026-11-13-doomprobe2b/) | 2 | 0 |
@@ -287,9 +288,12 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-13-pmsplitsp](2026-11-13-pmsplitsp/) | 1 | 0 |
 | [2026-11-13-pmsplitsp-again](2026-11-13-pmsplitsp-again/) | 1 | 0 |
 | [2026-11-13-ps1dos-again](2026-11-13-ps1dos-again/) | 3 | 0 |
+| [2026-11-13-screencolor](2026-11-13-screencolor/) | 1 | 0 |
 | [2026-11-13-sio1speed](2026-11-13-sio1speed/) | 2 | 0 |
 | [2026-11-13-sio1speed-fast](2026-11-13-sio1speed-fast/) | 2 | 0 |
 | [2026-11-13-sprfill](2026-11-13-sprfill/) | 6 | 0 |
 | [2026-11-13-spulatch2](2026-11-13-spulatch2/) | 2 | 0 |
 | [2026-11-13-spureadback](2026-11-13-spureadback/) | 2 | 0 |
-| [2026-11-13-spuwritetail](2026-11-13-spuwritetail/) | 1 | 0 |
+| [2026-11-13-spureadbacksmall](2026-11-13-spureadbacksmall/) | 2 | 0 |
+| [2026-11-13-spureadtime](2026-11-13-spureadtime/) | 2 | 0 |
+| [2026-11-13-spuwritetail](2026-11-13-spuwritetail/) | 2 | 0 |
