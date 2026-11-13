@@ -47,6 +47,10 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-12-t1vedges](2026-11-12-t1vedges/) | 9 | 1 |
 | [2026-11-13-gpu2tests](2026-11-13-gpu2tests/) | 3 | 0 |
 | [2026-11-13-icacheplace](2026-11-13-icacheplace/) | 1 | 0 |
+| [2026-11-13-icacheplace10](2026-11-13-icacheplace10/) | 1 | 0 |
+| [2026-11-13-icacheplace11](2026-11-13-icacheplace11/) | 1 | 0 |
+| [2026-11-13-icacheplace12](2026-11-13-icacheplace12/) | 1 | 0 |
+| [2026-11-13-icacheplace13](2026-11-13-icacheplace13/) | 1 | 0 |
 | [2026-11-13-icacheplace2](2026-11-13-icacheplace2/) | 1 | 0 |
 | [2026-11-13-icacheplace3](2026-11-13-icacheplace3/) | 1 | 0 |
 | [2026-11-13-icacheplace4](2026-11-13-icacheplace4/) | 1 | 0 |
@@ -54,4 +58,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-13-icacheplace6](2026-11-13-icacheplace6/) | 1 | 0 |
 | [2026-11-13-icacheplace7](2026-11-13-icacheplace7/) | 1 | 0 |
 | [2026-11-13-icacheplace8](2026-11-13-icacheplace8/) | 1 | 0 |
+| [2026-11-13-icacheplace9](2026-11-13-icacheplace9/) | 1 | 0 |
 | [2026-11-13-sprfill](2026-11-13-sprfill/) | 6 | 1 |

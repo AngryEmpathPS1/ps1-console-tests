@@ -1,0 +1,12 @@
+
+sio1/sio1-speed
+A 32 KB block each way between this console and the PC at each SIO1 rate (2,116,800 / BAUD), every byte checked.
+BAUD  rate       sync | PC->PS1 got   bad first  flags  B/s     | PS1->PC sent  B/s     | PC got  bad first
+  18   117600  ok   | 32768     0     0  00    11752  | 32768  11752  | 32768     0     0
+   9   235200  ok   | 32768     0     0  00    23505  | 32768  23505  | 32768     0     0
+   6   352800  ok   | 32768     0     0  00    35257  | 32768  35257  | 32768     0     0
+   4   529200  ok   | 32768     0     0  00    52903  | 32768  52903  | 32768     0     0
+   3   705600  ok   | 32768     0     0  00    70582  | 32768  70549  | 32768     0     0
+   2  1058400  ok   | 32768     0     0  00   105806  | 32768 105806  | 32768     0     0
+   1  2116800  ok   | 32768     0     0  00   212019  | 32768 211647  | 32768     0     0
+Done.

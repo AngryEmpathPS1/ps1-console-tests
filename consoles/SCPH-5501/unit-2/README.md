@@ -248,7 +248,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-12-t0edges](2026-11-12-t0edges/) | 9 | 1 |
 | [2026-11-12-t1vedges](2026-11-12-t1vedges/) | 9 | 1 |
 | [2026-11-12-t1vsync](2026-11-12-t1vsync/) | 6 | 1 |
-| [2026-11-13-copymodes](2026-11-13-copymodes/) | 1 | 0 |
+| [2026-11-13-copymodes](2026-11-13-copymodes/) | 4 | 0 |
 | [2026-11-13-gpu2tests](2026-11-13-gpu2tests/) | 4 | 0 |
 | [2026-11-13-icacheplace](2026-11-13-icacheplace/) | 1 | 0 |
 | [2026-11-13-icacheplace10](2026-11-13-icacheplace10/) | 1 | 0 |
@@ -264,4 +264,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-13-icacheplace9](2026-11-13-icacheplace9/) | 1 | 0 |
 | [2026-11-13-pmsplitsp](2026-11-13-pmsplitsp/) | 1 | 0 |
 | [2026-11-13-sio1speed](2026-11-13-sio1speed/) | 2 | 0 |
+| [2026-11-13-sio1speed-fast](2026-11-13-sio1speed-fast/) | 2 | 0 |
 | [2026-11-13-sprfill](2026-11-13-sprfill/) | 6 | 0 |

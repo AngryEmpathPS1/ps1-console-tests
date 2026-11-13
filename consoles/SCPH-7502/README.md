@@ -47,6 +47,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-11-xfcards](2026-11-11-xfcards/) | 38 | 9 |
 | [2026-11-12-chop](2026-11-12-chop/) | 8 | 1 |
 | [2026-11-12-timers](2026-11-12-timers/) | 18 | 3 |
-| [2026-11-13-gputests](2026-11-13-gputests/) | 6 | 0 |
+| [2026-11-13-gputests](2026-11-13-gputests/) | 8 | 0 |
 | [2026-11-13-icacheplace10](2026-11-13-icacheplace10/) | 1 | 0 |
 | [2026-11-13-icacheplace12](2026-11-13-icacheplace12/) | 1 | 0 |
+| [2026-11-13-sio1speed-fast](2026-11-13-sio1speed-fast/) | 2 | 0 |
