@@ -254,6 +254,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-13-doomprobe](2026-11-13-doomprobe/) | 3 | 0 |
 | [2026-11-13-doomprobe2](2026-11-13-doomprobe2/) | 1 | 0 |
 | [2026-11-13-doomprobe2b](2026-11-13-doomprobe2b/) | 2 | 0 |
+| [2026-11-13-doomprobe3](2026-11-13-doomprobe3/) | 2 | 0 |
 | [2026-11-13-gpu2tests](2026-11-13-gpu2tests/) | 4 | 0 |
 | [2026-11-13-gpudmaarm](2026-11-13-gpudmaarm/) | 2 | 0 |
 | [2026-11-13-icacheplace](2026-11-13-icacheplace/) | 1 | 0 |
