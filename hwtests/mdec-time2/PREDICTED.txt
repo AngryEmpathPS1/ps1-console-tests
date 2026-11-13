@@ -1,0 +1,107 @@
+PREDICTED - this core v0.377.348 (src at commit cd389d7d), node tools/hwrunner.js mdec-time2 --emu (the virtual console as the runner sees it), 2026-11-13
+
+
+mdec/mdec-time2
+MDEC decode time end to end (Timer 2, system clock). No assertions - compare against your emulator.
+
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80017718, color=1)... ok
+mdec_idctTable(addr=0x80017798)... ok
+A: whole pictures, DMA0/DMA1 bs 32 (bs0 shown when a stream is not a multiple of 32)
+  sparse   1 MB 15bpp in 6/6         IN      73  OUT1     872  END    3101  per  3101
+  sparse   1 MB 24bpp in 6/6         IN      44  OUT1     780  END    2320  per  2320
+  sparse   6 MB 15bpp in 36/18       IN     103  OUT1     895  END   18548  per  3091
+  sparse   6 MB 24bpp in 36/18       IN      74  OUT1     813  END   17850  per  2975
+  sparse  24 MB 15bpp in 144/24      IN   46941  OUT1     914  END   73809  per  3075
+  sparse  24 MB 24bpp in 144/24      IN   47092  OUT1     849  END   73191  per  3049
+  sparse 240 MB 15bpp in 1440/32     IN  718243  OUT1     904  END  737353  per  3072
+  sparse 240 MB 24bpp in 1440/32     IN  718347  OUT1     827  END  736758  per  3069
+  sparse   1 blk mono in 1/1         IN      66  OUT1     553  END     553  per   553
+  sparse   6 blk mono in 6/6         IN      71  OUT1     539  END    2662  per   443
+  sparse  24 blk mono in 24/24       IN      89  OUT1     559  END   11896  per   495
+  sparse 240 blk mono in 240/30      IN   96963  OUT1     575  END  122525  per   510
+  mid   1 MB 15bpp in 48/24          IN     115  OUT1     903  END    3139  per  3139
+  mid   1 MB 24bpp in 48/24          IN      86  OUT1     823  END    2360  per  2360
+  mid   6 MB 15bpp in 288/32         IN   14710  OUT1     948  END   18612  per  3102
+  mid   6 MB 24bpp in 288/32         IN   14685  OUT1     852  END   17739  per  2956
+  mid  24 MB 15bpp in 1152/32        IN   69967  OUT1     934  END   73872  per  3078
+  mid  24 MB 24bpp in 1152/32        IN   70147  OUT1     856  END   73054  per  3043
+  mid 240 MB 15bpp in 11520/32       IN  733532  OUT1     940  END  737372  per  3072
+  mid 240 MB 24bpp in 11520/32       IN  733696  OUT1     848  END  736718  per  3069
+  mid   1 blk mono in 8/8            IN      73  OUT1     541  END     541  per   541
+  mid   6 blk mono in 48/24          IN     113  OUT1     583  END    2660  per   443
+  mid  24 blk mono in 192/32         IN    8873  OUT1     689  END   11837  per   493
+  mid 240 blk mono in 1920/32        IN  119489  OUT1     550  END  122497  per   510
+  dense   1 MB 15bpp in 192/32       IN     269  OUT1    1048  END    3305  per  3305
+  dense   1 MB 24bpp in 192/32       IN     240  OUT1     973  END    2510  per  2510
+  dense   6 MB 15bpp in 1152/32      IN   15694  OUT1    1108  END   18682  per  3113
+  dense   6 MB 24bpp in 1152/32      IN   14822  OUT1     990  END   17899  per  2983
+  dense  24 MB 15bpp in 4608/32      IN   70895  OUT1    1105  END   73947  per  3081
+  dense  24 MB 24bpp in 4608/32      IN   70118  OUT1     990  END   73195  per  3049
+  dense 160 MB 15bpp in 30720/32     IN  488684  OUT1     967  END  491753  per  3073
+  dense 160 MB 24bpp in 30720/32     IN  488153  OUT1     986  END  490981  per  3068
+  dense   1 blk mono in 32/32        IN      97  OUT1     566  END     566  per   566
+  dense   6 blk mono in 192/32       IN    1753  OUT1     612  END    2742  per   457
+  dense  24 blk mono in 768/32       IN   10900  OUT1     624  END   11924  per   496
+  dense 240 blk mono in 7680/32      IN  121604  OUT1     789  END  122595  per   510
+
+B: 30 MB mid, DMA1 in two slices of 15 MB (bs 32); G cycles between slice 1's end and slice 2's start
+  24bpp G     0  slice1  45582  restart   45793 (status 6c01029f)  slice2  45861  END   91654
+  24bpp G   500  slice1  45594  restart   46230 (status 6c01029f)  slice2  45412  END   91642
+  24bpp G  1000  slice1  45580  restart   46700 (status 6c01029f)  slice2  44926  END   91626
+  24bpp G  2000  slice1  45570  restart   47808 (status 6c01029f)  slice2  43894  END   91702
+  24bpp G  3000  slice1  45587  restart   48960 (status 6c01029f)  slice2  42675  END   91635
+  24bpp G  4000  slice1  45565  restart   49946 (status 6c01029f)  slice2  41667  END   91613
+  24bpp G  6000  slice1  45580  restart   51965 (status 6c01029f)  slice2  41947  END   93912
+  24bpp G 12000  slice1  45587  restart   58050 (status 6c01029f)  slice2  41521  END   99571
+  24bpp G 50000  slice1  45565  restart   95954 (status 6c01029f)  slice2  41739  END  137693
+  15bpp G     0  slice1  46253  restart   46388 (status 6e01029f)  slice2  45984  END   92372
+  15bpp G   500  slice1  46242  restart   46852 (status 6e01029f)  slice2  45494  END   92346
+  15bpp G  1000  slice1  46242  restart   47436 (status 6e01029f)  slice2  44910  END   92346
+  15bpp G  2000  slice1  46261  restart   48465 (status 6e01029f)  slice2  43876  END   92341
+  15bpp G  3000  slice1  46253  restart   49587 (status 6e01029f)  slice2  42745  END   92332
+  15bpp G  4000  slice1  46241  restart   50574 (status 6e01029f)  slice2  42515  END   93089
+  15bpp G  6000  slice1  46242  restart   52559 (status 6e01029f)  slice2  42837  END   95396
+  15bpp G 12000  slice1  46261  restart   58608 (status 6e01029f)  slice2  42279  END  100887
+  15bpp G 50000  slice1  46239  restart   96568 (status 6e01029f)  slice2  42619  END  139187
+
+B2: 30 MB mid, DMA1 one MB a slice, G 3000 between; slice times
+  24bpp END 101633; slices: 2591 71 55 55 55 55 55 55 55 55 59 55 55 61 55 55 55 55 55 61 55 55 55 55 55 61 55 55 55 60
+  24bpp status at each restart: 6c01053f 6c0104ff 6c0104df 6c01049f 6c01047f 6c01043f 6c01041f 6c0103df 6c0103bf 6c01037f 6c01035f 6c01031f 6c0102ff 6c0102bf 6c01029f 6c01025f 6c01023f 6c0101ff 6c0101df 6c01019f 6c01017f 6c01013f 6c01011f 6c0100df 6c0100bf 6c01007f 6c01005f 6c01001f 6c01ffff
+  15bpp END 100374; slices: 3263 55 55 55 55 55 55 55 55 55 55 60 60 55 55 55 55 55 55 55 55 55 55 55 55 60 60 55 55 55
+  15bpp status at each restart: 6e01053f 6e0104ff 6e0104df 6e01049f 6e01047f 6e01043f 6e01041f 6e0103df 6e0103bf 6e01037f 6e01035f 6e01031f 6e0102ff 6e0102bf 6e01029f 6e01025f 6e01023f 6e0101ff 6e0101df 6e01019f 6e01017f 6e01013f 6e01011f 6e0100df 6e0100bf 6e01007f 6e01005f 6e01001f 6e01ffff
+
+C: 24 MB mid, DMA1 block size
+  24bpp DMA1 bs 4                    IN   70007  OUT1     851  END   73923  per  3080
+  24bpp DMA1 bs 8                    IN   69987  OUT1     853  END   73824  per  3076
+  24bpp DMA1 bs 16                   IN   70036  OUT1     853  END   73904  per  3079
+  24bpp DMA1 bs 32                   IN   69975  OUT1     853  END   73050  per  3043
+  24bpp DMA1 bs 48                   IN   69986  OUT1     858  END   73851  per  3077
+    STUCK at run: MDEC 6c02043f DMA0 01000201/00220020 DMA1 01000200/00470040
+  24bpp DMA1 bs 64                   STUCK
+  15bpp DMA1 bs 4                    IN   70073  OUT1     863  END   73833  per  3076
+  15bpp DMA1 bs 8                    IN   70091  OUT1     875  END   73824  per  3076
+  15bpp DMA1 bs 16                   IN   69975  OUT1     874  END   73877  per  3078
+  15bpp DMA1 bs 32                   IN   70074  OUT1     864  END   73834  per  3076
+  15bpp DMA1 bs 48                   IN   69985  OUT1     855  END   72275  per  3011
+  15bpp DMA1 bs 64                   IN   70102  OUT1     874  END   73141  per  3047
+
+D: 24 MB mid 24bpp, DMA0 block size (DMA1 bs 32)
+  24bpp DMA0 bs 8                    IN   70144  OUT1     851  END   73065  per  3044
+  24bpp DMA0 bs 16                   IN   69976  OUT1     849  END   73030  per  3042
+  24bpp DMA0 bs 32                   IN   70138  OUT1     853  END   73160  per  3048
+
+E: 1 MB mid, DMA1 started D cycles after the command (DMA1 bs 32): its own time
+  24bpp D     0  start    308 (status 6c01ffff)  DMA1   2431  END   2739
+  24bpp D  2000  start   2198 (status 6c01ffff)  DMA1   2446  END   4644
+  24bpp D  4000  start   4181 (status 6c01ffff)  DMA1   2435  END   6616
+  24bpp D  8000  start   8167 (status 6c01ffff)  DMA1   2436  END  10603
+  24bpp D 20000  start  20193 (status 6c01ffff)  DMA1   2435  END  22628
+  15bpp D     0  start    195 (status 6e01ffff)  DMA1   3133  END   3328
+  15bpp D  2000  start   2178 (status 6e01ffff)  DMA1   3139  END   5317
+  15bpp D  4000  start   4178 (status 6e01ffff)  DMA1   3141  END   7319
+  15bpp D  8000  start   8193 (status 6e01ffff)  DMA1   3141  END  11334
+  15bpp D 20000  start  20202 (status 6e01ffff)  DMA1   3150  END  23352
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+
+mdec/mdec-time2: Done.

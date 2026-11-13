@@ -248,9 +248,12 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-12-t0edges](2026-11-12-t0edges/) | 9 | 1 |
 | [2026-11-12-t1vedges](2026-11-12-t1vedges/) | 9 | 1 |
 | [2026-11-12-t1vsync](2026-11-12-t1vsync/) | 6 | 1 |
+| [2026-11-13-cdstop](2026-11-13-cdstop/) | 1 | 0 |
 | [2026-11-13-copymodes](2026-11-13-copymodes/) | 4 | 0 |
 | [2026-11-13-copymodes3](2026-11-13-copymodes3/) | 2 | 0 |
 | [2026-11-13-doomprobe](2026-11-13-doomprobe/) | 3 | 0 |
+| [2026-11-13-doomprobe2](2026-11-13-doomprobe2/) | 1 | 0 |
+| [2026-11-13-doomprobe2b](2026-11-13-doomprobe2b/) | 2 | 0 |
 | [2026-11-13-gpu2tests](2026-11-13-gpu2tests/) | 4 | 0 |
 | [2026-11-13-gpudmaarm](2026-11-13-gpudmaarm/) | 2 | 0 |
 | [2026-11-13-icacheplace](2026-11-13-icacheplace/) | 1 | 0 |
@@ -273,6 +276,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-13-icacheplace8](2026-11-13-icacheplace8/) | 1 | 0 |
 | [2026-11-13-icacheplace9](2026-11-13-icacheplace9/) | 1 | 0 |
 | [2026-11-13-jit386](2026-11-13-jit386/) | 1 | 0 |
+| [2026-11-13-mdectime2-run1](2026-11-13-mdectime2-run1/) | 1 | 0 |
+| [2026-11-13-mdectime2-run2](2026-11-13-mdectime2-run2/) | 1 | 0 |
 | [2026-11-13-pmsplit-spj](2026-11-13-pmsplit-spj/) | 1 | 0 |
 | [2026-11-13-pmsplitreplay](2026-11-13-pmsplitreplay/) | 1 | 0 |
 | [2026-11-13-pmsplitreplay2](2026-11-13-pmsplitreplay2/) | 1 | 0 |

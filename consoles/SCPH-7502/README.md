@@ -59,6 +59,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-13-icacheplace18](2026-11-13-icacheplace18/) | 1 | 0 |
 | [2026-11-13-icacheplace19](2026-11-13-icacheplace19/) | 1 | 0 |
 | [2026-11-13-jit386](2026-11-13-jit386/) | 1 | 0 |
+| [2026-11-13-mdectime2-run1](2026-11-13-mdectime2-run1/) | 1 | 0 |
+| [2026-11-13-mdectime2-run2](2026-11-13-mdectime2-run2/) | 1 | 0 |
 | [2026-11-13-pmsplit-spj](2026-11-13-pmsplit-spj/) | 1 | 0 |
 | [2026-11-13-pmsplitreplay](2026-11-13-pmsplitreplay/) | 1 | 0 |
 | [2026-11-13-pmsplitreplay2](2026-11-13-pmsplitreplay2/) | 1 | 0 |

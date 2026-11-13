@@ -1,0 +1,4 @@
+
+cdrom/cd-stop: the drive's motor off (not a test)
+  Getstat INT3 12 (motor on); Stop INT3 02, INT2 00; Getstat INT3 00 (motor off)
+Done.
