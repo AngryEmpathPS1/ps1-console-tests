@@ -1,0 +1,65 @@
+gpu-spr-fill2 - PREDICTED, written 2026-11-13 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. hwtests/gpu-spr-fill (twelve console logs): a drawn 4-bit sprite's fill costs 10.1 cycles and a row's first 8.9 on
+rows of whole 32-pixel blocks, and the drawn rows that END in a part block behind a fill read 1.3-4.7 cycles a row less than that
+(more where the row begins with cached texels). Which is it - the part block, the fill before it, the cached run, or where the
+fills fall against the destination's write blocks? KNOWN-OPEN in the proposal "a 4- / 8-bit sprite's fill is 8.0 cycles ...".
+
+THE CORES: src at v0.377.343 (left) and v0.377.343 + experiments/audit/land_trl.js, the proposal (right); tools/hwrunner.js --emu, the
+SCPH-5501's BIOS and model, --lock=0 --video=24000. bit 26's D, fastest..slowest over the eight starts (bit 28 reads 8..8):
+
+  row              v0.377.343   | + land_trl.js
+  G u0 w16         181..181     | 181..181
+  G u0 w32         310..318     | 310..318
+  G u0 w48         438..446     | 438..446
+  G u0 w64         569..577     | 569..577
+  G u0 w80         853..862     | 858..866
+  G u0 w96         1138..1146   | 1148..1156
+  G u16 w16        181..183     | 181..183
+  G u16 w32        310..318     | 310..318
+  G u16 w48        438..446     | 438..446
+  G u16 w64        725..733     | 730..738
+  G u16 w80        1010..1018   | 1019..1028
+  G u16 w96        1295..1303   | 1309..1317
+  G u32 w16        181..181     | 181..181
+  G u32 w32        310..318     | 310..318
+  G u32 w48        594..603     | 599..607
+  G u32 w64        881..889     | 891..899
+  G u32 w80        1166..1174   | 1181..1189
+  G u32 w96        1451..1459   | 1470..1478
+  G u48 w16        181..181     | 181..181
+  G u48 w32        466..474     | 471..479
+  G u48 w48        751..759     | 760..769
+  G u48 w64        1038..1046   | 1052..1060
+  G u48 w80        1322..1331   | 1342..1350
+  G u48 w96        1607..1616   | 1631..1651
+  G u64 w16        337..346     | 324..332
+  G u64 w32        622..630     | 613..622
+  G u64 w48        907..915     | 903..911
+  G u64 w64        1194..1202   | 1195..1203
+  G u64 w80        1479..1487   | 1484..1493
+  G u64 w96        1764..1772   | 1774..1782
+  X u0 w80 x16     853..862     | 858..866
+  X u48 w80 x16    1322..1331   | 1342..1351
+  X u64 w80 x16    1479..1487   | 1484..1493
+  R 96x16          1451..1459   | 1452..1460
+  R 160x16         2911..2919   | 2941..2949
+  R 192x16         3481..3489   | 3520..3534
+
+WHAT THIS CORE DOES: every row costs its cached texel pairs, 10.0 cycles a fill (the proposal: 10.1, a first-texel fill 8.9) -
+nothing for where the row ends, nothing for x. So here each 16 texels more past the cached ones adds the same step at every u
+(u 0: W 64 -> 80 -> 96 +284 / +285 a sprite; u 48: +285 a step from W 16 on), and the X rows equal their G twins.
+
+WHAT EACH ANSWER WOULD MEAN.
+- gpu-spr-fill already has u 0 W 80 836, u 48 W 80 1,268, u 64 W 64 1,191, u 64 W 80 1,441 on both consoles (this core 853 /
+  1,322 / 1,194 / 1,479): those four rows must repeat here to a cycle or two, or the run is not comparable.
+- THE PART BLOCK: along u 64 (no cached texels, a fill every 16), W 16 / 48 / 80 end in a part block and W 32 / 64 / 96 do
+  not. Steps that alternate (short into a part-block width, long out of it) say the row end costs by its block; even steps
+  say it does not, and the W 80 rows of gpu-spr-fill were short for another reason.
+- THE CACHED RUN: u 48 / 32 / 16 begin with 16 / 32 / 48 cached texels. If u 48 W 80's 4.6 cycles a row is the cached run's,
+  u 48 W 32 / W 64 (whole blocks) show it too, and u 32 / u 16 say how it goes with the run's length.
+- X against G: equal - the write blocks count from the row's first pixel (as FillWB's polygon rows do); different - they are
+  the destination's, and the difference is one block's phase.
+- R 96 / 160 / 192: no priming, whole blocks: the proposal reads gpu-spr-fill's 128 / 256 / 320 to +1 .. +6 cycles; these
+  three should read as well, or the 10.1 a fill is not the same at every width.
+Run twice on each console; six only if the two differ (the rule since gpu-spr-fill's twelve logs came back alike).

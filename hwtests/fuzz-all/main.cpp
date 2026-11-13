@@ -86,7 +86,12 @@ static uint32_t hashw(const uint32_t *p, uint32_t n, uint32_t h = FNV0) { for (u
 
 static void gpuWait(uint32_t bit) { for (int i = 0; i < 400000 && !(GPUSTAT & (1u << bit)); i++) {} }
 static void dmaWait(uint32_t ch) { for (int i = 0; i < 2000000 && (R32(0x1F801088u + ch * 16) & 0x01000000u); i++) {} }
-static void idle(uint32_t c) { uint32_t s = 0; uint16_t l = T2; while (s < c) { const uint16_t t = T2; s += (uint16_t)(t - l); l = t; } }
+/* Timer 2 wraps at 49,152 from main() on (its target, below), so a step across the wrap is t + 49152 - l: as a 16-bit difference it
+ * read 16,384 cycles more and ended the wait at once - ~8 % of the 4,000-cycle waits after a sound RAM refill cut short, the write's
+ * tail lost, at the same cases on every console (CPU time decides the wrap) but at others in the emulator (the SPU session,
+ * 2026-11-13: batch-600's 26 / 53 / 55). A free-running Timer 2 (before main sets the target) wraps at 65,536: counted short here,
+ * so a wait is only ever longer. */
+static void idle(uint32_t c) { uint32_t s = 0; uint16_t l = T2; while (s < c) { const uint16_t t = T2; s += t >= l ? (uint32_t)(t - l) : (uint32_t)t + 49152u - l; l = t; } }
 
 static uint16_t spucnt;
 static void spuMode(int m) {
@@ -94,7 +99,13 @@ static void spuMode(int m) {
     SPU(0x1AA) = spucnt;
     for (int i = 0; i < 100000 && (SPU(0x1AE) & 0x3F) != (spucnt & 0x3F); i++) {}
 }
+/* A sound RAM READ runs at SPU delay 220931E1h (1F801014h), put back after: at the boot value the console's read is unstable -
+ * stray FFFFh pairs every 9 blocks on the second 5501, every 2 on the 7502 (the SPU session, 2026-11-13, hwtests/fuzz-spu sets
+ * the same; exact on all three consoles with it) - and the night's spuData findings were that, not the emulator. Only around the
+ * readback, so the cases themselves still run at the console's own delay. */
 static void spuDma(uint32_t spuAddr, uint32_t *ram, uint32_t words, bool toSpu) {
+    const uint32_t spuDelay = R32(0x1F801014u);
+    if (!toSpu) R32(0x1F801014u) = 0x220931E1u;
     spuMode(0);
     SPU(0x1A6) = (uint16_t)(spuAddr / 8);
     spuMode(toSpu ? 2 : 3);
@@ -105,6 +116,7 @@ static void spuDma(uint32_t spuAddr, uint32_t *ram, uint32_t words, bool toSpu) 
     for (int i = 0; i < 100000 && (SPU(0x1AE) & 0x0400); i++) {}
     if (toSpu) idle(4000);                     /* the SPU still writing its FIFO out (hwtests/fuzz-spu waits the same) */
     spuMode(0);
+    R32(0x1F801014u) = spuDelay;
 }
 static void gpuDmaWords(const uint32_t *p, uint32_t words) {
     GP1 = 0x04000002u;

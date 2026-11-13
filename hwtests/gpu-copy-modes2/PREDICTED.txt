@@ -1,0 +1,36 @@
+gpu-copy-modes2 - PREDICTED, written 2026-11-13 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. GPU_COPY_TOLL's numbers for 368x240 15-bit and 640x240 24-bit are the polled ones (hwtests/gpu-copy3 / 4: one start, whole poll
+steps), or borrowed (368 wide takes 320's). At 320x240 the exact maps' means were 2-4% of a copy's time above the polled numbers
+and fell with a wide copy's rows (STATUS "Proposed: a copy's scan-out toll at 320x240 and 512x240 from the exact maps ...").
+What are the means here?
+
+THE CORES: src at v0.377.344 (.a) and v0.377.344 + experiments/audit/land_copytoll.js, the proposal (.c); tools/screen.js (the
+virtual console, the SCPH-5501's BIOS and model, --lock=0 --video=24000, --timeout=6000). Per mode and shape: the blanking's D,
+the mean toll over the 270 starts in cycles and as a percent of the blanking's D (experiments/audit/copymean.js <log>... prints
+the same from a console's log):
+
+  mode | shape                                       gpu-copy-modes2.a       gpu-copy-modes2.c
+  368x240 15-bit | copy 16x16                           627 +43.0 6.9%          627 +34.0 5.4%
+  368x240 15-bit | copy 64x1                              95 +3.0 3.2%            95 +5.0 5.3%
+  368x240 15-bit | copy 64x16                          1478 +46.0 3.1%         1478 +67.0 4.5%
+  368x240 15-bit | copy 64x64                         5904 +183.0 3.1%        5904 +281.0 4.8%
+  368x240 15-bit | copy 256x1                            330 +3.0 0.9%          330 +16.0 4.8%
+  368x240 15-bit | copy 256x8                          2612 +21.0 0.8%         2612 +88.0 3.4%
+  368x240 15-bit | copy 256x32                        10473 +84.0 0.8%       10473 +196.0 1.9%
+  640x240 24-bit | copy 16x16                          627 +67.0 10.7%         627 +67.0 10.7%
+  640x240 24-bit | copy 64x1                            95 +10.0 10.5%          95 +10.0 10.5%
+  640x240 24-bit | copy 64x16                        1478 +157.0 10.6%       1478 +157.0 10.6%
+  640x240 24-bit | copy 64x64                        5904 +626.0 10.6%       5904 +626.0 10.6%
+  640x240 24-bit | copy 256x1                           330 +30.0 9.1%          330 +30.0 9.1%
+  640x240 24-bit | copy 256x8                         2612 +236.0 9.0%        2612 +236.0 9.0%
+  640x240 24-bit | copy 256x32                       10473 +943.0 9.0%       10473 +943.0 9.0%
+
+WHAT THIS CORE DOES: one toll for every start (the average model), so each map is flat; the proposal moves only the modes it
+has exact tables for (368 wide takes 320x240's new table; 256x240, 640x240 and 24-bit keep the polled numbers).
+
+WHAT EACH ANSWER WOULD MEAN. The console's mean per shape IS the table's number for that width, rows and mode: a column of
+GPU_COPY_TOLL2 for the mode, as 320x240's and 512x240's were built. If 368x240's means equal 320x240's (5.5 / 5.4 / 4.5 / 4.8 /
+4.8 / 3.4 / 1.9% for these shapes) the borrowing stands. If 256x240's and 640x240's wide copies read 2-5% where these read
+0.8-0.9%, the polled numbers were one phase of a sawtooth there too. The maps' shapes are more data for the kernel by place
+(KNOWN-OPEN). Run twice on each console (about 12 minutes a run); six only if the two differ.

@@ -335,8 +335,10 @@ fz_slide_end:
         nop
         lhu   $k0, 0x120($s1)
         nop
-        subu  $k0, $k0, $fp
-        andi  $k0, $k0, 0xFFFF
+        subu  $k0, $k0, $fp            # end - start, Timer 2 wrapping at 49152: + 49152 if negative (as & 0xFFFF it read 16,384
+        sra   $fp, $k0, 31             # more across the wrap - none of the night's 25,303 case lines did, but idle() did:
+        andi  $fp, $fp, 0xC000         # main.cpp, the SPU session 2026-11-13); after the second read, outside the timed window
+        addu  $k0, $k0, $fp
         lw    $ra, 8($sp)
         nop
         jr    $ra

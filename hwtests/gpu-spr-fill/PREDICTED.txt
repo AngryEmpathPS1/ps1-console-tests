@@ -1,0 +1,70 @@
+gpu-spr-fill - PREDICTED, written 2026-11-13 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. Two things the proposal "a 4- / 8-bit sprite's fill costs 14.23 ticks and a row's first 1.68 less" (STATUS;
+experiments/audit/land_trl.js) leaves open:
+1. Is the cheaper fill THE ONE AT A ROW'S FIRST TEXEL, or does any row that has a fill cost about a cycle less? Every exact row
+   so far (gpu-shape-time2 / 42 / 44 / 58 / 59) misses at its first texel, so the two read alike.
+2. What does a 4- / 8-bit sprite that draws NOTHING cost a fill, a row, a texel pair? ps1-tests' gpu/bandwidth "Rectangle textured"
+   is one (320 x 240, 4-bit, every texel 0000h through its CLUT, on the display): hardware 15,138 hblanks, this core 15,518 at
+   v0.377.342 and 15,719 with the proposal - the one program the proposal reads worse.
+
+THE CORES: src at v0.377.342 (left) and v0.377.342 + land_trl.js (right), tools/hwrunner.js --emu, the SCPH-5501's BIOS and model,
+--lock=0 --video=24000. bit 26's D then bit 28's, fastest..slowest over the eight starts:
+
+  row                   v0.377.342                  | + land_trl.js
+  4 drawn A 64x16       569..577      8..8          | 569..577      8..8
+  4 drawn A 128x16      2342..2342    8..8          | 2359..2359    8..8
+  4 drawn A 256x16      4629..4637    8..8          | 4680..4688    8..8
+  4 drawn A 320x16      5143..5153    8..8          | 5210..5219    8..8
+  4 drawn B u0 w64      569..578      8..8          | 569..578      8..8
+  4 drawn B u0 w80      853..862      8..8          | 858..866      8..8
+  4 drawn B u48 w80     1322..1331    8..8          | 1339..1348    8..8
+  4 drawn B u64 w64     1194..1202    8..8          | 1194..1203    8..8
+  4 drawn B u64 w80     1479..1487    8..8          | 1484..1492    8..8
+  4 clear A 64x16       544..564      8..8          | 544..552      8..8
+  4 clear A 128x16      2140..2145    8..8          | 2158..2158    8..8
+  4 clear A 256x16      4242..4249    8..8          | 4301..4305    8..8
+  4 clear A 320x16      4761..4770    8..8          | 4829..4837    8..8
+  4 clear B u0 w64      544..552      8..8          | 544..552      8..8
+  4 clear B u0 w80      806..814      8..8          | 810..825      8..8
+  4 clear B u48 w80     1210..1218    8..8          | 1227..1235    8..8
+  4 clear B u64 w64     1082..1092    8..8          | 1082..1093    8..8
+  4 clear B u64 w80     1344..1355    8..8          | 1349..1357    8..8
+  8 drawn A 64x16       569..582      8..8          | 569..577      8..8
+  8 drawn A 128x16      3579..3588    8..8          | 3631..3639    8..8
+  8 drawn A 256x16      7113..7121    8..8          | 7231..7239    8..8
+  8 drawn B u0 w64      569..578      8..8          | 569..577      8..8
+  8 drawn B u0 w72      788..797      8..8          | 793..801      8..8
+  8 drawn B u56 w72     1877..1890    8..8          | 1911..1925    8..8
+  8 drawn B u64 w64     1813..1821    8..8          | 1830..1838    8..8
+  8 clear A 64x16       544..557      8..8          | 544..557      8..8
+  8 clear A 128x16      3206..3214    8..8          | 3257..3275    8..8
+  8 clear A 256x16      6384..6389    8..8          | 6507..6509    8..8
+  8 clear B u0 w64      544..558      8..8          | 544..558      8..8
+  8 clear B u0 w72      741..750      8..8          | 746..754      8..8
+  8 clear B u56 w72     1679..1687    8..8          | 1712..1721    8..8
+  8 clear B u64 w64     1615..1627    8..8          | 1632..1644    8..8
+  4 clear C 64h 256x16  4241..4249    8..8          | 4298..4301    8..8
+  4 clear C 67h 256x16  4231..4253    8..8          | 4282..4304    8..8
+  4 clear C 66h 256x16  4253..4253    8..8          | 4304..4307    8..8
+  4 drawn C 64h 256x16  4629..4637    8..8          | 4680..4688    8..8
+
+WHAT EACH ANSWER WOULD MEAN (16 rows a sprite; f = a fill that is not a row's first, g = the first texel's):
+- 4 drawn B: f = (u48 w80 - u0 w80) / 48, g = (u64 w64 - u0 w64) / 16 - 3 f. Here f is 9.77 cycles and g the same on
+  v0.377.342; with the proposal f 10.02 and g 9.00 (1.02 less). A console with g about a cycle under f: the first fill, as
+  proposed. g equal to f, and u0 w80 (ONE fill a row, its last) a cycle a row under what f makes it: "a row with a fill" - the
+  count in land_trl.js changes from fills at the first texel to rows with a fill. Neither: the row term is something else, and
+  the A rows (W 128 / 256 / 320) say what it goes with.
+- u64 w80 is the check: 5 fills, the first among them = u64 w64 + one f + 8 texel pairs.
+- the 8-bit B rows the same with 8 lines a row: f = (u56 w72 - u0 w72) / 128.
+- clear rows: the same differences with nothing written. This core charges a clear fill what a drawn one costs less its
+  write turnaround (2.23 ticks, 1.41 cycles, a fill) and a clear texel pair one cycle. A console's clear f and its clear W 64
+  row (no fills: the texel pairs alone, 544 here against the drawn 569) are the two numbers gpu/bandwidth's row is made of.
+- C: this core reads the modulated and the semi clear rows as the raw one to a few cycles (4,231-4,253). gpu/bandwidth's
+  console read its semi twin 1 hblank in 15,138 off the plain one; here they differ 136 hblanks on the display - if the C
+  rows agree on the console as they do here, that difference is the display's (the semi sprite's class of scan-out toll
+  charged to a sprite that reads nothing back), not the blanking's.
+- THE CACHE ITSELF: every fill count above is this core's cache model (four lines of 16 texels a row at 4-bit, eight of 8 at
+  8-bit, line = the 4-word group's number & 3 / & 7). A row that reads ~10 cycles x 16 off its neighbours' pattern says the
+  cache is not that.
+Nothing is modelled from one run: six runs on each console first (rule 3).

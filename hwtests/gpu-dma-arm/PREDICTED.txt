@@ -1,0 +1,25 @@
+gpu-dma-arm - PREDICTED, written 2026-11-13 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. The whole-console fuzzer's finding 202-9 on the second SCPH-5501 (experiments/fuzz-all/2026-11-13): a SyncMode 1
+block to the GPU and, 2 / 3 / 4 instructions behind its store to CHCR, the CPU's quad. The console's VRAM held the real quad and a
+quad of its colour with the BLOCK's first four words as corners (experiments/audit/fz2029two.js: two passes - the block and the
+quad each as stored, then the command word, the block, the vertex words - read every wedge pixel of five variants; the fuzzer
+runs a case twice, the first time with its code out of the I-cache, and VRAM keeps both). Which pass is which, at which
+distances K does the GPU take the block's words for the polygon, and does a polygon begun BEFORE the store hold the block back?
+
+THE CORES (tools/hwrunner.js gpu-dma-arm --emu, 102 rows, three passes alike):
+  src at v0.377.347                                  every row  A 0008  B 03e0  W 0000  g 64  r 36  busy 0
+      (the block tests the request when it takes the bus, 4 cycles behind the store: a polygon collecting holds it back -
+       it parks, the CPU's words complete the quad, the block follows; every K, cached or not)
+  v0.377.347 + experiments/audit/land_dmaarm.js      (the request latched at the store: a first block armed with it up goes)
+      m 0 (cached)   K 0        A 0000  B 0000  W 03e0  g 240  r 0   (the command and a vertex word ahead of the block)
+                     K 1, 2, 3  A 03e0  B 0000  W 03e0  g 48   r 0   (the quad's corners are the block's four words)
+                     K 4 .. 12 and K < 0   as src
+      m 1 (fetched)  K 0, 1     A 03e0  B 0000  W 03e0  g 48   r 0
+                     K 2 .. 12 and K < 0   as src
+
+WHAT THE FINDING SAYS TO EXPECT: 03e0 at W at m 0 for K 1 .. 3 (the fuzzer's 2 / 3 / 4 instructions behind are K 1 / 2 / 3 here) -
+the lander's rows - and NOT in the uncached pass at those K (the real quad was in the dump too, so one pass drew as stored): the
+lander's m 1 rows at K 0 and 1 are the open part, and so is where the hijack ends (K 4 here: the block is on the bus).
+K < 0 (the polygon's command word first): psx-spx has GPUSTAT.28 clear from a polygon's command word, so the block should wait
+for the vertices - both cores say so; a W of 03e0 there would say the request does not follow bit 28.

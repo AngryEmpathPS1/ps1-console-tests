@@ -1,0 +1,52 @@
+gpu-poly-clear - PREDICTED, written 2026-11-13 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. On hwtests/gpu-spr-fill a 4- / 8-bit sprite whose texels are all transparent cost exactly 8.0 cycles a texture
+fill and 1.0 a texel pair on both consoles - the clear twin read the fetch straight off. What do a textured POLYGON's fill and
+texel cost with nothing written (this core's FillWB clock has a fill of 8.0 cycles, fitted on drawn rows), and a 15-bit
+sprite's (13.63 ticks, 8.6 cycles, fitted on drawn rows)?
+
+THE CORE: src at v0.377.343 (the sprite proposal, experiments/audit/land_trl.js, prints the same rows: it touches 4- / 8-bit
+sprites only); tools/hwrunner.js --emu, the SCPH-5501's BIOS and model, --lock=0 --video=24000. bit 26's D and bit 28's:
+
+  Q4 drawn 64x16         1285..1285     704..704
+  Q4 drawn 128x16        3528..3528    1862..1866
+  Q4 drawn 192x16        5269..5269    2728..2728
+  Q4 clear 64x16         1285..1285     704..704
+  Q4 clear 128x16        3398..3398    1827..1827
+  Q4 clear 192x16        4997..4997    2661..2661
+  Q8 drawn 64x16         1285..1285     704..715
+  Q8 drawn 128x16        4668..4675    2454..2456
+  Q8 drawn 192x16        7007..7007    3657..3657
+  Q8 clear 64x16         1285..1285     704..704
+  Q8 clear 128x16        4422..4444    2339..2341
+  Q8 clear 192x16        6533..6540    3461..3462
+  Q15 drawn 64x16        3613..3622    1913..1917
+  Q15 drawn 128x16       6981..6981    3700..3700
+  Q15 clear 64x16        3333..3338    1792..1802
+  Q15 clear 128x16       6470..6470    3427..3427
+  T4 drawn 128x32        3008..3008     123..123
+  T4 clear 128x32        2952..2952     123..123
+  T8 drawn 128x32        3602..3602     123..123
+  T8 clear 128x32        3464..3469     123..123
+  S15 drawn 64x16        2970..2992       9..9
+  S15 drawn 256x16      11684..11706      9..9
+  S15 clear 64x16        2609..2631       9..9
+  S15 clear 256x16      10306..10328      9..9
+  Q4 clear semi 128x16   3399..3399    1827..1827
+
+WHAT THIS CORE DOES, to be checked: a cached polygon costs the same drawn or clear (Q4 / Q8 64 x 16: 1,285 both); an uncached
+clear quad saves 130-272 cycles at 4-bit and 246-474 at 8-bit over its drawn twin (8-17 and 15-30 a row); the 15-bit quad
+280-511; the triangles 56 and 138; the 15-bit sprite 361 and 1,378 (22.6 and 86 a row at 16 and 64 fills a row); the semi clear
+quad reads its plain twin's time.
+
+WHAT EACH ANSWER WOULD MEAN.
+- Q clear, W 64 -> 128 -> 192: the steps are texel pairs and fills alone (4-bit: 4 fills a row more each step once past the
+  cached 64; 8-bit 8). A console step that is 32 pairs x one rate + fills x 8.0 gives the polygon's texel rate and confirms
+  the fill; anything else is the polygon's own clock, and the clear rows are then the cleanest fit FillWB can have.
+- Q drawn less Q clear: what the writes add, by width - the write rules alone (the row-end write, the block's).
+- Q 64 x 16 drawn against clear: a cached texel's write. Equal here; the sprite's twin read 25 cycles apart (568 / 543).
+- S15 clear: 64 x 16 is 16 fills a row, 256 x 16 is 64: (the two rows' difference) / 768 fills less the texel pairs is the
+  15-bit fill with nothing written - 8.0 as the other depths, or its own.
+- the semi clear quad: equal to the plain clear one, or blending costs a polygon that draws nothing (gpu/bandwidth's console
+  read its semi SPRITE twin 1 hblank in 15,138 off the plain one).
+Run twice on each console; six only if the two differ.

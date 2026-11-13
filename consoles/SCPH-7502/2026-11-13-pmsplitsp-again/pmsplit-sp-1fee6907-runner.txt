@@ -1,0 +1,19 @@
+pmsplit: the 386 core's time on a PS1 by the phases of tests/pm/split.asm (core built -O2)
+pmsplit:  1 registers        25008 instructions    8683440 cycles   347.2 an instruction
+pmsplit:  2 near reads       25007 instructions    9982912 cycles   399.2 an instruction
+pmsplit:  3 spread reads     25007 instructions    9991352 cycles   399.5 an instruction
+pmsplit:  4 near writes      25006 instructions   10022584 cycles   400.8 an instruction
+pmsplit:  5 spread writes    25006 instructions   10042696 cycles   401.6 an instruction
+pmsplit:  6 rep stosd          155 instructions    1244008 cycles  8025.9 an instruction
+pmsplit:  7 seg loads        20006 instructions   13109592 cycles   655.3 an instruction
+pmsplit:  8 out 80h          15005 instructions    5743992 cycles   382.8 an instruction
+pmsplit:  9 int/iretd r0      5005 instructions    6952360 cycles  1389.1 an instruction
+pmsplit: 10 paged regs       25008 instructions    8683712 cycles   347.2 an instruction
+pmsplit: 11 paged spread     25007 instructions   10217392 cycles   408.6 an instruction
+pmsplit: 12 page walks       30007 instructions   19479672 cycles   649.2 an instruction
+pmsplit: 13 r3 int/iretd      5022 instructions   12446976 cycles  2478.5 an instruction
+pmsplit: 14 r3 call gate      2022 instructions    4705128 cycles  2327.0 an instruction
+pmsplit: 15 v86              27027 instructions   19653800 cycles   727.2 an instruction
+pmsplit: 16 task switches     1254 instructions    7721864 cycles  6157.8 an instruction
+pmsplit: all phases 280552 instructions 158681480 cycles; the ROM 288201 instructions to its HLT, 18 log lines (Bochs's: 18)
+Done.
