@@ -597,6 +597,12 @@ static inline uint32_t mod1536(uint32_t x) {
  * answer as 'R' does and then the frames waited, the refresh phase and the SPU phase the test started at, spuS0 and
  * refreshR0 (the host's (spuS0 - refreshR0) mod 256 is how this console's refresh sits against its SPU: what a reference
  * run's PSX.refreshPhase has to match).
+ * KNOWN-OPEN (2026-11-14, the console fuzzer): something a boot draws and this lock does not fix moves CPU-only cases. The
+ * PSone (SCPH-101), three boots, batch-902.exe at --lock=0: each boot steady (5 / 63 between runs) but 9 to 39 / 63 from
+ * the other boots and 2 to 45 / 63 from the second SCPH-5501, warm runs and pure ALU / loop cases included, refresh locked at
+ * phase 0. Which phase is not shown: spuRefresh differed (188, 174; new every boot, STATUS "spuRefresh IS NEW EVERY BOOT"),
+ * phi is unread at --lock=0, and a CPU-only case should see neither - so perhaps another clock's phase against the CPU's.
+ * Whether 'S' / 'U' could lock it depends on which it is. STATUS "The PSone's moved timing was its boot".
  */
 static void run(bool locked, bool spu) {
     const uint32_t delay = getW();

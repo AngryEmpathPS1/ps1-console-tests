@@ -1,0 +1,23 @@
+gpu-tex-floor - PREDICTED, written 2026-11-14 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. hwtests/gpu-doom-cols: Doom's wall columns (textured triangles, every row one pixel) draw ~0.75 cycles a row
+faster on the second SCPH-5501 and the PSone than on v0.377.348, with texture fills or without. This core charges a shaded row
+its pixels or a floor of 2.59 pixels (GPU_SHADED_ROWS.floorPx). Is the floor too high, for textured only or gouraud too, and
+up to which width?
+
+THE CORE: src at v0.377.348, tools/hwrunner.js gpu-tex-floor --emu (the default console). The blanking's D, cycles:
+
+  tex col 16 / 32 / 64 / 128     196 / 268 / 413 / 701      (4.50 cycles a row)
+  tex tri  1 / 2 / 3 / 4 / 6 / 8 411 / 411 / 420 / 440 / 494 / 552
+  gou col 16 / 32 / 64 / 128     250 / 322 / 467 / 755      (4.50 cycles a row)
+  gou tri  1 / 2 / 3 / 4 / 6 / 8 465 / 465 / 474 / 494 / 548 / 606
+  (the eight starts across an active line add 0 at most places and 25-40 at one or two: not what is asked)
+
+WHAT gpu-doom-cols SAYS TO EXPECT: the textured columns at about 3.75 cycles a row - near 184 / 244 / 364 / 604 - and the
+textured triangles 1 and 2 wide below the core's 411 by up to ~45 (64 rows), the wider ones closing on the core's as their
+rows pass the floor. The gouraud rows are the open half: the same shortfall says the floor is the shaded row's, the core's
+numbers say it is the texture's.
+
+THE CONSOLES SAID (2026-11-14, the second SCPH-5501 and the PSone, two runs each, alike): the CORE's numbers, not the expectation -
+tex col 194 / 267 / 412 / 701, tex tri 409 / 410 / 422 / 443 / 497 / 556, gou col 249 / 322 / 467 / 756, gou tri 464 / 465 / 477 / 498 / 552 /
+611. The floor is right; the columns' shortfall is in rows that fill. STATUS "A texture fill runs under its row's floor".

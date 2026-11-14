@@ -73,5 +73,15 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-13-spulatch2](2026-11-13-spulatch2/) | 2 | 0 |
 | [2026-11-13-spureadback](2026-11-13-spureadback/) | 2 | 0 |
 | [2026-11-13-spureadbacksmall](2026-11-13-spureadbacksmall/) | 2 | 0 |
-| [2026-11-13-spureadtime](2026-11-13-spureadtime/) | 2 | 0 |
+| [2026-11-13-spureadtime](2026-11-13-spureadtime/) | 4 | 0 |
 | [2026-11-13-spuwritetail](2026-11-13-spuwritetail/) | 2 | 0 |
+| [2026-11-14-icacheplace20](2026-11-14-icacheplace20/) | 1 | 0 |
+| [2026-11-14-icacheplace21](2026-11-14-icacheplace21/) | 1 | 0 |
+| [2026-11-14-icacheplace22](2026-11-14-icacheplace22/) | 1 | 0 |
+| [2026-11-14-icacheplace23](2026-11-14-icacheplace23/) | 1 | 0 |
+| [2026-11-14-iostoretrain](2026-11-14-iostoretrain/) | 1 | 0 |
+| [2026-11-14-iostoretrain2](2026-11-14-iostoretrain2/) | 1 | 0 |
+| [2026-11-14-mdectablebusy-run1](2026-11-14-mdectablebusy-run1/) | 1 | 0 |
+| [2026-11-14-mdectablebusy-run2](2026-11-14-mdectablebusy-run2/) | 1 | 0 |
+| [2026-11-14-otclatch](2026-11-14-otclatch/) | 2 | 0 |
+| [2026-11-14-storeload2](2026-11-14-storeload2/) | 1 | 0 |

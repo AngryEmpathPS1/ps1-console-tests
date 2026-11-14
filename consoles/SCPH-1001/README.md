@@ -52,3 +52,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-05-owed](2026-11-05-owed/) | 207 | 102 |
 | [2026-11-05-rfpace](2026-11-05-rfpace/) | 7 | 2 |
 | [2026-11-07-newcd](2026-11-07-newcd/) | 19 | 4 |
+| [2026-11-14-feedcost](2026-11-14-feedcost/) | 2 | 0 |
+| [2026-11-14-storeload](2026-11-14-storeload/) | 2 | 0 |
+| [2026-11-14-texfloor](2026-11-14-texfloor/) | 2 | 0 |
+| [2026-11-14-texfloor2](2026-11-14-texfloor2/) | 2 | 0 |
+| [2026-11-14-texfloor3](2026-11-14-texfloor3/) | 2 | 0 |

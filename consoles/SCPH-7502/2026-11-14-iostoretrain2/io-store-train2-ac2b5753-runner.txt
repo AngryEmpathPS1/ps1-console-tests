@@ -1,0 +1,69 @@
+
+cpu/io-store-train2
+K stores to DMA4 MADR (G nops after each), then Timer 2 := 0; land = Timer 1 elapsed - Timer 2.
+There are no assertions - compare against your emulator.
+
+cached
+  K0 P1   land   12   12   12   elapsed   51   51   51
+  K1 P1   land   14   14   14   elapsed   52   52   52
+  K2 P1   land   16   16   16   elapsed   53   53   53
+  K0 P2   land   12   12   12   elapsed   51   51   51
+  K1 P2   land   14   14   14   elapsed   52   52   52
+  K2 P2   land   16   16   16   elapsed   53   53   53
+  K0 P3   land   12   12   12   elapsed   51   51   51
+  K1 P3   land   14   14   14   elapsed   52   52   52
+  K2 P3   land   16   16   16   elapsed   53   53   53
+  K0 P4   land   13   13   13   elapsed   52   52   52
+  K1 P4   land   15   15   15   elapsed   53   53   53
+  K2 P4   land   17   17   17   elapsed   54   54   54
+  K0 P8   land   17   17   17   elapsed   56   56   56
+  K1 P8   land   19   19   19   elapsed   57   57   57
+  K2 P8   land   21   21   21   elapsed   58   58   58
+  R1 P1   land   15   15   15   elapsed   52   52   52
+  R2 P1   land   17   17   17   elapsed   53   53   53
+  R4 P1   land   21   21   21   elapsed   55   55   55
+  R1 P4   land   16   16   16   elapsed   53   53   53
+  R2 P4   land   18   18   18   elapsed   54   54   54
+  R4 P4   land   22   22   22   elapsed   56   56   56
+  R1 P8   land   20   20   20   elapsed   57   57   57
+  R2 P8   land   22   22   22   elapsed   58   58   58
+  R4 P8   land   26   26   26   elapsed   60   60   60
+  RI P1   land   17   17   17   elapsed   53   53   53
+  IR P1   land   17   17   17   elapsed   53   53   53
+  RRI P1  land   19   19   19   elapsed   54   54   54
+  RI P8   land   22   22   22   elapsed   58   58   58
+  IR P8   land   22   22   22   elapsed   58   58   58
+  RRI P8  land   24   24   24   elapsed   64   64   64
+uncached
+  K0 P1   land   22   22   22   elapsed  270  272  270
+  K1 P1   land   28   28   28   elapsed  276  276  276
+  K2 P1   land   34   34   34   elapsed  282  284  282
+  K0 P2   land   28   28   28   elapsed  276  278  276
+  K1 P2   land   34   34   34   elapsed  282  282  282
+  K2 P2   land   40   40   40   elapsed  288  288  288
+  K0 P3   land   34   34   34   elapsed  284  282  282
+  K1 P3   land   40   40   40   elapsed  288  288  288
+  K2 P3   land   46   46   50   elapsed  294  294  298
+  K0 P4   land   40   46   40   elapsed  288  290  288
+  K1 P4   land   46   50   46   elapsed  294  298  294
+  K2 P4   land   56   52   52   elapsed  304  300  300
+  K0 P8   land   64   64   64   elapsed  312  312  312
+  K1 P8   land   70   70   74   elapsed  318  318  322
+  K2 P8   land   80   76   76   elapsed  328  324  324
+  R1 P1   land   33   33   33   elapsed  281  281  282
+  R2 P1   land   41   41   41   elapsed  289  289  289
+  R4 P1   land   60   60   60   elapsed  310  310  310
+  R1 P4   land   51   51   55   elapsed  300  300  304
+  R2 P4   land   59   63   59   elapsed  307  311  307
+  R4 P4   land   78   78   78   elapsed  326  328  328
+  R1 P8   land   75   75   79   elapsed  324  324  328
+  R2 P8   land   87   83   83   elapsed  335  331  331
+  R4 P8   land  102  102  111   elapsed  350  352  361
+  RI P1   land   39   44   39   elapsed  288  292  287
+  IR P1   land   39   43   39   elapsed  288  291  288
+  RRI P1  land   52   47   47   elapsed  300  295  295
+  RI P8   land   81   81   81   elapsed  330  329  330
+  IR P8   land   81   85   81   elapsed  330  334  330
+  RRI P8  land   89   89   89   elapsed  337  337  337
+
+cpu/io-store-train2: Done.

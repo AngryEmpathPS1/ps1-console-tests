@@ -1,0 +1,29 @@
+gpu-doom-cols - PREDICTED, written 2026-11-13 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. hwtests/gpu-doom-feed: the second SCPH-5501 and the PSone are ready sooner than v0.377.348 for Doom's triangles
+(0.9% and 1.7% more words fed by hand in two passes; STATUS "Doom's feed gap on a test both can run"), and the replay cannot
+say for which - wall columns a pixel wide or floor spans a row tall. Ten of pass 428's own triangles, each timed to the cycle.
+
+THE CORE: src at v0.377.348, tools/hwrunner.js gpu-doom-cols --emu --timeout=9000 (the default console). The blanking's D, the
+mean toll over the 270 starts in cycles and as a percent of it (experiments/audit/copymean.js):
+
+  col 1x4      140   +2.1  1.5%        span 7x1     136  +2.0  1.4%
+  col 1x15     282  +10.2  3.6%        span 56x1    229  +5.7  2.5%
+  col 1x17     258   +8.8  3.4%        span 260x1   419  +7.3  1.8%
+  col 1x18     253   +8.5  3.3%
+  col 1x43     587  +27.2  4.6%
+  col 1x54     694  +33.6  4.8%
+  col 1x73     745  +36.8  4.9%
+  (the names are the bounding box; 1x15 costs more than 1x17 and 1x18 here because its texture rows differ, not its size)
+
+WHAT THE FINDING SAYS TO EXPECT OF THE CONSOLES: one kind shorter than the core by a few percent - in the blanking's D (the
+drawing itself) or in the toll on active lines. The feed's gain came in stretches of triangles, and feeding the backlog back to
+back the two were within 1.5% a word, so a small D difference on the commonest shapes (columns of 8-63 rows, spans of 16-63
+pixels: 695 of the pass's 1,168) is the likelier reading than a large one on a few. If every row reads the core's to a cycle or
+two, the triangles are not it and what is left is between them: when bit 26 comes up after the last word, and the texture
+window and page commands the game interleaves (82 GP0(E2h) in the pass).
+
+THE CONSOLES SAID (2026-11-13/14, the second SCPH-5501 and the PSone, two runs each, every mean alike): the COLUMNS shorter in
+the blanking - 138 / 270 / 243 / 240 / 556 / 627 / 692 cycles (the core 140 / 282 / 258 / 253 / 587 / 694 / 745), about 0.75 cycles a row;
+the spans a little longer, 137 / 234 / 423 (136 / 229 / 419). The tolls on active lines within a cycle or two of the core's.
+STATUS "Doom's wall columns: a one-pixel textured row costs the console ~0.75 cycles less".

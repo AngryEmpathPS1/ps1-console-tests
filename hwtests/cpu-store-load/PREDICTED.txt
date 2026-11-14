@@ -1,0 +1,45 @@
+cpu-store-load - PREDICTED, written 2026-11-14 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. What a load or a store costs right behind a store, RAM and the GPU's port, by the instructions between.
+gpu-doom-feed: the game's copy loop (a store, the next turn's load at once) is ~1 cycle a turn dear on the consoles, its send
+loop (a GP0 store, a load two instructions on) ~1 cheap. cpu-feed-cost / -cost2, three instructions between: the core's, exactly.
+
+THE CORE: src at v0.377.348, tools/hwrunner.js cpu-store-load --emu. Cycles for 64 turns, five times (the first fetches the code):
+  ram>ram   n 0   1035 959 954 953 954
+  ram>ram   n 1   990 947 943 961 943
+  ram>ram   n 2   986 958 953 955 953
+  ram>ram   n 3   986 958 954 958 954
+  io>ram    n 0   681 626 623 630 623
+  io>ram    n 1   719 692 692 694 692
+  io>ram    n 2   778 758 749 749 749
+  io>ram    n 3   848 818 822 819 822
+  ram>io    n 0   665 629 623 626 623
+  ram>io    n 1   664 630 622 623 622
+  ram>io    n 2   733 695 705 696 705
+  ram>io    n 3   771 754 752 754 752
+  ram>>ram  n 0   483 428 434 428 434
+  ram>>ram  n 1   526 492 490 492 490
+  ram>>ram  n 2   584 556 556 556 556
+  ram>>ram  n 3   652 621 621 621 621
+  io>>io    n 0   463 428 428 428 428
+  io>>io    n 1   528 490 490 490 490
+  io>>io    n 2   587 556 556 556 556
+  io>>io    n 3   641 621 623 621 623
+  ld>ram    n 0   874 826 824 826 824
+  ld>ram    n 1   985 952 952 952 952
+  ld>ram    n 2   974 958 954 958 954
+  ld>ram    n 3   988 955 948 955 948
+  ld>ld     n 0   1116 1081 1077 1081 1077
+  ld>ld     n 1   1179 1132 1140 1132 1140
+  ld>ld     n 2   1228 1208 1214 1208 1214
+  ld>ld     n 3   1238 1207 1209 1207 1209
+  copy      n 0   967 950 944 950 944
+  send      n 0   887 863 865 863 865
+
+WHAT IS EXPECTED OF THE CONSOLES: 'copy' about 60 over the core's 944-950 and 'send' about 60 under its 863-865, if the feed's
+rows are these loops'. Then the families say which pair and distance carries each: ram>ram n 0 dear, io>ram n 1-2 cheap are the
+readings gpu-doom-feed suggests; io>>io n 0 dear is dma-otc-latch's. Rows that read the core's rule their pair out.
+
+THE CONSOLES SAID (2026-11-14, the second SCPH-5501 and the PSone, two runs each, the four logs the same bytes): copy 997 .. 1,012
+(+0.9 a turn), send 793 .. 799 (-1.1 a turn), as expected. Of the pairs only io>ram n 0 differs, 692 .. 695 (+1.08 a turn); ram>ram n 0
+and io>>io n 0 read the core - so the loops' differences need the taken branch. STATUS "A load behind a store across a taken branch".

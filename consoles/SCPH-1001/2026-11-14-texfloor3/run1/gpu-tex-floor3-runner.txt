@@ -1,0 +1,18 @@
+
+gpu/gpu-tex-floor3
+A thin triangle's words stored back to back from s cycles after Timer 0's reset, D cycles, one GPUSTAT read:
+the first D with bit 26 set, at 256x240. No assertions.
+
+bit 26's D in the blanking, then from s = 64 + 528 j cycles after Timer 0's reset ~93 lines after VBlank less the blanking's, j = 0..3
+256x240 15-bit:
+each col 16      348 : 0 0 0 0
+each col 32      589 : 0 0 0 0
+each col 64     1070 : 0 0 35 0
+each col 128    2067 : 0 -1 2 -36
+each tri 1      1075 : 0 0 36 0
+each tri 2      1107 : 0 0 36 0
+each tri 3      1140 : 0 36 36 0
+each tri 4      1171 : 0 36 41 0
+each tri 8      1300 : 0 35 36 0
+
+done

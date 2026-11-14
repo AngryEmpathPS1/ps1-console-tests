@@ -1,0 +1,25 @@
+dma-otc-latch - PREDICTED, written 2026-11-14 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. The console fuzzer's 2902-7 (STATUS "A second DMA6 (OTC) start: the console runs it, this core drops it"): two
+OTC starts k nops apart write only the SECOND list at k 0-2 and both from k 3, on the second SCPH-5501 and the SCPH-7502. When
+does a start take MADR, when BCR, and when does a second start run?
+
+THE CORE: src at v0.377.348, tools/hwrunner.js dma-otc-latch --emu, three passes alike but for t (a polled time):
+  every row of every mode and K: from A 54, from B 0, all 54 - the table is written at the store to CHCR with the registers
+  as they stood, and a store to MADR, BCR or CHCR behind it changes nothing; CHCR after 00000002.
+  MADR after: M and S 0003e0 (the store's own value), C and X 0002d4 (A's start: this core's OTC leaves MADR where it was).
+  BCR after: C and S 21, M and X 36.
+
+WHAT THE FUZZER'S ROWS SAY TO EXPECT:
+  S (the second start; its MADR store K + 1 instructions behind the first start, BCR K + 2, CHCR K + 3 - the fuzzer's k is this
+    K less 1 for MADR): only B's list (from A 0, from B 33) at small K, both (54 and 33) from about K 4.
+  M: from B 54 while the start has not yet taken MADR - the fuzzer brackets that between 4 and 5 instructions behind the start.
+  C: from A 33 while it has not taken BCR - bracketed between 6 and 7 instructions, if BCR has its own latch; if the two are
+     taken together, M and C change at the same K and the fuzzer's k 2 / k 3 rows need another reading.
+  X: 54 from A either way; CHCR's busy bit and t say whether a second start of the same list ran (t about twice).
+  MADR and BCR after are not predicted: what the registers read after an OTC is its own question, printed for it.
+
+THE CONSOLES SAID (2026-11-14, the second SCPH-5501, the SCPH-7502 and the PSone, two runs each, all 156 rows alike): M from B at
+K 0-3 and K 5, from A at K 4 and from K 6; C 33 words at K 0-3, 54 from K 4; X 54 at every K, the busy bit about twice as long from
+K 4; S only B at K 0-1, 54 from B then B over it at K 2-3, both lists from K 4. One latch for both registers, 4 cycles behind the
+store. STATUS "Proposed (gates owed): a DMA6 (OTC) start takes MADR and BCR 4 cycles behind its store to CHCR".

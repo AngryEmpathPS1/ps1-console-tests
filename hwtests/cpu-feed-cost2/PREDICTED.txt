@@ -1,0 +1,19 @@
+cpu-feed-cost2 - PREDICTED, written 2026-11-14 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. cpu-feed-cost: with the GPU idle the feed loop's pieces read v0.377.348 to the cycle on the second SCPH-5501
+and the PSone. gpu-doom-feed: a call that finds the GPU busy is 7.5 cycles longer on those consoles than here (201.5 / 194.0).
+Does a GPUSTAT read, a RAM access or a timer read cost more while the GPU draws?
+
+THE CORE: src at v0.377.348, tools/hwrunner.js cpu-feed-cost2 --emu: every loop the same under every draw as idle -
+  empty 292, ram copy 938 .. 956, ram load 871 .. 879, stat read 740, t2 read 730 (64 turns; the first idle pass fetches the
+  code: 350 / 971 / 894 / 761 / 758); b 0 in every row under a draw, 1 idle.
+
+WHAT gpu-doom-feed SAYS TO EXPECT: one row longer under the textured draws - 7.5 cycles on ONE GPUSTAT read would be ~480 on
+"stat read" (64 of them), a cycle on each of 8 RAM copies ~60 on "ram copy". "empty" longer says the CPU itself is held
+(the bus taken from fetches from the cache it cannot be: then it is the timer's read at each end). If no row moves, the 7.5
+cycles need the thin triangles themselves (the draw's start or end beside the read) and this test's long draws do not show it.
+
+THE CONSOLES SAID (2026-11-14, the second SCPH-5501 and the PSone, two runs each): no row moves under any draw - empty 292, ram
+copy 941 .. 952, ram load 871 .. 879, stat read 740, t2 read 730, b 0. Not the GPU being busy: gpu-doom-feed's calls by packet
+length say the copy loop itself (8 words +7.5, 3 words +0.5 .. +2), whose store is followed at once by the next load -
+hwtests/cpu-store-load.

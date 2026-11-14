@@ -1,0 +1,30 @@
+gpu-tex-floor2 - PREDICTED, written 2026-11-14 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. Does a texture fill cost a row narrower than the shaded floor (2.59 pixels) less than it costs a wider one -
+the candidate experiments/audit/land_fillfloor.js, fitted on Doom's own columns (hwtests/gpu-doom-cols)? gpu-tex-floor's shapes
+with V running down them so their rows fill on every draw.
+
+THE CORES (tools/hwrunner.js gpu-tex-floor2 --emu; the blanking's D, cycles; in brackets the same shape with every texel
+cached, gpu-tex-floor on the consoles):
+                               v0.377.348   + land_fillfloor
+  fill col 8                       197           191
+  fill col 16   [194]              235           228
+  fill col 32   [267]              352           339
+  fill col 64   [412]              574           548
+  fill col 128  [701]             1017           966
+  fill tri 1    [409]              573           547
+  fill tri 2    [410]              574           556
+  fill tri 3    [422]              572           563
+  fill tri 4    [443]              583           575
+  fill tri 6    [497]              629           626
+  fill tri 8    [556]              682           680
+  half col 128  [701]              934           906
+
+WHAT IS EXPECTED OF THE CONSOLES: if the candidate is the mechanism, its column - the consoles under v0.377.348 by 6 to 51
+cycles on the columns and by 26 / 18 / 9 on the triangles 1 / 2 / 3 wide, and at v0.377.348's on 6 and 8 wide. If the consoles
+read v0.377.348's column here, the candidate is wrong and Doom's columns differ from these in something else (their texture
+window, their texels' places). Anything between the two columns says a fill hides part of the floor.
+
+THE CONSOLES SAID (2026-11-14, the second SCPH-5501 and the PSone, two runs each, alike): 185 / 225 / 326 / 531 / 940, 528 / 531 /
+549 / 572 / 626 / 686, 835 - under the candidate on the narrow rows, at v0.377.348 on the wide ones: a fill 7.45 cycles on rows 1-2
+wide. STATUS "Proposed (gates owed): a narrow textured row's floor is time on FillWB's clock" (land_fillclock.js reads them).

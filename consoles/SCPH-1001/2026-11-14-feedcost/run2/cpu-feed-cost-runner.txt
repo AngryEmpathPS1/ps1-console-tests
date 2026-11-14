@@ -1,0 +1,14 @@
+
+cpu/cpu-feed-cost
+Loops of 64 turns in cached code, the GPU idle, cycles by Timer 2 (a read before and after), five times each. No assertions.
+
+empty      339 292 292 292 292
+ram copy   970 946 946 943 944
+ram store  374 356 356 356 356
+ram load   894 871 877 876 873
+stat read  758 740 740 740 740
+gp0 reg    367 361 355 355 355
+gp0 ram    894 872 871 872 873
+t2 read    756 730 730 730 730
+
+cpu/cpu-feed-cost: Done.

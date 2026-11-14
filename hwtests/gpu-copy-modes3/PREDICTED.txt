@@ -1,0 +1,25 @@
+gpu-copy-modes3 - PREDICTED, written 2026-11-13 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. GPU_COPY_TOLL2 / GPU_COPY_TOLL2P end at 32 rows (64 at 64 wide); a taller copy takes the last cell. A 256-wide
+copy's toll falls with its rows up to 32 on both crystals, and ps1-tests' gpu/bandwidth (400 copies of 320x240, a PAL-clocked
+console) asks for ~2.1% where the PAL table holds 2.63 (STATUS "Proposed: the copy toll's tables for every display mode, by
+video crystal"; v0.377.348 landed it with that row KNOWN-OPEN). What is the toll at 64, 128 and 240 rows?
+
+THE CORE: src at v0.377.348, tools/hwrunner.js gpu-copy-modes3 --emu --timeout=9000 (the default console, the NTSC crystal).
+Per mode and shape the blanking's D, the mean toll over the 270 starts in cycles and as a percent of the blanking's D
+(experiments/audit/copymean.js; this core charges every start the same, so each map is flat):
+
+  320x240 15-bit   copy 256x32    10473  +190   1.8%      512x240 15-bit   copy 256x32    10473  +523   5.0%
+                   copy 256x64    20954  +379   1.8%                       copy 256x64    20954  +1046  5.0%
+                   copy 256x128   41917  +758   1.8%                       copy 256x128   41917  +2091  5.0%
+                   copy 256x240   79175  +849   1.1% *                     copy 256x240   80184  +2339  2.9% *
+                   copy 64x128    11805  +581   4.9%                       copy 64x128    11805  +679   5.8%
+                   copy 64x240    22132  +1089  4.9%                       copy 64x240    22132  +1273  5.8%
+  * the 256x240 copy's "blanking" D runs into the picture (the blanking is 49,500 cycles): its base is 240 rows at 256x128's
+    rate, 78,594, and the core's toll on that base is the held cell's, +1,430 (1.8%) at 320x240 and +3,929 (5.0%) at 512x240.
+
+WHAT IS EXPECTED OF THE CONSOLES: 256x32 as gpu-shape-time69 / 70 have it (the control: 1.81% / 4.99% on the NTSC crystal, 2.63%
+at 320x240 on the PAL one). Past it the held cell is a guess. If the fall goes on, 256x240 at 320x240 reads below the held
+cell - gpu/bandwidth's PAL row says about 2.1% there against 2.63. If the toll levels off at the per-line share of a copy that
+spans whole lines, 64, 128 and 240 rows read alike. The 64-wide column (held at 64 rows: 4.92% / 5.75%) is asked the same.
+The SCPH-7502 answers the PAL table, the second SCPH-5501 the NTSC one.

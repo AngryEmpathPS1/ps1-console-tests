@@ -104,3 +104,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-08-spread](2026-11-08-spread/) | 580 | 267 |
 | [2026-11-08-texfill](2026-11-08-texfill/) | 21 | 6 |
 | [2026-11-08-texfill2](2026-11-08-texfill2/) | 15 | 4 |
+| [2026-11-14-feedcost](2026-11-14-feedcost/) | 2 | 0 |
+| [2026-11-14-storeload](2026-11-14-storeload/) | 2 | 0 |
+| [2026-11-14-texfloor](2026-11-14-texfloor/) | 2 | 0 |
+| [2026-11-14-texfloor2](2026-11-14-texfloor2/) | 2 | 0 |
+| [2026-11-14-texfloor3](2026-11-14-texfloor3/) | 2 | 0 |

@@ -1,0 +1,24 @@
+gpu-doom-feed - PREDICTED, written 2026-11-13 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. Doom (USA) patched to time itself (the doom-probe session; STATUS "The Doom probe", "Version 3") runs its
+drawing loop ~3% longer on the second SCPH-5501 than on this core, and leaves ~192 fewer words a pass for DrawOTag: the game's
+feed sends a queued packet whenever GPUSTAT bit 26 reads 1 and never waits, so the console's bit 26 is up more often. This test
+replays two passes' own packets (1,168 and 1,069 of them GP0(24h), wall columns a pixel or two wide) through the same loop at
+the same cycles. Does the console feed more words by hand here too, and at which calls?
+
+THE CORE: src at v0.377.348, tools/hwrunner.js gpu-doom-feed --emu (the default console), six runs a pass:
+  pass 428 (1,267 calls, 9,679 words)  fed 8,334 .. 8,358   left 1,321 .. 1,345   feeding the rest 129,114 .. 130,627 cycles
+  pass 496 (1,109 calls, 8,701 words)  fed 4,890 .. 4,922   left 3,779 .. 3,811   feeding the rest 260,497 .. 262,058 cycles
+  (the game itself on v0.377.347 left 1,807 and 3,867: the replay's textures are one colour and its loop is this test's own
+   compile, so it is the same regime, not the same number. The runs differ among themselves - 32 to 245 calls send unlike
+   run 0 - because a call starts within a timer poll, ~30 cycles, of its cycle.)
+
+WHAT THE FINDING SAYS TO EXPECT OF THE CONSOLE: more fed and less left than the core by a few percent of the fed words (the
+game: +192 of ~7,700), "feeding the rest" shorter with it. If the console reads INSIDE the core's six runs, the replay does not
+carry the finding and the difference lives in what the replay leaves out (the textures' own texels and CLUTs, the game's CPU
+work between calls being fixed here). If it reads outside, the per-call rows of run 0 say where: the calls where the console
+sent and the core did not, by the packet that was drawing then.
+
+THE CONSOLES SAID (2026-11-13, the second SCPH-5501 two runs, the PSone one): OUTSIDE the core's runs, both passes - fed
+8,390 .. 8,438 and 4,986 .. 5,010, the two consoles alike; feeding the rest 123,000 .. 126,900 and 251,500 .. 253,500 cycles. The
+sky's sprite the same on all (59,917 .. 59,934). STATUS "Doom's feed gap on a test both can run".
