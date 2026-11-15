@@ -1,0 +1,11 @@
+
+gpu/gpu-dma-rdloop2
+Q case, eight 320x240 reads by DMA2 in 16-word blocks back to back, bandwidth's way: each transfer from CHCR2's store to its
+bit 24 clear, then the eight calls' total (cycles, Timer 2 at the system clock / 8). No assertions.
+
+Q A buffer here      poll+timer 116296 116288 116288 116336 116328 116288 116296 116312 total 934352
+Q B buffer here      poll tight 116032 116016 115984 116024 116032 116032 116024 116048 total 932088
+Q C buffer 801A0000h poll+timer 116320 116288 116264 116296 116264 116304 116296 116280 total 934152
+Q D buffer 801A0000h poll tight 116048 116024 116016 116008 116000 116040 116024 116032 total 932032
+
+gpu/gpu-dma-rdloop2: Done.

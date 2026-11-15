@@ -1,0 +1,17 @@
+
+dma/dma1-drq5
+The MDEC's enable G cycles behind its reset, DMA1 1 x 32 from its output; at G 200 the start timed; the gap scanned. No assertions.
+
+DPCR at entry 08009899, DICR 00840000
+
+A  16 tries at G 200, words written: 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32   (16 of 16 moved 32)
+
+B  the start timed at G 200: t - N fastest..slowest of 4, and the most words moved
+  CONTROL  N0:9  N8:9  N16:9  N32:9  N64:9  N128:9  N192:9  N256:9  N319:9
+  1 x 32   N0:9/32  N8:40..50/32  N16:32..42/32  N32:16/32  N64:9/32  N128:9/32  N192:9/32  N256:9/32  N319:9/32
+  4 x 32   N0:9/128  N8:40/128  N16:32..42/128  N32:16/128  N64:9/128  N128:9/128  N192:9/128  N256:9/128  N319:9/128
+
+C  MDEC1 reset, K nops, MDEC1 20000000h behind a transfer that left 96 words, then DMA1 1 x 32: moved, of 4
+  K0:0 K1:0 K2:0 K3:1 K4:1 K5:1 K6:4 K7:4 K8:4 K9:4 K10:4 K11:4 K12:4 K13:4 K14:4 K15:4 K16:4 K17:4 K18:4 K19:4 K20:4 K21:4 K22:4 K23:4 K24:4
+
+dma/dma1-drq5: Done.

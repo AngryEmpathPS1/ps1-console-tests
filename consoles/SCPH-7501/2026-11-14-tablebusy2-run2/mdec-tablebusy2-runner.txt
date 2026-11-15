@@ -1,0 +1,16 @@
+
+mdec/mdec-tablebusy2
+The MDEC's busy bit after a table of back-to-back stores, to the cycle. No assertions - compare against your emulator.
+
+  quant color G 0: call  175; first idle n   1 (8004ffff; before a004ffff)
+  quant color G 1: call  217; first idle n   1 (8004ffff; before a004ffff)
+  quant color G 2: call  145; first idle n   0 (8004ffff; before 00000000)
+  quant color G 4: call  216; first idle n   0 (8004ffff; before 00000000)
+  quant color G 8: call  343; first idle n   0 (8004ffff; before 00000000)
+  scale       G 0: call  175; first idle n   1 (8004ffff; before a004ffff)
+  scale       G 1: call  218; first idle n   1 (8004ffff; before a004ffff)
+  scale       G 2: call  145; first idle n   0 (8004ffff; before 00000000)
+  scale       G 4: call  211; first idle n   0 (8004ffff; before 00000000)
+  scale       G 8: call  343; first idle n   0 (8004ffff; before 00000000)
+
+mdec/mdec-tablebusy2: Done.

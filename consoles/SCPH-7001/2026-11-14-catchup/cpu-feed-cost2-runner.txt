@@ -1,0 +1,37 @@
+
+cpu/cpu-feed-cost2
+cpu-feed-cost's loops (64 turns, cycles by Timer 2) right behind a long draw's last word; b = GPUSTAT bit 26 after the loop
+(0: the GPU still drawing). Five times each. No assertions.
+
+idle:
+  empty      350 292 292 292 292   b 1 1 1 1 1
+  ram copy   964 949 952 945 944   b 1 1 1 1 1
+  ram load   896 877 877 873 879   b 1 1 1 1 1
+  stat read  761 740 740 740 740   b 1 1 1 1 1
+  t2 read    754 730 730 730 730   b 1 1 1 1 1
+sprite 256x128:
+  empty      292 292 292 292 292   b 0 0 0 0 0
+  ram copy   950 946 951 951 946   b 0 0 0 0 0
+  ram load   878 878 876 878 877   b 0 0 0 0 0
+  stat read  740 740 740 740 740   b 0 0 0 0 0
+  t2 read    730 730 730 730 730   b 0 0 0 0 0
+tex tri 240x200:
+  empty      292 292 292 292 292   b 0 0 0 0 0
+  ram copy   947 949 956 946 946   b 0 0 0 0 0
+  ram load   877 872 874 872 877   b 0 0 0 0 0
+  stat read  745 740 740 740 740   b 0 0 0 0 0
+  t2 read    730 730 730 730 730   b 0 0 0 0 0
+flat tri 240x200:
+  empty      292 292 292 292 292   b 0 0 0 0 0
+  ram copy   942 948 951 947 946   b 0 0 0 0 0
+  ram load   878 877 876 871 879   b 0 0 0 0 0
+  stat read  740 740 740 740 740   b 0 0 0 0 0
+  t2 read    730 730 730 730 730   b 0 0 0 0 0
+fill 512x256:
+  empty      292 292 292 292 292   b 0 0 0 0 0
+  ram copy   946 948 951 946 941   b 0 0 0 0 0
+  ram load   872 879 879 871 874   b 0 0 0 0 0
+  stat read  740 740 740 740 740   b 0 0 0 0 0
+  t2 read    730 730 730 730 730   b 0 0 0 0 0
+
+cpu/cpu-feed-cost2: Done.

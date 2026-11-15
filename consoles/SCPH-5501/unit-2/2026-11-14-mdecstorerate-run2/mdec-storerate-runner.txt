@@ -1,0 +1,9 @@
+
+mdec/mdec-storerate
+33 back-to-back stores to an on-die register or RAM, warm (Timer 2, system clock). No assertions - compare against your emulator.
+
+  MDEC 1F801820h   G 0:   87.. 101 (a004ffff)  G 1:   87..  87 (a004ffff)  G 2:  146.. 150 (8004ffff)  G 4:  186.. 186 (8004ffff)
+  Timer0 target    G 0:   87..  87  G 1:   87..  87  G 2:  120.. 120  G 4:  186.. 186
+  RAM              G 0:   93.. 102  G 1:  136.. 146  G 2:  125.. 138  G 4:  189.. 194
+
+mdec/mdec-storerate: Done.

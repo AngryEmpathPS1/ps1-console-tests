@@ -27,3 +27,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-24-cd-lid-sweep4-2](2026-10-24-cd-lid-sweep4-2/) | 1 | 1 |
 | [2026-10-24-cd-lid-sweep4-3](2026-10-24-cd-lid-sweep4-3/) | 1 | 1 |
 | [2026-10-24-tickhold](2026-10-24-tickhold/) | 11 | 2 |
+| [2026-11-14-catchup](2026-11-14-catchup/) | 193 | 0 |

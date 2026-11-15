@@ -1,0 +1,61 @@
+
+cpu/io-store-train
+K stores to DMA4 MADR (G nops after each), then Timer 2 := 0; land = Timer 1 elapsed - Timer 2.
+There are no assertions - compare against your emulator.
+
+cached
+  K0 G0   land   12   12   12   elapsed   51   51   51
+  K1 G0   land   14   14   14   elapsed   52   52   52
+  K2 G0   land   16   16   16   elapsed   53   53   53
+  K3 G0   land   18   18   18   elapsed   54   54   54
+  K4 G0   land   20   20   20   elapsed   55   55   55
+  K5 G0   land   22   22   22   elapsed   56   56   56
+  K1 G1   land   14   14   14   elapsed   53   53   53
+  K2 G1   land   16   16   16   elapsed   55   55   55
+  K3 G1   land   18   18   18   elapsed   57   57   57
+  K4 G1   land   20   20   20   elapsed   59   59   59
+  K5 G1   land   22   22   22   elapsed   61   61   61
+  K1 G2   land   15   15   15   elapsed   54   54   54
+  K2 G2   land   18   18   18   elapsed   57   57   57
+  K3 G2   land   21   21   21   elapsed   60   60   60
+  K4 G2   land   24   24   24   elapsed   73   73   77
+  K5 G2   land   27   27   27   elapsed   66   66   66
+  K1 G4   land   17   17   17   elapsed   56   56   56
+  K2 G4   land   22   22   22   elapsed   61   61   61
+  K3 G4   land   27   27   27   elapsed   66   66   66
+  K4 G4   land   32   32   32   elapsed   71   71   71
+  K5 G4   land   37   37   37   elapsed   76   76   76
+  R1 G0   land   15   15   20   elapsed   52   52   52
+  R2 G0   land   17   17   17   elapsed   53   53   53
+  R3 G0   land   19   19   19   elapsed   54   54   54
+  R4 G0   land   21   21   21   elapsed   55   55   55
+  R5 G0   land   23   23   23   elapsed   58   58   58
+uncached
+  K0 G0   land   22   22   22   elapsed  271  270  270
+  K1 G0   land   28   28   28   elapsed  276  276  276
+  K2 G0   land   34   34   34   elapsed  282  282  282
+  K3 G0   land   40   40   44   elapsed  288  288  292
+  K4 G0   land   46   46   46   elapsed  294  294  294
+  K5 G0   land   52   52   52   elapsed  300  300  300
+  K1 G1   land   34   34   34   elapsed  282  282  282
+  K2 G1   land   52   46   46   elapsed  296  294  296
+  K3 G1   land   58   64   58   elapsed  306  308  306
+  K4 G1   land   70   70   74   elapsed  318  318  322
+  K5 G1   land   82   82   82   elapsed  330  330  330
+  K1 G2   land   44   40   40   elapsed  292  288  288
+  K2 G2   land   58   62   58   elapsed  306  310  306
+  K3 G2   land   76   76   80   elapsed  326  324  328
+  K4 G2   land   98   94   94   elapsed  346  342  342
+  K5 G2   land  112  112  112   elapsed  360  360  360
+  K1 G4   land   56   52   52   elapsed  304  300  300
+  K2 G4   land   82   86   86   elapsed  330  334  334
+  K3 G4   land  116  112  112   elapsed  364  360  360
+  K4 G4   land  146  142  142   elapsed  394  390  390
+  K5 G4   land  176  172  172   elapsed  424  420  420
+  R1 G0   land   33   40   33   elapsed  281  284  282
+  R2 G0   land   41   45   41   elapsed  289  295  289
+  R3 G0   land   52   52   57   elapsed  300  300  305
+  R4 G0   land   60   60   60   elapsed  310  308  308
+  R5 G0   land   76   71   71   elapsed  324  319  321
+
+cpu/io-store-train: Done.

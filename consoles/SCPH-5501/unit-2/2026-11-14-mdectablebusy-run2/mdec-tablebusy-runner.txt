@@ -1,0 +1,39 @@
+
+mdec/mdec-tablebusy
+How long the MDEC stays busy after a table upload (Timer 2, system clock). No assertions - compare against your emulator.
+
+P: the CPU uploads, then a poll until bit 29 clears (cycles from the last store; 3 runs)
+  quant mono   writes  313 idle +   65 (first 8004ffff then 8004ffff)  writes  276 idle +   45 (first 8004ffff then 8004ffff)  writes  282 idle +   45 (first 8004ffff then 8004ffff)
+  quant color  writes  505 idle +   45 (first 8004ffff then 8004ffff)  writes  500 idle +   45 (first 8004ffff then 8004ffff)  writes  502 idle +   46 (first 8004ffff then 8004ffff)
+  scale        writes  510 idle +   45 (first 8004ffff then 8004ffff)  writes  502 idle +   46 (first 8004ffff then 8004ffff)  writes  501 idle +   45 (first 8004ffff then 8004ffff)
+
+W: the status after each word (busy bit, remaining field), then 2,000 cycles on
+  quant mono : 1.000f 1.000e 1.000d 1.000c 1.000b 1.000a 1.0009 1.0008 1.0007 1.0006 1.0005 1.0004 1.0003 1.0002 1.0001 1.0000 0.ffff | +2000 8004ffff
+  quant color: 1.001f 1.001e 1.001d 1.001c 1.001b 1.001a 1.0019 1.0018 1.0017 1.0016 1.0015 1.0014 1.0013 1.0012 1.0011 1.0010 1.000f 1.000e 1.000d 1.000c 1.000b 1.000a 1.0009 1.0008 1.0007 1.0006 1.0005 1.0004 1.0003 1.0002 1.0001 1.0000 0.ffff | +2000 8004ffff
+  scale      : 1.001f 1.001e 1.001d 1.001c 1.001b 1.001a 1.0019 1.0018 1.0017 1.0016 1.0015 1.0014 1.0013 1.0012 1.0011 1.0010 1.000f 1.000e 1.000d 1.000c 1.000b 1.000a 1.0009 1.0008 1.0007 1.0006 1.0005 1.0004 1.0003 1.0002 1.0001 1.0000 0.ffff | +2000 8004ffff
+
+S: W cycles between words, then a poll (cycles from the last store)
+  quant mono   W    0: +   71  W  100: +   43  W  400: +   43  W 1600: +   48
+  quant color  W    0: +   43  W  100: +   43  W  400: +   43  W 1600: +   43
+  scale        W    0: +   43  W  100: +   43  W  400: +   43  W 1600: +   48
+
+N: one word short, the status 5,000 cycles on, then the last word and a poll
+  quant mono : short a0040000; the last word: idle +65 (first 8004ffff then 8004ffff)
+  quant color: short a0040000; the last word: idle +65 (first 8004ffff then 8004ffff)
+  scale      : short a0040000; the last word: idle +65 (first 8004ffff then 8004ffff)
+
+Z: the scale table all zeros, then the real one
+  zeros: idle +63 real : idle +43
+
+D: by DMA0 (the command by the CPU, then the words): CHCR to DMA0 done, and to idle
+  quant mono   bs 16: DMA0    25 idle    25  bs 16: DMA0    17 idle    17
+  quant color  bs 16: DMA0    17 idle    17  bs 32: DMA0    17 idle    17
+  scale        bs 16: DMA0    17 idle    17  bs 32: DMA0    17 idle    17
+
+F: the upload, n nops (cached, warm), one status read: the first n reading idle (bit 29 clear)
+  quant mono : first idle at n 0 (8004ffff; the n before 00000000)
+  quant color: first idle at n 0 (8004ffff; the n before 00000000)
+  scale      : first idle at n 0 (8004ffff; the n before 00000000)
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+
+mdec/mdec-tablebusy: Done.

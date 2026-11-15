@@ -1,0 +1,23 @@
+
+cpu/cpu-loop-tick18
+the store two on behind a load taken apart: what, where, behind one load or two. No assertions.
+
+  variant     cold        hot     uncached   (cycles an iteration)
+  CTRL        14.31      14.26      46.00
+  SW-SP       17.16      17.11      47.01
+  SWO-SP      16.09      16.04      47.01
+  SW-OTHER    18.37      18.33      52.08
+  SPS-ST      13.32      13.28      47.07
+  RAM-ALONE    9.23       9.18      40.87
+  SW1-SP      12.27      12.23      42.80
+  SWO1-SP     12.28      12.22      40.86
+  SWO1        14.30      14.27      46.09
+  NOP4         9.22       9.18      47.01
+  SPST3       12.28      12.23      47.00
+  NOP3         6.09       6.04      36.71
+  SPST         6.08       6.04      36.71
+  ST           6.10       6.04      42.71
+  LD-NOP       9.22       9.18      40.86
+  LD-ST       12.28      12.23      47.01
+
+cpu/cpu-loop-tick18: Done.

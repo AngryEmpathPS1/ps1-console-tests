@@ -91,7 +91,12 @@ class RunnerLink {
       while (this._now() < end && n !== this.q.length) { n = this.q.length; await this.idle(300); }
       this.q.length = 0;
     };
-    for (let tries = 0; tries < 2; tries++) {
+    /* A "DONE" in the answer is a runner too: a test's result block going out ahead of the identity line (2026-11-14, the
+     * SCPH-1001 and SCPH-7001: a 'V' got "DONE" and ~438 bytes - a locked run's answer - and a second 'V' the line). It was
+     * read as no runner and the job went on to Unirom, which was not there. Two more tries after one. */
+    let tries = 2;
+    this.sawDone = false;
+    for (let t = 0; t < tries; t++) {
       await quiet();
       this.write([0x56]);
       let text = '';
@@ -102,6 +107,7 @@ class RunnerLink {
         if (m) { await quiet(); return m[0]; }
         if (text.length > 4096) break;
       }
+      if (/DONE/.test(text) && !this.sawDone) { this.sawDone = true; tries += 2; }
     }
     await quiet();
     return null;
@@ -236,12 +242,30 @@ async function startRunner(link, beforeExe = null) {
   /* (v5) A runner still resident from the last run, of the build that would be sent, is used as it is: its 'V' line is in
    * runner.exe. Until v5 every run went through Unirom's menu, and a console the last run had left in the runner needed
    * a RESET and the memory card first (the SCPH-7501, 2026-10-08). Unirom's menu only echoes a stray 'V'. */
-  const id = await r.ident();
-  if (id && fs.readFileSync(RUNNER_EXE).includes(Buffer.from(id, 'latin1'))) {
-    r.version = +id[9]; r.reused = true; await r.ping(); return r;
-  }
+  let id = await r.ident();
   const u = new Unirom(link);
-  await u.hello();
+  /* A CONSOLE THAT ANSWERS NEITHER (2026-11-14): no 'V' line and no echo of Unirom's newline is a runner still inside a test an
+   * earlier client left running - a resident runner reads every byte that comes while a test prints and acts only on 'X', so
+   * 'V' and Unirom's newline vanish. Two queue jobs failed so at startup on the SCPH-1001 and SCPH-7001 ("no OKAY in 4000 ms"
+   * from runExe, the queue then paused both ports), and the test's DONE came out later. So: 'X' (the runner's stop; a test
+   * that cannot be stopped still ends on its own, and a runner between tests ignores the byte), up to 30 s for its DONE, and
+   * ask again. Unirom never gets here: it echoes the newline. */
+  if (!id) {
+    const mode = await u.hello();
+    if (!mode) {
+      console.log('  The console answers neither the runner\'s V nor Unirom: a test still running from an earlier run? Stopping it (X).');
+      r.q.length = 0;
+      r.write([0x58]);
+      const end = r._now() + 30000;
+      while (r._now() < end && !/DONE/.test(Buffer.from(r.q).toString('latin1'))) await r.idle(250);
+      id = await r.ident();
+      if (!id && !r.sawDone) throw new Error('runner: the console answers nothing - neither the runner nor Unirom, and no test ended within 30 s of a stop');
+    }
+  }
+  if (id && fs.readFileSync(RUNNER_EXE).includes(Buffer.from(id, 'latin1'))) {
+    u.close(); r.version = +id[9]; r.reused = true; await r.ping(); return r;
+  }
+  if (id || r.sawDone) await u.hello();
   if (beforeExe) { try { await beforeExe(u); } catch (e) { console.log('  The freeze dump failed: ' + e.message); } }   // the freeze dump (consolerun): a look, not the run
   await u.runExe(fs.readFileSync(RUNNER_EXE));
   await r.banner();
@@ -253,8 +277,10 @@ async function startRunner(link, beforeExe = null) {
  * after its fifth double-speed row, getloc prints "Test passed" or "Test failed"), and whether it uses SIO1 itself. */
 // redux-spu (PCSX-Redux's spu test, 2026-11-04): libcester paints its lines, so its verdict line starts with two colour codes; it
 // never returns from main and prints no Done, so the runner ends it there
-/* a name's end line, or its family's: every redux-spuenvx<variant> ends as redux-spuenvx does (experiments/mkspuenvx.js) */
-const endLine = (base) => END_LINE[base] || (/^redux-spuenvx/.test(base) ? END_LINE['redux-spuenvx'] : null);
+/* a name's end line, or its family's: every redux-spuenvx<variant> ends as redux-spuenvx does (experiments/mkspuenvx.js), and
+ * every nugget-<test> (a pcsx-redux/nugget cester test, built as it is) as redux-spu does. Without it the runner waited for a
+ * return from main that never comes: nugget-gpu-dma-node-400f25b held the PSone in the queue's 40-minute wait (2026-11-14). */
+const endLine = (base) => END_LINE[base] || (/^redux-spuenvx/.test(base) ? END_LINE['redux-spuenvx'] : /^nugget-/.test(base) ? END_LINE['redux-spu'] : null);
 const END_LINE = { timing: { text: 'double-speed timing:', count: 5 }, getloc: { text: 'Test ', count: 1 }, 'redux-spu': { text: '[0m[37mSynthesis:', count: 1 },
   'redux-spuenvx': { text: '[0m[37mSynthesis:', count: 1 },
   'redux-spuenvxd8': { text: '[0m[37mSynthesis:', count: 1 }, 'redux-spuenvxd24': { text: '[0m[37mSynthesis:', count: 1 }, 'redux-spuenvxd48': { text: '[0m[37mSynthesis:', count: 1 } };   // the same, its reads delayed after each bit-11 flip   // redux-spu's ADSR tests alone, each trace printed (experiments/mkspuenvx.js)

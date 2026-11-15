@@ -1,0 +1,34 @@
+
+gpu/gpu-tex-fill10
+A 15-bit raw-textured triangle clipped to W x 32 from x 128, v 1:1, u 1/2, 1/4 or 1/8 texel a pixel (a fill every 8, 16 or 32
+pixels; the untimed draw from the texture page beside, so every entry misses) or u 0 (base: cached). Its last four words stored
+back to back, D cycles, one GPUSTAT read: the first D with bit 26 set, fastest..slowest over eight start points in the
+blanking, the display one line tall. No assertions.
+
+variant            bit 26's D
+W 48 base           1846..1887 
+W 64 base           2399..2439 
+W 96 base           3423..3464 
+W 128 base          4487..4522 
+W 160 base          5512..5553 
+W 208 base          7086..7125 
+W 48 every 8        4675..4713 
+W 64 every 8        6024..6063 
+W 96 every 8        8783..8826 
+W 128 every 8      11509..11548
+W 160 every 8      14239..14283
+W 208 every 8      18341..18386
+W 48 every 16       3390..3431 
+W 64 every 16       4356..4362 
+W 96 every 16       6211..6261 
+W 128 every 16      8109..8153 
+W 160 every 16     10005..10045
+W 208 every 16     12862..12869
+W 48 every 32       2557..2603 
+W 64 every 32       3487..3528 
+W 96 every 32       4966..5008 
+W 128 every 32      6437..6452 
+W 160 every 32      7887..7930 
+W 208 every 32      9877..9921 
+
+gpu/gpu-tex-fill10: Done.

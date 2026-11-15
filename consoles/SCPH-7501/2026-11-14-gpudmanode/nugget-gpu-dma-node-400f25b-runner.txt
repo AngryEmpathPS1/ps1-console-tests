@@ -1,0 +1,286 @@
+
+=== gpu_dma_node: E6 ordering vs queued polygons ===
+Grep '^RES|^PIX|^DMA|^CPU|^FILL|^ROWS|^STAT'
+FILL A_chain_256x200 region=(48,0 288x232) want=0010 mismatches=0 first@y=65535,x=65535
+DMA A_chain_256x200 words=7 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=3204 statIdle=d6802420
+STAT A_chain_256x200 gpustat=b6802420 (bit11 setmask=0 bit12 checkmask=0)
+ROWS A_chain_256x200: [y16..215 c=256 x64..319]
+RES A_chain_256x200 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+FILL A_chain_256x200 region=(48,0 288x232) want=0010 mismatches=0 first@y=65535,x=65535
+DMA A_chain_256x200 words=7 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=c0802c20 idlePolls=3213 statIdle=d6802420
+STAT A_chain_256x200 gpustat=b6802420 (bit11 setmask=0 bit12 checkmask=0)
+ROWS A_chain_256x200: [y16..215 c=256 x64..319]
+RES A_chain_256x200 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+FILL B_chain_4x4 region=(48,0 288x232) want=0010 mismatches=0 first@y=65535,x=65535
+DMA B_chain_4x4 words=7 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=5 statIdle=56802420
+STAT B_chain_4x4 gpustat=36802420 (bit11 setmask=0 bit12 checkmask=0)
+ROWS B_chain_4x4: [y16..19 c=4 x64..67]
+RES B_chain_4x4 bit15=16/16 eq8010=16 eq0010=0 other=0 (first other=0000) ring_bit15=0
+FILL B_chain_4x4 region=(48,0 288x232) want=0010 mismatches=0 first@y=65535,x=65535
+DMA B_chain_4x4 words=7 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=6 statIdle=56802420
+STAT B_chain_4x4 gpustat=36802420 (bit11 setmask=0 bit12 checkmask=0)
+ROWS B_chain_4x4: [y16..19 c=4 x64..67]
+RES B_chain_4x4 bit15=16/16 eq8010=16 eq0010=0 other=0 (first other=0000) ring_bit15=0
+FILL C_cpu_256x200 region=(48,0 288x232) want=0010 mismatches=0 first@y=65535,x=65535
+CPU C_cpu_256x200 words=7 cmds=3 maxIdlePolls=3210 finalIdlePolls=0
+STAT C_cpu_256x200 gpustat=b6802420 (bit11 setmask=0 bit12 checkmask=0)
+ROWS C_cpu_256x200: [y16..215 c=256 x64..319]
+RES C_cpu_256x200 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+FILL C_cpu_256x200 region=(48,0 288x232) want=0010 mismatches=0 first@y=65535,x=65535
+CPU C_cpu_256x200 words=7 cmds=3 maxIdlePolls=3205 finalIdlePolls=0
+STAT C_cpu_256x200 gpustat=36802420 (bit11 setmask=0 bit12 checkmask=0)
+ROWS C_cpu_256x200: [y16..215 c=256 x64..319]
+RES C_cpu_256x200 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+FILL D_chain_flush_copy region=(48,0 288x232) want=0010 mismatches=0 first@y=65535,x=65535
+DMA D_chain_flush_copy words=12 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=c0802c20 idlePolls=3209 statIdle=56802420
+STAT D_chain_flush_copy gpustat=b6802420 (bit11 setmask=0 bit12 checkmask=0)
+ROWS D_chain_flush_copy: [y16..215 c=256 x64..319]
+RES D_chain_flush_copy bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+FILL D_chain_flush_copy region=(48,0 288x232) want=0010 mismatches=0 first@y=65535,x=65535
+DMA D_chain_flush_copy words=12 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=3214 statIdle=56802420
+STAT D_chain_flush_copy gpustat=b6802420 (bit11 setmask=0 bit12 checkmask=0)
+ROWS D_chain_flush_copy: [y16..215 c=256 x64..319]
+RES D_chain_flush_copy bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL E_chain_full region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+DMA E_chain_full words=23 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=c0802c20 idlePolls=104 statIdle=5680242c
+HIST E_chain_full total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX E_chain_full hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES E_chain_full holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+HIST E_chain_full total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX E_chain_full hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES E_chain_full holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL E_cpu_full region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+CPU E_cpu_full words=23 cmds=7 maxIdlePolls=44 finalIdlePolls=0
+HIST E_cpu_full total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX E_cpu_full hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES E_cpu_full holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+HIST E_cpu_full total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX E_cpu_full hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES E_cpu_full holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL E_s1_chain region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+DMA E_s1_chain words=16 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=78 statIdle=d680242c
+HIST E_s1_chain total=256 hole_protected(8010)=128 texel_fog(211f)=0 HOLE_FOGGED(2118)=0 texel_nofog(001f)=128 bg_nomask(0010)=0 other=0(first 0000)
+PIX E_s1_chain hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=001f r=31 g=0 b=0 m=0
+RES E_s1_chain holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq001f=128 firstOther=0000
+HIST E_s1_chain total=256 hole_protected(8010)=128 texel_fog(211f)=0 HOLE_FOGGED(2118)=0 texel_nofog(001f)=128 bg_nomask(0010)=0 other=0(first 0000)
+PIX E_s1_chain hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=001f r=31 g=0 b=0 m=0
+RES E_s1_chain holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq001f=128 firstOther=0000
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL E_s2_chain region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+HIST E_s2_pre total=256 hole_protected(8010)=128 texel_fog(211f)=0 HOLE_FOGGED(2118)=0 texel_nofog(001f)=128 bg_nomask(0010)=0 other=0(first 0000)
+PIX E_s2_pre hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=001f r=31 g=0 b=0 m=0
+RES E_s2_pre holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq001f=128 firstOther=0000
+DMA E_s2_chain words=7 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40803420 idlePolls=28 statIdle=56802420
+HIST E_s2_chain total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX E_s2_chain hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES E_s2_chain holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+HIST E_s2_chain total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX E_s2_chain hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES E_s2_chain holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL E_split_chain region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+DMA E_split_s1 words=16 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=c0802c20 idlePolls=74 statIdle=5680242c
+DMA E_split_s2 words=7 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=4080342c idlePolls=32 statIdle=5680242c
+HIST E_split_chain total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX E_split_chain hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES E_split_chain holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+HIST E_split_chain total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX E_split_chain hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES E_split_chain holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL armE_v_mod2c region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+DMA armE_v_mod2c words=23 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=c0802c20 idlePolls=103 statIdle=5680242c
+HIST armE_v_mod2c total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX armE_v_mod2c hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES armE_v_mod2c holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL armE_v_dither region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+DMA armE_v_dither words=23 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=c0802e20 idlePolls=110 statIdle=5680262c
+HIST armE_v_dither total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX armE_v_dither hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES armE_v_dither holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL armE_v_gouraudfog region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+DMA armE_v_gouraudfog words=26 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=c0802c20 idlePolls=211 statIdle=56802420
+HIST armE_v_gouraudfog total=256 hole_protected(8010)=256 texel_fog(211f)=0 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX armE_v_gouraudfog hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=8010 r=16 g=0 b=0 m=1
+RES armE_v_gouraudfog holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=128/128 eq211f=0 firstOther=8010
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL armE_v_big160 region=(396,28 168x168) want=0010 mismatches=0 first@y=65535,x=65535
+DMA armE_v_big160 words=23 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=c0802c20 idlePolls=5386 statIdle=5680242c
+HIST armE_v_big160 total=25600 hole_protected(8010)=13200 texel_fog(211f)=12400 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX armE_v_big160 hole(430,112)=8010 r=16 g=0 b=0 m=1 | texel(520,112)=211f r=31 g=8 b=8 m=0
+RES armE_v_big160 holes: bit15=12180/12800 eq8010=12180 firstOther=211f | texels: bit15=1020/12800 eq211f=11780 firstOther=8010
+DMA G_dots_after_4x4 words=39 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=43 statIdle=56802420
+DOTS G_dots_after_4x4 ok=0/16 map=................ vals=0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 
+ROWS G_dots_after_4x4: [y16..19 c=0 x65535..65535]
+RES G_dots_after_4x4 bit15=0/16 eq8010=0 eq0010=16 other=0 (first other=0000) ring_bit15=0
+STAT G_dots_after_4x4 final bit11=0 bit12=0
+DMA G_dots_after_4x4 words=39 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=43 statIdle=56802420
+DOTS G_dots_after_4x4 ok=0/16 map=................ vals=0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 
+ROWS G_dots_after_4x4: [y16..19 c=0 x65535..65535]
+RES G_dots_after_4x4 bit15=0/16 eq8010=0 eq0010=16 other=0 (first other=0000) ring_bit15=0
+STAT G_dots_after_4x4 final bit11=0 bit12=0
+DMA G_dots_after_256x200 words=39 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=1562 statIdle=56802420
+DOTS G_dots_after_256x200 ok=0/16 map=................ vals=0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 
+ROWS G_dots_after_256x200: [y16..16 c=256 x64..319] [y17..17 c=255 x64..318] [y18..18 c=254 x64..317] [y19..19 c=253 x64..316] [y20..20 c=251 x64..314] [y21..21 c=250 x64..313] [y22..22 c=249 x64..312] [y23..23 c=248 x64..311] [y24..24 c=246 x64..309] [y25..25 c=245 x64..308] [y26..26 c=244 x64..307] [y27..27 c=242 x64..305] [y28..28 c=241 x64..304] [y29..29 c=240 x64..303] [y30..30 c=239 x64..302] [y31..31 c=237 x64..300] [y32..32 c=236 x64..299] [y33..33 c=235 x64..298] [y34..34 c=233 x64..296] [y35..35 c=232 x64..295] [y36..36 c=231 x64..294] [y37..37 c=230 x64..293] [y38..38 c=228 x64..291] [y39..39 c=227 x64..290] [y40..40 c=226 x64..289] [y41..41 c=224 x64..287] [y42..42 c=223 x64..286] [y43..43 c=222 x64..285] [y44..44 c=221 x64..284] [y45..45 c=219 x64..282] [y46..46 c=218 x64..281] [y47..47 c=217 x64..280] [y48..48 c=216 x64..279] [y49..49 c=214 x64..277] [y50..50 c=213 x64..276] [y51..51 c=212 x64..275] [y52..52 c=210 x64..273] [y53..53 c=209 x64..272] [y54..54 c=208 x64..271] [y55..55 c=207 x64..270] [y56..56 c=205 x64..268] [y57..57 c=204 x64..267] [y58..58 c=203 x64..266] [y59..59 c=201 x64..264] [y60..60 c=200 x64..263] [y61..61 c=199 x64..262] [y62..62 c=198 x64..261] [y63..63 c=196 x64..259] [y64..64 c=195 x64..258] [y65..65 c=194 x64..257] [y66..66 c=192 x64..255] [y67..67 c=191 x64..254] [y68..68 c=190 x64..253] [y69..69 c=189 x64..252] [y70..70 c=187 x64..250] [y71..71 c=186 x64..249] [y72..72 c=185 x64..248] [y73..73 c=184 x64..247] [y74..74 c=182 x64..245] [y75..75 c=181 x64..244] [y76..76 c=180 x64..243] [y77..77 c=178 x64..241] [y78..78 c=177 x64..240] [y79..79 c=176 x64..239] [y80..80 c=175 x64..238] [y81..81 c=173 x64..236] [y82..82 c=172 x64..235] [y83..83 c=171 x64..234] [y84..84 c=169 x64..232] [y85..85 c=168 x64..231] [y86..86 c=167 x64..230] [y87..87 c=166 x64..229] [y88..88 c=164 x64..227] [y89..89 c=163 x64..226] [y90..90 c=162 x64..225] [y91..91 c=160 x64..223] [y92..92 c=159 x64..222] [y93..93 c=158 x64..221] [y94..94 c=157 x64..220] [y95..95 c=155 x64..218] [y96..96 c=154 x64..217] [y97..97 c=153 x64..216] [y98..98 c=152 x64..215] [y99..99 c=150 x64..213] [y100..100 c=149 x64..212] [y101..101 c=148 x64..211] [y102..102 c=146 x64..209] [y103..103 c=145 x64..208] [y104..104 c=144 x64..207] [y105..105 c=143 x64..206] [y106..106 c=141 x64..204] [y107..107 c=140 x64..203] [y108..108 c=139 x64..202] [y109..109 c=137 x64..200] [y110..110 c=136 x64..199] [y111..111 c=135 x64..198] [y112..112 c=134 x64..197] [y113..113 c=132 x64..195] [y114..114 c=131 x64..194] [y115..115 c=130 x64..193] [y116..116 c=128 x64..191] [y117..117 c=127 x64..190] [y118..118 c=126 x64..189] [y119..119 c=125 x64..188] [y120..120 c=123 x64..186] [y121..121 c=122 x64..185] [y122..122 c=121 x64..184] [y123..123 c=120 x64..183] [y124..124 c=118 x64..181] [y125..125 c=117 x64..180] [y126..126 c=116 x64..179] [y127..127 c=114 x64..177] [y128..128 c=113 x64..176] [y129..129 c=112 x64..175] [y130..130 c=111 x64..174] [y131..131 c=109 x64..172] [y132..132 c=108 x64..171] [y133..133 c=107 x64..170] [y134..134 c=105 x64..168] [y135..135 c=104 x64..167] [y136..136 c=103 x64..166] [y137..137 c=102 x64..165] [y138..138 c=100 x64..163] [y139..139 c=99 x64..162] [y140..140 c=98 x64..161] [y141..141 c=96 x64..159] [y142..142 c=95 x64..158] [y143..143 c=94 x64..157] [y144..144 c=93 x64..156] [y145..145 c=91 x64..154] [y146..146 c=90 x64..153] [y147..147 c=89 x64..152] [y148..148 c=88 x64..151] [y149..149 c=86 x64..149] [y150..150 c=85 x64..148] [y151..151 c=84 x64..147] [y152..152 c=82 x64..145] [y153..153 c=81 x64..144] [y154..154 c=80 x64..143] [y155..155 c=79 x64..142] [y156..156 c=77 x64..140] [y157..157 c=76 x64..139] [y158..158 c=75 x64..138] [y159..159 c=73 x64..136] [y160..160 c=72 x64..135] [y161..161 c=71 x64..134] [y162..162 c=70 x64..133] [y163..163 c=68 x64..131] [y164..164 c=67 x64..130] [y165..165 c=66 x64..129] [y166..166 c=64 x64..127] [y167..167 c=63 x64..126] [y168..168 c=62 x64..125] [y169..169 c=61 x64..124] [y170..170 c=59 x64..122] [y171..171 c=58 x64..121] [y172..172 c=57 x64..120] [y173..173 c=56 x64..119] [y174..174 c=54 x64..117] [y175..175 c=53 x64..116] [y176..176 c=52 x64..115] [y177..177 c=50 x64..113] [y178..178 c=49 x64..112] [y179..179 c=48 x64..111] [y180..180 c=47 x64..110] [y181..181 c=45 x64..108] [y182..182 c=44 x64..107] [y183..183 c=43 x64..106] [y184..184 c=41 x64..104] [y185..185 c=40 x64..103] [y186..186 c=39 x64..102] [y187..187 c=38 x64..101] [y188..188 c=36 x64..99] [y189..189 c=35 x64..98] [y190..190 c=34 x64..97] [y191..191 c=32 x64..95] [y192..192 c=31 x64..94] [y193..193 c=30 x64..93] [y194..194 c=29 x64..92] [y195..195 c=27 x64..90] [y196..196 c=26 x64..89] [y197..197 c=25 x64..88] [y198..198 c=24 x64..87] [y199..199 c=22 x64..85] [y200..200 c=21 x64..84] [y201..201 c=20 x64..83] [y202..202 c=18 x64..81] [y203..203 c=17 x64..80] [y204..204 c=16 x64..79] [y205..205 c=15 x64..78] [y206..206 c=13 x64..76] [y207..207 c=12 x64..75] [y208..208 c=11 x64..74] [y209..209 c=9 x64..72] [y210..210 c=8 x64..71] [y211..211 c=7 x64..70] [y212..212 c=6 x64..69] [y213..213 c=4 x64..67] [y214..214 c=3 x64..66] [y215..215 c=2 x64..65]
+RES G_dots_after_256x200 bit15=25824/51200 eq8010=25824 eq0010=25376 other=0 (first other=0000) ring_bit15=0
+STAT G_dots_after_256x200 final bit11=0 bit12=0
+DMA G_dots_after_256x200 words=39 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=96 statIdle=56802420
+DOTS G_dots_after_256x200 ok=0/16 map=................ vals=0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 0010 
+ROWS G_dots_after_256x200: [y16..28 c=0 x65535..65535] [y29..29 c=1 x175..175] [y30..36 c=0 x65535..65535] [y37..37 c=1 x188..188] [y38..44 c=0 x65535..65535] [y45..45 c=1 x201..201] [y46..49 c=0 x65535..65535] [y50..50 c=1 x209..209] [y51..52 c=0 x65535..65535] [y53..53 c=1 x214..214] [y54..57 c=0 x65535..65535] [y58..58 c=1 x222..222] [y59..60 c=0 x65535..65535] [y61..61 c=1 x227..227] [y62..65 c=0 x65535..65535] [y66..66 c=1 x235..235] [y67..68 c=0 x65535..65535] [y69..69 c=1 x240..240] [y70..73 c=0 x65535..65535] [y74..74 c=1 x248..248] [y75..78 c=0 x65535..65535] [y79..79 c=1 x256..256] [y80..81 c=0 x65535..65535] [y82..82 c=1 x261..261] [y83..86 c=0 x65535..65535] [y87..87 c=1 x269..269] [y88..89 c=0 x65535..65535] [y90..90 c=1 x274..274] [y91..94 c=0 x65535..65535] [y95..95 c=1 x282..282] [y96..97 c=0 x65535..65535] [y98..98 c=1 x287..287] [y99..99 c=0 x65535..65535] [y100..100 c=1 x290..290] [y101..102 c=0 x65535..65535] [y103..103 c=1 x295..295] [y104..105 c=0 x65535..65535] [y106..106 c=1 x300..300] [y107..107 c=0 x65535..65535] [y108..108 c=1 x303..303] [y109..110 c=0 x65535..65535] [y111..111 c=1 x308..308] [y112..113 c=0 x65535..65535] [y114..114 c=1 x313..313] [y115..115 c=0 x65535..65535] [y116..116 c=1 x316..316] [y117..215 c=0 x65535..65535]
+RES G_dots_after_256x200 bit15=23/51200 eq8010=23 eq0010=51177 other=0 (first other=0000) ring_bit15=1
+STAT G_dots_after_256x200 final bit11=0 bit12=0
+DMA G_dots_after_256x200_split words=39 nodes=[6+8+8+8+8+1] prePolls=0 dmaPolls=3108 statAtDmaDone=d6802420 idlePolls=0 statIdle=d6802420
+DOTS G_dots_after_256x200_split ok=16/16 map=1111111111111111 vals=8001 8002 8003 8004 8005 8006 8007 8008 8009 800a 800b 800c 800d 800e 800f 8010 
+ROWS G_dots_after_256x200_split: [y16..215 c=256 x64..319]
+RES G_dots_after_256x200_split bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+STAT G_dots_after_256x200_split final bit11=0 bit12=0
+DMA G_dots_after_256x200_split words=39 nodes=[6+8+8+8+8+1] prePolls=0 dmaPolls=3107 statAtDmaDone=d6802420 idlePolls=0 statIdle=d6802420
+DOTS G_dots_after_256x200_split ok=16/16 map=1111111111111111 vals=8001 8002 8003 8004 8005 8006 8007 8008 8009 800a 800b 800c 800d 800e 800f 8010 
+ROWS G_dots_after_256x200_split: [y16..215 c=256 x64..319]
+RES G_dots_after_256x200_split bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+STAT G_dots_after_256x200_split final bit11=0 bit12=0
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL H_gouraudfog_split region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+DMA H_gouraudfog_split words=26 nodes=[7+9+10] prePolls=0 dmaPolls=67 statAtDmaDone=4080242c idlePolls=52 statIdle=5680242c
+HIST H_gouraudfog_split total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX H_gouraudfog_split hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES H_gouraudfog_split holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL H_big160_split region=(396,28 168x168) want=0010 mismatches=0 first@y=65535,x=65535
+DMA H_big160_split words=23 nodes=[7+9+7] prePolls=0 dmaPolls=2696 statAtDmaDone=4080242c idlePolls=2693 statIdle=5680242c
+HIST H_big160_split total=25600 hole_protected(8010)=13200 texel_fog(211f)=12400 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX H_big160_split hole(430,112)=8010 r=16 g=0 b=0 m=1 | texel(520,112)=211f r=31 g=8 b=8 m=0
+RES H_big160_split holes: bit15=12180/12800 eq8010=12180 firstOther=211f | texels: bit15=1020/12800 eq211f=11780 firstOther=8010
+DMA S_k02 words=11 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=3082 statIdle=56802420
+DOTS S_k02 words=11 ok=2/2 map=11--------------
+ROWS S_k02: [y16..215 c=256 x64..319]
+RES S_k02 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+DMA S_k02 words=11 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=3079 statIdle=56802420
+DOTS S_k02 words=11 ok=2/2 map=11--------------
+ROWS S_k02: [y16..215 c=256 x64..319]
+RES S_k02 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+DMA S_k03 words=13 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=3082 statIdle=56802420
+DOTS S_k03 words=13 ok=3/3 map=111-------------
+ROWS S_k03: [y16..215 c=256 x64..319]
+RES S_k03 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+DMA S_k03 words=13 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=3082 statIdle=56802420
+DOTS S_k03 words=13 ok=3/3 map=111-------------
+ROWS S_k03: [y16..215 c=256 x64..319]
+RES S_k03 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+DMA S_k04 words=15 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=3083 statIdle=56802420
+DOTS S_k04 words=15 ok=4/4 map=1111------------
+ROWS S_k04: [y16..215 c=256 x64..319]
+RES S_k04 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+DMA S_k04 words=15 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=3084 statIdle=56802420
+DOTS S_k04 words=15 ok=4/4 map=1111------------
+ROWS S_k04: [y16..215 c=256 x64..319]
+RES S_k04 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+DMA S_k05 words=17 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=3085 statIdle=56802420
+DOTS S_k05 words=17 ok=5/5 map=11111-----------
+ROWS S_k05: [y16..215 c=256 x64..319]
+RES S_k05 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+DMA S_k05 words=17 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=3085 statIdle=56802420
+DOTS S_k05 words=17 ok=5/5 map=11111-----------
+ROWS S_k05: [y16..215 c=256 x64..319]
+RES S_k05 bit15=51200/51200 eq8010=51200 eq0010=0 other=0 (first other=0000) ring_bit15=0
+DMA S_k06 words=19 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=1532 statIdle=56802420
+DOTS S_k06 words=19 ok=6/6 map=111111----------
+ROWS S_k06: [y16..16 c=0 x65535..65535] [y17..17 c=1 x319..319] [y18..18 c=2 x318..319] [y19..19 c=3 x317..319] [y20..20 c=5 x315..319] [y21..21 c=6 x314..319] [y22..22 c=7 x313..319] [y23..23 c=8 x312..319] [y24..24 c=10 x310..319] [y25..25 c=11 x309..319] [y26..26 c=12 x308..319] [y27..27 c=14 x306..319] [y28..28 c=15 x305..319] [y29..29 c=16 x304..319] [y30..30 c=17 x303..319] [y31..31 c=19 x301..319] [y32..32 c=20 x300..319] [y33..33 c=21 x299..319] [y34..34 c=23 x297..319] [y35..35 c=24 x296..319] [y36..36 c=25 x295..319] [y37..37 c=26 x294..319] [y38..38 c=28 x292..319] [y39..39 c=29 x291..319] [y40..40 c=30 x290..319] [y41..41 c=32 x288..319] [y42..42 c=33 x287..319] [y43..43 c=34 x286..319] [y44..44 c=35 x285..319] [y45..45 c=37 x283..319] [y46..46 c=38 x282..319] [y47..47 c=39 x281..319] [y48..48 c=40 x280..319] [y49..49 c=42 x278..319] [y50..50 c=43 x277..319] [y51..51 c=44 x276..319] [y52..52 c=46 x274..319] [y53..53 c=47 x273..319] [y54..54 c=48 x272..319] [y55..55 c=49 x271..319] [y56..56 c=51 x269..319] [y57..57 c=52 x268..319] [y58..58 c=53 x267..319] [y59..59 c=55 x265..319] [y60..60 c=56 x264..319] [y61..61 c=57 x263..319] [y62..62 c=58 x262..319] [y63..63 c=60 x260..319] [y64..64 c=61 x259..319] [y65..65 c=62 x258..319] [y66..66 c=64 x256..319] [y67..67 c=65 x255..319] [y68..68 c=66 x254..319] [y69..69 c=67 x253..319] [y70..70 c=69 x251..319] [y71..71 c=70 x250..319] [y72..72 c=71 x249..319] [y73..73 c=72 x248..319] [y74..74 c=74 x246..319] [y75..75 c=75 x245..319] [y76..76 c=76 x244..319] [y77..77 c=78 x242..319] [y78..78 c=79 x241..319] [y79..79 c=80 x240..319] [y80..80 c=81 x239..319] [y81..81 c=83 x237..319] [y82..82 c=84 x236..319] [y83..83 c=85 x235..319] [y84..84 c=87 x233..319] [y85..85 c=88 x232..319] [y86..86 c=89 x231..319] [y87..87 c=90 x230..319] [y88..88 c=92 x228..319] [y89..89 c=93 x227..319] [y90..90 c=94 x226..319] [y91..91 c=96 x224..319] [y92..92 c=97 x223..319] [y93..93 c=98 x222..319] [y94..94 c=99 x221..319] [y95..95 c=101 x219..319] [y96..96 c=102 x218..319] [y97..97 c=103 x217..319] [y98..98 c=104 x216..319] [y99..99 c=106 x214..319] [y100..100 c=107 x213..319] [y101..101 c=108 x212..319] [y102..102 c=110 x210..319] [y103..103 c=111 x209..319] [y104..104 c=112 x208..319] [y105..105 c=113 x207..319] [y106..106 c=115 x205..319] [y107..107 c=116 x204..319] [y108..108 c=117 x203..319] [y109..109 c=119 x201..319] [y110..110 c=120 x200..319] [y111..111 c=121 x199..319] [y112..112 c=122 x198..319] [y113..113 c=124 x196..319] [y114..114 c=125 x195..319] [y115..115 c=126 x194..319] [y116..116 c=128 x192..319] [y117..117 c=129 x191..319] [y118..118 c=130 x190..319] [y119..119 c=131 x189..319] [y120..120 c=133 x187..319] [y121..121 c=134 x186..319] [y122..122 c=135 x185..319] [y123..123 c=136 x184..319] [y124..124 c=138 x182..319] [y125..125 c=139 x181..319] [y126..126 c=140 x180..319] [y127..127 c=142 x178..319] [y128..128 c=143 x177..319] [y129..129 c=144 x176..319] [y130..130 c=145 x175..319] [y131..131 c=147 x173..319] [y132..132 c=148 x172..319] [y133..133 c=149 x171..319] [y134..134 c=151 x169..319] [y135..135 c=152 x168..319] [y136..136 c=153 x167..319] [y137..137 c=154 x166..319] [y138..138 c=156 x164..319] [y139..139 c=157 x163..319] [y140..140 c=158 x162..319] [y141..141 c=160 x160..319] [y142..142 c=161 x159..319] [y143..143 c=162 x158..319] [y144..144 c=163 x157..319] [y145..145 c=165 x155..319] [y146..146 c=166 x154..319] [y147..147 c=167 x153..319] [y148..148 c=168 x152..319] [y149..149 c=170 x150..319] [y150..150 c=171 x149..319] [y151..151 c=172 x148..319] [y152..152 c=174 x146..319] [y153..153 c=175 x145..319] [y154..154 c=176 x144..319] [y155..155 c=177 x143..319] [y156..156 c=179 x141..319] [y157..157 c=180 x140..319] [y158..158 c=181 x139..319] [y159..159 c=183 x137..319] [y160..160 c=184 x136..319] [y161..161 c=185 x135..319] [y162..162 c=186 x134..319] [y163..163 c=188 x132..319] [y164..164 c=189 x131..319] [y165..165 c=190 x130..319] [y166..166 c=192 x128..319] [y167..167 c=193 x127..319] [y168..168 c=194 x126..319] [y169..169 c=195 x125..319] [y170..170 c=197 x123..319] [y171..171 c=198 x122..319] [y172..172 c=199 x121..319] [y173..173 c=200 x120..319] [y174..174 c=202 x118..319] [y175..175 c=203 x117..319] [y176..176 c=204 x116..319] [y177..177 c=206 x114..319] [y178..178 c=207 x113..319] [y179..179 c=208 x112..319] [y180..180 c=209 x111..319] [y181..181 c=211 x109..319] [y182..182 c=212 x108..319] [y183..183 c=213 x107..319] [y184..184 c=215 x105..319] [y185..185 c=216 x104..319] [y186..186 c=217 x103..319] [y187..187 c=218 x102..319] [y188..188 c=220 x100..319] [y189..189 c=221 x99..319] [y190..190 c=222 x98..319] [y191..191 c=224 x96..319] [y192..192 c=225 x95..319] [y193..193 c=226 x94..319] [y194..194 c=227 x93..319] [y195..195 c=229 x91..319] [y196..196 c=230 x90..319] [y197..197 c=231 x89..319] [y198..198 c=232 x88..319] [y199..199 c=234 x86..319] [y200..200 c=235 x85..319] [y201..201 c=236 x84..319] [y202..202 c=238 x82..319] [y203..203 c=239 x81..319] [y204..204 c=240 x80..319] [y205..205 c=241 x79..319] [y206..206 c=243 x77..319] [y207..207 c=244 x76..319] [y208..208 c=245 x75..319] [y209..209 c=247 x73..319] [y210..210 c=248 x72..319] [y211..211 c=249 x71..319] [y212..212 c=250 x70..319] [y213..213 c=252 x68..319] [y214..214 c=253 x67..319] [y215..215 c=254 x66..319]
+RES S_k06 bit15=25376/51200 eq8010=25376 eq0010=25824 other=0 (first other=0000) ring_bit15=0
+DMA S_k07 words=21 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=11 statIdle=56802420
+DOTS S_k07 words=21 ok=7/7 map=1111111---------
+ROWS S_k07: [y16..215 c=0 x65535..65535]
+RES S_k07 bit15=0/51200 eq8010=0 eq0010=51200 other=0 (first other=0000) ring_bit15=0
+DMA S_k08 words=23 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=105 statIdle=56802420
+DOTS S_k08 words=23 ok=0/8 map=.???????--------
+ROWS S_k08: [y16..20 c=0 x65535..65535] [y21..21 c=1 x102..102] [y22..25 c=0 x65535..65535] [y26..26 c=1 x111..111] [y27..41 c=0 x65535..65535] [y42..42 c=1 x140..140] [y43..46 c=0 x65535..65535] [y47..47 c=1 x149..149] [y48..51 c=0 x65535..65535] [y52..52 c=1 x158..158] [y53..56 c=0 x65535..65535] [y57..57 c=1 x167..167] [y58..62 c=0 x65535..65535] [y63..63 c=1 x178..178] [y64..67 c=0 x65535..65535] [y68..68 c=1 x187..187] [y69..72 c=0 x65535..65535] [y73..73 c=1 x196..196] [y74..77 c=0 x65535..65535] [y78..78 c=1 x205..205] [y79..82 c=0 x65535..65535] [y83..83 c=1 x214..214] [y84..84 c=1 x216..216] [y85..87 c=0 x65535..65535] [y88..88 c=1 x223..223] [y89..89 c=1 x225..225] [y90..93 c=0 x65535..65535] [y94..94 c=1 x234..234] [y95..98 c=0 x65535..65535] [y99..99 c=1 x243..243] [y100..103 c=0 x65535..65535] [y104..104 c=1 x252..252] [y105..105 c=1 x254..254] [y106..108 c=0 x65535..65535] [y109..109 c=1 x261..261] [y110..110 c=1 x263..263] [y111..113 c=0 x65535..65535] [y114..114 c=1 x270..270] [y115..115 c=1 x272..272] [y116..118 c=0 x65535..65535] [y119..119 c=1 x279..279] [y120..120 c=1 x281..281] [y121..121 c=1 x283..283] [y122..124 c=0 x65535..65535] [y125..125 c=1 x290..290] [y126..126 c=1 x292..292] [y127..129 c=0 x65535..65535] [y130..130 c=1 x299..299] [y131..131 c=1 x301..301] [y132..134 c=0 x65535..65535] [y135..135 c=1 x308..308] [y136..136 c=1 x310..310] [y137..139 c=0 x65535..65535] [y140..140 c=1 x317..317] [y141..141 c=1 x319..319] [y142..215 c=0 x65535..65535]
+RES S_k08 bit15=33/51200 eq8010=33 eq0010=51167 other=0 (first other=0000) ring_bit15=1
+DMA S_k08 words=23 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=105 statIdle=56802420
+DOTS S_k08 words=23 ok=0/8 map=.???????--------
+ROWS S_k08: [y16..20 c=0 x65535..65535] [y21..21 c=1 x102..102] [y22..25 c=0 x65535..65535] [y26..26 c=1 x111..111] [y27..41 c=0 x65535..65535] [y42..42 c=1 x140..140] [y43..46 c=0 x65535..65535] [y47..47 c=1 x149..149] [y48..51 c=0 x65535..65535] [y52..52 c=1 x158..158] [y53..56 c=0 x65535..65535] [y57..57 c=1 x167..167] [y58..62 c=0 x65535..65535] [y63..63 c=1 x178..178] [y64..67 c=0 x65535..65535] [y68..68 c=1 x187..187] [y69..72 c=0 x65535..65535] [y73..73 c=1 x196..196] [y74..77 c=0 x65535..65535] [y78..78 c=1 x205..205] [y79..82 c=0 x65535..65535] [y83..83 c=1 x214..214] [y84..84 c=1 x216..216] [y85..87 c=0 x65535..65535] [y88..88 c=1 x223..223] [y89..89 c=1 x225..225] [y90..93 c=0 x65535..65535] [y94..94 c=1 x234..234] [y95..98 c=0 x65535..65535] [y99..99 c=1 x243..243] [y100..103 c=0 x65535..65535] [y104..104 c=1 x252..252] [y105..105 c=1 x254..254] [y106..108 c=0 x65535..65535] [y109..109 c=1 x261..261] [y110..110 c=1 x263..263] [y111..113 c=0 x65535..65535] [y114..114 c=1 x270..270] [y115..115 c=1 x272..272] [y116..118 c=0 x65535..65535] [y119..119 c=1 x279..279] [y120..120 c=1 x281..281] [y121..121 c=1 x283..283] [y122..124 c=0 x65535..65535] [y125..125 c=1 x290..290] [y126..126 c=1 x292..292] [y127..129 c=0 x65535..65535] [y130..130 c=1 x299..299] [y131..131 c=1 x301..301] [y132..134 c=0 x65535..65535] [y135..135 c=1 x308..308] [y136..136 c=1 x310..310] [y137..139 c=0 x65535..65535] [y140..140 c=1 x317..317] [y141..141 c=1 x319..319] [y142..215 c=0 x65535..65535]
+RES S_k08 bit15=33/51200 eq8010=33 eq0010=51167 other=0 (first other=0000) ring_bit15=1
+DMA S_k09 words=25 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=105 statIdle=56802420
+DOTS S_k09 words=25 ok=0/9 map=..???????-------
+ROWS S_k09: [y16..20 c=0 x65535..65535] [y21..21 c=1 x102..102] [y22..25 c=0 x65535..65535] [y26..26 c=1 x111..111] [y27..41 c=0 x65535..65535] [y42..42 c=1 x140..140] [y43..46 c=0 x65535..65535] [y47..47 c=1 x149..149] [y48..51 c=0 x65535..65535] [y52..52 c=1 x158..158] [y53..56 c=0 x65535..65535] [y57..57 c=1 x167..167] [y58..62 c=0 x65535..65535] [y63..63 c=1 x178..178] [y64..67 c=0 x65535..65535] [y68..68 c=1 x187..187] [y69..72 c=0 x65535..65535] [y73..73 c=1 x196..196] [y74..77 c=0 x65535..65535] [y78..78 c=1 x205..205] [y79..82 c=0 x65535..65535] [y83..83 c=1 x214..214] [y84..84 c=1 x216..216] [y85..87 c=0 x65535..65535] [y88..88 c=1 x223..223] [y89..89 c=1 x225..225] [y90..93 c=0 x65535..65535] [y94..94 c=1 x234..234] [y95..98 c=0 x65535..65535] [y99..99 c=1 x243..243] [y100..103 c=0 x65535..65535] [y104..104 c=1 x252..252] [y105..105 c=1 x254..254] [y106..108 c=0 x65535..65535] [y109..109 c=1 x261..261] [y110..110 c=1 x263..263] [y111..113 c=0 x65535..65535] [y114..114 c=1 x270..270] [y115..115 c=1 x272..272] [y116..118 c=0 x65535..65535] [y119..119 c=1 x279..279] [y120..120 c=1 x281..281] [y121..121 c=1 x283..283] [y122..124 c=0 x65535..65535] [y125..125 c=1 x290..290] [y126..126 c=1 x292..292] [y127..129 c=0 x65535..65535] [y130..130 c=1 x299..299] [y131..131 c=1 x301..301] [y132..134 c=0 x65535..65535] [y135..135 c=1 x308..308] [y136..136 c=1 x310..310] [y137..139 c=0 x65535..65535] [y140..140 c=1 x317..317] [y141..141 c=1 x319..319] [y142..215 c=0 x65535..65535]
+RES S_k09 bit15=33/51200 eq8010=33 eq0010=51167 other=0 (first other=0000) ring_bit15=1
+DMA S_k09 words=25 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=106 statIdle=56802420
+DOTS S_k09 words=25 ok=0/9 map=..???????-------
+ROWS S_k09: [y16..20 c=0 x65535..65535] [y21..21 c=1 x102..102] [y22..25 c=0 x65535..65535] [y26..26 c=1 x111..111] [y27..41 c=0 x65535..65535] [y42..42 c=1 x140..140] [y43..46 c=0 x65535..65535] [y47..47 c=1 x149..149] [y48..51 c=0 x65535..65535] [y52..52 c=1 x158..158] [y53..56 c=0 x65535..65535] [y57..57 c=1 x167..167] [y58..62 c=0 x65535..65535] [y63..63 c=1 x178..178] [y64..67 c=0 x65535..65535] [y68..68 c=1 x187..187] [y69..72 c=0 x65535..65535] [y73..73 c=1 x196..196] [y74..77 c=0 x65535..65535] [y78..78 c=1 x205..205] [y79..82 c=0 x65535..65535] [y83..83 c=1 x214..214] [y84..84 c=1 x216..216] [y85..87 c=0 x65535..65535] [y88..88 c=1 x223..223] [y89..89 c=1 x225..225] [y90..93 c=0 x65535..65535] [y94..94 c=1 x234..234] [y95..98 c=0 x65535..65535] [y99..99 c=1 x243..243] [y100..103 c=0 x65535..65535] [y104..104 c=1 x252..252] [y105..105 c=1 x254..254] [y106..108 c=0 x65535..65535] [y109..109 c=1 x261..261] [y110..110 c=1 x263..263] [y111..113 c=0 x65535..65535] [y114..114 c=1 x270..270] [y115..115 c=1 x272..272] [y116..118 c=0 x65535..65535] [y119..119 c=1 x279..279] [y120..120 c=1 x281..281] [y121..121 c=1 x283..283] [y122..124 c=0 x65535..65535] [y125..125 c=1 x290..290] [y126..126 c=1 x292..292] [y127..129 c=0 x65535..65535] [y130..130 c=1 x299..299] [y131..131 c=1 x301..301] [y132..134 c=0 x65535..65535] [y135..135 c=1 x308..308] [y136..136 c=1 x310..310] [y137..139 c=0 x65535..65535] [y140..140 c=1 x317..317] [y141..141 c=1 x319..319] [y142..215 c=0 x65535..65535]
+RES S_k09 bit15=33/51200 eq8010=33 eq0010=51167 other=0 (first other=0000) ring_bit15=1
+DMA S_k10 words=27 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=107 statIdle=56802420
+DOTS S_k10 words=27 ok=0/10 map=...???????------
+ROWS S_k10: [y16..20 c=0 x65535..65535] [y21..21 c=1 x102..102] [y22..25 c=0 x65535..65535] [y26..26 c=1 x111..111] [y27..41 c=0 x65535..65535] [y42..42 c=1 x140..140] [y43..46 c=0 x65535..65535] [y47..47 c=1 x149..149] [y48..51 c=0 x65535..65535] [y52..52 c=1 x158..158] [y53..56 c=0 x65535..65535] [y57..57 c=1 x167..167] [y58..62 c=0 x65535..65535] [y63..63 c=1 x178..178] [y64..67 c=0 x65535..65535] [y68..68 c=1 x187..187] [y69..72 c=0 x65535..65535] [y73..73 c=1 x196..196] [y74..77 c=0 x65535..65535] [y78..78 c=1 x205..205] [y79..82 c=0 x65535..65535] [y83..83 c=1 x214..214] [y84..84 c=1 x216..216] [y85..87 c=0 x65535..65535] [y88..88 c=1 x223..223] [y89..89 c=1 x225..225] [y90..93 c=0 x65535..65535] [y94..94 c=1 x234..234] [y95..98 c=0 x65535..65535] [y99..99 c=1 x243..243] [y100..103 c=0 x65535..65535] [y104..104 c=1 x252..252] [y105..105 c=1 x254..254] [y106..108 c=0 x65535..65535] [y109..109 c=1 x261..261] [y110..110 c=1 x263..263] [y111..113 c=0 x65535..65535] [y114..114 c=1 x270..270] [y115..115 c=1 x272..272] [y116..118 c=0 x65535..65535] [y119..119 c=1 x279..279] [y120..120 c=1 x281..281] [y121..121 c=1 x283..283] [y122..124 c=0 x65535..65535] [y125..125 c=1 x290..290] [y126..126 c=1 x292..292] [y127..129 c=0 x65535..65535] [y130..130 c=1 x299..299] [y131..131 c=1 x301..301] [y132..134 c=0 x65535..65535] [y135..135 c=1 x308..308] [y136..136 c=1 x310..310] [y137..139 c=0 x65535..65535] [y140..140 c=1 x317..317] [y141..141 c=1 x319..319] [y142..215 c=0 x65535..65535]
+RES S_k10 bit15=33/51200 eq8010=33 eq0010=51167 other=0 (first other=0000) ring_bit15=1
+DMA S_k10 words=27 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=107 statIdle=56802420
+DOTS S_k10 words=27 ok=0/10 map=...???????------
+ROWS S_k10: [y16..20 c=0 x65535..65535] [y21..21 c=1 x102..102] [y22..25 c=0 x65535..65535] [y26..26 c=1 x111..111] [y27..41 c=0 x65535..65535] [y42..42 c=1 x140..140] [y43..46 c=0 x65535..65535] [y47..47 c=1 x149..149] [y48..51 c=0 x65535..65535] [y52..52 c=1 x158..158] [y53..56 c=0 x65535..65535] [y57..57 c=1 x167..167] [y58..62 c=0 x65535..65535] [y63..63 c=1 x178..178] [y64..67 c=0 x65535..65535] [y68..68 c=1 x187..187] [y69..72 c=0 x65535..65535] [y73..73 c=1 x196..196] [y74..77 c=0 x65535..65535] [y78..78 c=1 x205..205] [y79..82 c=0 x65535..65535] [y83..83 c=1 x214..214] [y84..84 c=1 x216..216] [y85..87 c=0 x65535..65535] [y88..88 c=1 x223..223] [y89..89 c=1 x225..225] [y90..93 c=0 x65535..65535] [y94..94 c=1 x234..234] [y95..98 c=0 x65535..65535] [y99..99 c=1 x243..243] [y100..103 c=0 x65535..65535] [y104..104 c=1 x252..252] [y105..105 c=1 x254..254] [y106..108 c=0 x65535..65535] [y109..109 c=1 x261..261] [y110..110 c=1 x263..263] [y111..113 c=0 x65535..65535] [y114..114 c=1 x270..270] [y115..115 c=1 x272..272] [y116..118 c=0 x65535..65535] [y119..119 c=1 x279..279] [y120..120 c=1 x281..281] [y121..121 c=1 x283..283] [y122..124 c=0 x65535..65535] [y125..125 c=1 x290..290] [y126..126 c=1 x292..292] [y127..129 c=0 x65535..65535] [y130..130 c=1 x299..299] [y131..131 c=1 x301..301] [y132..134 c=0 x65535..65535] [y135..135 c=1 x308..308] [y136..136 c=1 x310..310] [y137..139 c=0 x65535..65535] [y140..140 c=1 x317..317] [y141..141 c=1 x319..319] [y142..215 c=0 x65535..65535]
+RES S_k10 bit15=33/51200 eq8010=33 eq0010=51167 other=0 (first other=0000) ring_bit15=1
+DMA S_k12 words=31 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=109 statIdle=56802420
+DOTS S_k12 words=31 ok=0/12 map=.....???????----
+ROWS S_k12: [y16..20 c=0 x65535..65535] [y21..21 c=1 x102..102] [y22..25 c=0 x65535..65535] [y26..26 c=1 x111..111] [y27..41 c=0 x65535..65535] [y42..42 c=1 x140..140] [y43..46 c=0 x65535..65535] [y47..47 c=1 x149..149] [y48..51 c=0 x65535..65535] [y52..52 c=1 x158..158] [y53..56 c=0 x65535..65535] [y57..57 c=1 x167..167] [y58..62 c=0 x65535..65535] [y63..63 c=1 x178..178] [y64..67 c=0 x65535..65535] [y68..68 c=1 x187..187] [y69..72 c=0 x65535..65535] [y73..73 c=1 x196..196] [y74..77 c=0 x65535..65535] [y78..78 c=1 x205..205] [y79..82 c=0 x65535..65535] [y83..83 c=1 x214..214] [y84..84 c=1 x216..216] [y85..87 c=0 x65535..65535] [y88..88 c=1 x223..223] [y89..89 c=1 x225..225] [y90..93 c=0 x65535..65535] [y94..94 c=1 x234..234] [y95..98 c=0 x65535..65535] [y99..99 c=1 x243..243] [y100..103 c=0 x65535..65535] [y104..104 c=1 x252..252] [y105..105 c=1 x254..254] [y106..108 c=0 x65535..65535] [y109..109 c=1 x261..261] [y110..110 c=1 x263..263] [y111..113 c=0 x65535..65535] [y114..114 c=1 x270..270] [y115..115 c=1 x272..272] [y116..118 c=0 x65535..65535] [y119..119 c=1 x279..279] [y120..120 c=1 x281..281] [y121..121 c=1 x283..283] [y122..124 c=0 x65535..65535] [y125..125 c=1 x290..290] [y126..126 c=1 x292..292] [y127..129 c=0 x65535..65535] [y130..130 c=1 x299..299] [y131..131 c=1 x301..301] [y132..134 c=0 x65535..65535] [y135..135 c=1 x308..308] [y136..136 c=1 x310..310] [y137..139 c=0 x65535..65535] [y140..140 c=1 x317..317] [y141..141 c=1 x319..319] [y142..215 c=0 x65535..65535]
+RES S_k12 bit15=33/51200 eq8010=33 eq0010=51167 other=0 (first other=0000) ring_bit15=1
+DMA S_k12 words=31 nodes=[single] prePolls=0 dmaPolls=1 statAtDmaDone=40802c20 idlePolls=109 statIdle=56802420
+DOTS S_k12 words=31 ok=0/12 map=.....???????----
+ROWS S_k12: [y16..20 c=0 x65535..65535] [y21..21 c=1 x102..102] [y22..25 c=0 x65535..65535] [y26..26 c=1 x111..111] [y27..41 c=0 x65535..65535] [y42..42 c=1 x140..140] [y43..46 c=0 x65535..65535] [y47..47 c=1 x149..149] [y48..51 c=0 x65535..65535] [y52..52 c=1 x158..158] [y53..56 c=0 x65535..65535] [y57..57 c=1 x167..167] [y58..62 c=0 x65535..65535] [y63..63 c=1 x178..178] [y64..67 c=0 x65535..65535] [y68..68 c=1 x187..187] [y69..72 c=0 x65535..65535] [y73..73 c=1 x196..196] [y74..77 c=0 x65535..65535] [y78..78 c=1 x205..205] [y79..82 c=0 x65535..65535] [y83..83 c=1 x214..214] [y84..84 c=1 x216..216] [y85..87 c=0 x65535..65535] [y88..88 c=1 x223..223] [y89..89 c=1 x225..225] [y90..93 c=0 x65535..65535] [y94..94 c=1 x234..234] [y95..98 c=0 x65535..65535] [y99..99 c=1 x243..243] [y100..103 c=0 x65535..65535] [y104..104 c=1 x252..252] [y105..105 c=1 x254..254] [y106..108 c=0 x65535..65535] [y109..109 c=1 x261..261] [y110..110 c=1 x263..263] [y111..113 c=0 x65535..65535] [y114..114 c=1 x270..270] [y115..115 c=1 x272..272] [y116..118 c=0 x65535..65535] [y119..119 c=1 x279..279] [y120..120 c=1 x281..281] [y121..121 c=1 x283..283] [y122..124 c=0 x65535..65535] [y125..125 c=1 x290..290] [y126..126 c=1 x292..292] [y127..129 c=0 x65535..65535] [y130..130 c=1 x299..299] [y131..131 c=1 x301..301] [y132..134 c=0 x65535..65535] [y135..135 c=1 x308..308] [y136..136 c=1 x310..310] [y137..139 c=0 x65535..65535] [y140..140 c=1 x317..317] [y141..141 c=1 x319..319] [y142..215 c=0 x65535..65535]
+RES S_k12 bit15=33/51200 eq8010=33 eq0010=51167 other=0 (first other=0000) ring_bit15=1
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL P_busy_face_single region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+DMA P_busy_face_single words=28 nodes=[5+23] prePolls=0 dmaPolls=1072 statAtDmaDone=c0802420 idlePolls=1167 statIdle=5680242c
+HIST P_busy_face_single total=256 hole_protected(8010)=0 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=128(first a118)
+PIX P_busy_face_single hole(403,40)=a118 r=24 g=8 b=8 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES P_busy_face_single holes: bit15=128/128 eq8010=0 firstOther=a118 | texels: bit15=0/128 eq211f=128 firstOther=0000
+BUSY P_busy_face_single bigquad_px=03e0 (want 03e0)
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL P_busy_face_single region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+DMA P_busy_face_single words=28 nodes=[5+23] prePolls=0 dmaPolls=1070 statAtDmaDone=40802420 idlePolls=1178 statIdle=5680242c
+HIST P_busy_face_single total=256 hole_protected(8010)=0 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=128(first a118)
+PIX P_busy_face_single hole(403,40)=a118 r=24 g=8 b=8 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES P_busy_face_single holes: bit15=128/128 eq8010=0 firstOther=a118 | texels: bit15=0/128 eq211f=128 firstOther=0000
+BUSY P_busy_face_single bigquad_px=03e0 (want 03e0)
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL P_busy_face_split region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+DMA P_busy_face_split words=28 nodes=[5+7+9+7] prePolls=0 dmaPolls=2198 statAtDmaDone=c080242c idlePolls=48 statIdle=5680242c
+HIST P_busy_face_split total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX P_busy_face_split hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES P_busy_face_split holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+BUSY P_busy_face_split bigquad_px=03e0 (want 03e0)
+TEX clut0=0000 clut1=001f texrow5=0000 0000 1111 1111
+FILL P_busy_face_split region=(396,28 24x24) want=0010 mismatches=0 first@y=65535,x=65535
+DMA P_busy_face_split words=28 nodes=[5+7+9+7] prePolls=0 dmaPolls=2198 statAtDmaDone=c080242c idlePolls=41 statIdle=d680242c
+HIST P_busy_face_split total=256 hole_protected(8010)=128 texel_fog(211f)=128 HOLE_FOGGED(2118)=0 texel_nofog(001f)=0 bg_nomask(0010)=0 other=0(first 0000)
+PIX P_busy_face_split hole(403,40)=8010 r=16 g=0 b=0 m=1 | texel(412,40)=211f r=31 g=8 b=8 m=0
+RES P_busy_face_split holes: bit15=128/128 eq8010=128 firstOther=0000 | texels: bit15=0/128 eq211f=128 firstOther=0000
+BUSY P_busy_face_split bigquad_px=03e0 (want 03e0)
+[37m
+[0m[90m  [0m[32mâ [0m[90marmA chain 256x200[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmB chain 4x4[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmC cpu 256x200[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmD chain flush copy[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmE chain full[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmE cpu full[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmE s1 chain[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmE s2 chain[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmE split chain[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmE v mod2c[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmE v dither[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmE v gouraudfog[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmE v big160[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmG dots after 4x4[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmG dots after 256x200[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmG dots after 256x200 split[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmH gouraudfog split[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmH big160 split[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmS sweep short[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmS sweep edge[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmS sweep long[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmP busy face single[0m[90m
+[0m[90m  [0m[32mâ [0m[90marmP busy face split[0m[90m
+[0m[37m
+[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m[0m[37m
+Ran [0m[37m23[0m[37m test(s)
+[0m[37mSynthesis: [0m[32mSUCCESS[0m[37m Tests: [0m[33m23[0m[37m | Passing: [0m[32m23[0m[37m | Failing: [0m[31m0[0m[37m

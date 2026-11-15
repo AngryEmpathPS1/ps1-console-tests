@@ -1,0 +1,11 @@
+
+sio/card-fetch
+A memory card's whole read, byte by byte (READ ONLY): cycles from each byte's write (Timer 2 at the system clock).
+There are no assertions - compare against your emulator.
+
+port 1: no card (no /ACK to 81h)
+port 2: no card (no /ACK to 81h)
+
+resolution: one pass of the polling loop, at most 0 cycles
+
+sio/card-fetch: Done.

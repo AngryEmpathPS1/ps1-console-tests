@@ -56,15 +56,58 @@ static void body() {
     st[4] = 0;
     st[5] = back; st[6] = 0;      /* j E+8 */
     st[7] = out; st[8] = 0;       /* j rp_exit */
-    for (uint32_t mi = 0; mi < M_N; mi++) {
-        const uint32_t m = m_list[mi];
-        uint32_t tmin = ~0u, tmax = 0, hmin = ~0u, hmax = 0;
-        for (int r = 0; r < 6; r++) {
+#ifdef TRACE
+    /* TRACE (2026-11-14; STATUS "pmsplit-sp's replay stamped at every visit"): one pass to the m_list[0]-th visit of E; the stub
+     * stamps Timer 2 (system clock / 8) at every visit into TRACE_BUF, so a segment is two stamps of one run - no start-phase noise
+     * between points - and RUNS passes started a few loop turns apart spread the /8 over its phase: the per-visit sums print as
+     * "V i sum" (cycles x RUNS, visit i-1 -> i). The stub (four lines): e0 ; lui k0 ; lhu k0,1120h(k0) ; addiu k1,2 ; sh k0,-2(k1) ;
+     * lui / ori k0 = the buffer's end ; beq k1,k0 -> out ; nop ; j E+8 ; e1 (its delay slot) ; nop ; j rp_exit ; nop. */
+    {
+        static uint32_t tsum[TRACE_MAX];
+        const uint32_t m = m_list[0], endA = TRACE_BUF + 2u * m;
+        volatile uint16_t *tb = (volatile uint16_t *)TRACE_BUF;
+        st[0] = e0; st[1] = 0x3C1A1F80u; st[2] = 0x975A1120u; st[3] = 0x277B0002u; st[4] = 0xA77AFFFEu;
+        st[5] = 0x3C1A0000u | (endA >> 16); st[6] = 0x375A0000u | (endA & 0xFFFFu); st[7] = 0x137A0004u; st[8] = 0;
+        st[9] = back; st[10] = e1; st[11] = 0; st[12] = out; st[13] = 0;
+        for (uint32_t i = 0; i < TRACE_MAX; i++) tsum[i] = 0;
+        uint32_t tmin = ~0u, tmax = 0;
+        for (int r = 0; r < RUNS + 1; r++) {
             for (uint32_t k = 0; k < RUNS_N; k++) {
                 volatile uint32_t *d = (volatile uint32_t *)runs[k].at;
                 for (uint32_t i = 0; i < runs[k].n; i++) d[i] = run_words[runs[k].off + i];
             }
             bios_flush();
+            for (volatile uint32_t d = 0; d < (uint32_t)r * 5u; d++) {}
+            const uint32_t t = rp_launch(snap_regs, S_PC, TRACE_BUF) * 8;
+            if (r == 0) continue;
+            if (t < tmin) tmin = t; if (t > tmax) tmax = t;
+            tsum[0] += (uint32_t)tb[0] * 8u;
+            for (uint32_t i = 1; i < m && i < TRACE_MAX; i++) tsum[i] += (uint32_t)(uint16_t)(tb[i] - tb[i - 1]) * 8u;
+        }
+        printf("T m %u runs %u total min %u max %u\n", (unsigned)m, (unsigned)RUNS, (unsigned)tmin, (unsigned)tmax);
+        for (uint32_t i = 0; i < m && i < TRACE_MAX; i++) printf("V %u %u\n", (unsigned)i, (unsigned)tsum[i]);
+    }
+    if (0)
+#endif
+    for (uint32_t mi = 0; mi < M_N; mi++) {
+        const uint32_t m = m_list[mi];
+        uint32_t tmin = ~0u, tmax = 0, hmin = ~0u, hmax = 0, tsum = 0;
+        /* RUNS=N (snap.h, 2026-11-14): N timed runs a point (default 5), each started a few loop turns later than the one before
+         * so the runs spread over the DRAM refresh's phase, and their sum printed: a mean, where a min of five left ~40 cycles of
+         * start-phase noise on each point (scratch/pm386/segexact.js: one handler's segments within ~5 exact, ~60 between points). */
+#ifdef RUNS
+        for (int r = 0; r < RUNS + 1; r++) {
+#else
+        for (int r = 0; r < 6; r++) {
+#endif
+            for (uint32_t k = 0; k < RUNS_N; k++) {
+                volatile uint32_t *d = (volatile uint32_t *)runs[k].at;
+                for (uint32_t i = 0; i < runs[k].n; i++) d[i] = run_words[runs[k].off + i];
+            }
+            bios_flush();
+#ifdef RUNS
+            for (volatile uint32_t d = 0; d < (uint32_t)r * 5u; d++) {}
+#endif
 #ifdef NO_LAUNCH
             uint32_t t = 0; (void)m;
 #else
@@ -74,8 +117,13 @@ static void body() {
             if (r == 0) continue;
             if (hb < hmin) hmin = hb; if (hb > hmax) hmax = hb;
             if (t < tmin) tmin = t; if (t > tmax) tmax = t;
+            tsum += t;
         }
+#ifdef RUNS
+        printf("M %2u  min %u max %u sum %u n %u\n", (unsigned)m, (unsigned)tmin, (unsigned)tmax, (unsigned)tsum, (unsigned)RUNS);
+#else
         printf("M %2u  min %u max %u\n", (unsigned)m, (unsigned)tmin, (unsigned)tmax);
+#endif
     }
     I_MASK = mask;
     ExitCriticalSection();

@@ -1,0 +1,27 @@
+
+timer/t1-vedges
+Timer 1's v-blank-sync edges on the system clock - reset, stop, resume - in cycles after the v-blank IRQ. No assertions.
+
+  GPUSTAT 14042000
+  sysclk free              T1_MODE 0000  64 frames  (0 without an IRQ)
+    reset   none
+    stop    none
+    resume  none
+  sysclk 0 pause in vb     T1_MODE 0001  64 frames  (0 without an IRQ)
+    reset   none
+    stop    [64: mean -9.79, median -8, -28..9]
+    resume  [63: mean 49498.28, median 49500, 49480..49517]
+  sysclk 1 reset at vb     T1_MODE 0003  64 frames  (0 without an IRQ)
+    reset   [64: mean 49500.73, median 49503, 49482..49518]
+    stop    none
+    resume  none
+  sysclk 2 count in vb     T1_MODE 0005  64 frames  (0 without an IRQ)
+    reset   [64: mean 49511.68, median 49504, 49500..49549]
+    stop    [64: mean -12155.49, median -12162, -12193..-12131] [64: mean 49511.68, median 49504, 49500..49549]
+    resume  [64: mean -8.44, median -9, -20..10]
+  sysclk 3 wait, free      T1_MODE 0007  64 frames  (0 without an IRQ)
+    reset   none
+    stop    [64: mean -12159.04, median -12162, -12193..-12131]
+    resume  [64: mean 49507.28, median 49510, 49488..49517]
+
+timer/t1-vedges: Done.

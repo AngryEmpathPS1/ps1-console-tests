@@ -1,0 +1,27 @@
+
+cpu/code-in-io-time
+64 calls of `jr $ra; nop` from cached code: in the DMA0 registers (BCR0 entry: 2 I/O fetches, MADR0 entry: 3), and in RAM.
+Cycles a call at the system clock, fastest..slowest of 8 phases x 4 passes. No assertions - compare against your emulator.
+
+  empty bracket (64 x 2 nops)    2.06 .. 2.06   (64 calls 132..132)
+  RAM cached, jr; nop            4.06 .. 4.06   (64 calls 260..260; one cold call 21)
+  RAM cached, nop; jr; nop       5.06 .. 5.06   (64 calls 324..324; one cold call 21)
+  RAM KSEG1, jr; nop             14.15 .. 14.31   (64 calls 906..916; one cold call 23)
+  RAM KSEG1, nop; jr; nop        20.28 .. 20.39   (64 calls 1298..1305; one cold call 29)
+  I/O KSEG1 BCR0 (2 fetches)     10.03 .. 10.03   (64 calls 642..642; one cold call 19)
+  I/O KSEG1 MADR0 (3 fetches)    14.03 .. 14.03   (64 calls 898..898; one cold call 23)
+  I/O KUSEG BCR0 (2 fetches)     4.06 .. 4.06   (64 calls 260..260; one cold call 19)
+  I/O KUSEG MADR0 (3 fetches)    5.06 .. 5.06   (64 calls 324..324; one cold call 23)
+  I/O KSEG0 BCR0 (2 fetches)     4.06 .. 4.06   (64 calls 260..260; one cold call 19)
+  I/O KSEG0 MADR0 (3 fetches)    5.06 .. 5.06   (64 calls 324..324; one cold call 23)
+
+per extra fetch (3-word entry less the 2-word one, fastest), cycles:
+  RAM cached, nop; jr; nop       1.00
+  RAM KSEG1, nop; jr; nop        6.12
+  I/O KSEG1 MADR0 (3 fetches)    4.00
+  I/O KUSEG MADR0 (3 fetches)    1.00
+  I/O KSEG0 MADR0 (3 fetches)    1.00
+
+read back after: MADR0 00000000 BCR0 03e00008 CHCR0 00000000
+
+cpu/code-in-io-time: Done.

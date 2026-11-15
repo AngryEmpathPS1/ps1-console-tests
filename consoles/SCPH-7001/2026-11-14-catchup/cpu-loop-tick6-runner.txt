@@ -1,0 +1,15 @@
+
+cpu/cpu-loop-tick6
+Two stores, a Timer 2 read or a nop between, by distance. No assertions.
+
+  variant     cold        hot      (cycles an iteration)
+  RD-8        15.15      15.07
+  RD-64       15.12      15.08
+  RD-2K       12.55      12.49
+  RD-16K      12.53      12.49
+  NOP-8        7.08       7.04
+  NOP-64       7.08       7.04
+  NOP-2K      12.53      12.50
+  NOP-16K     12.54      12.50
+
+cpu/cpu-loop-tick6: Done.

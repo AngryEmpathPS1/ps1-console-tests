@@ -1,0 +1,87 @@
+
+timer/t0-edges
+Timer 0's hblank-sync edges in a line - reset, stop, resume - in cycles after Timer 1's tick. No assertions.
+
+  found: GPUSTAT 14040000
+  NTSC 320  sysclk free              T0_MODE 0000  360 lines  GPUSTAT 14020000  (0 waits timed out)
+    reset   none
+    stop    none
+    resume  none
+  NTSC 320  sysclk 0 pause in hb     T0_MODE 0001  360 lines  GPUSTAT 14020000  (0 waits timed out)
+    reset   none
+    stop    [360: mean 24.11, median 24, 24..30] [360: mean 2143.33, median 2143, 2138..2150]
+    resume  [360: mean 529.46, median 529, 524..535]
+  NTSC 320  sysclk 1 reset at hb     T0_MODE 0003  360 lines  GPUSTAT 14020000  (0 waits timed out)
+    reset   [360: mean 530.04, median 530, 524..536]
+    stop    none
+    resume  none
+  NTSC 320  sysclk 2 count in hb     T0_MODE 0005  360 lines  GPUSTAT 14020000  (0 waits timed out)
+    reset   [360: mean 543.65, median 544, 526..557]
+    stop    [360: mean 543.65, median 544, 526..557]
+    resume  [360: mean 2143.90, median 2144, 2139..2150]
+  NTSC 320  sysclk 3 wait, free      T0_MODE 0007  360 lines  GPUSTAT 94020000  (0 waits timed out)
+    reset   none
+    stop    [360: mean 38.34, median 38, 38..46]
+    resume  [360: mean 529.43, median 529, 524..536]
+  NTSC 320  dot free                 T0_MODE 0100  360 lines  GPUSTAT 94020000  (0 waits timed out)
+    reset   none
+    stop    none
+    resume  none
+  NTSC 320  dot 0 pause in hb        T0_MODE 0101  360 lines  GPUSTAT 14020000  (0 waits timed out)
+    reset   none
+    stop    [292: mean 24.17, median 24, 24..29] [293: mean 2156.48, median 2156, 2139..2177]
+    resume  [292: mean 536.01, median 537, 529..543]
+  NTSC 320  dot 1 reset at hb        T0_MODE 0103  360 lines  GPUSTAT 94020000  (0 waits timed out)
+    reset   [1: mean 206.00, median 206, 206..206] [1: mean 331.00, median 331, 331..331] [1: mean 437.00, median 437, 437..437] [259: mean 540.73, median 542, 530..548] [1: mean 860.00, median 860, 860..860] [1: mean 1059.00, median 1059, 1059..1059]
+    stop    [15: mean 24.60, median 24, 24..29] [14: mean 2158.21, median 2160, 2149..2167]
+    resume  [13: mean 536.61, median 537, 531..542]
+  NTSC 320  dot 2 count in hb        T0_MODE 0105  360 lines  GPUSTAT 14020000  (0 waits timed out)
+    reset   [360: mean 544.99, median 544, 529..559] [1: mean 694.00, median 694, 694..694]
+    stop    [329: mean 545.45, median 544, 529..559] [1: mean 694.00, median 694, 694..694]
+    resume  [330: mean 2145.64, median 2146, 2138..2153]
+  NTSC 320  dot 3 wait, free         T0_MODE 0107  360 lines  GPUSTAT 94020000  (0 waits timed out)
+    reset   [7: mean 66.00, median 66, 66..66] [1: mean 834.00, median 834, 834..834] [1: mean 1167.00, median 1167, 1167..1167]
+    stop    [122: mean 39.80, median 38, 38..66] [1: mean 834.00, median 834, 834..834] [1: mean 1167.00, median 1167, 1167..1167]
+    resume  [122: mean 536.66, median 536, 531..542]
+  NTSC 512  sysclk free              T0_MODE 0000  360 lines  GPUSTAT 14040000  (0 waits timed out)
+    reset   none
+    stop    none
+    resume  none
+  NTSC 512  sysclk 0 pause in hb     T0_MODE 0001  360 lines  GPUSTAT 14040000  (0 waits timed out)
+    reset   none
+    stop    [360: mean 24.20, median 24, 24..30] [360: mean 2143.13, median 2143, 2138..2150]
+    resume  [360: mean 529.25, median 529, 524..535]
+  NTSC 512  sysclk 1 reset at hb     T0_MODE 0003  360 lines  GPUSTAT 14040000  (0 waits timed out)
+    reset   [360: mean 530.33, median 530, 524..536]
+    stop    none
+    resume  none
+  NTSC 512  sysclk 2 count in hb     T0_MODE 0005  360 lines  GPUSTAT 94040000  (0 waits timed out)
+    reset   [360: mean 543.54, median 544, 526..557]
+    stop    [360: mean 543.54, median 544, 526..557]
+    resume  [360: mean 2143.98, median 2144, 2139..2150]
+  NTSC 512  sysclk 3 wait, free      T0_MODE 0007  360 lines  GPUSTAT 14040000  (0 waits timed out)
+    reset   none
+    stop    [360: mean 38.22, median 38, 38..44]
+    resume  [360: mean 529.13, median 529, 524..536]
+  NTSC 512  dot free                 T0_MODE 0100  360 lines  GPUSTAT 94040000  (0 waits timed out)
+    reset   none
+    stop    none
+    resume  none
+  NTSC 512  dot 0 pause in hb        T0_MODE 0101  360 lines  GPUSTAT 14040000  (0 waits timed out)
+    reset   none
+    stop    [327: mean 24.13, median 24, 24..29] [328: mean 2155.53, median 2156, 2139..2174]
+    resume  [327: mean 533.15, median 533, 498..540]
+  NTSC 512  dot 1 reset at hb        T0_MODE 0103  360 lines  GPUSTAT 14040000  (0 waits timed out)
+    reset   [1: mean 226.00, median 226, 226..226] [337: mean 535.95, median 536, 427..543] [1: mean 653.00, median 653, 653..653] [1: mean 756.00, median 756, 756..756] [1: mean 1054.00, median 1054, 1054..1054]
+    stop    [7: mean 24.00, median 24, 24..24] [6: mean 2154.83, median 2156, 2149..2165]
+    resume  [6: mean 534.83, median 535, 532..539]
+  NTSC 512  dot 2 count in hb        T0_MODE 0105  360 lines  GPUSTAT 14040000  (0 waits timed out)
+    reset   [174: mean 542.97, median 542, 530..557]
+    stop    [137: mean 544.58, median 543, 530..557] [1: mean 1378.00, median 1378, 1378..1378]
+    resume  [1: mean 946.00, median 946, 946..946] [1: mean 1123.00, median 1123, 1123..1123] [1: mean 1381.00, median 1381, 1381..1381] [135: mean 2144.65, median 2145, 2139..2151]
+  NTSC 512  dot 3 wait, free         T0_MODE 0107  360 lines  GPUSTAT 14040000  (0 waits timed out)
+    reset   [108: mean 66.30, median 66, 66..74] [1: mean 783.00, median 783, 783..783]
+    stop    [202: mean 53.21, median 66, 38..74] [1: mean 783.00, median 783, 783..783]
+    resume  [202: mean 533.16, median 533, 527..539]
+
+timer/t0-edges: Done.

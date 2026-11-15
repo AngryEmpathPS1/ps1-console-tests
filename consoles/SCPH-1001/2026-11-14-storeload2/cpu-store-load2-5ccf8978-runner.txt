@@ -1,0 +1,51 @@
+
+cpu/cpu-store-load2
+Loops of 64 turns in cached code, the GPU idle, cycles by Timer 2, five times each: a pair with n nops between, then four
+instructions off the bus; and the game's copy and send loops. No assertions.
+
+ram>ram   n 0   1048 955 954 954 954
+ram>ram   n 1   1021 954 947 947 947
+ram>ram   n 2   990 951 947 947 947
+ram>ram   n 3   990 963 956 956 956
+io>ram    n 0   732 699 702 702 702
+io>ram    n 1   725 699 699 699 699
+io>ram    n 2   790 763 754 754 754
+io>ram    n 3   846 826 827 827 827
+ram>io    n 0   678 637 634 634 634
+ram>io    n 1   676 666 666 666 666
+ram>io    n 2   729 702 700 700 700
+ram>io    n 3   799 761 754 754 754
+ram>>ram  n 0   486 434 434 434 434
+ram>>ram  n 1   533 497 497 497 497
+ram>>ram  n 2   599 560 560 560 560
+ram>>ram  n 3   663 625 625 625 625
+io>>io    n 0   479 434 434 434 434
+io>>io    n 1   519 495 495 495 495
+io>>io    n 2   585 560 560 560 560
+io>>io    n 3   650 625 625 625 625
+ld>ram    n 0   872 829 829 829 829
+ld>ram    n 1   993 959 959 959 959
+ld>ram    n 2   996 962 962 962 962
+ld>ram    n 3   987 954 954 954 954
+ld>ld     n 0   1126 1084 1084 1084 1084
+ld>ld     n 1   1174 1149 1149 1149 1149
+ld>ld     n 2   1249 1218 1218 1218 1218
+ld>ld     n 3   1255 1215 1215 1215 1215
+copy      n 0   1042 1000 1000 1000 1000
+send      n 0   833 818 818 818 818
+ld>io     n 0   804 762 762 762 762
+ld>io     n 1   922 889 889 889 889
+ld>io     n 2   924 885 885 885 885
+ld>io     n 3   915 885 885 885 885
+ld>ioD    n 0   862 822 822 822 822
+ld>ioD    n 1   919 883 883 883 883
+ld>ioD    n 2   991 955 955 955 955
+ld>ioD    n 3   976 957 957 957 957
+copyG     n 0   773 748 748 748 748
+copyN     n 0   1025 1007 1007 1007 1007
+copyB     n 0   1047 1003 1003 1003 1003
+sendS     n 0   774 756 756 756 756
+sendN     n 0   902 882 882 882 882
+sendR     n 0   1039 1004 1004 1004 1004
+
+cpu/cpu-store-load2: Done.

@@ -1,0 +1,138 @@
+
+spu/spu-statx-tail
+When SPUSTAT bits 7 and 9 rise after a DMA write: every change of SPUSTAT from the CHCR write to 4,000 cycles
+after CHCR clears, CHCR written D cycles after bit 11 falls (a sample is 768). No assertions.
+
+1F801014h at the start: 200931e1
+
+WARM-UP, the first watch of the run, a cold cache (32 halfwords, 200931E1h):
+  D   0 at 247  before 02a0  clear   186  rise7 +1609 rise9 +1609  landed  32 of  32  polls  89 x 47  | 288:0020 1795:02a0
+
+WRITE 32 halfwords, 1 block(s) of 16 words, 200931E1h:
+  D   0 at 147  before 02a0  clear   128  rise7 +1834 rise9 +1834  landed  32 of  32  polls  91 x 45  | 446:0020 1962:02a0
+  D   0 at 152  before 02a0  clear   128  rise7 +1878 rise9 +1878  landed  32 of  32  polls  91 x 45  | 490:0020 2006:02a0
+  D   0 at 152  before 02a0  clear   128  rise7 +1878 rise9 +1878  landed  32 of  32  polls  91 x 45  | 490:0020 2006:02a0
+  D  96 at 147  before 02a0  clear   128  rise7 +1834 rise9 +1834  landed  32 of  32  polls  91 x 45  | 446:0020 1962:02a0
+  D  96 at 147  before 02a0  clear   128  rise7 +1834 rise9 +1834  landed  32 of  32  polls  91 x 45  | 446:0020 1962:02a0
+  D  96 at 147  before 02a0  clear   128  rise7 +1834 rise9 +1834  landed  32 of  32  polls  91 x 45  | 446:0020 1962:02a0
+  D 192 at 267  before 02a0  clear   137  rise7 +1706 rise9 +1706  landed  32 of  32  polls  91 x 45  | 323:0020 1843:02a0
+  D 192 at 254  before 02a0  clear   133  rise7 +1746 rise9 +1746  landed  32 of  32  polls  91 x 45  | 319:0020 1879:02a0
+  D 192 at 254  before 02a0  clear   133  rise7 +1746 rise9 +1746  landed  32 of  32  polls  91 x 45  | 319:0020 1879:02a0
+  D 288 at 353  before 02a0  clear   128  rise7 +1658 rise9 +1658  landed  32 of  32  polls  91 x 45  | 226:0020 1786:02a0
+  D 288 at 353  before 02a0  clear   128  rise7 +1658 rise9 +1658  landed  32 of  32  polls  91 x 45  | 226:0020 1786:02a0
+  D 288 at 353  before 02a0  clear   128  rise7 +1658 rise9 +1658  landed  32 of  32  polls  91 x 45  | 226:0020 1786:02a0
+  D 384 at 455  before 02a0  clear   128  rise7 +1528 rise9 +1528  landed  32 of  32  polls  91 x 45  | 128:0020 1656:02a0
+  D 384 at 455  before 02a0  clear   128  rise7 +1528 rise9 +1528  landed  32 of  32  polls  91 x 45  | 128:0020 1656:02a0
+  D 384 at 455  before 02a0  clear   128  rise7 +1528 rise9 +1528  landed  32 of  32  polls  91 x 45  | 128:0020 1656:02a0
+  D 480 at 556  before 02a0  clear   134  rise7 +1438 rise9 +1438  landed  32 of  32  polls  91 x 45  | 804:0020 1572:02a0
+  D 480 at 556  before 02a0  clear   134  rise7 +1438 rise9 +1438  landed  32 of  32  polls  91 x 45  | 804:0020 1572:02a0
+  D 480 at 556  before 02a0  clear   134  rise7 +1438 rise9 +1438  landed  32 of  32  polls  91 x 45  | 804:0020 1572:02a0
+  D 576 at 633  before 02a0  clear   131  rise7 +1394 rise9 +1394  landed  32 of  32  polls  91 x 45  | 757:0020 1525:02a0
+  D 576 at 633  before 02a0  clear   131  rise7 +1394 rise9 +1394  landed  32 of  32  polls  91 x 45  | 757:0020 1525:02a0
+  D 576 at 633  before 02a0  clear   131  rise7 +1394 rise9 +1394  landed  32 of  32  polls  91 x 45  | 757:0020 1525:02a0
+  D 672 at 733  before 02a0  clear   128  rise7 +1263 rise9 +1263  landed  32 of  32  polls  91 x 45  | 622:0020 1391:02a0
+  D 672 at 733  before 02a0  clear   128  rise7 +1263 rise9 +1263  landed  32 of  32  polls  91 x 45  | 622:0020 1391:02a0
+  D 672 at 733  before 02a0  clear   128  rise7 +1263 rise9 +1263  landed  32 of  32  polls  91 x 45  | 622:0020 1391:02a0
+  SUMMARY of 24: clear 128..137; rise7 +1263..+1878 (24 rose); rise9 +1263..+1878 (24 rose); bit 10 up in 0; landed 32..32 of 32
+
+WRITE 64 halfwords, 2 block(s) of 16 words, 200931E1h:
+  D   0 at 147  before 02a0  clear  1333  rise7 +1418 rise9 +1418  landed  64 of  64  polls 114 x 47  | 434:0020 2751:02a0
+  D   0 at 147  before 02a0  clear  1346  rise7 +1418 rise9 +1418  landed  64 of  64  polls 114 x 47  | 434:0020 2764:02a0
+  D   0 at 147  before 02a0  clear  1346  rise7 +1418 rise9 +1418  landed  64 of  64  polls 114 x 47  | 434:0020 2764:02a0
+  D  96 at 147  before 02a0  clear  1346  rise7 +1418 rise9 +1418  landed  64 of  64  polls 114 x 47  | 434:0020 2764:02a0
+  D  96 at 147  before 02a0  clear  1346  rise7 +1418 rise9 +1418  landed  64 of  64  polls 114 x 47  | 434:0020 2764:02a0
+  D  96 at 147  before 02a0  clear  1346  rise7 +1418 rise9 +1418  landed  64 of  64  polls 114 x 47  | 434:0020 2764:02a0
+  D 192 at 249  before 02a0  clear  1342  rise7 +1330 rise9 +1330  landed  64 of  64  polls 114 x 47  | 332:0020 2672:02a0
+  D 192 at 249  before 02a0  clear  1342  rise7 +1330 rise9 +1330  landed  64 of  64  polls 114 x 47  | 332:0020 2672:02a0
+  D 192 at 249  before 02a0  clear  1342  rise7 +1330 rise9 +1330  landed  64 of  64  polls 114 x 47  | 332:0020 2672:02a0
+  D 288 at 352  before 02a0  clear  1245  rise7 +1286 rise9 +1286  landed  64 of  64  polls 112 x 47  | 233:0020 2531:02a0
+  D 288 at 352  before 02a0  clear  1245  rise7 +1286 rise9 +1286  landed  64 of  64  polls 112 x 47  | 233:0020 2531:02a0
+  D 288 at 352  before 02a0  clear  1245  rise7 +1286 rise9 +1286  landed  64 of  64  polls 112 x 47  | 233:0020 2531:02a0
+  D 384 at 454  before 02a0  clear  1138  rise7 +1286 rise9 +1286  landed  64 of  64  polls 110 x 47  | 128:0020 2424:02a0
+  D 384 at 454  before 02a0  clear  1138  rise7 +1286 rise9 +1286  landed  64 of  64  polls 110 x 47  | 128:0020 2424:02a0
+  D 384 at 454  before 02a0  clear  1138  rise7 +1286 rise9 +1286  landed  64 of  64  polls 110 x 47  | 128:0020 2424:02a0
+  D 480 at 556  before 02a0  clear  1151  rise7 +1198 rise9 +1198  landed  64 of  64  polls 110 x 47  | 797:0020 2349:02a0
+  D 480 at 556  before 02a0  clear  1151  rise7 +1198 rise9 +1198  landed  64 of  64  polls 110 x 47  | 797:0020 2349:02a0
+  D 480 at 556  before 02a0  clear  1151  rise7 +1198 rise9 +1198  landed  64 of  64  polls 110 x 47  | 797:0020 2349:02a0
+  D 576 at 624  before 02a0  clear  1140  rise7 +1902 rise9 +1902  landed  64 of  64  polls 110 x 47  | 740:0020 3042:02a0
+  D 576 at 624  before 02a0  clear  1140  rise7 +1902 rise9 +1902  landed  64 of  64  polls 110 x 47  | 740:0020 3042:02a0
+  D 576 at 624  before 02a0  clear  1140  rise7 +1902 rise9 +1902  landed  64 of  64  polls 110 x 47  | 740:0020 3042:02a0
+  D 672 at 740  before 02a0  clear  1140  rise7 +1814 rise9 +1814  landed  64 of  64  polls 110 x 47  | 638:0020 2954:02a0
+  D 672 at 740  before 02a0  clear  1140  rise7 +1814 rise9 +1814  landed  64 of  64  polls 110 x 47  | 638:0020 2954:02a0
+  D 672 at 740  before 02a0  clear  1140  rise7 +1814 rise9 +1814  landed  64 of  64  polls 110 x 47  | 638:0020 2954:02a0
+  SUMMARY of 24: clear 1138..1346; rise7 +1198..+1902 (24 rose); rise9 +1198..+1902 (24 rose); bit 10 up in 0; landed 64..64 of 64
+
+WRITE 128 halfwords, 4 block(s) of 16 words, 200931E1h:
+  D   0 at 147  before 02a0  clear  3500  rise7 +1578 rise9 +1578  landed 128 of 128  polls 153 x 49  | 434:0020 5078:02a0
+  D   0 at 147  before 02a0  clear  3500  rise7 +1578 rise9 +1578  landed 128 of 128  polls 153 x 49  | 434:0020 5078:02a0
+  D   0 at 147  before 02a0  clear  3500  rise7 +1578 rise9 +1578  landed 128 of 128  polls 153 x 49  | 434:0020 5078:02a0
+  D  96 at 147  before 02a0  clear  3500  rise7 +1578 rise9 +1578  landed 128 of 128  polls 153 x 49  | 434:0020 5078:02a0
+  D  96 at 147  before 02a0  clear  3500  rise7 +1578 rise9 +1578  landed 128 of 128  polls 153 x 49  | 434:0020 5078:02a0
+  D  96 at 147  before 02a0  clear  3500  rise7 +1578 rise9 +1578  landed 128 of 128  polls 153 x 49  | 434:0020 5078:02a0
+  D 192 at 249  before 02a0  clear  3496  rise7 +1482 rise9 +1482  landed 128 of 128  polls 153 x 49  | 332:0020 4978:02a0
+  D 192 at 249  before 02a0  clear  3496  rise7 +1482 rise9 +1482  landed 128 of 128  polls 153 x 49  | 332:0020 4978:02a0
+  D 192 at 249  before 02a0  clear  3496  rise7 +1482 rise9 +1482  landed 128 of 128  polls 153 x 49  | 332:0020 4978:02a0
+  D 288 at 363  before 02a0  clear  3519  rise7 +1374 rise9 +1374  landed 128 of 128  polls 154 x 49  | 284:0020 4893:02a0
+  D 288 at 363  before 02a0  clear  3519  rise7 +1374 rise9 +1374  landed 128 of 128  polls 154 x 49  | 284:0020 4893:02a0
+  D 288 at 363  before 02a0  clear  3519  rise7 +1374 rise9 +1374  landed 128 of 128  polls 154 x 49  | 284:0020 4893:02a0
+  D 384 at 431  before 02a0  clear  3468  rise7 +1330 rise9 +1330  landed 128 of 128  polls 153 x 49  | 179:0020 4798:02a0
+  D 384 at 431  before 02a0  clear  3468  rise7 +1330 rise9 +1330  landed 128 of 128  polls 153 x 49  | 179:0020 4798:02a0
+  D 384 at 431  before 02a0  clear  3468  rise7 +1330 rise9 +1330  landed 128 of 128  polls 153 x 49  | 179:0020 4798:02a0
+  D 480 at 533  before 02a0  clear  3404  rise7 +1286 rise9 +1286  landed 128 of 128  polls 152 x 48  | 128:0020 4690:02a0
+  D 480 at 533  before 02a0  clear  3404  rise7 +1286 rise9 +1286  landed 128 of 128  polls 152 x 48  | 128:0020 4690:02a0
+  D 480 at 533  before 02a0  clear  3404  rise7 +1286 rise9 +1286  landed 128 of 128  polls 152 x 48  | 128:0020 4690:02a0
+  D 576 at 638  before 02a0  clear  3314  rise7 +1305 rise9 +1305  landed 128 of 128  polls 149 x 49  | 743:0020 4619:02a0
+  D 576 at 638  before 02a0  clear  3314  rise7 +1305 rise9 +1305  landed 128 of 128  polls 149 x 49  | 743:0020 4619:02a0
+  D 576 at 638  before 02a0  clear  3314  rise7 +1305 rise9 +1305  landed 128 of 128  polls 149 x 49  | 743:0020 4619:02a0
+  D 672 at 740  before 02a0  clear  3295  rise7 +1965 rise9 +1965  landed 128 of 128  polls 149 x 49  | 638:0020 5260:02a0
+  D 672 at 740  before 02a0  clear  3295  rise7 +1965 rise9 +1965  landed 128 of 128  polls 149 x 49  | 638:0020 5260:02a0
+  D 672 at 740  before 02a0  clear  3295  rise7 +1965 rise9 +1965  landed 128 of 128  polls 149 x 49  | 638:0020 5260:02a0
+  SUMMARY of 24: clear 3295..3519; rise7 +1286..+1965 (24 rose); rise9 +1286..+1965 (24 rose); bit 10 up in 0; landed 128..128 of 128
+
+DELAY 32 halfwords, 220931E1h:
+  D   0 at 147  before 02a0  clear   192  rise7 +1790 rise9 +1790  landed  32 of  32  polls  91 x 46  | 466:0020 1982:02a0
+  D   0 at 147  before 02a0  clear   192  rise7 +1796 rise9 +1796  landed  32 of  32  polls  91 x 46  | 422:0020 1988:02a0
+  D  96 at 152  before 02a0  clear   192  rise7 +1834 rise9 +1834  landed  32 of  32  polls  91 x 46  | 466:0020 2026:02a0
+  D  96 at 152  before 02a0  clear   192  rise7 +1840 rise9 +1840  landed  32 of  32  polls  91 x 46  | 466:0020 2032:02a0
+  D 192 at 254  before 02a0  clear   193  rise7 +1702 rise9 +1702  landed  32 of  32  polls  91 x 46  | 379:0020 1895:02a0
+  D 192 at 254  before 02a0  clear   193  rise7 +1702 rise9 +1702  landed  32 of  32  polls  91 x 46  | 379:0020 1895:02a0
+  D 288 at 359  before 02a0  clear   194  rise7 +1614 rise9 +1614  landed  32 of  32  polls  91 x 46  | 292:0020 1808:02a0
+  D 288 at 359  before 02a0  clear   194  rise7 +1614 rise9 +1614  landed  32 of  32  polls  91 x 46  | 292:0020 1808:02a0
+  D 384 at 461  before 02a0  clear   192  rise7 +1528 rise9 +1528  landed  32 of  32  polls  91 x 46  | 192:0020 1720:02a0
+  D 384 at 461  before 02a0  clear   192  rise7 +1528 rise9 +1528  landed  32 of  32  polls  91 x 46  | 192:0020 1720:02a0
+  D 480 at 529  before 02a0  clear   197  rise7 +1440 rise9 +1440  landed  32 of  32  polls  91 x 46  | 197:0020 1637:02a0
+  D 480 at 529  before 02a0  clear   197  rise7 +1440 rise9 +1440  landed  32 of  32  polls  91 x 46  | 197:0020 1637:02a0
+  D 576 at 632  before 02a0  clear   192  rise7 +1356 rise9 +1356  landed  32 of  32  polls  91 x 46  | 774:0020 1548:02a0
+  D 576 at 632  before 02a0  clear   192  rise7 +1356 rise9 +1356  landed  32 of  32  polls  91 x 46  | 774:0020 1548:02a0
+  D 672 at 740  before 02a0  clear   192  rise7 +1218 rise9 +1218  landed  32 of  32  polls  91 x 46  | 642:0020 1410:02a0
+  D 672 at 740  before 02a0  clear   192  rise7 +1218 rise9 +1218  landed  32 of  32  polls  91 x 46  | 642:0020 1410:02a0
+  SUMMARY of 16: clear 192..197; rise7 +1218..+1840 (16 rose); rise9 +1218..+1840 (16 rose); bit 10 up in 0; landed 32..32 of 32
+
+MANUAL the control, 32 halfwords queued, SPUCNT mode 1 written at the start, no CHCR (clear reads 0):
+  D   0 at 221  before 0000  clear     0  rise7 - rise9 -  landed  32 of  32  polls  90 x 44  | 433:0410 1949:0010
+  D   0 at 169  before 0000  clear     0  rise7 - rise9 -  landed  32 of  32  polls  90 x 44  | 428:0410 1994:0010
+  D   0 at 172  before 0000  clear     0  rise7 - rise9 -  landed  32 of  32  polls  90 x 44  | 472:0410 1240:0010
+  D 288 at 368  before 0000  clear     0  rise7 - rise9 -  landed  32 of  32  polls  90 x 44  | 296:0410 1812:0010
+  D 288 at 365  before 0000  clear     0  rise7 - rise9 -  landed  32 of  32  polls  90 x 44  | 257:0410 1778:0010
+  D 288 at 368  before 0000  clear     0  rise7 - rise9 -  landed  32 of  32  polls  90 x 44  | 296:0410 1812:0010
+  SUMMARY of 6: clear 0..0; rise7 never; rise9 never; bit 10 up in 6; landed 32..32 of 32
+
+STOP psx-spx's recipe: CHCR clear (cycles from the write), bit 7 read 1 (cycles after that, -1 never), then Stop:
+   32 halfwords D   0: clear   153  bit 7 at  1613  landed  32 of  32
+   32 halfwords D  96: clear    37  bit 7 at    35  landed   5 of  32
+   32 halfwords D 192: clear    37  bit 7 at    35  landed   1 of  32
+   32 halfwords D 288: clear    37  bit 7 at    35  landed   1 of  32
+   32 halfwords D 384: clear    37  bit 7 at  1491  landed  32 of  32
+   32 halfwords D 480: clear    37  bit 7 at  1438  landed  32 of  32
+   32 halfwords D 576: clear    42  bit 7 at    35  landed   6 of  32
+   32 halfwords D 672: clear    37  bit 7 at    35  landed   6 of  32
+  128 halfwords D   0: clear  3521  bit 7 at  1389  landed 128 of 128
+  128 halfwords D  96: clear  3497  bit 7 at  1407  landed 128 of 128
+  128 halfwords D 192: clear  3501  bit 7 at  1288  landed 128 of 128
+  128 halfwords D 288: clear  3467  bit 7 at  1297  landed 128 of 128
+  128 halfwords D 384: clear  3394  bit 7 at  1297  landed 128 of 128
+  128 halfwords D 480: clear  3308  bit 7 at  1237  landed 128 of 128
+  128 halfwords D 576: clear  3234  bit 7 at  1240  landed 128 of 128
+  128 halfwords D 672: clear  3307  bit 7 at  1814  landed 128 of 128
+
+spu/spu-statx-tail: Done.

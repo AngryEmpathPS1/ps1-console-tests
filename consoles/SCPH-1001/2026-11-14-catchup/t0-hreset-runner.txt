@@ -1,0 +1,47 @@
+
+timer/t0-hreset
+Timer 0's reset by hblank against Timer 1's tick and GPUSTAT bit 31's toggle, cycles. No assertions.
+
+  found: GPUSTAT 14040000
+  NTSC 512  260h..C60h  sysclk reset       T0_MODE 0003  GPUSTAT 94040000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1627.33, median 1627, 1622..1633
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1769.97, median 1770, 1765..1776
+    C toggle - tick (T2):  under 1000 300: mean 142.66, median 139, 139..150 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 535.99, median 536, 533..536 | from 1000 none
+  NTSC 512  260h..A60h  sysclk reset       T0_MODE 0003  GPUSTAT 94040000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1311.78, median 1312, 1306..1317
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1769.96, median 1770, 1765..1776
+    C toggle - tick (T2):  under 1000 300: mean 458.18, median 458, 458..469 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 851.08, median 848, 848..860 | from 1000 none
+  NTSC 256  260h..C60h  sysclk reset       T0_MODE 0003  GPUSTAT 94000000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1627.46, median 1628, 1622..1633
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1760.26, median 1760, 1755..1766
+    C toggle - tick (T2):  under 1000 300: mean 132.80, median 128, 128..139 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 536.00, median 536, 536..536 | from 1000 none
+  NTSC 320  260h..C60h  sysclk reset       T0_MODE 0003  GPUSTAT 94020000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1627.49, median 1628, 1622..1633
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1760.59, median 1760, 1755..1766
+    C toggle - tick (T2):  under 1000 300: mean 133.09, median 128, 128..139 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 536.00, median 536, 536..536 | from 1000 none
+  NTSC 368  260h..C60h  sysclk reset       T0_MODE 0003  GPUSTAT 94010000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1637.48, median 1638, 1632..1643
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1766.99, median 1767, 1761..1772
+    C toggle - tick (T2):  under 1000 300: mean 129.50, median 128, 128..139 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 524.92, median 524, 524..536 | from 1000 none
+  NTSC 640  260h..C60h  sysclk reset       T0_MODE 0003  GPUSTAT 94060000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1627.21, median 1627, 1622..1633
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1770.43, median 1770, 1765..1776
+    C toggle - tick (T2):  under 1000 300: mean 143.21, median 139, 139..150 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 536.00, median 536, 536..536 | from 1000 none
+  NTSC 320  260h..C60h  dotclk reset       T0_MODE 0103  GPUSTAT 94020000  (0 waits timed out)
+    A T0 at the tick:      under 1000 300: mean 320.30, median 320, 319..321 | from 1000 none
+    B T0 at the toggle:    under 1000 300: mean 346.25, median 346, 345..347 | from 1000 none
+    C toggle - tick (T2):  under 1000 300: mean 133.75, median 139, 128..139 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 540.36, median 536, 536..548 | from 1000 none
+  NTSC 320  260h..C60h  free (control)     T0_MODE 0000  GPUSTAT 94020000  (0 waits timed out)
+    A T0 at the tick:      under 1000 none | from 1000 300: mean 1627.64, median 1628, 1622..1633
+    B T0 at the toggle:    under 1000 none | from 1000 300: mean 1760.55, median 1760, 1755..1766
+    C toggle - tick (T2):  under 1000 300: mean 132.91, median 128, 128..139 | from 1000 none
+    D reset - tick (T2):   under 1000 300: mean 536.00, median 536, 536..536 | from 1000 none
+
+timer/t0-hreset: Done.

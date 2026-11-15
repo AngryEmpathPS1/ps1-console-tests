@@ -1,0 +1,11 @@
+PREDICTED - this core v0.377.348 (git 4bb0473a), node tools/hwrunner.js mdec-storerate --emu, 2026-11-14
+
+
+mdec/mdec-storerate
+33 back-to-back stores to an on-die register or RAM, warm (Timer 2, system clock). No assertions - compare against your emulator.
+
+  MDEC 1F801820h   G 0:   84..  97 (8004ffff)  G 1:   87..  87 (8004ffff)  G 2:  147.. 150 (8004ffff)  G 4:  186.. 186 (8004ffff)
+  Timer0 target    G 0:   84..  84  G 1:   87..  87  G 2:  120.. 120  G 4:  186.. 186
+  RAM              G 0:   93..  93  G 1:  137.. 147  G 2:  125.. 132  G 4:  189.. 191
+
+mdec/mdec-storerate: Done.
