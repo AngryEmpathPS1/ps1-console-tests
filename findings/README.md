@@ -40,7 +40,7 @@ Which text says what, and what the logs show. Details are in the finding named.
 | CPU-14 | dev | a RAM load with LDSCH off costs about 2 more | 4 more (one unit) |
 | CPU-18 | all | a read waits for a queued store to the same location | it waits for a queued store within its own 64 bytes |
 | CPU-37 | stable, dev | CAUSE.CE unchanged except on Coprocessor Unusable | opcode bits 26-27 after a bus error, as nocash says |
-| GPU 2 | all | the old GPU fails DMA to VRAM above 10h-word blocks | none lost at 8 to 32 words; at 64 none in our 47 runs, but some on a re-run (SCPH-1000 3 of 6, each SCPH-5501 1 of 9) |
+| GPU 2 | all | the old GPU fails DMA to VRAM above 10h-word blocks | none lost at 8 to 32 words; at 64 none in our 101 runs (25 on the old GPU), but some on a re-run (SCPH-1000 3 of 6, each SCPH-5501 1 of 9) |
 | GPU 9 | all | GPUSTAT.31 always zero during VBlank | the low bit of the display Y |
 | GPU 24 | nocash | old GPUs run at about 60% of the new speed | 1.0 to 3.0 times as slow, by primitive |
 | GPU 34 | nocash | new-GPU masked copy figures | +0.2455 cycle a pixel from 64 wide |
