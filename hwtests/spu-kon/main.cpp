@@ -10,7 +10,7 @@
  * fixed latency after it; the same every case) - then the game's phase waited out, the key-on stored, and ENVX read at each of the
  * game's delays from that store (a busy-wait on Timer 2). Two passes.
  * The game's own stores to that voice after the key-on (its registers, its key-off) are replayed at their delays too.
- *   K <pass> <case> v <voice> phase <p> envx <value at each delay ...>
+ *   K <pass> <case> v <voice> phase <p> sync <T2> b11 <T2> kon <T2> envx <value at each delay ...>   (pass 2: a/b, b 384 cycles after a)
  * The game's own values (the core's, as it gave them to the game) are in spukon-<name>.json beside each case.
  * No assertions. THE RULE: run it here first: `node tools/hwrunner.js <exe> --emu --lock=0 --raw`.
  */
@@ -56,8 +56,10 @@ int main() {
     R16(0x1F801124u) = 0; lastT = T2; clk = 0;
     SPU(0x180) = 0; SPU(0x182) = 0;
     SPU(0x1A2) = 0xFFFE;   /* the reverb's work area out of the way (hwtests/spu-replay's lesson) */
-    static uint16_t vals[24];
-    for (int pass = 0; pass < 2; pass++) {
+    static uint16_t vals[24], vals2[24];
+    /* pass 2 (the SPU session, 2026-11-15): each read twice, 384 cycles apart - a pair across a step says which side of it the
+     * console is on, where a once-a-frame read cannot */
+    for (int pass = 0; pass < 3; pass++) {
         const uint32_t* c = tb + 3;
         for (uint32_t i = 0; i < nC; i++) {
             const uint32_t voice = c[0] & 23, phase = c[1] % 768; const uint32_t* regs = c + 2; const uint32_t start = c[10], nR = c[11] < 24 ? c[11] : 24;
@@ -73,8 +75,10 @@ int main() {
             I_STAT = ~0x200u;
             spucnt = 0xC040; SPU(0x1AA) = spucnt;
             uint32_t t0 = 0;
-            { const uint32_t ts = now(); for (;;) { const uint32_t x = now(); if (I_STAT & 0x200u) { t0 = x; break; } if (x - ts > 2000000u) break; } }
-            while (now() - t0 < 768u * 4 + phase) {}
+            uint32_t tb11 = 0; uint16_t b11 = SPU(0x1AE) & 0x800;   /* SPUSTAT bit 11 (the capture half) watched from here: its last turn before the key-on */
+            { const uint32_t ts = now(); for (;;) { const uint32_t x = now(); const uint16_t y = SPU(0x1AE) & 0x800; if (y != b11) { b11 = y; tb11 = x; } if (I_STAT & 0x200u) { t0 = x; break; } if (x - ts > 2000000u) break; } }
+            /* the wait to the game's phase, watching SPUSTAT bit 11 (the capture half) for its last turn before the key-on */
+            while (now() - t0 < 768u * 4 + phase) { const uint16_t y = SPU(0x1AE) & 0x800; if (y != b11) { b11 = y; tb11 = now(); } }
             if (voice < 16) SPU(0x188) = (uint16_t)(1u << voice); else SPU(0x18A) = (uint16_t)(1u << (voice - 16));
             const uint32_t tk = now();
             /* the reads and the game's own stores to the voice, in time order */
@@ -85,13 +89,16 @@ int main() {
                     else if (o != 0xC) SPU(vb + o) = (uint16_t)v;
                     e++; continue; }
                 while (now() - tk < dl[k]) {}
-                vals[k++] = SPU(vb + 0xC);
+                vals[k] = SPU(vb + 0xC);
+                if (pass == 2) { const uint32_t tr = now(); while (now() - tr < 384u) {} vals2[k] = SPU(vb + 0xC); }
+                k++;
             }
             if (voice < 16) SPU(0x18C) = (uint16_t)(1u << voice); else SPU(0x18E) = (uint16_t)(1u << (voice - 16));
             spucnt = 0xC000; SPU(0x1AA) = spucnt; I_STAT = ~0x200u;
             ExitCriticalSection();
-            printf("K %d %u v %u phase %u envx", pass, (unsigned)i, (unsigned)voice, (unsigned)phase);
-            for (uint32_t k = 0; k < nR; k++) printf(" %x", (unsigned)vals[k]);
+            /* the Timer 2 stamps (one clock through the run): the sync IRQ seen, bit 11's last turn before the key-on, the key-on store */
+            printf("K %d %u v %u phase %u sync %u b11 %u kon %u envx", pass, (unsigned)i, (unsigned)voice, (unsigned)phase, (unsigned)t0, (unsigned)tb11, (unsigned)tk);
+            for (uint32_t k = 0; k < nR; k++) { if (pass == 2) printf(" %x/%x", (unsigned)vals[k], (unsigned)vals2[k]); else printf(" %x", (unsigned)vals[k]); }
             printf("\n");
             EnterCriticalSection();
             c = ram + 1024;

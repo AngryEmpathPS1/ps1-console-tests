@@ -134,6 +134,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-otccold](2026-11-15-otccold/) | 1 | 0 |
 | [2026-11-15-otccold2](2026-11-15-otccold2/) | 1 | 0 |
 | [2026-11-15-otcthree](2026-11-15-otcthree/) | 1 | 0 |
+| [2026-11-15-spuenvxslot](2026-11-15-spuenvxslot/) | 2 | 0 |
 | [2026-11-15-spuirqslot](2026-11-15-spuirqslot/) | 2 | 0 |
 | [2026-11-15-spulatch3](2026-11-15-spulatch3/) | 4 | 0 |
 | [2026-11-15-spureadstart](2026-11-15-spureadstart/) | 6 | 0 |

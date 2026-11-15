@@ -157,6 +157,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-sprvb15](2026-11-15-sprvb15/) | 2 | 0 |
 | [2026-11-15-sprw1](2026-11-15-sprw1/) | 2 | 0 |
 | [2026-11-15-sprw2](2026-11-15-sprw2/) | 2 | 0 |
+| [2026-11-15-spuenvxslot](2026-11-15-spuenvxslot/) | 2 | 0 |
 | [2026-11-15-spuirqslot](2026-11-15-spuirqslot/) | 2 | 0 |
 | [2026-11-15-spulatch3](2026-11-15-spulatch3/) | 4 | 0 |
 | [2026-11-15-spureadstart](2026-11-15-spureadstart/) | 6 | 0 |

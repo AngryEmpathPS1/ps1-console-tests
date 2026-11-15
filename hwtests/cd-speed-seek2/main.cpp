@@ -1,6 +1,7 @@
 /*
  * cdrom/cd-speed-seek2 - the head's path through a seek written right after a speed change (2026-11-15). Any pressed data disc
- * of 12 minutes or more (The X-Files, Doom (USA)).
+ * whose DATA runs 12 minutes or more (The X-Files). On Doom (USA), whose data track ends at 08:01, cells C1 and N1 fail (a SeekL
+ * into an audio track: ten waits run out) and the other four stand.
  *
  * WHY. hwtests/cd-speed-seek on the second SCPH-5501 x3 (The X-Files): a ReadN 21,004 sectors back, written 0.3 ms after a
  * Setmode to double speed, reads its first sector 22.09M cycles on at the median and the same read with no change 9.12M - the

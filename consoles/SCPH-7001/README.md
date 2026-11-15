@@ -48,6 +48,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-dmamap-r6](2026-11-15-dmamap-r6/) | 1 | 0 |
 | [2026-11-15-dmamap-v2-r1](2026-11-15-dmamap-v2-r1/) | 1 | 0 |
 | [2026-11-15-dmamap-v2-r2](2026-11-15-dmamap-v2-r2/) | 1 | 0 |
+| [2026-11-15-doom](2026-11-15-doom/) | 12 | 6 |
 | [2026-11-15-gpu-a0ff9](2026-11-15-gpu-a0ff9/) | 1 | 0 |
 | [2026-11-15-peek-boot](2026-11-15-peek-boot/) | 1 | 0 |
 | [2026-11-15-spureadstart](2026-11-15-spureadstart/) | 3 | 0 |
