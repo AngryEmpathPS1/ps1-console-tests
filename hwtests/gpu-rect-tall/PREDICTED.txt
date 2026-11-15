@@ -1,0 +1,46 @@
+gpu-rect-tall - PREDICTED, written 2026-11-15 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. Is a flat rectangle's row under 8 wide the same at 128 rows as at 16? v0.377.352 refitted those rows with
+the last write's tail on 1, 2, 3 and 16 rows (a row 4.5 cycles to 3 wide, 4 + half a cycle a pair after; before it
+4.06 and 3.625 + 0.5625 a pair around a set-up 4 too long). hwtests/gpu-version's polled 3 x 128 reads 724 cold / 654 warm
+on the consoles, 626 / 652 on v0.377.351 and 758 / 693 on v0.377.352 - and tools/modeltest.js's check on its 64 x 64 (2,296
+on the consoles, +-5%) went from 2,390 to 2,422 with it. And: what a GP0(00h) word ahead of a draw costs it.
+
+v0.377.353 (tools/hwrunner.js gpu-rect-tall --emu): D with three words, with four; v0.377.351's beside it:
+  1 x  16 : 89 89      (v0.377.351: 87 87)
+  1 x  32 : 160 160      (v0.377.351: 152 152)
+  1 x  64 : 304 304      (v0.377.351: 281 281)
+  1 x 128 : 590 590      (v0.377.351: 540 540)
+  2 x  16 : 89 89      (v0.377.351: 90 90)
+  2 x  32 : 160 160      (v0.377.351: 156 156)
+  2 x  64 : 304 304      (v0.377.351: 290 290)
+  2 x 128 : 590 590      (v0.377.351: 556 556)
+  3 x  16 : 89 89      (v0.377.351: 90 90)
+  3 x  32 : 160 160      (v0.377.351: 156 156)
+  3 x  64 : 304 304      (v0.377.351: 290 290)
+  3 x 128 : 590 590      (v0.377.351: 556 556)
+  4 x  16 : 98 98      (v0.377.351: 98 98)
+  4 x  32 : 178 178      (v0.377.351: 174 174)
+  4 x  64 : 337 337      (v0.377.351: 325 325)
+  4 x 128 : 656 656      (v0.377.351: 628 628)
+  6 x  16 : 106 106      (v0.377.351: 107 107)
+  6 x  32 : 194 194      (v0.377.351: 192 192)
+  6 x  64 : 369 369      (v0.377.351: 361 361)
+  6 x 128 : 720 720      (v0.377.351: 700 700)
+  8 x  16 : 117 117      (v0.377.351: 119 119)
+  8 x  32 : 213 213      (v0.377.351: 215 215)
+  8 x  64 : 404 404      (v0.377.351: 406 406)
+  8 x 128 : 788 788      (v0.377.351: 790 790)
+ 16 x  16 : 183 183      (v0.377.351: 183 183)
+ 16 x  32 : 342 342      (v0.377.351: 342 342)
+ 16 x  64 : 662 662      (v0.377.351: 662 662)
+ 16 x 128 : 1301 1301      (v0.377.351: 1301 1301)
+ 64 x  16 : 569 569      (v0.377.351: 569 569)
+ 64 x  64 : 2208 2208      (v0.377.351: 2208 2208)
+
+THE TWO CORES PART at 1 .. 6 wide past 16 rows: 3 x 128 590 here against v0.377.351's 556, 1 x 128 590 / 540, 4 x 128
+656 / 628. They agree at 16 rows (the SCPH-9001's 88 90 99 108 117 at W 1 2 4 6 8), from 8 wide up, and on 64 x 64
+(2,208 both: the lander did not move it - gpu-version's +32 is the scan-out event it meets behind a longer 3 x 128).
+THIS CORE counts a GP0(00h) word ahead as nothing (the two columns alike).
+
+WHAT THE CONSOLES DECIDE: the 128-row column at W 1 .. 6 (which core's row), and the second column less the first.

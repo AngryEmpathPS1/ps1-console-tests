@@ -1,0 +1,109 @@
+
+sio/card-fetch2
+A memory card's whole read, byte by byte (READ ONLY): cycles from each byte's write (Timer 2 at the system clock),
+an /ACK seen by its level (JOY_STAT bit 7) or by its latch alone (bit 9, "latch only": its pulse unknown).
+There are no assertions - compare against your emulator.
+
+port 1: no card (no /ACK to 81h)
+port 2, frame 0: checksum ok 8 of 8; end bytes 47 47 47 47 47 47 47 47
+  byte   1 -> ffh  /ACK +  1859..  1897 (8 of 8)  pulse  55..103
+  byte   2 -> 08h  /ACK +  1843..  1947 (8 of 8)  pulse  55..103
+  byte   3 -> 5ah  /ACK +  1804..  1899 (8 of 8)  pulse  55..113
+  byte   4 -> 5dh  /ACK +  1891..  1941 (8 of 8)  pulse  55..106
+  byte   5 -> 00h  /ACK +  1848..  1941 (8 of 8)  pulse  55..108
+  byte   6 -> 00h  /ACK +  1891..  1939 (8 of 8)  pulse  55..103
+  byte   7 -> 5ch  /ACK +  1891..  1941 (8 of 8)  pulse  55..103
+  byte   8 -> 5dh  /ACK + 19902.. 20049 (8 of 8)  pulse  55..103
+  byte   9 -> 00h  /ACK +  1891..  1939 (8 of 8)  pulse  55..103
+  byte  10 -> 00h  /ACK +  1891..  1943 (8 of 8)  pulse  55..103
+  data 11-138  /ACK +  1435..  1586 mean 1499 (1024 acks, 0 silent, 0 latch only)  pulse  55..109
+  byte 139 -> 00h  /ACK +  1483..  1493 (8 of 8)  pulse  55..103
+  byte 140 -> 47h  no /ACK (8)
+port 2, frame 1: checksum ok 8 of 8; end bytes 47 47 47 47 47 47 47 47
+  byte   1 -> ffh  /ACK +  1888..  1960 (8 of 8)  pulse  55.. 60
+  byte   2 -> 08h  /ACK +  1888..  1946 (8 of 8)  pulse  55.. 61
+  byte   3 -> 5ah  /ACK +  1850..  1896 (8 of 8)  pulse  55..103
+  byte   4 -> 5dh  /ACK +  1846..  1947 (8 of 8)  pulse  55..107
+  byte   5 -> 00h  /ACK +  1851..  1900 (8 of 8)  pulse  55..103
+  byte   6 -> 00h  /ACK +  1844..  1945 (8 of 8)  pulse  55..103
+  byte   7 -> 5ch  /ACK +  1795..  1943 (8 of 8)  pulse  55..107
+  byte   8 -> 5dh  /ACK + 19958.. 20016 (8 of 8)  pulse  55..103
+  byte   9 -> 00h  /ACK +  1891..  1901 (8 of 8)  pulse  55..103
+  byte  10 -> 01h  /ACK +  1846..  1902 (8 of 8)  pulse  55..103
+  data 11-138  /ACK +  1435..  1579 mean 1499 (1024 acks, 0 silent, 0 latch only)  pulse  55..109
+  byte 139 -> 01h  /ACK +  1445..  1490 (8 of 8)  pulse  55..103
+  byte 140 -> 47h  no /ACK (8)
+port 2, frame 2: checksum ok 8 of 8; end bytes 47 47 47 47 47 47 47 47
+  byte   1 -> ffh  /ACK +  1847..  1959 (8 of 8)  pulse  55..103
+  byte   2 -> 08h  /ACK +  1854..  1946 (8 of 8)  pulse  55..106
+  byte   3 -> 5ah  /ACK +  1843..  1897 (8 of 8)  pulse  55..106
+  byte   4 -> 5dh  /ACK +  1845..  1944 (8 of 8)  pulse  55..106
+  byte   5 -> 00h  /ACK +  1848..  1899 (8 of 8)  pulse  55..103
+  byte   6 -> 00h  /ACK +  1852..  1945 (8 of 8)  pulse  55..103
+  byte   7 -> 5ch  /ACK +  1891..  1943 (8 of 8)  pulse  55..103
+  byte   8 -> 5dh  /ACK + 19922.. 20013 (8 of 8)  pulse  55..104
+  byte   9 -> 00h  /ACK +  1846..  1899 (8 of 8)  pulse  55..103
+  byte  10 -> 02h  /ACK +  1891..  1942 (8 of 8)  pulse  55..103
+  data 11-138  /ACK +  1435..  1579 mean 1497 (1024 acks, 0 silent, 0 latch only)  pulse  55..109
+  byte 139 -> 02h  /ACK +  1440..  1531 (8 of 8)  pulse  55..103
+  byte 140 -> 47h  no /ACK (8)
+port 2, frame 63: checksum ok 8 of 8; end bytes 47 47 47 47 47 47 47 47
+  byte   1 -> ffh  /ACK +  1888..  1959 (8 of 8)  pulse  55..103
+  byte   2 -> 08h  /ACK +  1894..  1943 (8 of 8)  pulse  55..103
+  byte   3 -> 5ah  /ACK +  1805..  1899 (8 of 8)  pulse  55..108
+  byte   4 -> 5dh  /ACK +  1849..  1944 (8 of 8)  pulse  55..103
+  byte   5 -> 00h  /ACK +  1848..  1944 (8 of 8)  pulse  55.. 55
+  byte   6 -> 00h  /ACK +  1891..  1947 (8 of 8)  pulse  55..105
+  byte   7 -> 5ch  /ACK +  1850..  1940 (8 of 8)  pulse  55..103
+  byte   8 -> 5dh  /ACK + 19966.. 20016 (8 of 8)  pulse  55..103
+  byte   9 -> 00h  /ACK +  1853..  1939 (8 of 8)  pulse  55..103
+  byte  10 -> 3fh  /ACK +  1891..  1940 (8 of 8)  pulse  55..103
+  data 11-138  /ACK +  1435..  1586 mean 1499 (1024 acks, 0 silent, 0 latch only)  pulse  55..109
+  byte 139 -> 3fh  /ACK +  1483..  1531 (8 of 8)  pulse  55..103
+  byte 140 -> 47h  no /ACK (8)
+port 2, frame 64: checksum ok 8 of 8; end bytes 47 47 47 47 47 47 47 47
+  byte   1 -> ffh  /ACK +  1888..  1962 (8 of 8)  pulse  55.. 56
+  byte   2 -> 08h  /ACK +  1888..  1946 (8 of 8)  pulse  55.. 61
+  byte   3 -> 5ah  /ACK +  1844..  1899 (8 of 8)  pulse  55..103
+  byte   4 -> 5dh  /ACK +  1843..  1944 (8 of 8)  pulse  55..106
+  byte   5 -> 00h  /ACK +  1843..  1901 (8 of 8)  pulse  55..108
+  byte   6 -> 00h  /ACK +  1847..  1942 (8 of 8)  pulse  55..103
+  byte   7 -> 5ch  /ACK +  1846..  1944 (8 of 8)  pulse  55..103
+  byte   8 -> 5dh  /ACK + 19963.. 20016 (8 of 8)  pulse  55..103
+  byte   9 -> 00h  /ACK +  1843..  1940 (8 of 8)  pulse  55..103
+  byte  10 -> 40h  /ACK +  1891..  1939 (8 of 8)  pulse  55..103
+  data 11-138  /ACK +  1435..  1579 mean 1498 (1024 acks, 0 silent, 0 latch only)  pulse  55..107
+  byte 139 -> 40h  /ACK +  1483..  1492 (8 of 8)  pulse  55..103
+  byte 140 -> 47h  no /ACK (8)
+port 2, frame 512: checksum ok 0 of 8; end bytes 47 47 47 47 47 47 47 47
+  byte   1 -> ffh  /ACK +  1888..  1962 (8 of 8)  pulse  55..107
+  byte   2 -> 08h  /ACK +  1888..  1946 (8 of 8)  pulse  55..103
+  byte   3 -> 5ah  /ACK +  1843..  1896 (8 of 8)  pulse  55..103
+  byte   4 -> 5dh  /ACK +  1891..  1943 (8 of 8)  pulse  55..103
+  byte   5 -> 00h  /ACK +  1843..  1897 (8 of 8)  pulse  55..103
+  byte   6 -> 00h  /ACK +  1847..  1939 (8 of 8)  pulse  55..107
+  byte   7 -> 5ch  /ACK +  1795..  1902 (8 of 8)  pulse  55..107
+  byte   8 -> 5dh  /ACK + 19956.. 20016 (8 of 8)  pulse  55..108
+  byte   9 -> 02h  /ACK +  1843..  1944 (8 of 8)  pulse  55..106
+  byte  10 -> 00h  /ACK +  1891..  1902 (8 of 8)  pulse  55..103
+  data 11-138  /ACK +  1435..  1583 mean 1498 (1024 acks, 0 silent, 0 latch only)  pulse  55..109
+  byte 139 -> 00h  /ACK +  1445..  1494 (8 of 8)  pulse  55..103
+  byte 140 -> 47h  no /ACK (8)
+port 2, frame 1023: checksum ok 0 of 8; end bytes 47 47 47 47 47 47 47 47
+  byte   1 -> ffh  /ACK +  1888..  1962 (8 of 8)  pulse  55..103
+  byte   2 -> 08h  /ACK +  1888..  1946 (8 of 8)  pulse  55..108
+  byte   3 -> 5ah  /ACK +  1844..  1902 (8 of 8)  pulse  55..108
+  byte   4 -> 5dh  /ACK +  1891..  1943 (8 of 8)  pulse  55..103
+  byte   5 -> 00h  /ACK +  1851..  1941 (8 of 8)  pulse  55..103
+  byte   6 -> 00h  /ACK +  1888..  1941 (8 of 8)  pulse  55..108
+  byte   7 -> 5ch  /ACK +  1846..  1941 (8 of 8)  pulse  55..103
+  byte   8 -> 5dh  /ACK + 19911.. 20052 (8 of 8)  pulse  55..108
+  byte   9 -> 03h  /ACK +  1843..  1902 (8 of 8)  pulse  55..103
+  byte  10 -> ffh  /ACK +  1852..  1940 (8 of 8)  pulse  55..103
+  data 11-138  /ACK +  1435..  1586 mean 1499 (1024 acks, 0 silent, 0 latch only)  pulse  55..109
+  byte 139 -> ffh  /ACK +  1439..  1495 (8 of 8)  pulse  55..103
+  byte 140 -> 47h  no /ACK (8)
+
+resolution: one pass of the polling loop, at most 48 cycles
+
+sio/card-fetch2: Done.

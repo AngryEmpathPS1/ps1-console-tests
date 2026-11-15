@@ -1,0 +1,31 @@
+ResetGraph:itb=8001273c,ehk=8001276c
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset5
+mdec-reset's one(), in a chosen order, every call printed. No assertions.
+
+ 0: A N    0: status 80040000  DMA0 done after 105 cycles
+ 1: A N    0: status 80040000  DMA0 done after 83 cycles
+ 2: A N    0: status 80040000  DMA0 done after 83 cycles
+ 3: A N    0: status 80040000  DMA0 done after 75 cycles
+ 4: A N    0: status 80040000  DMA0 done after 77 cycles
+ 5: A N    0: status 80040000  DMA0 done after 77 cycles
+ 6: A N    1: status 80040000  DMA0 done after 73 cycles
+ 7: A N    1: status 80040000  DMA0 done after 73 cycles
+ 8: A N    0: status 80040000  DMA0 done after 73 cycles
+ 9: A N    0: status 80040000  DMA0 done after 73 cycles
+10: A N 4096: status 80040000  DMA0 done after 75 cycles
+11: A N 4096: status 80040000  DMA0 done after 73 cycles
+12: A N    0: status 80040000  DMA0 done after 73 cycles
+13: A N    0: status 80040000  DMA0 done after 73 cycles
+14: B N    0: status b004001f  DMA0 done after 73 cycles
+15: B N    0: status b004001f  DMA0 done after 73 cycles
+16: A N    0: status 80040000  DMA0 done after 73 cycles
+17: A N    0: status 80040000  DMA0 done after 73 cycles
+18: B N    0: status b004001f  DMA0 done after 73 cycles
+19: A N    0: status 80040000  DMA0 done after 73 cycles
+
+mdec/mdec-reset5: Done.

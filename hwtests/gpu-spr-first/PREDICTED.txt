@@ -1,0 +1,30 @@
+gpu-spr-first - PREDICTED, written 2026-11-15 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. hwtests/gpu-spr-row (three new-GPU consoles): a filling sprite's D at one row less its bare row is 19
+cycles at 8 bits and 23 at 4, at every width; v0.377.351 says 16 and 20. That test changes the texture page between its
+evicting draw and the timed one. Is the 3 a filling sprite's own, or the page change's?
+
+v0.377.351 (tools/hwrunner.js gpu-spr-first --emu):
+way     : D at 1 and 2 rows, at 16 / 64 / 256 wide (0 0: not run)
+8-bit:
+  page    :  47 76  129 242  465 915
+  line    :  47 76  129 242  465 915
+  line+E  :  47 76  129 242  465 915
+  cached  :  31 41  57 91  0 0
+  cach+E  :  31 41  57 91  0 0
+4-bit:
+  page    :  39 57  93 166  309 599
+  line    :  39 57  93 166  309 599
+  line+E  :  39 57  93 166  309 599
+  cached  :  31 41  57 91  0 0
+  cach+E  :  31 41  57 91  0 0
+
+THIS CORE: the three filling ways are one number (a GP0(E1h) costs the next draw nothing, and the texels evicted by another
+line of the same page are as evicted), and so are the two cached ways.
+
+WHAT THE CONSOLES DECIDE.
+- "line" as "page" and both 3 over this file's (8-bit 16 / 64 / 256 wide at one row: 48 132 468 in gpu-spr-row): the 3 is the
+  filling sprite's own - its first fill, or its set-up.
+- "line" as this file's and "page" 3 over: the page change (the first textured draw behind a GP0(E1h) that changes the page).
+- "line+E" or "cach+E" over "line" / "cached": a GP0(E1h) that changes nothing costs the next textured draw.
+- The cached rows are the control against hwtests/gpu-spr-hold's (8-bit 64x8 cached 296 on the consoles and here).

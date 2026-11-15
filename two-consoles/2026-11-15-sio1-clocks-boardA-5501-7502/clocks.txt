@@ -1,0 +1,7 @@
+SCPH-5501 (port 1): 2825 bytes (0 with errors); no disc read (D0h)
+  CPU   1024 marks (0 lost): 30960.0549 us a mark, rms 1.13 us -> 33868673.8 Hz, -3.73 ppm against 33,868,800 (+-0.004 ppm; the Pico's own crystal is in this one)
+  video 1800 marks (0 lost): a frame 16715.0234 us (59.82642 Hz), rms 1.02 us = 566115.68 CPU cycles of its own
+SCPH-7502 (port 2): 2825 bytes (0 with errors); no disc read (D0h)
+  CPU   1024 marks (0 lost): 30960.8031 us a mark, rms 0.93 us -> 33867855.3 Hz, -27.89 ppm against 33,868,800 (+-0.003 ppm; the Pico's own crystal is in this one)
+  video 1800 marks (0 lost): a frame 20095.9259 us (49.76133 Hz), rms 0.88 us = 680605.91 CPU cycles of its own
+A against B (the Pico's crystal cancels): CPU 24.17 ppm; frame 202267.29 ppm

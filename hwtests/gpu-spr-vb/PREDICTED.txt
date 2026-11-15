@@ -1,0 +1,38 @@
+gpu-spr-vb - PREDICTED, written 2026-11-15 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. What a line start costs a sprite's row in the VERTICAL BLANKING, where no scan-out fetch runs: a filling
+row (8- and 4-bit), a cached one, a flat rectangle's. v0.377.351 put the filling row's at the hold less the pixels between
+two fills from three numbers; with the rows exact, hwtests/gpu-spr-fill's 8-bit 256x16 drawn in the blanking reads 7,261
+on the candidate experiments/audit/land_filltail.js against the consoles' 7,280 (77 cycles over its rows in ~3.4 lines
+on the consoles, 52 here).
+
+v0.377.353 (tools/hwrunner.js gpu-spr-vb --emu):
+E (in the vertical blanking, 320x240):
+8b 256        rows 1 + 1 i : 465 915 1365 1833 2283 2733 3183 3632 4100 4550 5000 5450 5900 6368 6818 7267 7717 8185 8635 9085
+8b 128        rows 2 + 2 i : 466 917 1368 1837 2288 2738 3189 3640 4109 4560 5011 5461 5912 6381 6832 7283 7734 8202 8653 9104
+4b 256        rows 2 + 2 i : 599 1179 1773 2352 2932 3512 4106 4685 5265 5845 6439 7018 7598 8192 8772
+4b 64 cached  rows 4 + 4 i : 159 296 432 569 705 842 978 1115 1251 1388 1524 1673 1805 1942 2078 2215
+flat 256      rows 4 + 4 i : 545 1064 1584 2112 2632 3152 3672 4200 4720 5240 5760 6288 6807 7327 7847 8375
+
+the steps, v0.377.353 and v0.377.353 + land_filltail.js (experiments/audit/sprlinesfit.js):
+E 8b 256   (D at the first height, then each step to the next)
+  v353         465 :  450  450  468  450  450  450  449  468  450  450  450  450  468  450  449  450  468  450  450   mean step 453.68
+  filltail     467 :  449  450  467  449  450  449  449  468  449  449  450  449  468  449  449  450  467  449  450   mean step 453.16
+E 8b 128   (D at the first height, then each step to the next)
+  v353         466 :  451  451  469  451  450  451  451  469  451  451  450  451  469  451  451  451  468  451  451   mean step 454.63
+  filltail     468 :  450  450  469  450  450  451  450  468  451  450  450  450  469  450  450  451  468  450  451   mean step 454.11
+E 4b 256   (D at the first height, then each step to the next)
+  v353         599 :  580  594  579  580  580  594  579  580  580  594  579  580  594  580   mean step 583.79
+  filltail     600 :  579  593  578  579  579  593  578  579  579  592  579  579  593  578   mean step 582.71
+E 4b 64 cached   (D at the first height, then each step to the next)
+  v353         159 :  137  136  137  136  137  136  137  136  137  136  149  132  137  136  137   mean step 137.07
+  filltail     158 :  136  136  136  136  136  136  136  136  136  136  142  139  136  136  136   mean step 136.60
+E flat 256   (D at the first height, then each step to the next)
+  v353         545 :  519  520  528  520  520  520  528  520  520  520  528  519  520  520  528   mean step 522.00
+  filltail     545 :  519  520  528  520  520  520  528  520  520  520  528  519  520  520  528   mean step 522.00
+
+THIS CORE: a bare row, and at the row a line start falls in: +18 at 8 bits (the hold's 22 less 4 cycles of pixels between
+two fills), +14 at 4 bits, +8 on the flat rectangle and the cached sprite (GPU_SCAN_HOLD's floor for rectangles).
+
+WHAT THE CONSOLES DECIDE: the size of each step over the bare row (449 / 2 x 225 / 2 x 289 / 4 x 34 / 4 x 130), how many
+of the 19 steps hold one, and whether the row behind a line start gives any of it back.

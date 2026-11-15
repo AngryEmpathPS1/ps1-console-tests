@@ -1,0 +1,35 @@
+gpu-spr-hold - PREDICTED, written 2026-11-14 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. What one display line start costs a sprite whose rows are filling the texture cache, against a cached
+sprite and a flat rectangle. hwtests/gpu-tex-noscan (the second SCPH-5501): a 256x256 sprite reads +0.58% (4-bit) / +0.63%
+(8-bit) on v0.377.348, a 128x128 8-bit +0.46%, 64x64 right; the excess is ~10-13.5 cycles for each line start the sprite
+crosses. This core cancels a 4- / 8-bit sprite's give-back (GPU_SCAN_HOLD.xQ) inside its formula and adds the hold where
+the line start falls, the fills being FillWB's own exact cycles since v0.377.347.
+
+v0.377.348 (tools/hwrunner.js gpu-spr-hold --emu): the blanking's D, then D less it at s = 64 + 67 j, j = 0 .. 31:
+8b 256x4 fill     1834 : 103 103 103 103 103 103 103 103 103 103 98 73 73 73 75 103 103 103 103 103 103 103 103 103 103 38 22 22 22 23 103 103
+8b 256x2 fill      920 : 31 31 31 31 31 31 31 31 31 31 25 34 82 82 82 82 82 82 82 82 82 82 82 82 82 18 0 0 0 21 31 31
+8b 128x8 fill     1836 : 104 104 104 104 104 104 104 104 104 104 98 74 74 74 78 104 104 104 104 104 104 104 104 104 104 39 22 22 22 26 104 104
+8b 128x4 fill      922 : 30 30 30 30 30 30 30 30 30 30 24 38 81 81 81 81 81 81 81 81 81 81 81 81 81 16 0 0 0 21 30 30
+8b 64x8 fill       924 : 30 30 30 30 30 30 30 30 30 30 25 45 82 82 82 82 82 82 82 82 82 82 82 82 82 17 0 0 0 24 30 30
+8b 64x8 cached     296 : 0 0 0 0 0 0 0 22 22 22 24 0 0 0 0 0 0 0 0 0 0 66 73 73 73 16 0 0 0 0 0 0
+8b 64x16 cached    569 : 0 0 3 22 22 22 22 22 22 22 24 0 0 0 0 0 0 71 73 73 73 73 73 73 73 17 0 0 0 0 0 0
+4b 256x4 fill     1182 : 27 27 27 27 27 27 27 66 104 104 103 78 78 78 78 78 78 78 78 78 78 78 78 78 99 44 27 27 27 27 27 27
+4b 64x16 cached    569 : 0 0 4 22 22 22 22 22 22 22 24 0 0 0 0 0 0 71 73 73 73 73 73 73 73 16 0 0 0 0 0 0
+4b 64x32 cached   1115 : 22 22 22 22 22 22 22 22 49 96 98 73 73 73 73 73 73 73 73 73 73 73 73 73 73 16 5 22 22 22 22 22
+4b 128x8 fill     1186 : 26 26 26 26 26 26 26 75 104 104 102 78 78 78 78 78 78 78 78 78 78 78 78 78 102 43 26 26 26 26 26 26
+4b 64x16 fill     1192 : 27 27 27 27 27 27 27 95 104 104 103 78 78 78 78 78 78 78 78 78 78 78 78 78 104 43 27 27 27 27 27 27
+15b 256x2         1478 : 32 32 35 130 130 130 130 130 111 111 103 79 79 79 79 79 79 79 79 79 111 111 111 111 111 50 32 32 32 32 32 32
+flat 256x8        1064 : 23 23 23 23 23 23 23 23 23 101 99 74 74 74 74 74 74 74 74 74 74 74 74 74 74 17 0 23 23 23 23 23
+flat 64x24         840 : 23 23 23 23 23 23 23 23 23 23 25 0 0 74 74 74 74 74 74 74 74 74 74 74 74 17 0 0 0 0 0 23
+
+HOW THE CORE'S ROWS READ. 22 is the line hold (GPU_SCAN_HOLD.len 35 ticks) met once, whole; 73-82 and 98-104 are the
+starts where this core's scan-out bursts (GPU_SCAN_RECT) take the drawing as well. A filling row and a cached row pay the
+same 22 here; nothing in this core lets a fill hide it.
+
+WHAT THE CONSOLES SHOULD SHOW IF THE HOLD HIDES IN THE FILLS: the "fill" rows' plateaus lower than the core's by up to the
+whole hold (a 256-wide 8-bit row crossing one line start: ~10-13 cycles less than here), the "cached" and "flat" rows as
+the core's. IF NOT (the fill rows as the core's): the 256x256 excess is in the rows' own law at 128 / 256 wide, and the
+blanking's D column (no line start) will show it directly - 8b 256x4 against 1,834, 4b 256x4 against 1,182.
+EITHER WAY the blanking's D column is the bare cost of each shape, measured to the cycle for the first time for a filling
+sprite: a console's D there against this file's is the row law's own error.

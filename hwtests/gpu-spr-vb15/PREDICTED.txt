@@ -1,0 +1,33 @@
+gpu-spr-vb15 - PREDICTED, written 2026-11-15 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. A cached wide sprite's bare row and what a line start costs it in the vertical blanking, 15-bit and 4-bit.
+hwtests/gpu-rect-cached (the second SCPH-5501, polled, H 64): 2,206 4,259 8,370 at W 64 / 128 / 256 against v0.377.353's 2,219
+4,269 8,388; a pair a cycle flat reads them +5 -6 -15, so the row and the hold are both in it.
+
+v0.377.353 (tools/hwrunner.js gpu-spr-vb15 --emu):
+E (in the vertical blanking, 320x240):
+15b 256       rows 2 + 2 i : 284 545 806 1067 1328 1589 1872 2114 2375 2636 2897 3158 3419 3680 3963 4205 4466 4727 4988 5249
+15b 128       rows 4 + 4 i : 288 553 818 1083 1348 1613 1900 2146 2411 2676 2941 3206 3471 3736 4023 4269 4534 4799 5064 5329
+15b 64        rows 8 + 8 i : 296 569 842 1115 1388 1673 1956 2219 2492 2765 3038 3311 3584 3879 4142 4415
+4b 256        rows 2 + 2 i : 284 545 806 1067 1328 1589 1858 2119 2380 2641 2902 3163 3424 3685 3954 4215 4476 4737 4998 5259
+flat 128      rows 4 + 4 i : 289 553 817 1080 1344 1608 1880 2144 2408 2672 2936 3200 3464 3728 4000 4264 4528 4792 5055 5319
+
+the steps (experiments/audit/sprlinesfit.js):
+E 15b 256   (D at the first height, then each step to the next)
+  v353         284 :  261  261  261  261  261  283  242  261  261  261  261  261  261  283  242  261  261  261  261   mean step 261.32
+E 15b 128   (D at the first height, then each step to the next)
+  v353         288 :  265  265  265  265  265  287  246  265  265  265  265  265  265  287  246  265  265  265  265   mean step 265.32
+E 15b 64   (D at the first height, then each step to the next)
+  v353         296 :  273  273  273  273  285  283  263  273  273  273  273  273  295  263  273   mean step 274.60
+E 4b 256   (D at the first height, then each step to the next)
+  v353         284 :  261  261  261  261  261  269  261  261  261  261  261  261  261  269  261  261  261  261  261   mean step 261.84
+E flat 128   (D at the first height, then each step to the next)
+  v353         289 :  264  264  263  264  264  272  264  264  264  264  264  264  264  272  264  264  264  263  264   mean step 264.74
+
+THIS CORE: a 15-bit row 2 + 1.004 cycles a pair (two 256-wide rows 261, four 128-wide 265, eight 64-wide 273), and at a
+line start +22 on the row that meets it and -19 on the next (the 15-bit sprite's hold, its end catch then its absorb: ~3
+net); the 4-bit cached 256-wide row the same 261 with +8 at a line start; the flat 128-wide 264 with +8.
+(v0.377.354's land_filltail.js makes the 4-bit row's pair a cycle flat: 260.)
+
+WHAT THE CONSOLES DECIDE: each family's step with no line start in it (a pair a cycle flat says 260 / 264 / 272 / 260 /
+264) and the size of the steps that hold one.

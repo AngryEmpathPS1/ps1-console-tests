@@ -293,7 +293,11 @@ int main() {
     for (int i = 0; i < 256; i++) SCRSAVE[i] = R32(0x1F800000u + i * 4);
     const uint32_t nCases = TABLE[1], flags = TABLE[2], bseed = TABLE[3];
     codeOff = (((uint32_t)fz_wrap_end - (uint32_t)fz_wrap_start) + 15) & ~15u;
-    CTX[1] = e;
+    /* THE START PHASE AS A KNOB (2026-11-15): flags bits 16-26 add 0..1535 cycles to the anchor, so the same case starts that much
+     * later on the refresh grid and the SPU's sample pair - one exe per console, each at its own phase, gives a case's phase
+     * spread in one pass (tools/fuzzall.js buildExe({ phase })). 0 is the anchor as before: a table without it reads as ever. */
+    const uint32_t phase = ((flags >> 16) & 0x7FF) % 1536;
+    CTX[1] = (uint16_t)((e + phase) % 49152);
     dpcr0 = DPCR; dicr0 = DICR;
     DPCR = dpcr0 | 0x08080888u;                /* channels 0, 1, 2, 4 and 6 on */
     CTX[112] = DPCR; CTX[113] = dicr0 & 0x00FFFFFFu;

@@ -22,6 +22,9 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-boot-steps |  | 7 | 2 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
 | cd-cmds |  | 7 | 2 | 7 | 13 | 3 | 7 | 16 | 2 | 10 | 3 |
 | cd-da-capture |  | 1 |  |  | 1 |  | 2 | 1 | 2 | 1 |  |
+| cd-doom-load |  |  |  |  |  | 6 |  | 2 |  |  |  |
+| cd-doom-phase |  |  |  |  |  | 3 |  | 2 |  |  |  |
+| cd-doom-phase2 |  |  |  |  |  | 2 |  | 2 |  |  |  |
 | cd-firstread |  | 4 | 2 |  |  | 4 |  |  | 4 |  |  |
 | cd-firstread2 |  | 4 | 2 |  |  | 4 |  |  | 4 |  |  |
 | cd-game-steps |  | 7 | 2 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |

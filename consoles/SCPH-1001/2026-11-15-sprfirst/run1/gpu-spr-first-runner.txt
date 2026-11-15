@@ -1,0 +1,20 @@
+
+gpu/gpu-spr-first
+A sprite's four words stored back to back 64 cycles after Timer 0's reset in the vertical blanking, D cycles, one
+GPUSTAT read: the first D with bit 26 set, at 1 and 2 rows, its texels evicted or cached five ways. No assertions.
+
+way     : D at 1 and 2 rows, at 16 / 64 / 256 wide (0 0: not run)
+8-bit:
+  page    :  45 80  147 284  555 1100
+  line    :  45 80  147 284  555 1100
+  line+E  :  45 80  147 284  555 1100
+  cached  :  23 37  47 85  0 0
+  cach+E  :  23 37  47 85  0 0
+4-bit:
+  page    :  32 54  95 180  347 684
+  line    :  32 54  95 180  347 684
+  line+E  :  32 54  95 180  347 684
+  cached  :  23 37  47 85  0 0
+  cach+E  :  23 37  47 85  0 0
+
+gpu/gpu-spr-first: Done.

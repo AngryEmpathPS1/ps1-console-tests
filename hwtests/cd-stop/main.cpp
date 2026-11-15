@@ -1,22 +1,14 @@
 /*
- * cdrom/cd-stop - NOT A TEST: the drive's motor off between CD tests (2026-10-12).
- *
- * WHY. On the borrowed SCPH-9001's unattended runs, Unirom leaves the disc spinning for as long as it sits in the
- * drive, and an overnight run reads the CD for an hour of its eight. The PC side
- * sends this through the runner whenever its next program does not read the disc, so the motor runs only for the CD
- * tests. It is not in CONSOLE-RUN-SHEET.md's table: no console owes a log of it, and nothing grades it.
- *
- * WHAT IT DOES. Interrupts off (the kernel's CD handler would take the acknowledges), every flag acknowledged and every
- * response drained; Getstat, then Stop (08h) to its INT2 - psx-spx: INT3 at once, INT2 when the spindle has stopped -
- * then Getstat again. Each wait is bounded (a drive that does not answer costs 3 s, a Stop 10 s), and a first flag of 1
- * or 4 is read again before it is taken, since an older board can show 3 or 5 half set (psx-spx "Unstable IRQ Flag
- * polling"; CLAUDE.md's console rule 1). Prints the two status bytes - bit 1 is the motor - and "Done.".
- *
- * Run here first: `node hwtests/run.js cd-stop --disc` (the motor bit 1 before, 0 after).
+ * cdrom/cd-stop - STOP THE DISC (2026-11-15). Not a
+ * test: the rack page's Stop button (tools/rackpage.js) runs it through the console queue, and its Check CD runs it after
+ * cd-discid so a disc check does not leave the disc spinning. Getstat, Stop (08h) to its second response (INT2, the motor down -
+ * psx-spx "Stop": INT3 then INT2), Getstat again. Stat bit 1 is the motor (psx-spx "CDROM Controller Status").
+ * Prints "stop: before SS after SS (Stop INTa, second INTb) stopped|still spinning" and "Done.". Interrupts off; every wait bounded.
  */
 #include <common.h>
 #include <psxapi.h>
 #include <io.h>
+#include <stdio.h>
 
 #define T2_COUNT 0x1F801120u
 #define T2_MODE  0x1F801124u
@@ -24,10 +16,12 @@
 
 static volatile uint8_t *CD0 = (volatile uint8_t *)0x1F801800;
 static volatile uint8_t *CD1 = (volatile uint8_t *)0x1F801801;
+static volatile uint8_t *CD2 = (volatile uint8_t *)0x1F801802;
 static volatile uint8_t *CD3 = (volatile uint8_t *)0x1F801803;
 static void idx(uint8_t i) { *CD0 = i & 3; }
 static uint8_t irqFlag() { idx(1); return *CD3 & 7; }
 static void ackAll() { idx(1); *CD3 = 0x1F; }
+static void param(uint8_t p) { idx(0); *CD2 = p; }
 static void command(uint8_t c) { idx(0); *CD1 = c; }
 static uint8_t resp() { idx(1); return *CD1; }
 static bool hasResp() { return (*CD0 & 0x20) != 0; }
@@ -37,45 +31,46 @@ static uint32_t clk; static uint16_t lastT;
 static uint32_t now() { const uint16_t t = read16(T2_COUNT); clk += (uint16_t)(t - lastT); lastT = t; return clk; }
 static void idle(uint32_t cycles) { const uint32_t t0 = now(); while (now() - t0 < cycles) {} }
 
-/* The next flag within `limit` cycles (0: none), its first response byte in *stat; drained and acknowledged. */
-static uint8_t take(uint32_t limit, uint8_t *stat) {
+static uint8_t rb[16]; static int nrb;
+static uint8_t take(uint32_t limit) {
     const uint32_t t0 = now();
     uint8_t f = 0;
     for (;;) {
         f = irqFlag();
-        if (f) {
-            if (f == 1 || f == 4) { idle(200); f = irqFlag(); }   /* half of 3 or 5? read it again */
-            break;
-        }
+        if (f) { if (f == 1 || f == 4) { idle(200); f = irqFlag(); } break; }
         if (now() - t0 > limit) return 0;
     }
-    *stat = hasResp() ? resp() : 0;
+    nrb = 0; while (nrb < 16 && hasResp()) rb[nrb++] = resp();
     drain();
     ackAll();
     return f;
 }
+/* A command to its first response (its flag; rb holds the bytes), then with `second` its second response's flag in *f2. */
+static uint8_t cmd(uint8_t c, const uint8_t *p, int np, bool second, uint8_t *f2) {
+    for (int i = 0; i < np; i++) param(p[i]);
+    command(c);
+    uint8_t f; const uint32_t t0 = now();
+    do { f = take(MS(3000)); } while (f == 1 && now() - t0 < MS(3000));
+    if (second) { uint8_t g = 0; if (f == 3) { do { g = take(MS(10000)); } while (g == 1 && now() - t0 < MS(10000)); } if (f2) *f2 = g; }
+    return f;
+}
+static int unbcd(uint8_t b) { return (b >> 4) * 10 + (b & 15); }
+
 
 int main() {
-    printf("\ncdrom/cd-stop: the drive's motor off (not a test)\n");
+    printf("\ncdrom/cd-stop\nStop the disc: Getstat, Stop, Getstat.\n");
     EnterCriticalSection();
     write16(T2_MODE, 0);
     now();
     ackAll(); drain();
-    uint8_t s0 = 0, s1 = 0, s2 = 0, s3 = 0;
-    command(0x01);
-    const uint8_t f0 = take(MS(3000), &s0);
-    ackAll(); drain();
-    command(0x08);
-    const uint8_t f1 = take(MS(3000), &s1);
-    const uint8_t f2 = f1 == 3 ? take(MS(10000), &s2) : 0;
-    idle(MS(100));
-    ackAll(); drain();
-    command(0x01);
-    const uint8_t f3 = take(MS(3000), &s3);
-    ackAll(); drain();
-    printf("  Getstat INT%d %02x (motor %s); Stop INT%d %02x, INT%d %02x; Getstat INT%d %02x (motor %s)\n",
-           f0, s0, (s0 & 2) ? "on" : "off", f1, s1, f2, s2, f3, s3, (s3 & 2) ? "on" : "off");
+    cmd(0x01, 0, 0, false, 0); const uint8_t before = nrb ? rb[0] : 0xFF;
+    uint8_t f2 = 0;
+    const uint8_t f1 = cmd(0x08, 0, 0, true, &f2);          /* Stop to its INT2 (up to 10 s: the spin-down) */
+    idle(MS(50));
+    const uint8_t fg = cmd(0x01, 0, 0, false, 0); const uint8_t after = nrb ? rb[0] : 0xFF;
     ExitCriticalSection();
-    printf("Done.\n");
+    printf("stop: before %02X after %02X (Stop INT%u, second INT%u; Getstat INT%u) %s\n", before, after, f1, f2, fg,
+           fg != 3 ? "no answer" : (after & 0x02) ? "still spinning" : "stopped");
+    printf("cdrom/cd-stop: Done.\n");
     return 0;
 }

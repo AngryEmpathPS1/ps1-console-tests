@@ -1,0 +1,60 @@
+gpu-spr-lines - PREDICTED, written 2026-11-14 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. What a row of a filling sprite costs bare, and what each display line start costs it, with no scan-out
+(the vertical range empty) and at 320x240. hwtests/gpu-tex-noscan (the second SCPH-5501, polled): the 8-bit 256x256
+sprite 123,337 cycles against v0.377.348's 124,118 (+781, 3.05 a row), the 4-bit 78,886 against 79,344 (+458), in both
+modes. hwtests/gpu-spr-hold (four consoles, console-logs/2026-11-14-*-sprhold) at 256x240: a 256-wide filling row ~1
+cycle cheaper on the consoles in the blanking (8b 256x4 1,830 against 1,834, 256x2 917 / 920, 4b 256x4 1,179 / 1,182),
+and the two sprites near a line long cheaper again in the frame (mean extra over a line 82.4 / 74.8 against 87.0 / 88.0).
+
+v0.377.348 (tools/hwrunner.js gpu-spr-lines --emu): bit 26's D by rows
+E (vertical range empty):
+8b 256        rows 1 + 1 i : 468 951 1433 1968 2420 2903 3377 3878 4372 4825 5307 5790 6324 6777 7259 7742 8290 8729 9212 9664
+8b 128        rows 2 + 2 i : 469 952 1435 1970 2423 2906 3385 3887 4377 4830 5314 5797 6332 6785 7268 7751 8286 8739 9222 9676
+4b 256        rows 2 + 2 i : 627 1233 1894 2476 3083 3691 4350 4958 5565 6225 6806 7414 8022 8681 9288
+4b 64 cached  rows 4 + 4 i : 159 296 432 591 727 864 1000 1137 1295 1432 1569 1783 1915 2052 2188 2325
+flat 256      rows 4 + 4 i : 547 1087 1629 2222 2764 3284 3846 4420 4962 5482 6111 6617 7159 7702 8295 8815
+D320 (display on, 320x240, ~93 lines after VBlank):
+8b 256        rows 1 + 1 i : 468 951 1433 1968 2420 2903 3377 3878 4372 4825 5307 5790 6324 6777 7259 7742 8290 8729 9212 9664
+8b 128        rows 2 + 2 i : 469 952 1435 1970 2423 2906 3385 3887 4377 4830 5314 5797 6332 6785 7268 7751 8286 8739 9222 9676
+4b 256        rows 2 + 2 i : 627 1232 1894 2476 3083 3691 4350 4958 5565 6225 6806 7414 8022 8681 9288
+4b 64 cached  rows 4 + 4 i : 159 296 432 591 727 864 1000 1137 1295 1432 1569 1783 1915 2052 2188 2325
+flat 256      rows 4 + 4 i : 546 1087 1629 2222 2764 3284 3847 4420 4962 5482 6111 6617 7159 7702 8295 8815
+
+the steps (experiments/audit/sprlinesfit.js: D at the first height, then each step to the next):
+E 8b 256   (D at the first height, then each step to the next)
+  v348         468 :  483  482  535  452  483  474  501  494  453  482  483  534  453  482  483  548  439  483  452   mean step 484.00
+E 8b 128   (D at the first height, then each step to the next)
+  v348         469 :  483  483  535  453  483  479  502  490  453  484  483  535  453  483  483  535  453  483  454   mean step 484.58
+E 4b 256   (D at the first height, then each step to the next)
+  v348         627 :  606  661  582  607  608  659  608  607  660  581  608  608  659  607   mean step 618.64
+E 4b 64 cached   (D at the first height, then each step to the next)
+  v348         159 :  137  136  159  136  137  136  137  158  137  137  214  132  137  136  137   mean step 144.40
+E flat 256   (D at the first height, then each step to the next)
+  v348         547 :  540  542  593  542  520  562  574  542  520  629  506  542  543  593  520   mean step 551.20
+D320 8b 256   (D at the first height, then each step to the next)
+  v348         468 :  483  482  535  452  483  474  501  494  453  482  483  534  453  482  483  548  439  483  452   mean step 484.00
+D320 8b 128   (D at the first height, then each step to the next)
+  v348         469 :  483  483  535  453  483  479  502  490  453  484  483  535  453  483  483  535  453  483  454   mean step 484.58
+D320 4b 256   (D at the first height, then each step to the next)
+  v348         627 :  605  662  582  607  608  659  608  607  660  581  608  608  659  607   mean step 618.64
+D320 4b 64 cached   (D at the first height, then each step to the next)
+  v348         159 :  137  136  159  136  137  136  137  158  137  137  214  132  137  136  137   mean step 144.40
+D320 flat 256   (D at the first height, then each step to the next)
+  v348         546 :  541  542  593  542  520  563  573  542  520  629  506  542  543  593  520   mean step 551.27
+
+HOW THE CORE GETS THERE. A 4- / 8-bit sprite's time is its rows' law plus FillWB's cycles (bare: gpu-spr-hold's blanking
+column, 8b 256 wide ~457 a row, 128 wide ~230, 4b 256 wide ~294), and scanPos adds every line event the drawing meets
+where it falls - the line hold, the scan-out's first fetch and its refills - each whole less a fixed absorb. A step is
+the bare row plus the events a row's time meets (8b 256 wide: 483 of 2,152.5 a line); one well over it where the
+drawing's END catches an event whole (535, 548) and the next under it (452) as that event moves inside the drawing and
+is absorbed. Nothing here lets rows BEHIND an event take any of it back: the mean step does not fall with the height. E and D320 are the
+same numbers here (the empty range leaves this core's scan-out running, as gpu-tex-noscan's consoles read alike).
+
+WHAT THE CONSOLES DECIDE.
+- Steps UNDER the bare row after an event (the rows behind it taking some of it back): the drawing catches up, and a
+  long sprite pays less for each event than a short one - gpu-spr-hold's two sprites near a line long, and the
+  256x256's 13 cycles a line.
+- The same steps as here but each a cycle or so lower on the 256-wide families: the row law's own error.
+- The events' sizes themselves (a step less the bare row) against this core's: the absorb.
+- E against D320 on the consoles, to the cycle.

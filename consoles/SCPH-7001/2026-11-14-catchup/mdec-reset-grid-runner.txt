@@ -1,0 +1,20 @@
+ResetGraph:itb=80015100,ehk=80015130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset-grid
+The reset at word K of a line, N nops, the enables; cold and warm; kept of 4. No assertions.
+
+ K  run    N: 0 1 2 3 4 5 6 7 8 9 10
+ 0  cold       0 4 4 4 4 4 4 4 4 4 4
+ 0  warm       0 0 0 0 0 0 4 4 4 4 4
+ 1  cold       4 4 4 4 4 4 4 4 4 4 4
+ 1  warm       0 0 0 0 0 0 4 4 4 4 4
+ 2  cold       0 0 0 4 4 4 4 4 4 4 4
+ 2  warm       0 0 0 0 0 0 4 4 4 4 4
+ 3  cold       0 0 4 4 4 4 4 4 4 4 4
+ 3  warm       0 0 0 0 0 0 4 4 4 4 4
+
+mdec/mdec-reset-grid: Done.

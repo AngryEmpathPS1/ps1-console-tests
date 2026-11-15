@@ -1,0 +1,28 @@
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset13
+The reset behind K stack stores, with or without CHCR0 = 0 last, the enables G behind it, over the refresh. No assertions.
+
+body       lost   by phase /16:  0  16  32  48  64  80  96 112 128 144 160 176 192 208 224 240
+R K0 G9       0                  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0 
+R K2 G9     256                  1  28   0  24   0  21  14  22  23  16   0  38   0  42   0  27 
+R K4 G9     256                  0  32   0  22   0  23   4  20  22  12   0  43   0  42   0  36 
+R K6 G9     256                  1  18   2  46   0  43   9  15  10  27   0  31   2  22   0  30 
+T K0 G9       0                  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0 
+T K2 G9     256                  0  31   0  35   0  25  11  24  18  11   0  33   0  39   0  29 
+T K4 G9     256                  0  28   0  30   0  23   7  24  10  22   0  36   4  36   9  27 
+T K6 G9     256                  7  41   0  27   0  26   7  26   7  24   1  26   1  32   9  22 
+R K0 G12      0                  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0 
+R K2 G12      0                  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0 
+R K4 G12     14                  0   0   0   0   0   0   0   0  13   1   0   0   0   0   0   0 
+R K6 G12      4                  0   0   0   0   0   0   0   0   4   0   0   0   0   0   0   0 
+T K0 G12      0                  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0 
+T K2 G12      1                  0   0   0   0   0   0   0   0   0   1   0   0   0   0   0   0 
+T K4 G12      5                  0   0   0   0   0   0   0   0   2   3   0   0   0   0   0   0 
+T K6 G12      0                  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0 
+
+mdec/mdec-reset13: Done.

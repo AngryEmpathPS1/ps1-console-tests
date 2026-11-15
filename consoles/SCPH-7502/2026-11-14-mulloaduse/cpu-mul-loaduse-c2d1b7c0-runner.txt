@@ -1,0 +1,31 @@
+
+cpu/cpu-mul-loaduse
+Loops of 64 turns in cached code, cycles by Timer 2, five times each: lw t4, n nops, then MULT / DIV reading t4 (rs, rt)
+or not, then MFLO; and an ALU reader. No assertions.
+
+mult.rs   n 0   884 810 809 809 809
+mult.rs   n 1   1283 1255 1255 1255 1255
+mult.rs   n 2   1349 1324 1323 1323 1323
+mult.rs   n 3   1342 1324 1328 1328 1328
+mult.rt   n 0   850 812 809 809 809
+mult.rt   n 1   1286 1254 1258 1258 1258
+mult.rt   n 2   1351 1329 1323 1323 1323
+mult.rt   n 3   1344 1324 1327 1327 1327
+mult.no   n 0   842 809 812 812 812
+mult.no   n 1   899 872 872 872 872
+mult.no   n 2   963 939 939 939 939
+mult.no   n 3   1024 1005 1006 1006 1006
+div.rs    n 0   3336 3304 3289 3289 3289
+div.rs    n 1   3328 3311 3311 3311 3311
+div.rs    n 2   3328 3308 3308 3308 3308
+div.rs    n 3   3324 3306 3306 3306 3306
+div.no    n 0   2893 2855 2855 2855 2855
+div.no    n 1   2954 2918 2918 2918 2918
+div.no    n 2   3010 2983 2983 2983 2983
+div.no    n 3   3085 3048 3048 3048 3048
+addu      n 0   635 606 606 606 606
+addu      n 1   824 803 803 803 803
+addu      n 2   886 865 865 865 865
+addu      n 3   887 865 865 865 865
+
+cpu/cpu-mul-loaduse: Done.

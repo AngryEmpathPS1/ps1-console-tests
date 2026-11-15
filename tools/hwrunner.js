@@ -121,7 +121,7 @@ class RunnerLink {
   }
   /* end: { text, count } - the count-th line starting with text ends the run (default: its "Done." line);
    * stoppable: the PC may stop it with 'X' (stop()). */
-  async run(delay, ms, { end = null, stoppable = true, lock = null } = {}) {
+  async run(delay, ms, { end = null, stoppable = true, lock = null, stray = 0 } = {}) {
     const mode = (end ? 1 : 0) | (stoppable ? 0x80 : 0);
     const spec = [mode];
     if (end) { const t = Buffer.from(end.text, 'latin1'); spec.push(t.length, ...t, end.count || 1); }
@@ -146,7 +146,7 @@ class RunnerLink {
         ...RunnerLink.w(rangeWord >>> 0)] : [];
       this.write([lock.spu ? 0x55 : 0x53], RunnerLink.w(lock.video), RunnerLink.w(lock.phase), [lock.tol],
         this.version >= 4 ? [...RunnerLink.w(phiT >>> 0), ...RunnerLink.w(phiTol >>> 0)] : [], v6, spec);
-      const d = await this.finish(ms);
+      const d = await this.finish(ms, stray);
       d.frames = await this.word(); d.phase = await this.word();
       if (this.version >= 3) {
         const sp = await this.word(), s0 = await this.word(), r0 = await this.word();
@@ -192,8 +192,19 @@ class RunnerLink {
     return { r0, table: Array.from(t), spuS0: s0 === 0xFFFFFFFF ? null : s0, spuRefresh: s0 === 0xFFFFFFFF ? null : (s0 - r0 + 768) % 256 };
   }
   /* The answer to 'R': "DONE", the characters printed, the cycles, how it ended. */
-  async finish(ms) {
-    await this.expect('DONE', ms);
+  /* stray (2026-11-15, tools/linkrun.js): up to that many bytes before the DONE are skipped - a console still marking for a moment
+   * after the relay closed sent one through its bridge ("ÁDON" where DONE was wanted, the 5501 + PSone and board B sessions).
+   * 0 (every other caller): DONE must come first, as before. */
+  async finish(ms, stray = 0) {
+    if (!stray) await this.expect('DONE', ms);
+    else {
+      const end = this._now() + ms; let win = '', n = 0;
+      while (win !== 'DONE') {
+        const b = await this.read(1, Math.max(1, end - this._now()));
+        win = (win + String.fromCharCode(b[0])).slice(-4);
+        if (++n > 4 + stray && win !== 'DONE') throw new Error(`runner: wanted "DONE", got ${JSON.stringify(win)} after ${n} bytes`);
+      }
+    }
     const len = await this.word(), cycles = await this.word(), how = (await this.read(1))[0];
     return { len, cycles, how };
   }
@@ -259,7 +270,10 @@ async function startRunner(link, beforeExe = null) {
       const end = r._now() + 30000;
       while (r._now() < end && !/DONE/.test(Buffer.from(r.q).toString('latin1'))) await r.idle(250);
       id = await r.ident();
-      if (!id && !r.sawDone) throw new Error('runner: the console answers nothing - neither the runner nor Unirom, and no test ended within 30 s of a stop');
+      /* worded as a runner timeout ("... in N ms") on purpose: the console queue then waits up to 40 minutes for an answer (holding
+       * only this port) where it would pause the port at once - a test that prints rarely sees the 'X' only at its next character
+       * (the SCPH-7001's gpu-shape-time75, 2026-11-15: its job cut off by hand, the next job's stop unseen in 30 s, the port paused) */
+      if (!id && !r.sawDone) throw new Error('runner: no answer to V, to Unirom or to a stop in 30000 ms (a test still running from an earlier run? it sees the stop only when it next prints)');
     }
   }
   if (id && fs.readFileSync(RUNNER_EXE).includes(Buffer.from(id, 'latin1'))) {

@@ -1,0 +1,50 @@
+gpu-spr-row - PREDICTED, written 2026-11-14 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. A filling sprite's BARE row by its width. hwtests/gpu-spr-hold and gpu-spr-lines (four consoles): an
+8-bit 256-wide filling row is 449 cycles on the consoles and 452.4 on v0.377.348, a 128-wide one ~1.5 over here, a
+64-wide one right, a 4-bit 256-wide one ~2 over; the line events read the consoles in total. 256 rows of the 8-bit
+256-wide row's error are hwtests/gpu-tex-noscan's +781 on the 256x256 sprite.
+
+v0.377.348 (tools/hwrunner.js gpu-spr-row --emu), D at 1, 2 and 3 rows, in the vertical blanking:
+width :  D at 1, 2, 3 rows
+8b fill:
+   16 : 47 76 105
+   32 : 71 128 185
+   64 : 129 243 356
+   96 : 186 356 526
+  128 : 242 469 695
+  160 : 299 582 865
+  192 : 355 695 1034
+  224 : 411 807 1203
+  256 : 468 920 1373
+  320 : 581 1146 1720
+4b fill:
+   16 : 39 57 75
+   32 : 55 92 129
+   64 : 93 166 239
+   96 : 129 239 348
+  128 : 165 311 457
+  160 : 202 384 566
+  192 : 238 456 674
+  224 : 274 528 783
+  256 : 310 601 892
+  320 : 383 746 1109
+flat:
+   16 : 33 43 53
+   32 : 41 59 77
+   64 : 59 93 127
+   96 : 75 125 175
+  128 : 91 157 223
+  160 : 107 189 271
+  192 : 123 221 319
+  224 : 139 253 367
+  256 : 155 285 415
+  320 : 187 349 511
+
+HOW THE CORE GETS THERE. A row is the flat rectangle's row at that width (GPU_RECTF3 through GPU_SPRITE_ROW) plus
+FillWB's cycles for its fills and writes; the same number for the second and the third row.
+
+WHAT THE CONSOLES DECIDE. The row (D(3) - D(2)) at each width against this file's: where the error starts (64 is right,
+128 is not) and how it grows - with the width, with the fills (32 a row at 8 bits and 256 wide, 16 at 4), or in a step.
+The flat rows are the control (GPU_RECTF3 is exact on every console logged): if they read this file's, the error is the
+sprite's own.

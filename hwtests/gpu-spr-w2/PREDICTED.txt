@@ -1,0 +1,23 @@
+gpu-spr-w2 - PREDICTED, written 2026-11-15 before any console run (the GPU session, branch claude/hungry-ardinghelli-1c1c61)
+
+WHAT IS ASKED. hwtests/gpu-spr-w1's write-behind law (experiments/audit/sprw1law.js: the one-row flat rectangle at 72 of 72
+widths on three new-GPU consoles) over two and three rows: does the next row's generation run under the row before's
+write, and are the 2 cycles before a row-end write every row's.
+
+v0.377.351 (tools/hwrunner.js gpu-spr-w2 --emu):
+D at widths 1 .. 72 (0: not run)
+8b fill x2   : 45 45 45 46 46 47 47 49 66 69 69 71 71 74 74 76 92 95 95 97 97 100 100 102 118 121 121 123 123 126 126 128 146 148 147 149 148 150 149 151 178 181 181 183 183 186 186 188 204 207 207 209 209 212 212 214 230 233 233 235 235 238 238 242 260 262 261 263 262 264 263 265
+flat x3      : 35 35 35 37 37 39 39 41 41 44 44 47 47 50 50 53 53 56 56 59 59 62 62 65 65 68 68 71 71 74 74 77 77 80 80 83 83 86 86 89 89 92 92 95 95 98 98 101 101 104 104 107 107 110 110 113 113 116 116 119 119 122 122 127 127 130 130 133 133 136 136 139
+4b cached x2 : 29 29 29 30 30 31 31 33 33 35 35 37 37 39 39 41 41 43 43 45 45 47 47 49 49 51 51 53 53 55 55 57 57 59 59 61 61 63 63 65 65 67 67 69 69 71 71 73 73 75 75 77 77 79 79 81 81 83 83 85 85 87 87 91 0 0 0 0 0 0 0 0
+flat x2      : 31 31 31 32 32 33 33 35 35 37 37 39 39 41 41 43 43 45 45 47 47 49 49 51 51 53 53 55 55 57 57 59 59 61 61 63 63 65 65 67 67 69 69 71 71 73 73 75 75 77 77 79 79 81 81 83 83 85 85 87 87 89 89 93 93 95 95 97 97 99 99 101
+
+THIS CORE: the first row's cost + a row of GPU_RECTF3 for each row more (half a cycle a pixel + 2, by pixel pairs) -
+a line in the width at every height.
+
+TWO READINGS OF THE LAW, for the consoles to choose between (flat, D at two rows less gpu-spr-w1's at one):
+- every row waits its 2 cycles, the writes under the next row's generation: the second row adds floor(w / 2) + 2 at
+  every width (16 wide 10, 32 wide 18, 64 wide 34 - hwtests/gpu-spr-row's three points), and the sawtooth of one row
+  carries over unchanged;
+- a row's generation waits for the row before's write: the second row adds the write as well (floor(w / 2) + 2 +
+  floor(w / 4) to 32 wide), which gpu-spr-row's three points already rule out at 16 / 32 / 64 - so what is looked for is
+  whether the widths between follow the first reading too, and where the third row differs from the second.

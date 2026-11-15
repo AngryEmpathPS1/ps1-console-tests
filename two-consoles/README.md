@@ -21,3 +21,13 @@ Sessions with two consoles joined as a link cable joins them, through the bridge
 | [2026-11-08-transfer2-drain-swap](2026-11-08-transfer2-drain-swap/) | sio1-transfer2 | 2 | yes |
 | [2026-11-08-transfer2-edge](2026-11-08-transfer2-edge/) | sio1-transfer2 | 2 | yes |
 | [2026-11-08-transfer2-edge-swap](2026-11-08-transfer2-edge-swap/) | sio1-transfer2 | 2 | yes |
+| [2026-11-15-sio1-clocks-boardA-5501-7502](2026-11-15-sio1-clocks-boardA-5501-7502/) | sio1-clocks | 3 | yes |
+| [2026-11-15-sio1-clocks-boardA-5501-psone](2026-11-15-sio1-clocks-boardA-5501-psone/) | ? | 0 | yes |
+| [2026-11-15-sio1-clocks-boardB](2026-11-15-sio1-clocks-boardB/) | ? | 0 | yes |
+| [2026-11-15-sio1-clocks-boardB-v702](2026-11-15-sio1-clocks-boardB-v702/) | sio1-clocks | 3 | yes |
+| [2026-11-15-sio1-clocks-boardB-v702-7501-1001](2026-11-15-sio1-clocks-boardB-v702-7501-1001/) | sio1-clocks | 3 | yes |
+| [2026-11-15-sio1-clocks-boardB-v702-II](2026-11-15-sio1-clocks-boardB-v702-II/) | sio1-clocks | 3 | yes |
+| [2026-11-15-sio1-stamp-boardB](2026-11-15-sio1-stamp-boardB/) | sio1-stamp | 3 | yes |
+| [2026-11-15-tie-boardB-1-sio1-clocks](2026-11-15-tie-boardB-1-sio1-clocks/) | sio1-clocks | 3 | yes |
+| [2026-11-15-tie-boardB-2-sio1-stamp](2026-11-15-tie-boardB-2-sio1-stamp/) | sio1-stamp | 3 | yes |
+| [2026-11-15-tie-boardB-3-sio1-clocks](2026-11-15-tie-boardB-3-sio1-clocks/) | sio1-clocks | 3 | yes |

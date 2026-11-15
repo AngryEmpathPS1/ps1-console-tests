@@ -1,0 +1,60 @@
+ResetGraph:itb=8001a358,ehk=8001a388
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-reset-tailgrid
+mdec-reset-tail's cold rows with N nops more between the reset and the enables. Kept of 4, fastest call. No assertions.
+
+ var word      N:   0   1   2   3   4   5   6   7
+  A   0   kept   0   4   4   4   4   4   4   4
+  A   0   cyc  133 134 143 142 142 151 152 151
+  A   1   kept   4   4   4   4   4   4   4   4
+  A   1   cyc  134 143 142 142 144 152 151 151
+  A   2   kept   4   4   4   4   4   4   4   4
+  A   2   cyc  143 142 142 144 152 151 151 153
+  A   3   kept   0   0   4   4   4   4   4   4
+  A   3   cyc  142 142 143 152 151 151 153 161
+  B   0   kept   4   4   4   4   4   4   4   4
+  B   0   cyc  131 132 136 135 135 136 145 144
+  B   1   kept   4   4   4   4   4   4   4   4
+  B   1   cyc  126 136 135 135 136 152 144 144
+  B   2   kept   4   4   4   4   4   4   4   4
+  B   2   cyc  136 135 135 136 145 144 144 145
+  B   3   kept   4   4   4   4   4   4   4   4
+  B   3   cyc  135 135 135 145 144 144 145 154
+  C   0   kept   4   4   4   4   4   4   4   4
+  C   0   cyc  134 134 143 142 143 144 152 151
+  C   1   kept   4   4   4   4   4   4   4   4
+  C   1   cyc  134 154 142 143 144 152 151 152
+  C   2   kept   4   4   4   4   4   4   4   4
+  C   2   cyc  143 142 143 144 152 158 152 153
+  C   3   kept   0   4   4   4   4   4   4   4
+  C   3   cyc  142 143 143 152 151 152 153 161
+  D   0   kept   4   4   4   4   4   4   4   4
+  D   0   cyc  131 131 140 139 140 141 149 148
+  D   1   kept   4   4   4   4   4   4   4   4
+  D   1   cyc  131 140 139 140 141 149 148 149
+  D   2   kept   4   4   4   4   4   4   4   4
+  D   2   cyc  140 150 140 141 149 148 149 150
+  D   3   kept   0   4   4   4   4   4   4   4
+  D   3   cyc  139 140 140 149 148 156 150 158
+  E   0   kept   4   4   4   4   4   4   4   4
+  E   0   cyc  134 143 142 142 143 153 151 151
+  E   1   kept   4   4   4   4   4   4   4   4
+  E   1   cyc  143 142 142 143 153 151 151 152
+  E   2   kept   4   4   4   4   4   4   4   4
+  E   2   cyc  142 142 143 153 151 151 152 162
+  E   3   kept   0   4   4   4   4   4   4   4
+  E   3   cyc  153 143 152 151 151 152 162 160
+  G   0   kept   4   4   4   4   4   4   4   4
+  G   0   cyc  128 130 138 137 144 139 147 146
+  G   1   kept   4   4   4   4   4   4   4   4
+  G   1   cyc  131 139 138 138 140 148 147 147
+  G   2   kept   4   4   4   4   4   4   4   4
+  G   2   cyc  138 137 137 139 147 146 146 148
+  G   3   kept   4   4   4   4   4   4   4   4
+  G   3   cyc  137 137 139 147 146 146 148 156
+
+mdec/mdec-reset-tailgrid: Done.

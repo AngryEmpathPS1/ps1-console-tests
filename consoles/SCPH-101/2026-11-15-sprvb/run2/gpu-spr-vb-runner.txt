@@ -1,0 +1,13 @@
+
+gpu/gpu-spr-vb
+A sprite's four words stored back to back 64 cycles after Timer 0's reset, D cycles, one GPUSTAT read: the first D
+with bit 26 set, by the sprite's rows. No assertions.
+
+E (in the vertical blanking, 320x240):
+8b 256        rows 1 + 1 i : 468 917 1366 1831 2280 2729 3178 3627 4095 4544 4993 5442 5891 6359 6808 7257 7706 8176 8625 9074
+8b 128        rows 2 + 2 i : 469 919 1369 1834 2284 2734 3184 3634 4099 4549 4999 5449 5899 6364 6814 7264 7714 8179 8629 9079
+4b 256        rows 2 + 2 i : 601 1179 1768 2346 2924 3502 4099 4677 5255 5833 6433 7011 7588 8188 8766
+4b 64 cached  rows 4 + 4 i : 160 296 432 568 704 840 976 1112 1248 1384 1520 1656 1797 1933 2069 2205
+flat 256      rows 4 + 4 i : 546 1066 1586 2118 2638 3158 3678 4203 4723 5243 5763 6293 6812 7333 7852 8378
+
+gpu/gpu-spr-vb: Done.

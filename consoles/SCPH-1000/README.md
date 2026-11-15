@@ -22,3 +22,12 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-09-pal](2026-11-09-pal/) | 5 | 2 |
 | [2026-11-09-spinprobe](2026-11-09-spinprobe/) | 4 | 1 |
 | [2026-11-09-spinprobe2](2026-11-09-spinprobe2/) | 4 | 1 |
+| [2026-11-15-gpuversion-r1](2026-11-15-gpuversion-r1/) | 1 | 0 |
+| [2026-11-15-gpuversion-r2](2026-11-15-gpuversion-r2/) | 1 | 0 |
+| [2026-11-15-gpuversion-r3](2026-11-15-gpuversion-r3/) | 1 | 0 |
+| [2026-11-15-gpuversion-r4](2026-11-15-gpuversion-r4/) | 1 | 0 |
+| [2026-11-15-gpuversion-r5](2026-11-15-gpuversion-r5/) | 1 | 0 |
+| [2026-11-15-gpuversion-r6](2026-11-15-gpuversion-r6/) | 1 | 0 |
+| [2026-11-15-gpuversion-r7](2026-11-15-gpuversion-r7/) | 1 | 0 |
+| [2026-11-15-gpuversion-r8](2026-11-15-gpuversion-r8/) | 1 | 0 |
+| [2026-11-15-gpuversion-r9](2026-11-15-gpuversion-r9/) | 1 | 0 |

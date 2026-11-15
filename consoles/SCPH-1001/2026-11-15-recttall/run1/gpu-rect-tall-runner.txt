@@ -1,0 +1,38 @@
+
+gpu/gpu-rect-tall
+A flat rectangle's words stored back to back 64 cycles after Timer 0's reset in the vertical blanking, D cycles, one
+GPUSTAT read: the first D with bit 26 set; three words, and four (GP0(00h) ahead). No assertions.
+
+W x H : D with three words, with four
+  1 x  16 : 106 107
+  1 x  32 : 202 203
+  1 x  64 : 394 395
+  1 x 128 : 778 779
+  2 x  16 : 122 123
+  2 x  32 : 234 235
+  2 x  64 : 458 459
+  2 x 128 : 906 907
+  3 x  16 : 122 123
+  3 x  32 : 234 235
+  3 x  64 : 458 459
+  3 x 128 : 906 907
+  4 x  16 : 138 139
+  4 x  32 : 266 267
+  4 x  64 : 522 523
+  4 x 128 : 1034 1035
+  6 x  16 : 154 155
+  6 x  32 : 298 299
+  6 x  64 : 586 587
+  6 x 128 : 1162 1163
+  8 x  16 : 170 171
+  8 x  32 : 330 331
+  8 x  64 : 650 651
+  8 x 128 : 1290 1291
+ 16 x  16 : 234 235
+ 16 x  32 : 458 459
+ 16 x  64 : 906 907
+ 16 x 128 : 1840 1839
+ 64 x  16 : 618 619
+ 64 x  64 : 2483 2484
+
+gpu/gpu-rect-tall: Done.
