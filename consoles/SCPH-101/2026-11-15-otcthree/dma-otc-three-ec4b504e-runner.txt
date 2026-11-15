@@ -1,0 +1,56 @@
+
+dma/dma-otc-three
+Three DMA6 starts in warm code: start 1 (MADR A, BCR 30h), k1 nops, start 2 (MADR B, BCR 18h), k2 nops, start 3
+(MADR C, BCR 0Ch). Words written downward from A, B and C; cycles to CHCR6 idle. No assertions.
+
+k1 0 k2 0: A  0 B 24 C 12  t 192
+k1 0 k2 2: A  0 B 24 C 12  t 198
+k1 0 k2 4: A  0 B 24 C 12  t 198
+k1 0 k2 8: A  0 B 24 C 12  t 188
+k1 0 k2 16: A  0 B 24 C 12  t 188
+k1 0 k2 30: A  0 B 24 C 12  t 166
+k1 0 k2 60: A  0 B 24 C 12  t 170
+k1 2 k2 0: A  0 B 48 C 12  t 202
+k1 2 k2 2: A  0 B 48 C 12  t 197
+k1 2 k2 4: A  0 B 24 C 12  t 190
+k1 2 k2 8: A  0 B 48 C 12  t 192
+k1 2 k2 16: A  0 B 48 C 12  t 197
+k1 2 k2 30: A  0 B 48 C 12  t 192
+k1 2 k2 60: A  0 B 24 C 12  t 197
+k1 4 k2 0: A 48 B  0 C 12  t 199
+k1 4 k2 2: A 48 B  0 C 12  t 204
+k1 4 k2 4: A 48 B  0 C 12  t 194
+k1 4 k2 8: A 48 B  0 C 12  t 199
+k1 4 k2 16: A  0 B 48 C 12  t 194
+k1 4 k2 30: A 48 B  0 C 12  t 194
+k1 4 k2 60: A 48 B 24 C 12  t 206
+k1 8 k2 0: A 48 B  0 C 12  t 204
+k1 8 k2 2: A 48 B  0 C 12  t 199
+k1 8 k2 4: A 48 B  0 C 12  t 194
+k1 8 k2 8: A 48 B  0 C 12  t 204
+k1 8 k2 16: A 48 B  0 C 12  t 195
+k1 8 k2 30: A 48 B  0 C 12  t 194
+k1 8 k2 60: A 48 B 24 C 12  t 201
+k1 16 k2 0: A 48 B  0 C 12  t 204
+k1 16 k2 2: A 48 B  0 C 12  t 204
+k1 16 k2 4: A 48 B  0 C 12  t 204
+k1 16 k2 8: A 48 B  0 C 12  t 204
+k1 16 k2 16: A 48 B  0 C 12  t 194
+k1 16 k2 30: A 48 B  0 C 12  t 194
+k1 16 k2 60: A 48 B 24 C 12  t 202
+k1 30 k2 0: A 48 B  0 C 12  t 200
+k1 30 k2 2: A 48 B  0 C 12  t 204
+k1 30 k2 4: A 48 B  0 C 12  t 194
+k1 30 k2 8: A 48 B  0 C 12  t 194
+k1 30 k2 16: A 48 B  0 C 12  t 197
+k1 30 k2 30: A 48 B  0 C 12  t 204
+k1 30 k2 60: A 48 B 24 C 12  t 203
+k1 60 k2 0: A 48 B  0 C 12  t 207
+k1 60 k2 2: A 48 B  0 C 12  t 204
+k1 60 k2 4: A 48 B  0 C 12  t 204
+k1 60 k2 8: A 48 B 24 C 12  t 199
+k1 60 k2 16: A 48 B 24 C 12  t 206
+k1 60 k2 30: A 48 B 24 C 12  t 201
+k1 60 k2 60: A 48 B 24 C 12  t 232
+
+dma/dma-otc-three: Done.

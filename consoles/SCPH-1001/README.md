@@ -99,6 +99,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-dmamap-r4](2026-11-15-dmamap-r4/) | 1 | 0 |
 | [2026-11-15-dmamap-r5](2026-11-15-dmamap-r5/) | 1 | 0 |
 | [2026-11-15-dmamap-r6](2026-11-15-dmamap-r6/) | 1 | 0 |
+| [2026-11-15-dmamap-v2-r1](2026-11-15-dmamap-v2-r1/) | 1 | 0 |
+| [2026-11-15-dmamap-v2-r2](2026-11-15-dmamap-v2-r2/) | 1 | 0 |
 | [2026-11-15-gpu-a0ff9](2026-11-15-gpu-a0ff9/) | 1 | 0 |
 | [2026-11-15-gpuversion-psxmon-r1](2026-11-15-gpuversion-psxmon-r1/) | 2 | 0 |
 | [2026-11-15-gpuversion-psxmon-r2](2026-11-15-gpuversion-psxmon-r2/) | 2 | 0 |
@@ -125,6 +127,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-sprvb15](2026-11-15-sprvb15/) | 2 | 0 |
 | [2026-11-15-sprw1](2026-11-15-sprw1/) | 2 | 0 |
 | [2026-11-15-sprw2](2026-11-15-sprw2/) | 2 | 0 |
+| [2026-11-15-spuirqslot](2026-11-15-spuirqslot/) | 1 | 0 |
 | [2026-11-15-spulatch3](2026-11-15-spulatch3/) | 2 | 0 |
 | [2026-11-15-spureadstart](2026-11-15-spureadstart/) | 3 | 0 |
 | [2026-11-15-spureadtime](2026-11-15-spureadtime/) | 1 | 0 |

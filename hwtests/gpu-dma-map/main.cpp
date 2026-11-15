@@ -30,7 +30,10 @@
  * Each set-up waits 3 frames, counts the lines of 2 frames (the fewer is used), and runs one pass that is thrown away (a warm-up:
  * a warm cache and the same vsync) before its 256 passes that count. Nothing is printed or read between those passes; every
  * result stays in RAM and is printed at the end. About 1,050 frames: ~18 s NTSC, ~21 s PAL. The rectangle is saved first and put
- * back last; GP0(03h) and GP0(E6h) are set to 0 first. At the end the display mode and enable are put back as found; GP1(05h),
+ * back last; GP0(03h) and GP0(E6h) are set to 0 first. v2 (2026-11-15 evening, after nugget's tests/bus/load-timings): the five delay
+ * registers at 1F801010h are printed as found, CDROM_DELAY and COM_DELAY pinned to a disc-less boot's 00020843h / 00031125h (a disc
+ * boot leaves 0000132Ch in COM_DELAY) and all five put back at the end; and the program ends at `break 4, 0` after its Done line,
+ * where psxmon sees a run end (our runner takes the CPU back at the Done line, before it). The v1 logs (dmamap-r*, -free-*) have neither. At the end the display mode and enable are put back as found; GP1(05h),
  * (06h) and (07h) cannot be read back, and are left at set-up 3's values.
  *
  * READ IT LIKE THIS. Per set-up and block size, `MAP s bs: lines x 64 places, P points (F waited a frame): N lost data` with three
@@ -61,6 +64,7 @@
 #define D2_BCR  0x1F8010A4u
 #define D2_CHCR 0x1F8010A8u
 #define RAM_SIZE 0x1F801060u
+#define DELAY_REGS 0x1F801010u       /* BIOS, SPU, CD-ROM, Expansion 2, COM_DELAY (nugget load-timings' five) */
 
 #define NS 4                    /* display set-ups */
 #define NB 4                    /* block sizes */
@@ -100,6 +104,7 @@ static uint32_t saved[128];
 static uint16_t rWrong[NS][NB][NK][NL], rZero[NS][NB][NK][NL], rTime[NS][NB][NK][NL];
 static uint8_t rLeft[NS][NB][NK][NL];
 static uint16_t lines[NS], nPts[NS], frames2[NS][2], late[NS][NB];
+static uint32_t entryDelay[5];
 static uint32_t noSync, entryStat, gpuType, area3, area3was, ramSize, dpcrWas;
 
 /* a VBlank: Timer 1 (reset to 0 at VBlank) counts down. Timer 2's wraps bound the wait (3,000,000 cycles, ~5 frames). */
@@ -224,6 +229,8 @@ int main() {
     dpcrWas = read32(DPCR);
     write32(DPCR, dpcrWas | 0x00000800u);                   /* DMA2 on */
     ramSize = read32(RAM_SIZE);
+    for (int i = 0; i < 5; i++) entryDelay[i] = read32(DELAY_REGS + 4u * (uint32_t)i);
+    write32(0x1F801018u, 0x00020843u); write32(0x1F801020u, 0x00031125u);   /* CDROM_DELAY, COM_DELAY: a boot without a disc */
     entryStat = gstat();
     const uint32_t pal = (entryStat >> 20) & 1;
     waitIdle();
@@ -255,11 +262,14 @@ int main() {
     vramWrite((int)RX, (int)RY, 64, 4, saved);
     write32(DPCR, dpcrWas);
     write16(T1_MODE, m1); write16(T2_MODE, m2);
+    for (int i = 0; i < 5; i++) write32(DELAY_REGS + 4u * (uint32_t)i, entryDelay[i]);
     ExitCriticalSection();
 
     static const char* NAME[NS] = { "as found", "320x240", "640x480i", "off" };
     printf("\nGPUSTAT at entry %08x, GP1(10h:07h) %08x, E3h = 3FF,3FF read through 03h %08x; RAM_SIZE %08x, DPCR %08x\n",
            (unsigned)entryStat, (unsigned)gpuType, (unsigned)area3, (unsigned)ramSize, (unsigned)dpcrWas);
+    printf("Delay registers at entry (1F801010h BIOS, SPU, CD-ROM, Exp 2, COM_DELAY): %08x %08x %08x %08x %08x; pinned CD-ROM 00020843, COM 00031125\n",
+           (unsigned)entryDelay[0], (unsigned)entryDelay[1], (unsigned)entryDelay[2], (unsigned)entryDelay[3], (unsigned)entryDelay[4]);
     printf("Timer 1 lines a frame (two frames) per set-up:");
     for (int s = 0; s < NS; s++) printf(" %s %d %d", NAME[s], (int)frames2[s][0], (int)frames2[s][1]);
     printf("; VBlank waits timed out %d\n", (int)noSync);
@@ -303,5 +313,6 @@ int main() {
         printf(" of %d each\n", (int)nPts[s] * NK);
     }
     printf("\ngpu/gpu-dma-map: Done.\n");
+    __asm__ volatile("break 4, 0");                        /* psxmon ends a run here; our runner stops at the Done line */
     for (;;) VSync(0);
 }

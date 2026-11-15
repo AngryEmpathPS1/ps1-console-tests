@@ -352,6 +352,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-dmamap-r4](2026-11-15-dmamap-r4/) | 1 | 0 |
 | [2026-11-15-dmamap-r5](2026-11-15-dmamap-r5/) | 1 | 0 |
 | [2026-11-15-dmamap-r6](2026-11-15-dmamap-r6/) | 1 | 0 |
+| [2026-11-15-dmamap-v2-r1](2026-11-15-dmamap-v2-r1/) | 1 | 0 |
+| [2026-11-15-dmamap-v2-r2](2026-11-15-dmamap-v2-r2/) | 1 | 0 |
 | [2026-11-15-doomcd6](2026-11-15-doomcd6/) | 4 | 0 |
 | [2026-11-15-doomload](2026-11-15-doomload/) | 7 | 1 |
 | [2026-11-15-doomphase](2026-11-15-doomphase/) | 4 | 1 |
@@ -388,6 +390,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-sprvb15](2026-11-15-sprvb15/) | 2 | 0 |
 | [2026-11-15-sprw1](2026-11-15-sprw1/) | 2 | 0 |
 | [2026-11-15-sprw2](2026-11-15-sprw2/) | 2 | 0 |
+| [2026-11-15-spuirqslot](2026-11-15-spuirqslot/) | 2 | 0 |
 | [2026-11-15-spulatch3](2026-11-15-spulatch3/) | 4 | 0 |
 | [2026-11-15-spureadstart](2026-11-15-spureadstart/) | 6 | 0 |
 | [2026-11-15-spuwritetime](2026-11-15-spuwritetime/) | 2 | 0 |
