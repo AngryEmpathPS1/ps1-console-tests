@@ -32,8 +32,9 @@ Evidence: machine-id (70 logs, all seven models), gpu-version (all seven models)
 | DMA upload 64x4 in blocks of 8, 16, 32, 64 words | no halfword lost | no halfword lost |
 | Drawing speed | see findings 21-25 and 27 | |
 
-Disagrees with psx-spx's list of old-GPU differences in one place: it says DMA to VRAM fails above 10h-word blocks on the old GPU; no halfword was lost at 8, 16, 32 or 64 words, and 32- and 64-word block uploads complete in normal time (finding 19).
-Evidence: gpu-version; 1001 (6), others (37). Old-GPU DMA rows also in gpu-dmabs2; 1001 (2).
+Disagrees with psx-spx's list of old-GPU differences in one place: it said DMA to VRAM fails above 10h-word blocks on the old GPU. In our 47 runs no halfword was lost at 8, 16, 32 or 64 words, and 32- and 64-word block uploads complete in normal time (finding 19). A re-run on six other consoles (2026-11-15) lost none at 8 to 32 words, but did at 64: the SCPH-1000 (old GPU) in 3 of 6 runs (26, 6 and 256 halfwords), each of two SCPH-5501s in 1 of 9 (28 and 92), the SCPH-1001 (new GPU), SCPH-7001 and PAL SCPH-9002 in none of 6 each. So a 64-word block can lose data on either GPU, the old one far more often; psx-spx dev now says 40h-word blocks ([issue 1](https://github.com/AngryEmpathPS1/ps1-console-tests/issues/1), [psx-spx #246](https://github.com/psx-spx/psx-spx.github.io/pull/246)).
+Evidence: gpu-version, 47 runs, every one `0 0 0 0` (1000 1, 1001 6, 101 1, 5000 7, 5501 9, 7001 6, 7501 8, 7502 1, 9001 8; our 1000 and 1001 have the old GPU). Old-GPU DMA rows also in gpu-dmabs2; 1001 (2).
+Open: why our seven old-GPU runs lost nothing at 64 words where the re-run's SCPH-1000 lost data in half.
 
 ## Video timing
 
