@@ -111,6 +111,15 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-bv5](2026-11-15-bv5/) | 2 | 0 |
 | [2026-11-15-bv6](2026-11-15-bv6/) | 2 | 0 |
 | [2026-11-15-discid-doomload](2026-11-15-discid-doomload/) | 1 | 0 |
+| [2026-11-15-dmamap-free-d1000](2026-11-15-dmamap-free-d1000/) | 1 | 0 |
+| [2026-11-15-dmamap-free-d37000](2026-11-15-dmamap-free-d37000/) | 1 | 0 |
+| [2026-11-15-dmamap-r1](2026-11-15-dmamap-r1/) | 1 | 0 |
+| [2026-11-15-dmamap-r2](2026-11-15-dmamap-r2/) | 1 | 0 |
+| [2026-11-15-dmamap-r3](2026-11-15-dmamap-r3/) | 1 | 0 |
+| [2026-11-15-dmamap-r4](2026-11-15-dmamap-r4/) | 1 | 0 |
+| [2026-11-15-dmamap-r5](2026-11-15-dmamap-r5/) | 1 | 0 |
+| [2026-11-15-dmamap-r6](2026-11-15-dmamap-r6/) | 1 | 0 |
+| [2026-11-15-gpu-a0ff9](2026-11-15-gpu-a0ff9/) | 1 | 0 |
 | [2026-11-15-gpuversion-r1](2026-11-15-gpuversion-r1/) | 1 | 0 |
 | [2026-11-15-gpuversion-r2](2026-11-15-gpuversion-r2/) | 1 | 0 |
 | [2026-11-15-gpuversion-r3](2026-11-15-gpuversion-r3/) | 1 | 0 |
@@ -120,5 +129,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-gpuversion-r7](2026-11-15-gpuversion-r7/) | 1 | 0 |
 | [2026-11-15-gpuversion-r8](2026-11-15-gpuversion-r8/) | 1 | 0 |
 | [2026-11-15-gpuversion-r9](2026-11-15-gpuversion-r9/) | 1 | 0 |
+| [2026-11-15-otccold](2026-11-15-otccold/) | 1 | 0 |
+| [2026-11-15-otccold2](2026-11-15-otccold2/) | 1 | 0 |
+| [2026-11-15-spulatch3](2026-11-15-spulatch3/) | 4 | 0 |
 | [2026-11-15-spureadstart](2026-11-15-spureadstart/) | 6 | 0 |
 | [2026-11-15-spuwritetime](2026-11-15-spuwritetime/) | 2 | 0 |

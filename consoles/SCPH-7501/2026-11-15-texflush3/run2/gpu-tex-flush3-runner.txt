@@ -1,0 +1,17 @@
+
+gpu/gpu-tex-flush3
+An 8-bit 48x16 sprite of page 9 cached, GP0(E1h) 020Bh and back by the CPU or by a DMA2 linked list, the sprite timed
+(bit 26's first D, its words stored back to back in the vertical blanking), three times each. No assertions.
+
+  warm        : 438 438 438
+  cold        : 1379 1379 1379
+  cpu 020B    : 1379 1379 1379
+  dma 020B    : 1379 1379 1379
+  dma 2 nodes : 1379 1379 1379
+  dma+spr     : 1379 1379 1379
+  dma 008D    : 1379 1379 1379
+  dma / cpu   : 1379 1379 1379
+  cpu / dma   : 1379 1379 1379
+  dma same    : 438 438 438
+
+gpu/gpu-tex-flush3: Done.

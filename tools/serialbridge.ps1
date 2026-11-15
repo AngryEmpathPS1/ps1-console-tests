@@ -15,6 +15,13 @@
 
   A rate on <Port + 1>, the number in ASCII, moves the open port there and answers one byte (2026-10-31): nugget's monitor
   changes its line rate inside a window of about a second (its PROTOCOL.md 2.5), too short to reopen the port.
+
+  THE CONSOLE'S LINES (2026-11-15, for the console queue and the rack page): the Pico reports the console's RTS as DCD and its DTR
+  as DSR (SERIAL_STATE, pico-serial main.c / port2.c / pioport.c), and this window already holds the port open - so it reads them
+  (GetCommModemStatus, every 200 ms) and writes console-queue/lines/<Port>.json: rts (the console's RTS, from DCD), dtr (its DTR,
+  from DSR), when they last changed, and a "seen"
+  stamp every 5 s (a stale one is a bridge that stopped). Each change is one line in console-queue/lines/<Port>.log. No second
+  client on the console's port and nothing on the wire: a test running there is not touched.
 #>
 param([string]$Com = 'COM3', [int]$Baud = 115200, [int]$Port = 3335)
 
@@ -31,7 +38,28 @@ public static class PsxSerialBridge {
   static NetworkStream client = null;
   static MemoryStream backlog = new MemoryStream();
 
-  public static void Run(string com, int baud, int port) {
+  static void WatchLines(SerialPort sp, int port, string dir) {
+    try { Directory.CreateDirectory(dir); } catch { return; }
+    string file = Path.Combine(dir, port + ".json"), log = Path.Combine(dir, port + ".log");
+    string start = DateTime.UtcNow.ToString("o"), changed = start;
+    int last = -1, changes = 0; DateTime wrote = DateTime.MinValue;
+    while (true) {
+      int st = -1;
+      try { st = (sp.CDHolding ? 1 : 0) | (sp.DsrHolding ? 2 : 0); } catch { }
+      if (st >= 0 && (st != last || (DateTime.UtcNow - wrote).TotalSeconds >= 5)) {
+        string now = DateTime.UtcNow.ToString("o");
+        if (st != last) {
+          if (last >= 0) { changes++; changed = now; try { File.AppendAllText(log, now + " rts " + ((last & 1) != 0 ? 1 : 0) + "->" + ((st & 1) != 0 ? 1 : 0) + " dtr " + ((last & 2) != 0 ? 1 : 0) + "->" + ((st & 2) != 0 ? 1 : 0) + "\n"); } catch { } }
+          last = st;
+        }
+        string json = "{\"port\": " + port + ", \"rts\": " + ((st & 1) != 0 ? 1 : 0) + ", \"dtr\": " + ((st & 2) != 0 ? 1 : 0) + ", \"changed\": \"" + changed + "\", \"changes\": " + changes + ", \"bridgeStart\": \"" + start + "\", \"seen\": \"" + now + "\"}\n";
+        try { File.WriteAllText(file + ".tmp", json); File.Copy(file + ".tmp", file, true); wrote = DateTime.UtcNow; } catch { }
+      }
+      Thread.Sleep(200);
+    }
+  }
+
+  public static void Run(string com, int baud, int port, string linesDir) {
     Stream dev;
     if (com.StartsWith("tcp:")) {
       string[] hp = com.Substring(4).Split(':');
@@ -66,6 +94,9 @@ public static class PsxSerialBridge {
       });
       rater.IsBackground = true;
       rater.Start();
+      var lines = new Thread(() => WatchLines(sp, port, linesDir));
+      lines.IsBackground = true;
+      lines.Start();
     }
     var listener = new TcpListener(IPAddress.Loopback, port);
     listener.Start();
@@ -109,4 +140,4 @@ public static class PsxSerialBridge {
 "@
 
 Add-Type -TypeDefinition $src -ReferencedAssemblies System
-[PsxSerialBridge]::Run($Com, $Baud, $Port)
+[PsxSerialBridge]::Run($Com, $Baud, $Port, (Join-Path (Split-Path -Parent $PSScriptRoot) 'console-queue\lines'))

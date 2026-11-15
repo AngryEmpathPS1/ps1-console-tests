@@ -1,0 +1,16 @@
+
+gpu/gpu-clut-keep
+An 8-bit 48x16 sprite drawn, sprites of other CLUTs between, the sprite timed again (bit 26's first D, its words
+stored back to back in the vertical blanking), three times each. No assertions.
+
+  warm        : 438 438 438
+  depth       : 1379 1379 1379
+  4b clutB    : 1404 1404 1404
+  4b clutA    : 1379 1379 1379
+  4b x9       : 1404 1404 1404
+  8b clutB    : 709 709 709
+  8b clutB+d  : 1650 1650 1650
+  4b B again  : 1404 1404 1404
+  reset       : 1650 1650 1650
+
+gpu/gpu-clut-keep: Done.

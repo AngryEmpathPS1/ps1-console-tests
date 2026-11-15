@@ -1,0 +1,21 @@
+
+gpu/gpu-tex-flush
+An 8-bit 48x16 sprite cached, one thing done, the sprite timed (its words stored back to back in the vertical
+blanking, D cycles, one GPUSTAT read: the first D with bit 26 set), three times each way. No assertions.
+
+  warm      : 489 489 489
+  cold      : 1658 1658 1658
+  E1 same   : 489 489 489
+  E1 page   : 1658 1658 1658
+  E1 depth  : 1658 1658 1658
+  E1 15b    : 489 489 489
+  other4    : 1658 1658 1658
+  other8    : 1658 1658 1658
+  poly      : 1658 1658 1658
+  copy      : 1658 1658 1658
+  upload    : 1658 1658 1658
+  read      : 1658 1658 1658
+  fill      : 489 489 489
+  reset     : 1954 1954 1954
+
+gpu/gpu-tex-flush: Done.

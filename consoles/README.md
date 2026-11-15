@@ -5,13 +5,13 @@ Every log, by console. A session folder is a date and, where a day had several s
 | console | BIOS | CD controller | GPU type | sessions | logs |
 |---|---|---|---:|---:|---:|
 | [SCPH-1000](SCPH-1000/README.md) | "(no version string at BFC7FF32h)" | 94/09/19 version C0 | no answer | 15 | 606 |
-| [SCPH-1001](SCPH-1001/README.md) | "System ROM Version 2.1 07/17/95 A" | 95/07/24 version C1 | no answer | 93 | 1830 |
-| [SCPH-101](SCPH-101/README.md) | "System ROM Version 4.5 05/25/00 A" | a1/03/06 version C3 | 2 | 128 | 1162 |
+| [SCPH-1001](SCPH-1001/README.md) | "System ROM Version 2.1 07/17/95 A" | 95/07/24 version C1 | no answer | 114 | 1862 |
+| [SCPH-101](SCPH-101/README.md) | "System ROM Version 4.5 05/25/00 A" | a1/03/06 version C3 | 2 | 144 | 1184 |
 | [SCPH-5000](SCPH-5000/README.md) | "System ROM Version 2.2 12/04/95 J" | 95/07/24 version C1 | no answer | 5 | 1675 |
 | [SCPH-5501](SCPH-5501/README.md) | "System ROM Version 3.0 11/18/96 A" | 97/01/10 version C2 | 2 | 164 | 2440 |
-| [SCPH-5501/unit-2](SCPH-5501/unit-2/README.md) | "System ROM Version 3.0 11/18/96 A" | 97/01/10 version C2 | 2 | 351 | 3069 |
-| [SCPH-7001](SCPH-7001/README.md) | "System ROM Version 4.1 12/16/97 A" | 97/08/14 version C2 | 2 | 25 | 2000 |
-| [SCPH-7501](SCPH-7501/README.md) | "System ROM Version 4.1 12/16/97 A" | 98/06/10 version C3 | 2 | 149 | 3403 |
-| [SCPH-7502](SCPH-7502/README.md) | "System ROM Version 4.1 12/16/97 E" | 98/06/10 version C3 | 2 | 106 | 1364 |
+| [SCPH-5501/unit-2](SCPH-5501/unit-2/README.md) | "System ROM Version 3.0 11/18/96 A" | 97/01/10 version C2 | 2 | 376 | 3123 |
+| [SCPH-7001](SCPH-7001/README.md) | "System ROM Version 4.1 12/16/97 A" | 97/08/14 version C2 | 2 | 38 | 2016 |
+| [SCPH-7501](SCPH-7501/README.md) | "System ROM Version 4.1 12/16/97 A" | 98/06/10 version C3 | 2 | 163 | 3421 |
+| [SCPH-7502](SCPH-7502/README.md) | "System ROM Version 4.1 12/16/97 E" | 98/06/10 version C3 | 2 | 118 | 1379 |
 | [SCPH-9001](SCPH-9001/README.md) | "System ROM Version 4.1 12/16/97 A" | 99/02/01 version C3 | 2 | 35 | 1594 |
 | [SCPH-9001/borrowed-1](SCPH-9001/borrowed-1/README.md) | "System ROM Version 4.1 12/16/97 A" | 99/02/01 version C3 | 2 | 1 | 389 |

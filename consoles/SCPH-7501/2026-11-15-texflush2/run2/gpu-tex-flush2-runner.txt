@@ -1,0 +1,23 @@
+
+gpu/gpu-tex-flush2
+An 8-bit 48x16 sprite of page 9 cached, GP0(E1h) with another value and back, the sprite timed (bit 26's first D,
+its words stored back to back in the vertical blanking), three times each. No assertions.
+
+  warm      : 438 438 438
+  cold      : 1379 1379 1379
+  020B      : 1379 1379 1379
+  000B      : 1379 1379 1379
+  008B      : 1379 1379 1379
+  0009      : 1379 1379 1379
+  0289      : 438 438 438
+  0088      : 1379 1379 1379
+  008A      : 1379 1379 1379
+  008D      : 1379 1379 1379
+  0081      : 1379 1379 1379
+  0099      : 1379 1379 1379
+  0109      : 438 438 438
+  0489      : 438 438 438
+  020B+spr  : 1379 1379 1379
+  000B+spr  : 1379 1379 1379
+
+gpu/gpu-tex-flush2: Done.

@@ -40,7 +40,7 @@ Which text says what, and what the logs show. Details are in the finding named.
 | CPU-14 | dev | a RAM load with LDSCH off costs about 2 more | 4 more (one unit) |
 | CPU-18 | all | a read waits for a queued store to the same location | it waits for a queued store within its own 64 bytes |
 | CPU-37 | stable, dev | CAUSE.CE unchanged except on Coprocessor Unusable | opcode bits 26-27 after a bus error, as nocash says |
-| GPU 2 | all | the old GPU fails DMA to VRAM above 10h-word blocks | none lost at 8 to 32 words; at 64 none in our 101 runs (25 on the old GPU), but some on a re-run (SCPH-1000 3 of 6, each SCPH-5501 1 of 9) |
+| GPU 2 | all | the old GPU fails DMA to VRAM above 10h-word blocks | both GPUs lose data in 20h- and 40h-word blocks, none in 8 or 10h, at 3-9% of the frame's places: where the display's fetch holds VRAM. So gpu-version's result depends on where its upload lands: none in our runner's 101 runs, some under psxmon |
 | GPU 9 | all | GPUSTAT.31 always zero during VBlank | the low bit of the display Y |
 | GPU 24 | nocash | old GPUs run at about 60% of the new speed | 1.0 to 3.0 times as slow, by primitive |
 | GPU 34 | nocash | new-GPU masked copy figures | +0.2455 cycle a pixel from 64 wide |
@@ -66,5 +66,5 @@ Which text says what, and what the logs show. Details are in the finding named.
 Re-run on six other consoles with these prebuilt tests (2026-11-15: SCPH-1000, SCPH-1001 with the new GPU, two SCPH-5501s, SCPH-7001, PAL SCPH-9002):
 - Held: CPU-14, CPU-18, CPU-37, GPU 9, GPU 24, GPU 34, GPU 50, GPU 51, GPU 56, SPU 6, SPU 11, SPU 28, SPU 41, SPU 42, CD 18 and COM0. psx-spx dev now says so where it did not ([#244](https://github.com/psx-spx/psx-spx.github.io/pull/244), [#245](https://github.com/psx-spx/psx-spx.github.io/pull/245)). Dev's GPU 9 text was rewritten on 2026-11-12 and already agreed.
 - Held on more units than ours: SPU 33 ([issue 2](https://github.com/AngryEmpathPS1/ps1-console-tests/issues/2)).
-- Differed: GPU 2, where 64-word blocks did lose halfwords ([issue 1](https://github.com/AngryEmpathPS1/ps1-console-tests/issues/1); dev fixed in [#246](https://github.com/psx-spx/psx-spx.github.io/pull/246)).
+- Differed: GPU 2, where 64-word blocks did lose halfwords ([issue 1](https://github.com/AngryEmpathPS1/ps1-console-tests/issues/1); dev fixed in [#246](https://github.com/psx-spx/psx-spx.github.io/pull/246)). The reason was where in the frame the upload landed, not the consoles: `gpu-dma-map` maps it, and 32-word blocks lose too (findings GPU 2).
 - Not re-run yet: CD 20, CD 29, CD 39 and CD 42, which need a game disc, and /ACK, BU codes and SIO_STAT, which need a PocketStation or a loopback plug.

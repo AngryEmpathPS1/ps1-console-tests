@@ -22,6 +22,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-boot-steps |  | 7 | 2 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
 | cd-cmds |  | 7 | 2 | 7 | 13 | 3 | 7 | 16 | 2 | 10 | 3 |
 | cd-da-capture |  | 1 |  |  | 1 |  | 2 | 1 | 2 | 1 |  |
+| cd-discid |  |  |  |  |  | 1 |  |  |  |  |  |
 | cd-doom-load |  |  |  |  |  | 6 |  | 2 |  |  |  |
 | cd-doom-phase |  |  |  |  |  | 3 |  | 2 |  |  |  |
 | cd-doom-phase2 |  |  |  |  |  | 2 |  | 2 |  |  |  |
@@ -84,9 +85,12 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-seek-phase |  | 3 | 2 | 2 | 3 | 3 | 3 | 4 | 2 | 3 |  |
 | cd-seek-phase2 |  | 3 | 2 | 2 | 3 | 3 | 3 | 4 | 2 | 3 |  |
 | cd-seek-phase3 |  | 3 | 2 | 2 | 3 | 3 | 3 | 4 | 2 | 3 |  |
+| cd-setmode-race |  |  |  |  |  | 9 |  |  |  |  |  |
 | cd-sled |  | 3 | 2 | 2 | 3 | 3 | 2 | 7 | 7 | 7 |  |
 | cd-small-reads |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-speed |  | 4 | 1 | 6 | 6 | 5 | 4 | 8 | 4 | 6 | 2 |
+| cd-speed-seek |  |  |  |  |  | 3 |  |  |  |  |  |
+| cd-speed-seek2 |  |  |  |  |  | 2 |  |  |  |  |  |
 | cd-speedack |  |  | 2 |  |  | 5 |  | 7 | 4 |  |  |
 | cd-speedack2 |  |  | 2 |  |  | 3 |  | 5 | 4 |  |  |
 | cd-speedpause |  | 4 | 1 | 6 | 6 | 2 | 4 | 8 | 4 | 6 | 2 |
