@@ -99,7 +99,7 @@ static void simple(uint8_t cmd) { command(cmd); waitInt(3); drain(); ackAll(); }
 static void setmode(uint8_t m) { param(m); simple(0x0E); }
 
 static uint32_t discSectors() {
-    param(0); command(0x14); waitInt(3);
+    param(0); command(0x14); if (waitInt(3) != 3) { drain(); ackAll(); return 0; }   /* INT5 / nothing: no disc */
     resp(); uint8_t mm = unbcd(resp()), ss = unbcd(resp()); drain(); ackAll();
     return (mm * 60 + ss) * 75;
 }
@@ -110,8 +110,11 @@ static uint32_t onePause(uint32_t lba, uint32_t phaseCycles, uint32_t* ack, int 
     uint32_t a = lba + 150;
     param(bcd(a / 4500)); param(bcd((a / 75) % 60)); param(bcd(a % 75));
     simple(0x02);                                  /* Setloc */
-    command(0x06); waitInt(3); drain(); ackAll();   /* ReadN */
-    for (int i = 0; i < int1s; i++) { waitInt(1); drain(); ackAll(); }
+    /* A refused ReadN or a read that brings no sector ends this measurement at once (0, "refused"): with no disc the
+     * 120 measurements' INT1 waits ran out 10 s each - four hours with nothing printed (the SCPH-9001, lid open,
+     * 2026-11-16). The timed path, from the Pause's INT3 on, is unchanged. */
+    command(0x06); if (waitInt(3) != 3) { drain(); ackAll(); return 0; } drain(); ackAll();   /* ReadN */
+    for (int i = 0; i < int1s; i++) { if (waitInt(1) != 1) { drain(); ackAll(); return 0; } drain(); ackAll(); }
     uint32_t t0 = now();
     while (now() - t0 < phaseCycles) { }
     uint32_t tp = now();
@@ -138,6 +141,13 @@ int main() {
     simple(0x0C);
 
     const uint32_t total = discSectors();
+    if (total == 0) {                                /* GetTD answered nothing: no disc, or the lid open */
+        printf("disc: none (GetTD gave 0) - nothing to time\n");
+        restoreTimer(2, prev);
+        ExitCriticalSection();
+        printf("\nDone.\n");
+        for (;;) {}
+    }
     /* A disc with music tracks after its data is timed inside the data track: a
      * ReadN onto audio fails, and every row there would read a refused Pause
      * (Moto Racer World Tour's data ends at 9:33 of 62:56). */

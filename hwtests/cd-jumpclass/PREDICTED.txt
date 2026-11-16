@@ -1,0 +1,9 @@
+hwtests/cd-jumpclass, run here first (2026-11-16) as the second SCPH-5501 under SC430930 on Doom (USA), --settle=600, on the knob core
+scratch/_cores/jset (v0.377.369's cdservo.js; experiments/doomload/NOTES.md 18): no wait ran out in any. The three printouts are
+experiments/doomload/jumpclass-emu/jc-J1.txt (the one-track jump's settle 1 ms, as src/ now), jc-J3.txt (3 ms) and jc-JR2.txt (1 ms +
+a uniform 0..2 ms drawn per jump). In hundredths of a M cycle; the classes are a disc turn apart at that radius (~2.2M at 2x).
+- 1 ms: one class per target in 156 of 160 (T 4942, Doom's read 9: 8.03M).
+- 3 ms: a different class from 1 ms on most targets (T 4942 5.82M; T 4900, 4972, 4978 split).
+- the draw: T 4900, 4906, 4924, 4948, 4954, 4960, 4972, 4978, 4984 split run to run (T 4972: 3.8 x3 / 6.0 x4 / 8.2 x2); T 4942 5.82 x10.
+What a console says: its share of each class per target. One class everywhere at the 1 ms column's times = a 1 ms settle with no
+spread; splits where the draw splits = a settle that varies jump to jump, whose range the shares bound.

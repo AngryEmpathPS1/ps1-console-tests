@@ -1,0 +1,13 @@
+
+cdrom/cd-qlag
+The subcode Q against the sector just delivered: GetlocP a stepped delay after an INT1 of a read.
+Per row 64 samples t:d - t thousands of cycles (1 ms = 33,869) from the INT1 to GetlocP's answer, d the Q's absolute position less that INT1's sector; the delay steps through one sector time in sixteenths, four times. No assertions - compare against your emulator.
+2X 05:00:00: 0 samples, 0 INT1s, GetlocL 0 checked 0 off;
+1X 05:00:00: 0 samples, 0 INT1s, GetlocL 0 checked 0 off;
+2X 02:00:00: 0 samples, 0 INT1s, GetlocL 0 checked 0 off;
+1X 02:00:00: 0 samples, 0 INT1s, GetlocL 0 checked 0 off;
+2X 05:00:00: 0 samples, 0 INT1s, GetlocL 0 checked 0 off;
+1X 05:00:00: 0 samples, 0 INT1s, GetlocL 0 checked 0 off;
+2X 02:00:00: 0 samples, 0 INT1s, GetlocL 0 checked 0 off;
+1X 02:00:00: 0 samples, 0 INT1s, GetlocL 0 checked 0 off;
+cdrom/cd-qlag: Done.

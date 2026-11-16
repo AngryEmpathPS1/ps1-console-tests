@@ -1,0 +1,59 @@
+
+dma/dma-otc-ioread
+A DMA6 start (200 words), k nops, one read (Timer 2, I_STAT, RAM, CHCR6), Timer 2 again; warm. a: cycles to after the read;
+b: CHCR6's busy bit as read; c: cycles to CHCR6 idle. No assertions.
+
+R t2 k 0: a 229 b - c 304
+R t2 k 1: a 229 b - c 304
+R t2 k 2: a 219 b - c 296
+R t2 k 3: a 230 b - c 305
+R t2 k 4: a 233 b - c 308
+R t2 k 5: a 233 b - c 308
+R t2 k 6: a 223 b - c 301
+R t2 k 7: a 233 b - c 308
+R t2 k 8: a 233 b - c 308
+R t2 k 9: a 233 b - c 308
+R t2 k 10: a 223 b - c 307
+R t2 k 11: a 226 b - c 304
+R t2 k 12: a 223 b - c 301
+R istat k 0: a 229 b - c 304
+R istat k 1: a 229 b - c 304
+R istat k 2: a 229 b - c 304
+R istat k 3: a 230 b - c 305
+R istat k 4: a 233 b - c 308
+R istat k 5: a 233 b - c 308
+R istat k 6: a 233 b - c 308
+R istat k 7: a 233 b - c 308
+R istat k 8: a 233 b - c 308
+R istat k 9: a 233 b - c 308
+R istat k 10: a 223 b - c 307
+R istat k 11: a 233 b - c 308
+R istat k 12: a 233 b - c 308
+R ram k 0: a 230 b - c 305
+R ram k 1: a 230 b - c 305
+R ram k 2: a 221 b - c 298
+R ram k 3: a 232 b - c 307
+R ram k 4: a 236 b - c 311
+R ram k 5: a 236 b - c 311
+R ram k 6: a 236 b - c 311
+R ram k 7: a 236 b - c 311
+R ram k 8: a 236 b - c 311
+R ram k 9: a 236 b - c 311
+R ram k 10: a 236 b - c 311
+R ram k 11: a 236 b - c 311
+R ram k 12: a 236 b - c 311
+R chcr k 0: a 229 b 1 c 304
+R chcr k 1: a 229 b 1 c 304
+R chcr k 2: a 229 b 1 c 304
+R chcr k 3: a 230 b 1 c 305
+R chcr k 4: a 233 b 0 c 308
+R chcr k 5: a 233 b 0 c 308
+R chcr k 6: a 233 b 0 c 308
+R chcr k 7: a 233 b 0 c 308
+R chcr k 8: a 223 b 0 c 303
+R chcr k 9: a 233 b 0 c 309
+R chcr k 10: a 233 b 0 c 308
+R chcr k 11: a 223 b 0 c 301
+R chcr k 12: a 233 b 0 c 308
+
+dma/dma-otc-ioread: Done.

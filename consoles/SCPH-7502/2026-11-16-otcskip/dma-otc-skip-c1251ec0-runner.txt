@@ -1,0 +1,57 @@
+
+dma/dma-otc-skip
+MADR, g1 nops, BCR, g2 nops, CHCR (a 200-word DMA6 start), k nops, lhu Timer 2; warm. t: cycles from before MADR to after
+the read (small: it skipped the hold); idle: cycles to CHCR6 idle. No assertions.
+
+g1 0 g2 0 k 0: t 8  idle 301
+g1 0 g2 0 k 1: t 8  idle 296
+g1 0 g2 0 k 2: t 10  idle 292
+g1 0 g2 0 k 3: t 10  idle 297
+g1 0 g2 0 k 4: t 11  idle 304
+g1 0 g2 1 k 0: t 8  idle 301
+g1 0 g2 1 k 1: t 10  idle 297
+g1 0 g2 1 k 2: t 10  idle 297
+g1 0 g2 1 k 3: t 11  idle 298
+g1 0 g2 1 k 4: t 232  idle 301
+g1 0 g2 2 k 0: t 10  idle 296
+g1 0 g2 2 k 1: t 10  idle 297
+g1 0 g2 2 k 2: t 11  idle 298
+g1 0 g2 2 k 3: t 232  idle 301
+g1 0 g2 2 k 4: t 232  idle 306
+g1 0 g2 3 k 0: t 11  idle 299
+g1 0 g2 3 k 1: t 11  idle 299
+g1 0 g2 3 k 2: t 12  idle 299
+g1 0 g2 3 k 3: t 13  idle 300
+g1 0 g2 3 k 4: t 234  idle 303
+g1 0 g2 4 k 0: t 12  idle 300
+g1 0 g2 4 k 1: t 12  idle 297
+g1 0 g2 4 k 2: t 13  idle 300
+g1 0 g2 4 k 3: t 14  idle 301
+g1 0 g2 4 k 4: t 235  idle 304
+g1 1 g2 0 k 0: t 8  idle 301
+g1 1 g2 0 k 1: t 10  idle 297
+g1 1 g2 0 k 2: t 10  idle 297
+g1 1 g2 0 k 3: t 11  idle 298
+g1 1 g2 0 k 4: t 232  idle 301
+g1 1 g2 1 k 0: t 10  idle 294
+g1 1 g2 1 k 1: t 10  idle 297
+g1 1 g2 1 k 2: t 11  idle 298
+g1 1 g2 1 k 3: t 232  idle 301
+g1 1 g2 1 k 4: t 222  idle 294
+g1 1 g2 2 k 0: t 11  idle 299
+g1 1 g2 2 k 1: t 11  idle 303
+g1 1 g2 2 k 2: t 12  idle 299
+g1 1 g2 2 k 3: t 13  idle 300
+g1 1 g2 2 k 4: t 234  idle 304
+g1 1 g2 3 k 0: t 12  idle 300
+g1 1 g2 3 k 1: t 12  idle 297
+g1 1 g2 3 k 2: t 13  idle 300
+g1 1 g2 3 k 3: t 14  idle 301
+g1 1 g2 3 k 4: t 235  idle 309
+g1 1 g2 4 k 0: t 13  idle 301
+g1 1 g2 4 k 1: t 13  idle 295
+g1 1 g2 4 k 2: t 14  idle 301
+g1 1 g2 4 k 3: t 15  idle 302
+g1 1 g2 4 k 4: t 226  idle 299
+
+dma/dma-otc-skip: Done.

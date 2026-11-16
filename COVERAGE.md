@@ -22,10 +22,10 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-boot-steps |  | 7 | 2 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
 | cd-cmds |  | 7 | 2 | 7 | 13 | 3 | 7 | 16 | 2 | 10 | 3 |
 | cd-da-capture |  | 1 |  |  | 1 |  | 2 | 1 | 2 | 1 |  |
-| cd-discid |  |  |  |  |  | 1 | 1 |  |  |  |  |
+| cd-discid |  | 1 | 1 |  |  | 2 | 2 |  |  | 1 |  |
 | cd-doom-load |  |  |  |  |  | 6 |  | 2 |  |  |  |
-| cd-doom-phase |  |  |  |  |  | 3 | 2 | 2 |  |  |  |
-| cd-doom-phase2 |  |  |  |  |  | 2 | 2 | 2 |  |  |  |
+| cd-doom-phase |  | 2 | 2 |  |  | 3 | 2 | 2 |  | 2 |  |
+| cd-doom-phase2 |  | 2 | 2 |  |  | 2 | 2 | 2 |  | 2 |  |
 | cd-firstread |  | 4 | 2 |  |  | 4 |  |  | 4 |  |  |
 | cd-firstread2 |  | 4 | 2 |  |  | 4 |  |  | 4 |  |  |
 | cd-game-steps |  | 7 | 2 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
@@ -42,6 +42,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-init-far |  | 3 | 2 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
 | cd-int1-spread |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-irq-glitch | 1 | 1 | 1 | 1 | 2 | 2 | 2 | 4 | 1 | 2 | 2 |
+| cd-jumpclass |  |  |  |  |  |  | 3 |  |  |  |  |
 | cd-leadout |  | 4 | 1 | 1 | 4 | 1 | 1 | 5 | 1 | 3 |  |
 | cd-lid |  |  |  |  |  |  |  | 3 |  |  |  |
 | cd-lid-sweep |  |  |  |  |  |  |  | 3 |  |  |  |
@@ -85,21 +86,22 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-seek-phase |  | 3 | 2 | 2 | 3 | 3 | 3 | 4 | 2 | 3 |  |
 | cd-seek-phase2 |  | 3 | 2 | 2 | 3 | 3 | 3 | 4 | 2 | 3 |  |
 | cd-seek-phase3 |  | 3 | 2 | 2 | 3 | 3 | 3 | 4 | 2 | 3 |  |
-| cd-setmode-race |  |  |  |  |  | 9 | 2 |  |  |  |  |
+| cd-setmode-race |  | 2 | 2 |  |  | 9 | 2 |  |  |  |  |
 | cd-sled |  | 3 | 2 | 2 | 3 | 3 | 2 | 7 | 7 | 7 |  |
 | cd-small-reads |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-speed |  | 4 | 1 | 6 | 6 | 5 | 4 | 8 | 4 | 6 | 2 |
-| cd-speed-seek |  |  |  |  |  | 3 | 2 |  |  |  |  |
-| cd-speed-seek2 |  |  |  |  |  | 2 | 2 |  |  |  |  |
+| cd-speed-seek |  | 2 | 2 |  |  | 3 | 2 |  |  |  |  |
+| cd-speed-seek2 |  | 2 | 2 |  |  | 2 | 2 |  |  |  |  |
+| cd-speed-seek3 |  |  | 2 |  |  | 2 |  |  |  | 2 |  |
 | cd-speedack |  |  | 2 |  |  | 5 |  | 7 | 4 |  |  |
 | cd-speedack2 |  |  | 2 |  |  | 3 |  | 5 | 4 |  |  |
 | cd-speedpause |  | 4 | 1 | 6 | 6 | 2 | 4 | 8 | 4 | 6 | 2 |
-| cd-spindown |  |  | 2 |  |  | 8 |  | 8 | 4 |  |  |
+| cd-spindown |  |  | 6 |  |  | 8 |  | 8 | 4 | 4 |  |
 | cd-spindown2 |  |  | 2 |  |  | 9 |  | 4 |  |  |  |
 | cd-spinprobe | 2 |  | 2 |  |  | 3 |  |  | 3 |  |  |
 | cd-spinup-phase |  | 3 | 2 | 2 | 3 | 3 | 6 | 7 | 7 | 7 |  |
 | cd-spinup-state |  | 3 | 2 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
-| cd-spinup-trend |  | 3 | 2 | 3 | 3 | 3 | 3 | 7 | 3 | 3 |  |
+| cd-spinup-trend |  | 3 | 2 | 3 | 3 | 3 | 3 | 7 | 3 | 5 |  |
 | cd-spunup |  | 4 | 1 | 6 | 4 | 2 | 4 | 6 | 1 | 4 | 2 |
 | cd-store | 1 | 1 | 1 | 1 | 2 | 2 | 2 | 4 | 1 | 2 | 2 |
 | cd-xa |  | 1 |  |  | 2 |  | 2 | 3 | 2 | 3 |  |

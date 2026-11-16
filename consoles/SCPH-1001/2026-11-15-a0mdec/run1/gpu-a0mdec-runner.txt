@@ -1,0 +1,14 @@
+
+gpu/gpu-a0mdec
+FF9's column upload (A0h 24 x 224 by DMA2, 168 blocks of 16) beside the MDEC's channels: CHCR store to bit 24 clear,
+and the words DMA0 and DMA1 moved during it.
+
+M 0 len 5478..5515 d0 0 d1 0
+M 1 len 5464..5541 d0 0 d1 0
+M 2 len 5464..5522 d0 0 d1 0
+M 3 len 5461..5510 d0 0 d1 0
+M 4 len 5483..5538 d0 0 d1 0
+M 5 len 5521..5566 d0 64 d1 0
+M 6 len 6086..6153 d0 192 d1 384
+
+gpu/gpu-a0mdec: Done.

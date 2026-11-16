@@ -1,0 +1,16 @@
+
+gpu/gpu-semi-fill
+4- and 8-bit sprites W x 16 (W 16, 32, 64, 128), opaque and semi-transparent, their texels cached (c) or the cache
+emptied by a page change (u): bit 26's first D after the last word, twice each. No assertions.
+
+  W       :      16          32          64         128
+  o4 c   : 177 177 | 309 309 | 563 563 | 2354 2354 |
+  o4 u   : 305 305 | 610 610 | 1186 1186 | 2353 2353 |
+  s4 c   : 314 314 | 498 498 | 866 866 | 2960 2960 |
+  s4 u   : 474 474 | 825 825 | 1529 1529 | 2960 2960 |
+  o8 c   : 177 177 | 309 309 | 563 563 | 3629 3629 |
+  o8 u   : 478 478 | 926 926 | 1839 1839 | 3629 3629 |
+  s8 c   : 314 314 | 498 498 | 866 866 | 4459 4459 |
+  s8 u   : 605 605 | 1166 1166 | 2277 2277 | 4459 4459 |
+
+gpu/gpu-semi-fill: Done.

@@ -1,0 +1,15 @@
+
+gpu/gpu-clip-edge
+4-bit sprites (opaque, semi-transparent, semi with no pixel blending), a flat semi rectangle and two textured quads,
+whole and cut by the drawing area's right, left and top edges: bit 26's first D after the last word, twice each.
+No assertions.
+
+         whole     edge      r11       r8        r4        l5        l8        top      
+  s4   : 228 228 | 228 228 | 196 196 | 164 164 | 132 132 | 197 197 | 167 167 | 165 165 |
+  s4s  : 484 484 | 484 484 | 388 388 | 292 292 | 196 196 | 390 390 | 296 296 | 341 341 |
+  s4n  : 484 484 | 484 484 | 388 388 | 292 292 | 196 196 | 390 390 | 296 296 | 341 341 |
+  fs   : 486 486 | 486 486 | 390 390 | 294 294 | 198 198 | 392 392 | 298 298 | 343 343 |
+  q4   : 550 550 | 550 550 | 445 445 | 382 382 | 298 298 | 451 451 | 405 405 | 421 421 |
+  qw   : 321 321 | 321 321 | 281 281 | 257 257 | 241 241 | 321 321 | 321 321 | 288 288 |
+
+gpu/gpu-clip-edge: Done.

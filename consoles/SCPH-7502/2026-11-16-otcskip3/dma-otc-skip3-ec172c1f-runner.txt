@@ -1,0 +1,79 @@
+
+dma/dma-otc-skip3
+MADR, BCR, a loop of n, (v 1: lhu Timer 2), CHCR (a 200-word DMA6 start), k nops, lhu Timer 2; warm. t: cycles from before MADR to after
+the read (small: it skipped the hold); idle: cycles to CHCR6 idle. No assertions.
+
+v 0 n 0 k 0: t 8  idle 307
+v 0 n 0 k 1: t 8  idle 301
+v 0 n 0 k 2: t 10  idle 303
+v 0 n 0 k 3: t 10  idle 303
+v 0 n 0 k 4: t 11  idle 304
+v 0 n 0 k 5: t 232  idle 307
+v 0 n 4 k 0: t 21  idle 308
+v 0 n 4 k 1: t 21  idle 318
+v 0 n 4 k 2: t 22  idle 315
+v 0 n 4 k 3: t 23  idle 316
+v 0 n 4 k 4: t 244  idle 319
+v 0 n 4 k 5: t 244  idle 319
+v 0 n 16 k 0: t 57  idle 351
+v 0 n 16 k 1: t 57  idle 351
+v 0 n 16 k 2: t 58  idle 351
+v 0 n 16 k 3: t 59  idle 352
+v 0 n 16 k 4: t 280  idle 355
+v 0 n 16 k 5: t 280  idle 355
+v 0 n 64 k 0: t 201  idle 495
+v 0 n 64 k 1: t 201  idle 495
+v 0 n 64 k 2: t 202  idle 495
+v 0 n 64 k 3: t 203  idle 496
+v 0 n 64 k 4: t 424  idle 499
+v 0 n 64 k 5: t 424  idle 499
+v 0 n 256 k 0: t 777  idle 1077
+v 0 n 256 k 1: t 777  idle 1064
+v 0 n 256 k 2: t 778  idle 1071
+v 0 n 256 k 3: t 779  idle 1072
+v 0 n 256 k 4: t 995  idle 1074
+v 0 n 256 k 5: t 1000  idle 1078
+v 0 n 1024 k 0: t 3081  idle 3370
+v 0 n 1024 k 1: t 3081  idle 3375
+v 0 n 1024 k 2: t 3082  idle 3375
+v 0 n 1024 k 3: t 3083  idle 3376
+v 0 n 1024 k 4: t 3304  idle 3379
+v 0 n 1024 k 5: t 3294  idle 3372
+v 1 n 0 k 0: t 12  idle 305
+v 1 n 0 k 1: t 12  idle 305
+v 1 n 0 k 2: t 13  idle 306
+v 1 n 0 k 3: t 234  idle 309
+v 1 n 0 k 4: t 224  idle 302
+v 1 n 0 k 5: t 224  idle 309
+v 1 n 4 k 0: t 25  idle 319
+v 1 n 4 k 1: t 25  idle 319
+v 1 n 4 k 2: t 26  idle 314
+v 1 n 4 k 3: t 27  idle 313
+v 1 n 4 k 4: t 238  idle 316
+v 1 n 4 k 5: t 248  idle 323
+v 1 n 16 k 0: t 61  idle 355
+v 1 n 16 k 1: t 61  idle 355
+v 1 n 16 k 2: t 62  idle 355
+v 1 n 16 k 3: t 63  idle 356
+v 1 n 16 k 4: t 284  idle 359
+v 1 n 16 k 5: t 284  idle 359
+v 1 n 64 k 0: t 205  idle 499
+v 1 n 64 k 1: t 205  idle 499
+v 1 n 64 k 2: t 206  idle 492
+v 1 n 64 k 3: t 207  idle 500
+v 1 n 64 k 4: t 428  idle 503
+v 1 n 64 k 5: t 428  idle 503
+v 1 n 256 k 0: t 781  idle 1071
+v 1 n 256 k 1: t 781  idle 1068
+v 1 n 256 k 2: t 782  idle 1075
+v 1 n 256 k 3: t 783  idle 1076
+v 1 n 256 k 4: t 1004  idle 1079
+v 1 n 256 k 5: t 994  idle 1071
+v 1 n 1024 k 0: t 3085  idle 3382
+v 1 n 1024 k 1: t 3085  idle 3379
+v 1 n 1024 k 2: t 3086  idle 3379
+v 1 n 1024 k 3: t 3087  idle 3380
+v 1 n 1024 k 4: t 3298  idle 3377
+v 1 n 1024 k 5: t 3308  idle 3383
+
+dma/dma-otc-skip3: Done.

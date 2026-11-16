@@ -1,0 +1,67 @@
+
+mdec/mdec-first
+What sets the MDEC's first output word: the first chunk, the command's length, DMA0's block size (Timer 2, system clock). No assertions.
+
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015000, color=1)... ok
+mdec_idctTable(addr=0x80015080)... ok
+24bpp N: one content, N macroblocks, DMA0 bs 32
+  24bpp mid  2 MB in 96              IN    3672  OUT1    1848  END    6625  per  3312
+  24bpp mid  4 MB in 192             IN    9819  OUT1    1770  END   12726  per  3181
+  24bpp mid  6 MB in 288             IN   16023  OUT1    1786  END   18865  per  3144
+  24bpp mid  8 MB in 384             IN   22108  OUT1    1771  END   25056  per  3132
+  24bpp mid 12 MB in 576             IN   34398  OUT1    1785  END   37299  per  3108
+  24bpp mid 24 MB in 1152            IN   71292  OUT1    1865  END   74194  per  3091
+  24bpp dense  1 MB in 192           IN    2172  OUT1    1858  END    3477  per  3477
+  24bpp dense  2 MB in 384           IN    5254  OUT1    1790  END    6635  per  3317
+  24bpp dense  4 MB in 768           IN   11447  OUT1    1785  END   12774  per  3193
+  24bpp dense  6 MB in 1152          IN   17490  OUT1    1796  END   18913  per  3152
+  24bpp dense 12 MB in 2304          IN   36033  OUT1    1785  END   37340  per  3111
+  24bpp dense 24 MB in 4608          IN   72782  OUT1    1855  END   74194  per  3091
+  24bpp sparse 16 MB in 96           IN   32318  OUT1    1784  END   49608  per  3100
+  24bpp sparse 32 MB in 192          IN   81464  OUT1    1788  END   98761  per  3086
+  24bpp sparse 64 MB in 384          IN  179844  OUT1    1785  END  197064  per  3079
+24bpp BS: 6 macroblocks, DMA0 bs 8 / 16 / 32
+  24bpp mid 6 MB DMA0 bs 8           IN   16052  OUT1    1813  END   18924  per  3154
+  24bpp mid 6 MB DMA0 bs 16          IN   16012  OUT1    1785  END   18911  per  3151
+  24bpp mid 6 MB DMA0 bs 32          IN   15986  OUT1    1781  END   18831  per  3138
+  24bpp dense 6 MB DMA0 bs 8         IN   17563  OUT1    1774  END   18919  per  3153
+  24bpp dense 6 MB DMA0 bs 16        IN   17553  OUT1    1789  END   18901  per  3150
+  24bpp dense 6 MB DMA0 bs 32        IN   17532  OUT1    1848  END   18842  per  3140
+24bpp MIX: the first macroblock of one kind, the rest of another, 8 macroblocks, DMA0 bs 32
+  24bpp 1 dense + 6 mid in 480       IN   19007  OUT1    1855  END   21960  per  3137
+  24bpp 2 mid + 6 dense in 1248      IN   23721  OUT1    1787  END   24978  per  3122
+  24bpp 16 sparse + 8 mid in 480     IN   71309  OUT1    1759  END   74185  per  3091
+  24bpp 2 mid + 16 sparse in 192     IN   38466  OUT1    1784  END   55757  per  3097
+
+15bpp N: one content, N macroblocks, DMA0 bs 32
+  15bpp mid  2 MB in 96              IN    3657  OUT1    1947  END    6600  per  3300
+  15bpp mid  4 MB in 192             IN    9815  OUT1    1940  END   12696  per  3174
+  15bpp mid  6 MB in 288             IN   15959  OUT1    1955  END   18908  per  3151
+  15bpp mid  8 MB in 384             IN   22155  OUT1    2047  END   25007  per  3125
+  15bpp mid 12 MB in 576             IN   34397  OUT1    1939  END   37340  per  3111
+  15bpp mid 24 MB in 1152            IN   71282  OUT1    1992  END   74121  per  3088
+  15bpp dense  1 MB in 192           IN    2100  OUT1    2009  END    3462  per  3462
+  15bpp dense  2 MB in 384           IN    5257  OUT1    1948  END    6571  per  3285
+  15bpp dense  4 MB in 768           IN   11403  OUT1    1950  END   12717  per  3179
+  15bpp dense  6 MB in 1152          IN   17565  OUT1    1956  END   18914  per  3152
+  15bpp dense 12 MB in 2304          IN   35922  OUT1    1945  END   37340  per  3111
+  15bpp dense 24 MB in 4608          IN   72818  OUT1    2009  END   74132  per  3088
+  15bpp sparse 16 MB in 96           IN   32397  OUT1    1947  END   49561  per  3097
+  15bpp sparse 32 MB in 192          IN   81474  OUT1    1954  END   98712  per  3084
+  15bpp sparse 64 MB in 384          IN  179843  OUT1    1950  END  197064  per  3079
+15bpp BS: 6 macroblocks, DMA0 bs 8 / 16 / 32
+  15bpp mid 6 MB DMA0 bs 8           IN   16065  OUT1    1975  END   18854  per  3142
+  15bpp mid 6 MB DMA0 bs 16          IN   16022  OUT1    1948  END   18838  per  3139
+  15bpp mid 6 MB DMA0 bs 32          IN   16003  OUT1    2002  END   18898  per  3149
+  15bpp dense 6 MB DMA0 bs 8         IN   17528  OUT1    1946  END   18848  per  3141
+  15bpp dense 6 MB DMA0 bs 16        IN   17524  OUT1    1963  END   18857  per  3142
+  15bpp dense 6 MB DMA0 bs 32        IN   17539  OUT1    1992  END   18888  per  3148
+15bpp MIX: the first macroblock of one kind, the rest of another, 8 macroblocks, DMA0 bs 32
+  15bpp 1 dense + 6 mid in 480       IN   19075  OUT1    1992  END   21899  per  3128
+  15bpp 2 mid + 6 dense in 1248      IN   23620  OUT1    1951  END   24983  per  3122
+  15bpp 16 sparse + 8 mid in 480     IN   71242  OUT1    1911  END   74134  per  3088
+  15bpp 2 mid + 16 sparse in 192     IN   38531  OUT1    1950  END   55694  per  3094
+
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec/mdec-first: Done.

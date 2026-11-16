@@ -382,6 +382,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-otccold2](2026-11-15-otccold2/) | 1 | 0 |
 | [2026-11-15-peek-boot](2026-11-15-peek-boot/) | 1 | 0 |
 | [2026-11-15-recttall](2026-11-15-recttall/) | 2 | 0 |
+| [2026-11-15-reduxspudbuf](2026-11-15-reduxspudbuf/) | 1 | 0 |
 | [2026-11-15-setmoderace](2026-11-15-setmoderace/) | 10 | 1 |
 | [2026-11-15-speedseek](2026-11-15-speedseek/) | 5 | 2 |
 | [2026-11-15-speedseek2](2026-11-15-speedseek2/) | 3 | 1 |
@@ -396,3 +397,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-spureadstart](2026-11-15-spureadstart/) | 6 | 0 |
 | [2026-11-15-spuwritetime](2026-11-15-spuwritetime/) | 2 | 0 |
 | [2026-11-15-texflush](2026-11-15-texflush/) | 2 | 0 |
+| [2026-11-16-speedseek3](2026-11-16-speedseek3/) | 4 | 2 |

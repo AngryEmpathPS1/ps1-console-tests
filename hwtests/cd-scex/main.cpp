@@ -133,7 +133,9 @@ int main() {
     row("P", 0x01, 0x00, 0x00, 2 * S, "2s");
     row("P", 0x05, 0x00, 0x00, 2 * S, "2s");
     row("P", 0x20, 0x00, 0x00, 2 * S, "2s");
+#ifndef SCEX_SHORT_DISC   /* cd-scex-short: a disc under 40 minutes (Doom USA, 27:30) stops at 20:00 */
     row("P", 0x40, 0x00, 0x00, 2 * S, "2s");
+#endif
     /* T: the wait at 00:02:00, for the strings' spacing */
     row("T", 0x00, 0x02, 0x00, S / 2, "0.5s");
     row("T", 0x00, 0x02, 0x00, S, "1s");

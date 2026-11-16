@@ -1,0 +1,70 @@
+PREDICTED - v0.377.365 + land_mdecdual + land_mdecin0 (batch 367's MDEC; scratch/mdectime/d6), node tools/hwrunner.js mdec-first --emu, 2026-11-16
+(the word-clock knob, + land_mdecstream: scratch/mdectime/first-d7, not committed)
+
+
+mdec/mdec-first
+What sets the MDEC's first output word: the first chunk, the command's length, DMA0's block size (Timer 2, system clock). No assertions.
+
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec_quantTable(addr=0x80015000, color=1)... ok
+mdec_idctTable(addr=0x80015080)... ok
+24bpp N: one content, N macroblocks, DMA0 bs 32
+  24bpp mid  2 MB in 96              IN    3046  OUT1    1853  END    6589  per  3294
+  24bpp mid  4 MB in 192             IN    9190  OUT1    1778  END   12733  per  3183
+  24bpp mid  6 MB in 288             IN   15387  OUT1    1780  END   18781  per  3130
+  24bpp mid  8 MB in 384             IN   21479  OUT1    1776  END   24925  per  3115
+  24bpp mid 12 MB in 576             IN   33757  OUT1    1780  END   37300  per  3108
+  24bpp mid 24 MB in 1152            IN   70679  OUT1    1853  END   74071  per  3086
+  24bpp dense  1 MB in 192           IN    1542  OUT1    1785  END    3430  per  3430
+  24bpp dense  2 MB in 384           IN    4558  OUT1    1863  END    6501  per  3250
+  24bpp dense  4 MB in 768           IN   10723  OUT1    1858  END   12656  per  3164
+  24bpp dense  6 MB in 1152          IN   16856  OUT1    1852  END   18802  per  3133
+  24bpp dense 12 MB in 2304          IN   35277  OUT1    1852  END   37210  per  3100
+  24bpp dense 24 MB in 4608          IN   72236  OUT1    1789  END   74077  per  3086
+  24bpp sparse 16 MB in 96           IN   30725  OUT1    1776  END   49587  per  3099
+  24bpp sparse 32 MB in 192          IN   79811  OUT1    1797  END   98665  per  3083
+  24bpp sparse 64 MB in 384          IN  178116  OUT1    1786  END  197038  per  3078
+24bpp BS: 6 macroblocks, DMA0 bs 8 / 16 / 32
+  24bpp mid 6 MB DMA0 bs 8           IN   15340  OUT1    1842  END   18871  per  3145
+  24bpp mid 6 MB DMA0 bs 16          IN   15325  OUT1    1795  END   18790  per  3131
+  24bpp mid 6 MB DMA0 bs 32          IN   15381  OUT1    1786  END   18873  per  3145
+  24bpp dense 6 MB DMA0 bs 8         IN   16956  OUT1    1865  END   18870  per  3145
+  24bpp dense 6 MB DMA0 bs 16        IN   16961  OUT1    1870  END   18768  per  3128
+  24bpp dense 6 MB DMA0 bs 32        IN   16936  OUT1    1868  END   18787  per  3131
+24bpp MIX: the first macroblock of one kind, the rest of another, 8 macroblocks, DMA0 bs 32
+  24bpp 1 dense + 6 mid in 480       IN   18379  OUT1    1855  END   21863  per  3123
+  24bpp 2 mid + 6 dense in 1248      IN   22977  OUT1    1781  END   24935  per  3116
+  24bpp 16 sparse + 8 mid in 480     IN   70606  OUT1    1762  END   74090  per  3087
+  24bpp 2 mid + 16 sparse in 192     IN   36861  OUT1    1796  END   55640  per  3091
+
+15bpp N: one content, N macroblocks, DMA0 bs 32
+  15bpp mid  2 MB in 96              IN    3061  OUT1    1944  END    6551  per  3275
+  15bpp mid  4 MB in 192             IN    9288  OUT1    1931  END   12650  per  3162
+  15bpp mid  6 MB in 288             IN   15438  OUT1    1935  END   18776  per  3129
+  15bpp mid  8 MB in 384             IN   21514  OUT1    1936  END   24927  per  3115
+  15bpp mid 12 MB in 576             IN   33862  OUT1    1933  END   37276  per  3106
+  15bpp mid 24 MB in 1152            IN   70651  OUT1    2008  END   74092  per  3087
+  15bpp dense  1 MB in 192           IN    1511  OUT1    2000  END    3479  per  3479
+  15bpp dense  2 MB in 384           IN    4721  OUT1    2023  END    6556  per  3278
+  15bpp dense  4 MB in 768           IN   10745  OUT1    2015  END   12651  per  3162
+  15bpp dense  6 MB in 1152          IN   16888  OUT1    2010  END   18800  per  3133
+  15bpp dense 12 MB in 2304          IN   35320  OUT1    2010  END   37232  per  3102
+  15bpp dense 24 MB in 4608          IN   72280  OUT1    1950  END   74090  per  3087
+  15bpp sparse 16 MB in 96           IN   30700  OUT1    1945  END   49490  per  3093
+  15bpp sparse 32 MB in 192          IN   79863  OUT1    1946  END   98653  per  3082
+  15bpp sparse 64 MB in 384          IN  178227  OUT1    1947  END  196949  per  3077
+15bpp BS: 6 macroblocks, DMA0 bs 8 / 16 / 32
+  15bpp mid 6 MB DMA0 bs 8           IN   15437  OUT1    2012  END   18768  per  3128
+  15bpp mid 6 MB DMA0 bs 16          IN   15362  OUT1    1954  END   18779  per  3129
+  15bpp mid 6 MB DMA0 bs 32          IN   15409  OUT1    1950  END   18775  per  3129
+  15bpp dense 6 MB DMA0 bs 8         IN   17007  OUT1    1942  END   18833  per  3138
+  15bpp dense 6 MB DMA0 bs 16        IN   16901  OUT1    1911  END   18781  per  3130
+  15bpp dense 6 MB DMA0 bs 32        IN   16957  OUT1    2017  END   18795  per  3132
+15bpp MIX: the first macroblock of one kind, the rest of another, 8 macroblocks, DMA0 bs 32
+  15bpp 1 dense + 6 mid in 480       IN   18489  OUT1    1921  END   21851  per  3121
+  15bpp 2 mid + 6 dense in 1248      IN   23126  OUT1    1947  END   24912  per  3114
+  15bpp 16 sparse + 8 mid in 480     IN   70691  OUT1    1920  END   74132  per  3088
+  15bpp 2 mid + 16 sparse in 192     IN   36835  OUT1    1950  END   55651  per  3091
+
+mdec_reset (MDEC_CTRL <- 0x80000000)... ok
+mdec/mdec-first: Done.

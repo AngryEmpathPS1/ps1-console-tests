@@ -1,0 +1,17 @@
+
+cpu/seq-fixstart
+A Timer 2 read at word r of a cold line C (r 4: the warm line after it), C entered by a hit after a return (H: the
+sequence's first miss) or behind a cold line (S: its second). d = cold - warm, four reps. No assertions.
+
+mode H r 0:  cold 16 warm 11 d 5  cold 6 warm 11 d -5  cold 16 warm 11 d 5  cold 16 warm 11 d 5
+mode H r 1:  cold 17 warm 12 d 5  cold 17 warm 12 d 5  cold 17 warm 12 d 5  cold 17 warm 12 d 5
+mode H r 2:  cold 18 warm 13 d 5  cold 18 warm 13 d 5  cold 18 warm 13 d 5  cold 18 warm 13 d 5
+mode H r 3:  cold 19 warm 14 d 5  cold 19 warm 14 d 5  cold 19 warm 14 d 5  cold 19 warm 14 d 5
+mode H r 4:  cold 20 warm 15 d 5  cold 20 warm 15 d 5  cold 20 warm 15 d 5  cold 20 warm 15 d 5
+mode S r 0:  cold 25 warm 15 d 10  cold 19 warm 15 d 4  cold 25 warm 15 d 10  cold 25 warm 15 d 10
+mode S r 1:  cold 26 warm 16 d 10  cold 26 warm 16 d 10  cold 26 warm 16 d 10  cold 26 warm 13 d 13
+mode S r 2:  cold 27 warm 17 d 10  cold 27 warm 17 d 10  cold 27 warm 17 d 10  cold 27 warm 17 d 10
+mode S r 3:  cold 28 warm 18 d 10  cold 28 warm 18 d 10  cold 28 warm 18 d 10  cold 28 warm 18 d 10
+mode S r 4:  cold 29 warm 19 d 10  cold 29 warm 19 d 10  cold 29 warm 19 d 10  cold 33 warm 19 d 14
+
+cpu/seq-fixstart: Done.

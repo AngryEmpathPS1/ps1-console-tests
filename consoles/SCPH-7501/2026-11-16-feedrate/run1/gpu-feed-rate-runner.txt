@@ -1,0 +1,13 @@
+
+gpu/gpu-feed-rate
+Polygons with area and a sprite, their last N words stored back to back (N 0-8), the rest a load apart: bit 26's first
+D after the last word, twice each. No assertions.
+
+  N     :    0        1        2        3        4        5        6        7        8
+  ft    : 380 380 | 382 382 | 383 383 | 384 384 | 385 385 | 0 0 | 0 0 | 0 0 | 0 0 |
+  gt    : 826 826 | 828 828 | 829 829 | 830 830 | 831 831 | 832 832 | 833 833 | 0 0 | 0 0 |
+  tt    : 779 779 | 781 781 | 782 782 | 783 783 | 784 784 | 785 785 | 786 786 | 785 785 | 0 0 |
+  tq    : 1072 1072 | 1081 1081 | 1090 1090 | 1092 1092 | 1093 1093 | 1094 1094 | 1095 1095 | 1094 1094 | 1095 1095 |
+  spr   : 307 307 | 309 309 | 311 311 | 313 313 | 314 314 | 0 0 | 0 0 | 0 0 | 0 0 |
+
+gpu/gpu-feed-rate: Done.

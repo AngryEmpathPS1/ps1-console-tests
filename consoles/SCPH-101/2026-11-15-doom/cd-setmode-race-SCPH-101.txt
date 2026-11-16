@@ -1,0 +1,11 @@
+
+cdrom/cd-setmode-race
+A ReadS a fixed 104,000 cycles after a Setmode in a double-speed hold, answered or not (GameShark Lite's own). Any data disc.
+About a minute and a half; nothing prints until the end.
+
+pass 1: 26/ok 30/ok 42/ok 29/ok 30/ok 59/ok 47/ok 31/ok 44/ok 26/ok 21/ok 23/ok --/ok 84/ok 84/ok 72/ok 57/ok 40/ok 31/ok 26/ok 63/ok 32/ok 21/ok 50/ok 49/ok 22/ok 21/ok 29/ok 42/ok 76/ok 68/ok 59/ok
+pass 2: 27/ok 45/ok 52/ok 24/ok 26/ok 59/ok 47/ok 56/ok 34/ok 48/ok 27/ok 29/ok 100/ok 83/ok 64/ok 60/ok 47/ok 43/ok 32/ok 21/ok 30/ok 58/ok 58/ok 73/ok 56/ok 30/ok 22/ok 27/ok 22/ok 102/ok 83/ok 55/ok
+of 64: the Setmode unanswered at the ReadS 1; the ReadS read 64, got an INT5 0, neither 0
+reads or Pauses before the Setmode that failed: 0
+
+cdrom/cd-setmode-race: Done.

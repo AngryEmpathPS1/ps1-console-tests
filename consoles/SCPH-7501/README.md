@@ -135,12 +135,15 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-14-texfloor3](2026-11-14-texfloor3/) | 2 | 0 |
 | [2026-11-14-time2-run1](2026-11-14-time2-run1/) | 1 | 0 |
 | [2026-11-14-time2-run2](2026-11-14-time2-run2/) | 1 | 0 |
+| [2026-11-15-a0ff9p](2026-11-15-a0ff9p/) | 1 | 0 |
+| [2026-11-15-a0mdec](2026-11-15-a0mdec/) | 1 | 0 |
 | [2026-11-15-bv1](2026-11-15-bv1/) | 2 | 0 |
 | [2026-11-15-bv2](2026-11-15-bv2/) | 2 | 0 |
 | [2026-11-15-bv3](2026-11-15-bv3/) | 2 | 0 |
 | [2026-11-15-bv4](2026-11-15-bv4/) | 2 | 0 |
 | [2026-11-15-bv5](2026-11-15-bv5/) | 2 | 0 |
 | [2026-11-15-bv6](2026-11-15-bv6/) | 2 | 0 |
+| [2026-11-15-clipedge](2026-11-15-clipedge/) | 1 | 0 |
 | [2026-11-15-clutkeep](2026-11-15-clutkeep/) | 1 | 0 |
 | [2026-11-15-discid-doom7501](2026-11-15-discid-doom7501/) | 1 | 0 |
 | [2026-11-15-discid-doomload](2026-11-15-discid-doomload/) | 1 | 0 |
@@ -167,8 +170,11 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-gpuversion-r7](2026-11-15-gpuversion-r7/) | 1 | 0 |
 | [2026-11-15-gpuversion-r8](2026-11-15-gpuversion-r8/) | 1 | 0 |
 | [2026-11-15-gpuversion-r9](2026-11-15-gpuversion-r9/) | 1 | 0 |
+| [2026-11-15-linequad](2026-11-15-linequad/) | 1 | 0 |
 | [2026-11-15-looptick19](2026-11-15-looptick19/) | 2 | 0 |
+| [2026-11-15-quadlow](2026-11-15-quadlow/) | 1 | 0 |
 | [2026-11-15-recttall](2026-11-15-recttall/) | 2 | 0 |
+| [2026-11-15-reduxspudbuf](2026-11-15-reduxspudbuf/) | 1 | 0 |
 | [2026-11-15-sprfirst](2026-11-15-sprfirst/) | 2 | 0 |
 | [2026-11-15-sprvb](2026-11-15-sprvb/) | 2 | 0 |
 | [2026-11-15-sprvb15](2026-11-15-sprvb15/) | 2 | 0 |
@@ -183,3 +189,9 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-texflush](2026-11-15-texflush/) | 2 | 0 |
 | [2026-11-15-texflush2](2026-11-15-texflush2/) | 2 | 0 |
 | [2026-11-15-texflush3](2026-11-15-texflush3/) | 2 | 0 |
+| [2026-11-16-degenfeed](2026-11-16-degenfeed/) | 1 | 0 |
+| [2026-11-16-degenquad](2026-11-16-degenquad/) | 1 | 0 |
+| [2026-11-16-feedrate](2026-11-16-feedrate/) | 1 | 0 |
+| [2026-11-16-quadgap](2026-11-16-quadgap/) | 1 | 0 |
+| [2026-11-16-semifill](2026-11-16-semifill/) | 1 | 0 |
+| [2026-11-16-semifill2](2026-11-16-semifill2/) | 1 | 0 |

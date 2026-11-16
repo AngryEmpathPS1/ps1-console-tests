@@ -1,0 +1,249 @@
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-tail2
+The MDEC's status change by change around DMA1's end, K blocks behind its last macroblock (Timer 2, the system clock). No assertions.
+
+T 24 K 0 try 0 loop 109
+  C -556 2403ffff 1
+  C 0 8404ffff 0
+T 24 K 0 try 1 loop 109
+  C -561 2403ffff 1
+  C 0 8404ffff 0
+T 24 K 1 try 0 loop 109
+  C -383 2403ffff 1
+  C -127 2404ffff 1
+  C 0 a404ffff 0
+  C 355 a405ffff 0
+T 24 K 1 try 1 loop 109
+  C -520 6403ffff 1
+  C -266 2403ffff 1
+  C 0 2404ffff 0
+  C 157 a404ffff 0
+  C 514 a405ffff 0
+T 24 K 2 try 0 loop 109
+  C -554 6403ffff 1
+  C 0 e404ffff 0
+  C 190 a404ffff 0
+  C 439 a405ffff 0
+  C 985 a400ffff 0
+T 24 K 2 try 1 loop 110
+  C -562 6403ffff 1
+  C 0 e404ffff 0
+  C 162 a404ffff 0
+  C 510 a405ffff 0
+  C 962 a400ffff 0
+T 24 K 3 try 0 loop 109
+  C -550 6403ffff 1
+  C 0 e404ffff 0
+  C 486 e405ffff 0
+  C 740 a405ffff 0
+  C 989 a400ffff 0
+  C 1139 2400ffff 0
+  C 1393 2c00ffff 0
+  C 1548 2c01ffff 0
+T 24 K 3 try 1 loop 109
+  C -557 6403ffff 1
+  C 0 e404ffff 0
+  C 454 e405ffff 0
+  C 706 a405ffff 0
+  C 965 a400ffff 0
+  C 1119 2400ffff 0
+  C 1371 2c00ffff 0
+  C 1521 2c01ffff 0
+T 24 K 4 try 0 loop 111
+  C -547 6403ffff 1
+  C 0 e404ffff 0
+  C 489 e405ffff 0
+  C 942 e400ffff 0
+  C 1098 6400ffff 0
+  C 1248 2400ffff 0
+  C 1395 2c00ffff 0
+  C 1545 2c01ffff 0
+T 24 K 4 try 1 loop 110
+  C -552 6403ffff 1
+  C 0 e404ffff 0
+  C 459 e405ffff 0
+  C 1010 e400ffff 0
+  C 1160 2400ffff 0
+  C 1311 2c00ffff 0
+  C 1461 2c01ffff 0
+T 24 K 5 try 0 loop 109
+  C -541 6403ffff 1
+  C 0 e404ffff 0
+  C 467 e405ffff 0
+  C 1013 e400ffff 0
+  C 1166 6400ffff 0
+  C 1316 6c00ffff 0
+  C 1471 6c01ffff 0
+  C 1720 2c01ffff 0
+T 24 K 5 try 1 loop 111
+  C -557 6403ffff 1
+  C 0 e404ffff 0
+  C 491 e405ffff 0
+  C 940 e400ffff 0
+  C 1090 6400ffff 0
+  C 1343 6c00ffff 0
+  C 1503 6c01ffff 0
+  C 1653 2c01ffff 0
+T 24 K 6 try 0 loop 108
+  C -550 6403ffff 1
+  C 0 e404ffff 0
+  C 454 e405ffff 0
+  C 1006 e400ffff 0
+  C 1156 6400ffff 0
+  C 1311 6c00ffff 0
+  C 1461 6c01ffff 0
+T 24 K 6 try 1 loop 111
+  C -557 6403ffff 1
+  C 0 e404ffff 0
+  C 491 e405ffff 0
+  C 940 e400ffff 0
+  C 1090 6400ffff 0
+  C 1343 6c00ffff 0
+  C 1503 6c01ffff 0
+T 24 K 7 try 0 loop 109
+  C -559 6403ffff 1
+  C 0 e404ffff 0
+  C 454 e405ffff 0
+  C 1012 e400ffff 0
+  C 1162 6400ffff 0
+  C 1315 6c00ffff 0
+  C 1465 6c01ffff 0
+T 24 K 7 try 1 loop 111
+  C -557 6403ffff 1
+  C 0 e404ffff 0
+  C 491 e405ffff 0
+  C 940 e400ffff 0
+  C 1090 6400ffff 0
+  C 1343 6c00ffff 0
+  C 1503 6c01ffff 0
+T 15 K 0 try 0 loop 107
+  C -573 a603ffff 1
+  C -446 2603ffff 1
+  C 0 8604ffff 0
+T 15 K 0 try 1 loop 106
+  C -523 2603ffff 1
+  C 0 2604ffff 0
+  C 187 8604ffff 0
+T 15 K 1 try 0 loop 106
+  C -473 e603ffff 1
+  C -346 2603ffff 1
+  C 0 2604ffff 0
+  C 157 a604ffff 0
+  C 519 a605ffff 0
+T 15 K 1 try 1 loop 107
+  C -520 6e03ffff 1
+  C -388 6603ffff 1
+  C -261 2603ffff 1
+  C 0 a604ffff 0
+  C 460 a605ffff 0
+T 15 K 2 try 0 loop 108
+  C -562 6e03ffff 1
+  C -435 6603ffff 1
+  C 0 e604ffff 0
+  C 185 a604ffff 0
+  C 434 a605ffff 0
+  C 984 a600ffff 0
+T 15 K 2 try 1 loop 106
+  C -557 e603ffff 1
+  C -430 6603ffff 1
+  C 0 e604ffff 0
+  C 162 a604ffff 0
+  C 416 a605ffff 0
+  C 972 a600ffff 0
+T 15 K 3 try 0 loop 106
+  C -523 6603ffff 1
+  C 0 6604ffff 0
+  C 158 e604ffff 0
+  C 506 e605ffff 0
+  C 659 a605ffff 0
+  C 1007 a600ffff 0
+  C 1160 2600ffff 0
+  C 1508 2e01ffff 0
+T 15 K 3 try 1 loop 108
+  C -468 e603ffff 1
+  C -341 6603ffff 1
+  C 0 e604ffff 0
+  C 487 e605ffff 0
+  C 736 a605ffff 0
+  C 985 a600ffff 0
+  C 1135 2600ffff 0
+  C 1490 2e01ffff 0
+T 15 K 4 try 0 loop 107
+  C -474 e603ffff 1
+  C -347 6603ffff 1
+  C 0 6604ffff 0
+  C 157 e604ffff 0
+  C 518 e605ffff 0
+  C 969 e600ffff 0
+  C 1119 6600ffff 0
+  C 1274 2600ffff 0
+  C 1523 2e01ffff 0
+T 15 K 4 try 1 loop 107
+  C -468 e603ffff 1
+  C -341 6603ffff 1
+  C 0 e604ffff 0
+  C 487 e605ffff 0
+  C 1033 e600ffff 0
+  C 1183 2600ffff 0
+  C 1533 2e01ffff 0
+T 15 K 5 try 0 loop 107
+  C -473 e603ffff 1
+  C -346 6603ffff 1
+  C 0 6604ffff 0
+  C 157 e604ffff 0
+  C 519 e605ffff 0
+  C 970 e600ffff 0
+  C 1120 6600ffff 0
+  C 1572 6e01ffff 0
+  C 1722 2e01ffff 0
+T 15 K 5 try 1 loop 107
+  C -480 6603ffff 1
+  C -131 6604ffff 1
+  C 0 e604ffff 0
+  C 383 e605ffff 0
+  C 937 e600ffff 0
+  C 1087 6600ffff 0
+  C 1438 6e01ffff 0
+  C 1591 2e01ffff 0
+T 15 K 6 try 0 loop 107
+  C -474 e603ffff 1
+  C -347 6603ffff 1
+  C 0 6604ffff 0
+  C 157 e604ffff 0
+  C 518 e605ffff 0
+  C 969 e600ffff 0
+  C 1119 6600ffff 0
+  C 1571 6e01ffff 0
+T 15 K 6 try 1 loop 107
+  C -593 e603ffff 1
+  C -466 6603ffff 1
+  C -130 6604ffff 1
+  C 0 e604ffff 0
+  C 388 e605ffff 0
+  C 943 e600ffff 0
+  C 1093 6600ffff 0
+  C 1438 6e01ffff 0
+T 15 K 7 try 0 loop 107
+  C -596 e603ffff 1
+  C -469 6603ffff 1
+  C -128 6604ffff 1
+  C 0 e604ffff 0
+  C 357 e605ffff 0
+  C 909 e600ffff 0
+  C 1062 6600ffff 0
+  C 1410 6e01ffff 0
+T 15 K 7 try 1 loop 107
+  C -468 e603ffff 1
+  C -341 6603ffff 1
+  C 0 e604ffff 0
+  C 487 e605ffff 0
+  C 1033 e600ffff 0
+  C 1183 6600ffff 0
+  C 1533 6e01ffff 0
+
+mdec/mdec-tail2: Done.

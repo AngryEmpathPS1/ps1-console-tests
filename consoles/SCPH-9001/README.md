@@ -51,3 +51,14 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-10-26](2026-10-26/) | 30 | 21 |
 | [2026-10-28](2026-10-28/) | 61 | 25 |
 | [2026-10-29](2026-10-29/) | 33 | 9 |
+| [2026-11-16-doom](2026-11-16-doom/) | 8 | 4 |
+| [2026-11-16-qlag-doom](2026-11-16-qlag-doom/) | 2 | 0 |
+| [2026-11-16-scex-discid](2026-11-16-scex-discid/) | 1 | 0 |
+| [2026-11-16-scex-discid-b1](2026-11-16-scex-discid-b1/) | 1 | 0 |
+| [2026-11-16-scexshort-doom-b1](2026-11-16-scexshort-doom-b1/) | 1 | 0 |
+| [2026-11-16-scexshort-doom-b2](2026-11-16-scexshort-doom-b2/) | 1 | 0 |
+| [2026-11-16-scexshort-doom-b3](2026-11-16-scexshort-doom-b3/) | 1 | 0 |
+| [2026-11-16-scexshort-doom-r1](2026-11-16-scexshort-doom-r1/) | 1 | 0 |
+| [2026-11-16-scexshort-doom-r2](2026-11-16-scexshort-doom-r2/) | 1 | 0 |
+| [2026-11-16-spindown](2026-11-16-spindown/) | 5 | 1 |
+| [2026-11-16-stop](2026-11-16-stop/) | 3 | 1 |

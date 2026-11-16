@@ -22,6 +22,18 @@
   from DSR), when they last changed, and a "seen"
   stamp every 5 s (a stale one is a bridge that stopped). Each change is one line in console-queue/lines/<Port>.log. No second
   client on the console's port and nothing on the wire: a test running there is not touched.
+
+  LINK HEALTH (2026-11-16, docs/TOOL-IDEAS.md 7: board B's consoles stall ~5 minutes and recover by themselves, cause open, NOT a
+  USB drop - and tools/pstatus.js changes the port's rate to look, which cannot be done mid-job): this window counts what it
+  passes, so a stall is caught passively. Every second it rewrites console-queue/lines/<Port>-link.json (bytes each way since the
+  bridge started, seconds since the last byte each way, a client on the socket or not, the rate, failed writes to the device,
+  "seen") and, while a client is connected or anything changed that second, appends one line to
+  console-queue/lines/<Port>-link-<UTC date>.log:
+    2026-11-16T12:34:56Z in 120 out 4 total 123456/789 since_in 0.3 since_out 1.2 client 1 baud 115200 [WRITE-FAILED n] [QUIET]
+  in = console -> PC this second, out = PC -> console. QUIET marks the stall's signature: a client on the port, the PC's last byte
+  newer than the console's, and nothing back for 10 s or more (a long silent test reads the same way - a flag, not a verdict).
+  An idle bridge with no client writes nothing to the log. A device read failure (the USB side going away) is a line of its own
+  before the window exits. Nothing here touches the bytes or their timing: counters, and a thread that only reads them.
 #>
 param([string]$Com = 'COM3', [int]$Baud = 115200, [int]$Port = 3335)
 
@@ -37,6 +49,42 @@ public static class PsxSerialBridge {
   static readonly object gate = new object();
   static NetworkStream client = null;
   static MemoryStream backlog = new MemoryStream();
+  // LINK HEALTH (the header): what passed each way and when, read by WatchHealth once a second
+  static long inBytes = 0, outBytes = 0, writeFails = 0, lastInTicks = 0, lastOutTicks = 0;
+  static string healthDir = null; static int healthPort = 0;
+
+  static string Secs(double s) { return s < 0 ? "-1" : s.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture); }
+  static void HealthEvent(string what) {
+    if (healthDir == null) return;
+    DateTime now = DateTime.UtcNow;
+    try { File.AppendAllText(Path.Combine(healthDir, healthPort + "-link-" + now.ToString("yyyy-MM-dd") + ".log"), now.ToString("yyyy-MM-ddTHH:mm:ssZ") + " " + what + "\n"); } catch { }
+  }
+  static void WatchHealth(int port, string dir, Func<int> baud) {
+    try { Directory.CreateDirectory(dir); } catch { return; }
+    string json = Path.Combine(dir, port + "-link.json"), start = DateTime.UtcNow.ToString("o");
+    long pin = 0, pout = 0, pfails = 0; bool pconn = false; int pbaud = -1;
+    while (true) {
+      Thread.Sleep(1000);
+      DateTime now = DateTime.UtcNow;
+      long ti = Interlocked.Read(ref inBytes), to = Interlocked.Read(ref outBytes), tf = Interlocked.Read(ref writeFails);
+      long li = Interlocked.Read(ref lastInTicks), lo = Interlocked.Read(ref lastOutTicks);
+      bool conn; lock (gate) { conn = client != null; }
+      int b = -1; try { b = baud(); } catch { }
+      double sinceIn = li == 0 ? -1 : (now.Ticks - li) / 1e7, sinceOut = lo == 0 ? -1 : (now.Ticks - lo) / 1e7;
+      bool quiet = conn && lo > li && sinceOut >= 10;
+      if (conn || ti != pin || to != pout || conn != pconn || b != pbaud || tf != pfails) {
+        string line = now.ToString("yyyy-MM-ddTHH:mm:ssZ") + " in " + (ti - pin) + " out " + (to - pout) + " total " + ti + "/" + to
+          + " since_in " + Secs(sinceIn) + " since_out " + Secs(sinceOut) + " client " + (conn ? 1 : 0) + " baud " + b
+          + (tf != pfails ? " WRITE-FAILED " + (tf - pfails) : "") + (quiet ? " QUIET" : "") + "\n";
+        try { File.AppendAllText(Path.Combine(dir, port + "-link-" + now.ToString("yyyy-MM-dd") + ".log"), line); } catch { }
+      }
+      string j = "{\"port\": " + port + ", \"in\": " + ti + ", \"out\": " + to + ", \"sinceIn\": " + Secs(sinceIn) + ", \"sinceOut\": " + Secs(sinceOut)
+        + ", \"client\": " + (conn ? 1 : 0) + ", \"quiet\": " + (quiet ? 1 : 0) + ", \"baud\": " + b + ", \"writeFails\": " + tf
+        + ", \"bridgeStart\": \"" + start + "\", \"seen\": \"" + now.ToString("o") + "\"}\n";
+      try { File.WriteAllText(json + ".tmp", j); File.Copy(json + ".tmp", json, true); } catch { }
+      pin = ti; pout = to; pconn = conn; pbaud = b; pfails = tf;
+    }
+  }
 
   static void WatchLines(SerialPort sp, int port, string dir) {
     try { Directory.CreateDirectory(dir); } catch { return; }
@@ -61,6 +109,7 @@ public static class PsxSerialBridge {
 
   public static void Run(string com, int baud, int port, string linesDir) {
     Stream dev;
+    SerialPort spRef = null;   // the rate, for the health log (null on a tcp: device)
     if (com.StartsWith("tcp:")) {
       string[] hp = com.Substring(4).Split(':');
       var tc = new TcpClient(hp[0], int.Parse(hp[1]));
@@ -76,6 +125,7 @@ public static class PsxSerialBridge {
       sp.ReadBufferSize = 1 << 20;
       sp.Open();
       dev = sp.BaseStream;
+      spRef = sp;
       var rates = new TcpListener(IPAddress.Loopback, port + 1);
       rates.Start();
       var rater = new Thread(() => {
@@ -100,14 +150,20 @@ public static class PsxSerialBridge {
     }
     var listener = new TcpListener(IPAddress.Loopback, port);
     listener.Start();
+    healthDir = linesDir; healthPort = port;
+    var health = new Thread(() => WatchHealth(port, linesDir, () => spRef != null ? spRef.BaudRate : baud));
+    health.IsBackground = true;
+    health.Start();
+    HealthEvent("bridge start " + com + " at " + baud + " baud");
     Console.WriteLine("serialbridge: " + com + " at " + baud + " baud on 127.0.0.1:" + port);
 
     var reader = new Thread(() => {
       var buf = new byte[65536];
       while (true) {
         int n;
-        try { n = dev.Read(buf, 0, buf.Length); } catch (Exception e) { Console.WriteLine("serialbridge: device read failed: " + e.Message); Environment.Exit(3); return; }
-        if (n <= 0) { Console.WriteLine("serialbridge: device closed"); Environment.Exit(3); return; }
+        try { n = dev.Read(buf, 0, buf.Length); } catch (Exception e) { Console.WriteLine("serialbridge: device read failed: " + e.Message); HealthEvent("DEVICE READ FAILED " + e.Message); Environment.Exit(3); return; }
+        if (n <= 0) { Console.WriteLine("serialbridge: device closed"); HealthEvent("DEVICE CLOSED"); Environment.Exit(3); return; }
+        Interlocked.Add(ref inBytes, n); Interlocked.Exchange(ref lastInTicks, DateTime.UtcNow.Ticks);
         lock (gate) {
           if (client != null) {
             try { client.Write(buf, 0, n); } catch { client = null; }
@@ -130,7 +186,10 @@ public static class PsxSerialBridge {
       var buf = new byte[65536];
       try {
         int n;
-        while ((n = ns.Read(buf, 0, buf.Length)) > 0) dev.Write(buf, 0, n);
+        while ((n = ns.Read(buf, 0, buf.Length)) > 0) {
+          try { dev.Write(buf, 0, n); } catch { Interlocked.Increment(ref writeFails); throw; }   // counted, then as before
+          Interlocked.Add(ref outBytes, n); Interlocked.Exchange(ref lastOutTicks, DateTime.UtcNow.Ticks);
+        }
       } catch { }
       lock (gate) { if (client == ns) client = null; }
       c.Close();

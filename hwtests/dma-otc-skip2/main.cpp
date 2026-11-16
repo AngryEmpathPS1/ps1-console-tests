@@ -1,0 +1,86 @@
+/*
+ * dma/dma-otc-skip2: how fresh must BCR be, and how far behind the start may the read be, for it to skip DMA6's hold? (the stream
+ * refit session, 2026-11-16; main's rung-1 question: the BCR -> CHCR distance crossed with the read's distance.) dma-otc-skip
+ * (below) held g2 to 0..4 and k to 0..4 and every g2 skipped to k 3-4; here g2 0..16 (past land_otcskip's DMA_OTC_FRESH, 12
+ * cycles) by k 0..6, with MADR just before BCR (m 0) or 40 nops before it (m 1: only BCR fresh). Rows "m a g2 b k c: t T idle I",
+ * g1 0. What follows is dma-otc-skip's own note.
+ *
+ * dma/dma-otc-skip: when does a read behind a DMA6 start skip the transfer's hold? (the stream refit session, 2026-11-16).
+ *
+ * WHY. dma-otc-ioread2: with MADR, BCR and CHCR stored back to back a Timer 2 read 1-2 instructions behind the start returns in 12
+ * cycles (no wait), from 3 behind it waits; with MADR / BCR stored long before nothing skips; the fuzzer's 5901-0 / 5902-7 case
+ * (an instruction between each store, the read 3 behind) skips on its warm run. Here the three are crossed, warm: MADR, g1 nops
+ * (0..1), BCR, g2 nops (0..4), CHCR (the start, 200 words), k nops (0..4), lhu Timer 2.
+ * READ IT. Rows "g1 a g2 b k c: t T  idle I": T Timer 2 from before the MADR store to just after the read (small = skipped), I the
+ * cycles to CHCR6 idle.
+ */
+#include <common.h>
+#include <psxapi.h>
+#include <io.h>
+
+#define T2_COUNT 0x1F801120u
+#define T2_MODE  0x1F801124u
+#define DPCR 0x1F8010F0u
+#define DMA6 0x1F8010E0u
+#define CODE ((volatile uint32_t *)0x80030000)
+#define BASE 0x80030000u
+
+extern "C" { void ip_flush(void); }
+__asm__(".text\n.set push\n.set noreorder\n.global ip_flush\nip_flush:\n  li $t1, 0x44\n  j 0xA0\n  nop\n.set pop\n");
+
+static uint32_t tbl[256] __attribute__((aligned(16)));
+static volatile uint32_t dummy[64];
+static volatile uint32_t out[4];
+static void waitT2(uint32_t n) { const uint16_t s = read16(T2_COUNT); while ((uint16_t)(read16(T2_COUNT) - s) < n) {} }
+
+/* a0 = DMA6 base (or dummy), a1 = CHCR value, a3 = out; t3 = MADR, t4 = BCR made in the block */
+static void gen(uint32_t ma, int g1, int g2, int k, int m) {
+    int i = 0;
+    CODE[i++] = 0x3C0B0000u | (ma >> 16); CODE[i++] = 0x356B0000u | (ma & 0xFFFF); CODE[i++] = 0x240C00C8u;   /* t3 = MADR, t4 = 200 */
+    CODE[i++] = 0x94890040u;               /* lhu t1, 40h(a0)   Timer 2: the start */
+    CODE[i++] = 0xAC8B0000u;               /* sw t3, 0(a0)      MADR */
+    if (m) for (int q = 0; q < 40; q++) CODE[i++] = 0;
+    for (int q = 0; q < g1; q++) CODE[i++] = 0;
+    CODE[i++] = 0xAC8C0004u;               /* sw t4, 4(a0)      BCR */
+    for (int q = 0; q < g2; q++) CODE[i++] = 0;
+    CODE[i++] = 0xAC850008u;               /* sw a1, 8(a0)      CHCR: the start */
+    for (int q = 0; q < k; q++) CODE[i++] = 0;
+    CODE[i++] = 0x948A0040u;               /* lhu t2, 40h(a0)   Timer 2 after it */
+    CODE[i++] = 0xACE90000u;               /* sw t1, 0(a3) */
+    CODE[i++] = 0xACEA0008u;               /* sw t2, 8(a3) */
+    CODE[i++] = 0x03E00008u; CODE[i++] = 0;
+    for (int q = 0; q < 8; q++) CODE[i++] = 0;
+}
+typedef void (*Blk)(volatile uint32_t*, uint32_t, volatile uint32_t*, volatile uint32_t*);
+
+static void one(int g1, int g2, int k, int m) {
+    const uint32_t chcr = 0x11000002u, ma = (uint32_t)&tbl[200] & 0x00FFFFFCu;
+    gen(ma, g1, g2, k, m);
+    ip_flush();
+    ((Blk)BASE)(&dummy[0], chcr, &dummy[8], out);   /* the block's lines in */
+    waitT2(2000);
+    ((Blk)BASE)((volatile uint32_t*)DMA6, chcr, &dummy[8], out);
+    const uint16_t t0 = (uint16_t)out[0];
+    for (int i = 0; i < 200000 && (read32(DMA6 + 8) & 0x01000000u); i++) {}
+    const uint16_t t1 = read16(T2_COUNT);
+    if (read32(DMA6 + 8) & 0x01000000u) write32(DMA6 + 8, 0);
+    waitT2(3000);
+    printf("m %d g2 %d k %d: t %u  idle %u\n", m, g2, k, (unsigned)(uint16_t)((uint16_t)out[2] - t0), (unsigned)(uint16_t)(t1 - t0));
+}
+
+int main() {
+    printf("\ndma/dma-otc-skip2\n");
+    printf("MADR, (m 1: 40 nops), BCR, g2 nops, CHCR (a 200-word DMA6 start), k nops, lhu Timer 2; warm. t: cycles from before MADR to after\n");
+    printf("the read (small: it skipped the hold); idle: cycles to CHCR6 idle. No assertions.\n\n");
+    EnterCriticalSection();
+    const uint16_t m2 = read16(T2_MODE);
+    write16(T2_MODE, 0);
+    const uint32_t dp = read32(DPCR);
+    write32(DPCR, dp | 0x08000000u);
+    for (int m = 0; m <= 1; m++) for (int g2 = 0; g2 <= 16; g2++) for (int k = 0; k <= 6; k++) one(0, g2, k, m);
+    write32(DPCR, dp);
+    write16(T2_MODE, m2);
+    ExitCriticalSection();
+    printf("\ndma/dma-otc-skip2: Done.\n");
+    for (;;) VSync(0);
+}
