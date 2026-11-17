@@ -63,3 +63,9 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-16-scexshort-doom-r2](2026-11-16-scexshort-doom-r2/) | 1 | 0 |
 | [2026-11-16-spindown](2026-11-16-spindown/) | 5 | 1 |
 | [2026-11-16-stop](2026-11-16-stop/) | 3 | 1 |
+| [2026-11-16-t0land](2026-11-16-t0land/) | 2 | 0 |
+| [2026-11-17-bv8](2026-11-17-bv8/) | 3 | 0 |
+| [2026-11-17-bv9](2026-11-17-bv9/) | 3 | 0 |
+| [2026-11-17-t0hold](2026-11-17-t0hold/) | 2 | 0 |
+| [2026-11-17-t0stream-r1](2026-11-17-t0stream-r1/) | 2 | 0 |
+| [2026-11-17-t0stream-r2](2026-11-17-t0stream-r2/) | 2 | 0 |

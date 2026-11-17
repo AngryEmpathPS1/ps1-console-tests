@@ -207,3 +207,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-16-triorient](2026-11-16-triorient/) | 2 | 0 |
 | [2026-11-16-trislope](2026-11-16-trislope/) | 2 | 0 |
 | [2026-11-16-triwide](2026-11-16-triwide/) | 2 | 0 |
+| [2026-11-17-bv8](2026-11-17-bv8/) | 3 | 0 |
+| [2026-11-17-bv9](2026-11-17-bv9/) | 3 | 0 |

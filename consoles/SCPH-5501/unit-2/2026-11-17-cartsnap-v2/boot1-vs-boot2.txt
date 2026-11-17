@@ -1,0 +1,41 @@
+# boot 1 (bytes 0-20329) against boot 2 (from 20330): node tools/cartsnap.js <boot 1> --vs=<boot 2> --all lists every field
+scratch/cart2/v2a/5501-boot1.bin: stage 1h: a whole frame, 4161 fields, 13232 bytes, sum 0009AABC
+scratch/cart2/v2a/5501-boot2.bin: stage 1h: a whole frame, 4161 fields, 13232 bytes, sum 00094E7F
+  EARLY.RAM_WORD(80h)      FFFFB72A  vs FFFF972A
+  POWER.RAM40              FCDAD8FB  vs FCDABFFB
+  POWER.RAM44              EFFFFE4C  vs EBEFDC4C
+  POWER.RAM48              FFFD5D7F  vs FFF15D7F
+  POWER.RAM4C              6123FE10  vs EF7BFE15
+  SPU.V0.REPEAT            14C4  vs 1706
+  SPU.V1.REPEAT            14C4  vs 034C
+  SPU.V2.REPEAT            14C4  vs 1706
+  SPU.V3.REPEAT            15C3  vs 1706
+  SPU.V5.REPEAT            034C  vs 068B
+  SPU.V6.REPEAT            14C4  vs 1707
+  SPU.V7.REPEAT            14C4  vs 1706
+  SPU.V9.REPEAT            034C  vs 0850
+  SPU.V12.REPEAT           034C  vs 03A5
+  SPU.V13.REPEAT           0545  vs 05C9
+  SPU.V15.REPEAT           034C  vs 0468
+  SPU.V18.REPEAT           14C4  vs 1706
+  SPU.V19.REPEAT           14C4  vs 1706
+  SPU.V20.REPEAT           034C  vs 03F7
+  SPU.V21.REPEAT           06AB  vs 0710
+  SPU.V22.REPEAT           0200  vs 072D
+  SPU.V23.REPEAT           0200  vs 072D
+  CARTIO 1f020003          F7  vs F5
+  CARTIO 1f020009          77  vs 75
+  CARTIO 1f02000c          74  vs 34
+  CARTIO 1f020013          F5  vs F7
+  CARTIO 1f020018          75  vs F5
+  CARTIO 1f02001b          FF  vs F7
+  CARTIO 1f02001e          F4  vs 74
+  GPUINFO.GPUREAD(cold)    44E744E7  vs 00000002
+  * scratchpad: 256 of 256 words non-zero
+    vs scratchpad: 233 of 256 words non-zero
+  * video trace: 278 states over 680780 counts in 1097 polls (a poll ~621 counts); GPUSTAT first 14802000; bit 31 changed 277 times, first at 36500 38982 40880 42784 45262 47160
+    vs video trace: 278 states over 680780 counts in 1097 polls (a poll ~621 counts); GPUSTAT first 14802000; bit 31 changed 277 times, first at 36500 38982 40880 43364 45262 47160
+  3828 fields the same, 333 differ (303 of them in bulk records: --all lists them)
+scratch/cart2/v2a/5501-boot1.bin: stage 2h: a whole frame, 1747 fields, 7087 bytes, sum 00026727
+scratch/cart2/v2a/5501-boot2.bin: stage 2h: a whole frame, 1747 fields, 7087 bytes, sum 00026708
+  1741 fields the same, 6 differ (6 of them in bulk records: --all lists them)

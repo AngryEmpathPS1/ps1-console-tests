@@ -251,6 +251,10 @@ static void runCase(const uint32_t *c, bool verbose) {
     for (uint32_t i = 0; i < nCode; i++) dst[i] = code[i];
     dst[nCode] = 0x03E00008u;                  /* jr ra */
     dst[nCode + 1] = 0;
+    /* The rest of the last line, and one line more, zeroed (2026-11-17). Before, the words past a short case were the previous
+     * case's. The line fill and the bus latch read them, so a trail rung or a repro read differently from the same case after
+     * another one (busvalue: repro-9001-14 alone reads 0, the trail's rung did not). CODEBUF + codeOff is 16-byte aligned. */
+    for (uint32_t i = nCode + 2, e = ((nCode + 2 + 3) & ~3u) + 4; i < e; i++) dst[i] = 0;
     CTX[0] = CODEBUF + codeOff;
     setupCase(seed);
     fz_flush();

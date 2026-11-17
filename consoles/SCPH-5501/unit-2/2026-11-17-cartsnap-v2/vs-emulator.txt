@@ -1,0 +1,330 @@
+# node tools/cartsnap.js <boot 2's bytes> --vs=console-logs/2026-11-17-SCPH-5501-u2-cartsnap-v2/emulator-frames.bin  (boot 2 = snapshot-raw.bin from byte 20330; the emulator: tools/cartemu.js --cases=normal --kind=powerreplay on the flashed image, ff63212e cart128.bin sha1 e80dca89, BIOS scph5501.bin, with experiments/land_cartamd.js)
+scratch/cart2/v2a/5501-boot2.bin: stage 1h: a whole frame, 4161 fields, 13232 bytes, sum 00094E7F
+scratch/cart2/v2a/pr5501/cartemu-normal.bin: stage 1h: a whole frame, 4169 fields, 13264 bytes, sum 00052E3C
+  COP0.EPC                 BFC00000  vs 00000000
+  COP0.BADVADDR            00000001  vs 00000000
+  COP0.JUMPDEST            BFC02B68  vs 00000000
+  SIO1_BAUD(before)        00000000  vs 000000DC
+  EARLY.L0_MDEC(cold)      3C19BF00  vs BFC06F04
+  EARLY.I_MASK_WORD(cold)  8F2B0000  vs BFC00000
+  EARLY.L_AFTER_EXP1       8F0D0100  vs BFC06F04
+  EARLY.L_AFTER_BIOS       8DE20080  vs BFC06F04
+  EARLY.RAM_WORD(80h)      FFFF972A  vs 00000000
+  EARLY.L_AFTER_RAM        95051110  vs 00000000
+  EARLY.T0                 00002635  vs 000016BB
+  EARLY.T1                 00002651  vs 000016D7
+  EARLY.T2                 0000266D  vs 000016F4
+  EARLY.T2_AFTER           0000287B  vs 000018E0
+  POWER.RAM40              FCDABFFB  vs 00000000
+  POWER.RAM44              EBEFDC4C  vs 00000000
+  POWER.RAM48              FFF15D7F  vs 00000000
+  POWER.RAM4C              EF7BFE15  vs 00000000
+  JOY_MODE                 0000  vs 000D
+  JOY_BAUD                 0000  vs 0088
+  DMA0.MADR                00102200  vs 00000000
+  DMA0.BCR                 0001000D  vs 00000000
+  DMA1.MADR                00025D2C  vs 00000000
+  DMA1.BCR                 00000020  vs 00000000
+  DMA2.MADR                00FFFFFF  vs 00000000
+  DMA3.MADR                00013000  vs 00000000
+  DMA3.BCR                 00010200  vs 00000000
+  DMA4.MADR                00188F64  vs 00000000
+  DMA4.BCR                 00000010  vs 00000000
+  DMA5.MADR                00000010  vs 00000000
+  DMA6.MADR                000EB914  vs 00000000
+  DMA6.BCR                 00000400  vs 00000000
+  DMA6.CHCR                00000002  vs 00000000
+  DMA6.?                   00000002  vs 00000000
+  TAG13 1f8010f8           0BFAC688  vs 00000000
+  TAG13 1f8010fc           00000400  vs 00000000
+  T0.COUNT                 000040AB  vs 00002F01
+  T0.?                     00004025  vs 00000000
+  T1.COUNT                 0000F547  vs 0000E388
+  T1.?                     00004025  vs 00000000
+  T2.COUNT                 0000A943  vs 00009750
+  T2.?                     00004025  vs 00000000
+  GPUSTAT                  14802000  vs 94802000
+  SPU.V0.PITCH             0400  vs 0000
+  SPU.V0.ADDR              0C28  vs 0000
+  SPU.V0.ADSR              8088  vs 0000
+  SPU.V0.ADSR.H            DFF1  vs 0000
+  SPU.V0.REPEAT            1706  vs 0000
+  SPU.V1.PITCH             0407  vs 0000
+  SPU.V1.ADDR              0C28  vs 0000
+  SPU.V1.ADSR              8087  vs 0000
+  SPU.V1.ADSR.H            DFF1  vs 0000
+  SPU.V1.REPEAT            034C  vs 0000
+  SPU.V2.PITCH             0800  vs 0000
+  SPU.V2.ADDR              0C28  vs 0000
+  SPU.V2.ADSR              8088  vs 0000
+  SPU.V2.ADSR.H            DFF1  vs 0000
+  SPU.V2.REPEAT            1706  vs 0000
+  SPU.V3.PITCH             080E  vs 0000
+  SPU.V3.ADDR              0C28  vs 0000
+  SPU.V3.ADSR              8087  vs 0000
+  SPU.V3.ADSR.H            DFF1  vs 0000
+  SPU.V3.REPEAT            1706  vs 0000
+  SPU.V4.PITCH             08FA  vs 0000
+  SPU.V4.ADDR              0200  vs 0000
+  SPU.V4.ADSR              8C7A  vs 0000
+  SPU.V4.ADSR.H            DFED  vs 0000
+  SPU.V4.REPEAT            06ED  vs 0000
+  SPU.V5.PITCH             090B  vs 0000
+  SPU.V5.ADDR              0200  vs 0000
+  SPU.V5.ADSR              8C7A  vs 0000
+  SPU.V5.ADSR.H            DFED  vs 0000
+  SPU.V5.REPEAT            068B  vs 0000
+  SPU.V6.PITCH             02AB  vs 0000
+  SPU.V6.ADDR              0C28  vs 0000
+  SPU.V6.ADSR              8088  vs 0000
+  SPU.V6.ADSR.H            DFF1  vs 0000
+  SPU.V6.REPEAT            1707  vs 0000
+  SPU.V7.PITCH             02B0  vs 0000
+  SPU.V7.ADDR              0C28  vs 0000
+  SPU.V7.ADSR              8087  vs 0000
+  SPU.V7.ADSR.H            DFF1  vs 0000
+  SPU.V7.REPEAT            1706  vs 0000
+  SPU.V8.PITCH             0A14  vs 0000
+  SPU.V8.ADDR              0200  vs 0000
+  SPU.V8.ADSR              8C7A  vs 0000
+  SPU.V8.ADSR.H            DFED  vs 0000
+  SPU.V8.REPEAT            085F  vs 0000
+  SPU.V9.PITCH             0A27  vs 0000
+  SPU.V9.ADDR              0200  vs 0000
+  SPU.V9.ADSR              8C7A  vs 0000
+  SPU.V9.ADSR.H            DFED  vs 0000
+  SPU.V9.REPEAT            0850  vs 0000
+  SPU.V10.PITCH            0BFC  vs 0000
+  SPU.V10.ADDR             0200  vs 0000
+  SPU.V10.ADSR             8C7A  vs 0000
+  SPU.V10.ADSR.H           DFED  vs 0000
+  SPU.V10.REPEAT           034C  vs 0000
+  SPU.V11.PITCH            0C12  vs 0000
+  SPU.V11.ADDR             0200  vs 0000
+  SPU.V11.ADSR             8C7A  vs 0000
+  SPU.V11.ADSR.H           DFED  vs 0000
+  SPU.V11.REPEAT           034C  vs 0000
+  SPU.V12.PITCH            08FA  vs 0000
+  SPU.V12.ADDR             0200  vs 0000
+  SPU.V12.ADSR             8C7A  vs 0000
+  SPU.V12.ADSR.H           DFED  vs 0000
+  SPU.V12.REPEAT           03A5  vs 0000
+  SPU.V13.PITCH            090B  vs 0000
+  SPU.V13.ADDR             0200  vs 0000
+  SPU.V13.ADSR             8C7A  vs 0000
+  SPU.V13.ADSR.H           DFED  vs 0000
+  SPU.V13.REPEAT           05C9  vs 0000
+  SPU.V14.PITCH            0A14  vs 0000
+  SPU.V14.ADDR             0200  vs 0000
+  SPU.V14.ADSR             8C7A  vs 0000
+  SPU.V14.ADSR.H           DFED  vs 0000
+  SPU.V14.REPEAT           047D  vs 0000
+  SPU.V15.PITCH            0A27  vs 0000
+  SPU.V15.ADDR             0200  vs 0000
+  SPU.V15.ADSR             8C7A  vs 0000
+  SPU.V15.ADSR.H           DFED  vs 0000
+  SPU.V15.REPEAT           0468  vs 0000
+  SPU.V16.PITCH            0BFC  vs 0000
+  SPU.V16.ADDR             0200  vs 0000
+  SPU.V16.ADSR             8C7A  vs 0000
+  SPU.V16.ADSR.H           DFED  vs 0000
+  SPU.V16.REPEAT           034C  vs 0000
+  SPU.V17.PITCH            0C12  vs 0000
+  SPU.V17.ADDR             0200  vs 0000
+  SPU.V17.ADSR             8C7A  vs 0000
+  SPU.V17.ADSR.H           DFED  vs 0000
+  SPU.V17.REPEAT           07DB  vs 0000
+  SPU.V18.PITCH            0556  vs 0000
+  SPU.V18.ADDR             0C28  vs 0000
+  SPU.V18.ADSR             8088  vs 0000
+  SPU.V18.ADSR.H           DFF1  vs 0000
+  SPU.V18.REPEAT           1706  vs 0000
+  SPU.V19.PITCH            0560  vs 0000
+  SPU.V19.ADDR             0C28  vs 0000
+  SPU.V19.ADSR             8087  vs 0000
+  SPU.V19.ADSR.H           DFF1  vs 0000
+  SPU.V19.REPEAT           1706  vs 0000
+  SPU.V20.PITCH            0A14  vs 0000
+  SPU.V20.ADDR             0200  vs 0000
+  SPU.V20.ADSR             8C7A  vs 0000
+  SPU.V20.ADSR.H           DFED  vs 0000
+  SPU.V20.REPEAT           03F7  vs 0000
+  SPU.V21.PITCH            0A27  vs 0000
+  SPU.V21.ADDR             0200  vs 0000
+  SPU.V21.ADSR             8C7A  vs 0000
+  SPU.V21.ADSR.H           DFED  vs 0000
+  SPU.V21.REPEAT           0710  vs 0000
+  SPU.V22.PITCH            3FFF  vs 0000
+  SPU.V22.ADDR             0200  vs 0000
+  SPU.V22.REPEAT           072D  vs 0000
+  SPU.V23.PITCH            3FFF  vs 0000
+  SPU.V23.ADDR             0200  vs 0000
+  SPU.V23.REPEAT           072D  vs 0000
+  SPU_KOFF                 FFFF  vs 0000
+  SPU+18e                  FFFF  vs 0000
+  SPU+198                  FFFF  vs 0000
+  SPU+19a                  003F  vs 0000
+  SPU+1a0                  A000  vs 0000
+  SPU+1a2                  E128  vs 0000
+  SPU+1a4                  0262  vs 0000
+  SPU_XFERADDR             0200  vs 0000
+  SPUCNT                   C085  vs 0000
+  SPU_XFERCTRL             0004  vs 0000
+  SPU+1b0                  7FFF  vs 0000
+  SPU+1b2                  7FFF  vs 0000
+  SPU+1bc                  D7DF  vs 0000
+  SPU+1be                  BFBD  vs 0000
+  SPU+1c0                  033D  vs 0000
+  SPU+1c2                  0231  vs 0000
+  SPU+1c4                  7E00  vs 0000
+  SPU+1c6                  5000  vs 0000
+  SPU+1c8                  B400  vs 0000
+  SPU+1ca                  B000  vs 0000
+  SPU+1cc                  4C00  vs 0000
+  SPU+1ce                  B000  vs 0000
+  SPU+1d0                  6000  vs 0000
+  SPU+1d2                  5400  vs 0000
+  SPU+1d4                  1ED6  vs 0000
+  SPU+1d6                  1A31  vs 0000
+  SPU+1d8                  1D14  vs 0000
+  SPU+1da                  183B  vs 0000
+  SPU+1dc                  1BC2  vs 0000
+  SPU+1de                  16B2  vs 0000
+  SPU+1e0                  1A32  vs 0000
+  SPU+1e2                  15EF  vs 0000
+  SPU+1e4                  15EE  vs 0000
+  SPU+1e6                  1055  vs 0000
+  SPU+1e8                  1334  vs 0000
+  SPU+1ea                  0F2D  vs 0000
+  SPU+1ec                  11F6  vs 0000
+  SPU+1ee                  0C5D  vs 0000
+  SPU+1f0                  1056  vs 0000
+  SPU+1f2                  0AE1  vs 0000
+  SPU+1f4                  0AE0  vs 0000
+  SPU+1f6                  07A2  vs 0000
+  SPU+1f8                  0464  vs 0000
+  SPU+1fa                  0232  vs 0000
+  SPU+1fc                  8000  vs 0000
+  SPU+1fe                  8000  vs 0000
+  SPU+260                  46A7  vs 0000
+  SPU+262                  BFA7  vs 0000
+  SPU+264                  FBBF  vs 0000
+  SPU+266                  6894  vs 0000
+  SPU+268                  1BCD  vs 0000
+  SPU+26a                  75DD  vs 0000
+  SPU+26c                  FCEA  vs 0000
+  SPU+26e                  37F4  vs 0000
+  SPU+270                  EDE7  vs 0000
+  SPU+272                  4FBB  vs 0000
+  SPU+274                  F779  vs 0000
+  SPU+276                  4D96  vs 0000
+  SPU+278                  1DFB  vs 0000
+  SPU+27a                  EEFB  vs 0000
+  SPU+27c                  5DED  vs 0000
+  SPU+27e                  C6EC  vs 0000
+  CARTIO 1f020000          75  vs FF
+  CARTIO 1f020001          75  vs FF
+  CARTIO 1f020002          75  vs FF
+  CARTIO 1f020003          F5  vs FF
+  CARTIO 1f020004          74  vs FE
+  CARTIO 1f020005          F4  vs FE
+  CARTIO 1f020006          74  vs FE
+  CARTIO 1f020007          F4  vs FE
+  CARTIO 1f020008          75  vs FF
+  CARTIO 1f020009          75  vs FF
+  CARTIO 1f02000a          75  vs FF
+  CARTIO 1f02000b          F7  vs FF
+  CARTIO 1f02000c          34  vs FE
+  CARTIO 1f02000d          74  vs FE
+  CARTIO 1f02000e          74  vs FE
+  CARTIO 1f02000f          F4  vs FE
+  CARTIO 1f020010          75  vs FF
+  CARTIO 1f020011          75  vs FF
+  CARTIO 1f020012          75  vs FF
+  CARTIO 1f020013          F7  vs FF
+  CARTIO 1f020014          74  vs FE
+  CARTIO 1f020015          F4  vs FE
+  CARTIO 1f020016          F4  vs FE
+  CARTIO 1f020017          F4  vs FE
+  CARTIO 1f020018          F5  vs FF
+  CARTIO 1f020019          F7  vs FF
+  CARTIO 1f02001a          F5  vs FF
+  CARTIO 1f02001b          F7  vs FF
+  CARTIO 1f02001c          F4  vs FE
+  CARTIO 1f02001d          F4  vs FE
+  CARTIO 1f02001e          74  vs FE
+  CARTIO 1f02001f          F4  vs FE
+  GPUINFO.GPUREAD(cold)    00000002  vs 00000000
+  GPUINFO.INFO4_DRAW_BR    00000000  vs 0007FFFF
+  SPU2.SPUCNT              0000C085  vs 00000000
+  SPU2.SPUCNT(+2ms)        0000C085  vs 00000000
+  SPU2.T2_BETWEEN          00010A01  vs 000109E1
+  T2_TOTAL                 0251510C  vs 025262C1
+  * I-cache: 0 of 256 lines hold a valid word (0 valid words of 1,024); 0 lines' tags match KSEG0 0-FFFh; 0 code words non-zero
+    vs I-cache: 0 of 256 lines hold a valid word (0 valid words of 1,024); 256 lines' tags match KSEG0 0-FFFh; 0 code words non-zero
+  * GTE: 56 of 64 registers non-zero: VXY0 00000B50, VZ0 00000B50, VXY1 FDABFF8D, VZ1 FFFFFE51, VXY2 FDAB000A, VZ2 FFFFFDD4, RGBC 200808FF, OTZ 00000509, IR0 000000A4, IR1 0000104A
+    vs GTE: 1 of 64 registers non-zero: LZCR 00000020
+  * scratchpad: 233 of 256 words non-zero
+    vs scratchpad: 0 of 256 words non-zero
+  * RAM samples: 203 of 320 words non-zero
+    vs RAM samples: 2 of 320 words non-zero
+  * refresh probe: 136 of 256 Timer 2 phases met; a phase's mean pass 58.0-64.0 counts; above the middle at 2 phases: 229 231
+    vs refresh probe: 218 of 256 Timer 2 phases met; a phase's mean pass 61.0-64.0 counts; above the middle at 214 phases
+  * timing from the cart (T2 counts, 4 each): empty 28/28/28/28, 16nops 442/442/442/442, EXP1 79/79/79/79, BIOS 79/79/79/79, RAM 58/58/58/58, SCRATCH 54/54/54/54, IO 56/56/56/56
+    vs timing from the cart (T2 counts, 4 each): empty 28/28/28/28, 16nops 429/429/429/429, EXP1 78/78/78/78, BIOS 78/78/78/78, RAM 64/64/64/64, SCRATCH 53/53/53/53, IO 57/57/57/57
+  * video trace: 278 states over 680780 counts in 1097 polls (a poll ~621 counts); GPUSTAT first 14802000; bit 31 changed 277 times, first at 36500 38982 40880 43364 45262 47160
+    vs video trace: 282 states over 680993 counts in 1146 polls (a poll ~594 counts); GPUSTAT first 94802000; bit 31 changed 281 times, first at 1081 2902 5280 7101 9479 11857
+  2106 fields the same, 2055 differ (1796 of them in bulk records: --all lists them)
+scratch/cart2/v2a/5501-boot2.bin: stage 2h: a whole frame, 1747 fields, 7087 bytes, sum 00026708
+scratch/cart2/v2a/pr5501/cartemu-normal.bin: stage 2h: a whole frame, 1747 fields, 7087 bytes, sum 0000659F
+  COP0.CAUSE               00000024  vs 10000024
+  COP0.BADVADDR            00000001  vs 00000000
+  COP0.JUMPDEST            BFC02B68  vs 00000000
+  BRK.L(break)             94451100  vs 000000FF
+  BRK.T0                   00007AED  vs 00008509
+  BRK.T1                   00007ADF  vs 000084CF
+  BRK.T2                   00007AE2  vs 000084EC
+  DMA0.MADR                00102200  vs 00000000
+  DMA0.BCR                 0001000D  vs 00000000
+  DMA1.MADR                00025D2C  vs 00000000
+  DMA1.BCR                 00000020  vs 00000000
+  DMA2.MADR                00FFFFFF  vs 00000000
+  DMA3.MADR                00013000  vs 00000000
+  DMA3.BCR                 00010200  vs 00000000
+  DMA4.MADR                00188F64  vs 00000000
+  DMA4.BCR                 00000010  vs 00000000
+  DMA5.MADR                00000010  vs 00000000
+  DMA6.MADR                000EB914  vs 00000000
+  DMA6.BCR                 00000400  vs 00000000
+  DMA6.CHCR                00000002  vs 00000000
+  DMA6.?                   00000002  vs 00000000
+  TAG13 1f8010f8           0BFAC688  vs 00000000
+  TAG13 1f8010fc           00000400  vs 00000000
+  T0.COUNT                 000038A2  vs 00004134
+  T0.?                     00004025  vs 00000000
+  T1.COUNT                 0000ED0E  vs 0000F4CF
+  T1.?                     00004025  vs 00000000
+  T2.COUNT                 0000A0CF  vs 0000A8BB
+  T2.?                     00004025  vs 00000000
+  SPU_KOFF                 FFFF  vs 0000
+  SPU+18e                  FFFF  vs 0000
+  SPU+198                  FFFF  vs 0000
+  SPU+19a                  003F  vs 0000
+  SPU+1a0                  AC00  vs 0000
+  SPU+1a2                  E128  vs 0000
+  SPU+1a4                  0262  vs 0000
+  SPU_XFERADDR             0200  vs 0000
+  SPU+1a8                  F0F0  vs 0000
+  SPUCNT                   C085  vs 0000
+  SPU_XFERCTRL             0004  vs 0000
+  SPU+1b0                  7FFF  vs 0000
+  SPU+1b2                  7FFF  vs 0000
+  SPU+1bc                  D7DF  vs 0000
+  SPU+1be                  BFBD  vs 0000
+  * I-cache: 2 of 256 lines hold a valid word (8 valid words of 1,024); 0 lines' tags match KSEG0 0-FFFh; 6 code words non-zero
+    vs I-cache: 1 of 256 lines hold a valid word (4 valid words of 1,024); 256 lines' tags match KSEG0 0-FFFh; 3 code words non-zero
+  * GTE: 56 of 64 registers non-zero: VXY0 00000B50, VZ0 00000B50, VXY1 FDABFF8D, VZ1 FFFFFE51, VXY2 FDAB000A, VZ2 FFFFFDD4, RGBC 200808FF, OTZ 00000509, IR0 000000A4, IR1 0000104A
+    vs GTE: 1 of 64 registers non-zero: LZCR 00000020
+  * scratchpad: 233 of 256 words non-zero
+    vs scratchpad: 32 of 256 words non-zero
+  1178 fields the same, 569 differ (525 of them in bulk records: --all lists them)

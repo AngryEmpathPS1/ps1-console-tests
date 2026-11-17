@@ -166,3 +166,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-16-slowread-r1](2026-11-16-slowread-r1/) | 2 | 0 |
 | [2026-11-16-slowread-r2](2026-11-16-slowread-r2/) | 2 | 0 |
 | [2026-11-16-slowread-r3](2026-11-16-slowread-r3/) | 2 | 0 |
+| [2026-11-17-bv8](2026-11-17-bv8/) | 3 | 0 |
+| [2026-11-17-bv9](2026-11-17-bv9/) | 3 | 0 |
+| [2026-11-17-cartsnap-v2](2026-11-17-cartsnap-v2/) | 2 | 0 |
