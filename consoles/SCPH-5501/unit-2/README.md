@@ -397,4 +397,16 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-spureadstart](2026-11-15-spureadstart/) | 6 | 0 |
 | [2026-11-15-spuwritetime](2026-11-15-spuwritetime/) | 2 | 0 |
 | [2026-11-15-texflush](2026-11-15-texflush/) | 2 | 0 |
+| [2026-11-16-bv7](2026-11-16-bv7/) | 3 | 0 |
+| [2026-11-16-empty-exp1read](2026-11-16-empty-exp1read/) | 2 | 0 |
+| [2026-11-16-empty-exp1read2](2026-11-16-empty-exp1read2/) | 2 | 0 |
+| [2026-11-16-empty-slowread](2026-11-16-empty-slowread/) | 2 | 0 |
+| [2026-11-16-jumpclass](2026-11-16-jumpclass/) | 6 | 2 |
+| [2026-11-16-jumpclass2](2026-11-16-jumpclass2/) | 2 | 0 |
 | [2026-11-16-speedseek3](2026-11-16-speedseek3/) | 4 | 2 |
+| [2026-11-16-triedges](2026-11-16-triedges/) | 2 | 0 |
+| [2026-11-16-triheight](2026-11-16-triheight/) | 2 | 0 |
+| [2026-11-16-triorient](2026-11-16-triorient/) | 2 | 0 |
+| [2026-11-16-trislope](2026-11-16-trislope/) | 2 | 0 |
+| [2026-11-16-triwide](2026-11-16-triwide/) | 2 | 0 |
+| [2026-11-17-cartsnap](2026-11-17-cartsnap/) | 2 | 0 |

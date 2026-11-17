@@ -141,6 +141,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-spulatch3](2026-11-15-spulatch3/) | 4 | 0 |
 | [2026-11-15-spureadstart](2026-11-15-spureadstart/) | 6 | 0 |
 | [2026-11-15-spuwritetime](2026-11-15-spuwritetime/) | 2 | 0 |
+| [2026-11-16-bv7](2026-11-16-bv7/) | 3 | 0 |
 | [2026-11-16-mdecfirst](2026-11-16-mdecfirst/) | 1 | 0 |
 | [2026-11-16-otcioread](2026-11-16-otcioread/) | 1 | 0 |
 | [2026-11-16-otcioread2](2026-11-16-otcioread2/) | 1 | 0 |
@@ -157,6 +158,10 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-16-scexshort-GAMEDAY-r1](2026-11-16-scexshort-GAMEDAY-r1/) | 2 | 0 |
 | [2026-11-16-scexshort-GAMEDAY-r2](2026-11-16-scexshort-GAMEDAY-r2/) | 2 | 0 |
 | [2026-11-16-scexshort-GAMEDAY-r3](2026-11-16-scexshort-GAMEDAY-r3/) | 2 | 0 |
+| [2026-11-16-scexshort-GAMEDAY2-discid](2026-11-16-scexshort-GAMEDAY2-discid/) | 1 | 0 |
+| [2026-11-16-scexshort-GAMEDAY2-r1](2026-11-16-scexshort-GAMEDAY2-r1/) | 2 | 0 |
+| [2026-11-16-scexshort-GAMEDAY2-r2](2026-11-16-scexshort-GAMEDAY2-r2/) | 2 | 0 |
+| [2026-11-16-scexshort-GAMEDAY2-r3](2026-11-16-scexshort-GAMEDAY2-r3/) | 2 | 0 |
 | [2026-11-16-seqfixstart](2026-11-16-seqfixstart/) | 2 | 0 |
 | [2026-11-16-seqfixstart2](2026-11-16-seqfixstart2/) | 2 | 0 |
 | [2026-11-16-seqfixstart3](2026-11-16-seqfixstart3/) | 2 | 0 |

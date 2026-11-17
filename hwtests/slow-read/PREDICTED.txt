@@ -1,0 +1,136 @@
+PREDICTED by this emulator at v0.377.370 (src d7cc50ab, WITHOUT land_exprule), 2026-11-16: PSX_VC_CART=cartrom/build/cart.bin PSX_MODEL=SCPH-1001 node tools/hwrunner.js slow-read --emu --bios=scph1001.bin --lock=0 --video=24000 --raw. The CD's and SPU's rule here is slowAccessB2B with v0.377.35's COM0 terms.
+
+bus/slow-read
+The CD's and the SPU's registers, the BIOS ROM and Expansion 1 read under the delay settings games write. Loads only.
+There are no assertions - compare against your emulator, and say which console and which cartridge ran it.
+
+EXP1 0013243f BIOS 0013243f SPU 200931e1 CD 00020843 EXP2 00070777 COM 00031125 as found
+baseline (K = 0) 4
+
+T region cd com : b1 b4 h1 h4 w1 w4 (the CD at 1F801800, the SPU at 1F801DAA / words at 1F801DA8, the BIOS at BFC00000)
+T cd    cd 20843 com 31125 : 9 39 15 63 27 111
+T cd    cd 20943 com 31125 : 9 42 19 82 39 162
+T spu   cd 20843 com 31125 : 19 82 19 82 39 162
+T spu4  cd 20843 com 31125 : 19 82 19 82 39 162
+T bios  cd 20843 com 31125 : 8 35 14 59 26 107
+T cd    cd 20843 com 01323 : 9 39 15 63 27 111
+T cd    cd 20943 com 01323 : 9 42 17 74 33 138
+T spu   cd 20843 com 01323 : 19 82 19 82 37 154
+T spu4  cd 20843 com 01323 : 19 82 19 82 37 154
+T bios  cd 20843 com 01323 : 8 35 16 67 32 131
+T cd    cd 20843 com 01325 : 9 39 15 63 27 111
+T cd    cd 20943 com 01325 : 9 42 19 82 39 162
+T spu   cd 20843 com 01325 : 19 82 19 82 39 162
+T spu4  cd 20843 com 01325 : 19 82 19 82 39 162
+T bios  cd 20843 com 01325 : 8 35 16 67 32 131
+T cd    cd 20843 com 0132c : 9 39 15 63 27 111
+T cd    cd 20943 com 0132c : 15 66 32 134 66 270
+T spu   cd 20843 com 0132c : 25 106 25 106 52 214
+T spu4  cd 20843 com 0132c : 25 106 25 106 52 214
+T bios  cd 20843 com 0132c : 8 35 16 67 32 131
+T cd    cd 20843 com 39c7e : 9 39 15 63 27 111
+T cd    cd 20943 com 39c7e : 17 74 36 150 74 302
+T spu   cd 20843 com 39c7e : 27 114 27 114 56 230
+T spu4  cd 20843 com 39c7e : 27 114 27 114 56 230
+T bios  cd 20843 com 39c7e : 16 67 33 135 67 271
+T cd    cd 20843 com 3168f : 9 39 15 63 27 111
+T cd    cd 20943 com 3168f : 18 78 38 158 78 318
+T spu   cd 20843 com 3168f : 28 118 28 118 58 238
+T spu4  cd 20843 com 3168f : 28 118 28 118 58 238
+T bios  cd 20843 com 3168f : 10 43 21 87 43 175
+
+P region cd com : two reads, 0 1 .. 10 no-ops between (their own cycles taken off)
+P cd    cd 20943 com 31125 : 20 19 19 18 17 16 15 14 13 12 12
+P spu   cd 20843 com 31125 : 40 39 39 38 37 36 35 34 33 32 31
+P bios  cd 20843 com 31125 : 17 17 17 16 15 14 13 12 11 11 11
+P cd    cd 20943 com 01323 : 20 19 19 18 17 16 15 14 13 12 12
+P spu   cd 20843 com 01323 : 40 39 39 38 37 36 35 34 33 32 31
+P bios  cd 20843 com 01323 : 17 17 17 16 15 14 13 12 11 11 11
+P cd    cd 20943 com 01325 : 20 19 19 18 17 16 15 14 13 12 12
+P spu   cd 20843 com 01325 : 40 39 39 38 37 36 35 34 33 32 31
+P bios  cd 20843 com 01325 : 17 17 17 16 15 14 13 12 11 11 11
+P cd    cd 20943 com 0132c : 32 31 31 30 29 28 27 26 25 24 23
+P spu   cd 20843 com 0132c : 52 51 51 50 49 48 47 46 45 44 43
+P bios  cd 20843 com 0132c : 17 17 17 16 15 14 13 12 11 11 11
+P cd    cd 20943 com 39c7e : 36 35 35 34 33 32 31 30 29 28 27
+P spu   cd 20843 com 39c7e : 56 55 55 54 53 52 51 50 49 48 47
+P bios  cd 20843 com 39c7e : 33 33 33 32 31 30 29 28 27 26 25
+P cd    cd 20943 com 3168f : 38 37 37 36 35 34 33 32 31 30 29
+P spu   cd 20843 com 3168f : 58 57 57 56 55 54 53 52 51 50 49
+P bios  cd 20843 com 3168f : 21 21 21 20 19 18 17 16 15 14 13
+P cd    cd 20843 com 0132c : 19 19 19 18 17 16 15 14 13 12 12
+P cd    cd 20843 com 39c7e : 19 19 19 18 17 16 15 14 13 12 12
+
+X pair e1 cd com : a read, 0 1 2 3 4 6 8 no-ops, another read
+X cd,spu      e1 0013243f cd 20943 com 31125 : 29 29 28 27 26 24 22
+X spu,cd      e1 0013243f cd 20943 com 31125 : 29 29 28 27 26 24 22
+X cd,bios     e1 0013243f cd 20943 com 31125 : 18 18 17 16 15 13 11
+X bios,cd     e1 0013243f cd 20943 com 31125 : 17 18 17 16 15 13 12
+X spu,bios    e1 0013243f cd 20943 com 31125 : 28 28 27 26 25 23 21
+X bios,spu    e1 0013243f cd 20943 com 31125 : 27 28 27 26 25 23 22
+X spu,spu     e1 0013243f cd 20943 com 31125 : 39 39 38 37 36 34 32
+X exp1,cd     e1 0013243f cd 20943 com 31125 : 17 18 17 16 15 13 12
+X cd,exp1     e1 0013243f cd 20943 com 31125 : 17 18 17 16 15 13 11
+X bios,bios   e1 0013243f cd 20943 com 31125 : 16 17 16 15 14 12 11
+X cd,ram      e1 0013243f cd 20943 com 31125 : 15 16 15 14 13 11 9
+X ram,cd      e1 0013243f cd 20943 com 31125 : 15 16+1 15+1 14+1 13+1 12 12
+X cd,spu      e1 0013243f cd 20943 com 0132c : 41 41 40 39 38 36 34
+X spu,cd      e1 0013243f cd 20943 com 0132c : 41 41 40 39 38 36 34
+X cd,bios     e1 0013243f cd 20943 com 0132c : 24 24 23 22 21 19 17
+X bios,cd     e1 0013243f cd 20943 com 0132c : 23 24 23 22 21 19 18
+X spu,bios    e1 0013243f cd 20943 com 0132c : 34 34 33 32 31 29 27
+X bios,spu    e1 0013243f cd 20943 com 0132c : 33 34 33 32 31 29 28
+X spu,spu     e1 0013243f cd 20943 com 0132c : 51 51 50 49 48 46 44
+X exp1,cd     e1 0013243f cd 20943 com 0132c : 23 24 23 22 21 19 18
+X cd,exp1     e1 0013243f cd 20943 com 0132c : 23 24 23 22 21 19 17
+X bios,bios   e1 0013243f cd 20943 com 0132c : 16 17 16 15 14 12 11
+X cd,ram      e1 0013243f cd 20943 com 0132c : 21+6 22 21 20 19 17 15
+X ram,cd      e1 0013243f cd 20943 com 0132c : 21 22+1 21+1 20+1 19+1 18 18
+X cd,spu      e1 0013243f cd 20943 com 3168f : 47 47 46 45 44 42 40
+X spu,cd      e1 0013243f cd 20943 com 3168f : 47 47 46 45 44 42 40
+X cd,bios     e1 0013243f cd 20943 com 3168f : 29 29 28 27 26 24 22
+X bios,cd     e1 0013243f cd 20943 com 3168f : 28 29 28 27 26 24 22
+X spu,bios    e1 0013243f cd 20943 com 3168f : 39 39 38 37 36 34 32
+X bios,spu    e1 0013243f cd 20943 com 3168f : 38 39 38 37 36 34 32
+X spu,spu     e1 0013243f cd 20943 com 3168f : 57 57 56 55 54 52 50
+X exp1,cd     e1 0013243f cd 20943 com 3168f : 28 29 28 27 26 24 22
+X cd,exp1     e1 0013243f cd 20943 com 3168f : 28 29 28 27 26 24 22
+X bios,bios   e1 0013243f cd 20943 com 3168f : 20 21 20 19 18 16 14
+X cd,ram      e1 0013243f cd 20943 com 3168f : 24 25 24 23 22 20 18
+X ram,cd      e1 0013243f cd 20943 com 3168f : 24 25+1 24+1 23+1 22+1 21 21
+X e1 b,w      e1 0013243f cd 20843 com 31125 : 34 35 34 33 32 30 29
+X e1 w,b      e1 0013243f cd 20843 com 31125 : 34 35 34 33 32 30 28
+X e1 h,w      e1 0013243f cd 20843 com 31125 : 40 41 40 39 38 36 34
+X e1 w,w      e1 0013243f cd 20843 com 31125 : 52 53 52 51 50 48 46
+X e1,bios     e1 0013243f cd 20843 com 31125 : 16 17 16 15 14 12 11
+X bios,e1     e1 0013243f cd 20843 com 31125 : 16 17 16 15 14 12 11
+X e1,exp2     e1 0013243f cd 20843 com 31125 : 20 21 20 19 18 16 15
+X exp2,e1     e1 0013243f cd 20843 com 31125 : 20 21 20 19 18 16 14
+X e1 b,w      e1 00130130 cd 20843 com 39c7e : 31 32 31 30 29 27 26
+X e1 w,b      e1 00130130 cd 20843 com 39c7e : 31 32 31 30 29 27 25
+X e1 h,w      e1 00130130 cd 20843 com 39c7e : 36 37 36 35 34 32 30
+X e1 w,w      e1 00130130 cd 20843 com 39c7e : 46 47 46 45 44 42 40
+X e1,bios     e1 00130130 cd 20843 com 39c7e : 24 25 24 23 22 20 19
+X bios,e1     e1 00130130 cd 20843 com 39c7e : 24 25 24 23 22 20 18
+X e1,exp2     e1 00130130 cd 20843 com 39c7e : 36 37 36 35 34 32 31
+X exp2,e1     e1 00130130 cd 20843 com 39c7e : 36 37 36 35 34 32 30
+X e1 b,w      e1 00130530 cd 20843 com 3168f : 53 54 53 52 51 49 47
+X e1 w,b      e1 00130530 cd 20843 com 3168f : 53 54 53 52 51 49 47
+X e1 h,w      e1 00130530 cd 20843 com 3168f : 64 65 64 63 62 60 58
+X e1 w,w      e1 00130530 cd 20843 com 3168f : 86 87 86 85 84 82 80
+X e1,bios     e1 00130530 cd 20843 com 3168f : 20 21 20 19 18 16 14
+X bios,e1     e1 00130530 cd 20843 com 3168f : 20 21 20 19 18 16 14
+X e1,exp2     e1 00130530 cd 20843 com 3168f : 33 34 33 32 31 29 27
+X exp2,e1     e1 00130530 cd 20843 com 3168f : 33 34 33 32 31 29 27
+
+L what was read, then lw I_MASK at once: the value read, I_MASK as a word
+L 1f000084 6563694c 8fa60000 (RAM word before: 12345678)
+L 1f020000 ffffffff 8fa60000 (RAM word before: 12345678)
+L 1f060000 ffffffff 8fa60000 (RAM word before: 12345678)
+L 1f802000 ffffffff 8fa60000 (RAM word before: 12345678)
+L bfc00000 3c080013 8fa60000 (RAM word before: 12345678)
+L 1f801800 39393939 8fa60000 (RAM word before: 12345678)
+
+R EXP1 0013243f EXP2 00070777 CD 00020843 COM 00031125 at the end (as found)
+
+bus/slow-read: Done.

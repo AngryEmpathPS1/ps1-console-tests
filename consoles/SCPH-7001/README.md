@@ -64,8 +64,12 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-texflush](2026-11-15-texflush/) | 2 | 0 |
 | [2026-11-15-texflush2](2026-11-15-texflush2/) | 2 | 0 |
 | [2026-11-15-texflush3](2026-11-15-texflush3/) | 2 | 0 |
+| [2026-11-16-bv7](2026-11-16-bv7/) | 3 | 0 |
 | [2026-11-16-degenfeed](2026-11-16-degenfeed/) | 1 | 0 |
 | [2026-11-16-degenquad](2026-11-16-degenquad/) | 1 | 0 |
+| [2026-11-16-empty-exp1read](2026-11-16-empty-exp1read/) | 2 | 0 |
+| [2026-11-16-empty-exp1read2](2026-11-16-empty-exp1read2/) | 2 | 0 |
+| [2026-11-16-empty-slowread](2026-11-16-empty-slowread/) | 2 | 0 |
 | [2026-11-16-feedrate](2026-11-16-feedrate/) | 1 | 0 |
 | [2026-11-16-jumpclass](2026-11-16-jumpclass/) | 6 | 2 |
 | [2026-11-16-mdecfirst](2026-11-16-mdecfirst/) | 1 | 0 |
@@ -82,3 +86,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-16-spucapirqad](2026-11-16-spucapirqad/) | 1 | 0 |
 | [2026-11-16-spucapirqen](2026-11-16-spucapirqen/) | 1 | 0 |
 | [2026-11-16-spucapirqhw](2026-11-16-spucapirqhw/) | 1 | 0 |
+| [2026-11-16-triedges](2026-11-16-triedges/) | 2 | 0 |
+| [2026-11-16-triheight](2026-11-16-triheight/) | 2 | 0 |
+| [2026-11-16-triorient](2026-11-16-triorient/) | 2 | 0 |
+| [2026-11-16-trislope](2026-11-16-trislope/) | 2 | 0 |
+| [2026-11-16-triwide](2026-11-16-triwide/) | 2 | 0 |

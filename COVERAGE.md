@@ -22,7 +22,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-boot-steps |  | 7 | 2 | 7 | 7 | 3 | 7 | 10 | 2 | 7 | 3 |
 | cd-cmds |  | 7 | 2 | 7 | 13 | 3 | 7 | 16 | 2 | 10 | 3 |
 | cd-da-capture |  | 1 |  |  | 1 |  | 2 | 1 | 2 | 1 |  |
-| cd-discid |  | 1 | 1 |  |  | 2 | 2 |  |  | 1 |  |
+| cd-discid |  | 1 | 1 |  |  | 3 | 2 |  |  | 1 |  |
 | cd-doom-load |  |  |  |  |  | 6 |  | 2 |  |  |  |
 | cd-doom-phase |  | 2 | 2 |  |  | 3 | 2 | 2 |  | 2 |  |
 | cd-doom-phase2 |  | 2 | 2 |  |  | 2 | 2 | 2 |  | 2 |  |
@@ -42,7 +42,7 @@ How many logs each test has on each console. Generated from the file names in `c
 | cd-init-far |  | 3 | 2 | 2 | 3 | 3 | 3 | 7 | 7 | 7 |  |
 | cd-int1-spread |  | 7 | 2 | 7 | 10 | 3 | 7 | 13 | 2 | 10 | 3 |
 | cd-irq-glitch | 1 | 1 | 1 | 1 | 2 | 2 | 2 | 4 | 1 | 2 | 2 |
-| cd-jumpclass |  |  |  |  |  |  | 3 |  |  |  |  |
+| cd-jumpclass |  |  |  |  |  | 3 | 3 |  |  |  |  |
 | cd-leadout |  | 4 | 1 | 1 | 4 | 1 | 1 | 5 | 1 | 3 |  |
 | cd-lid |  |  |  |  |  |  |  | 3 |  |  |  |
 | cd-lid-sweep |  |  |  |  |  |  |  | 3 |  |  |  |

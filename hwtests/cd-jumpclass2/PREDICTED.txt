@@ -1,0 +1,19 @@
+hwtests/cd-jumpclass2, run here first (2026-11-16) as the second SCPH-5501 under SC430930 on scratch/_cores/sdb371 (v0.377.371 +
+PSX_CB_SDB, the separate decoder's blind after a jump: 4 = src/), --settle=600, 8 repeats a target; no wait ran out in any. Printouts:
+experiments/doomload/jumpclass2-emu/v2-{doom,xfiles}-{b4,b36}.txt (b4 = blind 4 sectors, b36 = 3.6). Read with
+`node experiments/doomload/jctab.js` (it takes the region-prefixed rows). M cycles x repeats.
+
+Doom (USA): data to 35,925; regions from 4,900 (R0, near the hub), 14,370 (R1), 29,932 (R2, ~34 mm). The targets where the two blinds part:
+      R0 4918    blind 4: 9.2 x8     3.6: 4.8 x6, 9.2 x2     (cd-jumpclass's console: 4.8 x22, 9.3 x8)
+      R0 4936    8.9 x8              4.5 x3, 8.9 x5          (4.5 x7, 8.9 x22)
+      R0 4966    9.0 x8              4.6 x3, 9.0 x5          (4.6 x17, 9.1 x13)
+      R2 29998   10.1 x8             5.1 x8                  <- the far region's one clean edge
+      R2 29980   8.6 x8              8.6 x7, 11.2 x1
+      R2 30016   6.6 x7, 9.1         6.6 x5, 9.1 x3
+  R1: no target parts them. Every other target one class under both.
+The X-Files Disc 1: data to 260,925; regions from 4,900, 104,370, 232,432 (~55 mm). Only R2 232,474 parts them (blind 4 12.6 x8; 3.6 3.9 x3,
+12.6 x5) - the X-Files run says little at these targets.
+
+WHAT A CONSOLE SAYS: on Doom, R0 repeats cd-jumpclass's edges (a check on the run itself), and R2 29,998 says which blind the unit has at
+~34 mm - 5.1M (3.6's) or 10.1M (4's) or a split (between). With cd-hold-locl's double-speed rows (near the hub 3.6's, at 130,462 4's,
+experiments/doomload/NOTES.md 21), that places where the blind changes.

@@ -141,8 +141,15 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-spureadtime](2026-11-15-spureadtime/) | 1 | 0 |
 | [2026-11-15-spuwritetime](2026-11-15-spuwritetime/) | 1 | 0 |
 | [2026-11-15-texflush](2026-11-15-texflush/) | 2 | 0 |
+| [2026-11-16-bv7](2026-11-16-bv7/) | 3 | 0 |
 | [2026-11-16-cartsnap](2026-11-16-cartsnap/) | 1 | 0 |
 | [2026-11-16-degenquad](2026-11-16-degenquad/) | 1 | 0 |
+| [2026-11-16-exp1read-r1](2026-11-16-exp1read-r1/) | 2 | 0 |
+| [2026-11-16-exp1read-r2](2026-11-16-exp1read-r2/) | 2 | 0 |
+| [2026-11-16-exp1read-r3](2026-11-16-exp1read-r3/) | 2 | 0 |
+| [2026-11-16-exp1read2-r1](2026-11-16-exp1read2-r1/) | 2 | 0 |
+| [2026-11-16-exp1read2-r2](2026-11-16-exp1read2-r2/) | 2 | 0 |
+| [2026-11-16-exp1read2-r3](2026-11-16-exp1read2-r3/) | 2 | 0 |
 | [2026-11-16-mdectail2](2026-11-16-mdectail2/) | 1 | 0 |
 | [2026-11-16-scex-discid](2026-11-16-scex-discid/) | 1 | 0 |
 | [2026-11-16-scexshort-FINALFANTASY7-discid](2026-11-16-scexshort-FINALFANTASY7-discid/) | 1 | 0 |
@@ -156,3 +163,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-16-scexshort-doom-r1](2026-11-16-scexshort-doom-r1/) | 1 | 0 |
 | [2026-11-16-scexshort-doom-r2](2026-11-16-scexshort-doom-r2/) | 1 | 0 |
 | [2026-11-16-scexshort-doom-r3](2026-11-16-scexshort-doom-r3/) | 1 | 0 |
+| [2026-11-16-slowread-r1](2026-11-16-slowread-r1/) | 2 | 0 |
+| [2026-11-16-slowread-r2](2026-11-16-slowread-r2/) | 2 | 0 |
+| [2026-11-16-slowread-r3](2026-11-16-slowread-r3/) | 2 | 0 |
