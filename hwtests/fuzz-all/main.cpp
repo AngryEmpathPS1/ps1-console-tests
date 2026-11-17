@@ -25,6 +25,7 @@
 #include <common.h>
 #include <psxapi.h>
 #include <io.h>
+#include <stdarg.h>
 
 extern "C" {
 void fz_pair(void);
@@ -43,6 +44,77 @@ __asm__(
 
 #define R32(a) (*(volatile uint32_t *)(a))
 #define R16(a) (*(volatile uint16_t *)(a))
+
+/* THE DB-25 OUT (2026-11-17; AngryEmpath's exception to the 1F000000h-1F07FFFFh ban, through main: "Allow it"). SCOPE, exactly:
+ *   - this HOST code only, never a generated case (tools/fuzzall.js's generator ban is unchanged);
+ *   - writes to 1F060008h ONLY (the GameShark's comms-out byte); reads of 1F060000h (the PC's byte) and 1F020010h (STB) for the handshake;
+ *   - a console whose cart is a GameShark only: the host REFUSES unless the cart ROM's cold block at 80190000h ("AESNAP01", its
+ *     STAGE record's CART_KIND) says 1 (the GameShark build; 2 is the Power Replay, no comms link) and the Pico's STB is up.
+ * Every other address in 1F000000h-1F07FFFFh stays banned for this host and its cases alike. The handshake is cartrom/rom.c's
+ * comms_put: wait for STB (bounded: 2,000 reads, then the stream is off for the run), take the PC's byte, write ours (the write pulses ACK).
+ * Asked for by the table's flags: bit 4 a copy of every printed line out the DB-25 as well; bit 5 the verbose lines (V*, DRW) out the
+ * DB-25 ONLY, the SIO1 log keeping the result lines (the runner's 262,144-character log no longer caps a verbose batch). The
+ * receiving end: tools/dbcapread.js on the Pico's bridge port (127.0.0.1:3440). Without the flags, or refused, the host prints as before. */
+#define COMMS_STB (*(volatile uint8_t *)0x1F020010u)
+#define COMMS_IN (*(volatile uint8_t *)0x1F060000u)
+#define COMMS_OUT (*(volatile uint8_t *)0x1F060008u)
+static int dbOn, dbVonly;
+static uint32_t dbBytes;
+static int cartIsGameShark(void) {   /* the cold block's frame: records tag(1) width(1) count(2) address(4) values, ended by tag FFh */
+    const uint8_t *p = (const uint8_t *)0x80190000u;
+    static const char M[8] = { 'A', 'E', 'S', 'N', 'A', 'P', '0', '1' };
+    for (int i = 0; i < 8; i++) if (p[i] != (uint8_t)M[i]) return 0;
+    uint32_t o = 8;
+    while (o + 8 <= 256) {
+        const uint32_t tag = p[o], w = p[o + 1], cnt = p[o + 2] | (p[o + 3] << 8);
+        if (tag == 0xFF || !w || w > 4) return 0;
+        if (tag == 0x0F && cnt >= 3) { uint32_t v = 0; for (uint32_t b = 0; b < w; b++) v |= (uint32_t)p[o + 8 + 2 * w + b] << (8 * b); return v == 1; }
+        o += 8 + w * cnt;
+    }
+    return 0;
+}
+static void dbPut(uint32_t b) {
+    if (!dbOn) return;
+    for (uint32_t n = 0; !(COMMS_STB & 1); n++) if (n > 2000) { dbOn = 0; return; }
+    (void)COMMS_IN;
+    COMMS_OUT = (uint8_t)b;
+    dbBytes++;
+}
+/* every printed line goes through here: the BIOS's printf (SIO1, the runner) and, when on, the DB-25 */
+/* the line buffer at a fixed place, 8010C000h-8010FFFFh (TEXBUF's end to TABLE): in BSS its 8 KB pushed _end past the file's end, so
+ * the case table appended after the image lay inside BSS and the start-up's clearing wiped it ("no case table") */
+#define hline ((char *)0x8010C000u)
+#define HLINE_MAX 8192u
+static uint32_t hlen;
+static void hflush(void) {
+    hline[hlen] = 0;
+    const int verbose = hline[0] == 'V' || (hline[0] == 'D' && hline[1] == 'R' && hline[2] == 'W');
+    if (!(dbOn && dbVonly && verbose)) printf("%s", hline);
+    for (uint32_t i = 0; i < hlen; i++) dbPut((uint8_t)hline[i]);
+    hlen = 0;
+}
+static void hput(char c) { if (hlen >= HLINE_MAX - 1) hflush(); hline[hlen++] = c; if (c == 10) hflush(); }
+static void hnum(uint32_t v, uint32_t base, int neg) {
+    char t[12]; int n = 0;
+    if (neg) hput('-');
+    do { const uint32_t d = v % base; t[n++] = (char)(d < 10 ? '0' + d : 'a' + d - 10); v /= base; } while (v);
+    while (n) hput(t[--n]);
+}
+static void hout(const char *f, ...) {   /* the host's formats only: %u %d %x %c %s */
+    va_list ap; va_start(ap, f);
+    for (; *f; f++) {
+        if (*f != '%') { hput(*f); continue; }
+        const char k = *++f;
+        if (k == 'u') hnum(va_arg(ap, uint32_t), 10, 0);
+        else if (k == 'x') hnum(va_arg(ap, uint32_t), 16, 0);
+        else if (k == 'd') { const int v = va_arg(ap, int); hnum(v < 0 ? (uint32_t)-v : (uint32_t)v, 10, v < 0); }
+        else if (k == 'c') hput((char)va_arg(ap, int));
+        else if (k == 's') for (const char *s = va_arg(ap, const char *); *s; s++) hput(*s);
+        else if (k == '%') hput('%');
+        else if (!k) break;
+    }
+    va_end(ap);
+}
 #define GP0 R32(0x1F801810u)
 #define GPUREAD R32(0x1F801810u)
 #define GP1 R32(0x1F801814u)
@@ -185,15 +257,15 @@ static uint32_t vramHash(bool verbose, uint32_t id) {
     uint32_t h = FNV0, rows[64];
     for (uint32_t y = 0; y < 64; y++) {
         uint32_t r = FNV0;
-        if (dumpVram) printf("VW %u %u", id, y);   /* flags bit 3: every word of the draw area (a VRAM dump, 64 lines) */
-        for (uint32_t x = 0; x < 64; x++) { const uint32_t w = GPUREAD; h = fnv(h, w); r = fnv(r, w); if (dumpVram) printf(" %x", w); }
-        if (dumpVram) printf("%c", 10);
+        if (dumpVram) hout("VW %u %u", id, y);   /* flags bit 3: every word of the draw area (a VRAM dump, 64 lines) */
+        for (uint32_t x = 0; x < 64; x++) { const uint32_t w = GPUREAD; h = fnv(h, w); r = fnv(r, w); if (dumpVram) hout(" %x", w); }
+        if (dumpVram) hout("%c", 10);
         rows[y] = r;
     }
     GP0 = 0xC0000000u; GP0 = (256u << 16) | 128u; GP0 = (1u << 16) | 2u;   /* GPUREAD left on a word of the fixed texture region */
     gpuWait(27);
     (void)GPUREAD;
-    if (verbose) { printf("VR %u", id); for (int y = 0; y < 64; y++) printf(" %x", rows[y]); printf("\n"); }
+    if (verbose) { hout("VR %u", id); for (int y = 0; y < 64; y++) hout(" %x", rows[y]); hout("\n"); }
     return h;
 }
 
@@ -202,18 +274,18 @@ static void verboseRun(uint32_t id, int run, const uint32_t *o) {
     const bool vgOnly = run < 0;
     if (vgOnly) run = -run - 1;
     static const uint8_t regs[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25 };
-    printf("VG %u %d %u", id, run, o[0]);
-    for (uint32_t i = 0; i < sizeof regs; i++) printf(" %x", o[regs[i]]);
-    printf(" %x %x %x\n", o[33], o[34], o[99]);
+    hout("VG %u %d %u", id, run, o[0]);
+    for (uint32_t i = 0; i < sizeof regs; i++) hout(" %x", o[regs[i]]);
+    hout(" %x %x %x\n", o[33], o[34], o[99]);
     if (vgOnly && regsOnly) return;   /* flags bit 2: the registers alone, for probes of 350 cases */
-    printf("VX %u %d", id, run);
-    for (int i = 0; i < 64; i++) printf(" %x", o[35 + i]);
-    if (vgOnly) { printf("\n"); return; }   /* lite: registers and the GTE's */
-    printf("\nVD %u %d", id, run);
-    for (int i = 0; i < 512; i++) if (o[128 + i] != DATAINIT[i]) printf(" %x:%x", i * 4, o[128 + i]);
-    printf("\nVS %u %d", id, run);
-    for (int i = 0; i < 256; i++) if (o[640 + i] != SCRINIT[i]) printf(" %x:%x", i * 4, o[640 + i]);
-    printf("\n");
+    hout("VX %u %d", id, run);
+    for (int i = 0; i < 64; i++) hout(" %x", o[35 + i]);
+    if (vgOnly) { hout("\n"); return; }   /* lite: registers and the GTE's */
+    hout("\nVD %u %d", id, run);
+    for (int i = 0; i < 512; i++) if (o[128 + i] != DATAINIT[i]) hout(" %x:%x", i * 4, o[128 + i]);
+    hout("\nVS %u %d", id, run);
+    for (int i = 0; i < 256; i++) if (o[640 + i] != SCRINIT[i]) hout(" %x:%x", i * 4, o[640 + i]);
+    hout("\n");
 }
 
 static uint32_t gprHash(const uint32_t *o) {
@@ -270,8 +342,8 @@ static void runCase(const uint32_t *c, bool verbose) {
     for (uint32_t i = 0; i < 2048; i++) SPUBUF[i] = 0;
     spuDma(0x0000, SPUBUF, 2048, false);
     const uint32_t sc = hashw(SPUBUF, 1024), sd = hashw(SPUBUF + 1024, 1024);
-    if (verbose) { printf("VP %u", id); for (int k = 0; k < 32; k++) printf(" %x", hashw(SPUBUF + k * 64, 64)); printf(" %x\n", SPU(0x19C) | (SPU(0x19E) << 16)); }
-    printf("c %u %u %u %x %x %x %x %x %x %x %x %x\n", id, OUT0[0], OUT1[0], gprHash(OUT0), gprHash(OUT1),
+    if (verbose) { hout("VP %u", id); for (int k = 0; k < 32; k++) hout(" %x", hashw(SPUBUF + k * 64, 64)); hout(" %x\n", SPU(0x19C) | (SPU(0x19E) << 16)); }
+    hout("c %u %u %u %x %x %x %x %x %x %x %x %x\n", id, OUT0[0], OUT1[0], gprHash(OUT0), gprHash(OUT1),
            hashw(OUT0 + 128, 768), hashw(OUT1 + 128, 768), hashw(OUT0 + 35, 64), hashw(OUT1 + 35, 64), vh, sd, sc);
     BREAD[1] = 0;
 }
@@ -282,12 +354,21 @@ int main() {
      * whatever ran before it. Times above 49,151 cycles alias (none in the generator's range). */
     /* the three timers' modes and targets as found, put back at the end: the cases change Timer 0 and 1, this host Timer 2,
      * and the programs that run after a fuzz job on the same console should find them as they were (main, 2026-11-17) */
+    /* THE BOOT PATH'S SETUP, AS FOUND (2026-11-17): the two cart consoles (the 1001, the 5501-u2: the runner started from the cart, no
+     * Unirom) time apart from the other four as a group - seed 10600-10601's noise, 44 cold times split {1001, 5501-u2} against
+     * {101, 7001, 7502, 9001} (experiments/fuzz-all/oddone.js) - so every batch records what its boot left: the delay / size registers
+     * 1F801008h-1F801020h, RAM size 1F801060h, cache control FFFE0130h, DPCR, DICR, I_MASK and SR. READ ONLY, before anything here
+     * writes them (the hard rules: none of these is ever written by this host but DPCR / DICR, put back as found). */
+    uint32_t setup[12];
+    for (int i = 0; i < 7; i++) setup[i] = R32(0x1F801008u + i * 4);
+    setup[7] = R32(0x1F801060u); setup[8] = R32(0xFFFE0130u); setup[9] = R32(0x1F8010F0u); setup[10] = R32(0x1F8010F4u); setup[11] = R32(0x1F801074u);
+    const uint32_t sr0 = fz_getsr();
     uint16_t tmode[3], ttgt[3];
     for (int i = 0; i < 3; i++) { tmode[i] = R16(0x1F801104u + i * 16) & 0x03FFu; ttgt[i] = R16(0x1F801108u + i * 16); }
     R16(0x1F801128u) = 49151;
     R16(0x1F801124u) = 0x0008;                 /* system clock, reset after reaching the target */
     const uint16_t e = T2;                     /* the anchor: the runner's locked start put us at a fixed refresh phase */
-    printf("\nfuzz/fuzz-all\n");
+    hout("\nfuzz/fuzz-all\n");
     EnterCriticalSection();
     const uint32_t mask0 = I_MASK;
     I_MASK = 0;
@@ -295,7 +376,7 @@ int main() {
     /* the table: appended after the image (tools/fuzzall.js), copied out before anything can use that RAM */
     const uint32_t *src = (const uint32_t *)(((uint32_t)_end + 15) & ~15u);
     for (int i = 0; i < 4096 && src[0] != 0x46555A31u; i++) src += 4;   /* it starts where the file's image ended */
-    if (src[0] != 0x46555A31u) { printf("no case table at %x\nDone.\n", (uint32_t)src); for (;;) {} }
+    if (src[0] != 0x46555A31u) { hout("no case table at %x\nDone.\n", (uint32_t)src); for (;;) {} }
     const uint32_t tw = src[4] < TABLE_MAX ? src[4] : TABLE_MAX;
     for (uint32_t i = 0; i < tw; i++) TABLE[i] = src[i];
     for (int i = 0; i < 256; i++) SCRSAVE[i] = R32(0x1F800000u + i * 4);
@@ -326,15 +407,26 @@ int main() {
     GP0 = 0x01000000u;
     GP0 = 0xA0000000u; GP0 = (256u << 16) | 128u; GP0 = (64u << 16) | 128u;
     gpuDmaWords(TEXBUF, 4096);
-    printf("cases %u codeOff %x flags %x\n", nCases, codeOff, flags);
+    hout("cases %u codeOff %x flags %x\n", nCases, codeOff, flags);
+    hout("SETUP");   /* 1008 100C 1010 1014 1018 101C 1020, 1060, FFFE0130, DPCR, DICR, I_MASK, SR - as the boot path left them */
+    for (int i = 0; i < 12; i++) hout(" %x", setup[i]);
+    hout(" %x\n", sr0);
+    /* the DB-25 out, when the table asks for it (flags bits 4-5; the scope above): refused unless the cart is a GameShark and the Pico's
+     * STB is up (200 reads, as rom.c's comms_present). The line says which, so every log records whether its DB-25 copy exists. */
+    if (flags & 0x30) {
+        const int gs = cartIsGameShark();
+        int stb = 0; if (gs) for (uint32_t n = 0; n < 200 && !stb; n++) stb = COMMS_STB & 1;
+        dbOn = gs && stb; dbVonly = (flags & 0x20) != 0;
+        hout("DB25 %s\n", dbOn ? (dbVonly ? "on verbose-only" : "on copy") : gs ? "off: no STB (no Pico)" : "refused: not a GameShark");
+    }
     /* THIS BOOT'S DRAWS (2026-11-17, main for AngryEmpath): on a cart console (the SCPH-1001's GameShark, the SCPH-5501-u2's Power
      * Replay, cart ROM v4) the boot left its per-boot draws at 80190100h - the refresh phase, the SPU's sample clock and key-on class,
      * phi (cartrom/README.md "The draws"; tools/cartdraws.js --raw decodes them). The 1,024 bytes as 256 words on one line, so every
      * batch carries the draws of the boot it ran in (tools/fuzzloop.js keeps them per cart console); elsewhere the words are whatever
      * that RAM holds and nothing reads them. */
-    printf("DRW");
-    for (int i = 0; i < 256; i++) printf(" %x", R32(0x80190100u + i * 4));
-    printf("\n");
+    hout("DRW");
+    for (int i = 0; i < 256; i++) hout(" %x", R32(0x80190100u + i * 4));
+    hout("\n");
     uint32_t at = 5;
     for (uint32_t n = 0; n < nCases && at < tw; n++) {
         const uint32_t *c = TABLE + at;
@@ -355,6 +447,7 @@ int main() {
     for (int i = 0; i < 256; i++) R32(0x1F800000u + i * 4) = SCRSAVE[i];
     I_MASK = mask0;
     ExitCriticalSection();
-    printf("\nDone.\n");
+    if (flags & 0x30) hout("DB25 bytes %u%s\n", dbBytes, dbOn ? "" : " (the stream went off)");
+    hout("\nDone.\n");
     for (;;) {}
 }
