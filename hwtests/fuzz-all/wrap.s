@@ -120,6 +120,10 @@ fz_one:
         lui   $t0, 0x0100
         sw    $t0, 0x814($s1)          # GP1(01h): the command buffer reset
         sw    $t0, 0x810($s1)          # GP0(01h): the texture cache cleared
+        lui   $t0, 0x0300
+        sw    $t0, 0x810($s1)          # GP0(03h) 0: Timing Control as at boot - GP1(00h) / (01h) do not clear it, and a case's
+                                       # stray word (random A0h image data read as commands after a word the FIFO lost) set it
+                                       # on the PSone and the 7001 for every test after (the GPU session, 2026-11-17)
         lui   $t0, 0x0400
         sw    $t0, 0x814($s1)          # GP1(04h) 0: no DMA direction
 
@@ -286,6 +290,9 @@ fz_timed:
         lhu   $k0, 0x120($s1)
         nop
         subu  $k0, $k0, $k1            # t - e, Timer 2 wrapping at 49152 (main.cpp): + 49152 if negative, branch-free
+        lw    $zero, 4($sp)            # the bus latch to the case's address, the same word on every machine: it held e, the last
+                                       # word read from RAM before the case, which is 0 on the consoles and 8 here (the start
+                                       # anchor's offset) - fuzz 10300-17, the busValue session's bv10 (2026-11-17)
         sra   $k1, $k0, 31
         andi  $k1, $k1, 0xC000
         addu  $k0, $k0, $k1

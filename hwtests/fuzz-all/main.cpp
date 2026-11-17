@@ -280,6 +280,10 @@ int main() {
     /* Timer 2 from here wraps every 49,152 cycles (32 SPU sample pairs of 1,536, 192 refresh periods of 256): wrap.s aligns
      * each run on (T2 - e) mod 1536, so every case starts at the same place on the refresh grid AND the SPU's sample clock,
      * whatever ran before it. Times above 49,151 cycles alias (none in the generator's range). */
+    /* the three timers' modes and targets as found, put back at the end: the cases change Timer 0 and 1, this host Timer 2,
+     * and the programs that run after a fuzz job on the same console should find them as they were (main, 2026-11-17) */
+    uint16_t tmode[3], ttgt[3];
+    for (int i = 0; i < 3; i++) { tmode[i] = R16(0x1F801104u + i * 16) & 0x03FFu; ttgt[i] = R16(0x1F801108u + i * 16); }
     R16(0x1F801128u) = 49151;
     R16(0x1F801124u) = 0x0008;                 /* system clock, reset after reaching the target */
     const uint16_t e = T2;                     /* the anchor: the runner's locked start put us at a fixed refresh phase */
@@ -303,6 +307,12 @@ int main() {
     const uint32_t phase = ((flags >> 16) & 0x7FF) % 1536;
     CTX[1] = (uint16_t)((e + phase) % 49152);
     dpcr0 = DPCR; dicr0 = DICR;
+    /* THE CHANNELS THE CASES READ START AT 0 (2026-11-17): the console runner loads one program behind another with no reset, so
+     * DMA0, 1, 4 and 6's MADR / BCR / CHCR held the LAST program's values until a case wrote them - fuzz 10301-8 read DMA6 MADR
+     * 1026F4h on the consoles, 10301-29 DMA0 BCR 13h, where the emulator boots each program from reset and read 0. DMA2 the host
+     * sets itself below (the texture), before any case. None of the four is running here: nothing is started. */
+    static const uint32_t zch[4] = { 0, 1, 4, 6 };
+    for (int i = 0; i < 4; i++) { const uint32_t b = 0x1F801080u + zch[i] * 16; R32(b) = 0; R32(b + 4) = 0; R32(b + 8) = 0; }
     DPCR = dpcr0 | 0x08080888u;                /* channels 0, 1, 2, 4 and 6 on */
     CTX[112] = DPCR; CTX[113] = dicr0 & 0x00FFFFFFu;
     SPU(0x180) = 0; SPU(0x182) = 0;            /* main volume 0: nothing out of the jack */
@@ -317,6 +327,14 @@ int main() {
     GP0 = 0xA0000000u; GP0 = (256u << 16) | 128u; GP0 = (64u << 16) | 128u;
     gpuDmaWords(TEXBUF, 4096);
     printf("cases %u codeOff %x flags %x\n", nCases, codeOff, flags);
+    /* THIS BOOT'S DRAWS (2026-11-17, main for AngryEmpath): on a cart console (the SCPH-1001's GameShark, the SCPH-5501-u2's Power
+     * Replay, cart ROM v4) the boot left its per-boot draws at 80190100h - the refresh phase, the SPU's sample clock and key-on class,
+     * phi (cartrom/README.md "The draws"; tools/cartdraws.js --raw decodes them). The 1,024 bytes as 256 words on one line, so every
+     * batch carries the draws of the boot it ran in (tools/fuzzloop.js keeps them per cart console); elsewhere the words are whatever
+     * that RAM holds and nothing reads them. */
+    printf("DRW");
+    for (int i = 0; i < 256; i++) printf(" %x", R32(0x80190100u + i * 4));
+    printf("\n");
     uint32_t at = 5;
     for (uint32_t n = 0; n < nCases && at < tw; n++) {
         const uint32_t *c = TABLE + at;
@@ -327,6 +345,12 @@ int main() {
         at += 4 + c[2] + 2 * c[3];
     }
     DPCR = dpcr0; DICR = dicr0;
+    /* WHAT GP1(00h) DOES NOT RESET, PUT BACK (2026-11-17, the GPU session through main: a fuzz job left the GPU's Timing Control
+     * set on the PSone and the 7001, and every GPU timing test after read about a cycle dear; gpu-tri-scan is clean once it is 0).
+     * wrap.s writes GP0(03h) 0 before every case too; here for whatever the last case left. Then the timers as found. */
+    gpuWait(26);
+    GP0 = 0x03000000u;
+    for (int i = 0; i < 3; i++) { R16(0x1F801108u + i * 16) = ttgt[i]; R16(0x1F801104u + i * 16) = tmode[i]; }
     SPU(0x18C) = 0xFFFF; SPU(0x18E) = 0x00FF;
     for (int i = 0; i < 256; i++) R32(0x1F800000u + i * 4) = SCRSAVE[i];
     I_MASK = mask0;

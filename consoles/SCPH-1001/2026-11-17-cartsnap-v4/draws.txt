@@ -1,0 +1,19 @@
+# cartdraws on snapshot-raw.bin (tools/cartdraws.js), then phi on lines across the fit range (--line=<cycles>), 2026-11-17
+DRAWS: refreshR0 93, SPU sample clock spuS0 543
+       at the landing (2 frames waited): refresh phase 203, SPU phase 265, lock code cb
+       phi: unread (lo -95678 >= hi -96064: the raw reads are in the frame, words 80-171)
+       line: 4528973 cycles over eight frames = 2152.5544 cycles a line (1250ths: 2690693); the vernier used 2152.5504 - two crystals (2152.5504)
+       GPUSTAT before the measure 14800000 (256 wide, NTSC, 15-bit, progressive, display off), after the landing 14800000 (256 wide, NTSC, 15-bit, progressive, display off); the display RANGE has no register: Timer 1's tick follows its end, and the vernier's offset d in the raw reads is its trace
+       as it ran: runner_align 801800c8, runner_probe 80180520, runner_spuprobe 80180548, runner_read16 80180568, runner_read32 80180580
+       layout of cart-draws (exe 5db48294): 10 routines, I-cache collisions 0
+       layout of cart-start (exe 91594261): 10 routines, I-cache collisions 0
+       phi from the 120 raw reads, on each line (lo < phi <= hi):
+         on two crystals (2152.5504)       does not fit (lo >= hi)
+         on one oscillator (2152.5)        does not fit (lo >= hi)
+         on SCPH-7502 in NTSC (2172.3090)  does not fit (lo >= hi)
+         line lengths that fit at all: 1.4 .. 4.2 ppm off the two crystals' (the one oscillator's is -23.4)
+SPU boot probe: 1004 bytes of text, 32 K rows, 9 A rows
+  on --line=2152.5535: phi -76.9154 cycles (-96151 .. -96138 in 1250ths)
+  on --line=2152.5550: phi -77.0211 cycles (-96379 .. -96173 in 1250ths)
+  on --line=2152.5570: phi -77.1246 cycles (-96538 .. -96273 in 1250ths)
+  on --line=2152.5590: phi -77.2906 cycles (-96641 .. -96586 in 1250ths)

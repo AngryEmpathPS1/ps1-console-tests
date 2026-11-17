@@ -1,0 +1,21 @@
+
+bus/exp-bracket
+exp-window's bracket: Timer 2, G no-ops, one access, eight no-ops, Timer 2 - what the access costs right
+behind the timer's read (G = 0, as exp-window has it) and 1-4 instructions on. No assertions.
+
+  access                          G=0   G=1   G=2   G=3   G=4     (cycles; * = it raised an exception)
+  nop (the empty bracket)         12    13    14    15    16 
+  lbu RAM                         15    17    17    17    18 
+  lbu scratchpad 1F800000h        13    15    15    15    16 
+  lbu Expansion 2 1F802000h       18    20    20    20    21 
+  lhu Expansion 2 1F802000h       33    35    35    35    36 
+  lw  Expansion 2 1F802000h       63    65    65    65    66 
+  lbu Expansion 2 1F802080h       31*   31*   31*   31*   32*    excode 07
+  lbu Expansion 3 1FA00000h       15    17    17    17    18 
+  lw  Expansion 3 1FA00000h       17    19    19    19    20 
+  lbu Expansion 1 1F000000h       15    17    17    17    18 
+  lw  Expansion 1 1F000000h       32    34    34    34    35 
+  sb  Expansion 2 1F802000h       13    15    15    15    16 
+  lbu BIOS ROM BFC00000h          15    17    17    17    18 
+
+Done.

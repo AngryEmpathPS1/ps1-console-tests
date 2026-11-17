@@ -21,8 +21,10 @@
  *   phase ((C - spuS0) mod 1536; FFFFFFFFh: no SPU phase found), 6 runnerFlags (bit 0: the SPU was switched on to find its phase),
  *   7 vernLo, 8 vernHi (phi in 1250ths on the line the board MEASURED, word 14; vernLo >= vernHi: unread), 9 the frames the landing waited, 10 the landing's
  *   Timer 2 (extended), 11 lockPhase (FFFFFFFDh: no VBlank in 2,000,000 cycles; FFFFFFFEh: Timer 1 stood still),
- *   12 Timer 2's count over eight frames (VBlank to VBlank), 13 the line it gives (1250ths of a cycle), 14 the line the vernier used (the nearest of the lines a
- *   console can have, or the measured one), 15 its flags (1 two crystals, 2 one oscillator, 4 unmatched, 8 no measure, 10h 7502 NTSC, 20h PAL),
+ *   12 Timer 2's count over 128 frames (VBlank to VBlank; v4: eight), 13 the line it gives (1250ths of a cycle: the cycles over the LINES Timer 1 counted, words 236, 237),
+ *   14 the line the vernier used (v5: the measured one itself, never a snap to a nominal line), 15 its flags (the nearest nominal line within 150 units: 1 two crystals, 2 one
+ *   oscillator, 10h 7502 NTSC, 20h PAL; 4 none near; 8 no measure; 40h: the line used was measured),
+ *   236 the frames timed (128), 237 the lines Timer 1 counted between the first and last VBlank edge (33,664 on NTSC progressive),
  *   172 GPUSTAT before the measure, 173 after the landing (the video mode, resolution, interlace; the display RANGE has no register to read - Timer 1's tick follows
  *   its end, so the vernier's offset d in the raw reads is its only trace), 174-178 where runner_align, runner_probe, runner_spuprobe, runner_read16, runner_read32
  *   sit as this program runs (the layout record from the build, words 180-, says where the loops are: tools/cartdraws.js checks them for I-cache collisions),
@@ -31,45 +33,60 @@
  * tools/cartsnap.js names them; docs/INSTRUMENT-AUDIT-2.md finding 1 and the discriminator's --phases / --angles read them.
  */
 #define runner_main runner_main_orig
-#include "../runner/main.cpp"
+#include "runner_cd.inc"
 #undef runner_main
+#ifndef CART_LINE_BIAS
+#define CART_LINE_BIAS 0
+#endif
 
-/* THE BOARD'S LINE, MEASURED (busValue's finding, 2026-11-17, approved through main): the vernier's schedule and its board decode need the machine's
- * line, in 1250ths of a cycle, and a cart start has no host to name it: the two crystals' 2,152.5504 and a one-oscillator machine's 2,152.5 differ by 0.0504
- * a line, 6 cycles over the 120 reads - and ~13 cycles a frame. So eight frames are timed with Timer 2 (VBlank edge to VBlank edge, I_STAT bit 0, the
- * extended count): ~4.53 million cycles, the two lines 105 apart against an edge's +-15. The frame's lines come from GPUSTAT bit 20 (263 NTSC, 314 PAL: src/psx.js);
- * the measured line, total * 1250 / (8 * lines), is matched to the lines a console can have - NTSC two crystals 2690688, one oscillator 2690625, the
- * SCPH-7502's NTSC 2715386, PAL two crystals 2709489 - within 28 (a quarter of the nearest gap; the measure's own error is ~9), and that line is the one
- * the vernier is scheduled and decoded on. No match: the measured line itself (flag 4: phi to a cycle or so only), no measure (no VBlank in 2,000,000 cycles):
- * the runner's default, flag 8. lflags: 1 two crystals, 2 one oscillator, 4 unmatched, 8 no measure, 10h 7502-NTSC, 20h PAL. */
+/* THE BOARD'S LINE, MEASURED (v5; busValue's finding of 2026-11-17 and his asks after the first console frames): the vernier's schedule and its board decode
+ * need the machine's line, in 1250ths of a cycle, and a cart start has no host to name it. v4 timed eight frames and SNAPPED the result to the nearest nominal line -
+ * but a board's crystals are a few ppm off nominal (2 ppm over a 120-line run is half a cycle): the SCPH-1001's line sat +1.4..+4.2 ppm off the two crystals' and
+ * the 5501-u2's -10.7..-8.6, the 5501-u2's measure (13-19 units low) matched the one oscillator's, and its tick ran 3.5 cycles from the schedule - after ~80 lines
+ * every read said "not yet" and carried nothing. So now: 128 frames, VBlank edge to VBlank edge (I_STAT bit 0), the cycles by Timer 2's extended count and the LINES
+ * between the first and last edge by Timer 1 (hblanks, free running) - counted, not assumed (263 or 314 a frame by GPUSTAT bit 20 is the sanity check: within two
+ * lines of N times that it is taken as exact, since an edge a few cycles from a tick reads a line over or under; otherwise - an interlaced mode's 262.5 - the count is
+ * used as it is). line = cycles * 1250 / lines, rounded: an edge's few cycles over 33,664 lines is a fraction of a unit. The vernier is scheduled and decoded on THAT
+ * line (never a snap), and follows the tick besides (tools/cartstart_gen.js VERN). lflags: the nearest nominal line within 150 units: 1 two crystals, 2 one
+ * oscillator, 10h SCPH-7502 NTSC, 20h PAL; 4 none near; 8 no measure (no VBlank in 2,000,000 cycles: the runner's default line); 40h always when it was measured:
+ * the line used is the measured one. */
 /* PAD (cart ROM v4's layout rule, tools/cartstartbuild.js): this function's bytes move measureLine() and runner_main() - the landing's call of runner_align is in the latter -
  * 400h bytes against the runner's assembly (its nop slide), off the slide's I-cache lines. Never called. */
 extern "C" __attribute__((used, noinline)) void cart_draws_pad() { __asm__ volatile(".rept 256\n nop\n .endr"); }
 
-struct LineMeas { uint32_t total, meas, used, flags; };
+struct LineMeas { uint32_t total, meas, used, flags, frames, lines; };
 static LineMeas measureLine() {
-    LineMeas m = { 0, 0, 2690688u, 0 };
+    const uint32_t N = 128;
+    LineMeas m = { 0, 0, 2690688u, 0, N, 0 };
     const uint32_t gst = GPUSTAT, pal = (gst >> 20) & 1, L = pal ? 314u : 263u;
-    uint32_t c0 = 0; bool ok = true;
+    uint32_t c0 = 0, t0 = 0; bool ok = true;
+    TMODE(1) = 0x0100;                   /* Timer 1 counts hblanks, free running (the write starts it at 0): the lines between the first and last edge are COUNTED */
     I_STAT = ~1u;
-    for (int e = 0; e <= 8 && ok; e++) {
+    for (uint32_t e = 0; e <= N && ok; e++) {
         const uint32_t w0 = cycles();
         while (!(I_STAT & 1) && cycles() - w0 < 2000000u) {}
         if (!(I_STAT & 1)) { ok = false; break; }
-        const uint32_t c = cycles();
-        if (e == 0) c0 = c; else if (e == 8) m.total = c - c0;
+        const uint32_t c = cycles(), t = T1_COUNT;
+        if (e == 0) { c0 = c; t0 = t; } else if (e == N) { m.total = c - c0; m.lines = (t - t0) & 0xFFFFu; }
         I_STAT = ~1u;
     }
     if (!ok) { m.flags = 8; return m; }
-    m.meas = (((m.total + 4) >> 3) * 1250u) / L;
+    uint32_t lines = m.lines;
+    const uint32_t want = N * L, dl = lines > want ? lines - want : want - lines;
+    if (dl <= 2 || lines < 1000) lines = want;   /* an edge a few cycles from a tick reads one line over or under; a Timer 1 that did not count: the assumption (an interlaced mode's 262.5 is read as it is) */
+    m.lines = lines;
+    const uint32_t q = m.total / lines, r = m.total % lines;
+    m.meas = q * 1250u + (r * 1250u + lines / 2) / lines;
     static const uint32_t CAND[4] = { 2690688u, 2690625u, 2715386u, 2709489u };
     static const uint32_t FLAG[4] = { 1, 2, 0x10, 0x20 };
+    uint32_t best = 0, bd = 0xFFFFFFFFu;
     for (int i = 0; i < 4; i++) {
+        if ((i == 3) != (pal != 0)) continue;
         const uint32_t d = m.meas > CAND[i] ? m.meas - CAND[i] : CAND[i] - m.meas;
-        if (d <= 28 && (i == 3) == (pal != 0)) { m.used = CAND[i]; m.flags = FLAG[i]; return m; }
+        if (d < bd) { bd = d; best = (uint32_t)i; }
     }
-    m.used = m.meas; m.flags = 4;
-    if (pal) m.flags |= 0x20;
+    m.used = m.meas;                     /* the measured line itself - never a snap to a nominal one */
+    m.flags = (bd <= 150 ? FLAG[best] : (4u | (pal ? 0x20u : 0u))) | 0x40u;
     return m;
 }
 
@@ -89,7 +106,7 @@ extern "C" void runner_main() {
     probeSpu();
     const uint32_t gst0 = GPUSTAT;
     const LineMeas lm = measureLine();   /* before the plan: the vernier is scheduled and decoded on the measured line */
-    vernLine = lm.used;
+    vernLine = lm.used + CART_LINE_BIAS;
     const uint32_t delay = 24000;
     vernPlan(delay);
     T1_MODE = 0x0003;                    /* the system clock, sync mode 1: reset to 0 at VBlank */
@@ -115,7 +132,7 @@ extern "C" void runner_main() {
     SPU_XFER = xfer; SPUCNT = cnt;
     I_STAT = ~1u;
     out[0] = 0x57415244u; out[1] = 1; out[2] = refreshR0; out[3] = spuS0; out[4] = ph; out[5] = ps; out[6] = runnerFlags;
-    out[12] = lm.total; out[13] = lm.meas; out[14] = lm.used; out[15] = lm.flags;
+    out[12] = lm.total; out[13] = lm.meas; out[14] = lm.used; out[15] = lm.flags; out[236] = lm.frames; out[237] = lm.lines;
     out[172] = gst0; out[173] = GPUSTAT; out[174] = (uint32_t)runner_align; out[175] = (uint32_t)runner_probe; out[176] = (uint32_t)runner_spuprobe;
     out[179] = (uint32_t)cart_draws_pad;   /* (kept: the linker would drop it) */
     out[177] = (uint32_t)runner_read16; out[178] = (uint32_t)runner_read32;

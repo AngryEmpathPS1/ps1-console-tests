@@ -248,6 +248,37 @@ function exeOf(name) {
 /* The runner's file: PSX_RUNNER_EXE names another build (v6 was tried as runner6.exe while the SCPH-5501 ran unattended
  * on v5 - a new runner.exe would have sent its next run to Unirom, which was gone). */
 const RUNNER_EXE = process.env.PSX_RUNNER_EXE ? path.resolve(process.env.PSX_RUNNER_EXE) : path.join(REPO, 'hwtests', 'build', 'runner.exe');
+/* A SAVED START's key (2026-11-17; virtualconsole.js snapshot): everything that can change the console between power-on and the
+ * runner being up - the core's every file (PSX_CORE's folder, else src/), the BIOS, the Unirom image, runner.exe, the tools on that
+ * path (this file, virtualconsole.js, unirom.js, cputest.js's sideload) and the settings the boot reads. Any of them different: a
+ * new key, a fresh boot, a new state. Kept in scratch/vcstart/ (regenerable). */
+function savedStartKey(biosOpt) {
+  const crypto = require('crypto'), h = crypto.createHash('sha1');
+  const coreDir = path.dirname(process.env.PSX_CORE ? path.resolve(process.env.PSX_CORE) : path.join(REPO, 'src', 'psx.js'));
+  for (const f of fs.readdirSync(coreDir).filter((x) => /\.(js|html)$/.test(x)).sort()) h.update('core/' + f).update(fs.readFileSync(path.join(coreDir, f)));
+  const vcMod = require('./virtualconsole.js');
+  const bios = biosOpt || vcMod.BIOS_DEFAULT || '';
+  for (const f of [bios, vcMod.CART_DEFAULT, RUNNER_EXE, __filename, path.join(__dirname, 'virtualconsole.js'), path.join(__dirname, 'unirom.js'), path.join(REPO, 'cputest.js')])
+    if (f && fs.existsSync(f)) h.update(path.basename(f)).update(fs.readFileSync(f));
+  for (const k of ['PSX_MODEL', 'PSX_VC_STATE', 'PSX_VC_SPUCLASS', 'PSX_VC_ENVPHASE', 'PSX_VC_CART', 'PSX_VC_CART_KIND', 'PSX_CD_FIRMWARE', 'PSX_BIOS', 'PSX_PLAIN_STATE', 'PSX_UNIROM_CART', 'PSX_RUNNER_EXE']) h.update(k + '=' + (process.env[k] || ''));
+  for (const k of ['PSX_VC_CART', 'PSX_CD_FIRMWARE']) if (process.env[k] && fs.existsSync(path.resolve(REPO, process.env[k]))) h.update(fs.readFileSync(path.resolve(REPO, process.env[k])));
+  h.update('refresh-phase=' + (opt('refresh-phase') || ''));
+  const key = h.digest('hex').slice(0, 16);
+  return { key, file: path.join(process.env.PSX_VC_START_DIR ? path.resolve(process.env.PSX_VC_START_DIR) : path.join(REPO, 'scratch', 'vcstart'), key + '.state') };
+}
+function readSavedStart(file) {
+  const b = fs.readFileSync(file), n = b.readUInt32LE(0), meta = JSON.parse(b.subarray(4, 4 + n).toString('utf8'));
+  return { ...meta, psx: b.subarray(4 + n) };
+}
+function writeSavedStart(file, vc, r) {
+  const s = vc.snapshot(), runner = {};
+  for (const [k, v] of Object.entries(r)) if (!['link', 'off', 'waiter'].includes(k) && (v === null || ['number', 'string', 'boolean'].includes(typeof v) || Array.isArray(v))) runner[k] = Array.isArray(v) ? [...v] : v;
+  const meta = Buffer.from(JSON.stringify({ host: s.host, vc: s.vc, runner }), 'utf8'), len = Buffer.alloc(4); len.writeUInt32LE(meta.length, 0);
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const tmp = file + '.' + process.pid; fs.writeFileSync(tmp, Buffer.concat([len, meta, s.psx]));
+  try { fs.renameSync(tmp, file); } catch (e) { fs.rmSync(tmp, { force: true }); }   // another run wrote the same key first: keep it
+}
+
 async function startRunner(link, beforeExe = null) {
   const r = new RunnerLink(link);
   /* (v5) A runner still resident from the last run, of the build that would be sent, is used as it is: its 'V' line is in
@@ -370,10 +401,11 @@ if (require.main === module) {
   (async () => {
     const names = argv.filter((a) => !a.startsWith('--'));
     if (!names.length) { console.error('usage: node tools/hwrunner.js <test>... --link=host:port [--delay=N] [--out=dir]'); process.exit(2); }
-    let link, vc = null;
+    let link, vc = null, savedRunner = null, savedStartFile = null;
     if (opt('link')) link = await socketLink(opt('link'));
     else { console.error('--link=host:port'); process.exit(2); }
-    const r = await startRunner(link);
+    const r = savedRunner || await startRunner(link);
+    if (savedStartFile) writeSavedStart(savedStartFile, vc, r);   // taken in the same microtask the runner came up in: no slice between
     /*
      * THE DISC GOES IN AFTER THE RUNNER IS UP, as on a console (REAL CONSOLE/5 CONSOLE DAY/README.txt: Unirom started from
      * the memory card in the BIOS shell, then the disc in and the lid shut). Given one at power-on the virtual console's

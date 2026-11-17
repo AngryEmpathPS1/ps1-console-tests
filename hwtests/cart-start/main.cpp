@@ -32,39 +32,54 @@
 #define runner_main runner_main_orig
 #include "runner_cs.inc"
 #undef runner_main
+#ifndef CART_LINE_BIAS
+#define CART_LINE_BIAS 0
+#endif
 
-/* THE BOARD'S LINE, MEASURED (busValue's finding, 2026-11-17, approved through main): the vernier's schedule and its board decode need the machine's
- * line, in 1250ths of a cycle, and a cart start has no host to name it: the two crystals' 2,152.5504 and a one-oscillator machine's 2,152.5 differ by 0.0504
- * a line, 6 cycles over the 120 reads - and ~13 cycles a frame. So eight frames are timed with Timer 2 (VBlank edge to VBlank edge, I_STAT bit 0, the
- * extended count): ~4.53 million cycles, the two lines 105 apart against an edge's +-15. The frame's lines come from GPUSTAT bit 20 (263 NTSC, 314 PAL: src/psx.js);
- * the measured line, total * 1250 / (8 * lines), is matched to the lines a console can have - NTSC two crystals 2690688, one oscillator 2690625, the
- * SCPH-7502's NTSC 2715386, PAL two crystals 2709489 - within 28 (a quarter of the nearest gap; the measure's own error is ~9), and that line is the one
- * the vernier is scheduled and decoded on. No match: the measured line itself (flag 4: phi to a cycle or so only), no measure (no VBlank in 2,000,000 cycles):
- * the runner's default, flag 8. lflags: 1 two crystals, 2 one oscillator, 4 unmatched, 8 no measure, 10h 7502-NTSC, 20h PAL. */
-struct LineMeas { uint32_t total, meas, used, flags; };
+/* THE BOARD'S LINE, MEASURED (v5; busValue's finding of 2026-11-17 and his asks after the first console frames): the vernier's schedule and its board decode
+ * need the machine's line, in 1250ths of a cycle, and a cart start has no host to name it. v4 timed eight frames and SNAPPED the result to the nearest nominal line -
+ * but a board's crystals are a few ppm off nominal (2 ppm over a 120-line run is half a cycle): the SCPH-1001's line sat +1.4..+4.2 ppm off the two crystals' and
+ * the 5501-u2's -10.7..-8.6, the 5501-u2's measure (13-19 units low) matched the one oscillator's, and its tick ran 3.5 cycles from the schedule - after ~80 lines
+ * every read said "not yet" and carried nothing. So now: 128 frames, VBlank edge to VBlank edge (I_STAT bit 0), the cycles by Timer 2's extended count and the LINES
+ * between the first and last edge by Timer 1 (hblanks, free running) - counted, not assumed (263 or 314 a frame by GPUSTAT bit 20 is the sanity check: within two
+ * lines of N times that it is taken as exact, since an edge a few cycles from a tick reads a line over or under; otherwise - an interlaced mode's 262.5 - the count is
+ * used as it is). line = cycles * 1250 / lines, rounded: an edge's few cycles over 33,664 lines is a fraction of a unit. The vernier is scheduled and decoded on THAT
+ * line (never a snap), and follows the tick besides (tools/cartstart_gen.js VERN). lflags: the nearest nominal line within 150 units: 1 two crystals, 2 one
+ * oscillator, 10h SCPH-7502 NTSC, 20h PAL; 4 none near; 8 no measure (no VBlank in 2,000,000 cycles: the runner's default line); 40h always when it was measured:
+ * the line used is the measured one. */
+struct LineMeas { uint32_t total, meas, used, flags, frames, lines; };
 static LineMeas measureLine() {
-    LineMeas m = { 0, 0, 2690688u, 0 };
+    const uint32_t N = 128;
+    LineMeas m = { 0, 0, 2690688u, 0, N, 0 };
     const uint32_t gst = GPUSTAT, pal = (gst >> 20) & 1, L = pal ? 314u : 263u;
-    uint32_t c0 = 0; bool ok = true;
+    uint32_t c0 = 0, t0 = 0; bool ok = true;
+    TMODE(1) = 0x0100;                   /* Timer 1 counts hblanks, free running (the write starts it at 0): the lines between the first and last edge are COUNTED */
     I_STAT = ~1u;
-    for (int e = 0; e <= 8 && ok; e++) {
+    for (uint32_t e = 0; e <= N && ok; e++) {
         const uint32_t w0 = cycles();
         while (!(I_STAT & 1) && cycles() - w0 < 2000000u) {}
         if (!(I_STAT & 1)) { ok = false; break; }
-        const uint32_t c = cycles();
-        if (e == 0) c0 = c; else if (e == 8) m.total = c - c0;
+        const uint32_t c = cycles(), t = T1_COUNT;
+        if (e == 0) { c0 = c; t0 = t; } else if (e == N) { m.total = c - c0; m.lines = (t - t0) & 0xFFFFu; }
         I_STAT = ~1u;
     }
     if (!ok) { m.flags = 8; return m; }
-    m.meas = (((m.total + 4) >> 3) * 1250u) / L;
+    uint32_t lines = m.lines;
+    const uint32_t want = N * L, dl = lines > want ? lines - want : want - lines;
+    if (dl <= 2 || lines < 1000) lines = want;   /* an edge a few cycles from a tick reads one line over or under; a Timer 1 that did not count: the assumption (an interlaced mode's 262.5 is read as it is) */
+    m.lines = lines;
+    const uint32_t q = m.total / lines, r = m.total % lines;
+    m.meas = q * 1250u + (r * 1250u + lines / 2) / lines;
     static const uint32_t CAND[4] = { 2690688u, 2690625u, 2715386u, 2709489u };
     static const uint32_t FLAG[4] = { 1, 2, 0x10, 0x20 };
+    uint32_t best = 0, bd = 0xFFFFFFFFu;
     for (int i = 0; i < 4; i++) {
+        if ((i == 3) != (pal != 0)) continue;
         const uint32_t d = m.meas > CAND[i] ? m.meas - CAND[i] : CAND[i] - m.meas;
-        if (d <= 28 && (i == 3) == (pal != 0)) { m.used = CAND[i]; m.flags = FLAG[i]; return m; }
+        if (d < bd) { bd = d; best = (uint32_t)i; }
     }
-    m.used = m.meas; m.flags = 4;
-    if (pal) m.flags |= 0x20;
+    m.used = m.meas;                     /* the measured line itself - never a snap to a nominal one */
+    m.flags = (bd <= 150 ? FLAG[best] : (4u | (pal ? 0x20u : 0u))) | 0x40u;
     return m;
 }
 
@@ -109,7 +124,7 @@ extern "C" void runner_main() {
     const LineMeas lm = measureLine();   /* eight frames timed: which line this board has (a one-oscillator console differs from the two crystals by 13 cycles a frame) */
     const uint32_t gst0 = GPUSTAT;
     csN = 0; csPos = 0;
-    csW(24000); csW(0); csB(0); csW(0x7FFFFFFFu); csW(0); csW(lm.used); csW(0); csB(0);   /* the line: the board's own, measured above (the runner's default if it could not) */
+    csW(24000); csW(0); csB(0); csW(0x7FFFFFFFu); csW(0); csW(lm.used + CART_LINE_BIAS); csW(0); csB(0);   /* the line: the board's own, measured above (the runner's default if it could not) */
     I_STAT = 0;                          /* a CD bit pending at a time the drive chose: printed (the cart's), then acknowledged */
     run(true, spu);
     /* back: the end of the test ("Done.") and the runner's DONE answer are out; keep what the log header names */
@@ -129,6 +144,6 @@ extern "C" void runner_main() {
     /* the vernier's raw reads for tools/vernphi.js, together: 120 bytes of Timer 1 counts (vernC), then 120 signed halfwords of the offsets they were read at (vernD) -
      * 360 bytes at 80191800h, which CSR word 11 points to (0: this build kept none) */
     { volatile uint8_t *r = (volatile uint8_t *)0x80191800; for (int k = 0; k < VERN_N; k++) r[k] = vernC[k]; for (int k = 0; k < VERN_N; k++) ((volatile int16_t *)(r + VERN_N))[k] = vernD[k]; CSR[11] = 0x80191800u; }
-    CSR[12] = lm.meas; CSR[13] = lm.used; CSR[14] = lm.flags; CSR[15] = gst0; CSR[16] = lm.total;
+    CSR[12] = lm.meas; CSR[13] = lm.used; CSR[14] = lm.flags; CSR[15] = gst0; CSR[16] = lm.total; CSR[17] = lm.frames; CSR[18] = lm.lines;
     CSR[7] = runnerFlags; CSR[8] = (uint32_t)vernLo; CSR[9] = (uint32_t)vernHi; CSR[10] = 1;
 }

@@ -1,0 +1,19 @@
+
+bus/exp-store
+Timer 2, four no-ops, a store, K no-ops, a reader, eight no-ops, Timer 2: where a store to Expansion 2 has left
+the bus. No assertions.
+
+  store then reader   K=0   1   2   3   4   5   6   7   8   9  10  11  12
+  nop then ram         38  40  40  45  41  49  53  49  50  58  58  62  59
+  nop then t1          28  37  36  36  41  46  45  45  46  55  54  54  60
+  sbE2 then ram        32  40  44  40  41  53  49  49  50  58  62  58  59
+  sbE2 then t1         28  36  36  36  37  46  45  45  52  55  54  58  55
+  sbRAM then ram       37  45  45  45  46  54  58  54  55  63  63  73  64
+  sbRAM then t1        33  41  41  45  42  51  55  50  51  60  59  63  60
+
+  stores back to back, then no-ops to 16 instructions:   1 store   2   4
+  nop               49  45  45
+  sb Expansion 2    45  48  62
+  sb RAM            50  52  61
+
+Done.

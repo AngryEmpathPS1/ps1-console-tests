@@ -1,0 +1,297 @@
+
+bus/exp-window
+Loads (and, in Expansion 2, byte stores) inside and past each expansion region's window, at each size
+its Delay/Size register can be given; a handler in place so a bus error prints instead of hanging.
+There are no assertions - compare against your emulator.
+
+Expansion 2: 1f80101c (Delay/Size) reads 00070777 as found, window size 07h.
+Expansion 3: 1f80100c (Delay/Size) reads 00003022 as found, window size 00h.
+Expansion 1: 1f801008 (Delay/Size) reads 0013243f as found, window size 13h.
+
+The fuzzer's hang, one load a line, the line begun before the load:
+  before lb 1F80207Fh (the window's last byte)  : answered ffffffff  18 cycles
+  before lb 1F802080h (the first byte past it)  : BUS ERROR  excode 07  EPC 80010f74 (the load at 80010f6c)  CAUSE 0000001c  36 cycles
+  before lb 1F8025F5h (the fuzzer's address)    : BUS ERROR  excode 07  EPC 80010f74 (the load at 80010f6c)  CAUSE 0000001c  36 cycles
+  before lb 1F8025F5h with the size field at 0Dh: answered ffffffff  18 cycles
+  before lh 1F802000h (a halfword in the window): answered ffffffff  33 cycles
+
+The table (a row of sizes at a time; a region's name is printed before its loads):
+  Expansion 2 ...
+  Expansion 3 ...
+  Expansion 1 ...
+Expansion 2: 1f80101c (Delay/Size) read 00070777 as found, 00070777 after the test.
+Expansion 3: 1f80100c (Delay/Size) read 00003022 as found, 00003022 after the test.
+Expansion 1: 1f801008 (Delay/Size) read 0013243f as found, 0013243f after the test.
+
+A cell: the value read (sb: '-'), or BUSERR e<excode> +<EPC, opcodes past the access>; then the cycles.
+
+Expansion 2, size 07h (128 bytes), register reads 00070777:
+  address   lbu                   lhu                   lw                    sb                   
+  1f802000  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802001  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802002  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802010  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f80207f  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802080  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f8020ff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802100  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f8025f5  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802fff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f803000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 2, size 00h (1 bytes), register reads 00000777:
+  address   lbu                   lhu                   lw                    sb                   
+  1f802000  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802001  BUSERR e07 +2     36   0000ffff          33   ffffffff          63   BUSERR e07 +2     36  
+  1f802002  BUSERR e07 +2     36   BUSERR e07 +2     36   ffffffff          63   BUSERR e07 +2     36  
+  1f802010  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f80207f  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802080  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f8020ff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802100  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f8025f5  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802fff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f803000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 2, size 01h (2 bytes), register reads 00010777:
+  address   lbu                   lhu                   lw                    sb                   
+  1f802000  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802001  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802002  BUSERR e07 +2     36   BUSERR e07 +2     36   ffffffff          63   BUSERR e07 +2     36  
+  1f802010  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f80207f  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802080  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f8020ff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802100  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f8025f5  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802fff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f803000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 2, size 02h (4 bytes), register reads 00020777:
+  address   lbu                   lhu                   lw                    sb                   
+  1f802000  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802001  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802002  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802010  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f80207f  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802080  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f8020ff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802100  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f8025f5  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802fff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f803000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 2, size 04h (16 bytes), register reads 00040777:
+  address   lbu                   lhu                   lw                    sb                   
+  1f802000  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802001  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802002  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802010  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f80207f  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802080  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f8020ff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802100  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f8025f5  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802fff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f803000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 2, size 08h (256 bytes), register reads 00080777:
+  address   lbu                   lhu                   lw                    sb                   
+  1f802000  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802001  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802002  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802010  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f80207f  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802080  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f8020ff  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802100  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f8025f5  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f802fff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f803000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 2, size 0ch (4096 bytes), register reads 000c0777:
+  address   lbu                   lhu                   lw                    sb                   
+  1f802000  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802001  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802002  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802010  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f80207f  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802080  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f8020ff  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802100  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f8025f5  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802fff  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f803000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 2, size 0dh (8192 bytes), register reads 000d0777:
+  address   lbu                   lhu                   lw                    sb                   
+  1f802000  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802001  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802002  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802010  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f80207f  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802080  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f8020ff  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802100  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f8025f5  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f802fff  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+  1f803000  000000ff          18   0000ffff          33   ffffffff          63   -                 13  
+
+Expansion 2, its first bus error (at 1f802080): CAUSE 0000001c (the pending-interrupt bits masked), BadVaddr 10008000
+
+Expansion 3, size 00h (1 bytes), register reads 00003022:
+  address   lbu                   lhu                   lw                   
+  1fa00000  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00001  BUSERR e07 +2     36   0000ffff          15   ffffffff          17  
+  1fa00002  BUSERR e07 +2     36   BUSERR e07 +2     36   ffffffff          17  
+  1fa00004  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa000ff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa00100  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa0ffff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa10000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fbffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa00010  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 3, size 01h (2 bytes), register reads 00013022:
+  address   lbu                   lhu                   lw                   
+  1fa00000  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00001  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00002  BUSERR e07 +2     36   BUSERR e07 +2     36   ffffffff          17  
+  1fa00004  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa000ff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa00100  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa0ffff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa10000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fbffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa00010  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 3, size 02h (4 bytes), register reads 00023022:
+  address   lbu                   lhu                   lw                   
+  1fa00000  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00001  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00002  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00004  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa000ff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa00100  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa0ffff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa10000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     37  
+  1fbffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     37  
+  1fa00010  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     37  
+
+Expansion 3, size 08h (256 bytes), register reads 00083022:
+  address   lbu                   lhu                   lw                   
+  1fa00000  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00001  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00002  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00004  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa000ff  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00100  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa0ffff  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa10000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fbffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa00010  000000ff          15   0000ffff          15   ffffffff          17  
+
+Expansion 3, size 10h (65536 bytes), register reads 00103022:
+  address   lbu                   lhu                   lw                   
+  1fa00000  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00001  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00002  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00004  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa000ff  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00100  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa0ffff  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa10000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fbffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1fa00010  000000ff          15   0000ffff          15   ffffffff          17  
+
+Expansion 3, size 15h (2097152 bytes), register reads 00153022:
+  address   lbu                   lhu                   lw                   
+  1fa00000  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00001  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00002  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00004  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa000ff  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00100  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa0ffff  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa10000  000000ff          15   0000ffff          15   ffffffff          17  
+  1fbffffc  000000ff          15   0000ffff          15   ffffffff          17  
+  1fa00010  000000ff          15   0000ffff          15   ffffffff          17  
+
+Expansion 3, its first bus error (at 1fa00001): CAUSE 0000001c (the pending-interrupt bits masked), BadVaddr 10008000
+
+Expansion 1, size 13h (524288 bytes), register reads 0013243f:
+  address   lbu                   lhu                   lw                   
+  1f000000  0000006c          15   0000006c          20   0bc0006c          32  
+  1f00fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f010000  00000050          15   00005350          20   582d5350          32  
+  1f03fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f040000  00000050          15   00005350          20   582d5350          32  
+  1f07fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f080000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f0ffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f100000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f7ffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 1, size 10h (65536 bytes), register reads 0010243f:
+  address   lbu                   lhu                   lw                   
+  1f000000  0000006c          15   0000006c          20   0bc0006c          32  
+  1f00fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f010000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f03fffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f040000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     37  
+  1f07fffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     37  
+  1f080000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     37  
+  1f0ffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     37  
+  1f100000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     37  
+  1f7ffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     37  
+
+Expansion 1, size 12h (262144 bytes), register reads 0012243f:
+  address   lbu                   lhu                   lw                   
+  1f000000  0000006c          15   0000006c          20   0bc0006c          32  
+  1f00fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f010000  00000050          15   00005350          20   582d5350          32  
+  1f03fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f040000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f07fffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f080000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f0ffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f100000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f7ffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 1, size 14h (1048576 bytes), register reads 0014243f:
+  address   lbu                   lhu                   lw                   
+  1f000000  0000006c          15   0000006c          20   0bc0006c          32  
+  1f00fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f010000  00000050          15   00005350          20   582d5350          32  
+  1f03fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f040000  00000050          15   00005350          20   582d5350          32  
+  1f07fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f080000  0000006c          15   0000006c          20   0bc0006c          32  
+  1f0ffffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f100000  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+  1f7ffffc  BUSERR e07 +2     36   BUSERR e07 +2     36   BUSERR e07 +2     36  
+
+Expansion 1, size 17h (8388608 bytes), register reads 0017243f:
+  address   lbu                   lhu                   lw                   
+  1f000000  0000006c          15   0000006c          20   0bc0006c          32  
+  1f00fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f010000  00000050          15   00005350          20   582d5350          32  
+  1f03fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f040000  00000050          15   00005350          20   582d5350          32  
+  1f07fffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f080000  0000006c          15   0000006c          20   0bc0006c          32  
+  1f0ffffc  000000ff          15   0000ffff          20   ffffffff          32  
+  1f100000  0000006c          15   0000006c          20   0bc0006c          32  
+  1f7ffffc  000000ff          15   0000ffff          20   ffffffff          32  
+
+Expansion 1, its first bus error (at 1f080000): CAUSE 0000001c (the pending-interrupt bits masked), BadVaddr 10008000
+
+A call into a region (KSEG1), the registers as found: the exception the fetch or the word fetched raises.
+  call bf802000: excode 10  EPC bf802000  CAUSE 30000028  BadVaddr 10008000
+  call bf802080: excode 06  EPC bf802080  CAUSE 00000018  BadVaddr 10008000
+  call bf8025f4: excode 06  EPC bf8025f4  CAUSE 00000018  BadVaddr 10008000
+  call bfa00000: excode 10  EPC bfa00000  CAUSE 30000028  BadVaddr 10008000
+  call bfa00004: excode 06  EPC bfa00004  CAUSE 00000018  BadVaddr 10008000
+  call bfa10000: excode 06  EPC bfa10000  CAUSE 00000018  BadVaddr 10008000
+
+bus/exp-window: Done.

@@ -286,7 +286,7 @@ __asm__(
     /* the entry: our own stack first, then C */
     ".global _start\n_start:\n"
     "  la $sp, runStack + 16384 - 16\n  la $gp, _gp\n  j runner_main\n  nop\n"
-    ".space 3600\n"
+    ".space 0\n"
     ".set pop\n");
 
 static inline uint32_t getSr() { uint32_t v; __asm__ volatile("mfc0 %0, $12" : "=r"(v)); return v; }
@@ -436,12 +436,17 @@ static void vernier() {
     TMODE(1) = 0x0100;           /* hblanks, free running: the write starts it at 0 */
     int lo = -512, hi = 512, d = -600;
     uint32_t base = 0;
+    int vfOff = 0, vfSeen = 0;   /* cart v5: the triple's centre moves with the tick */
     for (int k = 0; k < VERN_N; k++) {
-        d = k == 0 ? -600 : k < 11 ? (lo + hi) >> 1 : hi - 1 + (k - 11) % 3;
+        d = k == 0 ? -600 : k < 11 ? (lo + hi) >> 1 : hi - 1 + vfOff + (k - 11) % 3;
         const uint32_t c = runner_read16(&T2_COUNT, (landT2 + vernS[k] + (uint32_t)d) & 0xFFFF, &T1_COUNT);   /* line 0 warms it */
         vernC[k] = (uint8_t)c; vernD[k] = (int16_t)d;
         if (k == 0) base = c;
         else if (k < 11) { if (c - base > (uint32_t)k) hi = d; else lo = d; }
+        else {   /* cart v5: all three of the triple saw the tick -> the centre down one; none did -> up one */
+            vfSeen += (int)(((c - base) & 0xFFFFu) > (uint32_t)k);
+            if ((k - 11) % 3 == 2) { if (vfSeen == 3) vfOff--; else if (vfSeen == 0) vfOff++; vfSeen = 0; }
+        }
     }
 }
 /* phi, the tick's place against the landing's cycles, in 625ths of a cycle: read k (line 11 + k, offset d_k) saw its tick
@@ -554,6 +559,7 @@ static bool probeSpuOnce() {
 /* Unirom leaves the SPU switched off (SPUCNT 0000h, the virtual console's snapshot). This core runs the sample clock
  * and the capture position with it off; whether a console does is not known - if bit 11 stands still, the probe switches
  * the SPU on, muted (SPUCNT 8000h), tries again, says so in runnerFlags, and puts SPUCNT back. */
+static volatile uint32_t padSwitch;   /* PAD2: never set */
 static void probeSpu() {
     spuS0 = 0xFFFFFFFFu;
     runnerFlags &= ~1u;
@@ -566,6 +572,7 @@ static void probeSpu() {
         SPUCNT = cnt;
     }
     SPU_XFER = xfer;
+    if (padSwitch) __asm__ volatile(".rept 428\n nop\n .endr");   /* PAD2 (tools/cartstartbuild.js): moves run() against the probes; never executed */
 }
 /* x mod 1,536 in a fixed number of cycles (the lock's decision must take the same time whatever it decides on, and the
  * R3000's divide is fixed but its multiply is not): x>>9 mod 3 by summing base-4 digits (4, 16, 256, 65536 = 1 mod 3). */
