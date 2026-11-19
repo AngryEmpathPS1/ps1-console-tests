@@ -319,13 +319,13 @@ static bool dumpVram;
  * silent (the 5501-u2 on rfmap2, the 1001 on rfmap3; the 7001 ran it in 10 s; the probe at the anchor ran on all six), and a Timer 2
  * not counting, or reset at another target, is the one way they could run that long (each align bounded at 131,072 polls). So the
  * T2S line says what Timer 2 is before each later probe - its mode (bits 0-9: reading clears only 11-12), its target and two counts
- * a few cycles apart - and the probe runs only if the target is still 49151 and the count moved. */
+ * a few cycles apart - and the probe runs only if the target is still 49150 (main's, below) and the count moved. */
 static bool t2Check(const char *tag) {
     const uint32_t md = *(volatile uint16_t *)0x1F801124u & 0x3FFu, tg = *(volatile uint16_t *)0x1F801128u;
     const uint32_t c1 = *(volatile uint16_t *)0x1F801120u;
     for (volatile int i = 0; i < 20; i++) {}
     const uint32_t c2 = *(volatile uint16_t *)0x1F801120u;
-    const bool ok = tg == 49151u && c1 != c2 && c1 < 49152u && c2 < 49152u;
+    const bool ok = tg == 49150u && c1 != c2 && c1 < 49152u && c2 < 49152u;
     hout("T2S %s %x %u %u %u%s\n", tag, md, tg, c1, c2, ok ? "" : " - the probe skipped");
     return ok;
 }
@@ -464,7 +464,12 @@ int main() {
     const uint32_t sr0 = fz_getsr();
     uint16_t tmode[3], ttgt[3];
     for (int i = 0; i < 3; i++) { tmode[i] = R16(0x1F801104u + i * 16) & 0x03FFu; ttgt[i] = R16(0x1F801108u + i * 16); }
-    R16(0x1F801128u) = 49151;
+    /* TARGET 49150, A PERIOD OF 49,152 CYCLES (2026-11-19): a target T gives a period of T + 2 cycles on hardware (M104), so the 49151
+     * this host set until then ran 49,153 - one cycle past 192 x 256, and the refresh / SPU phase at each case crept one cycle a wrap.
+     * The CPU session's rfanchor (experiments/fuzz-all/2026-11-19-rfanchor, consoles 305a0367f): with 49150 the SCPH-7001 and the cart
+     * SCPH-1001 read the refresh phase 36 at all three probes, three runs alike; with 49151 they parted by 18 before the first case
+     * (the cart's longer setup: more wraps) - the cart split. Every "49152" in this host and wrap.s is now the true period. */
+    R16(0x1F801128u) = 49150;
     R16(0x1F801124u) = 0x0008;                 /* system clock, reset after reaching the target */
     const uint16_t e = T2;                     /* the anchor: the runner's locked start put us at a fixed refresh phase */
     hout("\nfuzz/fuzz-all\n");

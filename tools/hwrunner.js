@@ -311,7 +311,18 @@ async function startRunner(link, beforeExe = null) {
   if (id && fs.readFileSync(RUNNER_EXE).includes(Buffer.from(id, 'latin1'))) {
     u.close(); r.version = +id[9]; r.reused = true; await r.ping(); return r;
   }
-  if (id || r.sawDone) await u.hello();
+  /* AN OLDER RUNNER RESIDENT (2026-11-19): an identity line that is not this runner.exe's is a runner still resident from before a
+   * promotion, NOT Unirom. Until today the run said hello to Unirom and uploaded anyway: the old runner read Unirom's protocol as
+   * its own commands ('S' of "SEXE" starts a locked run), the upload got "no OKAY", and the console was left silent mid-exchange -
+   * the SCPH-9001, 7502 and 7001 on their first jobs after the 11:57 promotion, each reset by hand. The runner (P V L R S U F G M B,
+   * hwtests/runner/main.cpp) has no way back to Unirom, and its L refuses a program that would land on itself, so nothing can be
+   * sent that clears it: refuse here with nothing sent after the 'V', and name the RESET. experiments/stalerunnertest.js. */
+  if (id) {
+    const want = (/PSXRUNNER[5-9] [^\n]*/.exec(fs.readFileSync(RUNNER_EXE).toString('latin1')) || ['?'])[0];
+    u.close();
+    throw new Error(`runner: an OLD runner is resident ("${id.trim()}"), not the "${want}" this run would send - it has no way back to Unirom, so nothing was sent; reset the console (RESET, or tools/consolereset.js), then run again (old runner resident, reset needed)`);
+  }
+  if (r.sawDone) await u.hello();
   if (beforeExe) { try { await beforeExe(u); } catch (e) { console.log('  The freeze dump failed: ' + e.message); } }   // the freeze dump (consolerun): a look, not the run
   await u.runExe(fs.readFileSync(RUNNER_EXE));
   await r.banner();
