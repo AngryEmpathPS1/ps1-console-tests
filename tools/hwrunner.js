@@ -25,6 +25,7 @@
  * On Windows, tools/serialbridge.ps1 puts a serial port on that socket. Anything else that passes bytes both ways
  * unchanged will do. Some options the code still reads are for an emulator that is not part of this repository.
  */
+require('./cli.js')(__filename);   // --help prints the usage above and exits; an unknown --flag refuses (tools/cli.js)
 const fs = require('fs');
 const path = require('path');
 const net = require('net');

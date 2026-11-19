@@ -82,3 +82,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-18-scexedge1w-r4](2026-11-18-scexedge1w-r4/) | 3 | 0 |
 | [2026-11-18-scexedge1w-r5](2026-11-18-scexedge1w-r5/) | 3 | 0 |
 | [2026-11-18-scexedge1w-r6](2026-11-18-scexedge1w-r6/) | 3 | 0 |
+| [2026-11-19-scexmode-r1](2026-11-19-scexmode-r1/) | 3 | 0 |
