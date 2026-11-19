@@ -1,0 +1,49 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-small-reads
+A read started a few sectors ahead while the drive reads, with Lagnacure Legend's commands and spacing. Needs a data disc.
+Cycles at the system clock (1 ms = 33,869), from the ReadN's write. No assertions - compare against your emulator.
+
+drive region: for U/C - unlocking (a burned disc needs it; a pressed one ignores it)
+CHAIN 1 (the file's first sector after its ReadN; ReadN's INT3):
+  00:13:29         0 (?-1)  INT3  39184
+  00:13:31         0 (?-1)  INT3  37136
+  00:13:32         0 (?-1)  INT3  37136
+  00:13:33         0 (?-1)  INT3  70192
+  00:13:34  28366120 (+0)  INT3  37128
+  00:13:35   2066624 (+0)  INT3  37664
+  00:13:41   1971560 (+0)  INT3  93552
+  00:13:42   2034504 (+0)  INT3  60544
+  00:13:47   1783112 (+0)  INT3  39272
+  00:13:64   1789344 (+0)  INT3  55104
+  00:13:73   1855928 (+0)  INT3  75632
+CHAIN 2 (the file's first sector after its ReadN; ReadN's INT3):
+  00:13:29   6063128 (+0)  INT3  30192
+  00:13:31   5930240 (+0)  INT3  93240
+  00:13:32   1794824 (+0)  INT3  39264
+  00:13:33   1770560 (+0)  INT3  39264
+  00:13:34   5818080 (+0)  INT3  95104
+  00:13:35   1979928 (+0)  INT3  70352
+  00:13:41   2004744 (+0)  INT3  93824
+  00:13:42   1990072 (+0)  INT3  61560
+  00:13:47   6069368 (+0)  INT3 109240
+  00:13:64   1809656 (+0)  INT3  51424
+  00:13:73   6188592 (+0)  INT3  63056
+
+AHEAD: reading at 2x, a new Setloc to the sector k after the one just delivered and ReadN, written a
+quarter / three quarters of a sector after it; the target's first sector from the ReadN's write:
+  k  1 :  2688456 (first +1)   2492208 (first +1)
+  k  2 :   345608 (first +2)    222968 (first +2)
+  k  3 :   601640 (first +3)    427136 (first +3)
+  k  4 :   797224 (first +4)    628368 (first +4)
+  k  5 :  1048976 (first +5)    931992 (first +5)
+  k  6 :  1261496 (first +6)   1120176 (first +6)
+  k  7 :  1429016 (first +7)   1356160 (first +7)
+  k  8 :  1738592 (first +8)   1560840 (first +8)
+  k  9 :  1946104 (first +9)   1834936 (first +9)
+  k 10 :  2092032 (first +10)   2048464 (first +10)
+  k 11 :  7440368 (first +11)   2254776 (first +11)
+  k 12 :  2625824 (first +12)   2452952 (first +12)
+
+Done.

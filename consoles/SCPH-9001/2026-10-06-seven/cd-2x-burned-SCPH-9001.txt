@@ -1,0 +1,258 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-2x-burned
+A CD-R read at single and double speed from the hub to the edge, a speed change mid-read, seeks at double speed.
+Needs the double-speed disc (or the games disc). Cycles at the system clock (1 ms = 33,869). No assertions.
+
+drive region: for U/C - unlocking
+disc: lead-out at LBA 323850 (72:00), 00:02:16 marked D16
+the double-speed disc: 10 places, 00:02:16 to 70:00:00
+
+
+SURVEY 1 at 05:00:00 (LBA 22350), double speed:
+  2x:
+    +      464 Setloc
+    +    45496 INT3 12
+    +    46096 ReadN
+    +    79288 INT3 12
+    + 72089256 INT5 16 10
+    +101686856 Pause
+    +101708056 INT3 10
+    +101716024 INT2 10
+
+SURVEY 2 at 60:00:00 (LBA 269850), double speed:
+  2x:
+    +      424 Setloc
+    +    31920 INT3 10
+    +    32512 ReadN
+    +   114776 INT3 10
+    +101722360 Pause
+    +101762792 INT5 11 80
+  RECOVERY (Init after a Pause that did not complete):
+    +      112 Init
+    +    89808 INT3 10
+    + 93111392 INT5 14 10
+
+
+SURVEY 3 at 20:00:00 (LBA 89850), double speed:
+  2x:
+    +      424 Setloc
+    +    31096 INT3 10
+    +    31688 ReadN
+    +   113312 INT3 10
+    +101720880 Pause
+    +101746736 INT5 11 80
+  RECOVERY (Init after a Pause that did not complete):
+    +       80 Init
+    +    66992 INT3 10
+    + 93399400 INT5 14 10
+
+
+SURVEY 4 at 70:00:00 (LBA 314850), double speed:
+  2x:
+    +      424 Setloc
+    +    33024 INT3 10
+    +    33632 ReadN
+    +   116408 INT3 10
+    +101723968 Pause
+    +101757824 INT5 11 80
+  RECOVERY (Init after a Pause that did not complete):
+    +       80 Init
+    +    89456 INT3 10
+    + 62603552 INT2 12
+
+
+SURVEY 5 at 40:00:00 (LBA 179850), double speed:
+  2x:
+    +      432 Setloc
+    +    36552 INT3 12
+    +    37152 ReadN
+    +   114608 INT3 12
+    +101722192 Pause
+    +101751832 INT5 53 80
+  RECOVERY (Init after a Pause that did not complete):
+    +       80 Init
+    +    63920 INT3 52
+    + 61691816 INT2 12
+
+
+SURVEY 6 at 00:02:16 (LBA 16), double speed:
+  2x:
+    +      432 Setloc
+    +    33152 INT3 12
+    +    33768 ReadN
+    +   117064 INT3 12
+    + 85076072 INT5 16 10
+    +101724632 Pause
+    +101745896 INT3 10
+    +101753896 INT2 10
+
+THE SURVEY READ NOTHING AT DOUBLE SPEED: the places get their single-speed control only.
+
+AT 00:02:16 (LBA 16):
+  1x:
+    +      128 Setmode
+    +    24176 INT3 10
+    + 67763152 Setloc
+    + 67792480 INT3 10
+    + 67792960 ReadN
+    + 67874016 INT3 10
+    +127912792 INT1 32 x20 to +136486296, D16 .. D35
+    +136486768 Pause
+    +136530008 INT3 32
+    +171644800 INT2 12
+
+AT 02:00:00 (LBA 8850):
+  1x:
+    +      128 Setmode
+    +    41040 INT3 12
+    + 67780016 Setloc
+    + 67808056 INT3 12
+    + 67808544 ReadN
+    + 67851640 INT3 12
+    + 97220392 INT1 32 x20 to +105790640, D8850 .. D8869
+    +105791104 Pause
+    +105837680 INT3 32
+    +123710752 INT2 12
+
+AT 05:00:00 (LBA 22350):
+  1x:
+    +      128 Setmode
+    +    68744 INT3 12
+    + 67807720 Setloc
+    + 67853112 INT3 12
+    + 67853592 ReadN
+    + 67887032 INT3 12
+    + 80921712 INT1 32 x20 to +89502232, D22350 .. D22369
+    + 89502696 Pause
+    + 89536216 INT3 32
+    +103519808 INT2 12
+
+AT 09:00:00 (LBA 40350):
+  1x:
+    +      120 Setmode
+    +    36248 INT3 12
+    + 67775224 Setloc
+    + 67816080 INT3 12
+    + 67816568 ReadN
+    + 67896784 INT3 12
+    +104106504 INT1 32 x20 to +112680544, D40350 .. D40369
+    +112681016 Pause
+    +112723744 INT3 32
+    +120247496 INT2 12
+
+AT 20:00:00 (LBA 89850):
+  1x:
+    +      120 Setmode
+    +    35344 INT3 12
+    + 67774312 Setloc
+    + 67804416 INT3 12
+    + 67804896 ReadN
+    + 67838272 INT3 12
+    + 93822328 INT1 32 x20 to +102400224, D89850 .. D89869
+    +102400688 Pause
+    +102433760 INT3 32
+    +105471432 INT2 12
+
+AT 30:00:00 (LBA 134850):
+  1x:
+    +      128 Setmode
+    +    56920 INT3 12
+    + 67795888 Setloc
+    + 67829120 INT3 12
+    + 67829608 ReadN
+    + 67863040 INT3 12
+    + 89065464 INT1 32 x20 to +104911056, D134850 .. D134869
+    +104911520 Pause
+    +104944592 INT3 32
+    +116895504 INT2 12
+
+AT 40:00:00 (LBA 179850):
+  1x:
+    +      120 Setmode
+    +    29528 INT3 12
+    + 67768496 Setloc
+    + 67800832 INT3 12
+    + 67801320 ReadN
+    + 67846720 INT3 12
+    + 85969464 INT1 32 x20 to +94539960, D179850 .. D179869
+    + 94540424 Pause
+    + 94587632 INT3 32
+    +103027296 INT2 12
+
+AT 50:00:00 (LBA 224850):
+  1x:
+    +      128 Setmode
+    +    26456 INT3 12
+    + 67765432 Setloc
+    + 67818120 INT3 12
+    + 67818608 ReadN
+    + 67851976 INT3 12
+    + 83031296 INT1 32 x20 to +117458648, D224850 .. D224869
+    +117459112 Pause
+    +117505688 INT3 32
+    +124948736 INT2 12
+
+AT 60:00:00 (LBA 269850):
+  1x:
+    +      128 Setmode
+    +    30808 INT3 12
+    + 67769784 Setloc
+    + 67799232 INT3 12
+    + 67799720 ReadN
+    + 67833160 INT3 12
+    + 99654848 INT1 32 x12 to +169210904, D269850 .. D269861
+    +169440640 Pause
+    +169463592 INT3 32
+    +177742488 INT2 12
+
+AT 70:00:00 (LBA 314850):
+  1x:
+    +      120 Setmode
+    +    43096 INT3 12
+    + 67782064 Setloc
+    + 67856512 INT3 12
+    + 67856992 ReadN
+    + 67900160 INT3 12
+    +139689408 INT1 32, D314850
+    +169507656 Pause
+    +169520832 INT1 32, D314851
+    +169564496 INT3 32
+    +177291320 INT2 12
+
+
+  BACK at 1x, 00:02:16:
+    +      144 Setmode
+    +    23968 INT3 12
+    + 67762680 Setloc
+    + 67790992 INT3 12
+    + 67791456 ReadN
+    + 67824888 INT3 12
+    +105183472 INT1 32 x5 to +111464560, D16 .. D20
+    +111465048 Pause
+    +111516704 INT3 32
+    +118394608 INT2 12
+
+SUMMARY (1x: sectors of 20; 2x: sectors in 3 s, the first one's time from the ReadN, INT5s and the first one's bytes, the last
+stat; Pause: completed or refused, and whether an Init brought the drive back):
+ the survey, in its order (2x: sectors of 5):
+  05:00:00          2x   0             INT5 x1 (16 10)  stat 16  Pause ok
+  60:00:00          2x   0             INT5 x0  stat 10  Pause REFUSED, Init did NOT complete
+  20:00:00          2x   0             INT5 x0  stat 10  Pause REFUSED, Init did NOT complete
+  70:00:00          2x   0             INT5 x0  stat 10  Pause REFUSED, Init brought it back
+  40:00:00          2x   0             INT5 x0  stat 12  Pause REFUSED, Init brought it back
+  00:02:16          2x   0             INT5 x1 (16 10)  stat 16  Pause ok
+ the places:
+  00:02:16  1x 20   2x not tried (the survey read nothing at double speed)
+  02:00:00  1x 20   2x not tried (the survey read nothing at double speed)
+  05:00:00  1x 20   2x not tried (the survey read nothing at double speed)
+  09:00:00  1x 20   2x not tried (the survey read nothing at double speed)
+  20:00:00  1x 20   2x not tried (the survey read nothing at double speed)
+  30:00:00  1x 20   2x not tried (the survey read nothing at double speed)
+  40:00:00  1x 20   2x not tried (the survey read nothing at double speed)
+  50:00:00  1x 20   2x not tried (the survey read nothing at double speed)
+  60:00:00  1x 12   2x not tried (the survey read nothing at double speed)
+  70:00:00  1x  2   2x not tried (the survey read nothing at double speed)
+
+cdrom/cd-2x-burned: Done.

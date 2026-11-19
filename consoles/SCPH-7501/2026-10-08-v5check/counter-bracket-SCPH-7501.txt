@@ -1,0 +1,15 @@
+
+cpu/counter-bracket
+Cycles between two counter reads (Timer 0 and 2 at the system clock), and what moves them.
+There are no assertions - compare against your emulator.
+
+                       N=0  N=1  N=2  N=3  N=4  N=5  N=6  N=7  N=8
+cached   read,N,read    4    6    6    6    7    8    9   10   11
+cached   read,sw,N,read   8    8    8    9   10   11   12   13   14
+uncached read,N,read    8   12   18   24   34   36   46   48   54
+uncached read,sw,N,read  20   26   33   38   44   50   56   62   68
+
+cached   read, 3 sw, read   12   read, sw I/O, read    6   T0->T2    -1  T2->T0     9  (interval 4.0, offset -5.0)
+uncached read, 3 sw, read   44   read, sw I/O, read   14   T0->T2     3  T2->T0    13  (interval 8.0, offset -5.0)
+
+cpu/counter-bracket: Done.

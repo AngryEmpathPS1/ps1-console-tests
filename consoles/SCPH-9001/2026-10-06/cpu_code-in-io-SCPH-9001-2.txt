@@ -1,0 +1,13 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=7000ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+cpu/code-in-io
+Test code execution from Scratchpad and various IO ports
+pass - testCodeInRam
+pass - testCodeInScratchpad
+pass - testCodeInMDEC

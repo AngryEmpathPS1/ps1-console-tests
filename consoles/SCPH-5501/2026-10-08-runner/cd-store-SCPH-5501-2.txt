@@ -1,0 +1,27 @@
+
+cpu/cd-store
+What a store to the CD controller's registers costs the CPU (STATUS M377).
+Per-iteration cost above a loop of nops in the same slots, 100 iterations.
+There are no assertions - compare against your emulator.
+
+STORES to 1F801800h (above 8 nops; 8 stores above 16)
+  sb alone             1347 -   1358 =      0 over 100  ->  0.00 cycles
+  sb x2                1347 -   1358 =      0 over 100  ->  0.00 cycles
+  sb x4                2423 -   1358 =   1065 over 100  ->  10.65 cycles
+  sb x6                3626 -   1358 =   2268 over 100  ->  22.68 cycles
+  sb x8                4835 -   2160 =   2675 over 100  ->  26.75 cycles
+
+STORE, THEN A LOAD from 1F801800h (above 8 nops)
+  sb;lbu               1746 -   1358 =    388 over 100  ->  3.88 cycles
+  sb;nop;lbu           1746 -   1358 =    388 over 100  ->  3.88 cycles
+  sb;2nop;lbu          1746 -   1358 =    388 over 100  ->  3.88 cycles
+  sb;4nop;lbu          1746 -   1358 =    388 over 100  ->  3.88 cycles
+  sb;6nop;lbu          1844 -   1358 =    486 over 100  ->  4.86 cycles
+
+CONTROLS
+  lbu alone            1550 -   1358 =    192 over 100  ->  1.92 cycles
+  SPU sh alone         1347 -   1358 =      0 over 100  ->  0.00 cycles
+  SPU sh x4            3201 -   1358 =   1843 over 100  ->  18.43 cycles
+  SPU sh x8            6402 -   2160 =   4242 over 100  ->  42.42 cycles
+
+Done.

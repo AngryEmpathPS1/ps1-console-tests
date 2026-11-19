@@ -1,0 +1,59 @@
+
+gpu/line-split
+NTSC line lengths by line number and frame parity, 10000 frames. No assertions - compare against your emulator.
+
+GPUSTAT 94042000 (bit 20: PAL)
+parity 0, lines 1-260: average 2152.55 cycles a line; each line's mean minus that, in hundredths:
+   +9  +33   +7  -12  -22   -1  +10  +11   +0   +2  -27   -4  +21  +26   -3   -9
+   -2   +5   -2   +1   +5   -5   -3   +1  +12   +5  -10   -5   +7   +7   -9   -9
+  +13   +6   -8   +2  +10   +0  -11   -7   +9   +6  -10   +1  +12   +6   -7   -1
+   +1   +6  -14   +3   +7   +5  -10   +4  +12   -5  -11   -3  +12   -2   -9   +0
+  +18   -3   -5   +4   +5   +0  -13   +0  +12   +0   -9   +8  +12   -2  -12   +4
+   +6   -4   -9  +12   +7   -5   -3   +9   +0   -4  -10   +8   +5   -7   -3  +11
+   +8  -11   -1   +3   +6  -10   -4  +11   +7   -9   +6   +6   -2   -7  -11  +12
+   +5   -6   +0  +13   +4  -10   -5   +3   +6   -7   -3  +11   +5   -7   +2   +7
+   +4   -9   -7   +4   +7  -10   +0  +11   +5  -10   +2   +3   +5  -11   -1  +13
+   +0   -9   +8   +8   -3   -7   -5  +13   -4   -9   +4  +17   -6   -5   +5   +8
+   -7   -8   +2   +9   -6   -9  +11  +13   -6   -7   +0   +5   -3  -10  +11  +10
+   -5   -2   +7   -1   -5  -14  +13   +7   -7   -5  +12  +11  -13   -1   +1  +10
+  -12   -5   +8   +6   -5   +3   +7   +1   -8  -12  +10   +8   -9   -1  +15   +4
+   -8   -4   +3   +6  -11   -2  +10   +4   -2   -1   +9   -2   -5   -6   +6   +3
+   -8   +1  +14   +3  -14   +8   +2   +6  -15   +3  +10   +5  -13   +6  +10   -3
+  -11   -1  +10   -2   -6   +3  +16   -6   -2   +4   +5   -6  -14   +6   +9   -4
+   -6  +10  +14   -9
+L/S: LLLSSSLLSLSSLLSSSLSLLSSLLLSSLLSSLLSLLSSSLLSLLLSSLLSLLLSLLSSSLSSS
+     LSSLLSSSLSSLLSSLLSSLLSSLSSSLLSSLLSSLLSSLLSLLSSSLLSSLLSSLLSSLLSLL
+     LSSLLSSLLSLLLSSLSSLLSSSLSSLLSSLLSSLLSSLLSSSLSSLLSSLSSSLLSSLLSSLL
+     SSLLSLLLSSLLSSLLSSLLSSLLSSLSSSLLSLLLSLLLSLLLSLLSSSLSSLLSSLLSSLLS
+     SLLS
+(each line seen 4903 times)
+
+parity 1, lines 1-260: average 2152.55 cycles a line; each line's mean minus that, in hundredths:
+  +11  +34  +29   -6  -28  -20   +1   +7   +7  -25   +3   +8  +14   +9  +19   -4
+  -19   -2   +2  +22  -16  -14  +10  +11   -4   +0   +5   +5   -8   -4   +6   +2
+   -8   +1  +14   +5  -12   -4   +9   +2  -11   -4  +12   +3   -7   +5   +6   +2
+   -7   -9  +10   +0   -6   -1  +14   +2   -7   +4   +5   -4  -13   +4  +12   +0
+  -10   +7  +13   -3  -13   -4   +9   +3  -11   +6  +15   -5   -4   +2   +7   -8
+  -11   +8   +9  -10   -1  +10  +15  -11   -6   +0   +6   -8   -3   +9  +12   -8
+   +0   +8   -2   -9  -13  +14   +6   -7   -3  +13   +8   -8   -4   +1   +7   -9
+   -5  +10   +6   -6   +5   +5   +1   -8   -6   +6   +5   -9   +0  +13   +6   -9
+   +0   +1   +6  -12   -3  +12   +4   -8   +3  +13   -3   -8   -9   +9   +3   -9
+   +0  +16   +1   -6   +5   +2   +0  -16   +7   +8   +2  -12  +11  +13   -6  -14
+   +0   +5   -2   -4   +7  +12   -7   +0   +6   +2   -7  -11   +7   +9   -7   -5
+  +10  +12  -10   -7   +2   +7   -8   -5  +10  +10   -9   +1   +9   -3   -6  -15
+  +14   +7   -6   -4  +16   +5  -10   -7   +3   +8   -9   -7  +15   +3   -5   +2
+   +8   +4  -10   -9   +8   +5   -7   +0  +10   +9   -9   -1   +2   +4  -10   +0
+  +10   -1   -7   +7  +12   -5   -8   -9  +11   -2   -7   +0  +19   -3   -2   +1
+   +5   -4  -12   +4  +11   -5   -7   +8  +13   -4  -14   +4   +9   -2   -8   +8
+  +14   -7   -5   +7
+L/S: LLLSSSLLLSLLLLLSSSLLSSLLSSLLSSLLSLLLSSLLSSLLSLLLSSLSSSLLSLLSSLLS
+     SLLSSSLLSLLSSLLSSLLSSLLSSSLSSLLSSLSSSLLSSLLSSLLSSLLSLLLSSLLSSLLS
+     SLLSSLLSLLSSSLLSSLLSLLSSLLLSLLSSSLSSLLSSLLSSLLSSLLSSLLSSLLSLLSSS
+     LLSSLLSSLLSSLLSLLLSSLLSSLLSSLLSSLSSLLSSSLSSSLSSLLSSLLSSLLSSLLSSL
+     LSSL
+(each line seen 4881 times)
+
+An average near 2,172 is a PAL console's video crystal in NTSC mode, near 2,152 an NTSC console's (M108).
+3412 and 3413 ticks differ by ~0.63 of a cycle there: about +-32 above.
+
+gpu/line-split: Done.

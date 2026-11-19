@@ -1,0 +1,27 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+spu/spu-lead
+How far ahead of playback a voice reads its ADPCM, as IRQ9 sees it. No assertions.
+
+LEAD (samples since the bit-11 sync; the ring's index is the same scale)
+pitch  IRQ at  key-on  onset   IRQ9   change  IRQ leads by   ring round the change (change-2 ..)
+0800   1040h     0.1     9     0.3    226    225.7         4079   4079   3946   2557  -1010  -4314  -4942  -4077
+0800   1048h     0.0     9   239.0    226    -13.0         4079   4079   3946   2557  -1010  -4314  -4942  -4077
+1000   1040h     0.0     9   111.0    117      6.0         4079   4079   2557  -4314  -4077  -2037    307   4087
+1000   1048h     0.0     9   123.0    117     -6.0         4079   4079   2557  -4314  -4077  -2037    307   4087
+2000   1040h     0.0     9    59.0     62      3.0         4079   4079   2557  -4077    307   6341  -1740   -605
+2000   1048h     0.0     9    65.0     62     -3.0         4079   4079   2557  -4077    307   6341  -1740   -605
+
+MIDBLOCK (nugget's probe: IRQ9 at 2008h, re-armed after each hit; a loop is 172,032 cycles)
+  hit 1 at      8294 cycles (loop 0.04)  ENVX 3fff  ENDX fffffd
+  hit 2 at     10613 cycles (loop 0.06)  ENVX 3fff  ENDX fffffd
+  hit 3 at  12609631 cycles (loop 73.29)  ENVX 3fff  ENDX ffffff
+  hit 4 at  12611915 cycles (loop 73.31)  ENVX 3fff  ENDX ffffff
+  hit 5 at  25210975 cycles (loop 146.54)  ENVX 3fff  ENDX ffffff
+  hit 6 at  25213259 cycles (loop 146.56)  ENVX 3fff  ENDX ffffff
+  hit 7 at  37812319 cycles (loop 219.79)  ENVX 3fff  ENDX ffffff
+  hit 8 at  37814603 cycles (loop 219.81)  ENVX 3fff  ENDX ffffff
+  8 hits; at the end ENVX 3fff, ENDX ffffff
+
+spu/spu-lead: Done.

@@ -1,0 +1,23 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cpu/slow-b2b
+A ROM load's back-to-back cost: a CPU stall, or a sub-bus recovery? (STATUS M230)
+Per-iteration cost above a loop of nops in the same slots, 100 iterations.
+There are no assertions - compare against your emulator.
+
+ROM LOADS (lbu from BFC00100h, above 8 nops)
+  lbu alone            1551 -   1368 =    183 over 100  ->  1.83 cycles
+  lbu;lbu              2259 -   1368 =    891 over 100  ->  8.91 cycles
+  lbu;nop;lbu          2347 -   1368 =    979 over 100  ->  9.79 cycles
+  lbu;2nop;lbu         2262 -   1368 =    894 over 100  ->  8.94 cycles
+  lbu;3nop;lbu         2150 -   1368 =    782 over 100  ->  7.82 cycles
+  lbu;4nop;lbu         2054 -   1368 =    686 over 100  ->  6.86 cycles
+
+THE QUESTION: a RAM store straight after (above 8 nops)
+  lbu;sb loaded        2154 -   1368 =    786 over 100  ->  7.86 cycles
+  lbu;sb other         2060 -   1368 =    692 over 100  ->  6.92 cycles
+  lbu;3alu;sb loaded   2059 -   1368 =    691 over 100  ->  6.91 cycles
+  sb other alone       1360 -   1368 =      0 over 100  ->  0.00 cycles
+
+Done.

@@ -1,0 +1,35 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-init-args
+A Nop right after an Init refused for its four parameters (nugget cdlInitWithArgs), and where the slow
+maintenance cycles fall after an Init. Cycles from each write to its interrupt; histogram in 16,384-cycle
+steps (the last 180,224+). No assertions.
+
+RANDOM PHASE (the refused Init: INT5 256 of 256, its second byte 20h 256 of 256):
+  Init refused, to INT5    min   27160  avg   47814  max  198320  over 3.5 ms   6 of 256  | 0 73 110 29 22 5 9 4 2 1 0 1
+  then Nop, to INT3        min   29368  avg   44749  max  125816  over 3.5 ms   1 of 256  | 0 110 87 28 2 17 11 1 0 0 0 0
+CONTROL:
+  Nop alone                min   18504  avg   39439  max  198696  over 3.5 ms   4 of 256  | 0 137 71 16 14 8 6 1 1 0 0 2
+AFTER A COMPLETED INIT (64 tries):
+  Init refused, to INT5    min   30512  avg   37825  max   60840  over 3.5 ms   0 of 64  | 0 24 29 11 0 0 0 0 0 0 0 0
+  then Nop, to INT3        min   29856  avg   46313  max   56576  over 3.5 ms   0 of 64  | 0 11 36 17 0 0 0 0 0 0 0 0
+SLOW CYCLES AFTER AN INIT (Nops back to back for ~250 ms; those over 100,000 cycles, at their write's time
+after the Init's INT2):
+  Init 0: 374832(200280) 1024456(125456) 1936800(103384) 2840024(101776) 4184368(103168) 4635568(202960) 5307608(129408) 6663168(104040)
+
+  Init 1: 373048(202464) 1046360(108480) 4641376(200336) 5315104(124896) 5762536(101776)
+
+  Init 2: 358192(200800) 1001808(116032) 3279440(102824) 3730344(100040) 4633816(148032) 5286048(125904) 7085648(100080)
+
+  Init 3: 366000(200456) 1044968(100144) 4633736(200744) 5301832(116032) 8025536(105672)
+
+  Init 4: 371912(205640) 1016632(115800) 3272384(101752) 4657824(147216) 7104832(103560)
+
+  Init 5: 338464(147096) 1026344(115688) 2383640(103928) 3281976(102184) 4627624(200280) 5299504(124944) 5745280(102880) 7547800(105384) 8007184(100040)
+
+  Init 6: 366040(147280) 1028584(115736) 4640376(147512) 5286752(102240) 6662464(101776) 7558632(102856)
+
+  Init 7: 358888(200800) 1030792(125776) 2834312(102944) 3727712(101712) 4626792(204288) 5318184(115736) 7573128(103872) 8449712(102864)
+
+Done.

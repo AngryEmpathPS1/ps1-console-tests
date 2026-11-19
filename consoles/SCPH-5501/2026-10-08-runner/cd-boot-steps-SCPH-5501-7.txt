@@ -1,0 +1,60 @@
+
+cdrom/cd-boot-steps
+The drive's steps in a game's boot (ReadTOC and Init after a double-speed read), an Init while circling at double speed, and the holds a seek leaves.
+Needs a pressed disc of 53+ minutes. Cycles at the system clock (1 ms = 33,869). About a minute; nothing prints until each part is done.
+
+BIOS READTOC: Setloc 00:02:24, SeekL, Setmode, ReadN, 8 sectors, Pause, four frames, ReadTOC:
+  2x       INT3    206445   INT2   46056477 after it   then GetlocP 00:01:74  mode 20
+  2x       INT3    163949   INT2   45988295 after it   then GetlocP 00:01:74  mode 20
+  2x       INT3    136696   INT2   36895230 after it   then GetlocP 00:01:73  mode 20
+  2x       INT3    169748   INT2   53624783 after it   then GetlocP 00:01:72  mode 20
+  1x       INT3     73468   INT2   20653269 after it   then GetlocP 00:01:72  mode 20
+  1x       INT3     63482   INT2   34361643 after it   then GetlocP 00:01:74  mode 20
+FIRST INIT: the same double-speed read and Pause, then Init:
+  Init     INT3    199216   INT5  134985274 after it   then GetlocP INT5  mode 20
+  Init     INT3    196197   INT2   51573668 after it   then GetlocP 00:01:73  mode 20
+  Init     INT3    193894   INT5  135359622 after it   then GetlocP INT5  mode 20
+  Init     INT3    173307   INT2   20383823 after it   then GetlocP 00:01:74  mode 20
+INIT WHILE CIRCLING AT 2X: Init, half a second, Setmode 80h, a second, Init; then GetlocP every 20 ms for 1.2 s:
+  Init     INT3     62788   INT5  134780603 after it   then GetlocP INT5  mode 20
+  after it
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+    INT5(1) INT5(1) INT5(1) INT5(1) INT5(1)
+  Init     INT3     64568   INT2  101165503 after it   then GetlocP 00:34:06  mode 20
+  after it
+    00:34:06..00:34:07(2) 00:15:74..00:15:74(4) 00:04:39..00:04:39(2) 00:02:68(1) 00:02:33..00:02:33(2)
+    00:02:16(1) 00:01:65..00:02:00(8) 00:01:67..00:02:00(6) 00:01:67..00:02:00(7) 00:01:68..00:02:00(6)
+    00:01:67..00:02:00(6) 00:01:67..00:02:00(7) 00:01:68..00:02:00(6) 00:01:67..00:01:69(2)
+  Init     INT3     64049   INT2   15415394 after it   then GetlocP 00:32:01  mode 20
+  after it
+    00:32:01..00:32:02(3) 00:10:58(1) 00:02:15(1) 00:02:07(1) 00:01:74(1)
+    00:01:66..00:02:00(7) 00:01:67..00:01:74(6) 00:01:66..00:02:00(7) 00:01:67..00:01:74(6) 00:01:67..00:02:00(7)
+    00:01:68..00:01:73(5) 00:01:66..00:02:00(7) 00:01:67..00:02:00(7) 00:01:68(1)
+HOLDS: GetlocP every 10 ms for 1.2 s after each seek's INT2, as runs of climbing sectors (count):
+  after SeekL 00:02:16 at double speed
+    00:02:15..00:02:18(4) 00:02:12..00:02:18(6) 00:02:11..00:02:18(6) 00:02:11..00:02:18(7) 00:02:12..00:02:18(6)
+    00:02:11..00:02:18(6) 00:02:11..00:02:18(7) 00:02:12..00:02:18(6) 00:02:12..00:02:18(6) 00:02:11..00:02:18(6)
+    00:02:11..00:02:18(7) 00:02:12..00:02:18(6) 00:02:11..00:02:18(6) 00:02:11..00:02:18(7) 00:02:12..00:02:18(6)
+    00:02:11..00:02:18(6) 00:02:11..00:02:18(7) 00:02:12..00:02:18(6) 00:02:11..00:02:18(6) 00:02:11..00:02:14(3)
+  after SeekL 52:00:00 at single speed
+    51:59:74..52:00:02(7) 51:59:60..52:00:02(25) 51:59:60..52:00:02(26) 51:59:60..52:00:02(26) 51:59:60..52:00:02(26)
+    51:59:60..51:59:67(10)
+  after SeekL 52:00:00 at double speed
+    51:59:74..52:00:02(4) 51:59:61..52:00:02(12) 51:59:60..52:00:02(13) 51:59:60..52:00:02(13) 51:59:60..52:00:02(13)
+    51:59:60..52:00:02(13) 51:59:61..52:00:02(13) 51:59:61..52:00:02(13) 51:59:61..52:00:02(12) 51:59:60..52:00:02(13)
+    51:59:60(1)
+  after SeekP 00:02:16 at single speed
+    00:02:00..00:02:15(23) 00:02:08..00:02:15(13) 00:02:08..00:02:15(11) 00:02:07..00:02:15(13) 00:02:07..00:02:15(14)
+    00:02:08..00:02:15(11) 00:02:07..00:02:15(14) 00:02:08..00:02:15(14) 00:02:09..00:02:13(7)
+
+cdrom/cd-boot-steps: Done.

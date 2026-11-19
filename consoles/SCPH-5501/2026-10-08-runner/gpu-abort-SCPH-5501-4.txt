@@ -1,0 +1,76 @@
+ResetGraph:itb=80012ae0,ehk=80012b10
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/gpu-abort
+GP1(01h) N cycles after a primitive's last word; the 256x256 area at (512,256) read back.
+px = pixels drawn; rows = first..last drawn row; bits 26/27/28 right after the reset; ready = cycles until GPUSTAT.26.
+TRI/GTRI cover 32,640 px when whole, FILL/RECT 65,536. No assertions.
+
+  FILL N      0 | px   256  rows   0..  0 (  1 whole) | after reset 001, ready +40
+  FILL N     64 | px  1040  rows   0..  4 (  4 whole)  first part-row   4:  16 px | after reset 001, ready +32
+  FILL N    128 | px  1904  rows   0..  7 (  7 whole)  first part-row   7: 112 px | after reset 001, ready +40
+  FILL N    256 | px  3024  rows   0.. 11 ( 11 whole)  first part-row  11: 208 px | after reset 001, ready +56
+  FILL N    512 | px  6144  rows   0.. 23 ( 24 whole) | after reset 001, ready +48
+  FILL N   1024 | px 11984  rows   0.. 46 ( 46 whole)  first part-row  46: 208 px | after reset 001, ready +64
+  FILL N   2048 | px 23216  rows   0.. 90 ( 90 whole)  first part-row  90: 176 px | after reset 001, ready +56
+  FILL N   4096 | px 45968  rows   0..179 (179 whole)  first part-row 179: 144 px | after reset 001, ready +56
+  FILL N   8192 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +24
+  FILL N  16384 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +24
+  FILL N  32768 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +24
+  FILL N  65536 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +24
+  FILL N 131072 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +16
+  FILL N 400000 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +16
+  FILL N   none | px 65536  rows   0..255 (256 whole)
+
+  RECT N      0 | px     6  rows   0..  0 (  0 whole)  first part-row   0:   6 px | after reset 001, ready +16
+  RECT N     64 | px   126  rows   0..  0 (  0 whole)  first part-row   0: 126 px | after reset 001, ready +32
+  RECT N    128 | px   162  rows   0..  0 (  0 whole)  first part-row   0: 162 px | after reset 001, ready +56
+  RECT N    256 | px   510  rows   0..  1 (  1 whole)  first part-row   1: 254 px | after reset 001, ready +32
+  RECT N    512 | px   976  rows   0..  3 (  3 whole)  first part-row   3: 208 px | after reset 001, ready +24
+  RECT N   1024 | px  2000  rows   0..  7 (  7 whole)  first part-row   7: 208 px | after reset 001, ready +24
+  RECT N   2048 | px  3820  rows   0.. 14 ( 14 whole)  first part-row  14: 236 px | after reset 001, ready +16
+  RECT N   4096 | px  7638  rows   0.. 29 ( 29 whole)  first part-row  29: 214 px | after reset 001, ready +32
+  RECT N   8192 | px 15270  rows   0.. 59 ( 59 whole)  first part-row  59: 166 px | after reset 001, ready +32
+  RECT N  16384 | px 30584  rows   0..119 (119 whole)  first part-row 119: 120 px | after reset 001, ready +64
+  RECT N  32768 | px 61028  rows   0..238 (238 whole)  first part-row 238: 100 px | after reset 001, ready +32
+  RECT N  65536 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +16
+  RECT N 131072 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +24
+  RECT N 400000 | px 65536  rows   0..255 (256 whole) | after reset 101, ready +16
+  RECT N   none | px 65536  rows   0..255 (256 whole)
+
+  TRI  N      0 | px     0  rows   0..  0 (  0 whole) | after reset 101, ready +16
+  TRI  N     64 | px   102  rows   0..  0 (  0 whole)  first part-row   0: 102 px | after reset 001, ready +32
+  TRI  N    128 | px   222  rows   0..  0 (  0 whole)  first part-row   0: 222 px | after reset 001, ready +32
+  TRI  N    256 | px   459  rows   0..  1 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +24
+  TRI  N    512 | px   934  rows   0..  3 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +16
+  TRI  N   1024 | px  1960  rows   0..  7 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+  TRI  N   2048 | px  3818  rows   0.. 15 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +48
+  TRI  N   4096 | px  7622  rows   0.. 31 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+  TRI  N   8192 | px 15192  rows   0.. 68 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+  TRI  N  16384 | px 30473  rows   0..189 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+  TRI  N  32768 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24
+  TRI  N  65536 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24
+  TRI  N 131072 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +16
+  TRI  N 400000 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24
+  TRI  N   none | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px
+
+  GTRI N      0 | px     0  rows   0..  0 (  0 whole) | after reset 101, ready +24
+  GTRI N     64 | px     0  rows   0..  0 (  0 whole) | after reset 101, ready +24
+  GTRI N    128 | px     0  rows   0..  0 (  0 whole) | after reset 101, ready +16
+  GTRI N    256 | px    97  rows   0..  0 (  0 whole)  first part-row   0:  97 px | after reset 001, ready +32
+  GTRI N    512 | px   345  rows   0..  1 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+  GTRI N   1024 | px   848  rows   0..  3 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+  GTRI N   2048 | px  1867  rows   0..  7 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +24
+  GTRI N   4096 | px  3886  rows   0.. 15 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +16
+  GTRI N   8192 | px  7902  rows   0.. 33 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+  GTRI N  16384 | px 15914  rows   0.. 72 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +24
+  GTRI N  32768 | px 31955  rows   0..218 (  0 whole)  first part-row   0: 255 px | after reset 001, ready +32
+  GTRI N  65536 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +16
+  GTRI N 131072 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24
+  GTRI N 400000 | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px | after reset 101, ready +24
+  GTRI N   none | px 32640  rows   0..254 (  0 whole)  first part-row   0: 255 px
+
+Done.

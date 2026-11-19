@@ -1,0 +1,100 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+spu/spu-reverb
+Studio Small's work area after an impulse and after a DC input, read back by DMA. No assertions.
+
+(after the zeroing DMA the area read back 0 non-zero halfwords)
+(voice 0: the sample read back exactly; after the run its repeat address 0204, envelope 7fff, ENDX bit 0 1)
+IMPULSE, 1,000.5 steps: 1033 non-zero halfwords, checksum 533f44a7. Rows of 16 from 7E0C0h, non-zero rows only:
+  7e0c0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e0e0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e100: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e120: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e140: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e160: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e180: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e1a0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e1c0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e1e0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e200: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e220: ffff ffff ffff ffff 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  7e700: ffff ffff fffb 000b ffdb 0059 ff2f 01bd fc1a 1309 1873 012d 01df ff86 0040 ffea
+  7e720: 0006 fffc ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e740: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e760: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e780: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e7a0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e7c0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e7e0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e800: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e820: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e840: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7e860: ffff ffff ffff ffff ffff ffff ffff ffff ffff 0000 0000 0000 0000 0000 0000 0000
+  7e8a0: 0000 0000 0000 fffd 0003 fff6 0012 ffd5 00bf 0a58 01f7 0010 0014 fff8 0003 fffe
+  7e8c0: 0000 0000 ffff 0001 fffd 0003 fff7 0011 ffa5 fac2 ff1b ffbd 00f9 0e05 02a8 0015
+  7e8e0: 001a fff6 0004 0000 fffc 0006 fff0 0025 ff57 f6cf fe49 ffe0 003a 0425 00c6 0008
+  7e900: 0008 fffe 0001 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  7e920: 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0001 fffe 0004 fff6 0016
+  7e940: ff9b fa90 fef7 fff8 fff5 0004 fffe 0001 0000 ffff 0000 fffc 0005 fff3 0016 ffc9
+  7e960: 00f7 0d8a 0286 002e ffa9 f9e2 fedb fff3 fff3 0003 fffd 0000 ffff 0000 0000 0000
+  7e980: ffff 0001 fffc 0009 ffd8 fdd5 ff96 fffc fffb 0001 ffff 0000 0000 0000 0000 0000
+  7e9a0: 0000 0000 ffff 0000 fffc 0004 fff5 0016 ff95 fa4d fee9 fff6 fff3 0003 fffd 0000
+  7e9c0: fffc 000a ffe9 0031 ff91 020c 0255 ffd3 002f ffed 0008 fffd 0001 0000 0000 0000
+  7e9e0: 0000 0000 ffff 0001 fffc 0008 ffeb 002a ffa0 01c6 0205 ffd8 0028 ffef 0007 fffd
+  7ea00: 0001 0000 0000 fffb 000a ffe4 003e ff75 0133 fa54 f9d1 0014 0066 fbec fb09 0066
+  7ea20: ff9a 0026 ffee 0005 fffd 0000 ffff 0001 fffb 000a ffe8 0033 ff8c 0225 0271 ffd0
+  7ea40: 0030 ffec 0008 fffc 0001 ffff 0000 fffe 0004 fff5 001a ffc9 007e fdba fd94 fff3
+  7ea60: 005b fd78 fcfd 003e ffc3 0019 fff6 0004 ffff 0001 0000 0000 fffe 0004 fff6 0014
+  7ea80: ffd2 00db 00f9 ffed 0013 fff8 0003 fffe 0000 0000 0000 0000 0000 0000 0000 0002
+  7eaa0: fffc 000b ffe7 0036 ff88 023f 0290 ffce 0033 ffec 0009 fffc 0001 0000 ffff 0002
+  7eac0: fff9 000f ffda 004c ff54 033a 03db ff74 00dd fd23 fced 0037 ffc3 0017 fff3 0003
+  7eae0: fffd ffff 0000 ffff 0002 fff9 000e ffe1 0044 0006 fffc 0001 ffff 0000 0000 0000
+  7eb60: 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 ffff 0001 fffb 0009 ffeb 002f
+  7eb80: ff2c f497 fdd4 ffed ffe9 0007 fffc 0001 ffff 0000 0000 0000 0000 ffff 0001 fffc
+  7eba0: 0009 ffed 0026 ffa7 0193 15bc 0423 0022 002b fff1 0007 fffd 0000 ffff 0000 0000
+  7ec20: 0000 0000 ffff 0003 fffa 000c ffe5 003d feeb f116 fd29 ffe8 ffe2 000a fffb 0001
+  7ec40: ffff 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  7ec60: 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 ffff 0003 fffa 000b ffe6
+  7ec80: 0075 0648 0132 000a 000c fffc 0002 ffff 0000 0000 0000 0000 0000 0000 0000 0000
+  7eca0: 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 ffff 0003 fff8 0013 ffd2 0061
+  7ecc0: ff28 0407 0496 ffa6 005c ffdb 0010 fffa 0002 ffff 0000 0000 0000 0000 0000 0000
+  7ed40: 0000 0000 ffff 0003 fff4 001e ffba 0098 feac 0640 06d0 ffe8 ff8f 047e 0577 ff8d
+  7ed60: 006f ffd4 0013 fff9 0002 ffff 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  7ee00: 0000 0000 ffff 0003 fff5 001c ffbe 008b fec8 05ca 0698 ff7f 0084 ffcb 0017 fff7
+  7ee20: 0003 ffff 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+  7f3a0: 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 ffff ffff fffb 000b
+  7f3c0: ffdb 0059 ff2f 01bd fc1a 1309 1873 012d 01df ff86 0040 ffea 0006 fffc ffff ffff
+  7f3e0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7f400: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7f420: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7f440: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7f460: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7f480: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7f4a0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7f4c0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7f4e0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7fa80: 0000 0000 0000 0000 0000 ffff 0001 fff9 000b ffe6 0032 ff89 0225 1eaa 0964 014b
+  7faa0: 0062 fff7 0008 fffc 0000 ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7fac0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7fae0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7fb00: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7fb20: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7fb40: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7fb60: ffff ffff ffff ffff ffff ffff ffff ffff ffff 0000 0000 0000 0000 0000 0000 0000
+  7ffa0: 0000 0000 0000 0000 0000 ffff 0001 fff9 000b ffe6 0032 ff89 0225 1eaa 0964 014b
+  7ffc0: 0062 fff7 0008 fffc 0000 ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+  7ffe0: ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff ffff
+
+
+(after the zeroing DMA the area read back 0 non-zero halfwords)
+(voice 0: the sample read back exactly; after the run its repeat address 0200, envelope 7fff, ENDX bit 0 1)
+
+DC 4000h, 3 s: 8 distinct values (and 0 halfwords beyond the first 64), value x count:
+  dc3b x1380  dc39 x1884  fcf6 x44    fcf5 x276   fd03 x196   fd04 x128 
+  fd05 x48    fd02 x44  
+
+VOICE 1 on the same blocks, 2 ms after KON: 4 non-zero samples in its capture ring (written half now 1):
+  14d:ffff  14e:10a5  14f:4e7b  150:106d
+
+spu/spu-reverb: Done.

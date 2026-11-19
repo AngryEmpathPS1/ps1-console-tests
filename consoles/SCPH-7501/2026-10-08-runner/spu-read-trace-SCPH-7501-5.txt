@@ -1,0 +1,31 @@
+
+spu/spu-read-trace
+Every read of an SPU register timestamped (Timer 2, the system clock): the read-to-read intervals, and the long
+ones' spacing and phase in the sample (768 cycles). No assertions - compare against your emulator.
+
+SPUSTAT k=0 (8192 reads over 254185 cycles): intervals 31x7942 32x247 34x1 45x1
+  long (> 33): 2; spacing 220
+  phase mod 768 from the bit-11 change: 587 39
+  bit 11 rose at read 3282: read 3281 at 101827, read 3282 at 101858 (cycles from the trace's start), intervals around it 31 31 31 31 31 31 31
+SPUSTAT k=12 (8192 reads over 327675 cycles): intervals 40x8189 45x1 70x1
+  long (> 42): 2; spacing 765
+  phase mod 768 from the bit-11 change: 283 280
+  bit 11 fell at read 4397: read 4396 at 175875, read 4397 at 175915 (cycles from the trace's start), intervals around it 40 40 40 40 40 40 40
+SPUSTAT k=24 (8192 reads over 426524 cycles): intervals 52x8051 56x139 88x1
+  long (> 54): 140; spacing 420 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072
+  phase mod 768 from the bit-11 change: 360 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12
+  bit 11 rose at read 3303: read 3302 at 171964, read 3303 at 172016 (cycles from the trace's start), intervals around it 52 52 52 52 52 52 52
+SPUCNT k=0 (4096 reads over 127075 cycles): intervals 31x3972 32x122 39x1
+  long (> 33): 1
+  phase mod 768 from the first long one: 0
+VOL0 k=0 (4096 reads over 127079 cycles): intervals 31x3970 32x123 35x1 38x1
+  long (> 33): 2; spacing 221
+  phase mod 768 from the first long one: 0 221
+I_STAT k=0 (4096 reads over 65527 cycles): intervals 16x4093 18x1 21x1
+  long (> 18): 1
+  phase mod 768 from the first long one: 0
+I_STAT k=12 (4096 reads over 104845 cycles): intervals 25x3687 28x203 34x204 50x1
+  long (> 27): 408; spacing 634 253 259 253 259 253 259 253 259 253 259 253 259 253 259 253
+  phase mod 768 from the first long one: 0 634 119 378 631 122 375 634 119 378 631 122 375 634 119 378 631 122 375 634 119 378 631 122
+
+Done.

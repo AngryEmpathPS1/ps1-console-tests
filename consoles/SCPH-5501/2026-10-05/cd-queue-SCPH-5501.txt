@@ -1,0 +1,59 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-queue
+--- DELAY 2395000 cycles
+A no delay: INT1:00:02:00 INT1:00:02:01 INT1:00:02:02 INT1:00:02:03
+B delay1: INT1:00:02:00 INT1:00:02:01 INT1:00:02:05 INT1:00:02:06
+C delay2: INT1:00:02:00 INT1:00:02:09 INT1:00:02:10 INT1:00:02:11
+D getloc: INT1:00:02:00 INT3:getloc 00:02:00 INT1:00:02:01 INT1:00:02:02 INT1:00:02:03
+E delay,getloc: INT1:00:02:00 INT1:00:02:01 INT3:getloc 00:02:05 INT1:00:02:05 INT1:00:02:06
+F getloc,delay: INT1:00:02:00 INT3:getloc 00:02:00 INT1:00:02:05 INT1:00:02:06 INT1:00:02:07
+G delay,getloc,delay: INT1:00:02:00 INT1:00:02:09 INT1:00:02:10 INT3:getloc 00:02:10 INT1:00:02:11 INT1:00:02:12
+H pause: INT1:00:02:00 INT3:stat 22 INT2:stat 02
+I delay,pause: INT1:00:02:00 INT1:00:02:01 INT3:stat 22 INT2:stat 02
+J pause,delay: INT1:00:02:00 INT3:stat 22 INT2:stat 02
+K delay,pause,delay: INT1:00:02:00 INT1:00:02:09 INT3:stat 22 INT2:stat 02
+L getloc+pause: INT1:00:02:00 INT3:stat 22 INT2:stat 02
+M delay,getloc+pause: INT1:00:02:00 INT1:00:02:01 INT1:00:02:05 INT3:stat 22 INT2:stat 02
+N getloc,delay,pause: INT1:00:02:00 INT3:getloc 00:02:00 INT3:stat 22 INT2:stat 02
+O delay,part-read: INT1:00:02:00 INT1:00:02:01(part-read) INT1:00:02:05 INT1:00:02:06
+P delay,part-read 2060: INT1:00:02:00 INT1:00:02:01(part-read) INT1:00:02:05 INT1:00:02:06
+--- DELAY 1943000 cycles
+A no delay: INT1:00:02:00 INT1:00:02:01 INT1:00:02:02 INT1:00:02:03
+B delay1: INT1:00:02:00 INT1:00:02:01 INT1:00:02:04 INT1:00:02:05
+C delay2: INT1:00:02:00 INT1:00:02:09 INT1:00:02:08 INT1:00:02:09
+D getloc: INT1:00:02:00 INT3:getloc 00:02:00 INT1:00:02:01 INT1:00:02:02 INT1:00:02:03
+E delay,getloc: INT1:00:02:00 INT1:00:02:01 INT1:00:02:04 INT3:getloc 00:02:04 INT1:00:02:05
+F getloc,delay: INT1:00:02:00 INT3:getloc 00:02:00 INT1:00:02:04 INT1:00:02:05 INT1:00:02:06
+G delay,getloc,delay: INT1:00:02:00 INT1:00:02:09 INT3:getloc 00:02:08 INT1:00:02:08 INT1:00:02:09 INT1:00:02:10
+H pause: INT1:00:02:00 INT3:stat 22 INT2:stat 02
+I delay,pause: INT1:00:02:00 INT1:00:02:01 INT1:00:02:04 INT3:stat 22
+J pause,delay: INT1:00:02:00 INT3:stat 22 INT2:stat 02
+
+K delay,pause,delay: INT1:00:02:00 INT1:00:02:09 INT1:00:02:08 INT3:stat 22
+L getloc+pause: INT1:00:02:00 INT3:stat 22 INT2:stat 02
+M delay,getloc+pause: INT1:00:02:00 INT1:00:02:01 INT3:stat 22 INT2:stat 02 (none)
+N getloc,delay,pause: INT1:00:02:00 INT3:getloc 00:02:00 INT3:stat 22 INT2:stat 02
+O delay,part-read: INT1:00:02:00 INT1:00:02:01(part-read) INT1:00:02:04 INT1:00:02:05
+P delay,part-read 2060: INT1:00:02:00 INT1:00:02:01(part-read) INT1:00:02:04 INT1:00:02:05
+--- DELAY 2846000 cycles
+A no delay: INT1:00:02:00 INT1:00:02:01 INT1:00:02:02 INT1:00:02:03
+B delay1: INT1:00:02:00 INT1:00:02:01 INT1:00:02:06 INT1:00:02:07
+C delay2: INT1:00:02:00 INT1:00:02:09 INT1:00:02:12 INT1:00:02:13
+D getloc: INT1:00:02:00 INT3:getloc 00:02:00 INT1:00:02:01 INT1:00:02:02 INT1:00:02:03
+E delay,getloc: INT1:00:02:00 INT1:00:02:01 INT3:getloc 00:02:06 INT1:00:02:06 INT1:00:02:07
+F getloc,delay: INT1:00:02:00 INT3:getloc 00:02:00 INT1:00:02:06 INT1:00:02:07 INT1:00:02:08
+G delay,getloc,delay: INT1:00:02:00 INT1:00:02:09 INT3:getloc 00:02:12 INT1:00:02:12 INT1:00:02:13 INT1:00:02:14
+H pause: INT1:00:02:00 INT3:stat 22 INT2:stat 02
+I delay,pause: INT1:00:02:00 INT1:00:02:01 INT1:00:02:06 INT3:stat 22
+J pause,delay: INT1:00:02:00 INT3:stat 22 INT2:stat 02
+K delay,pause,delay: INT1:00:02:00 INT1:00:02:09 INT3:stat 22 INT2:stat 02
+L getloc+pause: INT1:00:02:00 INT3:stat 22 INT2:stat 02
+M delay,getloc+pause: INT1:00:02:00 INT1:00:02:01 INT1:00:02:06 INT3:stat 22 INT2:stat 02
+N getloc,delay,pause: INT1:00:02:00 INT3:getloc 00:02:00 INT3:stat 22 INT2:stat 02
+O delay,part-read: INT1:00:02:00 INT1:00:02:01(part-read) INT1:00:02:06 INT1:00:02:07
+P delay,part-read 2060: INT1:00:02:00 INT1:00:02:01(part-read) INT1:00:02:06 INT1:00:02:07
+
+
+Done.

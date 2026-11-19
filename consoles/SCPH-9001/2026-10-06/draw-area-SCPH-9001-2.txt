@@ -1,0 +1,34 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80012a80,ehk=80012ab0
+ResetGraph:SR=7000ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/draw-area: is GP0(E4h)'s X2,Y2 the last pixel inside the area?
+
+  A  area 40,40 - 100,80
+      (  40,  40) top-left      DRAWN       [control: must be DRAWN]
+      (  99,  79) inside       DRAWN       [control: must be DRAWN]
+      ( 100,  80) THE CORNER   DRAWN       <-- DRAWN = inclusive, untouched = exclusive
+      ( 101,  81) past it      untouched   [control: must be untouched]
+
+  B  area 43,17 - 277,53
+      (  43,  17) top-left      DRAWN       [control: must be DRAWN]
+      ( 276,  52) inside       DRAWN       [control: must be DRAWN]
+      ( 277,  53) THE CORNER   DRAWN       <-- DRAWN = inclusive, untouched = exclusive
+      ( 278,  54) past it      untouched   [control: must be untouched]
+
+  C  area 85,52 - 85,72
+      (  85,  52) top-left      DRAWN       [control: must be DRAWN]
+      (  85,  72) THE CORNER   DRAWN       <-- DRAWN = inclusive, untouched = exclusive
+      (  86,  73) past it      untouched   [control: must be untouched]
+
+  D  area 300,220 - 319,239
+      ( 300, 220) top-left      DRAWN       [control: must be DRAWN]
+      ( 318, 238) inside       DRAWN       [control: must be DRAWN]
+      ( 319, 239) THE CORNER   DRAWN       <-- DRAWN = inclusive, untouched = exclusive
+      ( 320, 240) past it      untouched   [control: must be untouched]
+
+gpu/draw-area: Done.

@@ -1,0 +1,25 @@
+
+cpu/code-in-io-safe
+ps1-tests' code-in-io, every case as written, with a handler that cannot loop. No assertions of its own.
+
+pass - testCodeInRam: 0 exceptions, read back after 03e00008 00000000
+pass - testCodeInScratchpad: 1 exception, read back after 03e00008 00000000
+    #0 cause  6 EPC 1f800000 BadVaddr 00000000 ra 800105c8
+pass - testCodeInMDEC: 1 exception, read back after 8c420004 80840008
+    #0 cause  6 EPC 1f801828 BadVaddr 00000000 ra 800103d8  (ra moved: a jal fetched)
+FAIL - testCodeInInterrupts: 2 exceptions, read back after 8c420001 8fa50000
+    #0 cause  4 EPC 1f801070 BadVaddr 801fff49 ra 800105c8
+    #1 cause  6 EPC 1f801078 BadVaddr 801fff49 ra 00000001  (ra moved: a jal fetched)
+pass - testCodeInSPU: 0 exceptions, read back after 03e00008 00000000
+pass - testCodeInDMA0: 0 exceptions, read back after 03e00008 00000000
+pass - testCodeInDMAControl: 0 exceptions, read back after 03e00008 00000000
+pass - Interrupts, bus primed 0C001234h: 1 exception, read back after 8c420000 8fa50000
+    #0 cause  6 EPC 1f801074 BadVaddr 801fff49 ra 10000004  (ra moved: a jal fetched)
+pass - Interrupts, bus primed 00000000h: 1 exception, read back after 8c420000 8fa50000
+    #0 cause  6 EPC 1f801078 BadVaddr 801fff49 ra 80010620
+pass - Interrupts, line ends in a jal: 1 exception, read back after 8c420000 8fa50000
+    #0 cause  6 EPC 1f801074 BadVaddr 801fff49 ra 10000004  (ra moved: a jal fetched)
+pass - Interrupts, line ends in a nop: 1 exception, read back after 8c420000 8fa50000
+    #0 cause  6 EPC 1f801078 BadVaddr 801fff49 ra 800106dc
+
+cpu/code-in-io-safe: Done.

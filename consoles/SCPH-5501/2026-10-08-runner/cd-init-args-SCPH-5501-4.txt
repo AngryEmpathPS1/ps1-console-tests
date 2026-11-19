@@ -1,0 +1,26 @@
+
+cdrom/cd-init-args
+A Nop right after an Init refused for its four parameters (nugget cdlInitWithArgs), and where the slow
+maintenance cycles fall after an Init. Cycles from each write to its interrupt; histogram in 16,384-cycle
+steps (the last 180,224+). No assertions.
+
+RANDOM PHASE (the refused Init: INT5 256 of 256, its second byte 20h 256 of 256):
+  Init refused, to INT5    min   27120  avg   47248  max  195384  over 3.5 ms   6 of 256  | 0 71 116 29 13 13 8 2 2 0 1 1
+  then Nop, to INT3        min   29368  avg   42693  max  145448  over 3.5 ms   3 of 256  | 0 117 100 11 8 9 7 1 3 0 0 0
+CONTROL:
+  Nop alone                min   18432  avg   34485  max  186568  over 3.5 ms   3 of 256  | 0 171 55 16 5 4 2 0 0 1 1 1
+AFTER A COMPLETED INIT (64 tries):
+  Init refused, to INT5    min   30560  avg   39731  max   60424  over 3.5 ms   0 of 64  | 0 14 37 13 0 0 0 0 0 0 0 0
+  then Nop, to INT3        min   29432  avg   46869  max   56160  over 3.5 ms   0 of 64  | 0 13 6 45 0 0 0 0 0 0 0 0
+SLOW CYCLES AFTER AN INIT (Nops back to back for ~250 ms; those over 100,000 cycles, at their write's time
+after the Init's INT2):
+  Init 0: 817032(191744) 1489704(115040) 2388848(101656) 4196512(106864) 5083744(146216) 5733160(115144) 7105872(103792)
+  Init 1: 358624(144176) 1010768(124248) 1463336(102088) 5083136(103848) 5556872(146256) 6202368(114704) 7104256(102144)
+  Init 2: 357368(146464) 1001848(114104) 1452960(102264) 4166856(146760) 4844432(124848) 8447408(146200)
+  Init 3: 353904(193592) 1032584(124808) 3756944(105600) 4646816(146368) 5322352(125288) 5751376(100824)
+  Init 4: 366792(192504) 1037240(114544) 2367640(100768) 4183360(191680) 4858248(115160) 5757640(101664)
+  Init 5: 342792(145208) 1017704(127432) 2833872(102096) 4631968(193120) 5285440(127880) 8452296(197224)
+  Init 6: 828656(146192) 3726608(100768) 5108096(145992) 5763256(115704) 6640032(100936)
+  Init 7: 841416(146200) 1486840(115704) 2815600(100840) 5553912(146528) 6198400(114704) 6650088(101704)
+
+Done.

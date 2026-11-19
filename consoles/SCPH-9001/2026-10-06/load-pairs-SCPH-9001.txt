@@ -1,0 +1,80 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cpu/load-pairs
+Per-iteration cost above a loop of nops in the same slots, 100 iterations.
+There are no assertions - compare against your emulator.
+
+PAIRS: lw t1 ; k nops ; lw t4 (the same line)
+  k=0                  1479 -    752 =    727 over 100  ->  7.27 cycles
+  k=1                  1674 -    853 =    821 over 100  ->  8.21 cycles
+  k=2                  1682 -    960 =    722 over 100  ->  7.22 cycles
+  k=3                  1691 -   1057 =    634 over 100  ->  6.34 cycles
+  k=4                  1680 -   1157 =    523 over 100  ->  5.23 cycles
+  k=5                  1680 -   1265 =    415 over 100  ->  4.15 cycles
+  k=6                  1779 -   1362 =    417 over 100  ->  4.17 cycles
+  k=7                  1899 -   1461 =    438 over 100  ->  4.38 cycles
+
+SAMEREG: lw t1 ; k nops ; lw t1
+  k=0                  1670 -    752 =    918 over 100  ->  9.18 cycles
+  k=1                  1760 -    853 =    907 over 100  ->  9.07 cycles
+  k=2                  1882 -    960 =    922 over 100  ->  9.22 cycles
+  k=3                  1893 -   1057 =    836 over 100  ->  8.36 cycles
+
+FARPAGE: lw t1 ; k nops ; lw t4 4 KB on
+  k=0                  1476 -    752 =    724 over 100  ->  7.24 cycles
+  k=1                  1684 -    853 =    831 over 100  ->  8.31 cycles
+  k=2                  1680 -    960 =    720 over 100  ->  7.20 cycles
+  k=3                  1683 -   1057 =    626 over 100  ->  6.26 cycles
+
+BRANCH: lw t1, a never-taken bne in slot p, 8 slots in all (CONTROL: a nop for the lw)
+  p=2 lw               1665 -   1461 =    204 over 100  ->  2.04 cycles
+  p=2 ctl              1463 -   1461 =      2 over 100  ->  0.02 cycles
+  p=3 lw               1665 -   1461 =    204 over 100  ->  2.04 cycles
+  p=3 ctl              1463 -   1461 =      2 over 100  ->  0.02 cycles
+  p=4 lw               1670 -   1461 =    209 over 100  ->  2.09 cycles
+  p=4 ctl              1469 -   1461 =      8 over 100  ->  0.08 cycles
+  p=5 lw               1665 -   1461 =    204 over 100  ->  2.04 cycles
+  p=5 ctl              1463 -   1461 =      2 over 100  ->  0.02 cycles
+  p=6 lw               1670 -   1461 =    209 over 100  ->  2.09 cycles
+  p=6 ctl              1467 -   1461 =      6 over 100  ->  0.06 cycles
+  p=7 lw               1665 -   1461 =    204 over 100  ->  2.04 cycles
+  p=7 ctl              1463 -   1461 =      2 over 100  ->  0.02 cycles
+
+TAKEN: the same with a taken beq to the instruction after its delay slot
+  p=3 lw               1673 -   1461 =    212 over 100  ->  2.12 cycles
+  p=3 ctl              1472 -   1461 =     11 over 100  ->  0.11 cycles
+  p=4 lw               1668 -   1461 =    207 over 100  ->  2.07 cycles
+  p=4 ctl              1466 -   1461 =      5 over 100  ->  0.05 cycles
+  p=5 lw               1672 -   1461 =    211 over 100  ->  2.11 cycles
+  p=5 ctl              1470 -   1461 =      9 over 100  ->  0.09 cycles
+  p=6 lw               1665 -   1461 =    204 over 100  ->  2.04 cycles
+  p=6 ctl              1474 -   1461 =     13 over 100  ->  0.13 cycles
+
+STORELOAD: sw ; k nops ; lw of the same word
+  k=0                  1477 -    752 =    725 over 100  ->  7.25 cycles
+  k=1                  1485 -    853 =    632 over 100  ->  6.32 cycles
+  k=2                  1473 -    960 =    513 over 100  ->  5.13 cycles
+  k=3                  1488 -   1057 =    431 over 100  ->  4.31 cycles
+  k=4                  1486 -   1157 =    329 over 100  ->  3.29 cycles
+  k=5                  1492 -   1265 =    227 over 100  ->  2.27 cycles
+  k=6                  1585 -   1362 =    223 over 100  ->  2.23 cycles
+  k=7                  1679 -   1461 =    218 over 100  ->  2.18 cycles
+  k=8                  1789 -   1562 =    227 over 100  ->  2.27 cycles
+
+SCRATCH: lw t1 (RAM) ; k nops ; lw t4 (scratchpad)   and the scratchpad load alone
+  alone                 652 -    647 =      5 over 100  ->  0.05 cycles
+  k=0                  1269 -    752 =    517 over 100  ->  5.17 cycles
+  k=1                  1475 -    853 =    622 over 100  ->  6.22 cycles
+  k=2                  1468 -    960 =    508 over 100  ->  5.08 cycles
+  k=3                  1470 -   1057 =    413 over 100  ->  4.13 cycles
+  k=4                  1475 -   1157 =    318 over 100  ->  3.18 cycles
+
+MULT: lw t1 ; k nops ; mult (LO/HI never read)   and the mult alone
+  alone                 653 -    647 =      6 over 100  ->  0.06 cycles
+  k=1                  1560 -   1362 =    198 over 100  ->  1.98 cycles
+  k=2                  1563 -   1362 =    201 over 100  ->  2.01 cycles
+  k=3                  1570 -   1362 =    208 over 100  ->  2.08 cycles
+  k=4                  1559 -   1362 =    197 over 100  ->  1.97 cycles
+
+Done.

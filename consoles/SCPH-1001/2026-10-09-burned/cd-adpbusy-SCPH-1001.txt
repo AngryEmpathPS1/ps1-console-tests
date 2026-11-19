@@ -1,0 +1,19 @@
+
+cdrom/cd-adpbusy
+ADPBUSY's edges around an XA sector's playback, to the sample. Needs cd-xa's disc. Cycles at the system clock.
+
+drive region: for U/C - unlocking
+
+18,900 Hz (LBA 2000):
+  ADPBUSY changes (cycles from ReadN, ring position): none - never set
+  interrupts: INT5 62200
+
+37,800 Hz (LBA 3000):
+  ADPBUSY changes (cycles from ReadN, ring position): none - never set
+  interrupts: INT5 45290
+
+STREAM (LBA 1000-1039, twenty silent 37,800 Hz mono sectors, every other one):
+  ADPBUSY changes (cycles from ReadN, ring position): none - never set
+  interrupts: INT5 35005
+
+cdrom/cd-adpbusy: Done.

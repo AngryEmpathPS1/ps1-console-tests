@@ -1,0 +1,15 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cpu/cpu-code-in-irq
+code-in-io's testCodeInInterrupts, printing only after I_MASK is restored. No assertions.
+
+JUMP: about to jump to 1F801070h, nothing copied there
+JUMP: exception thrown, type 6 (bus error, instruction), EPC 1f801078, Cause 00000018, BadVaddr 801ff5ed
+  I_MASK before 00000101, I_STAT before ae000004; I_MASK when it came back 1f800101
+COPY: about to copy jr $ra; nop to 1F801070h and jump there
+COPY: exception thrown, type 6 (bus error, instruction), EPC 1f801078, Cause 10000018, BadVaddr 801ff5ed
+  I_MASK before 0c000101, I_STAT before 0c000004; I_MASK when it came back 1f800000
+  after the copy (interrupts back on - copyCodeTo's ExitCriticalSection): I_STAT 00000001, I_MASK 00000000
+
+cpu/cpu-code-in-irq: Done.

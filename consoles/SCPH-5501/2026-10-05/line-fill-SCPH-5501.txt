@@ -1,0 +1,17 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cpu/line-fill
+Instruction-cache line fills back to back: 8 or 9 cycles apart on retail? (dev board: 9)
+A call of N lines of nops, cold (after FlushCache) and warm, Timer2 at the system clock.
+There are no assertions - compare against your emulator.
+
+N= 16 lines  cold   165   165   165   165   167   warm    82    82    82    82    82   cold-warm 83 = 5.18 a line
+N= 32 lines  cold   313   313   313   313   313   warm   156   156   156   156   156   cold-warm 157 = 4.90 a line
+N= 64 lines  cold   611   610   610   613   610   warm   294   294   294   294   294   cold-warm 316 = 4.93 a line
+N=128 lines  cold  1198  1198  1198  1198  1198   warm   550   550   550   556   550   cold-warm 648 = 5.06 a line
+N=255 lines  cold  2357  2357  2357  2358  2357   warm  1058  1060  1058  1058  1062   cold-warm 1299 = 5.09 a line
+
+slopes (min cold between N values, per line):  16-32: 9.25  32-64: 9.28  64-128: 9.18  128-255: 9.12
+
+Done.

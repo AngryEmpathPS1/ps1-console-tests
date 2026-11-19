@@ -1,0 +1,13 @@
+
+spu/spu-health
+Does voice 1 play (its envelope after key-on), as found and after the SPU is switched off and on. No assertions.
+
+  as found:              SPUCNT c085 SPUSTAT 0005 XFER 0004 MAINVOL 3fff 3fff ENDX 00000000 DPCR 08009899 CHCR4 00000201
+  voice 1 as found:      ENVX 0000 0000 7fff 7fff  current volume 7ffe 7ffe 7ffe 7ffe  -> PLAYS
+  after it:              SPUCNT c085 SPUSTAT 0805 XFER 0004 MAINVOL 3fff 3fff ENDX 00000000 DPCR 08009899 CHCR4 00000201
+  switched off:          SPUCNT 0000 SPUSTAT 0000 XFER 0004 MAINVOL 3fff 3fff ENDX 00000000 DPCR 08009899 CHCR4 00000201
+  switched on:           SPUCNT c000 SPUSTAT 0000 XFER 0004 MAINVOL 3fff 3fff ENDX 00000000 DPCR 08009899 CHCR4 00000201
+  voice 1 after it:      ENVX 0000 0000 7fff 7fff  current volume 7ffe 7ffe 7ffe 7ffe  -> PLAYS
+  at the end:            SPUCNT c000 SPUSTAT 0800 XFER 0004 MAINVOL 3fff 3fff ENDX 00000000 DPCR 08009899 CHCR4 00000201
+
+spu/spu-health: Done.

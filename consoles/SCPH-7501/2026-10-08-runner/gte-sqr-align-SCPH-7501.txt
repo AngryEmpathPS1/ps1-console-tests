@@ -1,0 +1,23 @@
+
+gte/gte-sqr-align
+SQR after a move to IRGB or IR1, N nops, the move at each word of its cache line, cold and warm. No assertions.
+
+IRGB -> SQR MAC1 (n = F04000h, o = 0), the move at word 0 1 2 3 of its line
+        COLD      WARM
+  N=0   oooo      oooo
+  N=1   onoo      oooo
+  N=2   nnoo      oooo
+  N=3   nnnn      nnnn
+  N=4   nnnn      nnnn
+  N=5   nnnn      nnnn
+
+IR1 -> SQR MAC1 (n = F04000h, o = 0), the move at word 0 1 2 3 of its line
+        COLD      WARM
+  N=0   oooo      oooo
+  N=1   onoo      oooo
+  N=2   nnnn      nnnn
+  N=3   nnnn      nnnn
+  N=4   nnnn      nnnn
+  N=5   nnnn      nnnn
+
+gte/gte-sqr-align: Done.

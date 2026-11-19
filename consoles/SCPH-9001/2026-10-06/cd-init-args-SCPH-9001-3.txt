@@ -1,0 +1,33 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-init-args
+A Nop right after an Init refused for its four parameters (nugget cdlInitWithArgs), and where the slow
+maintenance cycles fall after an Init. Cycles from each write to its interrupt; histogram in 16,384-cycle
+steps (the last 180,224+). No assertions.
+
+RANDOM PHASE (the refused Init: INT5 256 of 256, its second byte 20h 256 of 256):
+  Init refused, to INT5    min   27096  avg   47775  max  210664  over 3.5 ms   5 of 256  | 0 83 95 36 19 7 9 4 0 0 1 2
+  then Nop, to INT3        min   29408  avg   44761  max  147904  over 3.5 ms   2 of 256  | 0 110 95 10 11 20 8 1 0 1 0 0
+CONTROL:
+  Nop alone                min   18848  avg   39514  max  187880  over 3.5 ms   4 of 256  | 0 142 67 13 7 18 5 1 1 0 0 2
+AFTER A COMPLETED INIT (64 tries):
+  Init refused, to INT5    min   30528  avg   36884  max   60840  over 3.5 ms   0 of 64  | 0 24 32 8 0 0 0 0 0 0 0 0
+  then Nop, to INT3        min   29856  avg   46982  max   52984  over 3.5 ms   0 of 64  | 0 8 39 17 0 0 0 0 0 0 0 0
+SLOW CYCLES AFTER AN INIT (Nops back to back for ~250 ms; those over 100,000 cycles, at their write's time
+after the Init's INT2):
+  Init 0: 392992(147512) 1036792(129384) 3732816(101720) 4180912(103056) 4637888(206160) 5331176(115736) 5775408(103392) 7556152(105384)
+
+  Init 1: 358192(200760) 1030792(125408) 2829752(105464) 3289136(100040) 5089952(149944) 5754328(115736) 6662144(101736) 8462640(103280)
+  Init 2: 792040(149192) 1482648(115272) 2353512(101800) 3259112(104040) 4630832(200272) 5298256(115680) 5732416(100088) 8448320(105400)
+  Init 3: 358904(200280) 1030320(125400) 4188768(110720) 4653488(200280) 5295704(115680) 7574584(103336)
+
+  Init 4: 407896(147648) 1054064(125896) 1504072(102880) 1933424(100088) 4660256(147528) 5324064(115736) 5758280(101832) 6234328(104040) 7586208(101752)
+
+  Init 5: 373216(200336) 1470512(102264) 1947288(103344) 3299200(101728) 4197472(106000) 4667824(148008) 5330328(115680) 5764288(102888)
+
+  Init 6: 371912(200568) 1016424(115680) 1918536(100024) 3271008(101744) 5081568(149656) 5771592(116032)
+
+  Init 7: 376704(202928) 1042712(116216) 1949256(102256) 4635472(147528) 5324696(115688) 6227720(107592) 7559448(102216) 8455880(107192)
+
+Done.

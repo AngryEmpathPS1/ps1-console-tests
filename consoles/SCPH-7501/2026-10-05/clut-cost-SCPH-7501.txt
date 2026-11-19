@@ -1,0 +1,23 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/clut-cost
+What does a CLUT cache RELOAD cost? gpu/clut-cache says WHEN the palette
+cache is invalidated; nothing says what the reload is worth.
+Two runs of 128 identical sprites: one CLUT throughout, then alternating
+between two CLUT addresses so every sprite reloads. The difference is it.
+There are no assertions - compare against your emulator.
+
+  psx-spx charges a miss 16.00 CPU clocks at 4bit and 256.00 at 8bit (mednafen, DuckStation: 8 and 128)
+
+  4bit   same   24088   alternating   24088   diff       0  ->  0.00 cycles/sprite
+  8bit   same   23968   alternating   56280   diff   32312  ->  252.43 cycles/sprite
+  4bit   same   23976   alternating   24152   diff     176  ->  1.37 cycles/sprite
+  8bit   same   23968   alternating   56328   diff   32360  ->  252.81 cycles/sprite
+
+Done.

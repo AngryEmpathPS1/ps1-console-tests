@@ -1,0 +1,27 @@
+ResetGraph:itb=80012100,ehk=80012130
+ResetGraph:SR=ff01
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gpu/clut-cost
+What does a CLUT cache RELOAD cost? gpu/clut-cache says WHEN the palette
+cache is invalidated; nothing says what the reload is worth.
+Two runs of 128 identical sprites: one CLUT throughout, then alternating
+between two CLUT addresses so every sprite reloads. The difference is it.
+There are no assertions - compare against your emulator.
+
+  psx-spx charges a miss 16.00 CPU clocks at 4bit and 256.00 at 8bit (mednafen, DuckStation: 8 and 128)
+
+  4bit   same   25912   alternating   26040   diff     128  ->  1.00 cycles/sprite
+  8bit   same   25760   alternating   57944   diff   32184  ->  251.43 cycles/sprite
+  4bit   same   25768   alternating   26032   diff     264  ->  2.06 cycles/sprite
+  8bit   same   25776   alternating   58048   diff   32272  ->  252.12 cycles/sprite
+
+SERIAL - GPUSTAT.26 waited for after every sprite, so the GPU's whole time shows:
+  4bit   same   27592   alternating   30344   diff    2752  ->  21.50 cycles/sprite
+  8bit   same   27584   alternating   60952   diff   33368  ->  260.68 cycles/sprite
+  4bit   same   27672   alternating   30368   diff    2696  ->  21.06 cycles/sprite
+  8bit   same   27624   alternating   61088   diff   33464  ->  261.43 cycles/sprite
+
+Done.

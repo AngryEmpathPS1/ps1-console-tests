@@ -1,0 +1,20 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cpu/counter-store
+A store to Timer 2 (system clock), then a read of it: the value read is the cycles between them.
+There are no assertions - compare against your emulator.
+
+                        N=0  N=1  N=2  N=3  N=4  N=5  N=6  N=7  N=8
+cached   sh 0, N, read     0    0    1    2    3    4    5    6    7
+cached   sw 0, N, read     0    0    1    2    3    4    5    6    7
+cached   mode, N, read     0    0    1    2    3    4    5    6    7
+uncached sh 0, N, read     4   10   16   22   28   34   40   46   52
+uncached sw 0, N, read     4   10   16   22   28   39   45   46   52
+uncached mode, N, read     4   10   16   22   28   34   40   52   52
+
+                        Q=1  Q=2  Q=3  Q=4   sh 0, sw RAM, read
+cached   Q sw, sh 0, read   0    0    0    0      0
+uncached Q sw, sh 0, read   4    4    4    4     15
+
+cpu/counter-store: Done.

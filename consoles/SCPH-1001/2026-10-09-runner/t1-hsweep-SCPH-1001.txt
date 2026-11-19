@@ -1,0 +1,15 @@
+
+timer/t1-hsweep
+Timer 1's hblank tick, cycles into the line (mod 2,152.5) from the polled VBlank IRQ, by GP1(06h). No assertions.
+
+  X1 260h X2 c60h   tick at 2028 (median of 288; quartiles 2012..2048)
+  X1 260h X2 c40h   tick at 2004 (median of 288; quartiles 1990..2021)
+  X1 260h X2 c00h   tick at 1962 (median of 288; quartiles 1944..1982)
+  X1 260h X2 bc0h   tick at 1924 (median of 288; quartiles 1903..1940)
+  X1 260h X2 b60h   tick at 1869 (median of 288; quartiles 1850..1883)
+  X1 260h X2 a60h   tick at 1699 (median of 288; quartiles 1686..1718)
+  X1 200h X2 c60h   tick at 2026 (median of 288; quartiles 2011..2047)
+  X1 2c0h X2 c60h   tick at 2023 (median of 288; quartiles 2009..2042)
+  X1 360h X2 c60h   tick at 2025 (median of 288; quartiles 2011..2046)
+
+timer/t1-hsweep: Done.

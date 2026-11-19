@@ -1,0 +1,30 @@
+
+spu/spu-reverb-in
+The reverb's input stage alone (vIIR 7FFFh, vLIN = vRIN = 8000h, everything else off): an impulse at two phases
+and a DC step, recorded in the work area, with voice 1's own output ring. No assertions.
+
+IMPULSE 0 (block 1, sample 0) (sync: bit 11 turned 0, the ring writing 000h-0FFh):
+  voice 1's ring (halfword:value): none
+  mLSAME (left, same side) (step:value): none
+  mRSAME (right, same side) (step:value): none
+  mLDIFF (left, other side) (step:value): none
+  mRDIFF (right, other side) (step:value): none
+  non-zero halfwords outside the four lines: 0
+
+IMPULSE 1 (block 1, sample 1) (sync: bit 11 turned 1, the ring writing 100h-1FFh):
+  voice 1's ring (halfword:value): none
+  mLSAME (left, same side) (step:value): none
+  mRSAME (right, same side) (step:value): none
+  mLDIFF (left, other side) (step:value): none
+  mRDIFF (right, other side) (step:value): none
+  non-zero halfwords outside the four lines: 0
+
+DC 4000h from KON (sync: bit 11 turned 0, the ring writing 000h-0FFh):
+  voice 1's ring (halfword:value): none
+  mLSAME (left, same side) (step:value): none
+  mRSAME (right, same side) (step:value): none
+  mLDIFF (left, other side) (step:value): none
+  mRDIFF (right, other side) (step:value): none
+  non-zero halfwords outside the four lines: 0
+
+spu/spu-reverb-in: Done.

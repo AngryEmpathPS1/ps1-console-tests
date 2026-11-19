@@ -1,0 +1,31 @@
+
+spu/spu-read-trace
+Every read of an SPU register timestamped (Timer 2, the system clock): the read-to-read intervals, and the long
+ones' spacing and phase in the sample (768 cycles). No assertions - compare against your emulator.
+
+SPUSTAT k=0 (8192 reads over 254185 cycles): intervals 31x7942 32x247 34x1 45x1
+  long (> 33): 2; spacing 220
+  phase mod 768 from the bit-11 change: 153 373
+  bit 11 rose at read 1217: read 1216 at 37749, read 1217 at 37780 (cycles from the trace's start), intervals around it 31 31 31 31 31 31 31
+SPUSTAT k=12 (8192 reads over 327661 cycles): intervals 40x8190 61x1
+  long (> 42): 1
+  phase mod 768 from the bit-11 change: 272
+  bit 11 fell at read 3591: read 3590 at 143621, read 3591 at 143661 (cycles from the trace's start), intervals around it 40 40 40 40 40 40 40
+SPUSTAT k=24 (8192 reads over 426523 cycles): intervals 52x8052 55x1 56x137 92x1
+  long (> 54): 139; spacing 3071 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072 3072
+  phase mod 768 from the bit-11 change: 625 624 624 624 624 624 624 624 624 624 624 624 624 624 624 624 624 624 624 624 624 624 624 624
+  bit 11 rose at read 3593: read 3592 at 187063, read 3593 at 187115 (cycles from the trace's start), intervals around it 52 52 52 52 52 52 52
+SPUCNT k=0 (4096 reads over 127077 cycles): intervals 31x3970 32x124 39x1
+  long (> 33): 1
+  phase mod 768 from the first long one: 0
+VOL0 k=0 (4096 reads over 127089 cycles): intervals 31x3969 32x123 36x1 38x1 40x1
+  long (> 33): 3; spacing 567 253
+  phase mod 768 from the first long one: 0 567 52
+I_STAT k=0 (4096 reads over 65525 cycles): intervals 16x4094 21x1
+  long (> 18): 1
+  phase mod 768 from the first long one: 0
+I_STAT k=12 (4096 reads over 104840 cycles): intervals 25x3687 28x203 29x1 34x203 50x1
+  long (> 27): 408; spacing 829 259 253 259 253 259 253 259 253 259 253 259 253 259 253 259
+  phase mod 768 from the first long one: 0 61 320 573 64 317 576 61 320 573 64 317 576 61 320 573 64 317 576 61 320 573 64 317
+
+Done.

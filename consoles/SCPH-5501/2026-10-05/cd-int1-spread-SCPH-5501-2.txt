@@ -1,0 +1,18 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-int1-spread
+Every interval between INT1s over 300 sectors at double and at single speed. Needs a data disc.
+Cycles at the system clock (1 ms = 33,869). No assertions - compare against your emulator.
+
+drive region: for U/C - unlocking (a burned disc needs it; a pressed one ignores it)
+2x: only -8 intervals
+1x: 300 intervals, min 427400 max 473704 mean 451577 sd 8576
+  histogram (4,000-cycle bins from 424000): 2 0 7 18 37 42 62 42 33 38 5 12 2
+  first 48:
+   451616 447632 461400 443000 456264 450888 448112 469064 438248 448976 462504 442944
+   446744 462448 444808 455688 443040 454384 462136 442680 449168 451792 451024 461296
+   443032 448848 458872 443936 453264 452280 450424 450920 469768 435096 461240 443616
+   448960 473696 427400 453184 459544 442664 450424 469216 439880 458352 444432 451312
+
+Done.

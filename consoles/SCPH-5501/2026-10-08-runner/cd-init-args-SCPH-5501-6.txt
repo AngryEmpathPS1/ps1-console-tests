@@ -1,0 +1,26 @@
+
+cdrom/cd-init-args
+A Nop right after an Init refused for its four parameters (nugget cdlInitWithArgs), and where the slow
+maintenance cycles fall after an Init. Cycles from each write to its interrupt; histogram in 16,384-cycle
+steps (the last 180,224+). No assertions.
+
+RANDOM PHASE (the refused Init: INT5 256 of 256, its second byte 20h 256 of 256):
+  Init refused, to INT5    min   27128  avg   44974  max  202016  over 3.5 ms   4 of 256  | 0 85 110 32 10 7 7 2 0 1 0 2
+  then Nop, to INT3        min   29384  avg   44089  max  193512  over 3.5 ms   5 of 256  | 0 124 84 14 13 4 10 3 2 0 0 2
+CONTROL:
+  Nop alone                min   18488  avg   34560  max  192272  over 3.5 ms   2 of 256  | 0 171 53 9 11 10 0 0 1 0 0 1
+AFTER A COMPLETED INIT (64 tries):
+  Init refused, to INT5    min   30584  avg   39104  max   62728  over 3.5 ms   0 of 64  | 0 18 34 12 0 0 0 0 0 0 0 0
+  then Nop, to INT3        min   29432  avg   46643  max   56144  over 3.5 ms   0 of 64  | 0 12 12 40 0 0 0 0 0 0 0 0
+SLOW CYCLES AFTER AN INIT (Nops back to back for ~250 ms; those over 100,000 cycles, at their write's time
+after the Init's INT2):
+  Init 0: 353656(146960) 1028528(127488) 2384016(102544) 4176384(191680) 4850080(115688) 6656064(102648)
+  Init 1: 383560(193664) 1058120(115440) 1485552(100176) 4191480(106152) 4667936(145808) 5311216(115376)
+  Init 2: 369080(193096) 1041392(115256) 2367672(103192) 4629600(145760) 5304520(125632) 7091264(101608) 8450312(104952)
+  Init 3: 360904(144280) 1034864(127488) 2824904(101544) 5088928(145160) 5748384(124584) 6203320(103024)
+  Init 4: 815288(146192) 1464800(124800) 5548216(146472) 6202632(126552) 7104896(100832) 7996624(102704)
+  Init 5: 359040(143456) 1006368(131936) 2386488(103752) 5529576(194688) 6208488(124368) 6636576(106096) 8001648(103752)
+  Init 6: 809608(145880) 1460632(126720) 2841272(100888) 5091016(104560) 5549376(191960) 6221080(115200)
+  Init 7: 364992(195136) 1013520(115216) 3747400(103968) 4185536(191736) 4862368(126720) 5741952(102256)
+
+Done.

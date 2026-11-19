@@ -1,0 +1,40 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=800169d8,ehk=80016a08
+ResetGraph:SR=ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gte/gte-irgb
+IRGB/IR1-3 -> IR1-3/ORGB store delay, in filler opcodes (psx-spx: IR3 2, IR1/IR2 3; Sony: 2)
+minN = the first N that reads the new value; got = the reads at N = 0..8.
+There are no assertions - compare against your emulator.
+
+C LZCS->LZCR (control)   minN= 2  got=[1f 1f f f f f f f f]
+C IRGB->IR1              minN= 3  got=[0 0 0 f80 f80 f80 f80 f80 f80]
+C IRGB->IR2              minN= 3  got=[0 0 0 f80 f80 f80 f80 f80 f80]
+C IRGB->IR3              minN= 2  got=[0 0 f80 f80 f80 f80 f80 f80 f80] UNSTABLE
+  warm pass=[0 f80 f80 f80 f80 f80 f80 f80 f80]
+C IRGB->ORGB             minN= 2  got=[0 3ff 7fff 7fff 7fff 7fff 7fff 7fff 7fff]
+C IR1->ORGB              minN= 1  got=[0 1f 1f 1f 1f 1f 1f 1f 1f]
+C IR3->ORGB              minN= 2  got=[0 0 7c00 7c00 7c00 7c00 7c00 7c00 7c00]
+C IR1->IRGB              minN= 1  got=[0 1f 1f 1f 1f 1f 1f 1f 1f]
+C IRGB->SQR MAC1         minN= 1  got=[0 f04000 0 f04000 f04000 f04000 f04000 f04000 f04000]
+C IR1->SQR MAC1          minN= 2  got=[0 0 f04000 f04000 f04000 f04000 f04000 f04000 f04000] UNSTABLE
+  warm pass=[0 f04000 f04000 f04000 f04000 f04000 f04000 f04000 f04000]
+C ORDER IRGB;N;IR1 -> IR1=[123 123 123 123 123 123 123 123 123]  (123 = the IR1 write landed last, f80 = IRGB's fan-out did)
+
+U LZCS->LZCR (control)   minN= 1  got=[1f f f f f f f f f]
+U IRGB->IR1              minN= 1  got=[0 f80 f80 f80 f80 f80 f80 f80 f80]
+U IRGB->IR2              minN= 1  got=[0 f80 f80 f80 f80 f80 f80 f80 f80]
+U IRGB->IR3              minN= 1  got=[0 f80 f80 f80 f80 f80 f80 f80 f80]
+U IRGB->ORGB             minN= 2  got=[0 3ff 7fff 7fff 7fff 7fff 7fff 7fff 7fff]
+U IR1->ORGB              minN= 1  got=[0 1f 1f 1f 1f 1f 1f 1f 1f]
+U IR3->ORGB              minN= 2  got=[0 0 7c00 7c00 7c00 7c00 7c00 7c00 7c00]
+U IR1->IRGB              minN= 1  got=[0 1f 1f 1f 1f 1f 1f 1f 1f]
+U IRGB->SQR MAC1         minN= 1  got=[0 f04000 f04000 f04000 f04000 f04000 f04000 f04000 f04000]
+U IR1->SQR MAC1          minN= 1  got=[0 f04000 f04000 f04000 f04000 f04000 f04000 f04000 f04000]
+U ORDER IRGB;N;IR1 -> IR1=[123 123 123 123 123 123 123 123 123]  (123 = the IR1 write landed last, f80 = IRGB's fan-out did)
+
+Done.

@@ -1,0 +1,130 @@
+
+cdrom/cd-xa
+XA sectors under the filter, an 18.9 kHz impulse, and the audio after its sector. Needs cd-xa's disc.
+
+drive region: for U/C - unlocking
+READ CHECK at single speed: 29 of 30 data sectors in 3 s, first to last 12644211 cycles (29 sector times: 13096000), 0 errors - THIS DRIVE READS THE DISC POORLY: the rows below may be read errors, not rules
+FILTER (LBA 1000-1039, even audio+RT, odd data; Setfilter 1,0; what each INT1 delivered):
+  Setmode 00h: 26 INT1s from LBA 1000: ADADADADADADADADADADADADAD
+  Setmode 08h:  1 INT1s from LBA 1001: D
+  Setmode 48h: 29 INT1s from LBA 1001: DDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+
+IMPULSE at 18,900 Hz (LBA 2000), CD input volume 7fffh, drive volume 80h, cycles from the ReadN's INT3:
+  (no sector in 3 s on the first try: this is the second)
+  first INT1 (the data sector after it) 0; 128 halves recorded
+  playback: first sample 0, last 0 (1 samples); peak 0 at 0
+  round the peak (peak-24 .. peak+24):
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0
+  ADPBUSY per half: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+IMPULSE at 37,800 Hz (LBA 3000), CD input volume 7fffh, drive volume 80h, cycles from the ReadN's INT3:
+  (no sector in 3 s on the first try: this is the second)
+  first INT1 (the data sector after it) 15582371; 128 halves recorded
+  playback: first sample 15494516, last 19107188 (4705 samples); peak 27152 at 17305460
+  round the peak (peak-24 .. peak+24):
+       13     13     13     13     13     13     13     13     13     13     12     15
+        6     27    -17     70    -52    169   -358    755  -1169   1816  -2331   2837
+    27152   2824  -2346   1803  -1183    741   -371    156    -65     57    -30     14
+       -7      3     -1      0      0      0      0      0      0      0      0      0
+        0
+  ADPBUSY per half: 00000000000000000000000000000000000000000000000000000000000000000000000000000001111111111111111110000000000000000000000000000000
+
+IMPULSE at 37,800 Hz (LBA 3000), CD input volume 4000h, drive volume 80h, cycles from the ReadN's INT3:
+  first INT1 (the data sector after it) 5416969; 79 halves recorded
+  playback: first sample 5313785, last 8926457 (4705 samples); peak 27152 at 7124729
+  round the peak (peak-24 .. peak+24):
+       13     13     13     13     13     13     13     13     13     13     12     15
+        6     27    -17     70    -52    169   -358    755  -1169   1816  -2331   2837
+    27152   2824  -2346   1803  -1183    741   -371    156    -65     57    -30     14
+       -7      3     -1      0      0      0      0      0      0      0      0      0
+        0
+  ADPBUSY per half: 0000000000000000000000000001111111111111111110000000000000000000000000000000000
+
+IMPULSE at 37,800 Hz (LBA 3000), CD input volume 7fffh, drive volume 40h, cycles from the ReadN's INT3:
+  (no sector in 3 s on the first try: this is the second)
+  first INT1 (the data sector after it) 0; 128 halves recorded
+  playback: first sample 0, last 0 (1 samples); peak 0 at 0
+  round the peak (peak-24 .. peak+24):
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0
+  ADPBUSY per half: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+IMPULSE at 37,800 Hz (LBA 3000), CD input volume 7fffh, drive volume 7fh, cycles from the ReadN's INT3:
+  (no sector in 3 s on the first try: this is the second)
+  first INT1 (the data sector after it) 4312660; 73 halves recorded
+  playback: first sample 4294955165, last 7823005 (10203 samples); peak 26939 at 1459357
+  round the peak (peak-24 .. peak+24):
+       12     12     12     12     12     12     12     12     12     12     11     15
+        5     26    -18     68    -53    168   -356    749  -1161   1802  -2313   2815
+    26939   2802  -2328   1788  -1175    735   -369    155    -65     56    -30     14
+       -7      2     -1      0      0      0      0      0      0      0      0      0
+        0
+  ADPBUSY per half: 1111111111111111000001111111111111111110000000000000000000000000000000000
+
+IMPULSE at 37,800 Hz (LBA 3000), CD input volume 7fffh, drive volume ffh, cycles from the ReadN's INT3:
+  first INT1 (the data sector after it) 8347366; 94 halves recorded
+  playback: first sample 8252909, last 11865581 (4705 samples); peak 32767 at 10063853
+  round the peak (peak-24 .. peak+24):
+       26     25     26     25     26     25     26     26     25     27     23     31
+       12     54    -34    139   -163    488   -863   1746  -2663   3952  -4951   5199
+    32767   5175  -4982   3925  -2692   1718   -890    462   -189    113    -60     29
+      -13      5     -2      1      0      0      0      0      0      0      0      0
+        0
+  ADPBUSY per half: 0000000000000000000000000000000000000000001111111111111111110000000000000000000000000000000000
+
+IMPULSE at 37,800 Hz (LBA 3000), CD input volume 7fffh, drive volume 90h, cycles from the ReadN's INT3:
+  (no sector in 3 s on the first try: this is the second)
+  first INT1 (the data sector after it) 0; 128 halves recorded
+  playback: first sample 0, last 0 (1 samples); peak 0 at 0
+  round the peak (peak-24 .. peak+24):
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0
+  ADPBUSY per half: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+IMPULSE at 37,800 Hz (LBA 3000), CD input volume 7fffh, drive volume a0h, cycles from the ReadN's INT3:
+  (no sector in 3 s on the first try: this is the second)
+  first INT1 (the data sector after it) 18822213; 128 halves recorded
+  playback: first sample 18732630, last 22345302 (4705 samples); peak 32767 at 20543574
+  round the peak (peak-24 .. peak+24):
+       16     15     16     15     16     15     16     16     15     16     14     19
+        7     34    -22     87    -66    221   -458    963  -1492   2300  -2953   3586
+    32767   3569  -2972   2283  -1509    946   -474    205    -82     71    -38     18
+       -8      3     -1      1      0      0      0      0      0      0      0      0
+        0
+  ADPBUSY per half: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111111111111000000000000000
+
+IMPULSE at 37,800 Hz (LBA 3000), CD input volume 7fffh, drive volume c0h, cycles from the ReadN's INT3:
+  (no sector in 3 s on the first try: this is the second)
+  first INT1 (the data sector after it) 0; 128 halves recorded
+  playback: first sample 0, last 0 (1 samples); peak 0 at 0
+  round the peak (peak-24 .. peak+24):
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0
+  ADPBUSY per half: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+IMPULSE at 37,800 Hz (LBA 3000), CD input volume 7fffh, drive volume 80h, cycles from the ReadN's INT3:
+  (no sector in 3 s on the first try: this is the second)
+  first INT1 (the data sector after it) 0; 128 halves recorded
+  playback: first sample 0, last 0 (1 samples); peak 0 at 0
+  round the peak (peak-24 .. peak+24):
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0      0      0      0      0      0      0      0      0      0      0      0
+        0
+  ADPBUSY per half: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+cdrom/cd-xa: Done.

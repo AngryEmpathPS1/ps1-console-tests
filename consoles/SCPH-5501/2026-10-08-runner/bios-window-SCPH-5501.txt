@@ -1,0 +1,140 @@
+
+cpu/bios-window
+Reads past the 512 KB BIOS ROM at each window size, and where a bus error lands.
+There are no assertions - compare against your emulator.
+
+1F801010h (BIOS ROM Delay/Size) read 0013243f: window size 13h.
+
+size 12h (256 KB), 1F801010h reads 0012243f:
+  bfc00000  3c080013    32 cycles
+  bfc3fffc  a040000a    32 cycles
+  bfc40000  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfc7fffc  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfc80000  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfc80100  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfcffffc  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    31 cycles
+  bfd00000  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfdffffc  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfe00000  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bffffffc  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+
+size 13h (512 KB), 1F801010h reads 0013243f:
+  bfc00000  3c080013    32 cycles
+  bfc3fffc  a040000a    32 cycles
+  bfc40000  a040000b    32 cycles
+  bfc7fffc  423e0404    32 cycles
+  bfc80000  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfc80100  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfcffffc  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfd00000  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfdffffc  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfe00000  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bffffffc  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+
+size 14h (1024 KB), 1F801010h reads 0014243f:
+  bfc00000  3c080013    32 cycles
+  bfc3fffc  a040000a    32 cycles
+  bfc40000  a040000b    32 cycles
+  bfc7fffc  423e0404    32 cycles
+  bfc80000  3c080013  = ROM +00000, a mirror    32 cycles
+  bfc80100  19951204  = ROM +00100, a mirror    32 cycles
+  bfcffffc  423e0404  = ROM +7fffc, a mirror    32 cycles
+  bfd00000  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfdffffc  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bfe00000  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bffffffc  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+
+size 15h (2048 KB), 1F801010h reads 0015243f:
+  bfc00000  3c080013    32 cycles
+  bfc3fffc  a040000a    32 cycles
+  bfc40000  a040000b    32 cycles
+  bfc7fffc  423e0404    32 cycles
+  bfc80000  3c080013  = ROM +00000, a mirror    32 cycles
+  bfc80100  19951204  = ROM +00100, a mirror    32 cycles
+  bfcffffc  423e0404  = ROM +7fffc, a mirror    32 cycles
+  bfd00000  3c080013  = ROM +00000, a mirror    32 cycles
+  bfdffffc  423e0404  = ROM +7fffc, a mirror    32 cycles
+  bfe00000  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+  bffffffc  BUS ERROR  EPC +2  CAUSE 0000001c  reg 00001ef7    30 cycles
+
+size 16h (4096 KB), 1F801010h reads 0016243f:
+  bfc00000  3c080013    32 cycles
+  bfc3fffc  a040000a    32 cycles
+  bfc40000  a040000b    32 cycles
+  bfc7fffc  423e0404    32 cycles
+  bfc80000  3c080013  = ROM +00000, a mirror    32 cycles
+  bfc80100  19951204  = ROM +00100, a mirror    32 cycles
+  bfcffffc  423e0404  = ROM +7fffc, a mirror    32 cycles
+  bfd00000  3c080013  = ROM +00000, a mirror    32 cycles
+  bfdffffc  423e0404  = ROM +7fffc, a mirror    32 cycles
+  bfe00000  3c080013  = ROM +00000, a mirror    32 cycles
+  bffffffc  423e0404  = ROM +7fffc, a mirror    32 cycles
+
+Where a bus error lands (DIAG's method): the access at word 0-3 of an I-cache line, then eight
+ORI/XORI setting bits 0-7; the handler shifts the bits up 16 and returns to EPC+4. 'before' = bits
+set before the exception, 'after' = after it; EPC in opcodes past the access.
+access               word  mode      EPC  before after  CAUSE     reg
+lw  BFC80000h (13h)  0     cold       +2  01     fc     1000001c  00001ef7
+lw  BFC80000h (13h)  0     warm       +2  01     fc     1000001c  00001ef7
+lw  BFC80000h (13h)  0     uncached   +1  00     fe     2000001c  00001ef7
+lw  BFC80000h (13h)  1     cold       +1  00     fe     2000001c  00001ef7
+lw  BFC80000h (13h)  1     warm       +2  01     fc     1000001c  00001ef7
+lw  BFC80000h (13h)  1     uncached   +1  00     fe     2000001c  00001ef7
+lw  BFC80000h (13h)  2     cold       +4  07     f0     1000001c  00001ef7
+lw  BFC80000h (13h)  2     warm       +2  01     fc     1000001c  00001ef7
+lw  BFC80000h (13h)  2     uncached   +1  00     fe     2000001c  00001ef7
+lw  BFC80000h (13h)  3     cold       +3  03     f8     2000001c  00001ef7
+lw  BFC80000h (13h)  3     warm       +2  01     fc     1000001c  00001ef7
+lw  BFC80000h (13h)  3     uncached   +1  00     fe     2000001c  00001ef7
+lbu 1F801024h        0     cold       +2  01     fc     1000001c  00001ef7
+lbu 1F801024h        0     warm       +2  01     fc     1000001c  00001ef7
+lbu 1F801024h        0     uncached   +1  00     fe     2000001c  00001ef7
+lbu 1F801024h        1     cold       +1  00     fe     2000001c  00001ef7
+lbu 1F801024h        1     warm       +2  01     fc     1000001c  00001ef7
+lbu 1F801024h        1     uncached   +1  00     fe     2000001c  00001ef7
+lbu 1F801024h        2     cold       +4  07     f0     1000001c  00001ef7
+lbu 1F801024h        2     warm       +2  01     fc     1000001c  00001ef7
+lbu 1F801024h        2     uncached   +1  00     fe     2000001c  00001ef7
+lbu 1F801024h        3     cold       +3  03     f8     2000001c  00001ef7
+lbu 1F801024h        3     warm       +2  01     fc     1000001c  00001ef7
+lbu 1F801024h        3     uncached   +1  00     fe     2000001c  00001ef7
+lw  08000000h        0     cold       +2  01     fc     1000001c  00001ef7
+lw  08000000h        0     warm       +5  0f     e0     2000001c  00001ef7
+lw  08000000h        0     uncached   +1  00     fe     2000001c  00001ef7
+lw  08000000h        1     cold       +1  00     fe     2000001c  00001ef7
+lw  08000000h        1     warm       +2  01     fc     1000001c  00001ef7
+lw  08000000h        1     uncached   +1  00     fe     2000001c  00001ef7
+lw  08000000h        2     cold       +4  07     f0     1000001c  00001ef7
+lw  08000000h        2     warm       +2  01     fc     1000001c  00001ef7
+lw  08000000h        2     uncached   +1  00     fe     2000001c  00001ef7
+lw  08000000h        3     cold       +3  03     f8     2000001c  00001ef7
+lw  08000000h        3     warm       +2  01     fc     1000001c  00001ef7
+lw  08000000h        3     uncached   +1  00     fe     2000001c  00001ef7
+sh  1F801078h        0     cold       +2  01     fc     1000001c  -
+sh  1F801078h        0     warm       +2  01     fc     1000001c  -
+sh  1F801078h        0     uncached   +1  00     fe     2000001c  -
+sh  1F801078h        1     cold       +1  00     fe     2000001c  -
+sh  1F801078h        1     warm       +2  01     fc     1000001c  -
+sh  1F801078h        1     uncached   +1  00     fe     2000001c  -
+sh  1F801078h        2     cold       +4  07     f0     1000001c  -
+sh  1F801078h        2     warm       +2  01     fc     1000001c  -
+sh  1F801078h        2     uncached   +1  00     fe     2000001c  -
+sh  1F801078h        3     cold       +3  03     f8     2000001c  -
+sh  1F801078h        3     warm       +2  01     fc     1000001c  -
+sh  1F801078h        3     uncached   +1  00     fe     2000001c  -
+sw  08xxxxxxh        0     cold       +2  01     fc     1000001c  -
+sw  08xxxxxxh        0     warm       +2  01     fc     1000001c  -
+sw  08xxxxxxh        0     uncached   +1  00     fe     2000001c  -
+sw  08xxxxxxh        1     cold       +1  00     fe     2000001c  -
+sw  08xxxxxxh        1     warm       +2  01     fc     1000001c  -
+sw  08xxxxxxh        1     uncached   +1  00     fe     2000001c  -
+sw  08xxxxxxh        2     cold       +4  07     f0     1000001c  -
+sw  08xxxxxxh        2     warm       +2  01     fc     1000001c  -
+sw  08xxxxxxh        2     uncached   +1  00     fe     2000001c  -
+sw  08xxxxxxh        3     cold       +3  03     f8     2000001c  -
+sw  08xxxxxxh        3     warm       +2  01     fc     1000001c  -
+sw  08xxxxxxh        3     uncached   +1  00     fe     2000001c  -
+
+The marked RAM word at 800134d4 (where a mirror of the stores at 08xxxxxxh lands): 55aa6677 (was 55aa6677)
+
+cpu/bios-window: Done.

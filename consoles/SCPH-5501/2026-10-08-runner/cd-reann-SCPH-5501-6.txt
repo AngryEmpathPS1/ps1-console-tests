@@ -1,0 +1,32 @@
+
+cdrom/cd-reann
+nugget's simpleReadingWithoutAck 24 times: an INT1 left ~500 ms, acknowledged, the next interrupt, Pause.
+Row: j: the second interrupt (cycles from the first's acknowledge), then each after the Pause's write.
+There are no assertions - compare against your emulator.
+
+  j= 0: INT1, second INT1 at 212728  then INT3   52888 INT2 2888768
+  j= 1: INT1, second INT1 at  22960  then INT3   94360 INT2 3026712
+  j= 2: INT1, second INT1 at  13528  then INT3   44808 INT2 2832776
+  j= 3: INT1, second INT1 at  87952  then INT3   59960 INT2 2718344
+  j= 4: INT1, second INT1 at  75224  then INT3   70280 INT2 2958056
+  j= 5: INT1, second INT1 at  79560  then INT3   59800 INT2 2936176
+  j= 6: INT1, second INT1 at  44520  then INT3   70224 INT2 2933288
+  j= 7: INT1, second INT1 at  68648  then INT3   60584 INT2 2936896
+  j= 8: INT1, second INT1 at  64104  then INT3   59792 INT2 2943176
+  j= 9: INT1, second INT1 at  33600  then INT3   71376 INT2 2962536
+  j=10: INT1, second INT1 at  16816  then INT3   45080 INT2 2963272
+  j=11: INT1, second INT1 at  38216  then INT3   69464 INT2 2928648
+  j=12: INT1, second INT1 at  14616  then INT3   45128 INT2 2936200
+  j=13: INT1, second INT1 at  27624  then INT3   59800 INT2 2906920
+  j=14: INT1, second INT1 at  26520  then INT3   59792 INT2 2923208
+  j=15: INT1, second INT1 at  32928  then INT3   46568 INT2 2877136
+  j=16: INT1, second INT1 at  24600  then INT3   45112 INT2 2890720
+  j=17: INT1, second INT1 at  28944  then INT3   45072 INT2 2859728
+  j=18: INT1, second INT1 at  17856  then INT3   45088 INT2 2878728
+  j=19: INT1, second INT1 at  40616  then INT3   45112 INT2 2847808
+  j=20: INT1, second INT1 at  41048  then INT3   45160 INT2 2834888
+  j=21: INT1, second INT1 at  27672  then INT3   45128 INT2 2844424
+  j=22: INT1, second INT1 at  17368  then INT3   45128 INT2 2840200
+  j=23: INT1, second INT1 at  29912  then INT3  106376 INT2 3046272
+
+Done.

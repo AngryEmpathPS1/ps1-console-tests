@@ -1,0 +1,48 @@
+
+dma/dma-arb
+A block-mode DMA (GPU 8,192 words, SPU 2,048) with the CPU doing one kind of bus access at a time between
+CHCR reads. No assertions - compare against your emulator, and say which console ran it.
+
+CPU alone (64 turns): cycles a unit
+  ALU     4.35 ST0     4.36 ST2     6.47 ST8    12.94 ST32    37.44
+  LD0     9.72 LD2     9.72 LD8    14.95 LD32    39.45 SPAD     4.37
+  IOR     7.47 TMR     7.46 SPUR    23.15 UNC    28.46 SAMPLE   203.62
+ 
+
+GPU (DMA2): workload, units a turn, the end (after - by, cycles), by against SPIN, turns, units
+  SPIN      0    14039 -   14123      +0     130        0
+  ALU      64    13719 -   14077     -46      39     2496
+  ST0      64    14804 -   15376   +1253      17     1088
+  ST2      48    15081 -   15474   +1351      22     1056
+  ST8      24    14807 -   15194   +1071      37      888
+  ST32     16    13597 -   14279    +156      21      336
+  LD0      32    13531 -   14268    +145      15      480
+  LD2      32    13632 -   14312    +189      15      480
+  LD8      24    13718 -   14328    +205      19      456
+  LD32     16    13710 -   14412    +289      20      320
+  SPAD     64    13835 -   14187     +64      39     2496
+  IOR      48    13813 -   14367    +244      11      528
+  TMR      48    13682 -   14356    +233      11      528
+  SPUR     16    18378 -   18928   +4805      26      416
+  UNC      12    13392 -   14308    +185      10      120
+  SAMPLE    1    14373 -   14773    +650      21       21
+
+SPU (DMA4): workload, units a turn, the end (after - by, cycles), by against SPIN, turns, units
+  SPIN      0   140848 -  140880      +0    3456        0
+  ALU      64   140560 -  140888      +8     472    30208
+  ST0      64   140528 -  140896     +16     447    28608
+  ST2      48   140680 -  141064    +184     408    19584
+  ST8      24   140776 -  141128    +248     417    10008
+  ST32     16   140304 -  140928     +48     228     3648
+  LD0      32   140776 -  141168    +288     403    12896
+  LD2      32   140768 -  141168    +288     402    12864
+  LD8      24   140624 -  141072    +192     353     8472
+  LD32     16   140208 -  140888      +8     210     3360
+  SPAD     64   140608 -  140928     +48     466    29824
+  IOR      48   140616 -  141056    +176     351    16848
+  TMR      48   140608 -  141056    +176     351    16848
+  SPUR     16   141152 -  141608    +728     342     5472
+  UNC      12   140608 -  141040    +160     367     4404
+  SAMPLE    1   140640 -  140920     +40     611      611
+
+dma/dma-arb: Done.

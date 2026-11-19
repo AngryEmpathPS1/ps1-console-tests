@@ -1,0 +1,29 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+
+cdrom/cd-adpbusy
+ADPBUSY's edges around an XA sector's playback, to the sample. Needs cd-xa's disc. Cycles at the system clock.
+
+drive region: for U/C - unlocking
+
+
+18,900 Hz (LBA 2000):
+  ADPBUSY changes (cycles from ReadN, ring position):
+    rise 10327796 p333, fall 17553151 p13
+  interrupts: INT3 33546 INT1 10436062 INT1 10884994 INT1 11336755 INT1 11799894 INT1 12240998 INT1 12710399 INT1 13144391 INT1 13600704 INT1 14071111 INT1 14502963 INT1 14958272 (+28)
+  playback: first sample 10089168 (ring 22), last sample 17563319 (ring 26)
+  first rise 238628 cycles from the first sample, last fall -10168 cycles from the last sample
+
+37,800 Hz (LBA 3000):
+  ADPBUSY changes (cycles from ReadN, ring position):
+    rise 22706538 p191, fall 26319126 p286
+  interrupts: INT3 45438 INT1 22820896 INT1 23270384 INT1 23714467 INT1 24167377 INT1 24629385 INT1 25093674 INT1 25526522 INT1 25984127 INT1 26426495 INT1 26876159 INT1 27331545 (+20)
+  playback: first sample 22467853 (ring 392), last sample 26329431 (ring 300)
+  first rise 238685 cycles from the first sample, last fall -10305 cycles from the last sample
+
+STREAM (LBA 1000-1039, twenty silent 37,800 Hz mono sectors, every other one):
+  ADPBUSY changes (cycles from ReadN, ring position):
+    rise 14039309 p389, fall 32102620 p356
+  interrupts: INT3 43319 INT1 14146828 INT1 15050750 INT1 15962279 INT1 16873359 INT1 17761369 INT1 18661707 INT1 19566058 INT1 20468637 INT1 21372327 INT1 22278267 INT1 23186454 (+55)
+
+cdrom/cd-adpbusy: Done.

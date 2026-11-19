@@ -1,0 +1,26 @@
+
+cdrom/cd-init-args
+A Nop right after an Init refused for its four parameters (nugget cdlInitWithArgs), and where the slow
+maintenance cycles fall after an Init. Cycles from each write to its interrupt; histogram in 16,384-cycle
+steps (the last 180,224+). No assertions.
+
+RANDOM PHASE (the refused Init: INT5 256 of 256, its second byte 20h 256 of 256):
+  Init refused, to INT5    min   27128  avg   48435  max  192376  over 3.5 ms   8 of 256  | 0 77 103 35 12 16 4 2 2 1 1 3
+  then Nop, to INT3        min   29424  avg   46170  max  200688  over 3.5 ms   4 of 256  | 0 95 104 20 11 12 8 2 1 2 0 1
+CONTROL:
+  Nop alone                min   18720  avg   38672  max  186296  over 3.5 ms   4 of 256  | 0 148 61 13 15 13 2 0 1 1 1 1
+AFTER A COMPLETED INIT (64 tries):
+  Init refused, to INT5    min   30440  avg   37612  max   63120  over 3.5 ms   0 of 64  | 0 28 25 11 0 0 0 0 0 0 0 0
+  then Nop, to INT3        min   29864  avg   45857  max   54336  over 3.5 ms   0 of 64  | 0 12 39 13 0 0 0 0 0 0 0 0
+SLOW CYCLES AFTER AN INIT (Nops back to back for ~250 ms; those over 100,000 cycles, at their write's time
+after the Init's INT2):
+  Init 0: 376248(148008) 1042816(115760) 1470800(103584) 4202424(102696) 4635744(202968) 5302256(115808) 8027088(101776) 8461184(102704)
+  Init 1: 357736(147512) 1030248(124960) 1483696(103576) 4656984(147528) 5300800(133688) 5738440(100056)
+  Init 2: 358152(200304) 1018176(115256) 4189648(103368) 5108776(149208) 6205008(101776)
+  Init 3: 817576(149648) 1482152(115256) 2388920(101824) 3298912(102856) 5095136(210544) 5758392(115752) 6683472(105392)
+  Init 4: 364016(208472) 1031552(127592) 1936144(105768) 3272368(101768) 3733208(100064) 4639016(200304) 5303080(125632)
+  Init 5: 378464(147512) 1024432(125416) 1479008(102904) 2398208(101816) 3298816(105216) 4670464(147568) 5318616(129192) 6683352(100064) 7113344(104120)
+  Init 6: 362544(200776) 1020488(115600) 4635400(147568) 5303256(127592) 5759992(100120) 7993176(102864) 8451200(102768)
+  Init 7: 827008(149712) 1472992(128048) 2381968(103632) 4660448(147088) 7998152(103360)
+
+Done.

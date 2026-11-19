@@ -1,0 +1,18 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=80012734,ehk=80012764
+ResetGraph:SR=7000ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+mdec/mdec-padding
+Does the MDEC take FE00h padding past a command's last macroblock? (nugget b7d9561)
+There are no assertions - compare against your emulator.
+
+N=304 P= 0 (1824 words)  DMA1 done  DMA0 CHCR 00000201 -> 00000201  moved 1824 -> 1824  MDEC stat 8684ffff -> 8684ffff
+N=300 P=24 (1824 words)  DMA1 STILL BUSY  DMA0 CHCR 01000201 -> 01000201  moved    0 ->    0  MDEC stat a684071f -> a684071f
+N=300 P=56 (1856 words)  DMA1 STILL BUSY  DMA0 CHCR 01000201 -> 01000201  moved    0 ->    0  MDEC stat a684073f -> a684073f
+N=300 P=88 (1888 words)  DMA1 STILL BUSY  DMA0 CHCR 01000201 -> 01000201  moved    0 ->    0  MDEC stat a684075f -> a684075f
+
+Done.

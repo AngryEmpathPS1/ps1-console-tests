@@ -1,0 +1,31 @@
+TYPE : 6 free button or flying-V form
+PS-X Control PAD Driver  Ver 3.0
+ResetGraph:itb=800141e0,ehk=80014210
+ResetGraph:SR=7000ff15
+ResetGraph:Interrupt hooks enabled.
+ResetGraph:About to init interrupts.
+ResetGraph:Interrupts enabled!
+
+gte/gte-hold
+ctc2 A,H; nop; nop; RTPS; ctc2 B,H; K nops; <waiter>: did RTPS see B?
+A = no (held, or H read already), B = yes, ? = neither. Viva Soccer is MFC2 K=0;
+NONE is nugget gte-latency's N=0 (B on SCPH-5501). There are no assertions.
+
+C MFC2 MAC0  K=0..4: A B B B B   MAC0=[100000 200000 200000 200000 200000] A=100000 B=200000 UNSTABLE
+  warm pass: A A A A B
+C CFC2 FLAG  K=0..4: A B A B B   MAC0=[100000 200000 100000 200000 200000] A=100000 B=200000 UNSTABLE
+  warm pass: A A A B A
+C SWC2 MAC0  K=0..4: A B B B B   MAC0=[100000 200000 200000 200000 200000] A=100000 B=200000 UNSTABLE
+  warm pass: A B B B A
+C SQR (cmd)  K=0..4: A B B B B   MAC0=[100000 200000 200000 200000 200000] A=100000 B=200000 UNSTABLE
+  warm pass: A B B A B
+C NONE       K=0..0: B   MAC0=[200000] A=100000 B=200000 UNSTABLE
+  warm pass: A
+
+U MFC2 MAC0  K=0..4: A A A A A   MAC0=[100000 100000 100000 100000 100000] A=100000 B=200000
+U CFC2 FLAG  K=0..4: A A A A A   MAC0=[100000 100000 100000 100000 100000] A=100000 B=200000
+U SWC2 MAC0  K=0..4: A A A A A   MAC0=[100000 100000 100000 100000 100000] A=100000 B=200000
+U SQR (cmd)  K=0..4: A A A A A   MAC0=[100000 100000 100000 100000 100000] A=100000 B=200000
+U NONE       K=0..0: A   MAC0=[100000] A=100000 B=200000
+
+Done.
