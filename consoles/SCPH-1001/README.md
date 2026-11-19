@@ -197,6 +197,9 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-19-scexloc-r1](2026-11-19-scexloc-r1/) | 3 | 0 |
 | [2026-11-19-scexloc-r2](2026-11-19-scexloc-r2/) | 3 | 0 |
 | [2026-11-19-scexloc-r3](2026-11-19-scexloc-r3/) | 3 | 0 |
+| [2026-11-19-scexlocd-r1](2026-11-19-scexlocd-r1/) | 3 | 0 |
+| [2026-11-19-scexlocd-r2](2026-11-19-scexlocd-r2/) | 3 | 0 |
+| [2026-11-19-scexlocd-r3](2026-11-19-scexlocd-r3/) | 3 | 0 |
 | [2026-11-19-scexlocr-r1](2026-11-19-scexlocr-r1/) | 3 | 0 |
 | [2026-11-19-scexlocr-r2](2026-11-19-scexlocr-r2/) | 3 | 0 |
 | [2026-11-19-scexlocr-r3](2026-11-19-scexlocr-r3/) | 3 | 0 |

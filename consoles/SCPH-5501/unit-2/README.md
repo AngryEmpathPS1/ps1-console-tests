@@ -421,3 +421,10 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-17-t0cold-r2](2026-11-17-t0cold-r2/) | 3 | 0 |
 | [2026-11-17-trilong](2026-11-17-trilong/) | 6 | 0 |
 | [2026-11-17-triscan](2026-11-17-triscan/) | 4 | 0 |
+| [2026-11-19-discid-doomcheck](2026-11-19-discid-doomcheck/) | 3 | 0 |
+| [2026-11-19-replay-doom3600-r0](2026-11-19-replay-doom3600-r0/) | 4 | 0 |
+| [2026-11-19-replay-doom3600-r1](2026-11-19-replay-doom3600-r1/) | 4 | 0 |
+| [2026-11-19-replay-doom3600-r2](2026-11-19-replay-doom3600-r2/) | 4 | 0 |
+| [2026-11-19-replay-doom3600-r3](2026-11-19-replay-doom3600-r3/) | 4 | 0 |
+| [2026-11-19-replay-doom3600fast-r1](2026-11-19-replay-doom3600fast-r1/) | 4 | 0 |
+| [2026-11-19-replay-doom3600fast-r2](2026-11-19-replay-doom3600fast-r2/) | 4 | 0 |
