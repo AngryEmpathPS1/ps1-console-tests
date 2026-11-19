@@ -104,12 +104,22 @@
 #define MEMCTRL(n) (*(volatile uint32_t*)(0x1F801000 + 4 * (n)))   /* expansion bases, the delay/size registers, COM_DELAY */
 #define RAMSIZE   (*(volatile uint32_t*)0x1F801060)
 #define CACHECTL  (*(volatile uint32_t*)0xFFFE0130)
+#define START_DPCR 0x08009899u                          /* the Unirom consoles' DMA control and interrupt register, and SR at the runner's entry, as found (snapshot's comment) */
+#define START_DICR 0x00840000u
+#define START_SR   0x0000FF01u
 static uint32_t snapMask, snapDpcr, snapDicr, snapStat, snapMem[9], snapRam, snapCache;
 static uint16_t snapTMode[2], snapTTarget[2], snapSpucnt, snapXfer;
 static void snapshot() {
     volatile uint32_t *k = (volatile uint32_t *)0x80000000, *s = (volatile uint32_t *)SNAP_BASE;
     for (uint32_t i = 0; i < 0x4000; i++) s[i] = k[i];
     snapMask = I_MASK; snapDpcr = DPCR; snapDicr = DICR; snapStat = GPUSTAT;
+    /* THE UNIROM PATH'S DMA SETUP, WHATEVER STARTED THE RUNNER (2026-11-17, the console fuzzer's SETUP line through main): the cart consoles (SCPH-1001, 5501-u2: the cart's break at the
+     * shell entry) start the runner with the DMA controller as the BIOS leaves it - DPCR 076D4321h, DICR 0, SR 0400h - where every Unirom console reads DPCR 08009899h (hwtests/spu-health "as
+     * found", 44 of 44 runs on seven models), DICR 00840000h (mdec-in-hang, 15 of 15) and SR FF01h (the fuzzer's four Unirom consoles; this emulator's Unirom path, scratch/cart/startstate_probe.js:
+     * SR FF00h with the runner idle = FF01h with interrupts off, DPCR 08009899h, DICR 00840000h; its cart path 0400h / 076D4321h / 0), and the fuzzer saw the two cart consoles' cold times part
+     * as a group on the other channel priorities. The snapshot restoreKernel puts back before every test is therefore these, not what was found: a Unirom console reads what it did, a cart
+     * console now starts every test as one does. (SR the same way, runner_main's entrySr.) */
+    snapDpcr = START_DPCR; snapDicr = START_DICR;
     for (int n = 0; n < 2; n++) { snapTMode[n] = TMODE(n) & 0x3FF; snapTTarget[n] = TTARGET(n); }
     for (int n = 0; n < 9; n++) snapMem[n] = MEMCTRL(n);
     snapRam = RAMSIZE; snapCache = CACHECTL; snapSpucnt = SPUCNT; snapXfer = SPU_XFER;
@@ -766,7 +776,7 @@ static void mem() {
 static const char RUNNER_ID[] = "PSXRUNNER8 " __DATE__ " " __TIME__ "\n";
 
 void runner_main() {
-    entrySr = getSr();
+    entrySr = START_SR;                  /* not what was found: the Unirom path's (0400h / 401h on a cart console); snapshot() does the same for DPCR and DICR */
     snapshot();
     setSr(entrySr & ~1u);                /* interrupts off while the runner has the CPU */
     /* Unirom's last word to the PC may still be leaving SIO1 (the upload's final acknowledge): let it go first */

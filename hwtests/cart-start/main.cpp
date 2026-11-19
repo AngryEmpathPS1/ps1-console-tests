@@ -106,7 +106,7 @@ extern "C" void runner_main() {
     __asm__ volatile("move %0, $26\n move %1, $27\n mfc0 %2, $14\n mfc0 %3, $13\n mfc0 %4, $7\n nop" : "=r"(k0), "=r"(k1), "=r"(epc), "=r"(cause), "=r"(dcic));
     const uint32_t cdstat = *(volatile uint8_t *)0x1F801800;
     const bool spu = CSP[3] & 1;
-    entrySr = getSr();
+    entrySr = START_SR;                  /* the Unirom path's SR for the test, as the runner's runner_main (2026-11-18: the cart's break leaves 0400h; the CARTSTART line's sr= is still the one the cart found, CSP[4]); snapshot() takes START_DPCR / START_DICR the same way */
     snapshot();                          /* the kernel's 64 KB and the machine, as the runner takes them at its start */
     setSr(entrySr & ~1u);
     T2_MODE = 0;
