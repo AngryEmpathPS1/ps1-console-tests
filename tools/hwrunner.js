@@ -180,7 +180,7 @@ class RunnerLink {
       return d;
     }
     this.write([0x52], RunnerLink.w(delay), spec);
-    return this.finish(ms);
+    return this.finish(ms, stray);
   }
   /* 'F' (runner v2): the refresh table - the grid's first phase and one RAM load's time at each of its 256 phases. */
   async refresh() {
@@ -199,9 +199,12 @@ class RunnerLink {
   async finish(ms, stray = 0) {
     if (!stray) await this.expect('DONE', ms);
     else {
-      const end = this._now() + ms; let win = '', n = 0;
+      const end = this._now() + ms; let win = '', n = 0, seen = '';
       while (win !== 'DONE') {
-        const b = await this.read(1, Math.max(1, end - this._now()));
+        /* --crumbs (2026-11-19): a program's own breadcrumb bytes come before the DONE; a run that never ends says which came */
+        let b;
+        try { b = await this.read(1, Math.max(1, Math.round(end - this._now()))); } catch (e) { throw new Error(`${e.message}${seen ? ` (before it: ${JSON.stringify(seen)})` : ' (nothing before it)'}`); }
+        seen = (seen + String.fromCharCode(b[0])).slice(-64);
         win = (win + String.fromCharCode(b[0])).slice(-4);
         if (++n > 4 + stray && win !== 'DONE') throw new Error(`runner: wanted "DONE", got ${JSON.stringify(win)} after ${n} bytes`);
       }
@@ -353,7 +356,7 @@ const SPU_LOCKED = new Set(['spu-busy', 'spu-curvol', 'spu-decode-ahead', 'spu-d
 const USES_SIO1 = /^sio1-/;
 const HOW = { 1: 'ended at its end line', 2: 'returned from main', 3: 'stopped from the PC' };
 
-async function runTests(r, names, { delay = 1000, timeout = 600, out = null, lock = null, accept = null } = {}) {
+async function runTests(r, names, { delay = 1000, timeout = 600, out = null, lock = null, accept = null, stray = 0 } = {}) {
   const results = [];
   for (const name of names) {
     const exe = fs.readFileSync(exeOf(name));
@@ -362,7 +365,7 @@ async function runTests(r, names, { delay = 1000, timeout = 600, out = null, loc
     for (let tries = 0; ; tries++) {
       await r.load(exe);
       t0 = Date.now();
-      done = await r.run(delay, timeout * 1000, { end: endLine(base), stoppable: !USES_SIO1.test(base), lock });
+      done = await r.run(delay, timeout * 1000, { end: endLine(base), stoppable: !USES_SIO1.test(base), lock, stray: stray || (/^queue-cleanup/.test(base) ? 64 : 0) });   // the cleanup always may send breadcrumbs (hwtests/queue-cleanup-safe)
       if (!accept || accept(exe, done) || tries >= 7) break;
       await r.log();
     }
@@ -494,7 +497,9 @@ if (require.main === module) {
       r.load = (exe) => { entry = exe.readUInt32LE(0x10) >>> 0; seen = -1; return load(exe); };
     }
     const reps = Math.max(1, +opt('repeat', 1));
-    const runOpts = { delay: +opt('delay', 1000), timeout: +opt('timeout', 600), out: opt('out'), lock, accept };
+    // --crumbs: the program sends breadcrumb bytes of its own over SIO1 ahead of the runner's DONE (hwtests/queue-cleanup-safe);
+    // up to 64 are skipped, and a run that never ends names the ones that came (finish)
+    const runOpts = { delay: +opt('delay', 1000), timeout: +opt('timeout', 600), out: opt('out'), lock, accept, stray: flag('crumbs') ? 64 : 0 };
     const list = names.flatMap((n) => Array(reps).fill(n));
     let res;
     if (match) {   // a probe landing before each run (above), its reading kept with the run

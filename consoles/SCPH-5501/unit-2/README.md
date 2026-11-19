@@ -430,5 +430,11 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-19-replay-doom3600-r1](2026-11-19-replay-doom3600-r1/) | 4 | 0 |
 | [2026-11-19-replay-doom3600-r2](2026-11-19-replay-doom3600-r2/) | 4 | 0 |
 | [2026-11-19-replay-doom3600-r3](2026-11-19-replay-doom3600-r3/) | 4 | 0 |
+| [2026-11-19-replay-doom3600-r4](2026-11-19-replay-doom3600-r4/) | 4 | 0 |
+| [2026-11-19-replay-doom3600-r5](2026-11-19-replay-doom3600-r5/) | 4 | 0 |
+| [2026-11-19-replay-doom3600-r6](2026-11-19-replay-doom3600-r6/) | 4 | 0 |
+| [2026-11-19-replay-doom3600-r7](2026-11-19-replay-doom3600-r7/) | 4 | 0 |
+| [2026-11-19-replay-doom3600-r8](2026-11-19-replay-doom3600-r8/) | 4 | 0 |
+| [2026-11-19-replay-doom3600-r9](2026-11-19-replay-doom3600-r9/) | 4 | 0 |
 | [2026-11-19-replay-doom3600fast-r1](2026-11-19-replay-doom3600fast-r1/) | 4 | 0 |
 | [2026-11-19-replay-doom3600fast-r2](2026-11-19-replay-doom3600fast-r2/) | 4 | 0 |

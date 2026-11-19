@@ -21,6 +21,12 @@ static void dump(uint32_t a, int n) { for (int i = 0; i < n; i++) printf("W %x %
 int main() {
     printf("\nfuzz-crumb\n");
     dump(0x8012FC00u, 4);
+    /* (2026-11-19) the RUNNER's step word and found state (hwtests/runner/main.cpp "THE RESTORE'S GUARDS AND ITS STEP WORD"): RK at 8012FC10h - the step
+     * 524Bxxxxh, the flags, the restores run, the GPUSTAT, DPCR, CHCR2, CHCR4 and SPUCNT | SPUSTAT << 16 as the last restore found them, the sound RAM block
+     * it reached (nine words) - then the boot before's nine at 8012FC40h. A step word without the 524Bh in front is RAM nothing has written (a power-on's);
+     * tools/runnercrumb.js --log=<this log> names the step and the flags. */
+    dump(0x8012FC10u, 9);
+    dump(0x8012FC40u, 9);
     dump(0x80110000u, 5);
     dump(0x80100000u, 8);
     dump(0x80104000u, 4);

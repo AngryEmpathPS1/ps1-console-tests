@@ -155,56 +155,145 @@ static void snapshot() {
  * VRAM cleared first, every shape's mean within 4 cycles of the uncleared runs'; STATUS "The scan-out's run-to-run spread is
  * partly VRAM's contents"). AngryEmpath (2026-10-26): "none of these tests start with a clear screen".
  */
+/*
+ * THE RESTORE'S GUARDS AND ITS STEP WORD (2026-11-19, tooling's trace through main): two consoles went silent after a fuzz program had printed
+ * its Done (the PSone 08:03Z, the SCPH-9001 21:03Z: the queue's cleanup got "0 of 4 bytes in 60000 ms"), and the emulator ran the same two
+ * programs and the cleanup without a hang - restoreKernel is the first code that meets what a fuzz program leaves (DMA channels it started with
+ * their DPCR enables off, a GPU waiting for a GP0(A0h)'s data, an SPU in a transfer mode), and it ran before the cleanup did. So:
+ *   - every channel's CHCR busy bit waited for (bounded) after the CHCR = 0 writes;
+ *   - a GP0 command's first word waits for GPUSTAT bit 26, a parameter word for bit 28 (NOT bit 26: it reads 0 between a command's words - psx-spx
+ *     "Ready Bits", DuckStation's gpu_idle, and this emulator's M89, which the console-graded Amidog MOVE test settled - so a bit-26 wait before
+ *     a fill's second word would wait out its bound every time); a command word that never gets its bit gets GP1(01h) (the command buffer reset)
+ *     and one more bounded wait, then the rest of the fills are skipped (not fed into a GPU that says no) and the texture cache is left;
+ *   - the SPU's busy flag (SPUSTAT bit 10) waited for before the voice registers are zeroed; if it never clears, SPUCNT = 8000h (the transfer
+ *     mode off, what spuZeroRam writes anyway) and one more bounded wait, and if it STILL does not clear every SPU write is skipped (the register
+ *     zeroing, the sound RAM's, SPUCNT's restore) - a run that carries on with an SPU it could not clean is better than one that never answers;
+ *   - spuZeroRam's 512 block waits stop at the first one that times out (before: 512 x 1,000,000 polls, ten minutes of a console that looks
+ *     hung) and say how far they got (RK[8]);
+ *   - A STEP WORD in RAM, written before each step: 8012FC10h (RK[0]) 524Bxxxxh - 0100h the runner waiting for a command, 0101h loading, 0102h run:
+ *     restoring, 0103h run: hooks, probes and the lock, 0104h the test running, 0105h the test back and DONE going out; and the restore's own: 10h
+ *     the found state read, 11h CHCRs cleared, 12h waited for, 13h the kernel copied back, 14h memory control, 15h DPCR / DICR, 16h the GPU reset and
+ *     mode, 20h + n VRAM fill n, 24h the texture cache, 25h MDEC reset, 26h timers, 30h SPU: the idle check, 31h the unwedge, 32h voice registers,
+ *     40h-43h sound RAM (setup, blocks, final wait, DMA enable put back), 50h SPUCNT, 51h I_MASK, FFh done. RAM survives a RESET (tools/freezedump.js,
+ *     fuzz-crumb), so a console that hangs and is reset names its step: hwtests/fuzz-crumb prints the words, and a cart's hang record carries them
+ *     (cartrom/modes2.inc, 2Dh words 79-87). BEYOND THE STEP: RK[1] the flags (bit per wait that reached its bound, below; bit 31 the restore ran
+ *     to its end), RK[2] the restores since the runner started, RK[3] the GPUSTAT, RK[4] the DPCR, RK[5] CHCR2, RK[6] CHCR4 and RK[7] SPUCNT | SPUSTAT
+ *     << 16 AS FOUND (what the program before left, read before anything is written), RK[8] the sound RAM block the zeroing reached (8012FC30h). The
+ *     boot before's nine words are kept at 8012FC40h (RKP, copied at runner_main before anything is written): a runner uploaded after a hang does
+ *     not erase what the hang left.
+ * Nothing changes on a console that is not wedged: every added wait is one whose condition is already true, and each recovery (GP1(01h), SPUCNT =
+ * 8000h) runs only after a bound has been reached. The rehearsal (experiments/runnerguardtest.js) is the proof on the emulator; no console has run
+ * these paths (the bounds are 200,000 polls, ~150 ms; the wait for a channel is far more than any DMA the tests start takes to finish).
+ * Flags (RK[1]): bits 0-6 channel n's CHCR busy bit still set; 7 a GP0 command word never got bit 26 (GP1(01h) sent); 8 a parameter word never got bit 28;
+ * 9 still not after the GP1(01h): the fills and the cache clear skipped; 10 the SPU still busy at the first check (SPUCNT = 8000h sent); 11 still busy
+ * after it: every SPU write skipped; 12 spuZeroRam's transfer-mode waits timed out; 13 a block's wait timed out, the zeroing stopped; 14 the final busy wait
+ * timed out.
+ */
+#define RK  ((volatile uint32_t *)0x8012FC10u)
+#define RKP ((volatile uint32_t *)0x8012FC40u)
+#define RK_BOUND 200000
+static uint32_t rkFlags;
+static inline void rk(uint32_t s) { RK[0] = 0x524B0000u | s; }
+static inline void rkBad(uint32_t bit) { rkFlags |= 1u << bit; RK[1] = rkFlags; }
+static bool gpuWait(uint32_t mask) { for (int i = 0; i < RK_BOUND; i++) if ((GPUSTAT & mask) == mask) return true; return false; }
+static bool spuIdle() { for (int i = 0; i < RK_BOUND; i++) if (!(SPUSTAT & 0x0400)) return true; return false; }
 static uint32_t zeroBlock[256];
 static void spuZeroRam() {
     for (int i = 0; i < 256; i++) zeroBlock[i] = 0;
     const uint32_t dpcr = DPCR;
+    rk(0x40);
     DPCR = dpcr | 0x00080000u;                          /* DMA4 on */
     SPU_XFER = 0x0004;
     SPUCNT = 0x8000;                                    /* on, muted, no transfer */
-    for (int i = 0; i < 100000 && (SPUSTAT & 0x0030); i++) {}
+    { int i = 0; for (; i < 100000 && (SPUSTAT & 0x0030); i++) {} if (i == 100000) rkBad(12); }
     SPU_XADDR = 0;
     SPUCNT = 0x8020;                                    /* DMA write */
-    for (int i = 0; i < 100000 && (SPUSTAT & 0x0030) != 0x0020; i++) {}
+    { int i = 0; for (; i < 100000 && (SPUSTAT & 0x0030) != 0x0020; i++) {} if (i == 100000) rkBad(12); }
+    rk(0x41);
     for (int n = 0; n < 512; n++) {                     /* 512 x 1 KB */
+        RK[8] = (uint32_t)n;
         MADR(4) = (uint32_t)zeroBlock;
         BCR(4) = (16u << 16) | 16u;                     /* 16 blocks of 16 words */
         CHCR(4) = 0x01000201u;
-        for (int i = 0; i < 1000000 && (CHCR(4) & 0x01000000u); i++) {}
+        int i = 0;
+        for (; i < 1000000 && (CHCR(4) & 0x01000000u); i++) {}
+        if (i == 1000000) { rkBad(13); break; }          /* one block that never finishes is the end of it, not 511 more waits */
     }
-    for (int i = 0; i < 100000 && (SPUSTAT & 0x0400); i++) {}
+    rk(0x42);
+    { int i = 0; for (; i < 100000 && (SPUSTAT & 0x0400); i++) {} if (i == 100000) rkBad(14); }
     SPUCNT = 0x8000;
+    rk(0x43);
     DPCR = dpcr;
 }
 static void restoreKernel() {
+    rkFlags = 0; RK[1] = 0; RK[2] = RK[2] + 1;
+    rk(0x10);
+    RK[3] = GPUSTAT; RK[4] = DPCR; RK[5] = CHCR(2); RK[6] = CHCR(4);     /* what the program before left, before anything is written (the SPU's is read at its own step) */
+    rk(0x11);
     for (int n = 0; n < 7; n++) CHCR(n) = 0;
+    rk(0x12);
+    for (int n = 0; n < 7; n++) { int i = 0; for (; i < RK_BOUND && (CHCR(n) & 0x01000000u); i++) {} if (i == RK_BOUND) rkBad(n); }
+    rk(0x13);
     volatile uint32_t *k = (volatile uint32_t *)0x80000000, *s = (volatile uint32_t *)SNAP_BASE;
     for (uint32_t i = 0; i < 0x4000; i++) k[i] = s[i];
+    rk(0x14);
     for (int n = 0; n < 9; n++) MEMCTRL(n) = snapMem[n];   /* first: what follows touches the GPU, SPU and MDEC */
     RAMSIZE = snapRam; CACHECTL = snapCache;
+    rk(0x15);
     DPCR = snapDpcr;
     DICR = (snapDicr & 0x00FFFFFFu) | 0x7F000000u;      /* its enables as they were, every flag acknowledged */
+    rk(0x16);
     GP1 = 0x00000000;
     GP1 = 0x08000000 | ((snapStat >> 17) & 0x3F) | (((snapStat >> 16) & 1) << 6) | (((snapStat >> 14) & 1) << 7);
     GP1 = 0x04000000 | ((snapStat >> 29) & 3);
     GP1 = 0x03000000 | ((snapStat >> 23) & 1);
+    /* a GP0 command's first word: bit 26 (the GPU idle), once more after a GP1(01h) if it did not come; false = the GPU never took it, nothing more goes in */
+    bool gpuOk = true;
+    auto cmdReady = [&]() -> bool {
+        if (!gpuOk) return false;
+        if (gpuWait(0x04000000u)) return true;
+        rkBad(7); GP1 = 0x01000000u;
+        if (gpuWait(0x04000000u)) return true;
+        rkBad(9); gpuOk = false; return false;
+    };
     for (uint32_t n = 0; n < 4; n++) {                  /* (v8) VRAM zeroed: 512 x 256 at (0|512, 0|256) */
-        for (int i = 0; i < 1000000 && !(GPUSTAT & 0x04000000u); i++) {}
+        rk(0x20 + n);
+        if (!cmdReady()) break;
         GP0 = 0x02000000u;
+        if (!gpuWait(0x10000000u)) rkBad(8);            /* the parameter words: bit 28, not 26 (above) */
         GP0 = ((n >> 1) * 256u << 16) | ((n & 1) * 512u);
+        if (!gpuWait(0x10000000u)) rkBad(8);
         GP0 = (256u << 16) | 512u;
     }
-    for (int i = 0; i < 1000000 && !(GPUSTAT & 0x04000000u); i++) {}
-    GP0 = 0x01000000;                                   /* the texture cache cleared */
+    rk(0x24);
+    if (cmdReady()) GP0 = 0x01000000;                   /* the texture cache cleared */
+    rk(0x25);
     MDEC1 = 0x80000000u;                                /* the MDEC reset */
+    rk(0x26);
     for (int n = 0; n < 2; n++) { TTARGET(n) = snapTTarget[n]; TMODE(n) = snapTMode[n]; }
-    SPU_KOFF_LO = 0xFFFF; SPU_KOFF_HI = 0x00FF;
-    for (uint32_t a = 0x1F801C00u; a < 0x1F801D80u; a += 2) *(volatile uint16_t *)a = 0;
-    for (uint32_t a = 0x1F801D90u; a < 0x1F801D9Cu; a += 2) *(volatile uint16_t *)a = 0;
-    spuZeroRam();
-    SPUCNT = snapSpucnt; SPU_XFER = snapXfer;
+    rk(0x30);
+    RK[7] = (uint32_t)SPUCNT | ((uint32_t)SPUSTAT << 16);   /* the SPU as found, read here: the steps before may have cleared what a wedge needed */
+    bool spuOk = spuIdle();
+    if (!spuOk) {
+        rkBad(10); rk(0x31);
+        SPUCNT = 0x8000;                                /* the transfer mode off: what spuZeroRam writes first anyway */
+        spuOk = spuIdle();
+        if (!spuOk) rkBad(11);
+    }
+    if (spuOk) {
+        rk(0x32);
+        SPU_KOFF_LO = 0xFFFF; SPU_KOFF_HI = 0x00FF;
+        for (uint32_t a = 0x1F801C00u; a < 0x1F801D80u; a += 2) *(volatile uint16_t *)a = 0;
+        for (uint32_t a = 0x1F801D90u; a < 0x1F801D9Cu; a += 2) *(volatile uint16_t *)a = 0;
+        spuZeroRam();
+        rk(0x50);
+        SPUCNT = snapSpucnt; SPU_XFER = snapXfer;
+    }
+    rk(0x51);
     I_MASK = snapMask;
     I_STAT = 0;
+    rkFlags |= 0x80000000u; RK[1] = rkFlags;
+    rk(0xFF);
 }
 
 #define LOG_SIZE (256 * 1024)
@@ -239,6 +328,7 @@ uint32_t runner_read16(volatile uint16_t *t2, uint32_t target, volatile uint16_t
 uint32_t runner_read32(volatile uint16_t *t2, uint32_t target, volatile uint32_t *reg);
 }
 
+#define RUNNER_PAD "0"   /* the cart programs' own layout knobs (tools/cartstart_gen.js PAD / PAD2; cart_draws_pad()), not the runner's */   /* 388h, the layout pad's size in bytes (its comment at the asm's end: the I-cache layout and the test's start both chose it) */
 /* setjmp / longjmp: s0-s8, sp, gp, ra. */
 __asm__(
     ".set push\n.set noreorder\n"
@@ -296,6 +386,34 @@ __asm__(
     /* the entry: our own stack first, then C */
     ".global _start\n_start:\n"
     "  la $sp, runStack + 16384 - 16\n  la $gp, _gp\n  j runner_main\n  nop\n"
+    /* THE LAYOUT PAD (2026-11-19): RUNNER_PAD bytes of zeros between the assembly and the C++ functions (never run), which moves every C++ function against the
+     * nop slide. The restore's guards (above) added code ahead of run(), and tools/cartstartbuild.js --elf=runner read COLLIDES: run()'s landing and the slide
+     * shared 20 I-cache lines (the rule is in that tool's header: a slide cold at the landing runs late, and a missed landing sits a line grid off the tick).
+     * experiments/runnerguard/padsearch.js: 79 pads below 1000h clear every loop, margin up to 42 lines from the slide.
+     * THE PAD ALSO SETS WHERE THE TEST STARTS, and that is what chose its value. The test's first instruction comes after the Timer 2 alignment's exit (the count
+     * the vernier's landing fixed) by a path of loads from the stack and the statics - RAM reads whose timing follows their addresses, which the pad moves with the
+     * code - so two builds of this runner start the test a few cycles apart against the video, the DRAM refresh and the SPU even at the same landing. Measured on the
+     * virtual console (experiments/runnerguard/tailmeas.js: every Timer write and Timer 2 read of a locked run of hwtests/runner-entry, whose first act is a write to
+     * Timer 0's target): the exit to TTARGET(0)'s write, to the T2_MODE = 0 write, to the program's first write took 29 / 113 / 2043 cycles in 7d82f40a (the pair
+     * flashed 2026-11-19); the new code at pad 896 + 16k: 31 / 115 / 2040; + 4: 33 / 114 / 2033; + 8: 29 / 113 / 2043; + 12: 27 / 113 / 2035 (period 16 bytes, 12
+     * pads measured, 896-944). 904 (= 8 mod 16) reproduces 7d82f40a's start to the cycle: the test begins the same number of cycles after the alignment's exit,
+     * so every console and every virtual-console run under this runner starts where the runs under the one before did. A change to the runner's code that moves this
+     * (anything before run() in the file, or its own tail) is measured the same way, and the pad moved by 4 / 8 / 12 until it is again 29 / 113 / 2043.
+     * KNOWN-OPEN - THIS EQUALISES THE START, NOT THE LOGS. At one pinned landing (refresh phase 184, SPU phase 0, phi -91.6432; hwrunner --lock=0 --spu --phi=0.5) two
+     * builds with this same start path, pad 904 and pad 920, still read 34 of load-pairs' 79 lines, 2 of counter-bracket's 16 and 5 of dma-rates' 51 differently
+     * (a cycle or two a row, load-pairs' k rows by up to 0.1 cycle), and 7d82f40a against 904 reads 55 / 3 / 7 - the same order. Not the I-cache (the emulator's,
+     * invalidated at the test's first instruction - 941 valid words dropped - changed no differing line) and not the GPU's half-tick parity (runs of one build at one
+     * parity are alike, and the builds still differ within each parity: experiments/runnerguard/icachetest.js). WHAT IT IS: the runner's own code runs DURING the test -
+     * runner_putchar, once for every character the program prints, writing the log and reading Timer 2 - and its cost per character differs by a few cycles from build to
+     * build (tailmeas.js, the gaps between successive characters' Timer 2 reads: the first characters 851 753 707 707 707 ... in 7d82f40a, 860 743 710 707 ... at pad
+     * 904, 856 740 712 707 ... at 920, 855 757 709 717 ... at 896; a layout moves the log's statics and the C++ helper against the DRAM rows and the cache), so a test
+     * that prints between its measurements resumes them a cycle or two earlier or later against the refresh and the video. The pad cannot fix that and no pad chosen
+     * for the start path can; it takes a log path whose cost does not depend on where it sits (a fixed-cost putchar, or one whose code and statics never move) - NOT
+     * DONE. Until then a log taken under a different build of this runner is a different baseline at the level of a cycle or two on every test that prints between
+     * its measurements, and a console's logs should be graded against the virtual console running the SAME runner.exe (the rule tools/hwrunner.js keeps by refusing a
+     * resident runner that is not runner.exe's). The pad is a macro so tools/cartstart_gen.js can set it in its copies (which have their own PAD knobs and are not
+     * the runner's start). */
+    ".space " RUNNER_PAD "\n"
     ".set pop\n");
 
 static inline uint32_t getSr() { uint32_t v; __asm__ volatile("mfc0 %0, $12" : "=r"(v)); return v; }
@@ -380,6 +498,7 @@ static void sioInit() {
 }
 
 static void load() {
+    rk(0x101);
     const uint32_t size = getW();
     uint32_t sum = 0;
     for (int i = 0; i < 2048; i++) { header[i] = get(); sum += header[i]; }
@@ -658,7 +777,9 @@ static void run(bool locked, bool spu) {
     while (SIO1_STAT & 2) (void)SIO1_DATA;     /* nothing old taken for a stop */
     T2_MODE = 0;                         /* the system clock, free running */
     lastT2 = T2_COUNT;
+    rk(0x102);
     restoreKernel();
+    rk(0x103);
     if (hrange & 0x80000000u) GP1 = 0x06000000u | (hrange & 0xFFFFFFu);
     if (width >= 1 && width <= 5) {
         const uint32_t st = GPUSTAT;
@@ -682,6 +803,7 @@ static void run(bool locked, bool spu) {
     for (int k = 0; k < VERN_N; k++) { vernC[k] = 0xFF; vernD[k] = 0; }
     vernLo = vernHi = 0;
     const uint32_t maxFrames = phiTarget != 0x7FFFFFFF ? 32768u : spu ? 8192u : 1024u, period = spu ? 1536 : 256;
+    rk(0x104);                           /* the start waited for, then the test (here, not at the call: nothing is added between the landing and the test's first instruction) */
     const int r = runner_setjmp(jmpBuf);
     if (r == 0) {
         if (!locked) {
@@ -749,6 +871,7 @@ static void run(bool locked, bool spu) {
     /* back from the program: interrupts off (runner_putchar did), the vectors put back */
     setSr(getSr() & ~1u);
     const uint32_t took = cycles() - runStart;
+    rk(0x105);                           /* the test back, DONE going out (after `took`: the run's length is the same as before) */
     unhook();
     sioInit();
     putS("DONE"); putW(logLen); putW(took); put((uint8_t)r);
@@ -783,6 +906,10 @@ static void mem() {
 static const char RUNNER_ID[] = "PSXRUNNER8 " __DATE__ " " __TIME__ "\n";
 
 void runner_main() {
+    /* the boot before's step word and found state kept (RKP, the restore's comment), BEFORE anything else is written: a runner uploaded after a
+     * hang is the first code to run on a console reset out of one, and the step the hang stopped at is what its RK words hold */
+    for (int i = 0; i < 9; i++) RKP[i] = RK[i];
+    RK[0] = 0x524B0000u | 0x100; RK[1] = 0; RK[2] = 0; rkFlags = 0;
     entrySr = START_SR;                  /* not what was found: the Unirom path's (0400h / 401h on a cart console); snapshot() does the same for DPCR and DICR */
     snapshot();
     setSr(entrySr & ~1u);                /* interrupts off while the runner has the CPU */
@@ -796,6 +923,7 @@ void runner_main() {
     sioInit();
     putS("PSXRUNNER8\n");
     for (;;) {
+        rk(0x100);                       /* waiting for a command */
         switch (get()) {
             case 'P': putS("PONG"); break;
             /* 'V' (v5): which runner this is. The PC reuses a runner still resident from its last run when this line is in

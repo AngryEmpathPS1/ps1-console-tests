@@ -430,6 +430,11 @@ static void runCase(const uint32_t *c, bool verbose) {
     BREAD[1] = 2;
     I_MASK = 0; I_STAT = 0;
     step(0x84);
+    /* THE LAST DRAW FINISHES BEFORE GP1(01h) (2026-11-19, GPU timing 2's over3: once each run cleared its area, a polygon still drawing
+     * here showed cut - at k = 0, no overrun at all, the 24h transposed-texture triangle stopped at row 18 and the textured quads lost
+     * their second triangle). GP1(01h) cuts the primitive in progress, so the VRAM read back could measure how far the GPU had got, not
+     * what the case drew. Bounded wait for GPUSTAT bit 26 (ready for a command word: 0 while a primitive draws), 100,000 polls as over3b. */
+    for (int i = 0; i < 100000 && !(GPUSTAT & 0x04000000u); i++) {}
     GP1 = 0x01000000u; GP1 = 0x04000000u;
     if (verbose) { verboseRun(id, 0, OUT0); verboseRun(id, 1, OUT1); }
     else if (lite) { verboseRun(id, -1, OUT0); verboseRun(id, -2, OUT1); }
