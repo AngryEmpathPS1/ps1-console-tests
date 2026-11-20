@@ -1,0 +1,18 @@
+cd-xa-switch2x-ff7 on the SCPH-5000 with FINAL FANTASY VII (JAPAN) DISC 1 (SLPS-00700, lead-out 70:25), PREDICTED before the console run
+(the Fable CD session, 2026-11-20). The emulator: next e76417b971 (v0.377.371 + its landers, frozen as scratch/_cores/xaff7-5000), the
+5000's BIOS (scph5000_v22j.bin), --ntsc --frames=12000 --quiet=6000, on --disc=ff7jp: its own program SC430916 at settles 600 / 611 /
+623, the planner at 600 (scratch/xaff7/predict.sh; its logs kept in experiments/xaff7/). The exe is the committed one, unchanged since
+2026-10-27 (the lead-out check lives in tools/consolerun.js, not here).
+
+THE DISC'S OWN SIGN: "disc check: INT1, 54:20:32 file 1 channel 1 submode 42" - Disc 1's RCKTFAIL.MOV. The 10-27 logs read submode 48
+there (Disc 3's ENDING02.MOV, console-logs/2026-10-27-SCPH-5000-ff7/README.txt); a 48 again means Disc 3 is in.
+
+SEEK rows, M cycles (three reps each), the program at the three settles / the planner:
+  00:20:05 D 510   3.43-3.47 / 3.46-3.48          (plain data on every FF7 Japan disc: the 10-27 Disc 3 runs read the same sectors)
+  00:20:05 D 345   6.19-6.21 / 4.08-4.09
+  00:20:05 D 200   6.63-6.64 / 2.36-2.57
+  54:09:52 D 805   4.63-4.67 / 4.65-4.68          (the data before RCKTFAIL.MOV - SETO.STR's sectors, plain data on Disc 1 only)
+  54:09:52 D 510   4.71-4.74 / 4.73-4.74
+  54:09:52 D 200   3.75-3.77 / 3.78-3.81
+READ CHECK: 30 of 30 sectors from 00:20:05 at double speed, first to last 6.53-6.54M (29 sector times: 6.548M).
+The PAUSE / switch rows after these are the test's own measurement; scored against these runs with the test's usual graders.
