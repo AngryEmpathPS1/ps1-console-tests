@@ -1,0 +1,25 @@
+cd-scex-locd on the SCPH-5000 (its own drive program SC430916), PREDICTED before the console run (the Fable CD session, 2026-11-19).
+The emulator: next ad3610ce5c (v0.377.371 + 24 landers, frozen as scratch/_cores/locd-ad3610), PSX_MODEL=SCPH-5000,
+PSX_CD_FIRMWARE=CDROM-firmware/SC430916.S19, the 5000's BIOS (scph5000_v22j.bin), --settle 600 / 611 / 623
+(scratch/scex/locd5000.sh, kept as experiments/scex/locd5000.sh; its logs are experiments/scex/locd5000/).
+
+THE DISC: Final Fantasy VII (Japan) DISC 3 (--disc=ff7jp3). A Japanese drive will not unlock The X-Files: in the model too every
+park's ReadN is refused under the 5000 (Pause <3> 82, the head drifts, no row means anything), the 1001's void run's signature.
+Disc 3 is the pressing the 5000 read for its whole CD day (STATUS "v0.377.333"): its turn is 0.99904 +- 0.0006 of The X-Files'
+(src/cdservo.js GEOMETRY), so the head path below compares with the 1001's on The X-Files; Test05's counts do not (where each
+disc's string sits is its own).
+
+SECOND JUMP BACK (scratch/scex/locdscore.js, kept as experiments/scex/locdscore.js; it reproduces the 1001 README's 8 / 8 / 8 / 1 / 0):
+  ReadN at       0 ms   10 ms   20 ms   30 ms   40 ms
+  this model     0 of 9  0 of 9  0 of 9  0 of 9  0 of 9   (parks 44, 60, 64 pooled, three settles)
+  SCPH-1001      8 of 9  8 of 9  8 of 9  1 of 9  0 of 9   (console-logs/2026-11-19-scexlocd-README.txt, The X-Files)
+Test04's own hold jump shows at the 4th sample in every row, as on the 1001: at park 60, 62 63 63 55 then the read from ~60
+(the 1001: 61 62 62 54 54 46 ...). Test05 here: 01 01 at 44, 00 00 at 60 and 64, in all 45 rows.
+On FF7 (Japan) Disc 1 (--disc=ff7jp, the same three settles; scratch/scex/locd5000d1.sh, DISCS=ff7jp) the same: 0 of 45, the hold
+jump at park 60 61 62 62 54 - the 1001's own - so the prediction does not hang on the disc. (The 5000 runs Disc 3: the only FF7
+disc it has ever had in, AngryEmpath 2026-11-19, console-logs/2026-10-27-SCPH-5000-ff7/README.txt.)
+
+READ IT LIKE THIS: if the 5000 takes the second jump at 0-20 ms as the 1001 does, SC430916 takes it and our drive body feeds the
+program wrong (experiments/scexfw/README.txt "THE BRACKET": the decision at the first accepted Q after the kick). If it takes
+none, the model stands and the 1001's undumped US program decides differently (as cd-hold-locl already showed it kicking two
+sectors sooner). Run it with no 50h-56h unlock earlier in the same power-on, cd-discid first.

@@ -5,7 +5,7 @@ What the drive does as the console sees it: command and acknowledge times, secto
 ## Conventions
 
 - Times are CPU cycles at 33,868,800 Hz unless a unit is given. 1 ms = 33,869 cycles. One sector lasts 451,584 cycles at single speed (1x) and 225,792 at double speed (2x); "sectors" below means that sector time.
-- Disc: The X-Files (USA) Disc 1 (pressed, one data track, ends at 57:59) for nearly every log. The SCPH-5000 (Japan) ran Final Fantasy VII (Japan) Disc 1. The SCPH-7502 (Europe) read the American disc after the unlock commands of psx-spx ("Secret Unlock Commands") were sent first.
+- Disc: The X-Files (USA) Disc 1 (pressed, one data track, ends at 57:59) for nearly every log. The SCPH-5000 (Japan) ran Final Fantasy VII (Japan) Disc 3 (pressed, one data track, ends at 65:09) for every log. The SCPH-7502 (Europe) read the American disc after the unlock commands of psx-spx ("Secret Unlock Commands") were sent first.
 - Consoles: SCPH-1001, 5000, 5501 (two units), 7001, 7501, 7502 (PAL), 9001 (one main unit; a second unit in a few runs). The first SCPH-5501's drive appears worn: its seek, spin-down and speed-change times show outliers the second unit does not. Units of one model are listed apart only where they differ.
 - Evidence lines list runs as `model ×count`. A run is one complete execution of the test. Most tests ran 2 to 13 times per console. Nearly all runs were started through the resident `hwtests/runner`, which gives every test the same start; the five sessions of the first two days loaded each test on its own without it. Only one finding (the N5 row, finding 20) depends on that.
 - Interrupt names are psx-spx's: INT1 sector, INT2 second response, INT3 first response, INT5 error.
