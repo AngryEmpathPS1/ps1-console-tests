@@ -69,6 +69,23 @@ const mine = fs.readdirSync(path.join(REPO, 'hwtests'), { withFileTypes: true })
   .filter((n) => !only.length || only.includes(n));
 if (!mine.length) { console.error('no tests to build' + (only.length ? ' matching ' + only.join(', ') : '')); process.exit(2); }
 for (const n of mine) copyDir(path.join(REPO, 'hwtests', n), path.join(ROOT, 'hw', n));
+/* 2b. the sibling folders they include (`#include "../<dir>/..."`: cd-scex-locd builds on cd-scex's main.cpp, the one-disc tests on
+ *     cd-discid/discset.h, 2026-11-19), copied though not built - building one test alone found only what an earlier full build left
+ *     in the root. Followed through the copied files' own includes. */
+{
+  const seen = new Set(mine), todo = [...mine];
+  while (todo.length) {
+    const dir = path.join(REPO, 'hwtests', todo.pop());
+    for (const f of fs.readdirSync(dir).filter((x) => /\.(c|cpp|h|hpp)$/i.test(x))) {
+      for (const m of fs.readFileSync(path.join(dir, f), 'utf8').matchAll(/#include\s+"\.\.\/([^/"]+)\//g)) {
+        const d = m[1];
+        if (seen.has(d) || !fs.existsSync(path.join(REPO, 'hwtests', d))) continue;
+        seen.add(d); todo.push(d);
+        copyDir(path.join(REPO, 'hwtests', d), path.join(ROOT, 'hw', d));
+      }
+    }
+  }
+}
 
 /* 3. libcommon first - a test that links before it exists fails with
  *    "cannot find -lcommon", which is what the first attempt at this did. */
