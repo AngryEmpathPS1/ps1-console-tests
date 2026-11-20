@@ -212,3 +212,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-17-bv9](2026-11-17-bv9/) | 4 | 0 |
 | [2026-11-17-trilong](2026-11-17-trilong/) | 6 | 0 |
 | [2026-11-17-triscan](2026-11-17-triscan/) | 4 | 0 |
+| [2026-11-19-rdqgrid](2026-11-19-rdqgrid/) | 3 | 0 |
+| [2026-11-19-rdqgrid2](2026-11-19-rdqgrid2/) | 3 | 0 |

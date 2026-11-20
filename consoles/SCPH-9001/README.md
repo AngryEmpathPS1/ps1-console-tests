@@ -86,6 +86,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-19-pause-doom-r2](2026-11-19-pause-doom-r2/) | 4 | 0 |
 | [2026-11-19-pause-doom-r3](2026-11-19-pause-doom-r3/) | 4 | 0 |
 | [2026-11-19-pause-doom-r4](2026-11-19-pause-doom-r4/) | 4 | 0 |
+| [2026-11-19-rdqgrid](2026-11-19-rdqgrid/) | 3 | 0 |
+| [2026-11-19-rdqgrid2](2026-11-19-rdqgrid2/) | 3 | 0 |
 | [2026-11-19-scexmode-r1](2026-11-19-scexmode-r1/) | 3 | 0 |
 | [2026-11-19-scexmode-r2](2026-11-19-scexmode-r2/) | 3 | 0 |
 | [2026-11-19-scexmode-r3](2026-11-19-scexmode-r3/) | 3 | 0 |
