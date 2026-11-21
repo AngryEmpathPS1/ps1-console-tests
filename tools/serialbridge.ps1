@@ -54,15 +54,43 @@ public static class PsxSerialBridge {
   static string healthDir = null; static int healthPort = 0;
 
   static string Secs(double s) { return s < 0 ? "-1" : s.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture); }
+  /* FEWER WRITES (2026-11-21, main: G: sat at 100% busy at ~1 MB/s, each of the 8 bridges doing ~30-37 KB/s of small writes - a
+   * file opened, appended and closed several times a second, and every JSON written twice, .tmp then File.Copy). Now: the link
+   * log's lines are kept in memory and appended in one write every LOG_FLUSH_S (a HealthEvent, and the window's exit, flush at
+   * once); a JSON is written only when what it says changed - its "seen" stamp alone at most every SEEN_S, inside the 20 s after
+   * which tools/consolequeue.js calls a bridge stale - and moved into place with File.Replace (no second copy of the bytes). */
+  const int LOG_FLUSH_S = 10, SEEN_S = 10;
+  static System.Text.StringBuilder linkBuf = new System.Text.StringBuilder(); static string linkBufFile = null; static DateTime linkFlushed = DateTime.UtcNow;
+  static readonly object linkGate = new object();
+  static void FlushLink() {
+    lock (linkGate) {
+      if (linkBuf.Length > 0 && linkBufFile != null) { try { File.AppendAllText(linkBufFile, linkBuf.ToString()); linkBuf.Clear(); } catch { } }
+      linkFlushed = DateTime.UtcNow;
+    }
+  }
+  static void LinkLine(string file, string line, bool now) {
+    lock (linkGate) {
+      if (linkBufFile != null && linkBufFile != file) FlushLink();   // a new day's file: yesterday's lines go to yesterday's
+      linkBufFile = file; linkBuf.Append(line);
+    }
+    if (now || (DateTime.UtcNow - linkFlushed).TotalSeconds >= LOG_FLUSH_S) FlushLink();
+  }
+  static void WriteJson(string file, string text) {
+    try {
+      File.WriteAllText(file + ".tmp", text);
+      if (File.Exists(file)) { try { File.Replace(file + ".tmp", file, null); return; } catch { } File.Copy(file + ".tmp", file, true); }
+      else File.Move(file + ".tmp", file);
+    } catch { }
+  }
   static void HealthEvent(string what) {
     if (healthDir == null) return;
     DateTime now = DateTime.UtcNow;
-    try { File.AppendAllText(Path.Combine(healthDir, healthPort + "-link-" + now.ToString("yyyy-MM-dd") + ".log"), now.ToString("yyyy-MM-ddTHH:mm:ssZ") + " " + what + "\n"); } catch { }
+    LinkLine(Path.Combine(healthDir, healthPort + "-link-" + now.ToString("yyyy-MM-dd") + ".log"), now.ToString("yyyy-MM-ddTHH:mm:ssZ") + " " + what + "\n", true);
   }
   static void WatchHealth(int port, string dir, Func<int> baud) {
     try { Directory.CreateDirectory(dir); } catch { return; }
     string json = Path.Combine(dir, port + "-link.json"), start = DateTime.UtcNow.ToString("o");
-    long pin = 0, pout = 0, pfails = 0; bool pconn = false; int pbaud = -1;
+    long pin = 0, pout = 0, pfails = 0; bool pconn = false; int pbaud = -1; string pkey = null; DateTime jwrote = DateTime.MinValue;
     while (true) {
       Thread.Sleep(1000);
       DateTime now = DateTime.UtcNow;
@@ -76,12 +104,14 @@ public static class PsxSerialBridge {
         string line = now.ToString("yyyy-MM-ddTHH:mm:ssZ") + " in " + (ti - pin) + " out " + (to - pout) + " total " + ti + "/" + to
           + " since_in " + Secs(sinceIn) + " since_out " + Secs(sinceOut) + " client " + (conn ? 1 : 0) + " baud " + b
           + (tf != pfails ? " WRITE-FAILED " + (tf - pfails) : "") + (quiet ? " QUIET" : "") + "\n";
-        try { File.AppendAllText(Path.Combine(dir, port + "-link-" + now.ToString("yyyy-MM-dd") + ".log"), line); } catch { }
-      }
+        LinkLine(Path.Combine(dir, port + "-link-" + now.ToString("yyyy-MM-dd") + ".log"), line, false);
+      } else FlushLink();   // nothing this second: what is kept goes out now
       string j = "{\"port\": " + port + ", \"in\": " + ti + ", \"out\": " + to + ", \"sinceIn\": " + Secs(sinceIn) + ", \"sinceOut\": " + Secs(sinceOut)
         + ", \"client\": " + (conn ? 1 : 0) + ", \"quiet\": " + (quiet ? 1 : 0) + ", \"baud\": " + b + ", \"writeFails\": " + tf
         + ", \"bridgeStart\": \"" + start + "\", \"seen\": \"" + now.ToString("o") + "\"}\n";
-      try { File.WriteAllText(json + ".tmp", j); File.Copy(json + ".tmp", json, true); } catch { }
+      // written when the client, the stall flag, the rate or the failures change, and while bytes flow at most every SEEN_S
+      string key = (conn ? 1 : 0) + " " + (quiet ? 1 : 0) + " " + b + " " + tf + " " + (ti != pin || to != pout ? 1 : 0);
+      if (key != pkey || (now - jwrote).TotalSeconds >= SEEN_S) { WriteJson(json, j); pkey = key; jwrote = now; }
       pin = ti; pout = to; pconn = conn; pbaud = b; pfails = tf;
     }
   }
@@ -90,18 +120,22 @@ public static class PsxSerialBridge {
     try { Directory.CreateDirectory(dir); } catch { return; }
     string file = Path.Combine(dir, port + ".json"), log = Path.Combine(dir, port + ".log");
     string start = DateTime.UtcNow.ToString("o"), changed = start;
-    int last = -1, changes = 0; DateTime wrote = DateTime.MinValue;
+    int last = -1, changes = 0, wroteSt = -2; DateTime wrote = DateTime.MinValue;
+    var pending = new System.Text.StringBuilder();   // FEWER WRITES (header at LOG_FLUSH_S): every change kept, written with the JSON
     while (true) {
       int st = -1;
       try { st = (sp.CDHolding ? 1 : 0) | (sp.DsrHolding ? 2 : 0); } catch { }
-      if (st >= 0 && (st != last || (DateTime.UtcNow - wrote).TotalSeconds >= 5)) {
-        string now = DateTime.UtcNow.ToString("o");
-        if (st != last) {
-          if (last >= 0) { changes++; changed = now; try { File.AppendAllText(log, now + " rts " + ((last & 1) != 0 ? 1 : 0) + "->" + ((st & 1) != 0 ? 1 : 0) + " dtr " + ((last & 2) != 0 ? 1 : 0) + "->" + ((st & 2) != 0 ? 1 : 0) + "\n"); } catch { } }
-          last = st;
-        }
-        string json = "{\"port\": " + port + ", \"rts\": " + ((st & 1) != 0 ? 1 : 0) + ", \"dtr\": " + ((st & 2) != 0 ? 1 : 0) + ", \"changed\": \"" + changed + "\", \"changes\": " + changes + ", \"bridgeStart\": \"" + start + "\", \"seen\": \"" + now + "\"}\n";
-        try { File.WriteAllText(file + ".tmp", json); File.Copy(file + ".tmp", file, true); wrote = DateTime.UtcNow; } catch { }
+      if (st >= 0 && st != last) {   // read every 200 ms as before: each change counted and logged
+        string at = DateTime.UtcNow.ToString("o");
+        if (last >= 0) { changes++; changed = at; pending.Append(at + " rts " + ((last & 1) != 0 ? 1 : 0) + "->" + ((st & 1) != 0 ? 1 : 0) + " dtr " + ((last & 2) != 0 ? 1 : 0) + "->" + ((st & 2) != 0 ? 1 : 0) + "\n"); }
+        last = st;
+      }
+      double since = (DateTime.UtcNow - wrote).TotalSeconds;
+      // the JSON (and the kept changes): on a change at most once a second (a flapping line is one write a second), else every SEEN_S
+      if (st >= 0 && ((st != wroteSt && since >= 1) || (pending.Length > 0 && since >= 1) || since >= SEEN_S)) {
+        if (pending.Length > 0) { try { File.AppendAllText(log, pending.ToString()); pending.Clear(); } catch { } }
+        string json = "{\"port\": " + port + ", \"rts\": " + ((st & 1) != 0 ? 1 : 0) + ", \"dtr\": " + ((st & 2) != 0 ? 1 : 0) + ", \"changed\": \"" + changed + "\", \"changes\": " + changes + ", \"bridgeStart\": \"" + start + "\", \"seen\": \"" + DateTime.UtcNow.ToString("o") + "\"}\n";
+        WriteJson(file, json); wrote = DateTime.UtcNow; wroteSt = st;
       }
       Thread.Sleep(200);
     }
