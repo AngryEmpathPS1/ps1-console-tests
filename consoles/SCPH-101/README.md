@@ -216,3 +216,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-19-rdqgrid2](2026-11-19-rdqgrid2/) | 3 | 0 |
 | [2026-11-20-flagsweep](2026-11-20-flagsweep/) | 3 | 0 |
 | [2026-11-23-rerun1402](2026-11-23-rerun1402/) | 3 | 0 |
+| [2026-11-23-trilag](2026-11-23-trilag/) | 3 | 0 |

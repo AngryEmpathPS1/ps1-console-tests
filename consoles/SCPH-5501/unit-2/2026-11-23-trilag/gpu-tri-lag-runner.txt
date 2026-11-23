@@ -1,0 +1,14 @@
+
+gpu/gpu-tri-lag
+Three flat triangles, their four words stored back to back after each lead-in (jj = gpu-tri-height's, alu / st6 =
+gpu-shape-time6's) or a load apart (a): bit 26's and bit 28's first D after the last word, twice each. No assertions.
+
+  lead-in              : jj         | j          | n          | alu        | io         | a          | st6        |
+  ft 32x4 (40,40)      :   85   85  |   85   85  |   85   85  |   85   85  |   85   85  |   80   80  |   85   85  |
+    bit 28             :   31   31  |   31   31  |   31   31  |   31   31  |   31   31  |   26   26  |   31   31  |
+  ft 32x0 (40,40)      :   29   29  |   29   29  |   29   29  |   29   29  |   29   29  |   24   24  |   29   29  |
+    bit 28             :   29   29  |   29   29  |   29   29  |   29   29  |   29   29  |   24   24  |   29   29  |
+  flat TL 2 (192,128)  :   42   42  |   42   42  |   42   42  |   42   42  |   42   42  |   37   37  |   42   42  |
+    bit 28             :   26   26  |   26   26  |   26   26  |   26   26  |   26   26  |   21   21  |   26   26  |
+
+gpu/gpu-tri-lag: Done.

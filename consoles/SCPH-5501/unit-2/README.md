@@ -439,3 +439,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-19-replay-doom3600fast-r1](2026-11-19-replay-doom3600fast-r1/) | 4 | 0 |
 | [2026-11-19-replay-doom3600fast-r2](2026-11-19-replay-doom3600fast-r2/) | 4 | 0 |
 | [2026-11-23-rerun1402](2026-11-23-rerun1402/) | 3 | 0 |
+| [2026-11-23-trilag](2026-11-23-trilag/) | 3 | 0 |
