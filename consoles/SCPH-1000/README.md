@@ -31,3 +31,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-15-gpuversion-r7](2026-11-15-gpuversion-r7/) | 1 | 0 |
 | [2026-11-15-gpuversion-r8](2026-11-15-gpuversion-r8/) | 1 | 0 |
 | [2026-11-15-gpuversion-r9](2026-11-15-gpuversion-r9/) | 1 | 0 |
+| [2026-11-23-hc05clock-r1](2026-11-23-hc05clock-r1/) | 4 | 0 |
+| [2026-11-23-hc05clock-r2](2026-11-23-hc05clock-r2/) | 4 | 0 |
+| [2026-11-23-hc05clock-r3](2026-11-23-hc05clock-r3/) | 4 | 0 |
