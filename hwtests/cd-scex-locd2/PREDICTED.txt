@@ -1,0 +1,25 @@
+cd-scex-locd2 PREDICTED before any console run (the Fable CD session, 2026-11-23), for AngryEmpathPS1/ps1-console-tests#3 (Rix:
+is land_inflight's 1.25 sectors read off cd-scex-locp or picked to put the switch between 20 and 30 ms?).
+
+THE CORE: next chain-addff7da20 (v0.377.372 + 15 landers, land_inflight's INFLIGHT_ANNOUNCE = 1.25 among them), the drive program
+SC430916 (CDROM-firmware/SC430916.S19). SCPH-5000: its BIOS scph5000_v22j.bin, FF7 (Japan) Disc 3 (--disc=ff7jp3). SCPH-1001: its
+own BIOS, SC430916 standing in for its program, The X-Files (--disc=xfiles). Settles 600 and 611. scratch/scex/locd2pred.sh (kept as
+experiments/scex/locd2pred.sh); the logs are experiments/scex/locd2/; scored by experiments/scex/locd2score.js.
+
+SECOND JUMP BACK (rows of 2, both settles), ReadN at ms after Test04's answer:
+                    20   22   24   26   27   28   29   30
+  5000 park 44      2    2    2    2    2    2    1    0
+  5000 park 60      2    2    2    2    2    2    0    0
+  5000 park 64      2    2    2    2    2    2    0    0
+  1001 park 44      2    2    2    2    2    1    1    0
+  1001 park 60      2    2    2    2    2    2    0    0
+  1001 park 64      2    2    2    2    2    2    1    0
+The model's switch: 28-30 ms. cd-scex-locd's consoles (10 ms steps): 5000 9/9/9/0/0, 1001 8/8/8/1/0 at 0/10/20/30/40 ms.
+
+K, the knob (scratch/_cores/inflight with PSX_CB_INFLIGHT, an older stack 6b4fa9e667, one settle, rows of 1): K 1.35 the same switch
+(28 / 29 on the 1001, 28 on the 5000); K 1.2 too, but with single rows at 22-27 ms taking no jump (the window's edge). The probe
+(stale2.js) moved the switch under 1 ms over 1.2-1.35, ~2 ms at 1.4, and K 1.1 took no second jump at all. So a console switch well
+before 28 ms or well after 30 says the model is wrong, not only K; one inside 28-30 says the model, and K, are right.
+
+Test05's counts, as cd-scex-locd's: park 44 01 01 (the 5000) / 02 02, 01 01 without the second jump (the 1001); park 60 01 01 with
+the second jump, 00 00 without (29-30 ms); park 64 00 00 throughout (the open string-edge question, CD_SCEX_EDGE, not the jump).

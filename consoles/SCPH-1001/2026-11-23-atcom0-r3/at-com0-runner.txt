@@ -1,0 +1,13 @@
+
+cpu/at-com0
+SPU and CD status reads, single and in pairs, at the COM_DELAY values games write; cached, 64 turns, fastest of 8; Timer 2 cycles.
+There are no assertions - compare against your emulator.
+
+COM_DELAY      SP1   SP2   CD1   CD2    SC
+00031125   1413  2694   773  1286  1926
+00001325   1413  2694   773  1286  1926
+00001323   1413  2566   773  1286  1926
+0000132C   1791  3583   773  1286  1926
+00001320   1413  2566   773  1286  1926
+0000132F   1980  3964   773  1286  1989
+Done.

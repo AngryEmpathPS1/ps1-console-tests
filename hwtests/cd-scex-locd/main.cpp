@@ -95,6 +95,7 @@ static void row(int k, uint8_t f) {
     printEvents();
 }
 
+#ifndef LOCD_NO_MAIN   /* cd-scex-locd2 includes this file for its row helpers */
 int main() {
     printf("\ncdrom/cd-scex-locd\n");
     EnterCriticalSection();
@@ -115,3 +116,4 @@ int main() {
     printf("\nDone.\n");
     for (;;) {}   /* park after Done. (console day: a program that returns leaves Unirom deaf) */
 }
+#endif

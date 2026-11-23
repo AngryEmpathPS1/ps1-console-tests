@@ -182,4 +182,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-19-rdqgrid2](2026-11-19-rdqgrid2/) | 3 | 0 |
 | [2026-11-23-rerun1402](2026-11-23-rerun1402/) | 3 | 0 |
 | [2026-11-23-spukonq](2026-11-23-spukonq/) | 4 | 0 |
-| [2026-11-23-spuregs-probe](2026-11-23-spuregs-probe/) | 4 | 0 |
+| [2026-11-23-spuregs-probe](2026-11-23-spuregs-probe/) | 5 | 0 |
