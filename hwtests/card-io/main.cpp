@@ -170,7 +170,7 @@ int main() {
         Stats s; readCard((uint8_t *)DUMP, s);
         printf("before: good=%u bad=%u\n", s.good, s.bad);
         showSha("before-sha1", (const uint8_t *)DUMP, 0x20000);
-        uint32_t differ = 0, written = 0, retried = 0, wbad = 0;
+        uint32_t differ = 0, written = 0, retried = 0, wbad = 0, nrc = 0, rcs[8], ends[8], frs[8];
         if (s.bad) status = 3;                                         /* a card that will not read is not written */
         else {
             for (uint32_t f = 0; f < 1024; f++) {
@@ -179,11 +179,20 @@ int main() {
                 if (!d) continue;
                 differ++;
                 int w = 1;
-                for (int t = 0; t < 3 && w; t++) { w = transact('W', f, (uint8_t *)a); if (w && t < 2) retried++; }
+                for (int t = 0; t < 3 && w; t++) {
+                    w = transact('W', f, (uint8_t *)a);
+                    if (w && t < 2) { retried++; if (nrc < 8) { rcs[nrc] = w; ends[nrc] = gEnd; frs[nrc++] = f; } }
+                }
                 if (w) { wbad++; status = 5; printf("write failed at frame %u: rc=%d end=%02x\n", f, w, gEnd); break; }
                 written++;
+                /* THE CARD'S OWN WRITE TIME (2026-11-21, the fuzzer's FreePSXBoot writes on the consoles: the 9001 retried 980 of 981 frames, the 7001 999 of 1000, a 5-frame write 3 of 5, a 1-frame
+                 * write none: the FIRST frame of a run goes through and the next ones fail their first try, so a real card is probably still busy committing the frame just written when the next
+                 * command arrives - the emulator's cards are never busy, which is why every rehearsal was clean). The pause before the next command is the orders' `flags` in microseconds (the PC's
+                 * --wdelay=); the retry reasons below say what the failed tries saw. */
+                if (orders.flags) wait(orders.flags * 34);
             }
-            printf("write: frames differing=%u written=%u retried=%u failed=%u\n", differ, written, retried, wbad);
+            printf("write: frames differing=%u written=%u retried=%u failed=%u wdelay=%uus\n", differ, written, retried, wbad, orders.flags);
+            for (uint32_t i = 0; i < nrc; i++) printf("  retry %u: frame %u rc=%u end=%02x\n", i, frs[i], rcs[i], ends[i]);
             Stats v; readCard((uint8_t *)VER, v);
             uint32_t diff = 0, first = 0xFFFFFFFFu;
             for (uint32_t i = 0; i < 0x20000; i++) if (((const uint8_t *)VER)[i] != ((const uint8_t *)IMG)[i]) { if (first == 0xFFFFFFFFu) first = i; diff++; }

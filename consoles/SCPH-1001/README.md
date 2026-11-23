@@ -211,3 +211,13 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-19-scexmode-r4](2026-11-19-scexmode-r4/) | 3 | 0 |
 | [2026-11-19-scexmode-r5](2026-11-19-scexmode-r5/) | 3 | 0 |
 | [2026-11-19-scexmode-r6](2026-11-19-scexmode-r6/) | 3 | 0 |
+| [2026-11-23-atmemctrl4-r1](2026-11-23-atmemctrl4-r1/) | 3 | 0 |
+| [2026-11-23-atmemctrl4-r2](2026-11-23-atmemctrl4-r2/) | 3 | 0 |
+| [2026-11-23-atmemctrl4-r3](2026-11-23-atmemctrl4-r3/) | 3 | 0 |
+| [2026-11-23-atmemctrl5-r1](2026-11-23-atmemctrl5-r1/) | 3 | 0 |
+| [2026-11-23-atmemctrl5-r2](2026-11-23-atmemctrl5-r2/) | 3 | 0 |
+| [2026-11-23-atmemctrl5-r3](2026-11-23-atmemctrl5-r3/) | 3 | 0 |
+| [2026-11-23-rerun1402](2026-11-23-rerun1402/) | 3 | 0 |
+| [2026-11-23-scexlocp-xf-r1](2026-11-23-scexlocp-xf-r1/) | 4 | 0 |
+| [2026-11-23-scexlocp-xf-r2](2026-11-23-scexlocp-xf-r2/) | 4 | 0 |
+| [2026-11-23-scexlocp-xf-r3](2026-11-23-scexlocp-xf-r3/) | 4 | 0 |

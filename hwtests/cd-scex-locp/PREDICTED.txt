@@ -1,0 +1,18 @@
+cd-scex-locp, PREDICTED before any console run (the Fable CD session, 2026-11-23). The emulator: next 6b4fa9e667 (v0.377.372 + 15,
+frozen as scratch/_cores/chain-6b4fa9e667), SC430916 as the drive program, --settle=600 --frames=4000:
+the SCPH-5000 (its BIOS) on FF7 (Japan) Disc 3 and Disc 1, the SCPH-1001 (SC430916 standing in) on The X-Files. Logs kept in
+experiments/scex/locp/. Times in tenths of a ms from Test04's INT3; a peek round trip is ~1.5 ms, so each address every ~6 ms.
+
+Disc 3, every D0 row (3 of 3):  | 25:6B=01 36:1DF=59 58:49=00 68:55=62 94:1DF=60 166:55=63 343:55=55 358:6B=0D 462:55=56 ...
+                                  783:1DF=56 877:55=59 913:1DF=57
+Disc 3, every D3 row (3 of 3):  13:6B=01 24:1DF=59 38:49=01 57:55=62 81:1DF=60 136:55=63 318:55=55 318:| 344:6B=0D 370:49=00 ...
+                                  774:1DF=56 868:55=59
+(Disc 1 the same; the 1001 on The X-Files one frame lower in Q: 61 62 54 55 ...)
+
+WHAT THE MODEL SAYS: after the hold's kick (Q 63 -> 55) the last header the DECINT handler saw ($01DF) stays 60 until the new
+track's 56 at ~78 ms - sector 61 completes inside the 2.9 ms after the jump when the handler is shut ($41.2), and nothing follows
+it, so no header past the target is ever compared. $6B = 0Dh at ~35 ms in both rows; $49 clears at once in D0 (the ReadN), at
+~37 ms in D3. Q never drops below 55: no second jump.
+WHAT WOULD SAY THE CONSOLE TAKES ANOTHER PATH: in D0, $01DF stepping 60 -> 61 -> 62 (or 63) after the kick and before Q drops to
+~47; or $6B / $49 at other times than these; in D3 the same with no jump. Whichever byte first differs is where the drive body
+(src/cdservo.js) feeds the program wrong.

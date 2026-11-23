@@ -1,0 +1,39 @@
+
+cdrom/cd-audiodisc
+What the drive answers about a music CD: GetID, ReadN, GetlocL, SeekL. No assertions.
+
+  Init                               INT3 02 | INT2 02 after 27360974 cycles
+  Getstat 02 after 0 polls
+  GetTN                              INT3 02 01 01
+  GetTD 0 (the lead-out)             INT3 02 57 59
+  GetID                              INT3 02 | INT2 02 00 20 00 00 00 00 00 after 42510 cycles
+  GetID                              INT3 02 | INT2 02 00 20 00 00 00 00 00 after 42371 cycles
+  GetID                              INT3 02 | INT2 02 00 20 00 00 00 00 00 after 42366 cycles
+  GetID                              INT3 02 | INT2 02 00 20 00 00 00 00 00 after 42362 cycles
+  Setmode 00h                        INT3 02
+  Setloc 10:00:00                    INT3 02
+  ReadN, CD-DA off                   INT3 02 | INT1 22 after 24895776 cycles
+  Setmode 01h (CD-DA)                INT3 02
+  Setloc 10:00:00                    INT3 02
+  ReadN, CD-DA on                    INT3 02 | INT1 22 after 5053902 cycles
+  Setloc 10:00:00                    INT3 02
+  Play                               INT3 02
+  GetlocL, playing                   INT5 83 80
+  GetlocP, playing                   INT3 01 01 09 58 65 10 00 65
+  Setmode 00h                        INT3 02
+  Setloc 20:00:00                    INT3 02
+  SeekL                              INT3 02 | INT2 02 after 13238183 cycles
+  Getstat after SeekL                INT3 02
+  Setloc 20:00:00                    INT3 02
+  SeekP                              INT3 02 | INT2 02 after 5428943 cycles
+  Getstat after SeekP                INT3 02
+  Setmode 00h                        INT3 02
+  Setloc 20:00:00                    INT3 02
+  SeekL                              INT3 02 | INT2 02 after 2419690 cycles
+  Getstat after SeekL                INT3 02
+  Setloc 20:00:00                    INT3 02
+  SeekP                              INT3 02 | INT2 02 after 5462027 cycles
+  Getstat after SeekP                INT3 02
+  Init (left spun up)                INT3 02 | INT2 02 after 23067361 cycles
+
+cdrom/cd-audiodisc: Done.

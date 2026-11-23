@@ -1,0 +1,6 @@
+cd-scex-locp2x, PREDICTED before any console run (the Fable CD session, 2026-11-23): the SCPH-5000 (its BIOS, SC430916) on FF7 (Japan)
+Disc 3, --settle=600, three cores (logs in experiments/scex/locp2x/). It decides how experiments/land_inflight.js counts its delay:
+  next 6b4fa9e667 (no lander):       D0  | 33:6B=01 104:1DF=61 115:49=00 130:55=63 258:55=56 285:6B=0D 326:55=57 ... read on, no 2nd jump
+  + land_inflight at 1.25 SECTORS:  D0  ... 105:1DF=61 ... 165:1DF=62 225:6B=0D 267:55=56 335:55=57 ...           read on, no 2nd jump
+  + the same TIME (2.5 sectors):    D0  ... 96:1DF=60 ... 271:55=56 282:6B=0D 308:1DF=61 402:55=49 ...          a 2nd jump (Q 49 at 40 ms)
+So a second jump at double speed in the console's D0 rows (Q dropping to ~49) says the delay is a time (~16 ms), none says sectors.

@@ -1,0 +1,8 @@
+
+cdrom/cd-ident
+What disc is this: the TOC, the volume ID, SYSTEM.CNF's BOOT line.
+ident-wait: Getstat 02 after 4 polls; GetTN tries 1
+ident-init: INT3 stat 10, second INT0; GetTN INT3 02 01 01; GetTD INT3 02 70 39; sector reads tried 3
+ident-toc: stat 02 tracks 1-1 lead-out 70:39 starts 00:02
+ident-pvd: not read (sector 16, 3 tries: last flag 0 - 0 nothing in 10 s, 5 an error)
+cdrom/cd-ident: Done.

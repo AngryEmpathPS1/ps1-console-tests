@@ -110,3 +110,10 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-17-t0stream-r2](2026-11-17-t0stream-r2/) | 3 | 0 |
 | [2026-11-17-trilong](2026-11-17-trilong/) | 6 | 0 |
 | [2026-11-17-triscan](2026-11-17-triscan/) | 4 | 0 |
+| [2026-11-23-atmemctrl4-r1](2026-11-23-atmemctrl4-r1/) | 3 | 0 |
+| [2026-11-23-atmemctrl4-r2](2026-11-23-atmemctrl4-r2/) | 3 | 0 |
+| [2026-11-23-atmemctrl4-r3](2026-11-23-atmemctrl4-r3/) | 3 | 0 |
+| [2026-11-23-atmemctrl5-r1](2026-11-23-atmemctrl5-r1/) | 3 | 0 |
+| [2026-11-23-atmemctrl5-r2](2026-11-23-atmemctrl5-r2/) | 3 | 0 |
+| [2026-11-23-atmemctrl5-r3](2026-11-23-atmemctrl5-r3/) | 3 | 0 |
+| [2026-11-23-rerun1402](2026-11-23-rerun1402/) | 3 | 0 |

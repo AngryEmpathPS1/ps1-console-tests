@@ -1,0 +1,11 @@
+
+cpu/at-memctrl4
+a cold DPCR read, 64 in a row, in five shapes; each shape and its base (the read a nop) cold 8 times, FlushCache before each; Timer 2 cycles.
+There are no assertions - compare against your emulator.
+
+L2 read 594 606 594 594 597 599 606 594  base 306 310 306 306 308 306 306 307  min 594 306  max 606 310
+L3 read 708 706 706 706 706 706 706 706  base 472 472 470 472 472 470 472 472  min 706 470  max 708 472
+L6 read 919 924 920 921 920 922 924 921  base 901 902 902 902 902 902 902 902  min 919 901  max 924 902
+N3 read 959 951 966 966 966 966 966 966  base 727 726 727 728 725 727 721 726  min 951 721  max 966 728
+S3 read 1039 1038 1054 1039 1037 1048 1039 1037  base 864 859 868 864 860 868 864 864  min 1037 859  max 1054 868
+Done.

@@ -1,0 +1,22 @@
+
+cdrom/cd-lockstate
+Whether the drive was found unlocked: a music CD's ReadN as found, relocked by a lone 56h, unlocked. No assertions.
+
+  Init                               INT3 02 | INT2 02 after 633868 cycles
+  Getstat 02 after 0 polls
+  GetID                              INT3 02 | INT2 02 00 20 00 00 00 00 00 after 42454 cycles
+  (GetID does not call it an audio CD: the rows below are not the music CD's)
+  Setmode 00h                        INT3 02
+  Setloc 10:00:00                    INT3 02
+  ReadN, as found                    INT3 02 | INT1 22 after 14718345 cycles
+  56h alone (relocks)                INT5 03 40
+  Setmode 00h                        INT3 02
+  Setloc 10:00:00                    INT3 02
+  ReadN, after 56h                   INT3 02 | INT1 22 after 4981624 cycles
+  region INT3 "for U/C": of America; unlock answers INT5 40h 7 of 7
+  Setmode 00h                        INT3 02
+  Setloc 10:00:00                    INT3 02
+  ReadN, after the unlock            INT3 02 | INT1 22 after 4527461 cycles
+  Init (left spun up, unlocked)      INT3 02 | INT2 02 after 18319371 cycles
+
+cdrom/cd-lockstate: Done.

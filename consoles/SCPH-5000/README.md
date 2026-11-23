@@ -33,3 +33,9 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-20-xaff7-disc1-r4](2026-11-20-xaff7-disc1-r4/) | 3 | 0 |
 | [2026-11-20-xaff7-disc1-r5](2026-11-20-xaff7-disc1-r5/) | 3 | 0 |
 | [2026-11-20-xaff7-disc1-r6](2026-11-20-xaff7-disc1-r6/) | 3 | 0 |
+| [2026-11-23-scexlocp-ff7d3-r1](2026-11-23-scexlocp-ff7d3-r1/) | 2 | 0 |
+| [2026-11-23-scexlocp-ff7d3-r2](2026-11-23-scexlocp-ff7d3-r2/) | 2 | 0 |
+| [2026-11-23-scexlocp-ff7d3-r3](2026-11-23-scexlocp-ff7d3-r3/) | 2 | 0 |
+| [2026-11-23-scexlocp2x-ff7d3-r1](2026-11-23-scexlocp2x-ff7d3-r1/) | 4 | 0 |
+| [2026-11-23-scexlocp2x-ff7d3-r2](2026-11-23-scexlocp2x-ff7d3-r2/) | 4 | 0 |
+| [2026-11-23-scexlocp2x-ff7d3-r3](2026-11-23-scexlocp2x-ff7d3-r3/) | 4 | 0 |
