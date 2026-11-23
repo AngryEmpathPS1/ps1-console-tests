@@ -53,7 +53,8 @@ static inline int db_report(uint32_t stage, const uint32_t *words, uint32_t n) {
 static inline int db_input(uint8_t *dst, uint32_t n, uint32_t spin = 600000) {
     if (!db_present()) return 0;
     if (!db_put(0xAF) || !db_put(n & 0xFF) || !db_put((n >> 8) & 0xFF)) return 0;
-    for (uint32_t k = 0; DBIO_STB & 1; k++) if (k > 3000) return 0;
+    /* "heard" is STB low for 8 reads in a row, not once (cart-v3 2026-11-23: a one-read dip after the request's ACK write let the 1001 read byte 0 twice) */
+    { uint32_t low = 0; for (uint32_t k = 0; low < 8; k++) { if (k > 6000) return 0; if (DBIO_STB & 1) low = 0; else low++; } }
     for (uint32_t i = 0; i < n; i++) {
         uint32_t k = 0;
         while (!(DBIO_STB & 1)) if (++k > (i ? spin : spin * 8)) return 0;
