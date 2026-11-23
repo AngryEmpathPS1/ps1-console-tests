@@ -122,5 +122,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-23-atmemctrl7-r1](2026-11-23-atmemctrl7-r1/) | 3 | 0 |
 | [2026-11-23-atmemctrl7-r2](2026-11-23-atmemctrl7-r2/) | 3 | 0 |
 | [2026-11-23-atmemctrl7-r3](2026-11-23-atmemctrl7-r3/) | 3 | 0 |
+| [2026-11-23-atstoreloop-r1](2026-11-23-atstoreloop-r1/) | 3 | 0 |
+| [2026-11-23-atstoreloop-r2](2026-11-23-atstoreloop-r2/) | 3 | 0 |
+| [2026-11-23-atstoreloop-r3](2026-11-23-atstoreloop-r3/) | 3 | 0 |
 | [2026-11-23-rerun1402](2026-11-23-rerun1402/) | 3 | 0 |
 | [2026-11-23-trilag](2026-11-23-trilag/) | 3 | 0 |

@@ -223,6 +223,9 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-23-atmemctrl7-r1](2026-11-23-atmemctrl7-r1/) | 3 | 0 |
 | [2026-11-23-atmemctrl7-r2](2026-11-23-atmemctrl7-r2/) | 3 | 0 |
 | [2026-11-23-atmemctrl7-r3](2026-11-23-atmemctrl7-r3/) | 3 | 0 |
+| [2026-11-23-atstoreloop-r1](2026-11-23-atstoreloop-r1/) | 3 | 0 |
+| [2026-11-23-atstoreloop-r2](2026-11-23-atstoreloop-r2/) | 3 | 0 |
+| [2026-11-23-atstoreloop-r3](2026-11-23-atstoreloop-r3/) | 3 | 0 |
 | [2026-11-23-hc05clock-r1](2026-11-23-hc05clock-r1/) | 4 | 0 |
 | [2026-11-23-hc05clock-r2](2026-11-23-hc05clock-r2/) | 4 | 0 |
 | [2026-11-23-hc05clock-r3](2026-11-23-hc05clock-r3/) | 4 | 0 |
