@@ -233,3 +233,5 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-23-scexlocp-xf-r1](2026-11-23-scexlocp-xf-r1/) | 4 | 0 |
 | [2026-11-23-scexlocp-xf-r2](2026-11-23-scexlocp-xf-r2/) | 4 | 0 |
 | [2026-11-23-scexlocp-xf-r3](2026-11-23-scexlocp-xf-r3/) | 4 | 0 |
+| [2026-11-23-spukonq](2026-11-23-spukonq/) | 4 | 0 |
+| [2026-11-23-spuregs-probe](2026-11-23-spuregs-probe/) | 4 | 0 |

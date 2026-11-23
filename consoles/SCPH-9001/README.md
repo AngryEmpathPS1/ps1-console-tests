@@ -103,4 +103,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-19-speedseek3-doom-r6](2026-11-19-speedseek3-doom-r6/) | 4 | 0 |
 | [2026-11-20-flagsweep](2026-11-20-flagsweep/) | 3 | 0 |
 | [2026-11-23-rerun1402](2026-11-23-rerun1402/) | 3 | 0 |
+| [2026-11-23-spukonq](2026-11-23-spukonq/) | 4 | 0 |
+| [2026-11-23-spuregs-probe](2026-11-23-spuregs-probe/) | 4 | 0 |
 | [2026-11-23-trilag](2026-11-23-trilag/) | 3 | 0 |
