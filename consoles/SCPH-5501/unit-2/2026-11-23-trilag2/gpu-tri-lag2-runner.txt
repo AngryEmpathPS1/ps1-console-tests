@@ -1,0 +1,24 @@
+
+gpu/gpu-tri-lag2
+gpu-shape-time6's shapes, every word a load apart (a), back to back (b), and by shape-time6's own probe and start
+(st6): bit 26's and bit 28's first D after the last word, twice each. No assertions.
+
+                       : a (spaced)        | b (back to back)  | st6               |
+  ft 32x4 (tri-height) :     80     80      |     85     85      |     85     85      |
+    bit 28             :     24     24      |     31     31      |     31     31      |
+  flat TL 2            :     37     37      |     42     42      |     42     42      |
+    bit 28             :     19     19      |     26     26      |     26     26      |
+  flat TL 64x16        :    342    342      |    347    347      |    347    347      |
+    bit 28             :     23     23      |     30     30      |     30     30      |
+  semi TR 320x16       :   2112   2112      |   2117   2117      |   2117   2117      |
+    bit 28             :     25     25      |     32     32      |     32     32      |
+  gour TL 320x16       :   2934   2934      |   2941   2941      |   2939   2939      |
+    bit 28             :    142    141      |    175    175      |    173    173      |
+  gour TR 320x16       :   3234   3234      |   3241   3241      |   3239   3239      |
+    bit 28             :    141    142      |    175    175      |    173    173      |
+  tex TL 320x16        :   2880   2880      |   2886   2886      |   2885   2885      |
+    bit 28             :     86     88      |    120    120      |    119    119      |
+  clip TR 128x16 -64   :    529    529      |    534    534      |    534    534      |
+    bit 28             :     24     24      |     31     31      |     31     31      |
+
+gpu/gpu-tri-lag2: Done.

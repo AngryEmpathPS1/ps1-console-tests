@@ -1,0 +1,16 @@
+
+cpu/at-romloop
+a store and a load at chosen spacings, 64 turns, from the cart's flash (EXPANSION 1), uncached RAM and cached RAM; Timer 2 cycles, fastest of 8.
+There are no assertions - compare against your emulator.
+
+cart blob at BF00E400
+found EXP1 delay 0013243F, COM_DELAY 00031125; each row runs at 0013243Fh and 00031125h (the kernel's)
+fn     cart  uncRAM  cached
+N     15058    3530     584
+S0    15127    3870     584
+S1    15378    4206     911
+S2    15253    4118     974
+S3    15240    4123     916
+L0    15189    3802     729
+SL    15227    4120     913
+Done.
