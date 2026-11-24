@@ -1,0 +1,32 @@
+
+spu/spu-fillhold3
+The type-0 hold's writes: every place (A addr : total : region:count@first) and the walk (B K N what : at, changed : a+c/s). No assertions.
+
+A 02000 : total 192 : 1:64@101 2:64@101 3:64@101
+A 08000 : total 192 : 1:64@101 2:64@101 3:64@101
+A 40000 : total 192 : 1:64@101 2:64@101 3:64@101
+B 100 1 one : at 100+43, changed 2 : 101+1/0
+B 100 1 one : at 100+62, changed 2 : 1125+1/0
+B 100 2 one : at 100+62, changed 4 : 101+2/4
+B 100 3 one : at 100+62, changed 6 : 1125+3/4
+B 100 4 one : at 100+62, changed 8 : 101+4/4
+B 100 8 one : at 100+62, changed 16 : 1125+8/4
+B 101 4 one : at 101+62, changed 8 : 102+4/4
+B 102 4 one : at 102+62, changed 8 : 1127+4/4
+B 104 4 one : at 104+62, changed 8 : 105+4/4
+B 100 4 two : at 100+62, changed 16 : 1125+4/4 1341+4/4
+B 100 16 two : at 100+45, changed 64 : 613+16/4 877+16/4
+B 500 8 one : at 500+62, changed 16 : 501+8/4
+B 100 2 one : at 100+62, changed 4 : 1637+2/4
+B 506 8 one : at 506+62, changed 16 : 1019+8/4
+B 100 2 one : at 100+62, changed 4 : 101+2/4
+B 500 64 one : at 500+62, changed 128 : 1525+64/4
+B 100 2 one : at 100+62, changed 4 : 1125+2/4
+B 448 63 one : at 448+62, changed 126 : 449+63/4
+B 100 2 one : at 100+39, changed 4 : 1637+2/4
+B 448 66 one : at 448+62, changed 132 : 961+66/4
+B 100 2 one : at 100+54, changed 4 : 613+2/4
+B 20 600 one : at 20+62, changed 1024 : 1+512/4
+B 100 2 one : at 100+62, changed 4 : 1125+2/4
+
+spu/spu-fillhold3: Done.

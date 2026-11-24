@@ -1,0 +1,20 @@
+
+cpu/cpu-loop-tick19
+two on-die reads, an SPU read and three RAM stores a turn, taken apart. No assertions.
+
+  1F801014h = 200931e1
+  variant     cold        hot     uncached   (cycles an iteration)
+  FULL        34.33      34.21      88.59
+  FULL-O      34.32      34.23      88.56
+  FULL-N1     36.78      36.64      92.73
+  NO-ST       29.17      29.09      74.11
+  ST1         33.22      33.11      81.12
+  ST2         33.23      33.46      85.53
+  SPU-ST3     27.34      27.19      85.58
+  T-SPU       32.19      32.09      85.55
+  I-SPU       30.33      30.19      85.58
+  IO2-ST3     17.25      17.17      69.60
+  SPU-ONLY    22.19      22.08      70.09
+  ST3          9.34       9.23      67.65
+
+cpu/cpu-loop-tick19: Done.

@@ -1,0 +1,25 @@
+
+spu/spu-fifo4
+A DMA read started with halfwords waiting in the manual write's FIFO. R way W D : gap : read 1 ... | read 2 ... | landed ... No assertions.
+
+R run 0 0 : gap 538 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R run 32 0 : gap 547 : read 1 0@0+14 14=600d*18 32@14+480 | read 2 0@0+512 | landed 0 first 0000
+R run 32 0 : gap 547 : read 1 0@0+14 14=600d*18 32@14+480 | read 2 0@0+512 | landed 0 first 0000
+R run 32 100 : gap 732 : read 1 0@0+22 22=6015*10 32@22+480 | read 2 0@0+512 | landed 0 first 0000
+R run 32 200 : gap 856 : read 1 0@0+27 27=601a*5 32@27+480 | read 2 0@0+512 | landed 0 first 0000
+R run 32 400 : gap 1052 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R run 32 800 : gap 1438 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R run 32 3000 : gap 3640 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R run 1 0 : gap 618 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R run 4 0 : gap 545 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R run 8 0 : gap 550 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R run 16 0 : gap 554 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R run 24 0 : gap 547 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R run 31 0 : gap 550 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R run 40 0 : gap 547 : read 1 0@0+14 14=600d*18 32@14+480 | read 2 0@0+512 | landed 0 first 0000
+R stop 1 0 : gap 282 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R stop 16 0 : gap 886 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+R stop 32 0 : gap 680 : read 1 0@0+20 20=6013*12 32@20+480 | read 2 0@0+512 | landed 0 first 0000
+R stop 32 800 : gap 1594 : read 1 0@0+512 | read 2 0@0+512 | landed 0 first 0000
+
+spu/spu-fifo4: Done.

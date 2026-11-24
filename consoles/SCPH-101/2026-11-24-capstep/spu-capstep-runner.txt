@@ -1,0 +1,42 @@
+
+spu/spu-capstep
+Does the transfer type move the capture ring's index? C V N : e1-e0, e2-e1 (samples+cycles); L V : six turns. No assertions.
+
+C 0004 40 : 512+12, 512+0
+C 0004 100 : 511+740, 512+0
+C 0000 40 : 551+740, 512+0
+C 0000 100 : 611+724, 512+0
+C 0001 40 : 551+752, 512+0
+C 0001 100 : 612+28, 512+0
+C 0002 40 : 552+28, 512+0
+C 0002 100 : 611+752, 512+0
+C 0003 40 : 551+724, 512+0
+C 0003 100 : 612+28, 512+0
+C 0006 40 : 532+28, 512+0
+C 0006 100 : 561+752, 512+0
+C 0008 40 : 541+724, 512+0
+C 0008 100 : 587+28, 512+0
+C 000a 40 : 547+28, 512+0
+C 000a 100 : 600+12, 512+0
+C 000c 40 : 552+28, 512+0
+C 000c 100 : 611+752, 512+0
+C 000e 40 : 551+724, 512+0
+C 000e 100 : 612+28, 512+0
+C 0010 40 : 552+28, 512+0
+C 0010 100 : 612+28, 512+0
+C 0004 40 : 512+28, 512+0
+C 0004 100 : 511+752, 512+0
+L 0004 : 511+724 512+16 512+0 512+0 512+0 512+0
+L 0000 : timeout timeout timeout timeout timeout timeout
+L 0001 : timeout timeout timeout timeout timeout timeout
+L 0002 : timeout timeout timeout timeout timeout timeout
+L 0003 : timeout timeout timeout timeout timeout timeout
+L 0006 : 510+28 511+724 512+0 512+0 512+0 512+0
+L 0008 : 507+16 511+724 512+0 512+0 512+0 512+0
+L 000a : 502+752 512+0 512+0 512+0 512+0 512+0
+L 000c : timeout timeout timeout timeout timeout timeout
+L 000e : timeout timeout timeout timeout timeout timeout
+L 0010 : timeout timeout timeout timeout timeout timeout
+L 0004 : 512+0 512+0 512+0 512+0 512+0 512+0
+
+spu/spu-capstep: Done.
