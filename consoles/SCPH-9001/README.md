@@ -123,6 +123,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-24-envmove3](2026-11-24-envmove3/) | 3 | 0 |
 | [2026-11-24-fifo4](2026-11-24-fifo4/) | 3 | 0 |
 | [2026-11-24-fillhold](2026-11-24-fillhold/) | 3 | 0 |
+| [2026-11-24-irqgap](2026-11-24-irqgap/) | 3 | 0 |
+| [2026-11-24-irqgap-a](2026-11-24-irqgap-a/) | 3 | 0 |
 | [2026-11-24-looptick19](2026-11-24-looptick19/) | 3 | 0 |
 | [2026-11-24-refgap](2026-11-24-refgap/) | 3 | 0 |
 | [2026-11-24-spudmaread3](2026-11-24-spudmaread3/) | 3 | 0 |

@@ -273,6 +273,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-24-fillhold4](2026-11-24-fillhold4/) | 3 | 0 |
 | [2026-11-24-fillhold5](2026-11-24-fillhold5/) | 3 | 0 |
 | [2026-11-24-fillhold6](2026-11-24-fillhold6/) | 3 | 0 |
+| [2026-11-24-irqgap](2026-11-24-irqgap/) | 3 | 0 |
+| [2026-11-24-irqgap-a](2026-11-24-irqgap-a/) | 3 | 0 |
 | [2026-11-24-looptick19](2026-11-24-looptick19/) | 3 | 0 |
 | [2026-11-24-markcost](2026-11-24-markcost/) | 4 | 0 |
 | [2026-11-24-romloop3-r1](2026-11-24-romloop3-r1/) | 3 | 0 |
