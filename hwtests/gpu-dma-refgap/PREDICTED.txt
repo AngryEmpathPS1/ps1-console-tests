@@ -1,0 +1,26 @@
+gpu-dma-refgap - PREDICTED before any console ran it (2026-11-24, the GPU session).
+
+v0.377.376:
+  s          :          64 |          96 |         128 |         192 |         256 |         320 |         384 |         448 |
+  k   0      :    48    48 |    48    48 |    52    50 |    48    48 |    48    48 |    50    49 |    48    48 |    48    56 |
+  k   4      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+  k  32      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+  k 128      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+  k 240      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+  k 260      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+  k 300      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+
+v0.377.376 + experiments/intake/short/mk_bri.js, PSX_CB_BRI=1 (a burst skips a refresh that already ran):
+  s          :          64 |          96 |         128 |         192 |         256 |         320 |         384 |         448 |
+  k   0      :    38    38 |    38    38 |    38    38 |    38    38 |    38    48 |    38    38 |    38    38 |    38    38 |
+  k   4      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+  k  32      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+  k 128      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+  k 240      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+  k 260      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+  k 300      :     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |     0     0 |
+
+This core's nops rows read 0: its GPUSTAT read waits for the bus and finds the FIFO empty (a second mechanism, gpu-dma-burstlat's
+post / nops rows). The consoles' follow the burst's end: ~k + 5.
+PREDICTED FOR THE NEW-GPU CONSOLES: nops rows ~k + 5, and +10 in the cells whose burst pays a refresh; k 0 at 38 (burstlat).
+THE QUESTION: which (k, s) cells pay a refresh - the idle gap's rule (s) or the length's (k against 256).

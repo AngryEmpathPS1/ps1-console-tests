@@ -1,0 +1,16 @@
+gpu-dma-burstlat - PREDICTED before any console ran it (2026-11-24, the GPU session).
+
+v0.377.376 (the virtual console, the runner's locked start):
+  k          :               0 |               4 |              12 |              28 |              60 |
+  pre  bit 26 :  102  102       |  106  106       |  114  114       |  130  134       |  166  164       |
+  pre  bit 28 :   48   48       |   52   52       |   63   60       |   79   76       |  108  108       |
+  post bit 26 :  102  102       |  102  102       |  102  102       |  102  102       |  102  102       |
+  post bit 28 :   48   48       |   48   48       |   48   48       |   48   48       |    0    0       |
+  nops bit 26 :    0    0       |    0    0       |    0    0       |    0    0       |    0    0       |
+  nops bit 28 :    0    0       |    0    0       |    0    0       |    0    0       |    0    0       |
+
+PREDICTED FOR THE NEW-GPU CONSOLES, from gpu-tri-grid-dma (every DMA-fed bit 28 ~10 below this core):
+- "pre 0" / "post 0" (the grid's own case) ~10 below this core on both bits.
+THE QUESTION: does the 10 stay with the burst's START (every pre / post row 10 below, whatever k), with the TRIANGLE (pre rows
+10 below, post rows changing as the burst outlasts the set-up), or with the read's wait for the bus (the post rows past the set-up
+and the nops rows moving)? And the pace: pre k's slope against k, the words into the GPU a cycle each here.
