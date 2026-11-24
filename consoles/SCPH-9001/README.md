@@ -102,6 +102,9 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-19-speedseek3-doom-r5](2026-11-19-speedseek3-doom-r5/) | 4 | 0 |
 | [2026-11-19-speedseek3-doom-r6](2026-11-19-speedseek3-doom-r6/) | 4 | 0 |
 | [2026-11-20-flagsweep](2026-11-20-flagsweep/) | 3 | 0 |
+| [2026-11-23-pausesettle-r1](2026-11-23-pausesettle-r1/) | 4 | 0 |
+| [2026-11-23-pausesettle-r2](2026-11-23-pausesettle-r2/) | 4 | 0 |
+| [2026-11-23-pausesettle-r3](2026-11-23-pausesettle-r3/) | 4 | 0 |
 | [2026-11-23-rerun1402](2026-11-23-rerun1402/) | 3 | 0 |
 | [2026-11-23-spuenvrows](2026-11-23-spuenvrows/) | 5 | 0 |
 | [2026-11-23-spuirqarm](2026-11-23-spuirqarm/) | 4 | 0 |
@@ -115,3 +118,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-23-spuregs-probe](2026-11-23-spuregs-probe/) | 5 | 0 |
 | [2026-11-23-trilag](2026-11-23-trilag/) | 3 | 0 |
 | [2026-11-23-trilag2](2026-11-23-trilag2/) | 3 | 0 |
+| [2026-11-24-spukonhist](2026-11-24-spukonhist/) | 4 | 0 |

@@ -285,6 +285,20 @@ fz_one:
 # no memory access, so each machine spends a constant plus x, whatever the phase (the dummy pass warmed every line).
 fz_timed:
         sw    $ra, 8($sp)
+        # THE OUTSIDE CLOCK (2026-11-23, the console fuzzer, for AngryEmpath): with fz_mark set (main.cpp: a GameShark console, its
+        # Pico up, flags bit 28), a start mark (A4h cold, A6h warm) goes out the DB-25 here and an end mark (A5h / A7h) after the
+        # end read below; the Pico stamps each on its own crystal (pico-dbcap, ~13 ns). Here it is BEFORE the alignment's Timer 2
+        # read, and the RAM read of e below waits for the write to finish, so the alignment absorbs it: the timed start is where it
+        # was. The dummy pass marks nothing. Every machine runs the same instructions with fz_mark 0 apart from the two stores.
+        lui   $k1, %hi(fz_mark)
+        lw    $k0, %lo(fz_mark)($k1)
+        lui   $k1, %hi(fz_dummy)
+        beqz  $k0, 6f
+        addiu $k1, $k1, %lo(fz_dummy)
+        beq   $gp, $k1, 6f
+        lui   $k1, 0x1F06
+        sb    $k0, 8($k1)              # the start mark: 1F060008h, the GameShark's comms-out byte
+6:
         lw    $k1, 0($sp)              # e
         nop
         lhu   $k0, 0x120($s1)
@@ -319,6 +333,11 @@ fz_timed:
         nop
         addiu $k0, $zero, 1535
 3:
+        # the burn x, kept for the outside clock (Pico interval = a constant + x + the case): every machine stores it, after the
+        # alignment read, so the path is the same everywhere; word 1020 of the output, outside every hash (main.cpp MK line)
+        lw    $k1, 12($sp)
+        nop
+        sw    $k0, 0xFF0($k1)
         andi  $k1, $k0, 3
         sll   $k1, $k1, 2
         srl   $k0, $k0, 2
@@ -346,6 +365,21 @@ fz_slide_end:
         sra   $fp, $k0, 31             # more across the wrap - none of the night's 25,303 case lines did, but idle() did:
         andi  $fp, $fp, 0xC000         # main.cpp, the SPU session 2026-11-13); after the second read, outside the timed window
         addu  $k0, $k0, $fp
+        # the end mark (the outside clock above), after the end read: outside the timed window; k1 and ra only (fz_one saves
+        # neither from here: it reloads k1, and ra is restored below)
+        lui   $k1, %hi(fz_mark)
+        lw    $ra, %lo(fz_mark)($k1)
+        lui   $k1, %hi(fz_dummy)
+        beqz  $ra, 7f
+        addiu $k1, $k1, %lo(fz_dummy)
+        beq   $gp, $k1, 7f
+        lui   $k1, 0x1F06
+        addiu $ra, $ra, 1
+        sb    $ra, 8($k1)              # the end mark
+        addiu $ra, $ra, 1
+        lui   $k1, %hi(fz_mark)
+        sw    $ra, %lo(fz_mark)($k1)   # the warm run's start mark next
+7:
         lw    $ra, 8($sp)
         nop
         jr    $ra

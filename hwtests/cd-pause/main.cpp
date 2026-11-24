@@ -127,6 +127,7 @@ static uint32_t onePause(uint32_t lba, uint32_t phaseCycles, uint32_t* ack, int 
     return now() - tack;
 }
 
+#ifndef CDPAUSE_NO_MAIN   /* cd-pause-settle includes this file for its helpers */
 int main() {
     printf("\ncdrom/cd-pause\n");
     EnterCriticalSection();
@@ -207,3 +208,4 @@ int main() {
      * emulated console) or ran the next program into a crash (the SCPH-5501's Unirom). */
     for (;;) {}
 }
+#endif

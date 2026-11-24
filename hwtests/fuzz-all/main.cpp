@@ -26,8 +26,10 @@
 #include <psxapi.h>
 #include <io.h>
 #include <stdarg.h>
+#include "../dbio/dbio.h"   /* db_input: FEED MODE's cases from the PC (below) */
 
 extern "C" {
+uint32_t fz_mark = 0;   /* the outside clock (wrap.s fz_timed): the next start mark, A4h before each pair; 0 = no marks */
 void fz_pair(void);
 extern uint32_t fz_wrap_start[], fz_wrap_end[];
 extern char _end[];
@@ -389,6 +391,11 @@ static uint32_t gprHash(const uint32_t *o) {
  * the first case next, 9Fh every case done. */
 static int dbSteps;
 static void step(uint32_t s) { BREAD[2] = s; if (dbSteps) dbPut(s); }
+/* THE OUTSIDE CLOCK (flags bit 28; 2026-11-23, the console fuzzer, for AngryEmpath): four marks per case out the DB-25 - A4h / A5h
+ * around the cold run, A6h / A7h around the warm one (wrap.s fz_timed) - stamped by the Pico's crystal, and an MK line with the two
+ * alignment burns, so tools/fzclock.js has each run's time from outside the console: (end - start) - burn = the case + a constant.
+ * The same scope as the DB-25 out: a GameShark and its Pico up (dbOn); everywhere else fz_mark stays 0 and no MK line is printed. */
+static int markOn;
 /* flags bit 1 (lite): only the VG lines (time and registers), for probes of a few hundred cases inside the runner's 256 KB log */
 static bool lite;
 static void runCase(const uint32_t *c, bool verbose) {
@@ -426,7 +433,9 @@ static void runCase(const uint32_t *c, bool verbose) {
     step(0x83);
     fz_setsr((fz_getsr() & ~1u) | 0x40000000u);
     I_MASK = 0;
+    fz_mark = markOn ? 0xA4u : 0u;
     fz_pair();
+    fz_mark = 0;
     BREAD[1] = 2;
     I_MASK = 0; I_STAT = 0;
     step(0x84);
@@ -448,6 +457,7 @@ static void runCase(const uint32_t *c, bool verbose) {
     if (verbose) { hout("VP %u", id); for (int k = 0; k < 32; k++) hout(" %x", hashw(SPUBUF + k * 64, 64)); hout(" %x\n", SPU(0x19C) | (SPU(0x19E) << 16)); }
     hout("c %u %u %u %x %x %x %x %x %x %x %x %x\n", id, OUT0[0], OUT1[0], gprHash(OUT0), gprHash(OUT1),
            hashw(OUT0 + 128, 768), hashw(OUT1 + 128, 768), hashw(OUT0 + 35, 64), hashw(OUT1 + 35, 64), vh, sd, sc);
+    if (markOn) hout("MK %u %u %u\n", id, OUT0[1020], OUT1[1020]);   /* the outside clock: the cold and warm alignment burns */
     step(0x88);
     BREAD[1] = 0;
 }
@@ -544,10 +554,11 @@ int main() {
     hout(" %x\n", sr0);
     /* the DB-25 out, when the table asks for it (flags bits 4-5; the scope above): refused unless the cart is a GameShark and the Pico's
      * STB is up (200 reads, as rom.c's comms_present). The line says which, so every log records whether its DB-25 copy exists. */
-    if (flags & 0x08000030u) {
+    if (flags & 0x38000030u) {
         const int gs = cartIsGameShark();
         int stb = 0; if (gs) for (uint32_t n = 0; n < 200 && !stb; n++) stb = COMMS_STB & 1;
         dbOn = gs && stb; dbVonly = (flags & 0x20) != 0; dbLines = (flags & 0x30) != 0; dbSteps = (flags & 0x08000000u) != 0;
+        markOn = dbOn && (flags & 0x10000000u) != 0;
         hout("DB25 %s%s\n", dbOn ? (dbLines ? (dbVonly ? "on verbose-only" : "on copy") : "on") : gs ? "off: no STB (no Pico)" : "refused: not a GameShark", dbOn && dbSteps ? ", step bytes" : "");
     }
     /* THIS BOOT'S DRAWS (2026-11-17, main for AngryEmpath): on a cart console (the SCPH-1001's GameShark, the SCPH-5501-u2's Power
@@ -570,6 +581,29 @@ int main() {
         dumpVram = (flags & 8) != 0;
         runCase(c, flags & 1);
         at += 4 + c[2] + 2 * c[3];
+    }
+    /* FEED MODE (flags bit 29; 2026-11-24, the console fuzzer, for AngryEmpath: "milk the shit for all it's worth"): after the table,
+     * more cases FROM THE PC over a GameShark's DB-25 (hwtests/dbio/dbio.h db_input, the Pico's queue; tools/fzfeed.js fills it), each
+     * run exactly as a table case and printed as one (its c line out SIO1 and the DB-25 copy). One loaded program then runs any number
+     * of variants - a knife edge searched case by case, no reload between. Per case: 'FEED', id, seed, nCode | nOver << 16, then the
+     * code words and the override pairs (tools/fuzzall.js caseWords / caseOver, as buildExe lays out the table). Ends at a header that
+     * is not 'FEED' or when nothing arrives for ~10 s; then the host finishes as always (Done). The same scope as the DB-25 out. */
+    if (dbOn && (flags & 0x20000000u)) {
+        uint32_t fed = 0;
+        hout("FEED on\n");
+        for (;;) {
+            uint32_t *h = TABLE;   /* the table's cases are done: its RAM holds the fed case */
+            if (!db_input((uint8_t *)h, 16, 6000000)) { hout("FEED end: nothing came\n"); break; }
+            if (h[0] != 0x44454546u) { hout("FEED end: header %x\n", h[0]); break; }
+            const uint32_t nc = h[3] & 0xFFFFu, no = h[3] >> 16;
+            if (nc > 8000 || no > 2000) { hout("FEED end: case too big %u %u\n", nc, no); break; }
+            h[0] = h[1]; h[1] = h[2]; h[2] = nc; h[3] = no;   /* the table layout: id, seed, nCode, nOver, code, overrides */
+            if (!db_input((uint8_t *)(h + 4), 4 * (nc + 2 * no))) { hout("FEED end: case %u cut short\n", h[0]); break; }
+            lite = (flags & 6) != 0; regsOnly = (flags & 4) != 0; dumpVram = (flags & 8) != 0;
+            runCase(h, flags & 1);
+            fed++;
+        }
+        hout("FEED cases %u\n", fed);
     }
     if (refOn && t2Check("RFR3")) { probeRefresh(); hout("RFR3 %u %u\n", refR0, ((uint32_t)e + 49152u - refR0) & 0xFFu); }
     DPCR = dpcr0; DICR = dicr0;

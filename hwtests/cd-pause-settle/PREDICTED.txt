@@ -1,0 +1,16 @@
+cd-pause-settle PREDICTED before any console run (the Fable CD session, 2026-11-23). The model: v0.377.374 and v0.377.374 +
+land_inflight (scratch/_cores/chain-c34215a69d), as the SCPH-9001 (its program SC430944) and the SCPH-5501 (SC430930), Doom (USA)
+(--disc=doom), settles 600 and 611; logs experiments/scex/psettle/. Cell means in CPU cycles, 8 Pauses each:
+
+                       2x 16 at once  2x 16 after 3 s  2x mid (18037)  2x 16 after mid  1x 16 at once  1x 16 after 3 s
+  v374 as the 9001     1.095-1.097M   1.098-1.103M     1.342-1.348M    1.099M           2.194M         2.200-2.201M
+  infl as the 9001     1.096M         1.094-1.095M     1.342-1.345M    1.097-1.099M     2.198-2.201M   2.197-2.199M
+  v374 as the 5501     1.092-1.098M   1.097-1.100M     1.335M          1.093-1.094M     2.194M         2.193-2.194M
+  infl as the 5501     1.093M         1.097-1.100M     1.342M          1.094-1.095M     2.196M         2.202-2.203M
+
+THE MODEL: every 2x LBA 16 cell alike (~1.09-1.10M) - no speed-change transient, as scratch/scex/pause2xsettle.js (kept as
+experiments/scex/pause2xsettle.js) found from 0 to 3 s after the Setmode. cd-pause's consoles read that cell 1.128M (both).
+WHAT THE CONSOLE DECIDES: "at once" long (~1.13M) and "after 3 s" / "after mid" model-like (~1.10M) = the spindle still speeding up
+after Setmode 80h (model it in the body, cdservo.js); every 2x 16 cell long = the inner radius at double speed (the motor's or the
+disc's speed there); every cell model-like = cd-pause's cell was something else of that test's order. The 1x cells check the
+other way round (2x -> 1x).

@@ -1,0 +1,9 @@
+cd-spinramp PREDICTED before any console run (the Fable CD session, 2026-11-23): v0.377.374 as the SCPH-5501 (its program SC430930),
+Doom (USA) (--disc=doom), settle 600; the log is experiments/scex/spinramp/v374-5501.txt.
+- UP1 / UP2 (1x -> 2x): the first INT1 623 / 624 ms after the Setmode; from it every 100 ms bin's mean interval 224,2xx-227,4xx
+  cycles - the nominal 225,792 at once, no tail: src/cdservo.js sets the disc to the CLV speed when its PLL locks.
+- DOWN (2x -> 1x): the first INT1 709 ms after; every bin 449,9xx-453,1xx (451,584 nominal), flat.
+- CTL2 / CTL1: flat at 225.8k / 451.6k from the first INT1 (7 / 83 ms).
+WHAT THE CONSOLE DECIDES: bins after the first INT1 longer than nominal and shrinking to it (UP), or shorter (DOWN), give the
+spindle's approach to the CLV speed over time - the law to fit (cd-pause-settle's +5-6% then +2% says ~0.5-1.5 s after the
+Setmode). Flat bins like the model's would put cd-pause-settle's long Pauses somewhere else.

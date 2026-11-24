@@ -60,7 +60,10 @@ static inline int db_input(uint8_t *dst, uint32_t n, uint32_t spin = 600000) {
         while (!(DBIO_STB & 1)) if (++k > (i ? spin : spin * 8)) return 0;
         dst[i] = DBIO_IN;
         DBIO_OUT = 0;
-        (void)DBIO_STB; (void)DBIO_STB;
+        /* wait for STB to FALL (the Pico took this ACK) before looking for the next rise: the fuzz host's db_input runs from the
+         * I-cache and polled STB again before the Pico dropped it, so every fed byte was read twice (FEED read 46 46 45 45 on the
+         * 1001, fw 2p-feedfix14, 2026-11-24, the console fuzzer); the uncached dbio test was slow enough to miss it. Bounded. */
+        for (uint32_t k2 = 0; (DBIO_STB & 1) && k2 < 3000; k2++) {}
     }
     return 1;
 }

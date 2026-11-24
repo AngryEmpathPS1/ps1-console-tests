@@ -34,8 +34,14 @@
   newer than the console's, and nothing back for 10 s or more (a long silent test reads the same way - a flag, not a verdict).
   An idle bridge with no client writes nothing to the log. A device read failure (the USB side going away) is a line of its own
   before the window exits. Nothing here touches the bytes or their timing: counters, and a thread that only reads them.
+
+  -FanOut (2026-11-24, the console fuzzer: "at 00:50Z cart-v3's boot test held 3440 while my batch ran, so my capture got 0
+  bytes"): for the DB-25 Picos only (tools/rackup.js passes it on the bridgeports.json "dbcap" rows). Every connected client gets
+  a copy of every byte the device sends, and any client's bytes go to the device (one client's write at a time, never interleaved
+  inside a write). The backlog goes to the first client that connects while none is. A console's bridge never takes it: two
+  programs talking to one console's runner is the thing the one-client rule exists to stop.
 #>
-param([string]$Com = 'COM3', [int]$Baud = 115200, [int]$Port = 3335)
+param([string]$Com = 'COM3', [int]$Baud = 115200, [int]$Port = 3335, [switch]$FanOut)
 
 $src = @"
 using System;
@@ -48,6 +54,8 @@ using System.Threading;
 public static class PsxSerialBridge {
   static readonly object gate = new object();
   static NetworkStream client = null;
+  static readonly System.Collections.Generic.List<NetworkStream> clients = new System.Collections.Generic.List<NetworkStream>();   // -FanOut
+  static readonly object devGate = new object();
   static MemoryStream backlog = new MemoryStream();
   // LINK HEALTH (the header): what passed each way and when, read by WatchHealth once a second
   static long inBytes = 0, outBytes = 0, writeFails = 0, lastInTicks = 0, lastOutTicks = 0;
@@ -96,7 +104,7 @@ public static class PsxSerialBridge {
       DateTime now = DateTime.UtcNow;
       long ti = Interlocked.Read(ref inBytes), to = Interlocked.Read(ref outBytes), tf = Interlocked.Read(ref writeFails);
       long li = Interlocked.Read(ref lastInTicks), lo = Interlocked.Read(ref lastOutTicks);
-      bool conn; lock (gate) { conn = client != null; }
+      bool conn; lock (gate) { conn = client != null || clients.Count > 0; }
       int b = -1; try { b = baud(); } catch { }
       double sinceIn = li == 0 ? -1 : (now.Ticks - li) / 1e7, sinceOut = lo == 0 ? -1 : (now.Ticks - lo) / 1e7;
       bool quiet = conn && lo > li && sinceOut >= 10;
@@ -141,7 +149,7 @@ public static class PsxSerialBridge {
     }
   }
 
-  public static void Run(string com, int baud, int port, string linesDir) {
+  public static void Run(string com, int baud, int port, string linesDir, bool fanOut) {
     Stream dev;
     SerialPort spRef = null;   // the rate, for the health log (null on a tcp: device)
     if (com.StartsWith("tcp:")) {
@@ -189,7 +197,7 @@ public static class PsxSerialBridge {
     health.IsBackground = true;
     health.Start();
     HealthEvent("bridge start " + com + " at " + baud + " baud");
-    Console.WriteLine("serialbridge: " + com + " at " + baud + " baud on 127.0.0.1:" + port);
+    Console.WriteLine("serialbridge: " + com + " at " + baud + " baud on 127.0.0.1:" + port + (fanOut ? " (fan-out: every client gets every byte)" : ""));
 
     var reader = new Thread(() => {
       var buf = new byte[65536];
@@ -199,16 +207,44 @@ public static class PsxSerialBridge {
         if (n <= 0) { Console.WriteLine("serialbridge: device closed"); HealthEvent("DEVICE CLOSED"); Environment.Exit(3); return; }
         Interlocked.Add(ref inBytes, n); Interlocked.Exchange(ref lastInTicks, DateTime.UtcNow.Ticks);
         lock (gate) {
-          if (client != null) {
-            try { client.Write(buf, 0, n); } catch { client = null; }
+          if (fanOut) {
+            foreach (var cs in clients.ToArray()) { try { cs.Write(buf, 0, n); } catch { clients.Remove(cs); } }
+            if (clients.Count == 0 && backlog.Length < (1 << 20)) backlog.Write(buf, 0, n);
+          } else {
+            if (client != null) {
+              try { client.Write(buf, 0, n); } catch { client = null; }
+            }
+            if (client == null && backlog.Length < (1 << 20)) backlog.Write(buf, 0, n);
           }
-          if (client == null && backlog.Length < (1 << 20)) backlog.Write(buf, 0, n);
         }
       }
     });
     reader.IsBackground = true;
     reader.Start();
 
+    while (fanOut) {   // -FanOut (header): a thread per client, all of them fed by the reader above
+      var fc = listener.AcceptTcpClient();
+      fc.NoDelay = true;
+      var fns = fc.GetStream();
+      lock (gate) {
+        if (clients.Count == 0 && backlog.Length > 0) { try { fns.Write(backlog.GetBuffer(), 0, (int)backlog.Length); } catch { } backlog.SetLength(0); }
+        clients.Add(fns);
+      }
+      var t = new Thread(() => {
+        var fb = new byte[65536];
+        try {
+          int fn;
+          while ((fn = fns.Read(fb, 0, fb.Length)) > 0) {
+            lock (devGate) { try { dev.Write(fb, 0, fn); } catch { Interlocked.Increment(ref writeFails); throw; } }
+            Interlocked.Add(ref outBytes, fn); Interlocked.Exchange(ref lastOutTicks, DateTime.UtcNow.Ticks);
+          }
+        } catch { }
+        lock (gate) { clients.Remove(fns); }
+        fc.Close();
+      });
+      t.IsBackground = true;
+      t.Start();
+    }
     while (true) {
       var c = listener.AcceptTcpClient();
       c.NoDelay = true;
@@ -233,4 +269,4 @@ public static class PsxSerialBridge {
 "@
 
 Add-Type -TypeDefinition $src -ReferencedAssemblies System
-[PsxSerialBridge]::Run($Com, $Baud, $Port, (Join-Path (Split-Path -Parent $PSScriptRoot) 'console-queue\lines'))
+[PsxSerialBridge]::Run($Com, $Baud, $Port, (Join-Path (Split-Path -Parent $PSScriptRoot) 'console-queue\lines'), $FanOut.IsPresent)
