@@ -191,6 +191,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-23-spukonenv](2026-11-23-spukonenv/) | 4 | 0 |
 | [2026-11-23-spukonq](2026-11-23-spukonq/) | 4 | 0 |
 | [2026-11-23-spuregs-probe](2026-11-23-spuregs-probe/) | 5 | 0 |
+| [2026-11-24-spudmaread3](2026-11-24-spudmaread3/) | 3 | 0 |
 | [2026-11-24-spukoff2](2026-11-24-spukoff2/) | 4 | 0 |
 | [2026-11-24-spukonhist](2026-11-24-spukonhist/) | 5 | 0 |
 | [2026-11-24-spukonhist2](2026-11-24-spukonhist2/) | 4 | 0 |

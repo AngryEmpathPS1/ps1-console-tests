@@ -1,0 +1,38 @@
+gpu-tri-lag - PREDICTED before any console ran it (2026-11-23, the GPU session).
+
+v0.377.372 (the virtual console, the runner's locked start):
+  lead-in              : jj         | j          | n          | alu        | io         | a          | st6        |
+  ft 32x4 (40,40)      :   85   85  |   85   85  |   85   85  |   85   85  |   85   85  |   83   83  |   85   85  |
+    bit 28             :   31   31  |   31   31  |   31   31  |   31   31  |   31   31  |   29   29  |   31   31  |
+  ft 32x0 (40,40)      :   29   29  |   29   29  |   29   29  |   29   29  |   29   29  |   27   27  |   29   29  |
+    bit 28             :   29   29  |   29   29  |   29   29  |   29   29  |   29   29  |   27   27  |   29   29  |
+  flat TL 2 (192,128)  :   47   47  |   47   47  |   47   47  |   47   47  |   47   47  |   45   45  |   47   47  |
+    bit 28             :   26   26  |   26   26  |   26   26  |   26   26  |   26   26  |   24   24  |   26   26  |
+
+v0.377.372 + land_trislope v2's slope term alone (no intake lag):
+  lead-in              : jj         | j          | n          | alu        | io         | a          | st6        |
+  ft 32x4 (40,40)      :   81   81  |   81   81  |   81   81  |   81   81  |   81   81  |   79   79  |   81   81  |
+    bit 28             :   27   27  |   27   27  |   27   27  |   27   27  |   27   27  |   25   25  |   27   27  |
+  ft 32x0 (40,40)      :   26   26  |   26   26  |   26   26  |   26   26  |   26   26  |   24   24  |   26   26  |
+    bit 28             :   26   26  |   26   26  |   26   26  |   26   26  |   26   26  |   24   24  |   26   26  |
+  flat TL 2 (192,128)  :   42   42  |   42   42  |   42   42  |   42   42  |   42   42  |   40   40  |   42   42  |
+    bit 28             :   21   21  |   21   21  |   21   21  |   21   21  |   21   21  |   19   19  |   21   21  |
+
+v0.377.372 + land_trislope v2 (the slope term, CPU-fed only, and the intake lag):
+  lead-in              : jj         | j          | n          | alu        | io         | a          | st6        |
+  ft 32x4 (40,40)      :   84   84  |   84   84  |   84   84  |   84   84  |   84   84  |   79   79  |   85   85  |
+    bit 28             :   30   30  |   30   30  |   30   30  |   30   30  |   30   30  |   25   25  |   31   31  |
+  ft 32x0 (40,40)      :   29   29  |   29   29  |   29   29  |   29   29  |   29   29  |   24   24  |   30   30  |
+    bit 28             :   29   29  |   29   29  |   29   29  |   29   29  |   29   29  |   24   24  |   30   30  |
+  flat TL 2 (192,128)  :   45   45  |   45   45  |   45   45  |   45   45  |   45   45  |   40   40  |   46   46  |
+    bit 28             :   24   24  |   24   24  |   24   24  |   24   24  |   24   24  |   19   19  |   25   25  |
+
+The emulator pays every lead-in alike: the model's lag is the CPU intake's take of the last word, the same for any four
+back-to-back stores. v2 (fullcpu) charges each 5 over "a" (79 -> 84) and st6 one more (85).
+
+PREDICTED FOR THE NEW-GPU CONSOLES (the PSone, the second SCPH-5501, the SCPH-7001, the SCPH-9001):
+- "a" as gpu-tri-height's spaced rows: ft 32x4 80 (its a, H 4), 32x0 ~24-25.
+- jj as gpu-tri-height's back-to-back rows: a + 5 (ft 32x4 85).
+- st6 as gpu-shape-time6's flat TL 2: 42 (bit 26) and 26 (bit 28), no lag.
+- THE QUESTION: where between jj (+5) and alu / st6 (+0) the lag goes - the jumps (j), the slide and fetch alone (n), an I/O read
+  just before (io). A lead-in that pays 5 names what the intake waits on.

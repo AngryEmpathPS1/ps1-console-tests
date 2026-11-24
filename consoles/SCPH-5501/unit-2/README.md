@@ -456,7 +456,12 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-23-spuregs-probe](2026-11-23-spuregs-probe/) | 5 | 0 |
 | [2026-11-23-trilag](2026-11-23-trilag/) | 3 | 0 |
 | [2026-11-23-trilag2](2026-11-23-trilag2/) | 3 | 0 |
+| [2026-11-24-burstlat](2026-11-24-burstlat/) | 3 | 0 |
+| [2026-11-24-refgap](2026-11-24-refgap/) | 3 | 0 |
+| [2026-11-24-spudmaread3](2026-11-24-spudmaread3/) | 3 | 0 |
 | [2026-11-24-spukoff2](2026-11-24-spukoff2/) | 4 | 0 |
 | [2026-11-24-spukonhist](2026-11-24-spukonhist/) | 5 | 0 |
 | [2026-11-24-spukonhist2](2026-11-24-spukonhist2/) | 4 | 0 |
 | [2026-11-24-spukonhist3](2026-11-24-spukonhist3/) | 4 | 0 |
+| [2026-11-24-trigrid](2026-11-24-trigrid/) | 3 | 0 |
+| [2026-11-24-trigriddma](2026-11-24-trigriddma/) | 3 | 0 |

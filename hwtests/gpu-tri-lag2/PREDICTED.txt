@@ -1,0 +1,44 @@
+gpu-tri-lag2 - PREDICTED before any console ran it (2026-11-23, the GPU session).
+
+v0.377.372 (no trislope; the virtual console, the runner's locked start):
+                       : a (spaced)        | b (back to back)  | st6               |
+  ft 32x4 (tri-height) :     83     83      |     85     85      |     85     85      |
+    bit 28             :     26     26      |     31     31      |     31     31      |
+  flat TL 2            :     45     45      |     47     47      |     47     47      |
+    bit 28             :     21     21      |     26     26      |     26     26      |
+  flat TL 64x16        :    344    344      |    346    346      |    346    346      |
+    bit 28             :     25     25      |     30     30      |     30     30      |
+  semi TR 320x16       :   2123   2123      |   2125   2125      |   2125   2125      |
+    bit 28             :     27     27      |     32     32      |     32     32      |
+  gour TL 320x16       :   2940   2940      |   2942   2942      |   2942   2942      |
+    bit 28             :    141    143      |    173    173      |    173    173      |
+  gour TR 320x16       :   3241   3241      |   3243   3243      |   3243   3243      |
+    bit 28             :    143    144      |    173    173      |    173    173      |
+  tex TL 320x16        :   2886   2886      |   2888   2888      |   2888   2888      |
+    bit 28             :     90     90      |    119    119      |    119    119      |
+  clip TR 128x16 -64   :    533    533      |    535    535      |    535    535      |
+    bit 28             :     26     26      |     31     31      |     31     31      |
+
+v0.377.372 + land_trislope v3 (the slope term, the intake lag +5):
+                       : a (spaced)        | b (back to back)  | st6               |
+  ft 32x4 (tri-height) :     79     79      |     84     84      |     84     84      |
+    bit 28             :     22     22      |     30     30      |     30     30      |
+  flat TL 2            :     40     40      |     45     45      |     45     45      |
+    bit 28             :     16     16      |     24     24      |     24     24      |
+  flat TL 64x16        :    339    339      |    344    344      |    344    344      |
+    bit 28             :     20     20      |     28     28      |     28     28      |
+  semi TR 320x16       :   2122   2122      |   2127   2127      |   2127   2127      |
+    bit 28             :     26     26      |     34     34      |     34     34      |
+  gour TL 320x16       :   2940   2940      |   2947   2947      |   2946   2946      |
+    bit 28             :    144    141      |    178    178      |    177    177      |
+  gour TR 320x16       :   3241   3241      |   3248   3248      |   3247   3247      |
+    bit 28             :    144    143      |    178    178      |    177    177      |
+  tex TL 320x16        :   2886   2886      |   2892   2892      |   2892   2892      |
+    bit 28             :     90     88      |    123    123      |    123    123      |
+  clip TR 128x16 -64   :    529    529      |    534    534      |    534    534      |
+    bit 28             :     22     22      |     30     30      |     30     30      |
+
+The lag-free core charges back to back 2 over spaced on bit 26 (the intake's 2-cycle step), 5 on bit 28; trislope v3 adds +5.
+THE QUESTION: on the consoles, does b - a on the big shapes (semi / gour / tex 320x16, flat 64x16) match the small ones'
+(gpu-tri-lag and gpu-tri-height: +5 on both bits)? If yes, a big triangle pays the lag, and shape-time6's big-shape
+constants (fitted back to back) carry it: refit them without it. If b - a stays ~2 there, the lag is a small triangle's.

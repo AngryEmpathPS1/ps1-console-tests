@@ -34,6 +34,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-23-hc05clock-r1](2026-11-23-hc05clock-r1/) | 4 | 0 |
 | [2026-11-23-hc05clock-r2](2026-11-23-hc05clock-r2/) | 4 | 0 |
 | [2026-11-23-hc05clock-r3](2026-11-23-hc05clock-r3/) | 4 | 0 |
+| [2026-11-24-spudmaread3](2026-11-24-spudmaread3/) | 3 | 0 |
 | [2026-11-24-spukoff2](2026-11-24-spukoff2/) | 4 | 0 |
 | [2026-11-24-spukonhist2](2026-11-24-spukonhist2/) | 4 | 0 |
 | [2026-11-24-spukonhist3](2026-11-24-spukonhist3/) | 4 | 0 |
