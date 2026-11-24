@@ -13,4 +13,5 @@
 | [2026-11-24-spukoff2](2026-11-24-spukoff2/) | 4 | 0 |
 | [2026-11-24-spukonhist2](2026-11-24-spukonhist2/) | 4 | 0 |
 | [2026-11-24-spukonhist3](2026-11-24-spukonhist3/) | 4 | 0 |
+| [2026-11-24-spukonhist4](2026-11-24-spukonhist4/) | 3 | 0 |
 | [2026-11-24-spuxfermove](2026-11-24-spuxfermove/) | 3 | 0 |
