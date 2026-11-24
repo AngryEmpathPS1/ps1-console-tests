@@ -1,0 +1,10 @@
+cd-pause-peek PREDICTED before any console run (the Fable CD session, 2026-11-23): v0.377.374 as the SCPH-1001 (SC430916 standing
+in), The X-Files, settle 600; the log is experiments/scex/ppeek/v374-1001.txt. Times in ms from the Pause's INT3 acknowledge.
+- N rows (no peeks): the Pause's INT2 at 1.327-1.334M once, 1.330-1.340M late - alike: the model has no transient.
+- Q rows ($6B): 0C (the jump) seen at 1.6-7.6, 0D (tracking by Q) at 19.7-20.5, 01 (done) at 39.4-41.0; once and late alike.
+- P rows ($55, the last Q's frame): 11 (the first Q after the landing) at 19.7-20.6, then 12 / 13 / 14 at ~26.3-27.4 / 32.2-33.4 /
+  39.4-40.0 - a Q every ~6.5 ms; once and late alike.
+- Under peeks the INT2 does not reach the test ("pause 0"); after the Pause the drive holds, jumping back a track each turn
+  ($6B 0D / 01 over and over, $55 08 ... 15).
+WHAT THE CONSOLE DECIDES (its "once" rows against its "late" ones): 0D / the first Q late by ~1.5-2 ms with the Q spacing alike =
+the landing's relock after a speed change (the body's lock after a jump); the spacing wider = the disc slower after the jump.

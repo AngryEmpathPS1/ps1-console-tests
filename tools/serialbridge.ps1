@@ -40,6 +40,14 @@
   a copy of every byte the device sends, and any client's bytes go to the device (one client's write at a time, never interleaved
   inside a write). The backlog goes to the first client that connects while none is. A console's bridge never takes it: two
   programs talking to one console's runner is the thing the one-client rule exists to stop.
+
+  THE STIM CHANNEL (2026-11-24, the console fuzzer's first STIM run on the 1001: hwrunner held 3415's data channel for its test,
+  so pico-serial v7.05's "STIM P3 v7.05" banner went to hwrunner - "runner: wanted DONE, got STIM" - and tools/sio1stim.js never
+  saw it). A rate word of 1263 / 1264 (a PIO port's status rate + 60: STIM MODE, pioport.c) puts this bridge in STIM mode BEFORE the
+  word reaches the Pico. Until 1273 / 1274 (+ 70) or any ordinary rate (9,600 and up), everything the Pico sends goes to the client
+  on <Port + 2> alone (kept, up to 1 MB, until one connects: in STIM mode the Pico sends nothing of the console's), that client's
+  bytes go to the Pico, and the data client's bytes are dropped (they would read as STIM commands) - so a test running on the
+  console keeps its data client and only sees silence for the window. Outside STIM mode <Port + 2> takes nothing.
 #>
 param([string]$Com = 'COM3', [int]$Baud = 115200, [int]$Port = 3335, [switch]$FanOut)
 
@@ -56,6 +64,13 @@ public static class PsxSerialBridge {
   static NetworkStream client = null;
   static readonly System.Collections.Generic.List<NetworkStream> clients = new System.Collections.Generic.List<NetworkStream>();   // -FanOut
   static readonly object devGate = new object();
+  // THE STIM CHANNEL (header): the mode, its client on port + 2, what the Pico sent before one connected
+  static volatile bool stimMode = false; static NetworkStream stimClient = null; static MemoryStream stimBacklog = new MemoryStream();
+  static long stimDropped = 0;
+  static void RateWord(int r) {   // called with the rate BEFORE it is set, so the Pico's first STIM reply already routes
+    if (r == 1263 || r == 1264) { lock (gate) { stimMode = true; } Console.WriteLine("serialbridge: STIM mode (the Pico's replies on port + 2)"); }
+    else if (r == 1273 || r == 1274 || r >= 9600) { if (stimMode) Console.WriteLine("serialbridge: STIM mode off (" + Interlocked.Read(ref stimDropped) + " data-client bytes dropped)"); lock (gate) { stimMode = false; stimBacklog.SetLength(0); } }
+  }
   static MemoryStream backlog = new MemoryStream();
   // LINK HEALTH (the header): what passed each way and when, read by WatchHealth once a second
   static long inBytes = 0, outBytes = 0, writeFails = 0, lastInTicks = 0, lastOutTicks = 0;
@@ -157,6 +172,18 @@ public static class PsxSerialBridge {
       var tc = new TcpClient(hp[0], int.Parse(hp[1]));
       tc.NoDelay = true;
       dev = tc.GetStream();
+      // a socket device has no rate; its rate channel takes the STIM words alone (experiments/stimchantest.js)
+      var trates = new TcpListener(IPAddress.Loopback, port + 1);
+      trates.Start();
+      var trater = new Thread(() => {
+        while (true) {
+          using (var c = trates.AcceptTcpClient()) {
+            var ns = c.GetStream(); var b = new byte[16]; int n = ns.Read(b, 0, b.Length);
+            try { RateWord(int.Parse(System.Text.Encoding.ASCII.GetString(b, 0, n))); ns.WriteByte(1); } catch { ns.WriteByte(0); }
+          }
+        }
+      });
+      trater.IsBackground = true; trater.Start();
     } else {
       var sp = new SerialPort(com, baud, Parity.None, 8, StopBits.One);
       sp.Handshake = Handshake.None;
@@ -177,7 +204,10 @@ public static class PsxSerialBridge {
             var b = new byte[16];
             int n = ns.Read(b, 0, b.Length);
             try {
-              sp.BaudRate = int.Parse(System.Text.Encoding.ASCII.GetString(b, 0, n));
+              int r = int.Parse(System.Text.Encoding.ASCII.GetString(b, 0, n));
+              if (r == 1263 || r == 1264) RateWord(r);   // STIM on BEFORE the Pico hears it (header)
+              sp.BaudRate = r;
+              if (!(r == 1263 || r == 1264)) RateWord(r);
               Console.WriteLine("serialbridge: now at " + sp.BaudRate + " baud");
               ns.WriteByte(1);
             } catch (Exception e) { Console.WriteLine("serialbridge: rate refused: " + e.Message); ns.WriteByte(0); }
@@ -197,6 +227,21 @@ public static class PsxSerialBridge {
     health.IsBackground = true;
     health.Start();
     HealthEvent("bridge start " + com + " at " + baud + " baud");
+    { // THE STIM CHANNEL (header): port + 2, one client, used only in STIM mode
+      var sl = new TcpListener(IPAddress.Loopback, port + 2);
+      sl.Start();
+      var st = new Thread(() => {
+        while (true) {
+          var c = sl.AcceptTcpClient(); c.NoDelay = true; var ns = c.GetStream();
+          lock (gate) { if (stimBacklog.Length > 0) { try { ns.Write(stimBacklog.GetBuffer(), 0, (int)stimBacklog.Length); } catch { } stimBacklog.SetLength(0); } stimClient = ns; }
+          var sb = new byte[65536];
+          try { int n; while ((n = ns.Read(sb, 0, sb.Length)) > 0) { if (!stimMode) continue; lock (devGate) { dev.Write(sb, 0, n); } Interlocked.Add(ref outBytes, n); Interlocked.Exchange(ref lastOutTicks, DateTime.UtcNow.Ticks); } } catch { }
+          lock (gate) { if (stimClient == ns) stimClient = null; }
+          c.Close();
+        }
+      });
+      st.IsBackground = true; st.Start();
+    }
     Console.WriteLine("serialbridge: " + com + " at " + baud + " baud on 127.0.0.1:" + port + (fanOut ? " (fan-out: every client gets every byte)" : ""));
 
     var reader = new Thread(() => {
@@ -207,6 +252,11 @@ public static class PsxSerialBridge {
         if (n <= 0) { Console.WriteLine("serialbridge: device closed"); HealthEvent("DEVICE CLOSED"); Environment.Exit(3); return; }
         Interlocked.Add(ref inBytes, n); Interlocked.Exchange(ref lastInTicks, DateTime.UtcNow.Ticks);
         lock (gate) {
+          if (stimMode) {   // THE STIM CHANNEL (header): the Pico's STIM replies, to port + 2 only
+            if (stimClient != null) { try { stimClient.Write(buf, 0, n); } catch { stimClient = null; } }
+            if (stimClient == null && stimBacklog.Length < (1 << 20)) stimBacklog.Write(buf, 0, n);
+            continue;
+          }
           if (fanOut) {
             foreach (var cs in clients.ToArray()) { try { cs.Write(buf, 0, n); } catch { clients.Remove(cs); } }
             if (clients.Count == 0 && backlog.Length < (1 << 20)) backlog.Write(buf, 0, n);
@@ -257,7 +307,8 @@ public static class PsxSerialBridge {
       try {
         int n;
         while ((n = ns.Read(buf, 0, buf.Length)) > 0) {
-          try { dev.Write(buf, 0, n); } catch { Interlocked.Increment(ref writeFails); throw; }   // counted, then as before
+          if (stimMode) { Interlocked.Add(ref stimDropped, n); continue; }   // THE STIM CHANNEL (header): not to the Pico in STIM mode
+          try { lock (devGate) { dev.Write(buf, 0, n); } } catch { Interlocked.Increment(ref writeFails); throw; }   // counted, then as before
           Interlocked.Add(ref outBytes, n); Interlocked.Exchange(ref lastOutTicks, DateTime.UtcNow.Ticks);
         }
       } catch { }

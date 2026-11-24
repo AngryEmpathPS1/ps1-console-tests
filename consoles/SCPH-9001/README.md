@@ -118,4 +118,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-23-spuregs-probe](2026-11-23-spuregs-probe/) | 5 | 0 |
 | [2026-11-23-trilag](2026-11-23-trilag/) | 3 | 0 |
 | [2026-11-23-trilag2](2026-11-23-trilag2/) | 3 | 0 |
-| [2026-11-24-spukonhist](2026-11-24-spukonhist/) | 4 | 0 |
+| [2026-11-24-spukonhist](2026-11-24-spukonhist/) | 5 | 0 |
