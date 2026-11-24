@@ -264,6 +264,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-23-spukonq](2026-11-23-spukonq/) | 4 | 0 |
 | [2026-11-23-spuregs-probe](2026-11-23-spuregs-probe/) | 5 | 0 |
 | [2026-11-24-envmove](2026-11-24-envmove/) | 4 | 0 |
+| [2026-11-24-envmove3](2026-11-24-envmove3/) | 3 | 0 |
 | [2026-11-24-markcost](2026-11-24-markcost/) | 4 | 0 |
 | [2026-11-24-romloop3-r1](2026-11-24-romloop3-r1/) | 3 | 0 |
 | [2026-11-24-romloop3-r2](2026-11-24-romloop3-r2/) | 3 | 0 |
