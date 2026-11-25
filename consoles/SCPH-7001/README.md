@@ -161,6 +161,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-24-trigriddma](2026-11-24-trigriddma/) | 3 | 0 |
 | [2026-11-25-atcom0b](2026-11-25-atcom0b/) | 3 | 0 |
 | [2026-11-25-cdmix](2026-11-25-cdmix/) | 3 | 0 |
+| [2026-11-25-lagack-r1](2026-11-25-lagack-r1/) | 5 | 0 |
 | [2026-11-25-sprmix](2026-11-25-sprmix/) | 3 | 0 |
 | [2026-11-25-spubootdraw](2026-11-25-spubootdraw/) | 3 | 0 |
 | [2026-11-25-spucapfrac2](2026-11-25-spucapfrac2/) | 3 | 0 |

@@ -1,0 +1,19 @@
+cd-lateack PREDICTED before any console run (the Fable CD session, 2026-11-25). The model: next 1f5201b1d2 (v0.377.384 + 1) with
+each console's own drive program on our body, The X-Files (--disc=xfiles --settle=600); logs scratch/scex/lateack/next-*.txt
+(scratch/scex/lateack/pred.sh). Cycles from the acknowledge to the next flag, six trials (the INT2 every time; the flag at the
+acknowledge still the INT3 every time):
+
+                    as the 9001 (SC430944)          as the 1001 (SC430916)          as the 5501 (SC430930)          as the 7501 (SC430940)
+  Init  A=0         3.09-3.18M (first 4.16M)        3.07-3.10M (first 4.15M)        3.07-3.17M (first 4.13M)        3.09-3.10M (first 4.13M)
+  Init  A=50 ms     1.40-1.42M                      1.38-1.40M                      1.38-1.41M                      1.39-1.50M
+  Init  A=200 ms    8.8k-68.8k                      12.6k-27.6k                     8.1k-40.9k                      13.2k-49.5k
+  Init  A=500 ms    7.5k-43.5k                      7.2k-29.7k                      5.9k-24.7k                      7.9k-51.9k
+  GetID A=0         19.0k-19.5k                     20.1k-20.6k                     19.0k-19.6k                     19.0k-19.5k
+  GetID A=50..500   17.6k-110k                      18.6k-105k                      17.8k-107k                      18.0k-65k
+  Pause A=0         7.6k-8.1k                       7.9k-8.6k                       7.5k-8.1k                       7.5k-8.0k
+  Pause A=50..500   5.3k-72.7k                      5.6k-92.6k                      6.5k-52.0k                      5.7k-150k
+
+THE MODEL: a held second response goes out 0.2-1.5 ms (5-50k cycles) after a late acknowledge, spread by where the program's
+loop is when the acknowledge lands; nugget's cdlInitDelayed asserts < 1,000 us (33,869 cycles) on its author's SCPH-9001, where it
+"typically takes 350us" (~11,900). If the consoles read a tight ~12k here, the program reaches the host sooner than our body lets
+it (the KNOWN-OPEN beside the acknowledge in src/cddrive.js). A late GetID and Pause are the same question for other commands.

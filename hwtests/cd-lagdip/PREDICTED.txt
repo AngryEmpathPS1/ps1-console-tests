@@ -1,0 +1,18 @@
+cd-lagdip PREDICTED before any console run (the Fable CD session, 2026-11-25). The model: next 1f5201b1d2 (v0.377.384 + 1) as the
+SCPH-1001 (SC430916, The X-Files) and the second SCPH-5501 (SC430930, Doom), --settle=600; and the same with the knob core
+scratch/_cores/lagdip (scratch/scex/lagdip.patch: the data's lag behind the subcode dips D = 0.35 sector at the first PLL lock after
+a 1x -> 2x change and decays with T = 0.35 s). Logs scratch/scex/lagdip/pred/ (scratch/scex/lagdip/pred.sh), scored with scratch/scex/lagdip/score.js:
+the Q's step after the INT1, thousand cycles (mean +- SE over the 8 switches), per 16-sample cycle at its mid time from the Setmode.
+
+                       up 1 (~0.70 s)  up 2 (~0.84)  up 3 (~0.98)  up 4 (~1.12)  up 5 (~1.25)  up 6 (~1.39)   set 1-3 (~4.7-5.0 s)
+  next as the 1001     124.8+-4.6      130.5+-2.6    137.1+-1.9    125.8+-3.1    127.4+-3.4    127.1+-2.9     124.9 124.8 123.5
+  dip  as the 1001     164.6+-0.9      156.6+-3.4    146.9+-3.3    140.2+-3.1    135.4+-2.7    131.6+-2.8     128.6 127.2 133.5
+  next as the 5501     109.6+-2.6      101.6+-2.5    101.1+-3.1    107.0+-2.4    100.1+-2.8    100.1+-2.7     105.3 113.3 106.9
+  dip  as the 5501     149.5+-4.1      136.7+-3.0    131.4+-2.4    127.8+-1.4    123.4+-1.8    116.2+-1.2     104.9 107.9 104.2
+  first INT1 after the Setmode 80h: 648-653 ms as the 1001, 652-655 / 714-719 ms as the 5501 (two classes), both cores.
+
+THE MODEL (next): no dip - up and set alike within the noise (+-10k a switch, +-3k a mean). THE QUESTION: the consoles' first
+Pauses after Setmode 80h run 3-6% long (cd-pause-settle) and cd-qlag's 2x rows step late in their first samples; if the consoles'
+up 1-3 sit 20-45k above their set rows (a dip of ~0.2-0.4 sector), the data's lag dips after the switch and recovers in ~1 s, and
+this measures its size, its time constant and how often it comes (per switch). If they sit flat, the Pause's extra time is not the
+lag and the knob is wrong. The first INT1 rows are cd-xa-switch's open question too (the consoles 627-877 ms, the model fixed).

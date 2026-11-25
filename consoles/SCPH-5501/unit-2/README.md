@@ -482,6 +482,9 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-25-cdmix](2026-11-25-cdmix/) | 3 | 0 |
 | [2026-11-25-cdmix-rr](2026-11-25-cdmix-rr/) | 3 | 0 |
 | [2026-11-25-discid-rr](2026-11-25-discid-rr/) | 3 | 0 |
+| [2026-11-25-lagack-r1](2026-11-25-lagack-r1/) | 5 | 0 |
+| [2026-11-25-lagack-r2](2026-11-25-lagack-r2/) | 5 | 0 |
+| [2026-11-25-lagack-r3](2026-11-25-lagack-r3/) | 5 | 0 |
 | [2026-11-25-resetboot](2026-11-25-resetboot/) | 5 | 0 |
 | [2026-11-25-sprmix](2026-11-25-sprmix/) | 3 | 0 |
 | [2026-11-25-spubootdraw](2026-11-25-spubootdraw/) | 3 | 0 |
