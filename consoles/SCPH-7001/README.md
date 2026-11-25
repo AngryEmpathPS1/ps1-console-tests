@@ -171,5 +171,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-25-spumbase-r2](2026-11-25-spumbase-r2/) | 3 | 0 |
 | [2026-11-25-spuregdump](2026-11-25-spuregdump/) | 3 | 0 |
 | [2026-11-25-spuwqread](2026-11-25-spuwqread/) | 3 | 0 |
+| [2026-11-25-spuwqread2](2026-11-25-spuwqread2/) | 6 | 0 |
 | [2026-11-25-wqland](2026-11-25-wqland/) | 3 | 0 |
 | [2026-11-25-wqland-a](2026-11-25-wqland-a/) | 3 | 0 |

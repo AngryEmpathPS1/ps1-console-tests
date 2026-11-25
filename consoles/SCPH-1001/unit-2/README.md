@@ -16,3 +16,4 @@
 | [2026-11-25-spucapring4](2026-11-25-spucapring4/) | 4 | 0 |
 | [2026-11-25-spuregdump](2026-11-25-spuregdump/) | 3 | 0 |
 | [2026-11-25-spuwqread](2026-11-25-spuwqread/) | 3 | 0 |
+| [2026-11-25-spuwqread2](2026-11-25-spuwqread2/) | 6 | 0 |
