@@ -56,9 +56,15 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-24-spuxfermove](2026-11-24-spuxfermove/) | 3 | 0 |
 | [2026-11-25-atcom0b](2026-11-25-atcom0b/) | 3 | 0 |
 | [2026-11-25-spubootdraw](2026-11-25-spubootdraw/) | 3 | 0 |
+| [2026-11-25-spucapfrac](2026-11-25-spucapfrac/) | 3 | 0 |
+| [2026-11-25-spucapfrac2](2026-11-25-spucapfrac2/) | 3 | 0 |
+| [2026-11-25-spucapfrac3](2026-11-25-spucapfrac3/) | 3 | 0 |
+| [2026-11-25-spucapring4](2026-11-25-spucapring4/) | 4 | 0 |
 | [2026-11-25-spumbase](2026-11-25-spumbase/) | 3 | 0 |
 | [2026-11-25-spumbase-probe](2026-11-25-spumbase-probe/) | 4 | 0 |
 | [2026-11-25-spumbase-r1](2026-11-25-spumbase-r1/) | 3 | 0 |
 | [2026-11-25-spumbase-r2](2026-11-25-spumbase-r2/) | 3 | 0 |
+| [2026-11-25-spuregdump](2026-11-25-spuregdump/) | 3 | 0 |
+| [2026-11-25-spuwqread](2026-11-25-spuwqread/) | 3 | 0 |
 | [2026-11-25-wqland](2026-11-25-wqland/) | 3 | 0 |
 | [2026-11-25-wqland-a](2026-11-25-wqland-a/) | 3 | 0 |

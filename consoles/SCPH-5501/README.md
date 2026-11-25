@@ -183,3 +183,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-22-u3-ident](2026-11-22-u3-ident/) | 12 | 0 |
 | [2026-11-23-u3-rerun1402](2026-11-23-u3-rerun1402/) | 3 | 0 |
 | [2026-11-25-u3-spubootdraw](2026-11-25-u3-spubootdraw/) | 3 | 0 |
+| [2026-11-25-u3-spucapfrac](2026-11-25-u3-spucapfrac/) | 3 | 0 |
+| [2026-11-25-u3-spucapfrac2](2026-11-25-u3-spucapfrac2/) | 3 | 0 |
+| [2026-11-25-u3-spucapring4](2026-11-25-u3-spucapring4/) | 4 | 0 |
+| [2026-11-25-u3-spuregdump](2026-11-25-u3-spuregdump/) | 3 | 0 |
+| [2026-11-25-u3-spuwqread](2026-11-25-u3-spuwqread/) | 3 | 0 |

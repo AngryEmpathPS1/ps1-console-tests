@@ -10,3 +10,9 @@
 | [2026-11-23-hc05clock-r3](2026-11-23-hc05clock-r3/) | 4 | 0 |
 | [2026-11-23-rerun1402](2026-11-23-rerun1402/) | 3 | 0 |
 | [2026-11-25-spubootdraw](2026-11-25-spubootdraw/) | 3 | 0 |
+| [2026-11-25-spucapfrac](2026-11-25-spucapfrac/) | 3 | 0 |
+| [2026-11-25-spucapfrac2](2026-11-25-spucapfrac2/) | 3 | 0 |
+| [2026-11-25-spucapfrac3](2026-11-25-spucapfrac3/) | 3 | 0 |
+| [2026-11-25-spucapring4](2026-11-25-spucapring4/) | 4 | 0 |
+| [2026-11-25-spuregdump](2026-11-25-spuregdump/) | 3 | 0 |
+| [2026-11-25-spuwqread](2026-11-25-spuwqread/) | 3 | 0 |
