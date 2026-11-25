@@ -1,0 +1,21 @@
+
+cdrom/cd-lagdip
+The subcode Q against the sector just delivered, over a read's first 0.8 s after Setmode 80h ("up") and 3 s later ("set").
+Per sample s:t:d - s thousands of cycles (1 ms = 33,869) from the Setmode's INT3 to the INT1, t from the INT1 to GetlocP's answer, d the Q's absolute position less that INT1's sector; the delay steps through a 2x sector time in sixteenths. No assertions - compare against your emulator.
+up  0: first INT1 -1; 0 samples;
+set 0: first INT1 -1; 0 samples;
+up  1: first INT1 -1; 0 samples;
+set 1: first INT1 -1; 0 samples;
+up  2: first INT1 -1; 0 samples;
+set 2: first INT1 -1; 0 samples;
+up  3: first INT1 -1; 0 samples;
+set 3: first INT1 -1; 0 samples;
+up  4: first INT1 -1; 0 samples;
+set 4: first INT1 -1; 0 samples;
+up  5: first INT1 -1; 0 samples;
+set 5: first INT1 -1; 0 samples;
+up  6: first INT1 -1; 0 samples;
+set 6: first INT1 -1; 0 samples;
+up  7: first INT1 -1; 0 samples;
+set 7: first INT1 -1; 0 samples;
+cdrom/cd-lagdip: Done.

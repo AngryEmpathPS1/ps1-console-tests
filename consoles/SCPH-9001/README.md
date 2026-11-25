@@ -137,8 +137,11 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-25-lagack-r1](2026-11-25-lagack-r1/) | 5 | 0 |
 | [2026-11-25-lagack-r2](2026-11-25-lagack-r2/) | 5 | 0 |
 | [2026-11-25-lagack-r3](2026-11-25-lagack-r3/) | 5 | 0 |
+| [2026-11-25-seekfar-r1](2026-11-25-seekfar-r1/) | 4 | 0 |
+| [2026-11-25-seekfar-r2](2026-11-25-seekfar-r2/) | 4 | 0 |
 | [2026-11-25-sprmix](2026-11-25-sprmix/) | 3 | 0 |
 | [2026-11-25-sprmix2](2026-11-25-sprmix2/) | 3 | 0 |
+| [2026-11-25-sprmix3](2026-11-25-sprmix3/) | 3 | 0 |
 | [2026-11-25-spubootdraw](2026-11-25-spubootdraw/) | 3 | 0 |
 | [2026-11-25-spucapfrac](2026-11-25-spucapfrac/) | 3 | 0 |
 | [2026-11-25-spucapfrac2](2026-11-25-spucapfrac2/) | 3 | 0 |

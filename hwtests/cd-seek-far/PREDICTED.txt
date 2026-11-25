@@ -1,0 +1,16 @@
+cd-seek-far PREDICTED before any console run (the Fable CD session, 2026-11-25). The model: next 1f5201b1d2 (v0.377.384 + 1) as the
+SCPH-9001 (SC430944), Final Fantasy VII (USA) Disc 1 (GetTD lead-out 317,775: FAR = 69:59), --settle=600; log
+scratch/scex/seekfar/next-9001-ff7u.txt. The control seeks, command write -> INT2, M cycles (1 s = 33.87M), its two passes:
+
+  1x SeekL 00:02 -> 69:59   36.49 37.55        2x SeekL 00:02 -> 69:59   27.93 28.05
+  1x SeekP 00:02 -> 69:59   28.38 30.14        2x SeekP 00:02 -> 69:59   23.29 23.70
+  1x SeekL 69:59 -> 00:02   30.42 30.86        2x SeekL 69:59 -> 00:02   23.93 24.06
+  1x SeekL 00:02 -> 60:00   28.65 28.83        2x SeekL 00:02 -> 60:00   22.80 22.87
+  1x SeekL 60:00 -> 00:02   29.25 29.27        2x SeekL 60:00 -> 00:02   24.07 24.16
+  1x SeekL 60:00 -> 69:59   18.16 18.19        2x SeekL 60:00 -> 69:59    8.73  8.75
+
+THE QUESTION (src/cdservo.js SLED_DRIVE_TPS, KNOWN-OPEN): nugget's cdlSeekP2to71 on its author's 9001 - SeekP 00:02 -> 71:00 at
+1x on a disc ending 71:28 - takes at least 1 s (33.9M); this servo's sled, fitted on seeks to 50:00, gives the 1x SeekP 0.84-0.89 s
+here. If our 9001 reads 1x SeekP 00:02 -> 69:59 at ~34M or more, the sled (or its landing far out) is short past 50:00 on this
+servo; if ~29M, nugget's disc (a CD-R) is the difference. The polled rows draw the sled's landing (the first answer far from the
+target): here ~9,450 sectors short at 1x (at 22.1M), then four long jumps to ~-200 by ~27M.

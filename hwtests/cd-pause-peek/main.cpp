@@ -59,6 +59,7 @@ static void pauseRow(char kind, const char* when) {
     printf("\n");
 }
 
+#ifndef CDPAUSEPEEK_NO_MAIN   /* hwtests/cd-pause-stages includes this file for pauseRow */
 int main() {
     printf("\ncdrom/cd-pause-peek\n");
     EnterCriticalSection();
@@ -82,3 +83,4 @@ int main() {
     printf("\nDone.\n");
     for (;;) {}   /* park after Done. (console day: a program that returns leaves Unirom deaf) */
 }
+#endif

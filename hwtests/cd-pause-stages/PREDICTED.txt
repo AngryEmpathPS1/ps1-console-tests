@@ -1,0 +1,8 @@
+cd-pause-stages PREDICTED before any console run (the Fable CD session, 2026-11-25). The model: next 1f5201b1d2 (v0.377.384 + 1) as
+the SCPH-1001 (SC430916), The X-Files, --settle=600; log scratch/scex/stages/next-1001-xf.txt. Every cell alike: the stage byte 6Bh
+in tenths of a ms from the Pause's INT3 acknowledge - 0C (the jump) 4.1-7.6 ms, 0D (landed) 19.6-20.6, 01 (done) 39.8-40.7, then the
+hold's 0D / 01 every ~23 / ~40 (63.2-63.9, 102.4-104.8 ...); cell C's N rows (no peeks) 1.331-1.350M cycles, no ramp.
+THE QUESTION: on the 1001 a cell's first Pauses run long (cd-pause-settle: +50-70k at once after Setmode 80h, +20-25k after 3 s
+idle) and settle over ~8. Which of 0C, 0D, 01 moves in A0-A3 / B0-B3 / D0-D3 against A4-A7 - the jump's start (the Q after the
+Pause, the data's lag: cd-lagdip's ~12k), the landing (the jump's own time, a relock), or the tracking-by-Q stretch to done - is the
+mechanism; cell C says whether the peeks change the ramp.
