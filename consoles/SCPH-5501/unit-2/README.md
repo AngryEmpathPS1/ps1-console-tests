@@ -484,5 +484,9 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-25-discid-rr](2026-11-25-discid-rr/) | 3 | 0 |
 | [2026-11-25-resetboot](2026-11-25-resetboot/) | 5 | 0 |
 | [2026-11-25-spubootdraw](2026-11-25-spubootdraw/) | 3 | 0 |
+| [2026-11-25-spumbase](2026-11-25-spumbase/) | 3 | 0 |
+| [2026-11-25-spumbase-probe](2026-11-25-spumbase-probe/) | 4 | 0 |
+| [2026-11-25-spumbase-r1](2026-11-25-spumbase-r1/) | 3 | 0 |
+| [2026-11-25-spumbase-r2](2026-11-25-spumbase-r2/) | 3 | 0 |
 | [2026-11-25-wqland](2026-11-25-wqland/) | 3 | 0 |
 | [2026-11-25-wqland-a](2026-11-25-wqland-a/) | 3 | 0 |
