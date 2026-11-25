@@ -280,6 +280,12 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-24-romloop3-r1](2026-11-24-romloop3-r1/) | 3 | 0 |
 | [2026-11-24-romloop3-r2](2026-11-24-romloop3-r2/) | 3 | 0 |
 | [2026-11-24-rulerdump](2026-11-24-rulerdump/) | 3 | 0 |
+| [2026-11-24-scexlocd2-xf2-r1](2026-11-24-scexlocd2-xf2-r1/) | 4 | 0 |
+| [2026-11-24-scexlocd2-xf2-r2](2026-11-24-scexlocd2-xf2-r2/) | 4 | 0 |
+| [2026-11-24-scexlocd2-xf2-r3](2026-11-24-scexlocd2-xf2-r3/) | 4 | 0 |
+| [2026-11-24-scexlocd2-xf2-r4](2026-11-24-scexlocd2-xf2-r4/) | 4 | 0 |
+| [2026-11-24-scexlocd2-xf2-r5](2026-11-24-scexlocd2-xf2-r5/) | 4 | 0 |
+| [2026-11-24-scexlocd2-xf2-r6](2026-11-24-scexlocd2-xf2-r6/) | 4 | 0 |
 | [2026-11-24-sio1stim-r2](2026-11-24-sio1stim-r2/) | 4 | 0 |
 | [2026-11-24-sio1stim-r3](2026-11-24-sio1stim-r3/) | 4 | 0 |
 | [2026-11-24-sio1stim-r4](2026-11-24-sio1stim-r4/) | 4 | 0 |
