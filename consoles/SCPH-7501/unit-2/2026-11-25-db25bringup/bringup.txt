@@ -1,0 +1,25 @@
+== 1 status
+the Pico: DBCAP bytes=49356 frames=4 ok=4 bad=0 held=3511 diff=6186 stage=29 mode=0 sample=1 ts=1 txq=0 probe=0 listen=0 od=00000000 oe=10000200 padoe=00000000 port=1 ovr=0 drop=0 q=0 txa=4096 con=1 r
+  and the other port: DBCAP bytes=0 frames=0 ok=0 bad=0 held=0 diff=0 stage=0 mode=0 sample=1 ts=1 txq=0 probe=0 listen=0 od=00000000 oe=10000200 padoe=00000000 port=3 ovr=0 drop=0 q=0 txa=4096 con=0 
+4211 bytes in scratch/db25up/SCPH-7501-u2/st.bin; frames: none
+== 2 dbio
+db_input ok; the bytes: 00 11 22 33 44 55 66 77 88 99 aa bb cc dd ee ff; sum 2040; report sent
+frames 40 marks MARK a0 MARK b0 MARK a2
+== 3 mark-cost
+  sbMark then ram      19  26  21  22  23  24  28  26  27  28  29  30  31
+  sbMark then t1       19  20  21  22  23  24  25  26  27  28  29  30  31
+  sbMark            23  27  27  90
+B5 marks 164 short gaps (cycles): 17.2 17.2 17.6 17.2 17.2 17.6 17.2 17.2 17.6 17.2 17.2 17.6
+== 4 markers on vs off
+TIMES DIFFER
+MK lines 60
+marks 240 (A4-A7), mark sets used 60 (the capture's last), c lines 60, MK lines 60: 60 cases paired
+fit: outside = 0.999663 x (burn + Timer 2 count) + 89.5 cycles   (ratio -337 ppm from 1)
+residual: median -0.01 cycles, median abs deviation 1.38 cycles
+apart: per burn cycle 0.99978, per Timer 2 count 0.99958, constant 89.5 (outliers included)
+== 5 feed
+consolequeue: 20261125023655064-fzfeed-772 starts within a minute, runs <1 min
+SCPH-7501-u2: 20 case lines, FEED on; FEED end: header 21444e45; FEED cases 19, Done
+FED TIMES DIFFER
+
+[exited with code 0]

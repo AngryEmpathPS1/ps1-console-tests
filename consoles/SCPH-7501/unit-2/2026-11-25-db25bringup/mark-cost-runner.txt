@@ -1,0 +1,21 @@
+
+bus/mark-cost
+what a DB-25 mark (sb 1F060008h) costs: Timer 2, four no-ops, a store, K no-ops, a reader, eight no-ops, Timer 2. GameShark: mark rows run
+
+  store then reader   K=0   1   2   3   4   5   6   7   8   9  10  11  12
+  nop then ram         19  20  21  22  23  24  25  26  27  28  29  30  31
+  nop then t1          19  20  21  22  23  24  25  26  27  28  29  30  31
+  sbMark then ram      19  26  21  22  23  24  28  26  27  28  29  30  31
+  sbMark then t1       19  20  21  22  23  24  25  26  27  28  29  30  31
+  sbE2 then ram        19  20  21  22  23  24  25  26  27  33  29  30  31
+  sbE2 then t1         19  20  21  22  23  24  25  26  27  28  29  30  31
+  sbRAM then ram       21  21  21  22  23  24  25  26  27  28  29  30  31
+  sbRAM then t1        19  20  21  22  26  24  25  26  27  28  29  30  31
+
+  stores back to back, then no-ops to 16 instructions:   1 store   2   4   8
+  nop               23  23  23  23
+  sbMark            23  27  27  90
+  sbE2              23  23  37  78
+  sbRAM             23  23  23  27
+
+Done.

@@ -1,0 +1,26 @@
+
+exp1-trains
+EXP1 delay 0013243F, COM_DELAY 00031125 on entry; the trains run at 0013243Fh and 00031125h (the kernel's)
+id name                         Timer 2 cycles for 128 stores (warm), per store
+ 0 sb 0 nops                      2297  17.94
+ 1 sb 1 nop                       2297  17.94
+ 2 sb 2 nops                      2279  17.80
+ 3 sb 3 nops                      2274  17.76
+ 4 sb 4 nops                      2280  17.81
+ 5 sb 6 nops                      2274  17.76
+ 6 sb 8 nops                      2432  19.00
+ 7 sb 12 nops                     3515  27.46
+ 8 sb 16 nops                     5057  39.50
+ 9 sb 24 nops                     7402  57.82
+10 sb 8 nops (again)              2429  18.97
+11 sh 0 nops                      4456  34.81
+12 sh 8 nops                      4510  35.23
+13 sw 0 nops                      8774  68.54
+14 sw 8 nops                      8850  69.14
+15 sb EXP1 + sb RAM, 0 nops       2307  18.02
+16 sb EXP1 + sb RAM, 8 nops       2856  22.31
+17 sb EXP1 + lbu RAM, 0 nops      2329  18.19
+18 sb EXP1 + lbu RAM, 8 nops      3052  23.84
+19 sb EXP1 + lbu EXP1, 0 nops     3487  27.24
+20 sb EXP1 + lbu EXP1, 8 nops     4020  31.40
+Done.

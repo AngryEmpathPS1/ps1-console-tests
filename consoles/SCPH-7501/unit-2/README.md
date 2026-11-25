@@ -25,3 +25,7 @@
 | [2026-11-24-spukonhist3](2026-11-24-spukonhist3/) | 4 | 0 |
 | [2026-11-24-spukonhist4](2026-11-24-spukonhist4/) | 3 | 0 |
 | [2026-11-24-spuxfermove](2026-11-24-spuxfermove/) | 3 | 0 |
+| [2026-11-25-clock](2026-11-25-clock/) | 2 | 0 |
+| [2026-11-25-db25bringup](2026-11-25-db25bringup/) | 7 | 0 |
+| [2026-11-25-exp1trains](2026-11-25-exp1trains/) | 5 | 0 |
+| [2026-11-25-wqland](2026-11-25-wqland/) | 3 | 0 |

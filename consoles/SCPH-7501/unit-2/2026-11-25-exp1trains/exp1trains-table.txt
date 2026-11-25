@@ -1,0 +1,22 @@
+id name                         Pico ns/store   CPU cycles/store (33.8688 MHz)   Timer 2 cycles/store (2 reads included)
+ 0 sb 0 nops                         519.4 ns        17.59 cyc        17.95
+ 1 sb 1 nop                          525.6 ns        17.80 cyc        17.95
+ 2 sb 2 nops                         521.4 ns        17.66 cyc        17.80
+ 3 sb 3 nops                         521.9 ns        17.67 cyc        17.77
+ 4 sb 4 nops                         523.3 ns        17.72 cyc        17.81
+ 5 sb 6 nops                         522.0 ns        17.68 cyc        17.77
+ 6 sb 8 nops                         555.3 ns        18.81 cyc        19.00
+ 7 sb 12 nops                        805.0 ns        27.26 cyc        27.46
+ 8 sb 16 nops                       1161.5 ns        39.34 cyc        39.51
+ 9 sb 24 nops                       1701.5 ns        57.63 cyc        57.83
+10 sb 8 nops (again)                 555.6 ns        18.82 cyc        18.98
+11 sh 0 nops                        1017.4 ns        34.46 cyc        34.81
+12 sh 8 nops                        1034.5 ns        35.04 cyc        35.23
+13 sw 0 nops                        2021.3 ns        68.46 cyc        68.55
+14 sw 8 nops                        2030.2 ns        68.76 cyc        69.14
+15 sb EXP1 + sb RAM, 0 nops          528.2 ns        17.89 cyc        18.02
+16 sb EXP1 + sb RAM, 8 nops          654.4 ns        22.16 cyc        22.31
+17 sb EXP1 + lbu RAM, 0 nops         531.3 ns        18.00 cyc        18.20
+18 sb EXP1 + lbu RAM, 8 nops         698.2 ns        23.65 cyc        23.84
+19 sb EXP1 + lbu EXP1, 0 nops        798.5 ns        27.04 cyc        27.24
+20 sb EXP1 + lbu EXP1, 8 nops        921.4 ns        31.21 cyc        31.41

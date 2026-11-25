@@ -1,0 +1,7 @@
+576 marks, and the console's CLOCK frame (stage 1Dh whole)
+spin: A0 -> A1 1000034585 ns for 33869145 Timer 2 counts: the CPU clock is 33.867974 MHz by the Pico's crystal (-24.4 ppm from 33.8688 MHz)
+VBlank: 60 periods, mean 16714944 ns (59.8267 Hz), 16712356..16726155 ns; Timer 2 counted 566106.7 cycles a frame (33.868 MHz by the Pico's time over the frames)
+train D0h back to back, first run (cold): 128 stores, ACK to ACK mean 529.1 ns, 506.7..1280.0 ns = 17.92 cycles at 33.8688 MHz (Timer 2, with the bracketing reads: 20.48 cycles = 604.6 ns)
+train D1h back to back, second run: 128 stores, ACK to ACK mean 529.1 ns, 506.7..1280.0 ns = 17.92 cycles at 33.8688 MHz (Timer 2, with the bracketing reads: 20.48 cycles = 604.6 ns)
+train D2h 8 nops between, first run: 128 stores, ACK to ACK mean 593.7 ns, 506.7..906.6 ns = 20.11 cycles at 33.8688 MHz (Timer 2, with the bracketing reads: 23.41 cycles = 691.3 ns)
+train D3h 8 nops between, second run: 128 stores, ACK to ACK mean 593.1 ns, 506.7..906.6 ns = 20.09 cycles at 33.8688 MHz (Timer 2, with the bracketing reads: 23.39 cycles = 690.6 ns)
