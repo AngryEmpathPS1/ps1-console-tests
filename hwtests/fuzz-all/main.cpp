@@ -118,7 +118,8 @@ static void probeRefresh() {
 /* THE DB-25 OUT (2026-11-17; AngryEmpath's exception to the 1F000000h-1F07FFFFh ban, through main: "Allow it"). SCOPE, exactly:
  *   - this HOST code only, never a generated case (tools/fuzzall.js's generator ban is unchanged);
  *   - writes to 1F060008h ONLY (the GameShark's comms-out byte); reads of 1F060000h (the PC's byte) and 1F020010h (STB) for the handshake;
- *   - a console whose cart is a GameShark only: the host REFUSES unless the cart ROM's cold block at 80190000h ("AESNAP01", its
+ *   - a console whose cart is a GameShark only (a stock Datel ROM without our cold block passes on its header, cartIsGameShark): the
+ *     host REFUSES unless the cart ROM's cold block at 80190000h ("AESNAP01", its
  *     STAGE record's CART_KIND) says 1 (the GameShark build; 2 is the Power Replay, no comms link) and the Pico's STB is up.
  * Every other address in 1F000000h-1F07FFFFh stays banned for this host and its cases alike. The handshake is cartrom/rom.c's
  * comms_put: wait for STB (bounded: 2,000 reads, then the stream is off for the run), take the PC's byte, write ours (the write pulses ACK).
@@ -133,7 +134,15 @@ static uint32_t dbBytes;
 static int cartIsGameShark(void) {   /* the cold block's frame: records tag(1) width(1) count(2) address(4) values, ended by tag FFh */
     const uint8_t *p = (const uint8_t *)0x80190000u;
     static const char M[8] = { 'A', 'E', 'S', 'N', 'A', 'P', '0', '1' };
-    for (int i = 0; i < 8; i++) if (p[i] != (uint8_t)M[i]) return 0;
+    /* A STOCK DATEL ROM (2026-11-25, the console fuzzer, for AngryEmpath: the GameShark 2.3 for the SCPH-1000, read-only flash, so it
+     * never carries our cold block). With no cold block at all, the cart's own ROM decides: 1F000000h = 1F000108h (bytes 08 01 00 1F)
+     * and the half-word at 1F000100h = 0050h, read off the 2.3 in the SCPH-1001-u2 (scratch/idprobe-1001u2) and in every GameShark /
+     * Action Replay / Game Buster 2.x dump in Cartridges/By name (the AR CD 1.55 differs: D0 01 00 1F). A cold block that IS there
+     * still decides alone - the Power Replay (our ROM, kind 2) is refused as before. EXP1 reads only; STB must still be up (caller). */
+    {
+        int cold = 1; for (int i = 0; i < 8; i++) if (p[i] != (uint8_t)M[i]) cold = 0;
+        if (!cold) return R32(0x1F000000u) == 0x1F000108u && R16(0x1F000100u) == 0x0050u;
+    }
     uint32_t o = 8;
     while (o + 8 <= 256) {
         const uint32_t tag = p[o], w = p[o + 1], cnt = p[o + 2] | (p[o + 3] << 8);
@@ -598,7 +607,8 @@ int main() {
             const uint32_t nc = h[3] & 0xFFFFu, no = h[3] >> 16;
             if (nc > 8000 || no > 2000) { hout("FEED end: case too big %u %u\n", nc, no); break; }
             h[0] = h[1]; h[1] = h[2]; h[2] = nc; h[3] = no;   /* the table layout: id, seed, nCode, nOver, code, overrides */
-            if (!db_input((uint8_t *)(h + 4), 4 * (nc + 2 * no))) { hout("FEED end: case %u cut short\n", h[0]); break; }
+            /* a case with no words asks for none: db_input of 0 bytes sends a request the Pico has nothing to answer ("cut short") */
+            if (nc + 2 * no && !db_input((uint8_t *)(h + 4), 4 * (nc + 2 * no))) { hout("FEED end: case %u cut short\n", h[0]); break; }
             lite = (flags & 6) != 0; regsOnly = (flags & 4) != 0; dumpVram = (flags & 8) != 0;
             runCase(h, flags & 1);
             fed++;

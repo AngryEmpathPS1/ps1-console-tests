@@ -478,5 +478,11 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-24-trigrid](2026-11-24-trigrid/) | 3 | 0 |
 | [2026-11-24-trigriddma](2026-11-24-trigriddma/) | 3 | 0 |
 | [2026-11-25-atcom0b](2026-11-25-atcom0b/) | 3 | 0 |
+| [2026-11-25-cartkept](2026-11-25-cartkept/) | 2 | 0 |
+| [2026-11-25-cdmix](2026-11-25-cdmix/) | 3 | 0 |
+| [2026-11-25-cdmix-rr](2026-11-25-cdmix-rr/) | 3 | 0 |
+| [2026-11-25-discid-rr](2026-11-25-discid-rr/) | 3 | 0 |
+| [2026-11-25-resetboot](2026-11-25-resetboot/) | 5 | 0 |
+| [2026-11-25-spubootdraw](2026-11-25-spubootdraw/) | 3 | 0 |
 | [2026-11-25-wqland](2026-11-25-wqland/) | 3 | 0 |
 | [2026-11-25-wqland-a](2026-11-25-wqland-a/) | 3 | 0 |

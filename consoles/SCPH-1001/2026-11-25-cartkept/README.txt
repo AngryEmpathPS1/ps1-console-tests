@@ -1,0 +1,1 @@
+What the cart kept of the boot that was running on 2026-11-25 04:40Z (hwtests/spu-bootprobe at the cart break; tools/cartread.js --what=draws). SCPH-1001: boot count 30, WARM 1 (a RESET): rho 101, D 0004. Second SCPH-5501: boot 2, WARM 2 (a soft reset): rho 398.

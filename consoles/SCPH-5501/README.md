@@ -182,3 +182,4 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-02-wifi](2026-11-02-wifi/) | 4 | 1 |
 | [2026-11-22-u3-ident](2026-11-22-u3-ident/) | 12 | 0 |
 | [2026-11-23-u3-rerun1402](2026-11-23-u3-rerun1402/) | 3 | 0 |
+| [2026-11-25-u3-spubootdraw](2026-11-25-u3-spubootdraw/) | 3 | 0 |
