@@ -60,12 +60,13 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-25-cartstart-20500c](2026-11-25-cartstart-20500c/) | 3 | 0 |
 | [2026-11-25-cartstart-hang](2026-11-25-cartstart-hang/) | 3 | 0 |
 | [2026-11-25-cdnone](2026-11-25-cdnone/) | 1 | 0 |
-| [2026-11-25-clock](2026-11-25-clock/) | 1 | 0 |
+| [2026-11-25-clock](2026-11-25-clock/) | 4 | 0 |
+| [2026-11-25-glitch24b](2026-11-25-glitch24b/) | 3 | 0 |
 | [2026-11-25-gs-firstboot](2026-11-25-gs-firstboot/) | 1 | 0 |
 | [2026-11-25-k902](2026-11-25-k902/) | 1 | 0 |
-| [2026-11-25-linesig](2026-11-25-linesig/) | 1 | 0 |
+| [2026-11-25-linesig](2026-11-25-linesig/) | 4 | 0 |
 | [2026-11-25-padring](2026-11-25-padring/) | 1 | 0 |
-| [2026-11-25-probecart](2026-11-25-probecart/) | 1 | 0 |
+| [2026-11-25-probecart](2026-11-25-probecart/) | 4 | 0 |
 | [2026-11-25-spubootdraw](2026-11-25-spubootdraw/) | 3 | 0 |
 | [2026-11-25-spucapfrac](2026-11-25-spucapfrac/) | 3 | 0 |
 | [2026-11-25-spucapfrac2](2026-11-25-spucapfrac2/) | 3 | 0 |
@@ -78,6 +79,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-25-spuregdump](2026-11-25-spuregdump/) | 3 | 0 |
 | [2026-11-25-spuwqread](2026-11-25-spuwqread/) | 3 | 0 |
 | [2026-11-25-spuwqread2](2026-11-25-spuwqread2/) | 6 | 0 |
-| [2026-11-25-warm](2026-11-25-warm/) | 1 | 0 |
+| [2026-11-25-warm](2026-11-25-warm/) | 4 | 0 |
 | [2026-11-25-wqland](2026-11-25-wqland/) | 3 | 0 |
 | [2026-11-25-wqland-a](2026-11-25-wqland-a/) | 3 | 0 |

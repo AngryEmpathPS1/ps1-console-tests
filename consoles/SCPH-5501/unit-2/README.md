@@ -482,6 +482,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-25-cdmix](2026-11-25-cdmix/) | 3 | 0 |
 | [2026-11-25-cdmix-rr](2026-11-25-cdmix-rr/) | 3 | 0 |
 | [2026-11-25-discid-rr](2026-11-25-discid-rr/) | 3 | 0 |
+| [2026-11-25-glitch24b](2026-11-25-glitch24b/) | 3 | 0 |
+| [2026-11-25-glitch24c](2026-11-25-glitch24c/) | 3 | 0 |
 | [2026-11-25-lagack-r1](2026-11-25-lagack-r1/) | 5 | 0 |
 | [2026-11-25-lagack-r2](2026-11-25-lagack-r2/) | 5 | 0 |
 | [2026-11-25-lagack-r3](2026-11-25-lagack-r3/) | 5 | 0 |
