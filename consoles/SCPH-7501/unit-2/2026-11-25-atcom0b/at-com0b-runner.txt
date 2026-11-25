@@ -1,0 +1,14 @@
+
+cpu/at-com0b
+A read of another region behind an SPU read at COM0 12-15; cached, 64 turns, fastest of 8; Timer 2 cycles.
+There are no assertions - compare against your emulator.
+
+COM_DELAY       SC   SC1   SC2   SC3    CS    SB    ST    S3
+0000132C   1926  2054  2054  2054  1926  1862  1795  1791
+0000132D   1926  2054  2054  2054  1926  1862  1858  1854
+0000132E   1926  2054  2054  2054  1926  1925  1921  1917
+0000132F   1989  2054  2054  2054  1989  1988  1984  1980
+0000130F   1989  2054  2054  2054  1989  1988  1984  1980
+0000102F   1989  2054  2054  2054  1989  1988  1984  1980
+00031125   1926  2054  2054  2054  1926  1862  1606  1413
+Done.

@@ -296,6 +296,7 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-24-spukonhist3](2026-11-24-spukonhist3/) | 4 | 0 |
 | [2026-11-24-spukonhist4](2026-11-24-spukonhist4/) | 3 | 0 |
 | [2026-11-24-spuxfermove](2026-11-24-spuxfermove/) | 3 | 0 |
+| [2026-11-25-atcom0b](2026-11-25-atcom0b/) | 3 | 0 |
 | [2026-11-25-sio1stim-ratesweep](2026-11-25-sio1stim-ratesweep/) | 31 | 0 |
 | [2026-11-25-wqland](2026-11-25-wqland/) | 3 | 0 |
 | [2026-11-25-wqland-a](2026-11-25-wqland-a/) | 3 | 0 |

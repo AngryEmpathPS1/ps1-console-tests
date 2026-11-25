@@ -244,5 +244,6 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-24-spuxfermove](2026-11-24-spuxfermove/) | 3 | 0 |
 | [2026-11-24-trigrid](2026-11-24-trigrid/) | 3 | 0 |
 | [2026-11-24-trigriddma](2026-11-24-trigriddma/) | 3 | 0 |
+| [2026-11-25-atcom0b](2026-11-25-atcom0b/) | 3 | 0 |
 | [2026-11-25-wqland](2026-11-25-wqland/) | 3 | 0 |
 | [2026-11-25-wqland-a](2026-11-25-wqland-a/) | 3 | 0 |
