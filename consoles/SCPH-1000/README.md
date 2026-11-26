@@ -61,6 +61,8 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-25-cartstart-hang](2026-11-25-cartstart-hang/) | 3 | 0 |
 | [2026-11-25-cdnone](2026-11-25-cdnone/) | 1 | 0 |
 | [2026-11-25-clock](2026-11-25-clock/) | 4 | 0 |
+| [2026-11-25-clock-db25](2026-11-25-clock-db25/) | 1 | 0 |
+| [2026-11-25-db25up](2026-11-25-db25up/) | 20 | 0 |
 | [2026-11-25-glitch24b](2026-11-25-glitch24b/) | 3 | 0 |
 | [2026-11-25-gs-firstboot](2026-11-25-gs-firstboot/) | 1 | 0 |
 | [2026-11-25-k902](2026-11-25-k902/) | 1 | 0 |

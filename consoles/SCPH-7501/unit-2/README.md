@@ -28,11 +28,17 @@
 | [2026-11-25-atcom0b](2026-11-25-atcom0b/) | 3 | 0 |
 | [2026-11-25-cdmix](2026-11-25-cdmix/) | 3 | 0 |
 | [2026-11-25-clock](2026-11-25-clock/) | 2 | 0 |
+| [2026-11-25-clock-db25](2026-11-25-clock-db25/) | 1 | 0 |
 | [2026-11-25-db25bringup](2026-11-25-db25bringup/) | 7 | 0 |
 | [2026-11-25-exp1trains](2026-11-25-exp1trains/) | 5 | 0 |
 | [2026-11-25-lagack-r1](2026-11-25-lagack-r1/) | 5 | 0 |
 | [2026-11-25-lagack-r2](2026-11-25-lagack-r2/) | 5 | 0 |
 | [2026-11-25-lagack-r3](2026-11-25-lagack-r3/) | 5 | 0 |
+| [2026-11-25-slededges-r1](2026-11-25-slededges-r1/) | 4 | 0 |
+| [2026-11-25-slededges-r2](2026-11-25-slededges-r2/) | 4 | 0 |
+| [2026-11-25-sledphase-r1](2026-11-25-sledphase-r1/) | 4 | 0 |
+| [2026-11-25-sledswing-r1](2026-11-25-sledswing-r1/) | 4 | 0 |
+| [2026-11-25-sledswing-r2](2026-11-25-sledswing-r2/) | 4 | 0 |
 | [2026-11-25-spubootdraw](2026-11-25-spubootdraw/) | 3 | 0 |
 | [2026-11-25-spucapfrac2](2026-11-25-spucapfrac2/) | 3 | 0 |
 | [2026-11-25-spucapring4](2026-11-25-spucapring4/) | 4 | 0 |

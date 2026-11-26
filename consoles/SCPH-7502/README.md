@@ -210,6 +210,11 @@ As it reported itself to `machine-id`, the last time that ran here:
 | [2026-11-25-lagack-r3](2026-11-25-lagack-r3/) | 5 | 0 |
 | [2026-11-25-seekfar-r1](2026-11-25-seekfar-r1/) | 4 | 0 |
 | [2026-11-25-seekfar-r2](2026-11-25-seekfar-r2/) | 4 | 0 |
+| [2026-11-25-slededges-r1](2026-11-25-slededges-r1/) | 4 | 0 |
+| [2026-11-25-slededges-r2](2026-11-25-slededges-r2/) | 4 | 0 |
+| [2026-11-25-sledphase-r1](2026-11-25-sledphase-r1/) | 4 | 0 |
+| [2026-11-25-sledswing-r1](2026-11-25-sledswing-r1/) | 4 | 0 |
+| [2026-11-25-sledswing-r2](2026-11-25-sledswing-r2/) | 4 | 0 |
 | [2026-11-25-spubootdraw](2026-11-25-spubootdraw/) | 3 | 0 |
 | [2026-11-25-spucapfrac2](2026-11-25-spucapfrac2/) | 3 | 0 |
 | [2026-11-25-spucapring4](2026-11-25-spucapring4/) | 4 | 0 |

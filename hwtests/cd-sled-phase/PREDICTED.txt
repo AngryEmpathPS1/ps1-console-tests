@@ -1,0 +1,19 @@
+cd-sled-phase PREDICTED before any console run (the Fable CD session, 2026-11-25). The model: next 335b79c451 (v0.377.386 + 0) as the
+SCPH-9001 (SC430944), Final Fantasy VII (USA) Disc 1, --settle=600; log experiments/sled/pred/phase-9001-ff7u.txt. Scored by
+experiments/sled/phase-score.js: per pair and direction the ten repeats in order - the landing's tracks moved less N x 256, the
+first edge (ms from the command write) and the last edge less the first. This servo counts COUT from the Reg B latch: a cell's
+landings repeat within ~+-45 tracks (the program's 2 ms poll and where the start falls against the Q). '-' is a row whose
+GetlocP answers after the move were all errors here (00:02 -> 10:00, seven of ten: the model's, to compare).
+
+  00:02 -> 10:00  N 14: landing less N x 256, in order: 776 - - 864 - - - - 865 -   mean 835 sd 42 range 89
+        first edge ms: 38.1 39.5 36.2 42.8 45.3 43.6 43.9 35.2 38.0 43.8   last less first: mean 87.6 (85.7 85.7 88.9 88.9 85.8 88.9 88.9 88.9 88.9 85.8)
+  10:00 -> 00:02  N 14/13: landing less N x 256, in order: 407 412 314 428 769 319 414 406 401 414   mean 428 sd 120 range 455
+        first edge ms: 37.0 54.6 42.9 45.1 39.6 49.3 43.0 47.9 47.9 54.5   last less first: mean 87.3 (88.9 88.8 85.8 88.8 79.4 85.7 88.9 88.9 88.9 88.9)
+  30:00 -> 40:00  N 8: landing less N x 256, in order: 862 824 813 727 720 729 813 812 824 825   mean 795 sd 47 range 141
+        first edge ms: 37.4 44.8 43.3 43.9 41.3 41.4 39.2 38.0 50.5 38.4   last less first: mean 50.4 (51.3 51.3 51.3 48.2 48.3 48.2 51.3 51.3 51.3 51.3)
+  40:00 -> 30:00  N 8: landing less N x 256, in order: 814 729 792 858 857 728 815 860 810 825   mean 809 sd 46 range 133
+        first edge ms: 41.3 42.0 38.9 46.2 46.3 39.5 35.6 46.3 42.4 43.6   last less first: mean 50.7 (51.3 48.1 51.3 51.3 51.4 48.2 51.3 51.3 51.3 51.4)
+  59:59 -> 69:59  N 5: landing less N x 256, in order: 707 796 707 705 711 710 677 797 707 688   mean 720 sd 39 range 120
+        first edge ms: 37.3 36.5 36.6 42.2 42.4 42.5 42.2 40.0 38.1 41.1   last less first: mean 30.1 (29.4 32.6 29.6 29.5 29.4 29.4 29.5 32.5 29.4 29.6)
+  69:59 -> 59:59  N 5: landing less N x 256, in order: 710 794 807 717 797 771 715 796 793 795   mean 770 sd 37 range 97
+        first edge ms: 46.2 37.0 41.1 45.2 38.0 42.5 43.8 37.1 45.1 42.7   last less first: mean 31.6 (29.5 32.6 32.5 29.4 32.6 32.6 29.3 32.4 32.5 32.6)

@@ -157,6 +157,7 @@ static uint32_t seekPath(uint32_t lba, uint32_t gap) {
     return t2;
 }
 
+#ifndef CDSEEKFAR_NO_MAIN   /* hwtests/cd-sled-edges includes this file for its framework */
 int main() {
     printf("\ncdrom/cd-seek-far\n");
     printf("The head's path through a seek to near the disc's end: per cell (speed, from, to, SeekL or SeekP) the control seek's time and\n");
@@ -210,3 +211,4 @@ int main() {
     printf("\ncdrom/cd-seek-far: Done.\n");
     for (;;) VSync(0);
 }
+#endif
