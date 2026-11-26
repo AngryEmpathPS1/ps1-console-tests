@@ -1,0 +1,38 @@
+gpu-spr-mix4 - THE EMULATOR'S RUN BEFORE THE CONSOLES' (the GPU session, 2026-11-25, branch claude/hungry-ardinghelli-1c1c61)
+
+The test ran here first (v0.377.382 + land_sprblk + land_sprblk2 + land_semiq + land_semiq2 + land_sprrow8; the log is
+experiments/gpureach/mix4/emu-sprrow8.txt, made before the console run - this page was written after it, so it is the record of
+what the core said, not a blind prediction). What the core has for a wide row: FillWB's 32-pixel blocks from the row's first
+pixel, and a cost that does not look at where a span ends.
+
+The drawn sprite less the clear one of its size, 64h, by the first drawn pixel a (node experiments/gpureach/mix4tab.js <logs>
+--emu=experiments/gpureach/mix4/emu-sprrow8.txt prints the consoles beside it):
+
+4-bit 64h 48x1        a 0 4 8 12 16 20 24 28 32 36 40 44 46
+  emulator (none 86)         4 4 4 4 4 4 4 4 6 5 4 3 2
+4-bit 64h 48x2        a 0 4 8 12 16 20 24 28 32 36 40 44 46
+  emulator (none 135)         8 7 7 7 7 7 7 7 6 5 4 3 2
+4-bit 64h 64x1        a 0 4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 62
+  emulator (none 102)         15 14 13 12 12 12 12 12 10 9 8 7 6 5 4 3 2
+4-bit 64h 64x2        a 0 4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 62
+  emulator (none 167)         23 21 19 17 17 17 17 17 14 11 9 7 6 5 4 3 2
+4-bit 64h 64x4        a 0 4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 62
+  emulator (none 297)         39 35 31 27 27 27 27 27 23 16 12 8 7 6 5 4 2
+4-bit 64h 64x1 spans  
+  emulator (none 102)         a0to16:15 a0to32:15 a0to48:15 a8to24:13 a16to32:12 a16to48:12 a24to40:12 a32to48:10
+4-bit 64h 64x2 spans  
+  emulator (none 167)         a0to16:23 a0to32:23 a0to48:23 a8to24:19 a16to32:17 a16to48:17 a24to40:17 a32to48:14
+4-bit 64h 128x1       a 0 8 16 24 32 40 48 64 72 80 96 112 126
+  emulator (none 166)         23 21 20 20 18 16 15 14 12 11 10 6 2
+4-bit 64h 128x2       a 0 8 16 24 32 40 48 64 72 80 96 112 126
+  emulator (none 295)         39 35 33 33 30 26 24 22 18 16 14 6 2
+8-bit 64h 48x1        a 0 4 8 12 16 20 24 28 32 36 40 44 46
+  emulator (none 357)         15 14 13 12 11 10 9 8 6 5 4 3 2
+8-bit 64h 48x2        a 0 4 8 12 16 20 24 28 32 36 40 44 46
+  emulator (none 430)         27 25 23 21 19 17 15 13 10 7 6 4 2
+8-bit 64h 64x1        a 0 4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 62
+  emulator (none 381)         19 18 17 16 15 14 13 12 10 9 8 7 6 5 4 3 2
+8-bit 64h 64x2        a 0 4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 62
+  emulator (none 478)         35 33 31 29 27 25 23 21 18 15 14 11 10 7 6 4 2
+8-bit 64h 64x4        a 0 4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 62
+  emulator (none 672)         67 63 59 55 51 47 43 39 35 28 27 20 19 12 11 7 2

@@ -1,0 +1,31 @@
+gpu-spr-mix5 - THE EMULATOR'S RUN BEFORE THE CONSOLES' (the GPU session, 2026-11-25, branch claude/hungry-ardinghelli-1c1c61)
+
+The test ran here first (v0.377.382 + land_sprblk + land_sprblk2 + land_semiq + land_semiq2 + land_sprrow8's first build; the log
+is experiments/gpureach/mix5/emu-sprrow8-before.txt, made before the console run - this page was written after it: the record of
+what the core said, not a blind prediction). The drawn sprite less the clear one of its size, by the first drawn pixel a
+(node experiments/gpureach/mix4tab.js <logs> --emu=<that log> prints the consoles beside it):
+
+4-bit 64h 48x1        a 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46
+  emulator (none 86)         4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 6 6 5 5 4 4 3 2
+4-bit 64h 48x2        a 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46
+  emulator (none 135)         8 8 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 5 5 4 4 3 2
+4-bit 64h 48x3        a 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46
+  emulator (none 184)         11 11 9 9 9 9 9 9 9 9 9 9 9 9 9 9 6 6 5 5 4 4 3 2
+4-bit 64h 48x2 spans  
+  emulator (none 135)         a0r0:4 a0r1:4 a4r0:3 a4r1:4 a8r0:3 a8r1:4 a12r0:3 a12r1:4 a16r0:3 a16r1:4 a24r0:3 a24r1:4 a32r0:1 a32r1:6
+4-bit 64h 64x1        a 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30
+  emulator (none 102)         15 15 14 14 13 13 12 12 12 12 12 12 12 12 12 12
+4-bit 64h 64x2        a 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30
+  emulator (none 167)         23 23 21 21 19 19 17 17 17 17 17 17 17 17 17 17
+8-bit 64h 48x1        a 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46
+  emulator (none 357)         15 15 14 14 13 13 12 12 11 11 10 10 9 9 8 8 6 6 5 5 4 4 3 2
+8-bit 64h 48x2        a 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46
+  emulator (none 430)         27 27 25 25 23 23 21 21 19 19 17 17 15 15 13 13 10 8 7 6 6 5 4 2
+8-bit 64h 48x3        a 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46
+  emulator (none 503)         39 39 36 36 33 33 30 30 27 27 24 24 21 21 18 18 14 10 9 7 8 6 5 2
+8-bit 64h 48x2 spans  
+  emulator (none 430)         a0r0:13 a0r1:15 a4r0:12 a4r1:14 a8r0:11 a8r1:13 a12r0:10 a12r1:12 a16r0:9 a16r1:11 a24r0:7 a24r1:9 a32r0:5 a32r1:6
+8-bit 64h 64x1        a 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30
+  emulator (none 381)         19 19 18 18 17 17 16 16 15 15 14 14 13 13 12 12
+8-bit 64h 64x2        a 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30
+  emulator (none 478)         35 35 33 33 31 31 29 29 27 27 25 25 23 23 21 21
